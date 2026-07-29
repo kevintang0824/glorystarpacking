@@ -1,0 +1,53 @@
+# Inquiry form setup
+
+The site's 26 quote forms use the same field contract and work in two modes:
+
+1. On Vercel, `/api/quote` sends the request through Resend.
+2. On a static host or before Resend is configured, the form opens a prefilled email to `kevin@GloryStarPack.com`.
+
+Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The fallback email includes both values so the purchasing brief remains complete even when the API is unavailable.
+
+The frontend also retains first-visit attribution in session storage and includes the landing page, referrer, and standard UTM fields with a submitted inquiry. This connects organic, AI-search, partner, and campaign visits to actual quote requests without enabling an advertising cookie. The privacy notice describes this behavior.
+
+## Vercel environment variables
+
+Add these values in the Vercel project under **Settings → Environment Variables**:
+
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Resend API key |
+| `QUOTE_TO_EMAIL` | Inbox that receives quote requests |
+| `QUOTE_FROM_EMAIL` | Verified sender, including optional display name |
+
+Example values are listed in `.env.example`. Do not commit real API keys.
+
+## Sender domain
+
+Verify the sender domain in Resend before using a `@glorystarpacking.com` address. Add the DNS records Resend provides to the active DNS provider. Keep the existing Namecheap email-forwarding MX and SPF records unless the mail service is intentionally changed.
+
+## Attachments
+
+The website accepts PDF, JPG/JPEG, PNG, and WebP files up to 3 MB. The API validates the filename extension, declared MIME type, Base64 payload, decoded file size, and file-signature bytes before forwarding an attachment. Renaming an unsupported file to an allowed extension is therefore not sufficient to pass validation.
+
+Accepted files are sent through Resend as email attachments. The 3 MB limit leaves room for Base64 encoding inside Vercel's Function request limit. Quote API responses use `Cache-Control: no-store` so inquiry details are not intentionally cached by browsers or intermediaries.
+
+## Deployment scope
+
+- `.vercelignore` uses an allowlist so only public HTML, assets, the API, and required site/config files are included in the deployment.
+- `robots.txt` disallows `/api/`; the quote endpoint is not a search landing page.
+- `vercel.json` keeps `trailingSlash` set to `false`, matching the canonical `.html` URL format.
+
+## Test checklist
+
+Run `node scripts/test-quote-api.mjs` for the repeatable server-side regression checks, then complete the following real-delivery checks on a Vercel preview:
+
+- Submit valid inquiries from the homepage, product catalog, one box page, and one label page.
+- Confirm a submission without an attachment succeeds.
+- Confirm a submission with each supported attachment type succeeds.
+- Confirm delivery country is required and appears in the received email.
+- Confirm the optional target in-hand date is preserved when entered and may be left blank.
+- Confirm the email arrives and Reply goes to the visitor.
+- Confirm a file over 3 MB produces a clear error.
+- Confirm a mismatched extension/MIME type, malformed Base64 payload, and incorrect file signature are rejected.
+- Confirm the hidden honeypot field silently rejects bots.
+- Confirm the email fallback opens with the full brief when the API is unavailable.

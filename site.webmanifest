@@ -1,0 +1,16 @@
+{
+  "name": "GloryStarPack",
+  "short_name": "GloryStarPack",
+  "description": "Factory-direct custom boxes and labels developed in one packaging workflow.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#10100f",
+  "theme_color": "#10100f",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

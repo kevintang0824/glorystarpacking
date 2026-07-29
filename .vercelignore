@@ -1,0 +1,13 @@
+# Deploy only the public website and serverless quote endpoint.
+*
+.*
+
+!*.html
+!assets/
+!assets/**
+!api/
+!api/**
+!robots.txt
+!sitemap.xml
+!site.webmanifest
+!vercel.json
