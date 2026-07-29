@@ -1,13 +1,11 @@
-# Deploy only the public website and serverless quote endpoint.
-*
-.*
-
-!*.html
-!assets/
-!assets/**
-!api/
-!api/**
-!robots.txt
-!sitemap.xml
-!site.webmanifest
-!vercel.json
+# Keep development, documentation, credentials, and local project metadata
+# out of deployments. Public HTML, assets, SEO files, and api/** are included.
+.DS_Store
+.env*
+.git/
+.github/
+.vercel/
+node_modules/
+scripts/
+*.md
+CNAME
