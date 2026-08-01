@@ -346,3 +346,58 @@
 - 新指南、`llms.txt` 和 `sitemap.xml` 通过本地 HTTP 200 检查；
 - 新指南在 1440 × 1000 桌面视图与 500 × 900 窄屏视图完成无头浏览器检查，移动标题、规格栏、图片和首屏文案无裁切；
 - CSS 与 JavaScript、API、校验脚本语法检查及 `git diff --check` 通过。
+
+## 第八轮：索引投递、AI 来源识别与错误页治理
+
+本轮继续优先处理收录和衡量闭环，没有新增相似产品页，也没有加入未经业务确认的公司、认证、客户、MOQ 或交期信息。
+
+### 技术 SEO 与收录工具
+
+- 新增 `404.html`，使用 `noindex,follow`，保留产品目录、指南与询价入口，避免错误地址形成可索引的软 404 内容；
+- 删除旧 GitHub Pages 使用的 `CNAME`，仓库只保留 Vercel 生产发布路径；
+- 为 `/api/*` 增加 `X-Robots-Tag: noindex, nofollow` 与 `no-store` 响应头，为 robots、sitemap、llms 和 IndexNow key 配置明确缓存；
+- 新增根目录 IndexNow 验证文件、`scripts/submit-indexnow.mjs` 和可手动运行的 GitHub Actions workflow；脚本默认读取 sitemap，也允许只提交本次真正更新的 URL，并拒绝站外 URL；
+- 全站 `site.js` 缓存版本更新为 `20260801-1`，避免部署后继续使用旧归因脚本。
+
+### GEO、实体与归因
+
+- `llms.txt` 扩展为 Boxes、Components、Labels 三组具体产品与规格页面，AI 系统可直接定位到最具体的支持页面；
+- 6 篇采购指南的可见作者署名与 Article author schema 均连接到 About 页面，强化内容与站点实体之间的一致关系；
+- 询价来源新增 discovery channel/source：可区分 AI search、organic search、campaign、referral 与 direct；
+- ChatGPT、Perplexity、Microsoft Copilot、Claude、Gemini 和 You.com 来源可随实际询价进入邮件，隐私说明同步更新；
+- Article `dateModified`、Open Graph modified time 与 sitemap `lastmod` 保持一致，并由校验脚本自动检查。
+
+### 验证与线上阻塞
+
+- 35 个可索引页面和 1 个不可索引 404 页面通过静态 SEO、JSON-LD、内链、表单、sitemap、IndexNow 和 Vercel 配置校验；
+- Quote API 回归通过，确认 AI discovery channel/source 会出现在询价邮件；
+- IndexNow 完整 sitemap dry run 为 35 个 URL，指定 URL dry run 与同源限制通过；
+- 本地 HTTP 共检查 42 个页面与资源，全部返回 200；JavaScript/API 语法与 `git diff --check` 通过；
+- 正式域名验证仍受上线侧阻塞：现有 Vercel OIDC 凭据返回 403，命令行 TLS 请求失败，浏览器也未能加载正式域名。因此本轮没有声称已部署或已提交 IndexNow；需先恢复 Vercel 登录和域名访问，再发布并执行搜索平台提交。
+
+## 第九轮：盒型比较搜索意图与内容发现一致性
+
+本轮围绕具有明确采购决策意图的 `magnetic box vs drawer box` 主题新增一篇独立指南，并把内容发现、结构化数据和自动校验连接起来。
+
+### 新增盒型比较指南
+
+- 新增 `magnetic-box-vs-drawer-box.html`，从开盒动作、产品揭示、内托、配合公差、质量风险、装箱体积、运输和打样计划比较磁吸翻盖盒与抽屉盒；
+- 内容加入同口径询价清单和选择矩阵，帮助采购方按产品、渠道、装配和物流条件做结构决策，不发布未经确认的固定价格、MOQ 或交期；
+- 页面使用独立 title、description、canonical、Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，作者实体继续连接到 About 页面；
+- 站点由 35 个扩展到 36 个可索引页面。
+
+### 内容发现与内部链接
+
+- `blog.html` 增加可见文章卡片和 BlogPosting 条目，并补齐此前未进入 Blog schema 的成本与 MOQ 指南；
+- 从磁吸盒、抽屉盒、硬盒和产品目录页建立上下文内链，新指南同时回链至相关产品规格、成本、打样和物流内容；
+- `sitemap.xml`、`llms.txt` 与 SEO 关键词地图同步新增该 URL，博客 `lastmod` 更新为 2026-08-01；
+- 统一 4 篇旧指南在 Blog schema 与 Article schema 中的 headline，减少同一文章的实体描述漂移。
+
+### 自动校验与本轮验证
+
+- 静态校验新增 Article 页面、博客可见入口和 BlogPosting 的 URL、headline、datePublished 双向一致性检查；
+- 36 个可索引页面和 1 个不可索引 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 校验；
+- Quote API 回归继续通过有效请求、AI/搜索来源归因、国家必填、附件签名、严格 Base64、`no-store` 和请求方法限制；
+- IndexNow 完整 sitemap dry run 为 36 个同源 URL；JavaScript/API/校验脚本语法与 `git diff --check` 通过；
+- 本地 HTTP 检查覆盖 36 个 sitemap URL、404、robots、sitemap、llms、IndexNow key 和核心 CSS/JavaScript，共 43 个页面与资源，全部返回 200；
+- 本轮修改仍仅位于本地工作区；正式上线、IndexNow 实际提交和 Google Search Console 收录检查仍需先恢复 Vercel 发布权限及正式域名访问。

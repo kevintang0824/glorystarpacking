@@ -69,6 +69,40 @@
     });
   }
 
+  const classifyDiscovery = () => {
+    const explicitSource = (params.get("utm_source") || "").trim().toLowerCase();
+    const aiSources = [
+      { pattern: /chatgpt|openai/, source: "ChatGPT" },
+      { pattern: /perplexity/, source: "Perplexity" },
+      { pattern: /copilot/, source: "Microsoft Copilot" },
+      { pattern: /claude|anthropic/, source: "Claude" },
+      { pattern: /gemini/, source: "Google Gemini" },
+      { pattern: /you\.com/, source: "You.com" },
+    ];
+    const searchHosts = /(^|\.)(google|bing|yahoo|duckduckgo|baidu|yandex)\./;
+
+    if (explicitSource) {
+      const aiMatch = aiSources.find(({ pattern }) => pattern.test(explicitSource));
+      return {
+        discoveryChannel: aiMatch ? "ai-search" : "campaign",
+        discoverySource: aiMatch?.source || explicitSource,
+      };
+    }
+
+    let referrerHost = "";
+    try {
+      referrerHost = new URL(document.referrer).hostname.toLowerCase();
+    } catch {
+      // An empty or malformed referrer is treated as direct traffic.
+    }
+
+    const aiMatch = aiSources.find(({ pattern }) => pattern.test(referrerHost));
+    if (aiMatch) return { discoveryChannel: "ai-search", discoverySource: aiMatch.source };
+    if (searchHosts.test(referrerHost)) return { discoveryChannel: "organic-search", discoverySource: referrerHost };
+    if (referrerHost) return { discoveryChannel: "referral", discoverySource: referrerHost };
+    return { discoveryChannel: "direct", discoverySource: "Direct" };
+  };
+
   const attributionStorageKey = "glorystarpack-attribution";
   const currentAttribution = {
     landingPage: `${window.location.pathname}${window.location.search}`,
@@ -78,6 +112,7 @@
     utmCampaign: params.get("utm_campaign") || "",
     utmTerm: params.get("utm_term") || "",
     utmContent: params.get("utm_content") || "",
+    ...classifyDiscovery(),
   };
 
   try {
@@ -135,6 +170,8 @@
       `Target in-hand date: ${payload.targetDate || "Flexible / not provided"}`,
       `Landing page: ${payload.landingPage || "Not provided"}`,
       `Referrer: ${payload.referrer || "Direct / not provided"}`,
+      `Discovery channel: ${payload.discoveryChannel || "Not provided"}`,
+      `Discovery source: ${payload.discoverySource || "Not provided"}`,
       `Campaign: ${[payload.utmSource, payload.utmMedium, payload.utmCampaign].filter(Boolean).join(" / ") || "Not provided"}`,
       "",
       "Project details:",

@@ -17,8 +17,41 @@ Contact: kevin@GloryStarPack.com
 - [Factory and quality workflow](https://glorystarpacking.com/about.html): Dieline, sample, production control, packing, and delivery workflow.
 - [Buyer guides](https://glorystarpacking.com/blog.html): Packaging procurement, sampling, finishing, sustainability, and logistics guidance.
 
+## Product and specification pages
+
+### Boxes
+
+- [Rigid boxes](https://glorystarpacking.com/custom-rigid-boxes.html): Wrapped board structures, opening styles, inserts, sampling, finishing, and production controls.
+- [Magnetic boxes](https://glorystarpacking.com/custom-magnetic-boxes.html): Hinged and collapsible magnetic closures, board buildup, fit, and repeatable closing behavior.
+- [Collapsible rigid boxes](https://glorystarpacking.com/collapsible-rigid-boxes.html): Flat delivery, corner fixing, assembly sequence, closure, storage, and shipping-volume tradeoffs.
+- [Drawer boxes](https://glorystarpacking.com/custom-drawer-boxes.html): Sleeve-and-tray clearances, sliding feel, pull access, insert fit, and transit orientation.
+- [Lid and base boxes](https://glorystarpacking.com/lid-and-base-boxes.html): Lift-off lid, shoulder-neck, cover depth, friction fit, and insert planning.
+- [Jewelry and watch boxes](https://glorystarpacking.com/custom-jewelry-boxes.html): Product contact surfaces, retention, removal, size families, and outer protection.
+- [Wine and spirits boxes](https://glorystarpacking.com/custom-wine-boxes.html): Filled-bottle load, neck and shoulder support, inserts, base strength, and outer transit packing.
+- [Perfume boxes](https://glorystarpacking.com/custom-perfume-boxes.html): Glass-bottle support, cap and pump clearance, scuff control, removal, and set layouts.
+- [Mailer boxes](https://glorystarpacking.com/custom-mailer-boxes.html): Corrugated mailer structures, product fit, printing, inserts, and ecommerce transit planning.
+- [Corrugated shipping boxes](https://glorystarpacking.com/custom-corrugated-shipping-boxes.html): Inside dimensions, board choice, stacking, closure, protection, palletization, and transit tests.
+- [Folding cartons](https://glorystarpacking.com/folding-carton-boxes.html): Paperboard, carton styles, crease behavior, artwork, flat shipping, and packing-line inputs.
+- [Cosmetic packaging boxes](https://glorystarpacking.com/cosmetic-packaging-boxes.html): Coordinated secondary packaging for skincare, fragrance, and beauty products.
+
+### Components and retail packaging
+
+- [Packaging inserts](https://glorystarpacking.com/custom-packaging-inserts.html): Paperboard, molded pulp, foam, and wrapped inserts selected for retention, removal, surface protection, and transit.
+- [Paper bags](https://glorystarpacking.com/custom-paper-bags.html): Paper, gusset, reinforcement, handle, load, finishing, and packed shipping.
+- [Paper tube packaging](https://glorystarpacking.com/custom-tube-packaging.html): Internal diameter, height, wall, rolled edge, seam, lid fit, inserts, and carton packing.
+- [Hang tags and cards](https://glorystarpacking.com/custom-hang-tags.html): Stock, hole position, eyelet, string, variable data, finishing, direction, and packing.
+- [Printed tissue paper](https://glorystarpacking.com/custom-tissue-paper.html): Basis weight, opacity, sheet size, print coverage, show-through, rub risk, folding, and packing.
+
+### Labels
+
+- [Clear labels](https://glorystarpacking.com/custom-clear-labels.html): Transparent containers, white ink, visible haze, surface fit, artwork layers, and application trials.
+- [Waterproof and durable labels](https://glorystarpacking.com/custom-waterproof-labels.html): Moisture, abrasion, oil, temperature, surface, adhesive, and sample test planning.
+- [Wine labels](https://glorystarpacking.com/custom-wine-labels.html): Bottle shape, paper or film, adhesive, condensation, embellishment, and application conditions.
+- [Embossed and foil labels](https://glorystarpacking.com/embossed-foil-labels.html): Raised or recessed detail, hot foil, register, stock behavior, and application format.
+
 ## High-intent buyer guides
 
+- [Magnetic box vs drawer box](https://glorystarpacking.com/magnetic-box-vs-drawer-box.html): Opening movement, product reveal, insert fit, quality controls, packing volume, sample comparison, and quotation scope.
 - [Custom packaging cost and MOQ](https://glorystarpacking.com/custom-packaging-cost-moq-guide.html): Cost drivers, production minimums, quote comparison, value engineering, and landed-cost scope.
 - [Packaging sample approval checklist](https://glorystarpacking.com/packaging-sample-approval-checklist.html): Physical fit, structure, artwork, color, finishing, pack-out, and revision approval.
 - [Packaging logistics guide](https://glorystarpacking.com/packaging-logistics-guide.html): Reverse scheduling, Incoterms, inspection, export packing, freight, and receiving.

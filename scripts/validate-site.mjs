@@ -8,6 +8,9 @@ const errors = [];
 const warnings = [];
 const canonicalOwners = new Map();
 const titleOwners = new Map();
+const articleModifiedByCanonical = new Map();
+const articleEntriesByCanonical = new Map();
+let blogSchema = null;
 const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
@@ -18,8 +21,10 @@ const priorityPages = [
   "custom-waterproof-labels.html",
   "packaging-sample-approval-checklist.html",
   "custom-packaging-cost-moq-guide.html",
+  "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+const requiredSiteScriptVersion = "20260801-1";
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";
@@ -50,6 +55,7 @@ const readPage = (file) => {
 for (const file of htmlFiles) {
   const page = readPage(file);
   const { html, ids } = page;
+  const isErrorPage = file === "404.html";
   const titles = values(html, /<title>([\s\S]*?)<\/title>/gi);
   const h1s = values(html, /<h1\b[^>]*>([\s\S]*?)<\/h1>/gi);
   const descriptions = values(html, /<meta\s+name="description"\s+content="([^"]*)"/gi);
@@ -63,13 +69,15 @@ for (const file of htmlFiles) {
   if (h1s.length !== 1) errors.push(`${file}: expected 1 H1, found ${h1s.length}`);
   if (descriptions.length !== 1) errors.push(`${file}: expected 1 meta description, found ${descriptions.length}`);
   if (robotsDirectives.length !== 1) errors.push(`${file}: expected 1 robots meta tag, found ${robotsDirectives.length}`);
-  if (robotsDirectives[0] && robotsDirectives[0] !== requiredRobotsDirective) {
+  const expectedRobotsDirective = isErrorPage ? "noindex,follow" : requiredRobotsDirective;
+  if (robotsDirectives[0] && robotsDirectives[0] !== expectedRobotsDirective) {
     errors.push(`${file}: robots meta directives are inconsistent`);
   }
-  if (canonicals.length !== 1) errors.push(`${file}: expected 1 canonical, found ${canonicals.length}`);
-  if (ogUrls.length !== 1) errors.push(`${file}: expected 1 og:url, found ${ogUrls.length}`);
-  if (ogImages.length !== 1) errors.push(`${file}: expected 1 og:image, found ${ogImages.length}`);
-  if (twitterImages.length !== 1) errors.push(`${file}: expected 1 twitter:image, found ${twitterImages.length}`);
+  const expectedCanonicalCount = isErrorPage ? 0 : 1;
+  if (canonicals.length !== expectedCanonicalCount) errors.push(`${file}: expected ${expectedCanonicalCount} canonical, found ${canonicals.length}`);
+  if (!isErrorPage && ogUrls.length !== 1) errors.push(`${file}: expected 1 og:url, found ${ogUrls.length}`);
+  if (!isErrorPage && ogImages.length !== 1) errors.push(`${file}: expected 1 og:image, found ${ogImages.length}`);
+  if (!isErrorPage && twitterImages.length !== 1) errors.push(`${file}: expected 1 twitter:image, found ${twitterImages.length}`);
   if (canonicals[0] && ogUrls[0] && canonicals[0] !== ogUrls[0]) {
     errors.push(`${file}: og:url does not match canonical`);
   }
@@ -91,7 +99,7 @@ for (const file of htmlFiles) {
   if (descriptions[0] && descriptions[0].length > 165) {
     warnings.push(`${file}: meta description is ${descriptions[0].length} characters`);
   }
-  if (canonicals[0]) {
+  if (canonicals[0] && !isErrorPage) {
     const expectedCanonical = file === "index.html" ? `${siteOrigin}/` : `${siteOrigin}/${file}`;
     if (canonicals[0] !== expectedCanonical) {
       errors.push(`${file}: canonical should be ${expectedCanonical}`);
@@ -136,12 +144,15 @@ for (const file of htmlFiles) {
   const jsonLdBlocks = values(html, /<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi);
   const schemaFaqItems = [];
   const schemaItemLists = [];
-  if (!jsonLdBlocks.length) warnings.push(`${file}: no JSON-LD block`);
+  let pageArticleSchema = null;
+  if (!jsonLdBlocks.length && !isErrorPage) warnings.push(`${file}: no JSON-LD block`);
   jsonLdBlocks.forEach((block, index) => {
     try {
       const data = JSON.parse(block);
       const visit = (value) => {
         if (!value || typeof value !== "object") return;
+        if (value["@type"] === "Article") pageArticleSchema = value;
+        if (value["@type"] === "Blog") blogSchema = value;
         if (value["@type"] === "FAQPage" && Array.isArray(value.mainEntity)) {
           value.mainEntity.forEach((item) => {
             schemaFaqItems.push({
@@ -160,6 +171,32 @@ for (const file of htmlFiles) {
       errors.push(`${file}: JSON-LD block ${index + 1} is invalid (${error.message})`);
     }
   });
+
+  if (pageArticleSchema) {
+    const hasLinkedAuthor = jsonLdBlocks.some((block) =>
+      block.includes('"name": "GloryStarPack Packaging Team"') &&
+      block.includes(`"url": "${siteOrigin}/about.html"`));
+    if (!hasLinkedAuthor) errors.push(`${file}: article author must link to the visible team profile`);
+    if (!/<p\b[^>]*class="[^"]*\barticle-meta\b[^"]*"[^>]*>\s*By\s+<a\b[^>]*href="about\.html"/i.test(html)) {
+      errors.push(`${file}: visible article byline must link to about.html`);
+    }
+    const schemaModifiedDates = jsonLdBlocks.flatMap((block) => values(block, /"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/g));
+    const metaModifiedDates = values(html, /<meta\s+property="article:modified_time"\s+content="(\d{4}-\d{2}-\d{2})"/gi);
+    if (schemaModifiedDates.length !== 1 || metaModifiedDates.length !== 1) {
+      errors.push(`${file}: article must have one schema and one Open Graph modified date`);
+    } else if (schemaModifiedDates[0] !== metaModifiedDates[0]) {
+      errors.push(`${file}: article schema and Open Graph modified dates do not match`);
+    } else if (canonicals[0]) {
+      articleModifiedByCanonical.set(canonicals[0], schemaModifiedDates[0]);
+    }
+    if (canonicals[0]) {
+      articleEntriesByCanonical.set(canonicals[0], {
+        file,
+        headline: String(pageArticleSchema.headline || "").trim(),
+        datePublished: String(pageArticleSchema.datePublished || "").trim(),
+      });
+    }
+  }
 
   const visibleFaqItems = [...html.matchAll(/<div\s+class="faq-item"[^>]*>[\s\S]*?<button\b[^>]*class="[^"]*\bfaq-question\b[^"]*"[^>]*>([\s\S]*?)<\/button>\s*<div\b[^>]*class="[^"]*\bfaq-answer\b[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/gi)]
     .map((match) => ({
@@ -261,9 +298,14 @@ for (const file of htmlFiles) {
     if (!/<a\b[^>]*href="privacy\.html"/i.test(body)) errors.push(`${formLabel} is missing a privacy notice link`);
   });
 
-  for (const asset of values(html, /<(?:link|script)\b[^>]*(?:href|src)="(assets\/[^"]+)"/gi)) {
-    const assetPath = path.join(root, asset.split(/[?#]/)[0]);
+  for (const asset of values(html, /<(?:link|script)\b[^>]*(?:href|src)="(\/?assets\/[^"]+)"/gi)) {
+    const assetPath = path.join(root, asset.replace(/^\//, "").split(/[?#]/)[0]);
     if (!fs.existsSync(assetPath)) errors.push(`${file}: missing asset "${asset}"`);
+  }
+
+  const siteScriptVersions = values(html, /<script\b[^>]*src="\/?assets\/site\.js\?v=([^"]+)"[^>]*>/gi);
+  if (siteScriptVersions.length !== 1 || siteScriptVersions[0] !== requiredSiteScriptVersion) {
+    errors.push(`${file}: expected site.js cache version ${requiredSiteScriptVersion}`);
   }
 
   for (const href of values(html, /<a\b[^>]*\shref="([^"]+)"/gi)) {
@@ -286,6 +328,45 @@ for (const file of htmlFiles) {
   }
 }
 
+const blogPageHtml = readPage("blog.html")?.html || "";
+if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
+  errors.push("blog.html: Blog schema with a blogPost list is missing");
+} else {
+  const blogPostsByUrl = new Map();
+  for (const post of blogSchema.blogPost) {
+    const url = String(post?.url || "").trim();
+    if (!url) {
+      errors.push("blog.html: BlogPosting is missing its URL");
+      continue;
+    }
+    if (blogPostsByUrl.has(url)) errors.push(`blog.html: duplicate BlogPosting URL ${url}`);
+    blogPostsByUrl.set(url, post);
+  }
+
+  for (const [canonical, article] of articleEntriesByCanonical) {
+    const post = blogPostsByUrl.get(canonical);
+    if (!post) {
+      errors.push(`blog.html: Blog schema is missing article ${canonical}`);
+      continue;
+    }
+    if (String(post.headline || "").trim() !== article.headline) {
+      errors.push(`blog.html: BlogPosting headline does not match ${article.file}`);
+    }
+    if (String(post.datePublished || "").trim() !== article.datePublished) {
+      errors.push(`blog.html: BlogPosting datePublished does not match ${article.file}`);
+    }
+    if (!blogPageHtml.includes(`href="${article.file}"`)) {
+      errors.push(`blog.html: visible guide list is missing ${article.file}`);
+    }
+  }
+
+  for (const url of blogPostsByUrl.keys()) {
+    if (!articleEntriesByCanonical.has(url)) {
+      errors.push(`blog.html: Blog schema URL has no matching Article page ${url}`);
+    }
+  }
+}
+
 const sitemapPath = path.join(root, "sitemap.xml");
 if (!fs.existsSync(sitemapPath)) {
   errors.push("sitemap.xml is missing");
@@ -293,12 +374,19 @@ if (!fs.existsSync(sitemapPath)) {
   const sitemap = fs.readFileSync(sitemapPath, "utf8");
   const sitemapUrls = values(sitemap, /<loc>([^<]+)<\/loc>/gi);
   const sitemapUrlSet = new Set(sitemapUrls);
+  const sitemapLastModified = new Map([...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/gi)]
+    .map((match) => [match[1], match[2]]));
   if (sitemapUrls.length !== sitemapUrlSet.size) errors.push("sitemap.xml: duplicate URL entries");
   for (const canonical of canonicalOwners.keys()) {
     if (!sitemapUrlSet.has(canonical)) errors.push(`sitemap.xml: missing canonical ${canonical}`);
   }
   for (const sitemapUrl of sitemapUrlSet) {
     if (!canonicalOwners.has(sitemapUrl)) errors.push(`sitemap.xml: URL has no matching canonical page ${sitemapUrl}`);
+  }
+  for (const [canonical, modifiedDate] of articleModifiedByCanonical) {
+    if (sitemapLastModified.get(canonical) !== modifiedDate) {
+      errors.push(`sitemap.xml: ${canonical} lastmod must match article dateModified ${modifiedDate}`);
+    }
   }
 }
 
@@ -322,6 +410,8 @@ if (!fs.existsSync(quoteApiPath)) {
     ['body.country', "delivery country handling"],
     ['body.targetDate', "target date handling"],
     ['body.utmSource', "campaign attribution handling"],
+    ['body.discoveryChannel', "discovery-channel attribution"],
+    ['body.discoverySource', "discovery-source attribution"],
     ['quote.landingPage', "landing-page attribution"],
     ['ATTACHMENT_RULES', "attachment allowlist"],
     ['hasValidSignature', "attachment signature validation"],
@@ -355,12 +445,37 @@ if (!fs.existsSync(llmsPath)) {
   const llms = fs.readFileSync(llmsPath, "utf8");
   const requiredLlmsSignals = [
     [`${siteOrigin}/products.html`, "product catalog"],
+    [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
+    [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
+    [`${siteOrigin}/custom-waterproof-labels.html`, "durable-label specification page"],
+    [`${siteOrigin}/magnetic-box-vs-drawer-box.html`, "magnetic-versus-drawer comparison guide"],
     [`${siteOrigin}/custom-packaging-cost-moq-guide.html`, "cost and MOQ guide"],
     ["Minimum order quantity is project-specific", "MOQ factual boundary"],
     ["Certifications, test standards", "certification factual boundary"],
   ];
   requiredLlmsSignals.forEach(([signal, label]) => {
     if (!llms.includes(signal)) errors.push(`llms.txt: missing ${label}`);
+  });
+}
+
+const indexNowKey = "22368291acb50c0fb4b3a1ab806495d4";
+const indexNowKeyPath = path.join(root, `${indexNowKey}.txt`);
+const indexNowScriptPath = path.join(root, "scripts", "submit-indexnow.mjs");
+if (!fs.existsSync(indexNowKeyPath) || fs.readFileSync(indexNowKeyPath, "utf8").trim() !== indexNowKey) {
+  errors.push("IndexNow: root verification key file is missing or inconsistent");
+}
+if (!fs.existsSync(indexNowScriptPath)) {
+  errors.push("IndexNow: submission script is missing");
+} else {
+  const indexNowScript = fs.readFileSync(indexNowScriptPath, "utf8");
+  const requiredIndexNowSignals = [
+    ["https://api.indexnow.org/indexnow", "global endpoint"],
+    ["const keyLocation = `${siteOrigin}/${indexNowKey}.txt`;", "root key location"],
+    ["sitemap.xml", "sitemap URL source"],
+    ["url.origin !== siteOrigin", "same-origin submission guard"],
+  ];
+  requiredIndexNowSignals.forEach(([signal, label]) => {
+    if (!indexNowScript.includes(signal)) errors.push(`IndexNow: submission script is missing ${label}`);
   });
 }
 
@@ -380,6 +495,14 @@ if (!fs.existsSync(vercelConfigPath)) {
       redirect.has.some((condition) => condition.type === "host" && condition.value === "www.glorystarpacking.com"));
     if (!redirectsIndex) errors.push("vercel.json: missing permanent /index.html to / redirect");
     if (!redirectsWww) errors.push("vercel.json: missing permanent www to canonical host redirect");
+    const headers = Array.isArray(vercelConfig.headers) ? vercelConfig.headers : [];
+    const apiNoindex = headers.some((entry) =>
+      entry.source === "/api/(.*)" &&
+      Array.isArray(entry.headers) &&
+      entry.headers.some((header) => header.key === "X-Robots-Tag" && header.value.includes("noindex")));
+    const indexNowKeyHeader = headers.some((entry) => entry.source === `/${indexNowKey}.txt`);
+    if (!apiNoindex) errors.push("vercel.json: API routes need an X-Robots-Tag noindex header");
+    if (!indexNowKeyHeader) errors.push("vercel.json: IndexNow key file cache header is missing");
   } catch (error) {
     errors.push(`vercel.json is invalid (${error.message})`);
   }
@@ -395,5 +518,5 @@ if (errors.length) {
   errors.forEach((error) => console.error(`- ${error}`));
   process.exitCode = 1;
 } else {
-  console.log(`Validated ${htmlFiles.length} HTML pages: metadata/social URLs, robots directives, canonicals, H1, JSON-LD/FAQ parity, navigation, IDs, image dimensions, quote forms, assets, links, inbound routes, redirects, crawler policy, API safeguards, and sitemap are consistent.`);
+  console.log(`Validated ${canonicalOwners.size} indexable HTML pages and ${htmlFiles.length - canonicalOwners.size} non-indexable HTML page: metadata/social URLs, robots directives, canonicals, H1, JSON-LD/FAQ parity, article/blog discovery, navigation, IDs, image dimensions, quote forms, assets, links, inbound routes, redirects, crawler policy, API safeguards, and sitemap are consistent.`);
 }

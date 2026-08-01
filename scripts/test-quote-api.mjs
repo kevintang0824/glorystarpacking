@@ -35,6 +35,8 @@ const validQuote = {
   sourcePage: "/custom-wine-boxes.html",
   landingPage: "/custom-wine-boxes.html?utm_source=chatgpt.com&utm_medium=referral",
   referrer: "https://chatgpt.com/",
+  discoveryChannel: "ai-search",
+  discoverySource: "ChatGPT",
   utmSource: "chatgpt.com",
   utmMedium: "referral",
 };
@@ -68,6 +70,8 @@ try {
   assert.equal(valid.statusCode, 200);
   assert.equal(valid.headers.get("cache-control"), "no-store");
   assert.match(lastEmailRequest.text, /UTM source: chatgpt\.com/);
+  assert.match(lastEmailRequest.text, /Discovery channel: ai-search/);
+  assert.match(lastEmailRequest.text, /Discovery source: ChatGPT/);
   assert.match(lastEmailRequest.text, /Landing page: \/custom-wine-boxes\.html/);
 
   const missingCountry = await invoke({ ...validQuote, country: "" });

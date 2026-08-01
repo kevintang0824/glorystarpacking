@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/magnetic-box-vs-drawer-box.html` | magnetic box vs drawer box / magnetic closure box vs drawer box |
 | `/packaging-sample-approval-checklist.html` | packaging sample approval checklist |
 | `/custom-packaging-cost-moq-guide.html` | custom packaging cost / custom packaging MOQ |
 | `/luxury-unboxing-guide.html` | luxury unboxing packaging design |
@@ -92,14 +93,15 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 2. 在 Google Search Console 使用域名属性验证 `glorystarpacking.com`。
 3. 提交 `https://glorystarpacking.com/sitemap.xml`。
 4. 对首页、五个商业落地页、行业页和博客索引执行 URL Inspection。
-5. 配置 GA4 或注重隐私的分析工具，并记录：
+5. 正式域名确认已部署新版后，在 GitHub Actions 手动运行 `Submit URLs to IndexNow`，首次可留空 URL 输入提交完整 sitemap；以后只提交本次真实新增或更新的 URL。
+6. 配置 GA4 或注重隐私的分析工具，并记录：
    - 询价成功；
    - WhatsApp 点击；
    - Email 点击；
    - 上传文件；
    - 产品页到询价页的点击。
-6. 在 Vercel 配好 Resend 环境变量，完成真实收件与附件测试。
-7. 补充真实公司主体、地址、证书文件、工厂视频和 QC 示例，再更新 About 页面。
+7. 在 Vercel 配好 Resend 环境变量，完成真实收件与附件测试。
+8. 补充真实公司主体、地址、证书文件、工厂视频和 QC 示例，再更新 About 页面。
 
 ## 5. 30–90 天内容计划
 
@@ -109,7 +111,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 
 1. Custom packaging cost 与 MOQ：成本驱动、生产最低量、报价对比和落地成本（已于 2026-08-01 发布）；
 2. Rigid box cost drivers：尺寸、板材、包纸、内托和工艺如何影响价格；
-3. Magnetic box vs drawer box：开合、存储、运费和使用场景；
+3. Magnetic box vs drawer box：开合、存储、运费和使用场景（已于 2026-08-01 发布）；
 4. Packaging sample approval checklist（已于 2026-07-29 发布）；
 5. Paperboard vs molded pulp vs foam inserts；
 6. Box and label Pantone matching；

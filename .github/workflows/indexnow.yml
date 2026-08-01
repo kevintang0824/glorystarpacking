@@ -1,0 +1,27 @@
+name: Submit URLs to IndexNow
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Changed paths or full URLs separated by spaces; leave blank for the full sitemap"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Submit changed URLs
+        env:
+          INDEXNOW_URLS: ${{ inputs.urls }}
+        run: node scripts/submit-indexnow.mjs

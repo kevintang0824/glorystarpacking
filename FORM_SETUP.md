@@ -7,7 +7,7 @@ The site's 26 quote forms use the same field contract and work in two modes:
 
 Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The fallback email includes both values so the purchasing brief remains complete even when the API is unavailable.
 
-The frontend also retains first-visit attribution in session storage and includes the landing page, referrer, and standard UTM fields with a submitted inquiry. This connects organic, AI-search, partner, and campaign visits to actual quote requests without enabling an advertising cookie. The privacy notice describes this behavior.
+The frontend also retains first-visit attribution in session storage and includes the landing page, referrer, standard UTM fields, discovery channel, and discovery source with a submitted inquiry. Known ChatGPT, Perplexity, Copilot, Claude, Gemini, and You.com referrals are classified as `ai-search`; ordinary search, referral, campaign, and direct visits remain separate. This connects discovery to actual quote requests without enabling an advertising cookie. The privacy notice describes this behavior.
 
 ## Vercel environment variables
 
