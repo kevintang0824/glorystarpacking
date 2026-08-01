@@ -56,6 +56,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
 | `/packaging-sample-approval-checklist.html` | packaging sample approval checklist |
+| `/custom-packaging-cost-moq-guide.html` | custom packaging cost / custom packaging MOQ |
 | `/luxury-unboxing-guide.html` | luxury unboxing packaging design |
 | `/foil-vs-spot-uv.html` | foil vs spot UV for packaging |
 | `/sustainable-luxury-packaging.html` | sustainable luxury packaging design |
@@ -106,7 +107,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 
 优先主题：
 
-1. Custom packaging MOQ：100、500、1,000 件分别适合什么项目；
+1. Custom packaging cost 与 MOQ：成本驱动、生产最低量、报价对比和落地成本（已于 2026-08-01 发布）；
 2. Rigid box cost drivers：尺寸、板材、包纸、内托和工艺如何影响价格；
 3. Magnetic box vs drawer box：开合、存储、运费和使用场景；
 4. Packaging sample approval checklist（已于 2026-07-29 发布）；

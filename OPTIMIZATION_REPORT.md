@@ -316,6 +316,33 @@
 
 ### 尚未执行
 
-- 当前目录不是 Git worktree，也没有连接此项目的 `.vercel/project.json`，因此本轮没有覆盖正式线上环境；
+- 当前目录已经是 Git worktree，但没有连接此项目的 `.vercel/project.json`，因此本轮没有覆盖正式线上环境；
 - 正式发布前仍需确认公司主体、可公开地址、关联域名、证书、MOQ、交期和发送邮箱配置；
 - 上线后需在 Google Search Console 与 Bing Webmaster Tools 提交 sitemap 并检查实际索引状态。
+
+## 第七轮：成本与 MOQ 商业内容、AI 内容地图
+
+本轮没有继续批量增加相似产品页，而是补充更接近采购决策和询价的商业信息缺口。
+
+### 新增高意向采购指南
+
+- 新增 `custom-packaging-cost-moq-guide.html`，承接 `custom packaging cost` 与 `custom packaging MOQ` 搜索意图；
+- 内容按结构尺寸、材料、工具与开机、印刷表面处理、内托装配、数量版本、质检包装与交付七组成本驱动展开；
+- 增加 MOQ 形成原因、打样/试单/复购/多 SKU 四种数量策略、降本路径、同口径报价对比和落地成本范围；
+- 页面使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage 结构化数据，不发布固定 MOQ、单价、认证或交期承诺；
+- 从 `blog.html`、`products.html` 和 `custom-boxes.html` 建立上下文内链，`sitemap.xml` 同步新增 canonical URL；
+- 站点由 34 个可索引页面扩展到 35 个。
+
+### AI 发现与事实边界
+
+- 新增根目录 `llms.txt`，提供站点定位、核心目录、高意向指南和最具体页面链接；
+- 明确 MOQ、周期、认证、测试标准、材料声明、税费和贸易条件必须按实际项目核实，减少 AI 摘要把条件性说明改写成无条件承诺的风险；
+- 静态校验脚本增加 `llms.txt` 内容地图和事实边界检查；`llms.txt` 仅作为辅助发现文件，不作为搜索或 AI 推荐保证。
+
+### 本轮验证
+
+- 35 个 HTML 页面通过 metadata、robots、canonical、唯一 H1、JSON-LD/FAQ 一致性、导航、图片、表单、内链、跳转、crawler policy、API、llms 和 sitemap 校验；
+- Quote API 回归覆盖有效请求、来源归因、国家必填、文件白名单与签名、严格 Base64、`no-store` 和请求方法限制；
+- 新指南、`llms.txt` 和 `sitemap.xml` 通过本地 HTTP 200 检查；
+- 新指南在 1440 × 1000 桌面视图与 500 × 900 窄屏视图完成无头浏览器检查，移动标题、规格栏、图片和首屏文案无裁切；
+- CSS 与 JavaScript、API、校验脚本语法检查及 `git diff --check` 通过。

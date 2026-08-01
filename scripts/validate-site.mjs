@@ -11,12 +11,13 @@ const titleOwners = new Map();
 const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
-const newProductPages = [
+const priorityPages = [
   "custom-wine-boxes.html",
   "custom-perfume-boxes.html",
   "custom-clear-labels.html",
   "custom-waterproof-labels.html",
   "packaging-sample-approval-checklist.html",
+  "custom-packaging-cost-moq-guide.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 
@@ -301,7 +302,7 @@ if (!fs.existsSync(sitemapPath)) {
   }
 }
 
-for (const targetFile of newProductPages) {
+for (const targetFile of priorityPages) {
   const inboundSources = htmlFiles.filter((sourceFile) => {
     if (sourceFile === targetFile) return false;
     return new RegExp(`href="${targetFile.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:[?#][^"]*)?"`, "i")
@@ -344,6 +345,22 @@ if (!fs.existsSync(robotsPath)) {
   ];
   requiredRobotsSignals.forEach(([signal, label]) => {
     if (!robots.includes(signal)) errors.push(`robots.txt: missing ${label}`);
+  });
+}
+
+const llmsPath = path.join(root, "llms.txt");
+if (!fs.existsSync(llmsPath)) {
+  errors.push("llms.txt is missing");
+} else {
+  const llms = fs.readFileSync(llmsPath, "utf8");
+  const requiredLlmsSignals = [
+    [`${siteOrigin}/products.html`, "product catalog"],
+    [`${siteOrigin}/custom-packaging-cost-moq-guide.html`, "cost and MOQ guide"],
+    ["Minimum order quantity is project-specific", "MOQ factual boundary"],
+    ["Certifications, test standards", "certification factual boundary"],
+  ];
+  requiredLlmsSignals.forEach(([signal, label]) => {
+    if (!llms.includes(signal)) errors.push(`llms.txt: missing ${label}`);
   });
 }
 

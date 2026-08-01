@@ -1811,6 +1811,23 @@ button {
     line-height: 0.9;
   }
 
+  .subhero h1.cost-guide-title {
+    max-width: calc(100% - 28px);
+    font-size: clamp(2rem, 8.4vw, 4.2rem);
+    line-height: 0.93;
+  }
+
+  .cost-guide-title > span,
+  .cost-guide-title em {
+    display: block;
+  }
+
+  .cost-guide-title + .subhero__lead {
+    width: calc(100% - 28px);
+    max-width: none;
+    overflow-wrap: anywhere;
+  }
+
   .hero__visual {
     max-width: 520px;
     margin-top: 10px;
