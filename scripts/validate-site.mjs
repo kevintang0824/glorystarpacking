@@ -15,6 +15,7 @@ const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
+  "rigid-box-cost-drivers.html",
   "custom-wine-boxes.html",
   "custom-perfume-boxes.html",
   "custom-clear-labels.html",
@@ -24,6 +25,7 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+const requiredSiteStyleVersion = "20260801-2";
 const requiredSiteScriptVersion = "20260801-1";
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
@@ -140,6 +142,17 @@ for (const file of htmlFiles) {
   const primaryNav = html.match(/<nav\b[^>]*aria-label="Primary navigation"[^>]*>([\s\S]*?)<\/nav>/i)?.[1] || "";
   const currentNavItems = primaryNav.match(/\saria-current="page"/gi) || [];
   if (currentNavItems.length > 1) errors.push(`${file}: primary navigation has ${currentNavItems.length} current-page links`);
+
+  const visibleMarkupWithoutLinks = html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, "");
+  if (/kevin@glorystarpack\.com/i.test(visibleMarkupWithoutLinks)) {
+    errors.push(`${file}: visible contact email must be a mailto link`);
+  }
+  if (/\+86[\s-]*180[\s-]*2075[\s-]*5949/i.test(visibleMarkupWithoutLinks)) {
+    errors.push(`${file}: visible contact phone must be a clickable link`);
+  }
 
   const jsonLdBlocks = values(html, /<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi);
   const schemaFaqItems = [];
@@ -303,6 +316,11 @@ for (const file of htmlFiles) {
     if (!fs.existsSync(assetPath)) errors.push(`${file}: missing asset "${asset}"`);
   }
 
+  const siteStyleVersions = values(html, /<link\b[^>]*href="\/?assets\/site\.css\?v=([^"]+)"[^>]*>/gi);
+  if (siteStyleVersions.length !== 1 || siteStyleVersions[0] !== requiredSiteStyleVersion) {
+    errors.push(`${file}: expected site.css cache version ${requiredSiteStyleVersion}`);
+  }
+
   const siteScriptVersions = values(html, /<script\b[^>]*src="\/?assets\/site\.js\?v=([^"]+)"[^>]*>/gi);
   if (siteScriptVersions.length !== 1 || siteScriptVersions[0] !== requiredSiteScriptVersion) {
     errors.push(`${file}: expected site.js cache version ${requiredSiteScriptVersion}`);
@@ -448,6 +466,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
     [`${siteOrigin}/custom-waterproof-labels.html`, "durable-label specification page"],
+    [`${siteOrigin}/rigid-box-cost-drivers.html`, "rigid-box cost guide"],
     [`${siteOrigin}/magnetic-box-vs-drawer-box.html`, "magnetic-versus-drawer comparison guide"],
     [`${siteOrigin}/custom-packaging-cost-moq-guide.html`, "cost and MOQ guide"],
     ["Minimum order quantity is project-specific", "MOQ factual boundary"],

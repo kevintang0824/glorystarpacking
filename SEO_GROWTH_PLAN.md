@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/rigid-box-cost-drivers.html` | rigid box cost / custom rigid box price factors |
 | `/magnetic-box-vs-drawer-box.html` | magnetic box vs drawer box / magnetic closure box vs drawer box |
 | `/packaging-sample-approval-checklist.html` | packaging sample approval checklist |
 | `/custom-packaging-cost-moq-guide.html` | custom packaging cost / custom packaging MOQ |
@@ -110,7 +111,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 优先主题：
 
 1. Custom packaging cost 与 MOQ：成本驱动、生产最低量、报价对比和落地成本（已于 2026-08-01 发布）；
-2. Rigid box cost drivers：尺寸、板材、包纸、内托和工艺如何影响价格；
+2. Rigid box cost drivers：尺寸、板材、包纸、内托和工艺如何影响价格（已于 2026-08-01 发布）；
 3. Magnetic box vs drawer box：开合、存储、运费和使用场景（已于 2026-08-01 发布）；
 4. Packaging sample approval checklist（已于 2026-07-29 发布）；
 5. Paperboard vs molded pulp vs foam inserts；
@@ -144,7 +145,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 - 询盘包含尺寸、数量和国家的比例；
 - 获客关键词与最终成交产品的对应关系。
 
-SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 34 个页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
+SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 37 个页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
 
 ## 7. 参考
 

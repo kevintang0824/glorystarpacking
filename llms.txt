@@ -51,6 +51,7 @@ Contact: kevin@GloryStarPack.com
 
 ## High-intent buyer guides
 
+- [Rigid box cost drivers](https://glorystarpacking.com/rigid-box-cost-drivers.html): Finished dimensions, construction, board and wrap, inserts, finishing, quantity, assembly, packing, and landed-cost comparison.
 - [Magnetic box vs drawer box](https://glorystarpacking.com/magnetic-box-vs-drawer-box.html): Opening movement, product reveal, insert fit, quality controls, packing volume, sample comparison, and quotation scope.
 - [Custom packaging cost and MOQ](https://glorystarpacking.com/custom-packaging-cost-moq-guide.html): Cost drivers, production minimums, quote comparison, value engineering, and landed-cost scope.
 - [Packaging sample approval checklist](https://glorystarpacking.com/packaging-sample-approval-checklist.html): Physical fit, structure, artwork, color, finishing, pack-out, and revision approval.

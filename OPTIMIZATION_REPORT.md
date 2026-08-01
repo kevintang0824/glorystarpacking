@@ -401,3 +401,23 @@
 - IndexNow 完整 sitemap dry run 为 36 个同源 URL；JavaScript/API/校验脚本语法与 `git diff --check` 通过；
 - 本地 HTTP 检查覆盖 36 个 sitemap URL、404、robots、sitemap、llms、IndexNow key 和核心 CSS/JavaScript，共 43 个页面与资源，全部返回 200；
 - 本轮修改仍仅位于本地工作区；正式上线、IndexNow 实际提交和 Google Search Console 收录检查仍需先恢复 Vercel 发布权限及正式域名访问。
+
+## 第十轮：硬盒成本搜索意图与询价前决策内容
+
+本轮继续围绕采购方在询价前会主动搜索的问题扩展内容，不发布无法核验的固定价格、MOQ、交期、认证或节省比例。
+
+### 新增硬盒成本指南
+
+- 新增 `rigid-box-cost-drivers.html`，承接 `rigid box cost` 与 `custom rigid box price factors` 搜索意图；
+- 按成品尺寸、结构部件、板材与包纸、内托、装饰工艺、数量与版本、包装与交付七组成本驱动建立报价地图；
+- 增加数量版本、价值工程、同口径 RFQ 和落地成本检查，帮助买家识别不同报价中被省略或采用不同假设的项目；
+- 使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，作者实体继续连接到 About 页面；
+- 从博客、硬盒产品页和包装成本指南建立上下文内链，同时回链至磁吸/抽屉盒比较、内托、工艺、打样和物流内容；
+- `sitemap.xml`、`llms.txt`、博客 BlogPosting 与 SEO 关键词地图同步新增该 URL，站点扩展到 37 个可索引页面。
+
+### 联系入口与首页图标
+
+- 全站顶部可见邮箱和 WhatsApp 手机号均改为可点击链接，并由静态校验阻止后续页面再次出现不可点击的联系文本；
+- 首页询价区的邮箱与 WhatsApp 卡片增加线性图标、信息层级和悬停反馈；
+- 首页右下角联系入口改为与包装刀模语言一致的裁角按钮、线性图标、套准点和键盘可见提示，同时继续在窄屏隐藏以避免遮挡主要 CTA；
+- CSS 缓存版本统一更新为 `20260801-2`，保证 Vercel 发布后浏览器获取新版图标样式。

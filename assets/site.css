@@ -984,6 +984,84 @@ button {
   text-transform: uppercase;
 }
 
+.contact-card--icon {
+  display: grid;
+  padding: 13px 14px;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  border: 1px solid var(--line-dark);
+  background: rgba(255, 255, 255, 0.035);
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.contact-card--icon:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(227, 202, 139, 0.55);
+  transform: translateX(4px);
+}
+
+.contact-card--icon > .contact-card__icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--foil-light);
+  background: rgba(194, 163, 94, 0.1);
+  border: 1px solid rgba(227, 202, 139, 0.35);
+  clip-path: polygon(0 7px, 7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%);
+}
+
+.contact-card--icon > .contact-card__icon--phone {
+  color: #c8dbba;
+  background: rgba(156, 185, 138, 0.09);
+  border-color: rgba(200, 219, 186, 0.34);
+}
+
+.contact-card__icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-card--icon > .contact-card__copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.contact-card__copy small {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.contact-card__copy strong {
+  overflow: hidden;
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-card--icon > .contact-card__arrow {
+  color: var(--foil-light);
+  font-family: var(--body);
+  font-size: 1rem;
+  letter-spacing: normal;
+}
+
 .quote-form {
   padding: clamp(26px, 4vw, 50px);
   color: var(--ink);
@@ -1659,6 +1737,76 @@ button {
 .floating-contact a:hover {
   background: var(--register);
   transform: translateY(-3px);
+}
+
+.floating-contact--home {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-contact--home a {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  color: var(--foil-light);
+  background: linear-gradient(145deg, #1f1f1c, #0b0b0a);
+  border-color: rgba(227, 202, 139, 0.42);
+  clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
+}
+
+.floating-contact--home a::before {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 4px;
+  height: 4px;
+  background: var(--register);
+  border-radius: 50%;
+  content: "";
+}
+
+.floating-contact--home a:hover,
+.floating-contact--home a:focus-visible {
+  color: #fff;
+  background: var(--register);
+  border-color: rgba(255, 255, 255, 0.48);
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+.floating-contact--home svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.floating-contact__tooltip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 12px);
+  padding: 7px 10px;
+  color: #fff;
+  background: var(--ink);
+  border: 1px solid var(--line-dark);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(7px, -50%);
+  transition: opacity 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+}
+
+.floating-contact--home a:hover .floating-contact__tooltip,
+.floating-contact--home a:focus-visible .floating-contact__tooltip {
+  opacity: 1;
+  transform: translate(0, -50%);
 }
 
 [data-reveal] {
