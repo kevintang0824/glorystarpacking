@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/wine-label-condensation-adhesive-testing.html` | wine label condensation test / wine label adhesive testing |
 | `/pantone-color-matching-packaging.html` | Pantone color matching for packaging / box and label color matching |
 | `/packaging-inserts-material-comparison.html` | paperboard vs molded pulp vs foam packaging inserts |
 | `/rigid-box-cost-drivers.html` | rigid box cost / custom rigid box price factors |
@@ -118,7 +119,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 4. Packaging sample approval checklist（已于 2026-07-29 发布）；
 5. Paperboard vs molded pulp vs foam inserts（已于 2026-08-02 发布）；
 6. Box and label Pantone matching（已于 2026-08-02 发布）；
-7. Wine label condensation and adhesive testing；
+7. Wine label condensation and adhesive testing（已于 2026-08-02 发布）；
 8. Ecommerce mailer sizing and transit test brief；
 9. EXW、FOB、CIF 与 DDP 的包装采购比较；
 10. 如何核验包装供应商的 FSC 或其他证书范围；

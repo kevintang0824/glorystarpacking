@@ -451,3 +451,16 @@
 - 使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，并引用 Pantone 与 X-Rite 官方资料支持实体色样和测量边界；
 - 从博客、硬盒、标签和纸袋页面建立高相关上下文内链，新指南回链至相关产品页、工艺指南和打样清单；
 - `sitemap.xml`、`llms.txt`、博客 BlogPosting、自动校验和 SEO 关键词地图同步新增该 URL，站点由 38 个扩展到 39 个可索引页面。
+
+## 第十三轮：葡萄酒标签冷凝与胶黏测试搜索意图
+
+本轮承接 `wine label condensation test`、`wine label adhesive testing` 与 `ice bucket label test` 搜索意图，连接酒标采购、材料选择、实际贴标条件和样品批准。
+
+### 新增酒标测试指南
+
+- 新增 `wine-label-condensation-adhesive-testing.html`，区分冷藏、冷凝、冰桶浸泡、湿手操作、擦拭和洗脱目标，不用单一“防水”描述代替可复现条件；
+- 按瓶身材料/涂层/曲率、清洁与贴标温度、手贴或机贴、停放时间、面材、胶黏剂、印刷保护、烫金压凸和暴露顺序建立完整测试路径；
+- 增加失效模式、观察时间、合格边界、RFQ 输入和批准记录，避免发布脱离实际瓶型、应用与环境的绝对性能保证；
+- 使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，并引用 Avery Dennison、UPM Raflatac 与 FINAT 官方资料支持冷凝、冰桶和自粘标签测试边界；
+- 从博客、酒标、防水耐用标签和标签分类页建立上下文内链，同时回链至透明标签和样品批准内容；
+- `sitemap.xml`、`llms.txt`、博客 BlogPosting、自动校验和 SEO 关键词地图同步新增该 URL，站点由 39 个扩展到 40 个可索引页面。
