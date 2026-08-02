@@ -439,3 +439,15 @@
 - 发布前已在项目目录之外创建并校验完整 Git bundle，可恢复全部分支、标签和提交历史；
 - 新增 `scripts/create-local-backup.sh`，后续每次发布可在提交前后生成带时间与提交号的完整 Git bundle，并自动执行完整性校验；
 - 后续继续采用“本地备份、静态与接口回归、直接提交 GitHub main、Vercel 自动部署、生产检查、IndexNow 与 Google Search Console 提交”的固定顺序。
+
+## 第十二轮：包装配色搜索意图与盒标协同内链
+
+本轮承接 `Pantone color matching for packaging` 与 `box and label color matching` 搜索意图，强化“盒子与标签在同一打样、配色和生产流程中管理”的差异化定位。
+
+### 新增包装配色指南
+
+- 新增 `pantone-color-matching-packaging.html`，覆盖实体目标、Pantone coated / uncoated 参考、专色与 CMYK、基材与白墨、涂层与覆膜、实体打样、光源、测量、生产批准和复单对比；
+- 页面明确区分屏幕稿、合同样、油墨展色、结构样和量产样能够证明的内容，不承诺跨材料的绝对同色或通用色差阈值；
+- 使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，并引用 Pantone 与 X-Rite 官方资料支持实体色样和测量边界；
+- 从博客、硬盒、标签和纸袋页面建立高相关上下文内链，新指南回链至相关产品页、工艺指南和打样清单；
+- `sitemap.xml`、`llms.txt`、博客 BlogPosting、自动校验和 SEO 关键词地图同步新增该 URL，站点由 38 个扩展到 39 个可索引页面。

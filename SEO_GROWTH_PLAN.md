@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/pantone-color-matching-packaging.html` | Pantone color matching for packaging / box and label color matching |
 | `/packaging-inserts-material-comparison.html` | paperboard vs molded pulp vs foam packaging inserts |
 | `/rigid-box-cost-drivers.html` | rigid box cost / custom rigid box price factors |
 | `/magnetic-box-vs-drawer-box.html` | magnetic box vs drawer box / magnetic closure box vs drawer box |
@@ -116,7 +117,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 3. Magnetic box vs drawer box：开合、存储、运费和使用场景（已于 2026-08-01 发布）；
 4. Packaging sample approval checklist（已于 2026-07-29 发布）；
 5. Paperboard vs molded pulp vs foam inserts（已于 2026-08-02 发布）；
-6. Box and label Pantone matching；
+6. Box and label Pantone matching（已于 2026-08-02 发布）；
 7. Wine label condensation and adhesive testing；
 8. Ecommerce mailer sizing and transit test brief；
 9. EXW、FOB、CIF 与 DDP 的包装采购比较；
@@ -146,7 +147,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 - 询盘包含尺寸、数量和国家的比例；
 - 获客关键词与最终成交产品的对应关系。
 
-SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 38 个页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
+SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 39 个页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
 
 ## 7. 参考
 
@@ -159,3 +160,6 @@ SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引�
 - Google people-first content：https://developers.google.com/search/docs/fundamentals/creating-helpful-content
 - Google sitemap 指南：https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview
 - Google meta description 指南：https://developers.google.com/search/docs/appearance/snippet
+- Pantone 色彩系统：https://www.pantone.com/na/en-us/color-systems/pantone-color-systems-explained
+- Pantone 实体色样说明：https://support.pantone.com/en/can-i-purchase-physical-samples-of-the-colors-i-select-do-i-need-them
+- X-Rite Color Basics：https://www.xrite.com/-/media/xrite/files/literature/l7/l7-100_l7-199/l7-158_color_basics_training_sheet/l7-158_color_basics_en.pdf

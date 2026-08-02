@@ -15,6 +15,7 @@ const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
+  "pantone-color-matching-packaging.html",
   "packaging-inserts-material-comparison.html",
   "rigid-box-cost-drivers.html",
   "custom-wine-boxes.html",
@@ -466,6 +467,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/products.html`, "product catalog"],
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
+    [`${siteOrigin}/pantone-color-matching-packaging.html`, "packaging color matching guide"],
     [`${siteOrigin}/packaging-inserts-material-comparison.html`, "packaging-insert material comparison guide"],
     [`${siteOrigin}/custom-waterproof-labels.html`, "durable-label specification page"],
     [`${siteOrigin}/rigid-box-cost-drivers.html`, "rigid-box cost guide"],

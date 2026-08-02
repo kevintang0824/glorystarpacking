@@ -51,6 +51,7 @@ Contact: kevin@GloryStarPack.com
 
 ## High-intent buyer guides
 
+- [Pantone color matching for packaging](https://glorystarpacking.com/pantone-color-matching-packaging.html): Physical targets, coated and uncoated references, spot and process color, substrates, white ink, coatings, proofs, measurement, approval, and repeat-run control across boxes and labels.
 - [Packaging insert material comparison](https://glorystarpacking.com/packaging-inserts-material-comparison.html): Paperboard, molded pulp, EVA, and EPE compared by fit, surface protection, removal, production, testing, packing, and end of use.
 - [Rigid box cost drivers](https://glorystarpacking.com/rigid-box-cost-drivers.html): Finished dimensions, construction, board and wrap, inserts, finishing, quantity, assembly, packing, and landed-cost comparison.
 - [Magnetic box vs drawer box](https://glorystarpacking.com/magnetic-box-vs-drawer-box.html): Opening movement, product reveal, insert fit, quality controls, packing volume, sample comparison, and quotation scope.
