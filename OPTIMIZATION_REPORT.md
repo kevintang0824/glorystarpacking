@@ -477,3 +477,22 @@
 - 页面不把单次跌落或固定缓冲厚度写成通用保证，引用 ISTA、FedEx、UPS 与 Amazon 官方资料说明路线、承运商与项目测试边界；
 - 使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，从博客、邮寄盒和瓦楞运输箱建立高相关内链；文章末端 CTA 直接进入 `custom-mailer-boxes.html#quote`，缩短搜索访客到询价表的路径；
 - `sitemap.xml`、`llms.txt`、博客 BlogPosting、自动校验和 SEO 关键词地图同步新增该 URL，站点由 40 个扩展到 41 个可索引页面。
+
+## 第十五轮：包装采购贸易术语与落地成本询盘路径
+
+本轮承接 `EXW vs FOB vs CIF vs DDP`、`packaging Incoterms` 与 `packaging landed cost` 搜索意图，把贸易术语解释连接到可比较报价和目的地询价。
+
+### 新增包装 Incoterms 采购指南
+
+- 新增 `exw-fob-cif-ddp-packaging-sourcing-guide.html`，按交货与风险点、主运输、出口/进口手续、保险、目的地费用和落地成本比较 EXW、FOB、CIF 与 DDP；
+- 明确 FOB/CIF 只适用于海运或内河运输，并提示集装箱或多式联运根据实际交接点比较 FCA/CIP，避免把卖方支付运费误解为卖方一直承担运输风险；
+- 增加 EXW/DDP 可执行性、进口商安排、报价同口径工作表、包装体积与出口装箱数据、完整 RFQ 清单和 6 组采购 FAQ；
+- 引用 ICC Incoterms® 2020 清单、ICC Academy 和美国国际贸易署官方资料，不替代项目合同、法律、关务、税务或保险意见；
+- 从博客、成本与 MOQ 指南、包装物流指南和瓦楞运输箱页面建立上下文内链，新指南回链至成本、物流、运输箱和询价入口；
+- `sitemap.xml`、`llms.txt`、BlogPosting、自动校验和 SEO 关键词地图同步新增该 URL，站点由 41 个扩展到 42 个可索引页面。
+
+### 本轮验证
+
+- 42 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 自动校验；
+- 询价 API 的有效请求、来源归因、国家必填、附件安全、Base64、`no-store` 和请求方法限制回归通过，IndexNow dry run 已准备 42 个同源 URL；
+- 新指南在桌面 1280 px 与手机 390 × 844 下无页面级横向溢出，图片请求正常，手机导航展开/关闭和 FAQ 展开状态通过真实浏览器检查。
