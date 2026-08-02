@@ -51,6 +51,7 @@ Contact: kevin@GloryStarPack.com
 
 ## High-intent buyer guides
 
+- [Ecommerce mailer box sizing and transit testing](https://glorystarpacking.com/ecommerce-mailer-box-sizing-transit-test.html): Product orientation, internal and external dimensions, inserts, cushioning, void control, corrugated board, closure, outside cube, pack-out, parcel testing, failures, and quotation inputs.
 - [Wine label condensation and adhesive testing](https://glorystarpacking.com/wine-label-condensation-adhesive-testing.html): Bottle surfaces, application temperature, dwell, paper and film, adhesive, finishing, refrigeration, condensation, ice-bucket exposure, wet handling, defects, and approval records.
 - [Pantone color matching for packaging](https://glorystarpacking.com/pantone-color-matching-packaging.html): Physical targets, coated and uncoated references, spot and process color, substrates, white ink, coatings, proofs, measurement, approval, and repeat-run control across boxes and labels.
 - [Packaging insert material comparison](https://glorystarpacking.com/packaging-inserts-material-comparison.html): Paperboard, molded pulp, EVA, and EPE compared by fit, surface protection, removal, production, testing, packing, and end of use.

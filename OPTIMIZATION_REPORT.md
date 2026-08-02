@@ -464,3 +464,16 @@
 - 使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，并引用 Avery Dennison、UPM Raflatac 与 FINAT 官方资料支持冷凝、冰桶和自粘标签测试边界；
 - 从博客、酒标、防水耐用标签和标签分类页建立上下文内链，同时回链至透明标签和样品批准内容；
 - `sitemap.xml`、`llms.txt`、博客 BlogPosting、自动校验和 SEO 关键词地图同步新增该 URL，站点由 39 个扩展到 40 个可索引页面。
+
+## 第十四轮：电商邮寄盒尺寸与运输测试询盘路径
+
+本轮承接 `mailer box sizing`、`ecommerce packaging dimensions` 与 `mailer box transit testing` 搜索意图，并把采购访客直接引向邮寄盒询价表。
+
+### 新增电商邮寄盒采购指南
+
+- 新增 `ecommerce-mailer-box-sizing-transit-test.html`，从产品最大包络、运输方向、保护系统和装箱公差向外推导内尺寸、瓦楞结构与外部运输尺寸；
+- 区分内部适配尺寸和承运商计费/仓储/标签/输送/外箱/托盘使用的外尺寸，避免只提供一个未标注参照的长宽高；
+- 覆盖内托、缓冲与填充、瓦楞纸板、锁扣与封箱、装箱动作、运输测试范围、失效复盘和同口径 RFQ 清单；
+- 页面不把单次跌落或固定缓冲厚度写成通用保证，引用 ISTA、FedEx、UPS 与 Amazon 官方资料说明路线、承运商与项目测试边界；
+- 使用 Article、BreadcrumbList 与 6 组可见 FAQ / FAQPage，从博客、邮寄盒和瓦楞运输箱建立高相关内链；文章末端 CTA 直接进入 `custom-mailer-boxes.html#quote`，缩短搜索访客到询价表的路径；
+- `sitemap.xml`、`llms.txt`、博客 BlogPosting、自动校验和 SEO 关键词地图同步新增该 URL，站点由 40 个扩展到 41 个可索引页面。
