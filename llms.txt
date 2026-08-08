@@ -51,6 +51,7 @@ Contact: kevin@GloryStarPack.com
 
 ## High-intent buyer guides
 
+- [Low-MOQ custom packaging for small business](https://glorystarpacking.com/low-moq-custom-packaging-small-business.html): Staged use of stock packs, branded components, stock-size printing, modular parts, and fully custom structures, with inventory, cash, labor, shipping, testing, and RFQ controls.
 - [EXW vs FOB vs CIF vs DDP for packaging buyers](https://glorystarpacking.com/exw-fob-cif-ddp-packaging-sourcing-guide.html): Delivery and risk points, freight scope, export and import responsibilities, container alternatives, landed-cost boundaries, destination charges, and comparable RFQ inputs.
 - [Ecommerce mailer box sizing and transit testing](https://glorystarpacking.com/ecommerce-mailer-box-sizing-transit-test.html): Product orientation, internal and external dimensions, inserts, cushioning, void control, corrugated board, closure, outside cube, pack-out, parcel testing, failures, and quotation inputs.
 - [Wine label condensation and adhesive testing](https://glorystarpacking.com/wine-label-condensation-adhesive-testing.html): Bottle surfaces, application temperature, dwell, paper and film, adhesive, finishing, refrigeration, condensation, ice-bucket exposure, wet handling, defects, and approval records.

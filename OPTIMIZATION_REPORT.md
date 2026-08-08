@@ -496,3 +496,21 @@
 - 42 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 自动校验；
 - 询价 API 的有效请求、来源归因、国家必填、附件安全、Base64、`no-store` 和请求方法限制回归通过，IndexNow dry run 已准备 42 个同源 URL；
 - 新指南在桌面 1280 px 与手机 390 × 844 下无页面级横向溢出，图片请求正常，手机导航展开/关闭和 FAQ 展开状态通过真实浏览器检查。
+
+## 第十六轮：Reddit 话题研究与小企业低 MOQ 获客内容
+
+本轮围绕 Reddit 小企业与电商社区反复出现的“销量尚未验证、定制包装 MOQ 高、库存占用现金、首批包装可能过时”问题，承接 `low MOQ custom packaging` 与 `custom packaging for small business` 搜索意图。
+
+### 新增低 MOQ 分阶段采购指南
+
+- 新增 `low-moq-custom-packaging-small-business.html`，把社区问题整理为四阶段路线：标准包装、标准包装加品牌组件、标准尺寸定制印刷或模块化组件、完全定制结构；
+- 以产品和销量稳定度、可用现金、存储空间、装箱人工、运输尺寸、破损和剩余库存共同判断升级节点，不用一个脱离项目的通用 MOQ 或价格数字误导买家；
+- 增加“每个可用订单的真实成本”、规格简化杠杆、装箱与运输测试、易错项、稿件版本控制、双路线 RFQ 清单和 6 组可见 FAQ；
+- Reddit 讨论作为需求与措辞信号，解决方案边界由 Shopify 当前包装设计、包裹尺寸和重量指导补充，并明确社区价格和供应商主张不能直接视为生产规格；
+- 从博客、定制盒分类页和成本/MOQ 指南建立高相关上下文内链，新指南回链到标签、纸巾、吊牌、内托、盒型、打样和邮寄测试内容；
+- `sitemap.xml`、`llms.txt`、BlogPosting、FAQPage、自动校验和 SEO 关键词地图同步新增该 URL，站点由 42 个扩展到 43 个可索引页面。
+
+### 本轮验证
+
+- 43 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 自动校验；
+- 询价 API 的有效请求、来源归因、国家必填、附件安全、Base64、`no-store` 和请求方法限制回归通过，IndexNow dry run 已准备 43 个同源 URL。
