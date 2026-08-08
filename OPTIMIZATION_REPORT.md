@@ -532,3 +532,21 @@
 
 - 44 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 自动校验；
 - 询价 API 与脚本语法回归通过，IndexNow dry run 已准备 44 个同源 URL。
+
+## 第十八轮：包装刀模与印刷稿件高意图内容
+
+本轮承接 Reddit 设计与包装社区持续出现的“没有供应商刀模能否先设计”“CAD 转 Illustrator 为什么缩放”“出血、安全区、图层和工艺文件怎么交付”“谁应该保留可编辑生产资产”等问题，覆盖 `packaging dieline` 与 `custom packaging artwork requirements` 搜索意图。
+
+### 新增刀模与稿件控制指南
+
+- 新增 `custom-packaging-dieline-artwork-requirements.html`，从产品与结构确认开始，覆盖最终供应商刀模、比例与尺寸、面板方向、切线/压线、胶位/非印刷区、出血与安全区、印刷及工艺图层；
+- 增加结构/品牌/设计/印前/合规责任地图、六道批准关口、文件资产预检、校样证据层级、条码与可变信息、可编辑母版与生产文件版本归档；
+- 不发布脱离供应商、材料与工艺的通用出血、分辨率、PDF、叠印或工艺间距数字；Adobe 和 GS1 官方资料用于解释软件与条码边界，最终执行以选定印厂书面要求为准；
+- 使用 Reddit 近期讨论作为需求和买家措辞信号，明确 3D mockup、屏幕 PDF、结构白样、彩样和量产首件各自能够与不能够证明的内容；
+- 从博客、定制盒分类页和工厂质量页建立上下文内链，新指南回链至盒型、色彩控制、工艺比较、样品批准和询价入口；
+- `sitemap.xml`、`llms.txt`、BlogPosting、FAQPage、自动校验和 SEO 关键词地图同步新增该 URL，站点由 44 个扩展到 45 个可索引页面。
+
+### 本轮验证
+
+- 45 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 自动校验；
+- 询价 API 与脚本语法回归通过，IndexNow dry run 已准备 45 个同源 URL。
