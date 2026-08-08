@@ -514,3 +514,21 @@
 
 - 43 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 自动校验；
 - 询价 API 的有效请求、来源归因、国家必填、附件安全、Base64、`no-store` 和请求方法限制回归通过，IndexNow dry run 已准备 43 个同源 URL。
+
+## 第十七轮：China vs Local 包装供应商采购意图
+
+本轮承接 Reddit 中持续出现的“应选择本地供应商还是从中国采购定制包装”“海外单价、样品、付款、质量、运费和清关怎样放在一起比较”问题，覆盖 `custom packaging from China` 与 `China vs local packaging supplier` 搜索意图。
+
+### 新增供应路线比较指南
+
+- 新增 `custom-packaging-china-vs-local-supplier.html`，不按地域给出绝对结论，而是按数量、结构能力、开发协作、补货、质量控制和交付范围选择本地、中国或混合路线；
+- 建立同规格 RFQ、四阶段样品证据、订单级质量验收、落地成本工作表、供应商尽调、平台订单保护边界和本地试产/海外复单/本地备份的混合策略；
+- 引用 Reddit 真实采购讨论作为需求信号，并使用美国国际贸易署、美国海关、Alibaba Trade Assurance 与 ICC 官方资料限定尽调、进口责任、平台保护和贸易术语范围；
+- 页面明确说明国家、平台徽章、视频或单件样品不能代替实际订单规格、批量检查、目的国合规和合格专业意见，也不承诺中国或本地路线必然更便宜、更快或质量更高；
+- 从博客、工厂质量页和成本/MOQ 指南建立上下文内链，新指南回链至成本、低 MOQ、样品批准、Incoterms、物流和质量控制页面；
+- `sitemap.xml`、`llms.txt`、BlogPosting、FAQPage、自动校验和 SEO 关键词地图同步新增该 URL，站点由 43 个扩展到 44 个可索引页面。
+
+### 本轮验证
+
+- 44 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms 和 sitemap 自动校验；
+- 询价 API 与脚本语法回归通过，IndexNow dry run 已准备 44 个同源 URL。

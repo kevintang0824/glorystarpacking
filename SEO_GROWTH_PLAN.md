@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/custom-packaging-china-vs-local-supplier.html` | custom packaging from China / China vs local packaging supplier |
 | `/low-moq-custom-packaging-small-business.html` | low MOQ custom packaging / custom packaging for small business |
 | `/exw-fob-cif-ddp-packaging-sourcing-guide.html` | EXW vs FOB vs CIF vs DDP for packaging sourcing |
 | `/ecommerce-mailer-box-sizing-transit-test.html` | mailer box sizing / ecommerce packaging transit testing |
@@ -126,17 +127,18 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 8. Ecommerce mailer sizing and transit test brief（已于 2026-08-02 发布）；
 9. EXW、FOB、CIF 与 DDP 的包装采购比较（已于 2026-08-02 发布）；
 10. Low-MOQ custom packaging for small business：以 Reddit 真实讨论中的现金占用、库存过时和销量未验证问题为入口，提供分阶段路线（已于 2026-08-09 发布）；
-11. 如何核验包装供应商的 FSC 或其他证书范围；
-12. Collapsible rigid box vs setup box：组装、仓储、外箱与运输体积如何比较；
-13. Corrugated shipping box specification：内尺寸、楞型、堆码、封箱与托盘信息怎么提供；
-14. Jewelry box insert design：戒指、项链和手表如何兼顾固定、取放与表面保护；
-15. Paper tube sizing guide：内径、筒壁、盖合、产品公差与取出路径；
-16. Custom tissue paper print guide：克重、不透明度、覆盖率、透印和蹭色风险；
-17. Hang tag production checklist：孔位、绳带、条码变量、方向和装袋方式；
-18. Wine bottle gift box specification：按满瓶重量、瓶身支撑、内托取放和运输外箱建立规格；
-19. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认；
-20. Clear label artwork guide：透明容器、白墨层、雾度、接缝和贴标表面如何影响稿件；
-21. Waterproof label test brief：按真实水分、摩擦、油污和温度暴露制定样品测试。
+11. Custom packaging from China vs local supplier：按能力、样品、质量、落地成本、进口责任和复单风险比较采购路线（已于 2026-08-09 发布）；
+12. 如何核验包装供应商的 FSC 或其他证书范围；
+13. Collapsible rigid box vs setup box：组装、仓储、外箱与运输体积如何比较；
+14. Corrugated shipping box specification：内尺寸、楞型、堆码、封箱与托盘信息怎么提供；
+15. Jewelry box insert design：戒指、项链和手表如何兼顾固定、取放与表面保护；
+16. Paper tube sizing guide：内径、筒壁、盖合、产品公差与取出路径；
+17. Custom tissue paper print guide：克重、不透明度、覆盖率、透印和蹭色风险；
+18. Hang tag production checklist：孔位、绳带、条码变量、方向和装袋方式；
+19. Wine bottle gift box specification：按满瓶重量、瓶身支撑、内托取放和运输外箱建立规格；
+20. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认；
+21. Clear label artwork guide：透明容器、白墨层、雾度、接缝和贴标表面如何影响稿件；
+22. Waterproof label test brief：按真实水分、摩擦、油污和温度暴露制定样品测试。
 
 每月宁可发布 1–2 篇有实物照片、参数和第一手经验的内容，也不要批量生成薄文章。Google 明确建议以真实受众和实用价值为目标，而不是为搜索引擎堆内容。
 
