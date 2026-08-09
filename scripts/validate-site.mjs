@@ -35,8 +35,8 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260801-2";
-const requiredSiteScriptVersion = "20260801-1";
+const requiredSiteStyleVersion = "20260810-1";
+const requiredSiteScriptVersion = "20260810-1";
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";

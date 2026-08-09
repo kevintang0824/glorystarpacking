@@ -1166,6 +1166,79 @@ button {
   color: #a53a28;
 }
 
+.calculator-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(480px, 1.22fr);
+  gap: clamp(44px, 8vw, 100px);
+  align-items: start;
+}
+
+.calculator-intro {
+  position: sticky;
+  top: 120px;
+}
+
+.roi-calculator {
+  padding: clamp(26px, 4vw, 46px);
+  background: var(--paper-bright);
+  border: 1px solid var(--line-light);
+  box-shadow: var(--shadow);
+}
+
+.calculator-results {
+  display: grid;
+  margin-top: 34px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  color: #fff;
+  background: var(--line-dark);
+  border: 1px solid var(--line-dark);
+}
+
+.calculator-results > div {
+  min-width: 0;
+  padding: 22px;
+  background: var(--ink-soft);
+  border-right: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.calculator-results > div:nth-child(even) {
+  border-right: 0;
+}
+
+.calculator-results > div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.calculator-results span {
+  display: block;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.calculator-results strong {
+  display: block;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+  color: var(--foil-light);
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.calculator-interpretation {
+  margin: 0;
+  padding: 20px 22px;
+  color: var(--ink);
+  background: #e8e2d7;
+  border-left: 3px solid var(--register);
+  font-size: 0.82rem;
+}
+
 .faq-list {
   max-width: 900px;
   margin: 54px auto 0;
@@ -2005,8 +2078,13 @@ button {
   .split,
   .quote-grid,
   .story-lead,
-  .article-feature {
+  .article-feature,
+  .calculator-layout {
     grid-template-columns: 1fr;
+  }
+
+  .calculator-intro {
+    position: static;
   }
 
   .section-head {
@@ -2091,6 +2169,21 @@ button {
   .material-grid,
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .calculator-results {
+    grid-template-columns: 1fr;
+  }
+
+  .calculator-results > div,
+  .calculator-results > div:nth-child(even),
+  .calculator-results > div:nth-last-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--line-dark);
+  }
+
+  .calculator-results > div:last-child {
+    border-bottom: 0;
   }
 
   .finish-card:first-child {

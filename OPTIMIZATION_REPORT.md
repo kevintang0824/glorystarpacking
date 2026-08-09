@@ -1,4 +1,4 @@
-# GloryStarPack 网站优化报告（更新至 2026-07-29）
+# GloryStarPack 网站优化报告（更新至 2026-08-10）
 
 ## 本次完成
 
@@ -575,3 +575,16 @@
 - Reddit 讨论仅作为需求与措辞信号，事实边界引用 FSC Chain of Custody、Public Search、标签和商标使用官方资料，并明确页面不替代认证、法律、商标或监管意见；
 - 从博客、关于/工厂证据页、可持续包装指南和 China vs Local 采购指南建立上下文内链，新指南回链至供应商比较、工厂证据、稿件控制和询价入口；
 - `sitemap.xml`、`llms.txt`、BlogPosting、FAQPage、自动校验和 SEO 关键词地图同步新增该 URL，站点由 46 个扩展到 47 个可索引页面。
+
+## 第二十一轮：定制包装 ROI 与盈亏平衡搜索意图
+
+本轮根据 Reddit 小企业社区持续出现的“定制包装是否值得”“客户是否在意包装”“怎样兼顾高级感与利润”的讨论，覆盖 `is custom packaging worth it` 与 `custom packaging ROI calculator` 决策型搜索意图。
+
+### 新增可交互的商业决策指南
+
+- 新增 `is-custom-packaging-worth-it.html`，以可用落地成本、一次性费用、订单贡献毛利、库存风险和可验证运营节省替代“高级包装一定增加销量”的不可证实结论；
+- 增加无需登录的盈亏平衡计算器，实时计算增量包装投入、单包增量现金、回收投入所需的增量订单和相对于本次生产量的订单提升门槛；
+- 计算器明确使用访问者自己的假设，支持任意统一币种，不把输出描述为销售预测、回报保证或财务建议；
+- 内容覆盖完整成本口径、Reddit 买家问题、六项升级关口、基准与定制路线对照表、受控测试方法、RFQ 衔接和 5 组可见 FAQ；
+- 从博客、成本与 MOQ、低 MOQ 采购和开箱体验页面建立描述性内链，新页面回链到成本、低 MOQ、样品批准、盒型与询价入口；
+- 同步 BlogPosting、Article、WebApplication、BreadcrumbList、FAQPage、`sitemap.xml`、`llms.txt` 与关键词地图，站点由 47 个扩展到 48 个可索引页面。

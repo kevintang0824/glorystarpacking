@@ -257,4 +257,49 @@
       }
     });
   });
+
+  const roiCalculator = document.querySelector("#packaging-roi-calculator");
+  if (roiCalculator) {
+    const output = (name) => roiCalculator.querySelector(`[data-roi-output="${name}"]`);
+    const formatNumber = (value, fractionDigits = 2) =>
+      new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      }).format(value);
+
+    const calculatePackagingBreakEven = () => {
+      const formData = new FormData(roiCalculator);
+      const baselineCost = Number(formData.get("baselineCost"));
+      const customCost = Number(formData.get("customCost"));
+      const quantity = Number(formData.get("quantity"));
+      const oneTimeCost = Number(formData.get("oneTimeCost"));
+      const contributionMargin = Number(formData.get("contributionMargin"));
+      const values = [baselineCost, customCost, quantity, oneTimeCost, contributionMargin];
+
+      if (values.some((value) => !Number.isFinite(value)) || quantity <= 0 || contributionMargin <= 0) return;
+
+      const unitDelta = customCost - baselineCost;
+      const investment = unitDelta * quantity + oneTimeCost;
+      const breakEvenOrders = investment > 0 ? Math.ceil(investment / contributionMargin) : 0;
+      const requiredLift = (breakEvenOrders / quantity) * 100;
+
+      output("investment").textContent = formatNumber(investment);
+      output("unit-delta").textContent = formatNumber(unitDelta);
+      output("orders").textContent = new Intl.NumberFormat().format(breakEvenOrders);
+      output("lift").textContent = `${formatNumber(requiredLift, 1)}%`;
+
+      if (investment <= 0) {
+        output("interpretation").textContent = `With these assumptions, the custom route is ${formatNumber(Math.abs(investment))} lower across the run in your chosen currency after one-time costs. Verify that both routes include the same usable landed scope.`;
+      } else {
+        output("interpretation").textContent = `With these assumptions, the upgrade needs contribution from ${new Intl.NumberFormat().format(breakEvenOrders)} incremental orders to recover ${formatNumber(investment)} in your chosen currency, before any verified operating savings are counted.`;
+      }
+    };
+
+    roiCalculator.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (roiCalculator.reportValidity()) calculatePackagingBreakEven();
+    });
+    roiCalculator.addEventListener("input", calculatePackagingBreakEven);
+    calculatePackagingBreakEven();
+  }
 })();
