@@ -1783,6 +1783,67 @@ button {
   font-size: 0.68rem;
 }
 
+.analytics-consent {
+  position: fixed;
+  z-index: 80;
+  bottom: 20px;
+  left: 20px;
+  display: grid;
+  width: min(620px, calc(100% - 40px));
+  padding: clamp(22px, 4vw, 32px);
+  gap: 22px;
+  color: #fff;
+  background: rgba(16, 16, 15, 0.98);
+  border: 1px solid rgba(227, 202, 139, 0.42);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.analytics-consent__copy strong {
+  display: block;
+  color: var(--foil-light);
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.analytics-consent__copy p {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.78rem;
+}
+
+.analytics-consent__copy a {
+  color: var(--foil-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.analytics-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.analytics-consent .button::after {
+  display: none;
+}
+
+.analytics-preferences {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.article-copy code {
+  padding: 2px 5px;
+  color: var(--ink);
+  background: #e8e2d7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
+
 .floating-contact {
   position: fixed;
   z-index: 20;
@@ -2238,6 +2299,21 @@ button {
 
   .footer-bottom {
     flex-direction: column;
+  }
+
+  .analytics-consent {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+
+  .analytics-consent__actions,
+  .analytics-consent .button {
+    width: 100%;
   }
 
   .floating-contact {

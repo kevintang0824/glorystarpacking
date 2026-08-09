@@ -229,6 +229,7 @@
         if (!response.ok) {
           const result = await response.json().catch(() => ({}));
           if (response.status >= 500 || response.status === 404) {
+            document.dispatchEvent(new CustomEvent("glorystarpack:quote-email-fallback"));
             window.location.href = buildMailto(payload);
             if (status) {
               status.textContent = "Your email app has been opened. Attach artwork there, then send.";
@@ -244,6 +245,9 @@
           status.textContent = "Request received. Kevin will follow up with the next project questions.";
           status.dataset.state = "success";
         }
+        document.dispatchEvent(new CustomEvent("glorystarpack:lead", {
+          detail: { product: payload.product },
+        }));
       } catch (error) {
         if (status) {
           status.textContent = error.message || "The request could not be sent. Please email us directly.";

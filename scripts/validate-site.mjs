@@ -35,8 +35,10 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260810-1";
-const requiredSiteScriptVersion = "20260810-1";
+const requiredSiteStyleVersion = "20260810-2";
+const requiredSiteScriptVersion = "20260810-2";
+const requiredAnalyticsVersion = "20260810-1";
+const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";
@@ -334,6 +336,15 @@ for (const file of htmlFiles) {
   const siteScriptVersions = values(html, /<script\b[^>]*src="\/?assets\/site\.js\?v=([^"]+)"[^>]*>/gi);
   if (siteScriptVersions.length !== 1 || siteScriptVersions[0] !== requiredSiteScriptVersion) {
     errors.push(`${file}: expected site.js cache version ${requiredSiteScriptVersion}`);
+  }
+
+  const analyticsScriptVersions = values(html, /<script\b[^>]*src="\/?assets\/analytics\.js\?v=([^"]+)"[^>]*>/gi);
+  if (analyticsScriptVersions.length !== 1 || analyticsScriptVersions[0] !== requiredAnalyticsVersion) {
+    errors.push(`${file}: expected analytics.js cache version ${requiredAnalyticsVersion}`);
+  }
+  const analyticsMeasurementIds = values(html, /<script\b[^>]*src="\/?assets\/analytics\.js\?v=[^"]+"[^>]*data-measurement-id="([^"]+)"[^>]*>/gi);
+  if (analyticsMeasurementIds.length !== 1 || analyticsMeasurementIds[0] !== requiredAnalyticsMeasurementId) {
+    errors.push(`${file}: expected GA4 measurement ID ${requiredAnalyticsMeasurementId}`);
   }
 
   for (const href of values(html, /<a\b[^>]*\shref="([^"]+)"/gi)) {
