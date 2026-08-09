@@ -35,7 +35,7 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260810-2";
+const requiredSiteStyleVersion = "20260810-3";
 const requiredSiteScriptVersion = "20260810-2";
 const requiredAnalyticsVersion = "20260810-1";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";

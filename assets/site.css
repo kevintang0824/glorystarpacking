@@ -775,6 +775,11 @@ button {
   transform: translateX(5px);
 }
 
+.section--ink .text-link,
+.section--dark .text-link {
+  color: var(--foil-light);
+}
+
 .split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
