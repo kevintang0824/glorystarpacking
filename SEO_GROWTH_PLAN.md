@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/rigid-box-vs-folding-carton.html` | rigid box vs folding carton / rigid packaging vs carton |
 | `/custom-packaging-dieline-artwork-requirements.html` | packaging dieline / custom packaging artwork requirements |
 | `/custom-packaging-china-vs-local-supplier.html` | custom packaging from China / China vs local packaging supplier |
 | `/low-moq-custom-packaging-small-business.html` | low MOQ custom packaging / custom packaging for small business |
@@ -130,17 +131,18 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 10. Low-MOQ custom packaging for small business：以 Reddit 真实讨论中的现金占用、库存过时和销量未验证问题为入口，提供分阶段路线（已于 2026-08-09 发布）；
 11. Custom packaging from China vs local supplier：按能力、样品、质量、落地成本、进口责任和复单风险比较采购路线（已于 2026-08-09 发布）；
 12. Custom packaging dieline and artwork requirements：按最终刀模、图层、出血、安全区、资产、专色与工艺、校样和版本控制建立印前交付（已于 2026-08-09 发布）；
-13. 如何核验包装供应商的 FSC 或其他证书范围；
-14. Collapsible rigid box vs setup box：组装、仓储、外箱与运输体积如何比较；
-15. Corrugated shipping box specification：内尺寸、楞型、堆码、封箱与托盘信息怎么提供；
-16. Jewelry box insert design：戒指、项链和手表如何兼顾固定、取放与表面保护；
-17. Paper tube sizing guide：内径、筒壁、盖合、产品公差与取出路径；
-18. Custom tissue paper print guide：克重、不透明度、覆盖率、透印和蹭色风险；
-19. Hang tag production checklist：孔位、绳带、条码变量、方向和装袋方式；
-20. Wine bottle gift box specification：按满瓶重量、瓶身支撑、内托取放和运输外箱建立规格；
-21. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认；
-22. Clear label artwork guide：透明容器、白墨层、雾度、接缝和贴标表面如何影响稿件；
-23. Waterproof label test brief：按真实水分、摩擦、油污和温度暴露制定样品测试。
+13. Rigid box vs folding carton：按产品载荷、内托、开箱、装配、仓储、运输体积、落地成本与测试比较两条路线（已于 2026-08-09 发布）；
+14. 如何核验包装供应商的 FSC 或其他证书范围；
+15. Collapsible rigid box vs setup box：组装、仓储、外箱与运输体积如何比较；
+16. Corrugated shipping box specification：内尺寸、楞型、堆码、封箱与托盘信息怎么提供；
+17. Jewelry box insert design：戒指、项链和手表如何兼顾固定、取放与表面保护；
+18. Paper tube sizing guide：内径、筒壁、盖合、产品公差与取出路径；
+19. Custom tissue paper print guide：克重、不透明度、覆盖率、透印和蹭色风险；
+20. Hang tag production checklist：孔位、绳带、条码变量、方向和装袋方式；
+21. Wine bottle gift box specification：按满瓶重量、瓶身支撑、内托取放和运输外箱建立规格；
+22. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认；
+23. Clear label artwork guide：透明容器、白墨层、雾度、接缝和贴标表面如何影响稿件；
+24. Waterproof label test brief：按真实水分、摩擦、油污和温度暴露制定样品测试。
 
 每月宁可发布 1–2 篇有实物照片、参数和第一手经验的内容，也不要批量生成薄文章。Google 明确建议以真实受众和实用价值为目标，而不是为搜索引擎堆内容。
 
@@ -156,7 +158,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 - 询盘包含尺寸、数量和国家的比例；
 - 获客关键词与最终成交产品的对应关系。
 
-SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 45 个可索引页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
+SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 46 个可索引页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
 
 ## 7. 参考
 

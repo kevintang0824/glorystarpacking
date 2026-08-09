@@ -15,6 +15,7 @@ const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
+  "rigid-box-vs-folding-carton.html",
   "custom-packaging-dieline-artwork-requirements.html",
   "custom-packaging-china-vs-local-supplier.html",
   "low-moq-custom-packaging-small-business.html",
@@ -473,6 +474,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/products.html`, "product catalog"],
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
+    [`${siteOrigin}/rigid-box-vs-folding-carton.html`, "rigid-box-versus-folding-carton guide"],
     [`${siteOrigin}/custom-packaging-dieline-artwork-requirements.html`, "dieline and artwork guide"],
     [`${siteOrigin}/custom-packaging-china-vs-local-supplier.html`, "China-versus-local sourcing guide"],
     [`${siteOrigin}/low-moq-custom-packaging-small-business.html`, "low-MOQ small-business guide"],
