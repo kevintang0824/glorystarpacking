@@ -562,3 +562,16 @@
 - Reddit 讨论只作为买家问题和措辞信号，ISTA 与 DHL 官方资料分别限定运输测试和体积重量边界，不把社区评论、通用运费公式或孤立样品当作项目保证；
 - 从博客、硬盒、折叠彩盒和香水包装页建立上下文内链，新指南直接连接硬盒、折叠彩盒、香水盒和内托询价入口；
 - `sitemap.xml`、`llms.txt`、BlogPosting、FAQPage、自动校验和 SEO 关键词地图同步新增该 URL，站点由 45 个扩展到 46 个可索引页面。
+
+## 第二十轮：FSC 包装供应商核验搜索意图
+
+本轮根据 Reddit 包装与采购社区近期关于“证书与公开数据库不一致”“怎样持续跟踪供应商证书状态”的讨论，覆盖 `verify FSC packaging supplier`、`FSC certificate packaging supplier` 与 `how to check FSC certificate` 搜索意图。
+
+### 新增证书与订单证据核验指南
+
+- 新增 `verify-fsc-packaging-supplier.html`，把供应商网站 Logo 或 PDF 证书拆解为公开数据库、直接供应商主体、实际生产站点、产品与活动范围、订单销售声明、标签审批和交付记录七层证据；
+- 说明已认证企业仍可能销售非认证产品，企业证书不自动证明每个产品、材料或订单都获得认证，也不把 GloryStarPack 描述为 FSC 持证企业；
+- 增加证书编号与许可编号、查询步骤、订单控制、标签责任、常见红旗、变更监控、采购声明边界、RFQ 信息和 6 组可见 FAQ；
+- Reddit 讨论仅作为需求与措辞信号，事实边界引用 FSC Chain of Custody、Public Search、标签和商标使用官方资料，并明确页面不替代认证、法律、商标或监管意见；
+- 从博客、关于/工厂证据页、可持续包装指南和 China vs Local 采购指南建立上下文内链，新指南回链至供应商比较、工厂证据、稿件控制和询价入口；
+- `sitemap.xml`、`llms.txt`、BlogPosting、FAQPage、自动校验和 SEO 关键词地图同步新增该 URL，站点由 46 个扩展到 47 个可索引页面。
