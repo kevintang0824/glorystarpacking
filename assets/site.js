@@ -379,4 +379,63 @@
     rigidBoxLogisticsCalculator.addEventListener("input", calculateRigidBoxLogistics);
     calculateRigidBoxLogistics();
   }
+
+  const shippingCasePlanner = document.querySelector("#shipping-case-planner");
+  if (shippingCasePlanner) {
+    const output = (name) => shippingCasePlanner.querySelector(`[data-case-output="${name}"]`);
+    const formatNumber = (value, fractionDigits = 2) =>
+      new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      }).format(value);
+
+    const calculateShippingCasePlan = () => {
+      const formData = new FormData(shippingCasePlanner);
+      const caseCount = Number(formData.get("caseCount"));
+      const unitsPerCase = Number(formData.get("unitsPerCase"));
+      const caseLength = Number(formData.get("caseLength"));
+      const caseWidth = Number(formData.get("caseWidth"));
+      const caseHeight = Number(formData.get("caseHeight"));
+      const caseWeight = Number(formData.get("caseWeight"));
+      const palletLength = Number(formData.get("palletLength"));
+      const palletWidth = Number(formData.get("palletWidth"));
+      const loadHeight = Number(formData.get("loadHeight"));
+      const values = [caseCount, unitsPerCase, caseLength, caseWidth, caseHeight, caseWeight, palletLength, palletWidth, loadHeight];
+
+      if (values.some((value) => !Number.isFinite(value) || value <= 0)) return;
+
+      const shippedUnits = Math.floor(caseCount) * Math.floor(unitsPerCase);
+      const caseCube = caseLength * caseWidth * caseHeight / 1_000_000_000;
+      const totalCube = caseCube * Math.floor(caseCount);
+      const totalWeight = caseWeight * Math.floor(caseCount);
+      const unrotatedPerLayer = Math.floor(palletLength / caseLength) * Math.floor(palletWidth / caseWidth);
+      const rotatedPerLayer = Math.floor(palletLength / caseWidth) * Math.floor(palletWidth / caseLength);
+      const casesPerLayer = Math.max(unrotatedPerLayer, rotatedPerLayer);
+      const layers = Math.floor(loadHeight / caseHeight);
+      const casesPerPallet = casesPerLayer * layers;
+      const palletCount = casesPerPallet > 0 ? Math.ceil(Math.floor(caseCount) / casesPerPallet) : 0;
+      const orientation = rotatedPerLayer > unrotatedPerLayer ? "rotated" : "unrotated";
+
+      output("units").textContent = new Intl.NumberFormat().format(shippedUnits);
+      output("case-cube").textContent = `${formatNumber(caseCube, 3)} m³`;
+      output("total-cube").textContent = `${formatNumber(totalCube)} m³`;
+      output("total-weight").textContent = `${formatNumber(totalWeight)} kg`;
+      output("per-layer").textContent = new Intl.NumberFormat().format(casesPerLayer);
+      output("pallets").textContent = casesPerPallet > 0 ? new Intl.NumberFormat().format(palletCount) : "No full layer";
+
+      if (!casesPerLayer || !layers) {
+        output("interpretation").textContent = "The entered case does not fit a complete same-orientation grid within the entered pallet footprint or available load height. Check the dimensions and obtain an engineered load plan.";
+        return;
+      }
+
+      output("interpretation").textContent = `The ${orientation} same-orientation check fits ${new Intl.NumberFormat().format(casesPerLayer)} cases per layer. At ${new Intl.NumberFormat().format(layers)} full case layers, the simple grid holds ${new Intl.NumberFormat().format(casesPerPallet)} cases per pallet and requires ${new Intl.NumberFormat().format(palletCount)} pallet positions for ${new Intl.NumberFormat().format(Math.floor(caseCount))} cases. Confirm a physical unit load before approval.`;
+    };
+
+    shippingCasePlanner.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (shippingCasePlanner.reportValidity()) calculateShippingCasePlan();
+    });
+    shippingCasePlanner.addEventListener("input", calculateShippingCasePlan);
+    calculateShippingCasePlan();
+  }
 })();

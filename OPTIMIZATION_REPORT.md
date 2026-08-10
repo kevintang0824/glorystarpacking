@@ -591,7 +591,7 @@
 
 ## 第二十二轮：GA4、询盘转化与同意管理
 
-- 全站绑定 GA4 衡量 ID `G-LYNMPWG9WK`，所有 50 个 HTML 页面只加载一份本地分析控制脚本；
+- 全站绑定 GA4 衡量 ID `G-LYNMPWG9WK`，所有 51 个 HTML 页面只加载一份本地分析控制脚本；
 - Analytics 默认拒绝，访客主动允许后才加载 Google tag；广告存储、广告用户数据、广告个性化和 Google Signals 保持关闭；
 - 增加可撤回的 Analytics 选择面板，拒绝后停止后续统计并删除本站可访问的 `_ga` Cookie，选择保存在浏览器本地；
 - 记录 Email、WhatsApp、询价 CTA、询价表单开始、文件选择和包装 ROI 计算器使用；只有 API 确认询价成功后才发送官方推荐的 `generate_lead` 事件；
@@ -618,3 +618,24 @@
 - 49 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；
 - 在浏览器实测计算器整箱取整、体积差、相对变化、组装工时和规划余额输出，手机端 390px 视口无页面级横向溢出；
 - 本地移动端 Lighthouse 的 Accessibility、Best Practices 与 SEO 均为 100，CLS 为 0.088，低于 0.1 的良好阈值。
+
+## 第二十四轮：瓦楞运输箱规格表与托盘规划搜索意图
+
+本轮根据 Reddit 包装、电商与卖家社区反复出现的主箱尺寸、每箱装量、体积重、托盘适配、箱体强度和运输损坏问题，覆盖 `corrugated shipping box specification` 与 `master carton pallet calculator` 高意图搜索。
+
+### 新增运输箱 RFQ 与规划指南
+
+- 新增 `corrugated-shipping-box-specification-guide.html`，把产品、单件包装、内箱、运输箱、托盘和运输路线拆成相互影响的控制层级；
+- 增加无需登录的成箱体积与简易托盘规划工具，以实际外尺寸、箱数、每箱装量、毛重、托盘可用长宽和装载高度计算总件数、单箱体积、总方数、总毛重、同向摆放每层箱数和初算托盘数；
+- 明确计算器不处理混合方向、鼓包、间隙、超托、载重、抗压、稳定性、捆扎、缠膜、设备、车辆和承运商规则，不能替代实际码托和工程批准；
+- 内容覆盖内外尺寸、FEFCO 结构表达、ECT/耐破/成箱抗压证据边界、接合与封箱、托盘和包裹边界、整套包装运输测试、生产检验、变更控制、可比 RFQ 和 6 组可见 FAQ；
+- Reddit 只用于识别买家问题，事实边界引用 FEFCO、Fibre Box Association、ISTA 与 UPS 官方资料，不把社区公式或单一材料等级当作项目保证；
+- 从博客、瓦楞运输箱产品页和电商邮寄箱测试指南建立上下文内链，新指南回链制造、测试、样品、物流和询价入口；
+- 同步 Article、WebApplication、BreadcrumbList、FAQPage、BlogPosting、`sitemap.xml`、`llms.txt`、关键词地图和自动校验，站点由 49 个扩展到 50 个可索引页面；
+- GA4 新增不含个人信息的 `calculator_use` 事件，用于衡量运输箱规划工具到询盘的辅助路径。
+
+### 本轮验证
+
+- 50 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；
+- 在浏览器用第二组数据实测总件数、单箱方数、总方数、总毛重、旋转摆放每层箱数、整层数和向上取整托盘数，结果与人工计算一致；
+- 手机端 390px 视口无页面级横向溢出或控制台错误；移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100，CLS 为 0.046。

@@ -202,4 +202,8 @@
   document.querySelector("#rigid-box-logistics-calculator")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "rigid_box_cube_and_labor" });
   });
+
+  document.querySelector("#shipping-case-planner")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "shipping_case_and_pallet_planner" });
+  });
 })();
