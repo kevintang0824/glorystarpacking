@@ -198,4 +198,8 @@
   document.querySelector("#packaging-roi-calculator")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "packaging_break_even" });
   });
+
+  document.querySelector("#rigid-box-logistics-calculator")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "rigid_box_cube_and_labor" });
+  });
 })();

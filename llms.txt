@@ -51,6 +51,7 @@ Contact: kevin@GloryStarPack.com
 
 ## High-intent buyer guides
 
+- [Collapsible rigid box vs setup box](https://glorystarpacking.com/collapsible-rigid-box-vs-setup-box.html): Free master-carton cube and assembly-labor calculator plus a controlled comparison of flat-pack and permanently formed rigid boxes by export packing, storage, forming work, structural samples, quality risk, landed scope, and RFQ evidence without applying an unsupported freight-saving percentage.
 - [Is custom packaging worth it?](https://glorystarpacking.com/is-custom-packaging-worth-it.html): Free break-even calculator and decision framework for incremental landed cost, one-time spend, contribution margin, break-even orders, operating savings, inventory risk, controlled testing, and RFQ evidence without assuming packaging guarantees sales.
 - [Verify an FSC packaging supplier](https://glorystarpacking.com/verify-fsc-packaging-supplier.html): Check the FSC public record, direct supplier identity and site, certificate and licence codes, product scope, order-specific sales claim, label approval, delivery evidence, red flags, and status changes without assuming every item from a certified company is certified.
 - [Rigid box vs folding carton](https://glorystarpacking.com/rigid-box-vs-folding-carton.html): Product-first comparison of loaded protection, inserts, presentation, packing labor, flat or formed supply, shipment volume, landed cost, samples, transit testing, and RFQ scope.

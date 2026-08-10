@@ -591,10 +591,30 @@
 
 ## 第二十二轮：GA4、询盘转化与同意管理
 
-- 全站绑定 GA4 衡量 ID `G-LYNMPWG9WK`，所有 49 个 HTML 页面只加载一份本地分析控制脚本；
+- 全站绑定 GA4 衡量 ID `G-LYNMPWG9WK`，所有 50 个 HTML 页面只加载一份本地分析控制脚本；
 - Analytics 默认拒绝，访客主动允许后才加载 Google tag；广告存储、广告用户数据、广告个性化和 Google Signals 保持关闭；
 - 增加可撤回的 Analytics 选择面板，拒绝后停止后续统计并删除本站可访问的 `_ga` Cookie，选择保存在浏览器本地；
 - 记录 Email、WhatsApp、询价 CTA、询价表单开始、文件选择和包装 ROI 计算器使用；只有 API 确认询价成功后才发送官方推荐的 `generate_lead` 事件；
 - 分析事件不包含姓名、邮箱、电话、留言内容、附件名称或附件内容，产品类别与页面路径用于评估流量到询盘的路径；
 - 更新隐私页的 Google Analytics、数据类别、同意撤回和跨境服务说明，并为分析脚本、全站交互脚本和 CSS 统一更新缓存版本；
 - 自动校验新增 GA4 脚本数量、缓存版本与衡量 ID 检查，防止以后新增页面漏装或重复安装统计代码。
+
+## 第二十三轮：可折叠硬盒 vs Setup Box 体积与组装决策
+
+本轮根据 Reddit 电商与包装社区反复出现的仓储占用、运输体积、库存压力和额外装箱人工问题，覆盖 `collapsible rigid box vs setup box` 与 `rigid box shipping cube calculator` 高意图搜索。
+
+### 新增运输体积与组装工时指南
+
+- 新增 `collapsible-rigid-box-vs-setup-box.html`，按产品保护、陈列体验、仓储、运输体积、装箱人工、结构风险和补货条件比较可折叠硬盒与预组装 Setup Box；
+- 增加无需登录的体积与组装工时计算器，以供应商实际外箱长宽高、每箱装量、采购数量、实测组装秒数和人工费率计算总运输体积、相对体积变化、组装工时与规划余额；
+- 计算器按整箱向上取整，并明确体积费率只是统一币种下的规划假设，不把通用百分比、单一运费公式或社区评论当作项目节省承诺；
+- 增加同规格比较表、结构样确认、实际装箱试验、决策关口、RFQ 数据清单和 5 组可见 FAQ，帮助采购在报价前收集可验证数据；
+- 从博客、硬盒和可折叠硬盒页面建立上下文内链，新指南回链到成本、打样、运输、盒型和询价入口；
+- 同步 Article、WebApplication、BreadcrumbList、FAQPage、BlogPosting、`sitemap.xml`、`llms.txt`、关键词地图和自动校验，站点由 48 个扩展到 49 个可索引页面；
+- GA4 新增不含个人信息的 `calculator_use` 事件，用于判断该采购工具是否帮助访客进入询盘路径。
+
+### 本轮验证
+
+- 49 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；
+- 在浏览器实测计算器整箱取整、体积差、相对变化、组装工时和规划余额输出，手机端 390px 视口无页面级横向溢出；
+- 本地移动端 Lighthouse 的 Accessibility、Best Practices 与 SEO 均为 100，CLS 为 0.088，低于 0.1 的良好阈值。

@@ -306,4 +306,77 @@
     roiCalculator.addEventListener("input", calculatePackagingBreakEven);
     calculatePackagingBreakEven();
   }
+
+  const rigidBoxLogisticsCalculator = document.querySelector("#rigid-box-logistics-calculator");
+  if (rigidBoxLogisticsCalculator) {
+    const output = (name) => rigidBoxLogisticsCalculator.querySelector(`[data-rigid-output="${name}"]`);
+    const formatNumber = (value, fractionDigits = 2) =>
+      new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      }).format(value);
+
+    const calculateRigidBoxLogistics = () => {
+      const formData = new FormData(rigidBoxLogisticsCalculator);
+      const quantity = Number(formData.get("quantity"));
+      const setupLength = Number(formData.get("setupLength"));
+      const setupWidth = Number(formData.get("setupWidth"));
+      const setupHeight = Number(formData.get("setupHeight"));
+      const setupUnits = Number(formData.get("setupUnits"));
+      const flatLength = Number(formData.get("flatLength"));
+      const flatWidth = Number(formData.get("flatWidth"));
+      const flatHeight = Number(formData.get("flatHeight"));
+      const flatUnits = Number(formData.get("flatUnits"));
+      const assemblySeconds = Number(formData.get("assemblySeconds"));
+      const laborRate = Number(formData.get("laborRate"));
+      const cubeRate = Number(formData.get("cubeRate") || 0);
+      const values = [
+        quantity,
+        setupLength,
+        setupWidth,
+        setupHeight,
+        setupUnits,
+        flatLength,
+        flatWidth,
+        flatHeight,
+        flatUnits,
+        assemblySeconds,
+        laborRate,
+        cubeRate,
+      ];
+
+      if (values.some((value) => !Number.isFinite(value))) return;
+      if ([quantity, setupLength, setupWidth, setupHeight, setupUnits, flatLength, flatWidth, flatHeight, flatUnits]
+        .some((value) => value <= 0)) return;
+      if ([assemblySeconds, laborRate, cubeRate].some((value) => value < 0)) return;
+
+      const setupCartons = Math.ceil(quantity / setupUnits);
+      const flatCartons = Math.ceil(quantity / flatUnits);
+      const setupCube = setupCartons * setupLength * setupWidth * setupHeight / 1_000_000_000;
+      const flatCube = flatCartons * flatLength * flatWidth * flatHeight / 1_000_000_000;
+      const cubeDifference = setupCube - flatCube;
+      const cubeChange = setupCube ? ((flatCube - setupCube) / setupCube) * 100 : 0;
+      const assemblyHours = quantity * assemblySeconds / 3600;
+      const assemblyLabor = assemblyHours * laborRate;
+      const cubeValue = cubeDifference * cubeRate;
+      const planningBalance = cubeValue - assemblyLabor;
+
+      output("setup-cube").textContent = `${formatNumber(setupCube)} m³`;
+      output("flat-cube").textContent = `${formatNumber(flatCube)} m³`;
+      output("cube-difference").textContent = `${cubeDifference < 0 ? "−" : ""}${formatNumber(Math.abs(cubeDifference))} m³`;
+      output("cube-change").textContent = `${cubeChange < 0 ? "−" : "+"}${formatNumber(Math.abs(cubeChange), 1)}%`;
+      output("assembly-hours").textContent = `${formatNumber(assemblyHours)} h`;
+      output("planning-balance").textContent = `${planningBalance < 0 ? "−" : ""}${formatNumber(Math.abs(planningBalance))}`;
+
+      const direction = cubeDifference >= 0 ? "reduces" : "increases";
+      output("interpretation").textContent = `Across ${new Intl.NumberFormat().format(quantity)} units, these inputs use ${new Intl.NumberFormat().format(setupCartons)} setup-box cartons and ${new Intl.NumberFormat().format(flatCartons)} collapsible cartons. The collapsible route ${direction} calculated empty-box cube by ${formatNumber(Math.abs(cubeDifference))} m³ and adds ${formatNumber(assemblyHours)} assembly hours. The optional planning balance is cube value minus assembly labor only.`;
+    };
+
+    rigidBoxLogisticsCalculator.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (rigidBoxLogisticsCalculator.reportValidity()) calculateRigidBoxLogistics();
+    });
+    rigidBoxLogisticsCalculator.addEventListener("input", calculateRigidBoxLogistics);
+    calculateRigidBoxLogistics();
+  }
 })();

@@ -16,6 +16,7 @@ const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
   "verify-fsc-packaging-supplier.html",
+  "collapsible-rigid-box-vs-setup-box.html",
   "rigid-box-vs-folding-carton.html",
   "custom-packaging-dieline-artwork-requirements.html",
   "custom-packaging-china-vs-local-supplier.html",
@@ -36,8 +37,8 @@ const priorityPages = [
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const requiredSiteStyleVersion = "20260810-3";
-const requiredSiteScriptVersion = "20260810-2";
-const requiredAnalyticsVersion = "20260810-1";
+const requiredSiteScriptVersion = "20260810-3";
+const requiredAnalyticsVersion = "20260810-2";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
@@ -487,6 +488,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
     [`${siteOrigin}/verify-fsc-packaging-supplier.html`, "FSC supplier verification guide"],
+    [`${siteOrigin}/collapsible-rigid-box-vs-setup-box.html`, "collapsible-versus-setup rigid-box guide"],
     [`${siteOrigin}/rigid-box-vs-folding-carton.html`, "rigid-box-versus-folding-carton guide"],
     [`${siteOrigin}/custom-packaging-dieline-artwork-requirements.html`, "dieline and artwork guide"],
     [`${siteOrigin}/custom-packaging-china-vs-local-supplier.html`, "China-versus-local sourcing guide"],
