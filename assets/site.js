@@ -438,4 +438,86 @@
     shippingCasePlanner.addEventListener("input", calculateShippingCasePlan);
     calculateShippingCasePlan();
   }
+
+  const jewelryInsertFitPlanner = document.querySelector("#jewelry-insert-fit-planner");
+  if (jewelryInsertFitPlanner) {
+    const output = (name) => jewelryInsertFitPlanner.querySelector(`[data-jewelry-output="${name}"]`);
+    const formatNumber = (value, fractionDigits = 1) =>
+      new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      }).format(value);
+    const jewelryLabels = {
+      ring: "ring",
+      earrings: "earring",
+      necklace: "necklace or pendant",
+      watch: "watch or bracelet",
+      set: "multi-item set",
+    };
+    const jewelryChecks = {
+      ring: "setting clearance, slot compression, insertion and removal force, material contact, and recovery across the ring-size range",
+      earrings: "pair alignment, post or hook clearance, back storage, release, material contact, and closed-box movement",
+      necklace: "chain routing, pendant restraint, anchor release, material contact, closed-box movement, and the production sample",
+      watch: "cushion compression, crown and clasp clearance, lift access, material contact, and closed-box movement",
+      set: "item separation, removal order, lid clearance, material contact, tolerance across every cavity, and closed-box movement",
+    };
+
+    const calculateJewelryInsertFit = () => {
+      const formData = new FormData(jewelryInsertFitPlanner);
+      const jewelryType = String(formData.get("jewelryType") || "set");
+      const productLength = Number(formData.get("productLength"));
+      const productWidth = Number(formData.get("productWidth"));
+      const heightAbove = Number(formData.get("heightAbove"));
+      const spaceBelow = Number(formData.get("spaceBelow"));
+      const perimeterAllowance = Number(formData.get("perimeterAllowance"));
+      const lidClearance = Number(formData.get("lidClearance"));
+      const boxLength = Number(formData.get("boxLength"));
+      const boxWidth = Number(formData.get("boxWidth"));
+      const boxHeight = Number(formData.get("boxHeight"));
+      const values = [productLength, productWidth, heightAbove, spaceBelow, perimeterAllowance, lidClearance, boxLength, boxWidth, boxHeight];
+
+      if (values.some((value) => !Number.isFinite(value))) return;
+      if ([productLength, productWidth, boxLength, boxWidth, boxHeight].some((value) => value <= 0)) return;
+      if ([heightAbove, spaceBelow, perimeterAllowance, lidClearance].some((value) => value < 0)) return;
+
+      const minimumLength = productLength + perimeterAllowance * 2;
+      const minimumWidth = productWidth + perimeterAllowance * 2;
+      const minimumHeight = heightAbove + spaceBelow + lidClearance;
+      const margins = {
+        length: boxLength - minimumLength,
+        width: boxWidth - minimumWidth,
+        height: boxHeight - minimumHeight,
+      };
+      const dimensions = { length: "length", width: "width", height: "height" };
+      const shortfalls = Object.entries(margins).filter(([, value]) => value < 0);
+      const formatMargin = (value) => `${value >= 0 ? "+" : "−"}${formatNumber(Math.abs(value))} mm`;
+      const label = jewelryLabels[jewelryType] || jewelryLabels.set;
+      const checks = jewelryChecks[jewelryType] || jewelryChecks.set;
+
+      output("minimum-size").textContent = `${formatNumber(minimumLength)} × ${formatNumber(minimumWidth)} × ${formatNumber(minimumHeight)} mm`;
+      output("length-margin").textContent = formatMargin(margins.length);
+      output("width-margin").textContent = formatMargin(margins.width);
+      output("height-margin").textContent = formatMargin(margins.height);
+
+      if (!shortfalls.length) {
+        output("status").textContent = "Envelope clears";
+        output("interpretation").textContent = `The proposed inside size clears this ${label} planning envelope in all three dimensions. Next confirm ${checks}.`;
+        return;
+      }
+
+      const shortfallText = shortfalls
+        .map(([dimension, value]) => `${dimensions[dimension]} by ${formatNumber(Math.abs(value))} mm`)
+        .join(shortfalls.length > 1 ? ", " : "");
+      output("status").textContent = "Review shortfall";
+      output("interpretation").textContent = `The proposed inside size is below this ${label} planning envelope in ${shortfallText}. Revise the arranged layout, allowance, insert build, or box proposal, then confirm ${checks}.`;
+    };
+
+    jewelryInsertFitPlanner.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (jewelryInsertFitPlanner.reportValidity()) calculateJewelryInsertFit();
+    });
+    jewelryInsertFitPlanner.addEventListener("input", calculateJewelryInsertFit);
+    jewelryInsertFitPlanner.addEventListener("change", calculateJewelryInsertFit);
+    calculateJewelryInsertFit();
+  }
 })();

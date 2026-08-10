@@ -639,3 +639,24 @@
 - 50 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；
 - 在浏览器用第二组数据实测总件数、单箱方数、总方数、总毛重、旋转摆放每层箱数、整层数和向上取整托盘数，结果与人工计算一致；
 - 手机端 390px 视口无页面级横向溢出或控制台错误；移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100，CLS 为 0.046。
+
+## 第二十五轮：珠宝盒内托设计与尺寸规划搜索意图
+
+本轮根据 Reddit 珠宝制作、电商与买家社区反复出现的粗项链顶盖与移动、长链缠绕、耳钩运输断裂、低预算安全包装和不同首饰材料接触问题，覆盖 `jewelry box insert design` 与 `jewelry insert fit planner` 高意图搜索。
+
+### 新增珠宝内托设计、接触与取出指南
+
+- 新增 `jewelry-box-insert-design-guide.html`，按戒指、耳环、项链、手表/手镯和多件套拆解产品包络、展示面、固定点、活动件、上下空间、接触区、禁触区、取出路径和完整运输包装；
+- 增加无需登录的内托尺寸规划工具，以产品展示状态长宽、展示面上下空间、四周预留和拟用盒内尺寸计算最低规划内尺寸、三个方向余量与缺口提示；
+- 明确计算器不处理材料压缩、覆面与胶黏剂厚度、盒壁、铰链或盒盖侵入、磁性部件、产品与生产公差、插入/取出力、磨损、化学相容和运输性能，不能替代刀模或实物批准；
+- 内容覆盖 Reddit 买家问题、首饰类型矩阵、接触材料图、珍珠与银饰事实边界、内托材料路线、取出动作、生产样与完整包装运输测试、可比 RFQ 和 6 组可见 FAQ；
+- Reddit 只用于识别需求和买家措辞，事实边界引用 GIA、Canadian Conservation Institute 与 ISTA 官方资料，不把社区建议、通用软材料或单一包装描述成首饰保护保证；
+- 从博客、珠宝盒商业页和定制内托商业页建立上下文内链，新指南回链到珠宝盒、内托、材料比较、样品批准与询价入口；
+- 同步 Article、WebApplication、BreadcrumbList、FAQPage、BlogPosting、`sitemap.xml`、`llms.txt`、关键词地图和自动校验，站点由 50 个扩展到 51 个可索引页面；
+- GA4 新增不含个人信息的 `calculator_use` 事件，用于衡量珠宝内托规划工具到询盘的辅助路径。
+
+### 本轮验证
+
+- 51 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；
+- 浏览器实测默认规划尺寸与三个方向余量正确，并用第二组数据验证长、宽、高缺口提示与人工结果一致；
+- 手机端 390px 视口无页面级横向溢出或控制台错误；移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100，实验室性能记录 LCP 为 105ms、CLS 为 0。

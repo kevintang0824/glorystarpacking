@@ -206,4 +206,8 @@
   document.querySelector("#shipping-case-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "shipping_case_and_pallet_planner" });
   });
+
+  document.querySelector("#jewelry-insert-fit-planner")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "jewelry_insert_fit_planner" });
+  });
 })();
