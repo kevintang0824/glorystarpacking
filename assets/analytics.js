@@ -210,4 +210,8 @@
   document.querySelector("#jewelry-insert-fit-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "jewelry_insert_fit_planner" });
   });
+
+  document.querySelector("#paper-tube-size-planner")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "paper_tube_size_and_fit" });
+  });
 })();

@@ -16,6 +16,7 @@ const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
   "verify-fsc-packaging-supplier.html",
+  "paper-tube-packaging-size-guide.html",
   "jewelry-box-insert-design-guide.html",
   "corrugated-shipping-box-specification-guide.html",
   "collapsible-rigid-box-vs-setup-box.html",
@@ -38,9 +39,9 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260810-3";
-const requiredSiteScriptVersion = "20260811-2";
-const requiredAnalyticsVersion = "20260811-2";
+const requiredSiteStyleVersion = "20260811-1";
+const requiredSiteScriptVersion = "20260811-3";
+const requiredAnalyticsVersion = "20260811-3";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
@@ -490,6 +491,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
     [`${siteOrigin}/verify-fsc-packaging-supplier.html`, "FSC supplier verification guide"],
+    [`${siteOrigin}/paper-tube-packaging-size-guide.html`, "paper tube packaging size guide"],
     [`${siteOrigin}/jewelry-box-insert-design-guide.html`, "jewelry box insert design guide"],
     [`${siteOrigin}/corrugated-shipping-box-specification-guide.html`, "corrugated shipping box specification guide"],
     [`${siteOrigin}/collapsible-rigid-box-vs-setup-box.html`, "collapsible-versus-setup rigid-box guide"],

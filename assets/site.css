@@ -1394,8 +1394,14 @@ button {
 
 .detail-card {
   padding: 30px;
+  color: var(--ink);
   background: var(--paper-bright);
   border-top: 3px solid var(--foil);
+}
+
+.section--ink .detail-card .text-link,
+.section--dark .detail-card .text-link {
+  color: var(--register);
 }
 
 .detail-card__kicker {

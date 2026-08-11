@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/paper-tube-packaging-size-guide.html` | paper tube packaging size guide / paper tube diameter calculator |
 | `/jewelry-box-insert-design-guide.html` | jewelry box insert design / jewelry insert fit planner |
 | `/corrugated-shipping-box-specification-guide.html` | corrugated shipping box specification / master carton pallet calculator |
 | `/collapsible-rigid-box-vs-setup-box.html` | collapsible rigid box vs setup box / rigid box shipping cube calculator |
@@ -142,7 +143,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 16. Collapsible rigid box vs setup box：用供应商外箱数据与实测组装时间比较仓储、运输体积、人工、结构风险和完整到岸范围（已于 2026-08-10 发布）；
 17. Corrugated shipping box specification：以产品、内外尺寸、每箱装量、材料与成箱证据、封箱、托盘、运输测试和变更控制建立可比 RFQ（已于 2026-08-11 发布）；
 18. Jewelry box insert design：戒指、耳环、项链、手表与套装如何兼顾包络尺寸、固定、取放、接触材料与完整运输包（已于 2026-08-11 发布）；
-19. Paper tube sizing guide：内径、筒壁、盖合、产品公差与取出路径；
+19. Paper tube sizing guide：内径、筒壁、盖合、产品公差与取出路径（已于 2026-08-11 发布）；
 20. Custom tissue paper print guide：克重、不透明度、覆盖率、透印和蹭色风险；
 21. Hang tag production checklist：孔位、绳带、条码变量、方向和装袋方式；
 22. Wine bottle gift box specification：按满瓶重量、瓶身支撑、内托取放和运输外箱建立规格；
@@ -164,7 +165,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 - 询盘包含尺寸、数量和国家的比例；
 - 获客关键词与最终成交产品的对应关系。
 
-SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 51 个可索引页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
+SEO 不会在发布当天自动带来流量。第一阶段目标是让搜索引擎正确发现和理解 52 个可索引页面；第二阶段才是持续用真实内容、行业引用和可验证案例提升排名与转化。
 
 ## 7. 参考
 

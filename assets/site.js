@@ -520,4 +520,64 @@
     jewelryInsertFitPlanner.addEventListener("change", calculateJewelryInsertFit);
     calculateJewelryInsertFit();
   }
+
+  const paperTubeSizePlanner = document.querySelector("#paper-tube-size-planner");
+  if (paperTubeSizePlanner) {
+    const output = (name) => paperTubeSizePlanner.querySelector(`[data-tube-output="${name}"]`);
+    const formatNumber = (value) =>
+      new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1,
+      }).format(value);
+
+    const calculatePaperTubeSize = () => {
+      const formData = new FormData(paperTubeSizePlanner);
+      const productCrossSection = Number(formData.get("productCrossSection"));
+      const productHeight = Number(formData.get("productHeight"));
+      const radialAllowance = Number(formData.get("radialAllowance"));
+      const bottomAllowance = Number(formData.get("bottomAllowance"));
+      const topAllowance = Number(formData.get("topAllowance"));
+      const proposedId = Number(formData.get("proposedId"));
+      const proposedHeight = Number(formData.get("proposedHeight"));
+      const wallThickness = Number(formData.get("wallThickness"));
+      const values = [productCrossSection, productHeight, radialAllowance, bottomAllowance, topAllowance, proposedId, proposedHeight, wallThickness];
+
+      if (values.some((value) => !Number.isFinite(value))) return;
+      if ([productCrossSection, productHeight, proposedId, proposedHeight].some((value) => value <= 0)) return;
+      if ([radialAllowance, bottomAllowance, topAllowance, wallThickness].some((value) => value < 0)) return;
+
+      const minimumId = productCrossSection + radialAllowance * 2;
+      const minimumHeight = productHeight + bottomAllowance + topAllowance;
+      const idMargin = proposedId - minimumId;
+      const heightMargin = proposedHeight - minimumHeight;
+      const estimatedOd = proposedId + wallThickness * 2;
+      const formatMargin = (value) => `${value >= 0 ? "+" : "−"}${formatNumber(Math.abs(value))} mm`;
+
+      output("minimum-id").textContent = `${formatNumber(minimumId)} mm`;
+      output("minimum-height").textContent = `${formatNumber(minimumHeight)} mm`;
+      output("id-margin").textContent = formatMargin(idMargin);
+      output("height-margin").textContent = formatMargin(heightMargin);
+      output("estimated-od").textContent = `${formatNumber(estimatedOd)} mm`;
+
+      const shortfalls = [];
+      if (idMargin < 0) shortfalls.push(`inside diameter by ${formatNumber(Math.abs(idMargin))} mm`);
+      if (heightMargin < 0) shortfalls.push(`usable height by ${formatNumber(Math.abs(heightMargin))} mm`);
+
+      if (!shortfalls.length) {
+        output("status").textContent = "Envelope clears";
+        output("interpretation").textContent = "The proposed usable space clears the entered planning envelope. Next confirm the real loading path, insert, tube roundness, cap or shoulder intrusion, opening and removal force, tolerances, and production-equivalent sample.";
+        return;
+      }
+
+      output("status").textContent = "Review shortfall";
+      output("interpretation").textContent = `The proposed tube is below the entered planning envelope in ${shortfalls.join(" and ")}. Revise the loading orientation, allowance, usable space, insert, or tube proposal, then confirm the physical fit and full tolerance stack.`;
+    };
+
+    paperTubeSizePlanner.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (paperTubeSizePlanner.reportValidity()) calculatePaperTubeSize();
+    });
+    paperTubeSizePlanner.addEventListener("input", calculatePaperTubeSize);
+    calculatePaperTubeSize();
+  }
 })();

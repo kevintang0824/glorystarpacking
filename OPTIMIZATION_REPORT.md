@@ -660,3 +660,25 @@
 - 51 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；
 - 浏览器实测默认规划尺寸与三个方向余量正确，并用第二组数据验证长、宽、高缺口提示与人工结果一致；
 - 手机端 390px 视口无页面级横向溢出或控制台错误；移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100，实验室性能记录 LCP 为 105ms、CLS 为 0。
+
+## 第二十六轮：纸筒包装尺寸、盖合与取出搜索意图
+
+本轮根据 Reddit 小企业与包装设计社区持续出现的低数量印刷筒盒、交期与成本取舍、圆筒仓储和运费、食品或补充剂接触、封口和取出问题，覆盖 `paper tube packaging size guide` 与 `paper tube diameter calculator` 高意图搜索。
+
+### 新增纸筒可用空间与成品规格指南
+
+- 新增 `paper-tube-packaging-size-guide.html`，把产品最大装载截面、内径、可用内高、筒体外径、最大闭合直径、成品闭合高度、筒壁、盖合、肩颈、端部和运输外箱拆成独立控制字段；
+- 增加无需登录的纸筒尺寸规划工具，按产品最大截面、高度、单侧径向预留、底部与顶部预留、拟用内径、可用内高和筒壁输入，计算最低规划内径、最低可用内高、两个方向余量或缺口、估算筒体外径和下一步验证提示；
+- 明确计算器不处理未输入的产品公差、异形与失圆、衬里压缩、接缝增厚、肩颈或盖部侵入、通气、摩擦、材料调湿、开启力、直接接触、运输性能或供应商生产公差，不能替代生产样、合规决定或订单批准；
+- 内容覆盖近期 Reddit 买家问题、六项尺寸链、盖合公差、空气阻力和取出、结构与圆周稿件、圆筒主箱、完整包装测试、食品/化妆品接触边界、环保声明、五道批准关口、可比 RFQ 和 6 组可见 FAQ；
+- Reddit 只用于识别需求和买家措辞，事实边界引用 GS1 包装尺寸、ISTA 包装系统测试与 FTC Green Guides，不把社区价格、通用径向间隙、纸质外观或单一材料描述成成本、性能、接触或可回收保证；
+- 从博客和纸筒商业页建立描述性内链，新指南回链到纸筒、内托、稿件、样品、外箱、物流和询价入口；
+- 同步 Article、WebApplication、BreadcrumbList、FAQPage、BlogPosting、`sitemap.xml`、`llms.txt`、关键词地图和自动校验，站点由 51 个扩展到 52 个可索引页面；
+- GA4 新增不含个人信息的 `calculator_use` 事件，用于衡量纸筒尺寸工具到询盘的辅助路径；
+- 修复深色区块内浅色卡片继承白色标题和金色链接造成的全站对比度问题，并更新 CSS 缓存版本。
+
+### 本轮验证
+
+- 52 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；询价 API、JavaScript 语法和 IndexNow dry run 通过；
+- 浏览器实测默认输出为最低内径 72.0 mm、最低可用内高 155.0 mm、内径余量 +2.0 mm、高度余量 +3.0 mm、估算筒体外径 78.0 mm；第二组不足数据正确输出内径 −1.5 mm 与高度 −4.0 mm；
+- 手机端 390px 视口无页面级横向溢出或控制台错误；移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100，实验室性能记录 LCP 为 97ms、CLS 为 0。
