@@ -682,3 +682,23 @@
 - 52 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本和 sitemap 自动校验；询价 API、JavaScript 语法和 IndexNow dry run 通过；
 - 浏览器实测默认输出为最低内径 72.0 mm、最低可用内高 155.0 mm、内径余量 +2.0 mm、高度余量 +3.0 mm、估算筒体外径 78.0 mm；第二组不足数据正确输出内径 −1.5 mm 与高度 −4.0 mm；
 - 手机端 390px 视口无页面级横向溢出或控制台错误；移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100，实验室性能记录 LCP 为 97ms、CLS 为 0。
+
+## 第二十七轮：首页抓取优先级与生产站索引体检
+
+本轮先处理能够直接影响搜索引擎发现、规范网址集中和高意向访客路径的项目，不以批量新增文章代替技术与入口修复。
+
+### 强化首页入口和规范网址
+
+- 生产站 sitemap 的 52 个 URL 逐一检查，当前均直接返回 HTTP 200，页面 canonical 与 sitemap URL 一致；
+- 发现 `www.glorystarpacking.com/index.html` 需要经过两次跳转才能到规范首页，新增更具体的 Vercel 永久重定向，使该入口直接到 `https://glorystarpacking.com/`；
+- 首页增加 `custom-boxes.html` 与 `custom-packaging-inserts.html` 的描述性上下文链接，提升两个商业中心页的发现路径；
+- 首页新增 Quote-ready buyer tools 区块，直接链接纸筒尺寸、珠宝内托和运输箱/托盘三个高意向采购工具，减少新指南只依赖博客列表页的问题；
+- 新增 `scripts/audit-production-indexing.mjs`，部署后可一次检查 live sitemap、HTTP 状态、canonical、robots meta、X-Robots-Tag、robots.txt 与关键域名跳转；
+- 首页 sitemap `lastmod` 更新为 `2026-08-12`，仅反映本次真实页面更新。
+
+### 本轮验证
+
+- 52 个可索引页面和 1 个 `noindex` 404 页面继续通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、crawler policy、重定向与 sitemap 自动校验；询价 API 测试与 JavaScript 语法检查通过；
+- 首页在 390px 手机视口下无页面级横向溢出或控制台错误，新增 5 个关键入口均为可抓取的普通链接；
+- 移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100；本地实验室性能记录 LCP 为 96ms、CLS 为 0；
+- 当前受控浏览器会话未继承默认浏览器的 Google Search Console 登录状态，因此本轮不虚构后台覆盖率或“已收录”结论；上线后以生产审核脚本和 Search Console 实际数据继续判断。

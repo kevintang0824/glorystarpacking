@@ -519,6 +519,7 @@ if (!fs.existsSync(llmsPath)) {
 const indexNowKey = "22368291acb50c0fb4b3a1ab806495d4";
 const indexNowKeyPath = path.join(root, `${indexNowKey}.txt`);
 const indexNowScriptPath = path.join(root, "scripts", "submit-indexnow.mjs");
+const productionIndexAuditPath = path.join(root, "scripts", "audit-production-indexing.mjs");
 if (!fs.existsSync(indexNowKeyPath) || fs.readFileSync(indexNowKeyPath, "utf8").trim() !== indexNowKey) {
   errors.push("IndexNow: root verification key file is missing or inconsistent");
 }
@@ -536,6 +537,20 @@ if (!fs.existsSync(indexNowScriptPath)) {
     if (!indexNowScript.includes(signal)) errors.push(`IndexNow: submission script is missing ${label}`);
   });
 }
+if (!fs.existsSync(productionIndexAuditPath)) {
+  errors.push("Production indexing audit script is missing");
+} else {
+  const productionIndexAudit = fs.readFileSync(productionIndexAuditPath, "utf8");
+  const requiredProductionAuditSignals = [
+    ["sitemap.xml", "sitemap crawl source"],
+    ["redirect: \"manual\"", "redirect tracing"],
+    ["rel=[\\\"']canonical", "canonical verification"],
+    ["www.glorystarpacking.com/index.html", "www index redirect probe"],
+  ];
+  requiredProductionAuditSignals.forEach(([signal, label]) => {
+    if (!productionIndexAudit.includes(signal)) errors.push(`Production indexing audit is missing ${label}`);
+  });
+}
 
 const vercelConfigPath = path.join(root, "vercel.json");
 if (!fs.existsSync(vercelConfigPath)) {
@@ -551,8 +566,21 @@ if (!fs.existsSync(vercelConfigPath)) {
       redirect.permanent === true &&
       Array.isArray(redirect.has) &&
       redirect.has.some((condition) => condition.type === "host" && condition.value === "www.glorystarpacking.com"));
+    const directWwwIndexPosition = redirects.findIndex((redirect) =>
+      redirect.source === "/index.html" &&
+      redirect.destination === `${siteOrigin}/` &&
+      redirect.permanent === true &&
+      Array.isArray(redirect.has) &&
+      redirect.has.some((condition) => condition.type === "host" && condition.value === "www.glorystarpacking.com"));
+    const catchAllWwwPosition = redirects.findIndex((redirect) =>
+      redirect.source === "/:path*" &&
+      Array.isArray(redirect.has) &&
+      redirect.has.some((condition) => condition.type === "host" && condition.value === "www.glorystarpacking.com"));
     if (!redirectsIndex) errors.push("vercel.json: missing permanent /index.html to / redirect");
     if (!redirectsWww) errors.push("vercel.json: missing permanent www to canonical host redirect");
+    if (directWwwIndexPosition < 0 || catchAllWwwPosition < 0 || directWwwIndexPosition > catchAllWwwPosition) {
+      errors.push("vercel.json: www /index.html must redirect directly to the canonical homepage before the www catch-all");
+    }
     const headers = Array.isArray(vercelConfig.headers) ? vercelConfig.headers : [];
     const apiNoindex = headers.some((entry) =>
       entry.source === "/api/(.*)" &&
