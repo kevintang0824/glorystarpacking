@@ -690,7 +690,7 @@
 ### 强化首页入口和规范网址
 
 - 生产站 sitemap 的 52 个 URL 逐一检查，当前均直接返回 HTTP 200，页面 canonical 与 sitemap URL 一致；
-- 发现 `www.glorystarpacking.com/index.html` 需要经过两次跳转才能到规范首页，新增更具体的 Vercel 永久重定向，使该入口直接到 `https://glorystarpacking.com/`；
+- 发现 `www.glorystarpacking.com/index.html` 需要经过两次跳转，且 `www.glorystarpacking.com/` 根路径仍可独立返回 200；新增更具体的 Vercel 永久重定向，使两个入口都直接到 `https://glorystarpacking.com/`；
 - 首页增加 `custom-boxes.html` 与 `custom-packaging-inserts.html` 的描述性上下文链接，提升两个商业中心页的发现路径；
 - 首页新增 Quote-ready buyer tools 区块，直接链接纸筒尺寸、珠宝内托和运输箱/托盘三个高意向采购工具，减少新指南只依赖博客列表页的问题；
 - 新增 `scripts/audit-production-indexing.mjs`，部署后可一次检查 live sitemap、HTTP 状态、canonical、robots meta、X-Robots-Tag、robots.txt 与关键域名跳转；

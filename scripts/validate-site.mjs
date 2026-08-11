@@ -572,12 +572,21 @@ if (!fs.existsSync(vercelConfigPath)) {
       redirect.permanent === true &&
       Array.isArray(redirect.has) &&
       redirect.has.some((condition) => condition.type === "host" && condition.value === "www.glorystarpacking.com"));
+    const directWwwRootPosition = redirects.findIndex((redirect) =>
+      redirect.source === "/" &&
+      redirect.destination === `${siteOrigin}/` &&
+      redirect.permanent === true &&
+      Array.isArray(redirect.has) &&
+      redirect.has.some((condition) => condition.type === "host" && condition.value === "www.glorystarpacking.com"));
     const catchAllWwwPosition = redirects.findIndex((redirect) =>
       redirect.source === "/:path*" &&
       Array.isArray(redirect.has) &&
       redirect.has.some((condition) => condition.type === "host" && condition.value === "www.glorystarpacking.com"));
     if (!redirectsIndex) errors.push("vercel.json: missing permanent /index.html to / redirect");
     if (!redirectsWww) errors.push("vercel.json: missing permanent www to canonical host redirect");
+    if (directWwwRootPosition < 0 || catchAllWwwPosition < 0 || directWwwRootPosition > catchAllWwwPosition) {
+      errors.push("vercel.json: www root must redirect directly to the canonical homepage before the www catch-all");
+    }
     if (directWwwIndexPosition < 0 || catchAllWwwPosition < 0 || directWwwIndexPosition > catchAllWwwPosition) {
       errors.push("vercel.json: www /index.html must redirect directly to the canonical homepage before the www catch-all");
     }
