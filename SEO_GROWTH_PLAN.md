@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/perfume-box-insert-checklist.html` | perfume box insert checklist / perfume bottle insert fit planner |
 | `/hang-tag-production-checklist.html` | hang tag production checklist / hang tag quantity calculator |
 | `/wine-bottle-gift-box-specification.html` | wine bottle gift box specification / wine box dimensions calculator |
 | `/custom-tissue-paper-printing-guide.html` | custom tissue paper printing guide / tissue paper quantity calculator |
@@ -91,6 +92,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 - `/custom-waterproof-labels.html` 只解决潮湿、摩擦、油污、低温等实际暴露条件下的耐久标签规格和测试计划；不发布未经证实的 BS 5609、UL 或其他认证声明。
 - `/custom-wine-boxes.html` 聚焦装满后的瓶重、瓶肩/瓶颈支撑、内托取放、底部承载和外运输箱；`/custom-wine-labels.html` 继续负责酒标材料、胶黏剂、印刷和冷凝环境，两者不互相抢词。
 - `/custom-perfume-boxes.html` 聚焦玻璃香水瓶、瓶盖/泵头间隙、支撑、抗刮、取放和套装布局；`/cosmetic-packaging-boxes.html` 保持为更广泛的化妆品包装分类入口。
+- `/perfume-box-insert-checklist.html` 承接香水瓶内托适配、泵头/瓶盖无接触区、表面保护、套装配置、运输验证和 RFQ 模板搜索意图；`/custom-perfume-boxes.html` 继续负责商业开发与询价，`/custom-packaging-inserts.html` 继续负责跨品类内托能力。
 
 ## 3. 内容可信度边界
 
@@ -161,7 +163,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 20. Custom tissue paper print guide：用量与整包取整、低量路线、平张尺寸、图案循环、克重与不透明度、覆盖率、透印、蹭色、折叠、包装和可比 RFQ（已于 2026-08-12 发布）；
 21. Hang tag production checklist：用量与整包取整、孔位、绳带、条码变量、SKU 数据模板、方向、零售就绪装配、装袋与数量对账（已于 2026-08-12 发布）；
 22. Wine bottle gift box specification：按满瓶重量、瓶型公差、瓶身支撑、内托取放、配件、运输外箱、验收和测试建立规格（已于 2026-08-12 发布）；
-23. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认；
+23. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认（已于 2026-08-12 发布）；
 24. Clear label artwork guide：透明容器、白墨层、雾度、接缝和贴标表面如何影响稿件；
 25. Waterproof label test brief：按真实水分、摩擦、油污和温度暴露制定样品测试。
 

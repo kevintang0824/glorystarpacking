@@ -226,4 +226,8 @@
   document.querySelector("#wine-gift-box-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "wine_gift_box_fit_and_load" });
   });
+
+  document.querySelector("#perfume-insert-fit-form")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "perfume_bottle_insert_fit" });
+  });
 })();
