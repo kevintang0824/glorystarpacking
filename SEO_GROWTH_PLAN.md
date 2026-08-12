@@ -55,6 +55,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/hang-tag-production-checklist.html` | hang tag production checklist / hang tag quantity calculator |
 | `/custom-tissue-paper-printing-guide.html` | custom tissue paper printing guide / tissue paper quantity calculator |
 | `/paper-tube-packaging-size-guide.html` | paper tube packaging size guide / paper tube diameter calculator |
 | `/jewelry-box-insert-design-guide.html` | jewelry box insert design / jewelry insert fit planner |
@@ -157,7 +158,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 18. Jewelry box insert design：戒指、耳环、项链、手表与套装如何兼顾包络尺寸、固定、取放、接触材料与完整运输包（已于 2026-08-11 发布）；
 19. Paper tube sizing guide：内径、筒壁、盖合、产品公差与取出路径（已于 2026-08-11 发布）；
 20. Custom tissue paper print guide：用量与整包取整、低量路线、平张尺寸、图案循环、克重与不透明度、覆盖率、透印、蹭色、折叠、包装和可比 RFQ（已于 2026-08-12 发布）；
-21. Hang tag production checklist：孔位、绳带、条码变量、方向和装袋方式；
+21. Hang tag production checklist：用量与整包取整、孔位、绳带、条码变量、SKU 数据模板、方向、零售就绪装配、装袋与数量对账（已于 2026-08-12 发布）；
 22. Wine bottle gift box specification：按满瓶重量、瓶身支撑、内托取放和运输外箱建立规格；
 23. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认；
 24. Clear label artwork guide：透明容器、白墨层、雾度、接缝和贴标表面如何影响稿件；

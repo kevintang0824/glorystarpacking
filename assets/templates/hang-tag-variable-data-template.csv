@@ -1,0 +1,2 @@
+record_id,sku,product_name,color,size,gtin_or_barcode_data,barcode_symbology,human_readable_text,price,currency,artwork_version,tag_design,attachment_code,pack_group,quantity,record_status,notes
+EXAMPLE-DO-NOT-PRODUCE,SKU-EXAMPLE-001,Example product,Example color,Example size,0000000000000,CONFIRM_WITH_BUYER,EXAMPLE ONLY,0.00,USD,ARTWORK-EXAMPLE,TAG-EXAMPLE,ATTACHMENT-EXAMPLE,PACK-EXAMPLE,1,DRAFT,Delete this example row and have the data owner approve every production record

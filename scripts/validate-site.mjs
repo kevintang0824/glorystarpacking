@@ -15,6 +15,7 @@ const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
+  "hang-tag-production-checklist.html",
   "custom-tissue-paper-printing-guide.html",
   "verify-fsc-packaging-supplier.html",
   "paper-tube-packaging-size-guide.html",
@@ -42,8 +43,9 @@ const priorityPages = [
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const requiredSiteStyleVersion = "20260811-1";
 const requiredSiteScriptVersion = "20260811-3";
-const requiredAnalyticsVersion = "20260812-1";
+const requiredAnalyticsVersion = "20260812-2";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
+const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";
@@ -70,6 +72,16 @@ const readPage = (file) => {
   }
   return pageCache.get(file);
 };
+
+if (!fs.existsSync(hangTagTemplatePath)) {
+  errors.push("Hang tag variable-data CSV template is missing");
+} else {
+  const templateHeader = fs.readFileSync(hangTagTemplatePath, "utf8").split(/\r?\n/, 1)[0].split(",");
+  const requiredTemplateFields = ["record_id", "sku", "gtin_or_barcode_data", "barcode_symbology", "artwork_version", "attachment_code", "pack_group", "quantity", "record_status"];
+  requiredTemplateFields.forEach((field) => {
+    if (!templateHeader.includes(field)) errors.push(`Hang tag variable-data CSV template is missing ${field}`);
+  });
+}
 
 for (const file of htmlFiles) {
   const page = readPage(file);
@@ -492,6 +504,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
     [`${siteOrigin}/verify-fsc-packaging-supplier.html`, "FSC supplier verification guide"],
+    [`${siteOrigin}/hang-tag-production-checklist.html`, "hang tag production checklist"],
     [`${siteOrigin}/custom-tissue-paper-printing-guide.html`, "custom tissue paper printing guide"],
     [`${siteOrigin}/paper-tube-packaging-size-guide.html`, "paper tube packaging size guide"],
     [`${siteOrigin}/jewelry-box-insert-design-guide.html`, "jewelry box insert design guide"],

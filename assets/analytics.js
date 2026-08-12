@@ -218,4 +218,8 @@
   document.querySelector("#tissue-paper-sheet-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "tissue_sheet_quantity_and_bundle" });
   });
+
+  document.querySelector("#hang-tag-quantity-form")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "hang_tag_quantity_and_bundle" });
+  });
 })();

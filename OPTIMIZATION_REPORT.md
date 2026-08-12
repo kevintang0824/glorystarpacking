@@ -722,3 +722,26 @@
 - 53 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本、crawler policy、重定向和 sitemap 自动校验；询价 API 与 JavaScript 语法检查通过；
 - 默认数据正确输出基础 2,400 张、规划 2,520 张、6 包、采购 3,000 张、多出 480 张和 1,050.0 m²；第二组数据正确输出 413 张、444 张、2 包、500 张、多出 56 张和 95.0 m²；
 - 390px 手机视口无页面级横向溢出或页面控制台错误；性能追踪记录 LCP 为 101ms、CLS 为 0；移动端 Lighthouse 的 Accessibility、SEO 与 Agentic Browsing 均为 100。本地 Lighthouse 对 Google Fonts 的一次外部连接关闭使 Best Practices 为 96，部署后从生产站复测。
+
+## 第二十九轮：吊牌生产、条码变量与零售就绪搜索意图
+
+本轮根据 Reddit 小企业与零售社区持续出现的条码吊牌批量生成、手工贴标耗时、标签脱落、供应商代贴价格/UPC、SKU 与价格更新和零售就绪入库问题，覆盖 `hang tag production checklist` 与 `hang tag quantity calculator` 高意图搜索。
+
+### 新增吊牌用量、变量数据与生产检查指南
+
+- 新增 `hang-tag-production-checklist.html`，与 `custom-hang-tags.html` 分工：商业页负责吊牌产品开发与询价，新指南负责数量、变量数据、条码、应用、装袋、检验和数量对账；
+- 增加无需登录的吊牌用量与整包取整规划器，按产品件数、每件吊牌数、买家自定预留、SKU 数、每 SKU 样品数和供应商每包张数计算基础用量、预留、样品、规划量、整包数量、采购量与超出规划量；
+- 明确预留和样品是买家输入，不是通用建议；计算器不建立 MOQ、生产损耗、交付数量、吊牌套数、附件损耗、SKU 分配、条码有效性、成本或补货库存；
+- 新增 `assets/templates/hang-tag-variable-data-template.csv`，覆盖记录 ID、SKU、产品、颜色、尺码、GTIN/条码数据、码制、人可读文字、价格、币种、稿件版本、吊牌设计、附件、装袋组、数量、状态和备注；示例行明确禁止用于生产；
+- 内容覆盖吊牌成品尺寸、孔位坐标、绳带/附件、产品应用点、变量数据字段、异常报告、条码数据/符号/验证/系统扫描、静态稿件与变量校样、生产样、零售就绪装配、装袋和数量对账、FTC 服装护理/纤维标签边界、可比 RFQ 与 6 组可见 FAQ；
+- Reddit 只用于识别运营问题和买家措辞，不把社区建议的条码尺寸、设备、价格、供应商或附件方式当作项目标准；事实边界引用 GS1 与 FTC 官方资料；
+- 从首页、博客、吊牌商业页和稿件指南建立描述性内链，新指南回链吊牌、标签、稿件和询价入口；
+- 同步 Article、WebApplication、BreadcrumbList、FAQPage、BlogPosting、`sitemap.xml`、`llms.txt`、关键词地图、GA4 `calculator_use` 事件和自动校验，站点由 53 个扩展到 54 个可索引页面；
+- 自动校验新增对变量数据 CSV 模板及其必要字段的检查，避免以后模板链接存在但生产字段被误删。
+
+### 本轮验证
+
+- 54 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、下载模板、表单、llms、脚本版本、crawler policy、重定向和 sitemap 自动校验；询价 API 与 JavaScript 语法检查通过；
+- 吊牌计算器默认数据正确输出基础 2,400、预留 72、SKU 样品 24、规划 2,496、5 包、采购 2,500 和多出 4 张；第二组数据正确输出基础 1,750、预留 79、样品 21、规划 1,850、8 包、采购 2,000 和多出 150 张；
+- 变量数据 CSV 可下载且包含记录 ID、SKU、GTIN/条码数据、码制、稿件版本、附件、装袋组、数量和记录状态等必要字段；390px 手机视口无页面级横向溢出或页面脚本错误；性能追踪记录 LCP 为 101ms、CLS 为 0；移动端 Lighthouse 的 Accessibility、SEO 与 Agentic Browsing 均为 100，本地 Google Fonts 外链的一次连接关闭使 Best Practices 为 96；
+- 条码和服装标签内容明确要求按真实 POS、零售商、市场和产品验证，不把手机扫码、吊牌或计算器结果写成合规或生产批准。
