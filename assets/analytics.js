@@ -214,4 +214,8 @@
   document.querySelector("#paper-tube-size-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "paper_tube_size_and_fit" });
   });
+
+  document.querySelector("#tissue-paper-sheet-planner")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "tissue_sheet_quantity_and_bundle" });
+  });
 })();

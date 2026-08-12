@@ -702,3 +702,23 @@
 - 首页在 390px 手机视口下无页面级横向溢出或控制台错误，新增 5 个关键入口均为可抓取的普通链接；
 - 移动端 Lighthouse 的 Accessibility、Best Practices、SEO 与 Agentic Browsing 均为 100；本地实验室性能记录 LCP 为 96ms、CLS 为 0；
 - 当前受控浏览器会话未继承默认浏览器的 Google Search Console 登录状态，因此本轮不虚构后台覆盖率或“已收录”结论；上线后以生产审核脚本和 Search Console 实际数据继续判断。
+
+## 第二十八轮：定制纸巾印刷与用量规划搜索意图
+
+本轮根据 Reddit 小企业与包装社区反复出现的纸巾包装低量定制、现金占用、全版和多色印刷、急单交期、高端简洁体验、透印、蹭色和先用轻量品牌组件验证需求等问题，覆盖 `custom tissue paper printing guide` 与 `tissue paper quantity calculator` 高意图搜索。
+
+### 新增纸巾用量、印刷和验收指南
+
+- 新增 `custom-tissue-paper-printing-guide.html`，与 `custom-tissue-paper.html` 分工：商业页负责供应与询价，新指南负责用量、路线、稿件、样品、验收和可比 RFQ；
+- 增加无需登录的纸巾用量与整包取整规划器，按包装订单数、每单用纸、买家自定预留、供应商每包张数和单张尺寸计算基础张数、规划张数、整包数量、采购张数、超出规划张数和采购纸张面积；
+- 明确预留比例是买家输入，不是通用建议；计算器不预测供应商 MOQ、生产损耗、生产超欠数、交付张数、成本、纸张重量、装箱人工、储存寿命或补货点；
+- 内容覆盖库存/半定制/全定制三条路线、平张与包法、重复图案、供应商出血值、克重与不透明度、颜色关系、透印、油墨摩擦与转移、折叠与整包、外箱、QC、FSC 和回收声明边界、可比 RFQ 与 6 组可见 FAQ；
+- Reddit 只用于识别买家措辞和决策，不把社区价格、MOQ、工艺和供应商推荐当作项目证据；事实边界引用 Adobe、FSC 和 FTC 官方资料；
+- 从首页、博客、纸巾商业页和低 MOQ 指南建立描述性内链，新指南回链纸巾商业页、稿件、样品、FSC 验证与询价入口；
+- 同步 Article、WebApplication、BreadcrumbList、FAQPage、BlogPosting、`sitemap.xml`、`llms.txt`、关键词地图、GA4 `calculator_use` 事件和自动校验，站点由 52 个扩展到 53 个可索引页面。
+
+### 本轮验证
+
+- 53 个可索引页面和 1 个 `noindex` 404 页面通过 metadata、canonical、H1、JSON-LD/FAQ、文章发现、内链、表单、llms、脚本版本、crawler policy、重定向和 sitemap 自动校验；询价 API 与 JavaScript 语法检查通过；
+- 默认数据正确输出基础 2,400 张、规划 2,520 张、6 包、采购 3,000 张、多出 480 张和 1,050.0 m²；第二组数据正确输出 413 张、444 张、2 包、500 张、多出 56 张和 95.0 m²；
+- 390px 手机视口无页面级横向溢出或页面控制台错误；性能追踪记录 LCP 为 101ms、CLS 为 0；移动端 Lighthouse 的 Accessibility、SEO 与 Agentic Browsing 均为 100。本地 Lighthouse 对 Google Fonts 的一次外部连接关闭使 Best Practices 为 96，部署后从生产站复测。
