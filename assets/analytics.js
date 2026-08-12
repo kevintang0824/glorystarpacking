@@ -222,4 +222,8 @@
   document.querySelector("#hang-tag-quantity-form")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "hang_tag_quantity_and_bundle" });
   });
+
+  document.querySelector("#wine-gift-box-planner")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "wine_gift_box_fit_and_load" });
+  });
 })();
