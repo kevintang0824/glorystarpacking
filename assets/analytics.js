@@ -230,4 +230,8 @@
   document.querySelector("#perfume-insert-fit-form")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "perfume_bottle_insert_fit" });
   });
+
+  document.querySelector("#clear-label-trial-form")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "clear_label_applied_trial_matrix" });
+  });
 })();

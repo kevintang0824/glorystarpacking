@@ -15,6 +15,7 @@ const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
+  "clear-label-white-ink-artwork-guide.html",
   "perfume-box-insert-checklist.html",
   "wine-bottle-gift-box-specification.html",
   "hang-tag-production-checklist.html",
@@ -45,11 +46,12 @@ const priorityPages = [
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const requiredSiteStyleVersion = "20260811-1";
 const requiredSiteScriptVersion = "20260811-3";
-const requiredAnalyticsVersion = "20260812-4";
+const requiredAnalyticsVersion = "20260813-1";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
 const perfumeInsertTemplatePath = path.join(root, "assets", "templates", "perfume-box-insert-rfq-template.csv");
+const clearLabelTrialTemplatePath = path.join(root, "assets", "templates", "clear-label-artwork-trial-template.csv");
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";
@@ -104,6 +106,16 @@ if (!fs.existsSync(perfumeInsertTemplatePath)) {
   const requiredTemplateFields = ["record_id", "bottle_sku", "filled_weight_g", "max_length_mm", "max_width_mm", "assembled_height_mm", "pump_collar_cap_revision", "spray_cap_no_contact_zone", "protected_surfaces", "permitted_support_zones", "insert_route", "removal_method", "gift_set_configuration", "units_per_master_carton", "distribution_route", "dangerous_goods_classification_owner", "test_or_acceptance_reference", "record_status"];
   requiredTemplateFields.forEach((field) => {
     if (!templateHeader.includes(field)) errors.push(`Perfume box insert RFQ CSV template is missing ${field}`);
+  });
+}
+
+if (!fs.existsSync(clearLabelTrialTemplatePath)) {
+  errors.push("Clear label artwork trial CSV template is missing");
+} else {
+  const templateHeader = fs.readFileSync(clearLabelTrialTemplatePath, "utf8").split(/\r?\n/, 1)[0].split(",");
+  const requiredTemplateFields = ["record_id", "label_sku", "artwork_revision", "container_sku", "contents_color", "film_construction", "print_side", "white_ink_treatment", "white_ink_layer_name", "white_choke_or_trap_owner", "clear_window_definition", "barcode_data_owner", "application_method", "trial_condition", "observation_timepoint", "acceptance_reference", "record_status"];
+  requiredTemplateFields.forEach((field) => {
+    if (!templateHeader.includes(field)) errors.push(`Clear label artwork trial CSV template is missing ${field}`);
   });
 }
 
@@ -527,6 +539,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/products.html`, "product catalog"],
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
+    [`${siteOrigin}/clear-label-white-ink-artwork-guide.html`, "clear label white ink artwork guide"],
     [`${siteOrigin}/verify-fsc-packaging-supplier.html`, "FSC supplier verification guide"],
     [`${siteOrigin}/perfume-box-insert-checklist.html`, "perfume box insert checklist"],
     [`${siteOrigin}/wine-bottle-gift-box-specification.html`, "wine bottle gift box specification guide"],

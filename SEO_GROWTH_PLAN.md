@@ -1,6 +1,6 @@
 # GloryStarPack SEO 与获客增长计划
 
-更新日期：2026-08-12
+更新日期：2026-08-13
 
 ## 1. 本轮策略
 
@@ -48,6 +48,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/custom-tissue-paper.html` | custom printed tissue paper |
 | `/box-labels.html` | custom labels / product label categories |
 | `/custom-clear-labels.html` | custom clear labels / transparent film labels |
+| `/clear-label-white-ink-artwork-guide.html` | clear label white ink artwork / transparent label artwork guide |
 | `/custom-waterproof-labels.html` | custom waterproof labels / durable product labels |
 | `/custom-wine-labels.html` | custom wine labels / foil embossed wine labels |
 | `/embossed-foil-labels.html` | embossed labels / foil labels |
@@ -89,6 +90,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 
 - `/box-labels.html` 是标签分类中心，负责帮助买家按表面、使用环境、应用方式、材料和工艺选择路线，不再同时占用透明标签或防水标签的具体搜索意图。
 - `/custom-clear-labels.html` 只解决透明容器、无标签外观、白墨衬底、可见雾度和贴标表面等问题；不承诺未经确认的特定薄膜牌号、胶黏剂或性能等级。
+- `/clear-label-white-ink-artwork-guide.html` 承接白墨层、透明窗口、套印/陷印责任、容器背景、条码对比、试样矩阵和生产放行的教育搜索意图；`/custom-clear-labels.html` 继续负责透明标签商业开发与询价。
 - `/custom-waterproof-labels.html` 只解决潮湿、摩擦、油污、低温等实际暴露条件下的耐久标签规格和测试计划；不发布未经证实的 BS 5609、UL 或其他认证声明。
 - `/custom-wine-boxes.html` 聚焦装满后的瓶重、瓶肩/瓶颈支撑、内托取放、底部承载和外运输箱；`/custom-wine-labels.html` 继续负责酒标材料、胶黏剂、印刷和冷凝环境，两者不互相抢词。
 - `/custom-perfume-boxes.html` 聚焦玻璃香水瓶、瓶盖/泵头间隙、支撑、抗刮、取放和套装布局；`/cosmetic-packaging-boxes.html` 保持为更广泛的化妆品包装分类入口。
@@ -164,7 +166,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 21. Hang tag production checklist：用量与整包取整、孔位、绳带、条码变量、SKU 数据模板、方向、零售就绪装配、装袋与数量对账（已于 2026-08-12 发布）；
 22. Wine bottle gift box specification：按满瓶重量、瓶型公差、瓶身支撑、内托取放、配件、运输外箱、验收和测试建立规格（已于 2026-08-12 发布）；
 23. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认（已于 2026-08-12 发布）；
-24. Clear label artwork guide：透明容器、白墨层、雾度、接缝和贴标表面如何影响稿件；
+24. Clear label artwork guide：透明容器、白墨层、透明窗口、套印/陷印、条码对比、贴标和观察时间点如何影响稿件与试样（已于 2026-08-13 发布）；
 25. Waterproof label test brief：按真实水分、摩擦、油污和温度暴露制定样品测试。
 
 每月宁可发布 1–2 篇有实物照片、参数和第一手经验的内容，也不要批量生成薄文章。Google 明确建议以真实受众和实用价值为目标，而不是为搜索引擎堆内容。
