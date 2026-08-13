@@ -238,4 +238,8 @@
   document.querySelector("#waterproof-label-test-form")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "waterproof_label_test_matrix" });
   });
+
+  document.querySelector("#packaging-rfq-coverage-planner")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "custom_packaging_rfq_coverage" });
+  });
 })();

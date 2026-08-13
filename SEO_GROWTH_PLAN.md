@@ -57,6 +57,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 | `/industries.html` | custom packaging by industry |
 | `/about.html` | packaging factory / quality control / sampling |
 | `/blog.html` | custom packaging buyer guides |
+| `/custom-packaging-rfq-template.html` | custom packaging RFQ template / packaging quote comparison |
 | `/perfume-box-insert-checklist.html` | perfume box insert checklist / perfume bottle insert fit planner |
 | `/hang-tag-production-checklist.html` | hang tag production checklist / hang tag quantity calculator |
 | `/wine-bottle-gift-box-specification.html` | wine bottle gift box specification / wine box dimensions calculator |
@@ -89,6 +90,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 
 ### 新增页面的搜索意图边界
 
+- `/custom-packaging-cost-moq-guide.html` 解释成本、MOQ 和落地成本驱动；`/custom-packaging-rfq-template.html` 负责跨盒型、标签和附件的受控询价输入、报价行矩阵、返回字段完整度、偏离项与版本；首页询价表单继续负责真实商机提交。
 - `/box-labels.html` 是标签分类中心，负责帮助买家按表面、使用环境、应用方式、材料和工艺选择路线，不再同时占用透明标签或防水标签的具体搜索意图。
 - `/custom-clear-labels.html` 只解决透明容器、无标签外观、白墨衬底、可见雾度和贴标表面等问题；不承诺未经确认的特定薄膜牌号、胶黏剂或性能等级。
 - `/clear-label-white-ink-artwork-guide.html` 承接白墨层、透明窗口、套印/陷印责任、容器背景、条码对比、试样矩阵和生产放行的教育搜索意图；`/custom-clear-labels.html` 继续负责透明标签商业开发与询价。
@@ -170,6 +172,7 @@ GloryStarPack 没有复制 LuxoPack 的文案、价格、知名客户 Logo、认
 23. Perfume box insert checklist：瓶身、泵头、瓶盖间隙、抗刮和套装 SKU 如何共同确认（已于 2026-08-12 发布）；
 24. Clear label artwork guide：透明容器、白墨层、透明窗口、套印/陷印、条码对比、贴标和观察时间点如何影响稿件与试样（已于 2026-08-13 发布）；
 25. Waterproof label test brief：按真实水分、冷凝、浸泡、油污、清洁剂、摩擦、温度、户外、条码和验收规则制定样品测试（已于 2026-08-13 发布）。
+26. Custom packaging RFQ template：把结构配置、数量档、交付口径、供应商返回字段、一次性费用、样品、包装、贸易条款、证据与偏离项放入统一报价矩阵（已于 2026-08-13 发布）。
 
 每月宁可发布 1–2 篇有实物照片、参数和第一手经验的内容，也不要批量生成薄文章。Google 明确建议以真实受众和实用价值为目标，而不是为搜索引擎堆内容。
 

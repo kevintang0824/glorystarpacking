@@ -15,6 +15,7 @@ const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
+  "custom-packaging-rfq-template.html",
   "waterproof-label-testing-guide.html",
   "clear-label-white-ink-artwork-guide.html",
   "perfume-box-insert-checklist.html",
@@ -47,13 +48,14 @@ const priorityPages = [
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const requiredSiteStyleVersion = "20260811-1";
 const requiredSiteScriptVersion = "20260811-3";
-const requiredAnalyticsVersion = "20260813-2";
+const requiredAnalyticsVersion = "20260813-3";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
 const perfumeInsertTemplatePath = path.join(root, "assets", "templates", "perfume-box-insert-rfq-template.csv");
 const clearLabelTrialTemplatePath = path.join(root, "assets", "templates", "clear-label-artwork-trial-template.csv");
 const waterproofLabelTestTemplatePath = path.join(root, "assets", "templates", "waterproof-label-test-matrix-template.csv");
+const packagingRfqTemplatePath = path.join(root, "assets", "templates", "custom-packaging-rfq-template.csv");
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";
@@ -128,6 +130,16 @@ if (!fs.existsSync(waterproofLabelTestTemplatePath)) {
   const requiredTemplateFields = ["record_id", "label_sku", "construction_revision", "substrate_sku", "substrate_material", "application_temperature_c", "application_pressure_control", "dwell_before_exposure_h", "exposure_sequence_id", "exposure_medium", "exposure_temperature_c", "exposure_duration", "exposure_cycles", "rub_medium", "rub_load_or_method", "rub_cycles", "inspection_checkpoint", "edge_lift_limit", "print_change_limit", "adhesion_acceptance", "barcode_data_and_grade_owner", "reference_sample_id", "result", "disposition", "record_status"];
   requiredTemplateFields.forEach((field) => {
     if (!templateHeader.includes(field)) errors.push(`Waterproof label test matrix CSV template is missing ${field}`);
+  });
+}
+
+if (!fs.existsSync(packagingRfqTemplatePath)) {
+  errors.push("Custom packaging RFQ CSV template is missing");
+} else {
+  const templateHeader = fs.readFileSync(packagingRfqTemplatePath, "utf8").split(/\r?\n/, 1)[0].split(",");
+  const requiredTemplateFields = ["rfq_id", "rfq_revision", "configuration_id", "dimension_basis", "artwork_version", "order_quantity", "sample_requirement", "units_per_master_carton", "incoterm_rule", "named_place", "supplier_quote_revision", "unit_price", "tooling_and_one_time_charges", "freight_included", "lead_time_basis", "exclusions_and_assumptions", "deviation_log", "response_status"];
+  requiredTemplateFields.forEach((field) => {
+    if (!templateHeader.includes(field)) errors.push(`Custom packaging RFQ CSV template is missing ${field}`);
   });
 }
 
@@ -550,6 +562,7 @@ if (!fs.existsSync(llmsPath)) {
   const requiredLlmsSignals = [
     [`${siteOrigin}/products.html`, "product catalog"],
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
+    [`${siteOrigin}/custom-packaging-rfq-template.html`, "custom packaging RFQ template"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
     [`${siteOrigin}/waterproof-label-testing-guide.html`, "waterproof label testing guide"],
     [`${siteOrigin}/clear-label-white-ink-artwork-guide.html`, "clear label white ink artwork guide"],
