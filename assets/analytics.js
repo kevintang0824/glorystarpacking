@@ -242,4 +242,8 @@
   document.querySelector("#packaging-rfq-coverage-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "custom_packaging_rfq_coverage" });
   });
+
+  document.querySelector("#packaging-inspection-coverage-planner")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "custom_packaging_inspection_record_coverage" });
+  });
 })();

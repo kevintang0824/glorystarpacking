@@ -15,6 +15,7 @@ const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const priorityPages = [
+  "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
   "waterproof-label-testing-guide.html",
   "clear-label-white-ink-artwork-guide.html",
@@ -48,7 +49,7 @@ const priorityPages = [
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const requiredSiteStyleVersion = "20260811-1";
 const requiredSiteScriptVersion = "20260811-3";
-const requiredAnalyticsVersion = "20260813-3";
+const requiredAnalyticsVersion = "20260813-4";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
@@ -56,6 +57,7 @@ const perfumeInsertTemplatePath = path.join(root, "assets", "templates", "perfum
 const clearLabelTrialTemplatePath = path.join(root, "assets", "templates", "clear-label-artwork-trial-template.csv");
 const waterproofLabelTestTemplatePath = path.join(root, "assets", "templates", "waterproof-label-test-matrix-template.csv");
 const packagingRfqTemplatePath = path.join(root, "assets", "templates", "custom-packaging-rfq-template.csv");
+const packagingInspectionTemplatePath = path.join(root, "assets", "templates", "custom-packaging-quality-inspection-template.csv");
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";
@@ -140,6 +142,16 @@ if (!fs.existsSync(packagingRfqTemplatePath)) {
   const requiredTemplateFields = ["rfq_id", "rfq_revision", "configuration_id", "dimension_basis", "artwork_version", "order_quantity", "sample_requirement", "units_per_master_carton", "incoterm_rule", "named_place", "supplier_quote_revision", "unit_price", "tooling_and_one_time_charges", "freight_included", "lead_time_basis", "exclusions_and_assumptions", "deviation_log", "response_status"];
   requiredTemplateFields.forEach((field) => {
     if (!templateHeader.includes(field)) errors.push(`Custom packaging RFQ CSV template is missing ${field}`);
+  });
+}
+
+if (!fs.existsSync(packagingInspectionTemplatePath)) {
+  errors.push("Custom packaging quality inspection CSV template is missing");
+} else {
+  const templateHeader = fs.readFileSync(packagingInspectionTemplatePath, "utf8").split(/\r?\n/, 1)[0].split(",");
+  const requiredTemplateFields = ["inspection_id", "inspection_revision", "factory_site", "configuration_id", "specification_revision", "approved_sample_id", "production_lot_id", "lot_definition", "inspection_stage", "sampling_plan_owner", "sampling_standard_and_revision", "sample_size", "acceptance_rejection_rule", "random_selection_method", "characteristic_id", "requirement_or_tolerance", "observed_value", "defect_code", "defect_classification_owner", "photo_or_evidence_reference", "lot_decision", "shipment_hold_status", "containment_action", "corrective_action_owner", "reinspection_plan_reference", "concession_reference", "release_authority", "record_status"];
+  requiredTemplateFields.forEach((field) => {
+    if (!templateHeader.includes(field)) errors.push(`Custom packaging quality inspection CSV template is missing ${field}`);
   });
 }
 
@@ -562,6 +574,7 @@ if (!fs.existsSync(llmsPath)) {
   const requiredLlmsSignals = [
     [`${siteOrigin}/products.html`, "product catalog"],
     [`${siteOrigin}/custom-rigid-boxes.html`, "rigid-box specification page"],
+    [`${siteOrigin}/custom-packaging-quality-inspection-checklist.html`, "custom packaging quality inspection checklist"],
     [`${siteOrigin}/custom-packaging-rfq-template.html`, "custom packaging RFQ template"],
     [`${siteOrigin}/custom-packaging-inserts.html`, "packaging-insert specification page"],
     [`${siteOrigin}/waterproof-label-testing-guide.html`, "waterproof label testing guide"],
