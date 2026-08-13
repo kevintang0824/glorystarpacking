@@ -234,4 +234,8 @@
   document.querySelector("#clear-label-trial-form")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "clear_label_applied_trial_matrix" });
   });
+
+  document.querySelector("#waterproof-label-test-form")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "waterproof_label_test_matrix" });
+  });
 })();
