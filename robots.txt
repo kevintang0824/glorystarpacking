@@ -7,3 +7,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://glorystarpacking.com/sitemap.xml
+Sitemap: https://glorystarpacking.com/feed.xml

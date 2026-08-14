@@ -16,6 +16,7 @@ Contact: kevin@GloryStarPack.com
 - [Industries](https://glorystarpacking.com/industries.html): Packaging considerations by product and sales context.
 - [Factory and quality workflow](https://glorystarpacking.com/about.html): Dieline, sample, production control, packing, and delivery workflow.
 - [Buyer guides](https://glorystarpacking.com/blog.html): Packaging procurement, sampling, finishing, sustainability, and logistics guidance.
+- [Buyer-guide RSS feed](https://glorystarpacking.com/feed.xml): Machine-readable updates for newly published packaging procurement and specification guides.
 
 ## Product and specification pages
 

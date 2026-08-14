@@ -157,9 +157,8 @@
     };
   };
 
-  const buildMailto = (payload) => {
-    const subject = `Packaging quote request — ${payload.product || "Custom project"}`;
-    const body = [
+  const buildProjectBrief = (payload, includeAttribution = true) => {
+    const lines = [
       `Name: ${payload.name || ""}`,
       `Email: ${payload.email || ""}`,
       `Phone / WhatsApp: ${payload.phone || "Not provided"}`,
@@ -168,19 +167,100 @@
       `Dimensions: ${payload.dimensions || "Not provided"}`,
       `Delivery country / region: ${payload.country || ""}`,
       `Target in-hand date: ${payload.targetDate || "Flexible / not provided"}`,
-      `Landing page: ${payload.landingPage || "Not provided"}`,
-      `Referrer: ${payload.referrer || "Direct / not provided"}`,
-      `Discovery channel: ${payload.discoveryChannel || "Not provided"}`,
-      `Discovery source: ${payload.discoverySource || "Not provided"}`,
-      `Campaign: ${[payload.utmSource, payload.utmMedium, payload.utmCampaign].filter(Boolean).join(" / ") || "Not provided"}`,
       "",
       "Project details:",
       payload.details || "Not provided",
+    ];
+
+    if (includeAttribution) {
+      lines.splice(8, 0,
+        `Landing page: ${payload.landingPage || "Not provided"}`,
+        `Referrer: ${payload.referrer || "Direct / not provided"}`,
+        `Discovery channel: ${payload.discoveryChannel || "Not provided"}`,
+        `Discovery source: ${payload.discoverySource || "Not provided"}`,
+        `Campaign: ${[payload.utmSource, payload.utmMedium, payload.utmCampaign].filter(Boolean).join(" / ") || "Not provided"}`
+      );
+    }
+
+    return lines.join("\n");
+  };
+
+  const buildMailto = (payload) => {
+    const subject = `Packaging quote request — ${payload.product || "Custom project"}`;
+    const body = [
+      buildProjectBrief(payload),
       "",
       "Please attach any artwork directly to this email before sending.",
     ].join("\n");
 
     return `mailto:kevin@GloryStarPack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const buildWhatsApp = (payload) => {
+    const message = [
+      "Hello Kevin, I would like a packaging quote.",
+      "",
+      buildProjectBrief(payload, false),
+    ].join("\n");
+    return `https://wa.me/8618020755949?text=${encodeURIComponent(message)}`;
+  };
+
+  const renderDeliveryFallback = (status, payload) => {
+    if (!status) return;
+
+    const copy = document.createElement("span");
+    copy.className = "form-fallback-copy";
+    copy.textContent = "Online delivery is temporarily unavailable. Your form is still filled in—choose another way to send the same brief.";
+
+    const actions = document.createElement("span");
+    actions.className = "form-fallback-actions";
+
+    const emailLink = document.createElement("a");
+    emailLink.className = "button button--small";
+    emailLink.href = buildMailto(payload);
+    emailLink.textContent = "Continue by email";
+    emailLink.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("glorystarpack:quote-fallback-action", { detail: { method: "email" } }));
+    });
+
+    const whatsappLink = document.createElement("a");
+    whatsappLink.className = "button button--small";
+    whatsappLink.href = buildWhatsApp(payload);
+    whatsappLink.target = "_blank";
+    whatsappLink.rel = "noopener";
+    whatsappLink.textContent = "Send by WhatsApp";
+    whatsappLink.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("glorystarpack:quote-fallback-action", { detail: { method: "whatsapp" } }));
+    });
+
+    const copyButton = document.createElement("button");
+    copyButton.className = "button button--small button--ghost";
+    copyButton.type = "button";
+    copyButton.textContent = "Copy project brief";
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(buildProjectBrief(payload));
+        copyButton.textContent = "Brief copied";
+        document.dispatchEvent(new CustomEvent("glorystarpack:quote-fallback-action", { detail: { method: "copy" } }));
+      } catch {
+        copyButton.textContent = "Copy unavailable";
+      }
+    });
+
+    actions.append(emailLink, whatsappLink, copyButton);
+    status.replaceChildren(copy, actions);
+
+    if (payload.attachment) {
+      const note = document.createElement("small");
+      note.className = "form-fallback-note";
+      note.textContent = "For privacy, browsers cannot transfer the selected attachment to Email or WhatsApp automatically. Add it again before sending.";
+      status.append(note);
+    }
+
+    status.dataset.state = "fallback";
+    document.dispatchEvent(new CustomEvent("glorystarpack:quote-email-fallback", {
+      detail: { hasAttachment: Boolean(payload.attachment) },
+    }));
   };
 
   document.querySelectorAll(".quote-form").forEach((form) => {
@@ -229,12 +309,7 @@
         if (!response.ok) {
           const result = await response.json().catch(() => ({}));
           if (response.status >= 500 || response.status === 404) {
-            document.dispatchEvent(new CustomEvent("glorystarpack:quote-email-fallback"));
-            window.location.href = buildMailto(payload);
-            if (status) {
-              status.textContent = "Your email app has been opened. Attach artwork there, then send.";
-              status.dataset.state = "success";
-            }
+            renderDeliveryFallback(status, payload);
             return;
           }
           throw new Error(result.error || "Please review the form and try again.");

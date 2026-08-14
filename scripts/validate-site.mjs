@@ -47,9 +47,9 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260811-1";
-const requiredSiteScriptVersion = "20260811-3";
-const requiredAnalyticsVersion = "20260813-4";
+const requiredSiteStyleVersion = "20260814-1";
+const requiredSiteScriptVersion = "20260814-1";
+const requiredAnalyticsVersion = "20260814-1";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
@@ -493,6 +493,35 @@ if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
       errors.push(`blog.html: Blog schema URL has no matching Article page ${url}`);
     }
   }
+
+  const feedPath = path.join(root, "feed.xml");
+  const feedGeneratorPath = path.join(root, "scripts", "generate-feed.mjs");
+  if (!fs.existsSync(feedPath)) {
+    errors.push("feed.xml is missing");
+  } else {
+    const feed = fs.readFileSync(feedPath, "utf8");
+    const feedUrls = values(feed, /<guid\s+isPermaLink="true">([^<]+)<\/guid>/gi);
+    const feedUrlSet = new Set(feedUrls);
+    if (!feed.includes(`<atom:link href="${siteOrigin}/feed.xml" rel="self" type="application/rss+xml"/>`)) {
+      errors.push("feed.xml: canonical self link is missing");
+    }
+    if (feedUrls.length !== blogPostsByUrl.size || feedUrlSet.size !== feedUrls.length) {
+      errors.push(`feed.xml: expected ${blogPostsByUrl.size} unique guide entries, found ${feedUrlSet.size}`);
+    }
+    for (const url of blogPostsByUrl.keys()) {
+      if (!feedUrlSet.has(url)) errors.push(`feed.xml: missing guide ${url}`);
+    }
+  }
+  if (!fs.existsSync(feedGeneratorPath)) {
+    errors.push("RSS feed generator is missing");
+  }
+
+  for (const feedDiscoveryPage of ["index.html", "blog.html"]) {
+    const pageHtml = readPage(feedDiscoveryPage)?.html || "";
+    if (!pageHtml.includes(`<link rel="alternate" type="application/rss+xml" title="GloryStarPack Buyer Guides" href="${siteOrigin}/feed.xml">`)) {
+      errors.push(`${feedDiscoveryPage}: RSS discovery link is missing`);
+    }
+  }
 }
 
 const sitemapPath = path.join(root, "sitemap.xml");
@@ -529,6 +558,22 @@ for (const targetFile of priorityPages) {
   }
 }
 
+const analyticsAssetPath = path.join(root, "assets", "analytics.js");
+if (!fs.existsSync(analyticsAssetPath)) {
+  errors.push("assets/analytics.js is missing");
+} else {
+  const analyticsAsset = fs.readFileSync(analyticsAssetPath, "utf8");
+  const requiredAnalyticsSignals = [
+    ['googletagmanager.com/gtag/js', "Google Analytics loader"],
+    ['/_vercel/insights/script.js', "Vercel Web Analytics loader"],
+    ['getConsent() !== consentGranted', "consent gate"],
+    ['quote_fallback_action', "fallback-action conversion event"],
+  ];
+  requiredAnalyticsSignals.forEach(([signal, label]) => {
+    if (!analyticsAsset.includes(signal)) errors.push(`assets/analytics.js: missing ${label}`);
+  });
+}
+
 const quoteApiPath = path.join(root, "api", "quote.js");
 if (!fs.existsSync(quoteApiPath)) {
   errors.push("api/quote.js is missing");
@@ -551,6 +596,23 @@ if (!fs.existsSync(quoteApiPath)) {
   });
 }
 
+const healthApiPath = path.join(root, "api", "health.js");
+if (!fs.existsSync(healthApiPath)) {
+  errors.push("api/health.js is missing");
+} else {
+  const healthApi = fs.readFileSync(healthApiPath, "utf8");
+  const requiredHealthSignals = [
+    ['process.env.RESEND_API_KEY', "Resend configuration check"],
+    ['process.env.QUOTE_FROM_EMAIL', "sender configuration check"],
+    ['process.env.QUOTE_TO_EMAIL', "recipient configuration check"],
+    ['"Cache-Control", "no-store"', "no-store response header"],
+    ['quoteEmail', "quote-email service status"],
+  ];
+  requiredHealthSignals.forEach(([signal, label]) => {
+    if (!healthApi.includes(signal)) errors.push(`api/health.js: missing ${label}`);
+  });
+}
+
 const robotsPath = path.join(root, "robots.txt");
 if (!fs.existsSync(robotsPath)) {
   errors.push("robots.txt is missing");
@@ -560,6 +622,7 @@ if (!fs.existsSync(robotsPath)) {
     ["User-agent: OAI-SearchBot", "OAI-SearchBot policy"],
     ["Disallow: /api/", "API crawl block"],
     [`Sitemap: ${siteOrigin}/sitemap.xml`, "sitemap declaration"],
+    [`Sitemap: ${siteOrigin}/feed.xml`, "RSS feed declaration"],
   ];
   requiredRobotsSignals.forEach(([signal, label]) => {
     if (!robots.includes(signal)) errors.push(`robots.txt: missing ${label}`);
@@ -601,6 +664,7 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/rigid-box-cost-drivers.html`, "rigid-box cost guide"],
     [`${siteOrigin}/magnetic-box-vs-drawer-box.html`, "magnetic-versus-drawer comparison guide"],
     [`${siteOrigin}/custom-packaging-cost-moq-guide.html`, "cost and MOQ guide"],
+    [`${siteOrigin}/feed.xml`, "buyer-guide RSS feed"],
     ["Minimum order quantity is project-specific", "MOQ factual boundary"],
     ["Certifications, test standards", "certification factual boundary"],
   ];
@@ -613,8 +677,22 @@ const indexNowKey = "22368291acb50c0fb4b3a1ab806495d4";
 const indexNowKeyPath = path.join(root, `${indexNowKey}.txt`);
 const indexNowScriptPath = path.join(root, "scripts", "submit-indexnow.mjs");
 const productionIndexAuditPath = path.join(root, "scripts", "audit-production-indexing.mjs");
+const productionServiceAuditPath = path.join(root, "scripts", "audit-production-services.mjs");
 if (!fs.existsSync(indexNowKeyPath) || fs.readFileSync(indexNowKeyPath, "utf8").trim() !== indexNowKey) {
   errors.push("IndexNow: root verification key file is missing or inconsistent");
+}
+if (!fs.existsSync(productionServiceAuditPath)) {
+  errors.push("Production service audit script is missing");
+} else {
+  const productionServiceAudit = fs.readFileSync(productionServiceAuditPath, "utf8");
+  const requiredProductionServiceSignals = [
+    ["/api/health", "health endpoint"],
+    ["quoteEmail", "quote-email service check"],
+    ["no-store", "cache-safety check"],
+  ];
+  requiredProductionServiceSignals.forEach(([signal, label]) => {
+    if (!productionServiceAudit.includes(signal)) errors.push(`Production service audit is missing ${label}`);
+  });
 }
 if (!fs.existsSync(indexNowScriptPath)) {
   errors.push("IndexNow: submission script is missing");
@@ -689,8 +767,10 @@ if (!fs.existsSync(vercelConfigPath)) {
       Array.isArray(entry.headers) &&
       entry.headers.some((header) => header.key === "X-Robots-Tag" && header.value.includes("noindex")));
     const indexNowKeyHeader = headers.some((entry) => entry.source === `/${indexNowKey}.txt`);
+    const feedHeader = headers.some((entry) => entry.source === "/feed.xml");
     if (!apiNoindex) errors.push("vercel.json: API routes need an X-Robots-Tag noindex header");
     if (!indexNowKeyHeader) errors.push("vercel.json: IndexNow key file cache header is missing");
+    if (!feedHeader) errors.push("vercel.json: feed.xml cache header is missing");
   } catch (error) {
     errors.push(`vercel.json is invalid (${error.message})`);
   }

@@ -7,6 +7,7 @@
   const consentGranted = "granted";
   const consentDenied = "denied";
   let googleTagLoaded = false;
+  let vercelAnalyticsLoaded = false;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag() {
@@ -67,6 +68,22 @@
     });
   };
 
+  const loadVercelAnalytics = () => {
+    if (vercelAnalyticsLoaded) return;
+    vercelAnalyticsLoaded = true;
+
+    window.va = window.va || function va() {
+      window.vaq = window.vaq || [];
+      window.vaq.push(arguments);
+    };
+
+    const tag = document.createElement("script");
+    tag.defer = true;
+    tag.src = "/_vercel/insights/script.js";
+    tag.dataset.vercelAnalytics = "true";
+    document.head.append(tag);
+  };
+
   const grantAnalytics = () => {
     saveConsent(consentGranted);
     window.gtag("consent", "update", {
@@ -76,6 +93,7 @@
       ad_personalization: consentDenied,
     });
     loadGoogleTag();
+    loadVercelAnalytics();
     document.dispatchEvent(new CustomEvent("glorystarpack:analytics-consent", { detail: { choice: consentGranted } }));
   };
 
@@ -113,7 +131,7 @@
     panel.innerHTML = `
       <div class="analytics-consent__copy">
         <strong>Help us improve this website?</strong>
-        <p>With your permission, we use Google Analytics to understand page visits and inquiry actions. We do not send your name, email, phone number, message, or uploaded files to Analytics. <a href="privacy.html#cookies-and-analytics">Privacy details</a></p>
+        <p>With your permission, we use Google Analytics and Vercel Web Analytics to understand page visits and inquiry actions. We do not send your name, email, phone number, message, or uploaded files to Analytics. <a href="privacy.html#cookies-and-analytics">Privacy details</a></p>
       </div>
       <div class="analytics-consent__actions">
         <button class="button button--ghost button--small" type="button" data-analytics-deny>Decline</button>
@@ -193,6 +211,13 @@
 
   document.addEventListener("glorystarpack:quote-email-fallback", () => {
     track("quote_email_fallback", { form_name: "packaging_quote" });
+  });
+
+  document.addEventListener("glorystarpack:quote-fallback-action", (event) => {
+    track("quote_fallback_action", {
+      form_name: "packaging_quote",
+      fallback_method: String(event.detail?.method || "unknown").slice(0, 24),
+    });
   });
 
   document.querySelector("#packaging-roi-calculator")?.addEventListener("submit", () => {

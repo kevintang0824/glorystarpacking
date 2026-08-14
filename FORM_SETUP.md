@@ -3,9 +3,9 @@
 The site's 26 quote forms use the same field contract and work in two modes:
 
 1. On Vercel, `/api/quote` sends the request through Resend.
-2. On a static host or before Resend is configured, the form opens a prefilled email to `kevin@GloryStarPack.com`.
+2. On a static host or before Resend is configured, the form preserves the completed brief and offers explicit Email, WhatsApp, and copy-to-clipboard actions.
 
-Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The fallback email includes both values so the purchasing brief remains complete even when the API is unavailable.
+Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The fallback Email and WhatsApp links include both values so the purchasing brief remains complete even when the API is unavailable. Browsers cannot transfer a selected attachment into another app, so the fallback explains that the visitor must add it again before sending.
 
 The frontend also retains first-visit attribution in session storage and includes the landing page, referrer, standard UTM fields, discovery channel, and discovery source with a submitted inquiry. Known ChatGPT, Perplexity, Copilot, Claude, Gemini, and You.com referrals are classified as `ai-search`; ordinary search, referral, campaign, and direct visits remain separate. This connects discovery to actual quote requests without enabling an advertising cookie. The privacy notice describes this behavior.
 
@@ -40,6 +40,8 @@ Accepted files are sent through Resend as email attachments. The 3 MB limit leav
 ## Test checklist
 
 Run `node scripts/test-quote-api.mjs` for the repeatable server-side regression checks, then complete the following real-delivery checks on a Vercel preview:
+
+Run `node scripts/test-service-health.mjs` for the health endpoint regression, and run `node scripts/audit-production-services.mjs` after deployment. The production audit exits non-zero until all three Resend environment variables are present.
 
 - Submit valid inquiries from the homepage, product catalog, one box page, and one label page.
 - Confirm a submission without an attachment succeeds.

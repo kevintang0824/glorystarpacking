@@ -1171,6 +1171,54 @@ button {
   color: #a53a28;
 }
 
+.form-status[data-state="fallback"] {
+  padding: 18px;
+  color: var(--ink);
+  background: #f3ead2;
+  border-left: 3px solid var(--register);
+}
+
+.form-fallback-copy,
+.form-fallback-note {
+  display: block;
+}
+
+.form-fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.form-fallback-actions .button {
+  min-height: 40px;
+  padding: 10px 13px;
+  color: #fff;
+  font-size: 0.66rem;
+}
+
+.form-fallback-actions .button--ghost {
+  color: var(--ink);
+  border-color: rgba(16, 16, 15, 0.32);
+}
+
+.form-fallback-note {
+  margin-top: 11px;
+  color: var(--graphite);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.section--ink .product-card__body h3 a,
+.section--dark .product-card__body h3 a {
+  color: var(--ink);
+}
+
+.section--ink .product-card__body > .text-link,
+.section--dark .product-card__body > .text-link {
+  color: var(--register);
+}
+
 .calculator-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.78fr) minmax(480px, 1.22fr);

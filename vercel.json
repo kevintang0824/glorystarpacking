@@ -82,6 +82,19 @@
       ]
     },
     {
+      "source": "/feed.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
       "source": "/22368291acb50c0fb4b3a1ab806495d4.txt",
       "headers": [
         {

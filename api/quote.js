@@ -102,6 +102,7 @@ module.exports = async function handler(request, response) {
 
   if (!apiKey || !fromEmail) {
     return response.status(503).json({
+      code: "EMAIL_NOT_CONFIGURED",
       error: "Email delivery is not configured.",
     });
   }

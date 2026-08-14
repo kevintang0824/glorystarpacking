@@ -4,9 +4,10 @@
 
 1. 运行 `./scripts/create-local-backup.sh`，在仓库外生成完整 Git bundle；
 2. 完成页面、SEO、GEO 与 AI 可发现性更新；
-3. 运行站点静态校验、Quote API 回归、JavaScript 语法检查和 IndexNow dry run；
+3. 运行站点静态校验、Quote API 与服务健康回归、JavaScript 语法检查和 IndexNow dry run；
 4. 直接提交并推送 GitHub `main`；
 5. 等待 Vercel 自动部署，检查正式域名、站点地图和改动页面；
+   - 运行 `node scripts/audit-production-services.mjs`，确认询盘邮件环境变量没有遗漏；
 6. 向 IndexNow 提交新增或更新 URL；
 7. 在 Google Search Console 重新提交站点地图，并为新增重点 URL 请求编入索引；
 8. 发布成功后再次运行 `./scripts/create-local-backup.sh`，保留已上线提交的完整恢复包。

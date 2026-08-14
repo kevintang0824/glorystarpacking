@@ -121,7 +121,13 @@ try {
   assert.equal(wrongMethod.statusCode, 405);
   assert.equal(wrongMethod.headers.get("allow"), "POST");
 
-  console.log("Quote API tests passed: valid request/PDF, attribution, required country, file allowlist, signature, Base64, no-store, and method guard.");
+  delete process.env.RESEND_API_KEY;
+  delete process.env.QUOTE_FROM_EMAIL;
+  const unconfigured = await invoke(validQuote);
+  assert.equal(unconfigured.statusCode, 503);
+  assert.equal(unconfigured.payload.code, "EMAIL_NOT_CONFIGURED");
+
+  console.log("Quote API tests passed: valid request/PDF, attribution, required country, file allowlist, signature, Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
   Object.entries(originalEnvironment).forEach(([name, value]) => {
