@@ -167,10 +167,12 @@ for (const file of htmlFiles) {
   const ogUrls = values(html, /<meta\s+property="og:url"\s+content="([^"]*)"/gi);
   const ogImages = values(html, /<meta\s+property="og:image"\s+content="([^"]*)"/gi);
   const twitterImages = values(html, /<meta\s+name="twitter:image"\s+content="([^"]*)"/gi);
+  const earlyEnhancementMarkers = html.match(/<script>document\.documentElement\.classList\.add\("js"\);<\/script>/g) || [];
 
   if (titles.length !== 1) errors.push(`${file}: expected 1 title, found ${titles.length}`);
   if (h1s.length !== 1) errors.push(`${file}: expected 1 H1, found ${h1s.length}`);
   if (descriptions.length !== 1) errors.push(`${file}: expected 1 meta description, found ${descriptions.length}`);
+  if (earlyEnhancementMarkers.length !== 1) errors.push(`${file}: expected one early JavaScript enhancement marker`);
   if (robotsDirectives.length !== 1) errors.push(`${file}: expected 1 robots meta tag, found ${robotsDirectives.length}`);
   const expectedRobotsDirective = isErrorPage ? "noindex,follow" : requiredRobotsDirective;
   if (robotsDirectives[0] && robotsDirectives[0] !== expectedRobotsDirective) {
