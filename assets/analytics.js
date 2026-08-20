@@ -8,6 +8,7 @@
   const consentDenied = "denied";
   let googleTagLoaded = false;
   let vercelAnalyticsLoaded = false;
+  let consentReturnFocus = null;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag() {
@@ -120,12 +121,15 @@
     });
   };
 
-  const closeConsentPanel = () => {
+  const closeConsentPanel = (restoreFocus = false) => {
     document.querySelector(".analytics-consent")?.remove();
+    if (restoreFocus && consentReturnFocus?.isConnected) consentReturnFocus.focus();
+    if (restoreFocus) consentReturnFocus = null;
   };
 
-  const showConsentPanel = (moveFocus = false) => {
+  const showConsentPanel = (moveFocus = false, returnFocusTarget = null) => {
     closeConsentPanel();
+    consentReturnFocus = returnFocusTarget;
     const panel = document.createElement("section");
     panel.className = "analytics-consent";
     panel.setAttribute("role", "region");
@@ -146,11 +150,11 @@
         window.location.reload();
         return;
       }
-      closeConsentPanel();
+      closeConsentPanel(true);
     });
     panel.querySelector("[data-analytics-allow]")?.addEventListener("click", () => {
       grantAnalytics();
-      closeConsentPanel();
+      closeConsentPanel(true);
     });
     document.body.append(panel);
     if (moveFocus) {
@@ -167,7 +171,7 @@
     document.querySelectorAll("[data-analytics-preferences]").forEach((control) => {
       control.addEventListener("click", (event) => {
         event.preventDefault();
-        showConsentPanel(true);
+        showConsentPanel(true, control);
       });
     });
   };

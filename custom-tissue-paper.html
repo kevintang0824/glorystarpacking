@@ -22,11 +22,12 @@
   <meta name="twitter:image:alt" content="Paper texture used as a material reference for custom tissue-paper development">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/cotton-paper-stock.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -552,17 +553,17 @@
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
-            <div class="field"><label for="tissue-paper-name">Full name</label><input id="tissue-paper-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="tissue-paper-email">Work email</label><input id="tissue-paper-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="tissue-paper-phone">Phone / WhatsApp</label><input id="tissue-paper-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="tissue-paper-name">Full name</label><input id="tissue-paper-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="field"><label for="tissue-paper-email">Work email</label><input id="tissue-paper-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+            <div class="field"><label for="tissue-paper-phone">Phone / WhatsApp</label><input id="tissue-paper-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
             <div class="field"><label for="tissue-paper-product">Tissue project</label><select id="tissue-paper-product" name="product" required><option value="custom-tissue-paper" selected>Custom printed tissue paper</option><option value="box-liner-tissue">Box liner tissue</option><option value="retail-wrap-tissue">Retail wrapping tissue</option><option value="interleaving-tissue">Interleaving tissue</option></select></div>
-            <div class="field"><label for="tissue-paper-quantity">Estimated quantity</label><input id="tissue-paper-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Total sheets and number of designs" required></div>
-            <div class="field"><label for="tissue-paper-dimensions">Flat sheet size</label><input id="tissue-paper-dimensions" name="dimensions" type="text" placeholder="Width × length, with unit" required></div>
-            <div class="field"><label for="tissue-paper-country">Delivery country / region</label><input id="tissue-paper-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="tissue-paper-target-date">Target in-hand date</label><input id="tissue-paper-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
-            <div class="field field--full"><label for="tissue-paper-details">Wrap, material, print, and pack-out details</label><textarea id="tissue-paper-details" name="details" placeholder="Product and inner pack dimensions; wrap, liner, top-fold or interleave method; basis-weight and opacity direction; base color; print colors, coverage and repeat; show-through or contact concerns; flat sheet and fold sequence; sheets per bundle and carton; box and bag color references; delivery country; and target date"></textarea></div>
+            <div class="field"><label for="tissue-paper-quantity">Estimated quantity</label><input id="tissue-paper-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Total sheets and number of designs" required maxlength="80"></div>
+            <div class="field"><label for="tissue-paper-dimensions">Flat sheet size</label><input id="tissue-paper-dimensions" name="dimensions" type="text" placeholder="Width × length, with unit" required maxlength="160"></div>
+            <div class="field"><label for="tissue-paper-country">Delivery country / region</label><input id="tissue-paper-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="tissue-paper-target-date">Target in-hand date</label><input id="tissue-paper-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
+            <div class="field field--full"><label for="tissue-paper-details">Wrap, material, print, and pack-out details</label><textarea id="tissue-paper-details" name="details" placeholder="Product and inner pack dimensions; wrap, liner, top-fold or interleave method; basis-weight and opacity direction; base color; print colors, coverage and repeat; show-through or contact concerns; flat sheet and fold sequence; sheets per bundle and carton; box and bag color references; delivery country; and target date" maxlength="3000"></textarea></div>
             <div class="field field--full"><label for="tissue-paper-file">Artwork or wrapping reference</label><input id="tissue-paper-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum</small></div>
-            <div class="form-trap" aria-hidden="true"><label for="tissue-paper-website">Website</label><input id="tissue-paper-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-trap" aria-hidden="true"><label for="tissue-paper-website">Website</label><input id="tissue-paper-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           </div>
           <div class="form-footer"><p class="form-note">Your details are used only to prepare and respond to this tissue-paper request. See our <a href="privacy.html">privacy notice</a>.</p><button class="button button--dark" type="submit">Request my tissue paper quote</button></div>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -584,7 +585,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Bags · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

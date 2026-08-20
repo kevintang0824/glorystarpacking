@@ -20,11 +20,12 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/black-jewelry-box.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/black-jewelry-box.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -494,9 +495,9 @@
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
-            <div class="field"><label for="jewelry-name">Full name</label><input id="jewelry-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="jewelry-email">Work email</label><input id="jewelry-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="jewelry-phone">Phone / WhatsApp</label><input id="jewelry-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="jewelry-name">Full name</label><input id="jewelry-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="field"><label for="jewelry-email">Work email</label><input id="jewelry-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+            <div class="field"><label for="jewelry-phone">Phone / WhatsApp</label><input id="jewelry-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
             <div class="field">
               <label for="jewelry-product">Jewelry box project</label>
               <select id="jewelry-product" name="product" required>
@@ -509,13 +510,13 @@
                 <option value="other-packaging">Other packaging project</option>
               </select>
             </div>
-            <div class="field"><label for="jewelry-quantity">Estimated quantity</label><input id="jewelry-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Quantity by SKU or size" required></div>
-            <div class="field"><label for="jewelry-dimensions">Item dimensions</label><input id="jewelry-dimensions" name="dimensions" type="text" placeholder="Maximum L × W × H, with unit" required></div>
-            <div class="field"><label for="jewelry-country">Delivery country / region</label><input id="jewelry-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="jewelry-target-date">Target in-hand date</label><input id="jewelry-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
-            <div class="field field--full"><label for="jewelry-details">Item, contact, insert, and shipping details</label><textarea id="jewelry-details" name="details" placeholder="Item type and weight, metal or finish, sensitive and no-contact areas, presentation orientation, insert and removal method, hinge or closure, branding, SKU family, destination, master-carton needs, and target date"></textarea></div>
+            <div class="field"><label for="jewelry-quantity">Estimated quantity</label><input id="jewelry-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Quantity by SKU or size" required maxlength="80"></div>
+            <div class="field"><label for="jewelry-dimensions">Item dimensions</label><input id="jewelry-dimensions" name="dimensions" type="text" placeholder="Maximum L × W × H, with unit" required maxlength="160"></div>
+            <div class="field"><label for="jewelry-country">Delivery country / region</label><input id="jewelry-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="jewelry-target-date">Target in-hand date</label><input id="jewelry-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
+            <div class="field field--full"><label for="jewelry-details">Item, contact, insert, and shipping details</label><textarea id="jewelry-details" name="details" placeholder="Item type and weight, metal or finish, sensitive and no-contact areas, presentation orientation, insert and removal method, hinge or closure, branding, SKU family, destination, master-carton needs, and target date" maxlength="3000"></textarea></div>
             <div class="field field--full"><label for="jewelry-file">Artwork, drawing, or reference</label><input id="jewelry-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum</small></div>
-            <div class="form-trap" aria-hidden="true"><label for="jewelry-website">Website</label><input id="jewelry-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-trap" aria-hidden="true"><label for="jewelry-website">Website</label><input id="jewelry-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           </div>
           <div class="form-footer"><p class="form-note">Your details are used only to prepare and respond to this packaging request. See our <a href="privacy.html">privacy notice</a>.</p><button class="button button--dark" type="submit">Request my jewelry box quote</button></div>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -540,7 +541,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Jewelry boxes · Inserts · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

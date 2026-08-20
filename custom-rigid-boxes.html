@@ -20,11 +20,12 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/watch-display-box.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/watch-display-box.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -488,15 +489,15 @@
           <div class="form-grid">
             <div class="field">
               <label for="rigid-name">Full name</label>
-              <input id="rigid-name" name="name" type="text" autocomplete="name" required>
+              <input id="rigid-name" name="name" type="text" autocomplete="name" required maxlength="120">
             </div>
             <div class="field">
               <label for="rigid-email">Work email</label>
-              <input id="rigid-email" name="email" type="email" autocomplete="email" required>
+              <input id="rigid-email" name="email" type="email" autocomplete="email" required maxlength="180">
             </div>
             <div class="field">
               <label for="rigid-phone">Phone / WhatsApp</label>
-              <input id="rigid-phone" name="phone" type="tel" autocomplete="tel">
+              <input id="rigid-phone" name="phone" type="tel" autocomplete="tel" maxlength="80">
             </div>
             <div class="field">
               <label for="rigid-product">Rigid box structure</label>
@@ -512,17 +513,17 @@
             </div>
             <div class="field">
               <label for="rigid-quantity">Estimated quantity</label>
-              <input id="rigid-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required>
+              <input id="rigid-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required maxlength="80">
             </div>
             <div class="field">
               <label for="rigid-dimensions">Product or box size</label>
-              <input id="rigid-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit">
+              <input id="rigid-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit" maxlength="160">
             </div>
-            <div class="field"><label for="rigid-country">Delivery country / region</label><input id="rigid-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="rigid-target-date">Target in-hand date</label><input id="rigid-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
+            <div class="field"><label for="rigid-country">Delivery country / region</label><input id="rigid-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="rigid-target-date">Target in-hand date</label><input id="rigid-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
             <div class="field field--full">
               <label for="rigid-details">Project details</label>
-              <textarea id="rigid-details" name="details" placeholder="Product weight, preferred structure, insert, finish, delivery country, and target date"></textarea>
+              <textarea id="rigid-details" name="details" placeholder="Product weight, preferred structure, insert, finish, delivery country, and target date" maxlength="3000"></textarea>
             </div>
             <div class="field field--full">
               <label for="rigid-file">Artwork or reference</label>
@@ -531,7 +532,7 @@
             </div>
             <div class="form-trap" aria-hidden="true">
               <label for="rigid-website">Website</label>
-              <input id="rigid-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              <input id="rigid-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100">
             </div>
           </div>
           <div class="form-footer">
@@ -594,7 +595,7 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

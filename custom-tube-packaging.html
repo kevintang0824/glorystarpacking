@@ -20,11 +20,12 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/eco-tube-packaging.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/eco-tube-packaging.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -524,9 +525,9 @@
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
-            <div class="field"><label for="tube-name">Full name</label><input id="tube-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="tube-email">Work email</label><input id="tube-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="tube-phone">Phone / WhatsApp</label><input id="tube-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="tube-name">Full name</label><input id="tube-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="field"><label for="tube-email">Work email</label><input id="tube-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+            <div class="field"><label for="tube-phone">Phone / WhatsApp</label><input id="tube-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
             <div class="field">
               <label for="tube-product">Tube packaging project</label>
               <select id="tube-product" name="product" required>
@@ -538,13 +539,13 @@
                 <option value="other-packaging">Other packaging project</option>
               </select>
             </div>
-            <div class="field"><label for="tube-quantity">Estimated quantity</label><input id="tube-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Quantity by size or design" required></div>
-            <div class="field"><label for="tube-dimensions">Product or tube size</label><input id="tube-dimensions" name="dimensions" type="text" placeholder="Product max size or internal Ø × H" required></div>
-            <div class="field"><label for="tube-country">Delivery country / region</label><input id="tube-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="tube-target-date">Target in-hand date</label><input id="tube-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
-            <div class="field field--full"><label for="tube-details">Structure, removal, artwork, and carton details</label><textarea id="tube-details" name="details" placeholder="Product weight and loading direction, internal diameter and usable height, telescopic or one-piece style, wall and edge preference, lid or end, insert or lift method, wrap and finish, product-contact requirements, destination, master-carton limits, and target date"></textarea></div>
+            <div class="field"><label for="tube-quantity">Estimated quantity</label><input id="tube-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Quantity by size or design" required maxlength="80"></div>
+            <div class="field"><label for="tube-dimensions">Product or tube size</label><input id="tube-dimensions" name="dimensions" type="text" placeholder="Product max size or internal Ø × H" required maxlength="160"></div>
+            <div class="field"><label for="tube-country">Delivery country / region</label><input id="tube-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="tube-target-date">Target in-hand date</label><input id="tube-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
+            <div class="field field--full"><label for="tube-details">Structure, removal, artwork, and carton details</label><textarea id="tube-details" name="details" placeholder="Product weight and loading direction, internal diameter and usable height, telescopic or one-piece style, wall and edge preference, lid or end, insert or lift method, wrap and finish, product-contact requirements, destination, master-carton limits, and target date" maxlength="3000"></textarea></div>
             <div class="field field--full"><label for="tube-file">Artwork, drawing, or reference</label><input id="tube-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum</small></div>
-            <div class="form-trap" aria-hidden="true"><label for="tube-website">Website</label><input id="tube-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-trap" aria-hidden="true"><label for="tube-website">Website</label><input id="tube-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           </div>
           <div class="form-footer"><p class="form-note">Your details are used only to prepare and respond to this packaging request. See our <a href="privacy.html">privacy notice</a>.</p><button class="button button--dark" type="submit">Request my tube packaging quote</button></div>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -569,7 +570,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Paper tubes · Inserts · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

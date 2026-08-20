@@ -16,7 +16,9 @@ process.env.QUOTE_FROM_EMAIL = "Website <quotes@example.com>";
 process.env.QUOTE_TO_EMAIL = "sales@example.com";
 
 let lastEmailRequest;
+let lastEmailOptions;
 globalThis.fetch = async (_url, options = {}) => {
+  lastEmailOptions = options;
   lastEmailRequest = JSON.parse(options.body || "{}");
   return {
     ok: true,
@@ -78,6 +80,9 @@ try {
   assert.match(lastEmailRequest.text, /Discovery channel: ai-search/);
   assert.match(lastEmailRequest.text, /Discovery source: ChatGPT/);
   assert.match(lastEmailRequest.text, /Landing page: \/custom-wine-boxes\.html/);
+  assert.equal(lastEmailOptions.signal instanceof AbortSignal, true);
+  const validIdempotencyKey = lastEmailOptions.headers["Idempotency-Key"];
+  assert.match(validIdempotencyKey, /^quote-[a-f0-9]{64}$/);
 
   const nativeForm = await invoke(
     new URLSearchParams({ ...validQuote, attachment: "reference.pdf" }).toString(),
@@ -89,6 +94,7 @@ try {
   assert.equal(lastEmailRequest.attachments, undefined);
   assert.equal(nativeForm.headers.get("content-type"), "text/html; charset=utf-8");
   assert.match(nativeForm.body, /Quote request received/);
+  assert.equal(lastEmailOptions.headers["Idempotency-Key"], validIdempotencyKey);
 
   const malformedJson = await invoke("{not-json", "POST", { "content-type": "application/json" });
   assert.equal(malformedJson.statusCode, 400);
@@ -105,6 +111,7 @@ try {
     },
   });
   assert.equal(validPdf.statusCode, 200);
+  assert.notEqual(lastEmailOptions.headers["Idempotency-Key"], validIdempotencyKey);
 
   const unsupported = await invoke({
     ...validQuote,
@@ -156,7 +163,7 @@ try {
   assert.match(nativeUnconfigured.body, /mailto:kevin@GloryStarPack\.com/);
   assert.match(nativeUnconfigured.body, /https:\/\/wa\.me\/8618020755949/);
 
-  console.log("Quote API tests passed: JSON/native form requests and result pages, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
+  console.log("Quote API tests passed: JSON/native form requests and result pages, bounded delivery, stable deduplication, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
   Object.entries(originalEnvironment).forEach(([name, value]) => {

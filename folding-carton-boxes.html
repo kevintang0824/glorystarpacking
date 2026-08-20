@@ -20,11 +20,12 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/cosmetic-packaging.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/cosmetic-packaging.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -464,9 +465,9 @@
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
-            <div class="field"><label for="carton-name">Full name</label><input id="carton-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="carton-email">Work email</label><input id="carton-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="carton-phone">Phone / WhatsApp</label><input id="carton-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="carton-name">Full name</label><input id="carton-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="field"><label for="carton-email">Work email</label><input id="carton-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+            <div class="field"><label for="carton-phone">Phone / WhatsApp</label><input id="carton-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
             <div class="field">
               <label for="carton-product">Carton construction</label>
               <select id="carton-product" name="product" required>
@@ -478,13 +479,13 @@
                 <option value="other">Other / not decided</option>
               </select>
             </div>
-            <div class="field"><label for="carton-quantity">Estimated quantity</label><input id="carton-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 5,000" required></div>
-            <div class="field"><label for="carton-dimensions">Product or carton size</label><input id="carton-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit" required></div>
-            <div class="field"><label for="carton-country">Delivery country / region</label><input id="carton-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="carton-target-date">Target in-hand date</label><input id="carton-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
-            <div class="field field--full"><label for="carton-details">Board, closure, and packing details</label><textarea id="carton-details" name="details" placeholder="Product weight, board or color direction, closure, print and finish, manual or machine packing, destination, and target date"></textarea></div>
+            <div class="field"><label for="carton-quantity">Estimated quantity</label><input id="carton-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 5,000" required maxlength="80"></div>
+            <div class="field"><label for="carton-dimensions">Product or carton size</label><input id="carton-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit" required maxlength="160"></div>
+            <div class="field"><label for="carton-country">Delivery country / region</label><input id="carton-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="carton-target-date">Target in-hand date</label><input id="carton-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
+            <div class="field field--full"><label for="carton-details">Board, closure, and packing details</label><textarea id="carton-details" name="details" placeholder="Product weight, board or color direction, closure, print and finish, manual or machine packing, destination, and target date" maxlength="3000"></textarea></div>
             <div class="field field--full"><label for="carton-file">Artwork, dieline, or product reference</label><input id="carton-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum</small></div>
-            <div class="form-trap" aria-hidden="true"><label for="carton-website">Website</label><input id="carton-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-trap" aria-hidden="true"><label for="carton-website">Website</label><input id="carton-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           </div>
           <div class="form-footer">
             <p class="form-note">Your details are used only to prepare and respond to this packaging request. See our <a href="privacy.html">privacy notice</a>.</p>
@@ -510,7 +511,7 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

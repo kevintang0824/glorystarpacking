@@ -1,5 +1,8 @@
+const { createHash } = require("node:crypto");
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_ATTACHMENT_BYTES = 3 * 1024 * 1024;
+const RESEND_TIMEOUT_MS = 10000;
 const ATTACHMENT_RULES = {
   "application/pdf": {
     extensions: [".pdf"],
@@ -192,6 +195,11 @@ module.exports = async function handler(request, response) {
     ];
   }
 
+  const submissionFingerprint = createHash("sha256")
+    .update(JSON.stringify({ quote, attachment: message.attachments?.[0] || null }))
+    .digest("hex");
+  const resendController = new AbortController();
+  const resendTimeout = setTimeout(() => resendController.abort(), RESEND_TIMEOUT_MS);
   let resendResponse;
   try {
     resendResponse = await fetch("https://api.resend.com/emails", {
@@ -199,12 +207,15 @@ module.exports = async function handler(request, response) {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        "Idempotency-Key": `quote-${crypto.randomUUID()}`,
+        "Idempotency-Key": `quote-${submissionFingerprint}`,
       },
       body: JSON.stringify(message),
+      signal: resendController.signal,
     });
   } catch {
     return respond(response, nativeFormRequest, 502, { error: "Email delivery is temporarily unavailable." });
+  } finally {
+    clearTimeout(resendTimeout);
   }
 
   if (!resendResponse.ok) {

@@ -20,11 +20,12 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/luxury-packaging-set.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/luxury-packaging-set.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -260,17 +261,17 @@
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
-            <div class="field"><label for="industry-name">Full name</label><input id="industry-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="industry-email">Work email</label><input id="industry-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="industry-phone">Phone / WhatsApp</label><input id="industry-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="industry-name">Full name</label><input id="industry-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="field"><label for="industry-email">Work email</label><input id="industry-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+            <div class="field"><label for="industry-phone">Phone / WhatsApp</label><input id="industry-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
             <div class="field"><label for="industry-product">Industry / application</label><select id="industry-product" name="product" required><option value="">Select an application</option><option value="cosmetic-packaging">Cosmetics &amp; skincare</option><option value="custom-perfume-boxes">Perfume packaging</option><option value="jewelry-packaging">Jewelry &amp; watches</option><option value="ecommerce-packaging">Ecommerce &amp; subscription</option><option value="custom-wine-boxes">Wine &amp; spirits boxes</option><option value="wine-labels">Wine &amp; spirits labels</option><option value="corporate-gifting">Corporate gifting</option><option value="other">Other</option></select></div>
-            <div class="field"><label for="industry-quantity">Estimated quantity</label><input id="industry-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required></div>
-            <div class="field"><label for="industry-dimensions">Product or box size</label><input id="industry-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit"></div>
-            <div class="field"><label for="industry-country">Delivery country / region</label><input id="industry-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="industry-target-date">Target in-hand date</label><input id="industry-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
-            <div class="field field--full"><label for="industry-details">Product and route</label><textarea id="industry-details" name="details" placeholder="What is being packed, sales channel, shipping destination, risks, preferred structure, and target date"></textarea></div>
+            <div class="field"><label for="industry-quantity">Estimated quantity</label><input id="industry-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required maxlength="80"></div>
+            <div class="field"><label for="industry-dimensions">Product or box size</label><input id="industry-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit" maxlength="160"></div>
+            <div class="field"><label for="industry-country">Delivery country / region</label><input id="industry-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="industry-target-date">Target in-hand date</label><input id="industry-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
+            <div class="field field--full"><label for="industry-details">Product and route</label><textarea id="industry-details" name="details" placeholder="What is being packed, sales channel, shipping destination, risks, preferred structure, and target date" maxlength="3000"></textarea></div>
             <div class="field field--full"><label for="industry-file">Reference artwork</label><input id="industry-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum</small></div>
-            <div class="form-trap" aria-hidden="true"><label for="industry-website">Website</label><input id="industry-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-trap" aria-hidden="true"><label for="industry-website">Website</label><input id="industry-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           </div>
           <div class="form-footer"><p class="form-note">Your details are used only to prepare and respond to this packaging request. See our <a href="privacy.html">privacy notice</a>.</p><button class="button button--dark" type="submit">Request an industry quote</button></div>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -292,7 +293,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

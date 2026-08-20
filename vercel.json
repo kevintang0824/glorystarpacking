@@ -146,7 +146,7 @@
         },
         {
           "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
+          "value": "accelerometer=(), bluetooth=(), browsing-topics=(), camera=(), geolocation=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), payment=(), serial=(), usb=()"
         },
         {
           "key": "X-Content-Type-Options",
@@ -155,6 +155,22 @@
         {
           "key": "X-Frame-Options",
           "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "X-DNS-Prefetch-Control",
+          "value": "off"
+        },
+        {
+          "key": "X-Permitted-Cross-Domain-Policies",
+          "value": "none"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-WZRJfWvsnNCPcxzZwvyhovnZGqhZaC+8gPGPRbx6wTk=' 'sha256-viLahDxqGTlYuNRO+z6OzT51Mbj1mNiU2TGTq3fTRgE=' 'sha256-N6UJimrpTc4k6soOXyMRNUpczBdrNH6GwUgbrbuxz8Y=' 'sha256-7pbn79KeVUag9QBQeJsocIt/tEaRdLjHPwYJG2aBLHE=' 'sha256-gcBWIsmdPAzFmjXqneOAoqey0J5I+3GlDm3IL+7blLE=' 'sha256-z8dKEM25nAIszCanUnSoAzWrg0XwKNmpuWsEqJBUcVE=' 'sha256-77A/tjY/ZKJ3vi4NbawxMQ0XA2PwUpmMFPxL1O/7hOY=' 'sha256-kSE8DOy8j5O0vrSxOA4hYHvCvzti4HJoWkh1viGVluA=' 'sha256-4Ff50/ovw4xMmgaDE/w7SiggV/ZC+smOcf9BqGQpGpo='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com; manifest-src 'self'; upgrade-insecure-requests"
         }
       ]
     }

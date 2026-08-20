@@ -4,7 +4,19 @@
   const header = document.querySelector(".site-header");
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".site-nav");
-  const mobileNavigation = window.matchMedia("(max-width: 780px)");
+  const mobileNavigation = window.matchMedia("(max-width: 900px)");
+  const navigationBackground = () => [
+    document.querySelector(".topline"),
+    document.querySelector("main"),
+    document.querySelector(".floating-contact"),
+    document.querySelector("footer"),
+    document.querySelector(".analytics-consent"),
+  ].filter(Boolean);
+
+  const navigationFocusables = () => [
+    navToggle,
+    ...nav.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+  ].filter((element) => element && !element.hasAttribute("disabled"));
 
   const setNavOpen = (open, returnFocus = false) => {
     if (!navToggle || !nav) return;
@@ -14,9 +26,11 @@
     nav.classList.toggle("is-open", shouldOpen);
     document.body.classList.toggle("nav-open", shouldOpen);
     nav.toggleAttribute("inert", mobileNavigation.matches && !shouldOpen);
+    navigationBackground().forEach((element) => element.toggleAttribute("inert", shouldOpen));
     if (mobileNavigation.matches && !shouldOpen) nav.setAttribute("aria-hidden", "true");
     else nav.removeAttribute("aria-hidden");
-    if (returnFocus) navToggle.focus();
+    if (shouldOpen) nav.querySelector("a[href]")?.focus();
+    else if (returnFocus) navToggle.focus();
   };
 
   setNavOpen(false);
@@ -30,8 +44,22 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && navToggle?.getAttribute("aria-expanded") === "true") {
+    const navigationOpen = navToggle?.getAttribute("aria-expanded") === "true";
+    if (event.key === "Escape" && navigationOpen) {
       setNavOpen(false, true);
+      return;
+    }
+    if (event.key === "Tab" && navigationOpen) {
+      const focusables = navigationFocusables();
+      const first = focusables[0];
+      const last = focusables.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
     }
   });
 

@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import crypto from "node:crypto";
 import path from "node:path";
 import process from "node:process";
 
@@ -14,6 +15,17 @@ let blogSchema = null;
 const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
+const quoteFieldLimits = {
+  name: "120",
+  email: "180",
+  phone: "80",
+  quantity: "80",
+  dimensions: "160",
+  country: "120",
+  targetDate: "120",
+  details: "3000",
+  website: "100",
+};
 const priorityPages = [
   "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
@@ -47,9 +59,9 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260820-2";
-const requiredSiteScriptVersion = "20260820-2";
-const requiredAnalyticsVersion = "20260820-2";
+const requiredSiteStyleVersion = "20260820-3";
+const requiredSiteScriptVersion = "20260820-3";
+const requiredAnalyticsVersion = "20260820-3";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
@@ -167,6 +179,7 @@ for (const file of htmlFiles) {
   const ogUrls = values(html, /<meta\s+property="og:url"\s+content="([^"]*)"/gi);
   const ogImages = values(html, /<meta\s+property="og:image"\s+content="([^"]*)"/gi);
   const twitterImages = values(html, /<meta\s+name="twitter:image"\s+content="([^"]*)"/gi);
+  const appleTouchIcons = values(html, /<link\s+rel="apple-touch-icon"\s+href="([^"]+)"/gi);
   const earlyEnhancementMarkers = html.match(/<script>document\.documentElement\.classList\.add\("js"\);<\/script>/g) || [];
 
   if (titles.length !== 1) errors.push(`${file}: expected 1 title, found ${titles.length}`);
@@ -183,6 +196,9 @@ for (const file of htmlFiles) {
   if (!isErrorPage && ogUrls.length !== 1) errors.push(`${file}: expected 1 og:url, found ${ogUrls.length}`);
   if (!isErrorPage && ogImages.length !== 1) errors.push(`${file}: expected 1 og:image, found ${ogImages.length}`);
   if (!isErrorPage && twitterImages.length !== 1) errors.push(`${file}: expected 1 twitter:image, found ${twitterImages.length}`);
+  if (appleTouchIcons.length !== 1 || appleTouchIcons[0] !== "/assets/logo-512.png") {
+    errors.push(`${file}: expected the 512px Apple touch icon`);
+  }
   if (canonicals[0] && ogUrls[0] && canonicals[0] !== ogUrls[0]) {
     errors.push(`${file}: og:url does not match canonical`);
   }
@@ -450,6 +466,12 @@ for (const file of htmlFiles) {
     quoteFieldNames.forEach((name) => {
       if (!controlByName.has(name)) errors.push(`${formLabel} is missing field "${name}"`);
     });
+    Object.entries(quoteFieldLimits).forEach(([name, limit]) => {
+      const control = controlByName.get(name) || "";
+      if (attribute(control, "maxlength") !== limit) {
+        errors.push(`${formLabel} field "${name}" must use maxlength="${limit}"`);
+      }
+    });
     const country = controlByName.get("country") || "";
     if (!/\srequired(?:\s|>)/i.test(country)) errors.push(`${formLabel} delivery country must be required`);
     if (attribute(country, "autocomplete") !== "country-name") errors.push(`${formLabel} delivery country needs autocomplete="country-name"`);
@@ -557,6 +579,29 @@ for (const [signal, label] of [
   ["font-display: swap", "font display strategy"],
 ]) {
   if (!siteCssForFonts.includes(signal)) errors.push(`Self-hosted fonts: missing ${label}`);
+}
+
+const logoPngPath = path.join(root, "assets", "logo-512.png");
+if (!fs.existsSync(logoPngPath)) {
+  errors.push("Brand logo: assets/logo-512.png is missing");
+} else {
+  const logoPng = fs.readFileSync(logoPngPath);
+  const logoWidth = logoPng.length >= 24 ? logoPng.readUInt32BE(16) : 0;
+  const logoHeight = logoPng.length >= 24 ? logoPng.readUInt32BE(20) : 0;
+  if (logoWidth !== 512 || logoHeight !== 512) errors.push(`Brand logo: expected 512x512 PNG, found ${logoWidth}x${logoHeight}`);
+}
+const manifestPath = path.join(root, "site.webmanifest");
+if (!fs.existsSync(manifestPath)) {
+  errors.push("site.webmanifest is missing");
+} else {
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    const hasPngLogo = manifest.icons?.some((icon) =>
+      icon.src === "/assets/logo-512.png" && icon.sizes === "512x512" && icon.type === "image/png");
+    if (!hasPngLogo) errors.push("site.webmanifest: 512x512 PNG logo is missing");
+  } catch (error) {
+    errors.push(`site.webmanifest is invalid (${error.message})`);
+  }
 }
 
 const blogPageHtml = readPage("blog.html")?.html || "";
@@ -682,6 +727,7 @@ if (!fs.existsSync(analyticsAssetPath)) {
     ['quote_validation_error', "quote validation-error event"],
     ['quote_delivery_error', "quote delivery-error event"],
     ['window.location.reload()', "full analytics shutdown after consent withdrawal"],
+    ['closeConsentPanel(true)', "analytics-preference focus return"],
   ];
   requiredAnalyticsSignals.forEach(([signal, label]) => {
     if (!analyticsAsset.includes(signal)) errors.push(`assets/analytics.js: missing ${label}`);
@@ -696,9 +742,11 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, 'const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"]', "five optional quote fields"],
   [siteScript, 'optionalDetails.className = "quote-form__optional field--full"', "optional quote disclosure"],
   [siteScript, 'if (optionalDetails) optionalDetails.open = false', "optional section reset"],
-  [siteScript, 'window.matchMedia("(max-width: 780px)")', "responsive navigation state"],
+  [siteScript, 'window.matchMedia("(max-width: 900px)")', "tablet-safe responsive navigation state"],
   [siteScript, 'document.documentElement.classList.add("js")', "progressive navigation enhancement marker"],
   [siteScript, 'nav.toggleAttribute("inert"', "closed-navigation keyboard guard"],
+  [siteScript, 'navigationBackground().forEach', "open-navigation background isolation"],
+  [siteScript, 'event.key === "Tab" && navigationOpen', "open-navigation focus loop"],
   [siteScript, "new AbortController()", "quote request timeout controller"],
   [siteScript, "18000", "bounded quote request timeout"],
   [siteScript, 'glorystarpack:quote-submit-attempt', "quote-submit attempt signal"],
@@ -732,6 +780,13 @@ if (!aboutPage.includes('id="packaging-team"') || !aboutPage.includes("This is a
 if (!aboutPage.includes(`"@id": "${packagingTeamId}"`) || !aboutPage.includes(`"url": "${packagingTeamId}"`)) {
   errors.push("about.html: Packaging Team structured entity is missing");
 }
+const homePage = readPage("index.html")?.html || "";
+if (!homePage.includes('"@type": "ImageObject"') ||
+    !homePage.includes(`"contentUrl": "${siteOrigin}/assets/logo-512.png"`) ||
+    !homePage.includes('"width": 512') ||
+    !homePage.includes('"height": 512')) {
+  errors.push("index.html: Organization logo needs a 512x512 ImageObject");
+}
 
 const quoteApiPath = path.join(root, "api", "quote.js");
 if (!fs.existsSync(quoteApiPath)) {
@@ -754,6 +809,10 @@ if (!fs.existsSync(quoteApiPath)) {
     ['nativeFormRequest', "native form response mode"],
     ['text/html; charset=utf-8', "no-JavaScript result page"],
     ['typeof body.attachment === "object"', "native attachment filename guard"],
+    ['RESEND_TIMEOUT_MS', "bounded Resend delivery timeout"],
+    ['signal: resendController.signal', "Resend abort signal"],
+    ['createHash("sha256")', "stable submission fingerprint"],
+    ['`quote-${submissionFingerprint}`', "stable Resend idempotency key"],
   ];
   requiredApiSignals.forEach(([signal, label]) => {
     if (!quoteApi.includes(signal)) errors.push(`api/quote.js: missing ${label}`);
@@ -935,6 +994,9 @@ if (!fs.existsSync(vercelConfigPath)) {
     const generalAssetsPosition = headers.findIndex((entry) => entry.source === "/assets/(.*)");
     const fontAssetsPosition = headers.findIndex((entry) => entry.source === "/assets/fonts/(.*)");
     const fontAssetsHeader = headers[fontAssetsPosition];
+    const catchAllHeader = headers.find((entry) => entry.source === "/(.*)");
+    const catchAllHeaderValue = (key) => catchAllHeader?.headers?.find((header) => header.key === key)?.value || "";
+    const contentSecurityPolicy = catchAllHeaderValue("Content-Security-Policy");
     const hasImmutableFontCache = Array.isArray(fontAssetsHeader?.headers) && fontAssetsHeader.headers.some((header) =>
       header.key === "Cache-Control" && header.value === "public, max-age=31536000, immutable");
     const hasFontCors = Array.isArray(fontAssetsHeader?.headers) && fontAssetsHeader.headers.some((header) =>
@@ -947,6 +1009,55 @@ if (!fs.existsSync(vercelConfigPath)) {
     }
     if (!hasImmutableFontCache) errors.push("vercel.json: fonts need a one-year immutable cache header");
     if (!hasFontCors) errors.push("vercel.json: fonts need an explicit cross-origin response header");
+
+    const requiredSecurityHeaders = [
+      ["Cross-Origin-Opener-Policy", "same-origin"],
+      ["X-DNS-Prefetch-Control", "off"],
+      ["X-Permitted-Cross-Domain-Policies", "none"],
+    ];
+    requiredSecurityHeaders.forEach(([key, value]) => {
+      if (catchAllHeaderValue(key) !== value) errors.push(`vercel.json: ${key} must be ${value}`);
+    });
+    const permissionsPolicy = catchAllHeaderValue("Permissions-Policy");
+    for (const blockedFeature of ["camera=()", "microphone=()", "geolocation=()", "payment=()", "usb=()", "browsing-topics=()"]) {
+      if (!permissionsPolicy.includes(blockedFeature)) errors.push(`vercel.json: Permissions-Policy must include ${blockedFeature}`);
+    }
+
+    const requiredCspSignals = [
+      ["default-src 'self'", "same-origin default"],
+      ["base-uri 'self'", "base URI restriction"],
+      ["object-src 'none'", "object blocking"],
+      ["frame-ancestors 'self'", "framing restriction"],
+      ["form-action 'self'", "form destination restriction"],
+      ["script-src-attr 'none'", "inline event-handler blocking"],
+      ["https://www.googletagmanager.com", "consented Google Analytics script host"],
+      ["https://*.google-analytics.com", "consented Google Analytics collection host"],
+      ["upgrade-insecure-requests", "mixed-content upgrade"],
+    ];
+    requiredCspSignals.forEach(([signal, label]) => {
+      if (!contentSecurityPolicy.includes(signal)) errors.push(`vercel.json: Content-Security-Policy is missing ${label}`);
+    });
+    if (/script-src[^;]*'unsafe-inline'/.test(contentSecurityPolicy)) {
+      errors.push("vercel.json: script-src must not allow unsafe-inline");
+    }
+
+    const expectedInlineScriptHashes = new Set();
+    for (const htmlFile of htmlFiles) {
+      const html = readPage(htmlFile)?.html || "";
+      for (const match of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/gi)) {
+        if (/type="application\/ld\+json"/i.test(match[1]) || !match[2].trim()) continue;
+        const digest = crypto.createHash("sha256").update(match[2]).digest("base64");
+        expectedInlineScriptHashes.add(`sha256-${digest}`);
+      }
+    }
+    if (expectedInlineScriptHashes.size !== 9) {
+      errors.push(`vercel.json: expected 9 executable inline-script hashes, found ${expectedInlineScriptHashes.size}`);
+    }
+    for (const hash of expectedInlineScriptHashes) {
+      if (!contentSecurityPolicy.includes(`'${hash}'`)) {
+        errors.push(`vercel.json: Content-Security-Policy is missing inline script hash ${hash}`);
+      }
+    }
   } catch (error) {
     errors.push(`vercel.json is invalid (${error.message})`);
   }

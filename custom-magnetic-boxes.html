@@ -20,11 +20,12 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/green-rigid-box.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/green-rigid-box.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -470,15 +471,15 @@
           <div class="form-grid">
             <div class="field">
               <label for="magnetic-name">Full name</label>
-              <input id="magnetic-name" name="name" type="text" autocomplete="name" required>
+              <input id="magnetic-name" name="name" type="text" autocomplete="name" required maxlength="120">
             </div>
             <div class="field">
               <label for="magnetic-email">Work email</label>
-              <input id="magnetic-email" name="email" type="email" autocomplete="email" required>
+              <input id="magnetic-email" name="email" type="email" autocomplete="email" required maxlength="180">
             </div>
             <div class="field">
               <label for="magnetic-phone">Phone / WhatsApp</label>
-              <input id="magnetic-phone" name="phone" type="tel" autocomplete="tel">
+              <input id="magnetic-phone" name="phone" type="tel" autocomplete="tel" maxlength="80">
             </div>
             <div class="field">
               <label for="magnetic-product">Magnetic box format</label>
@@ -492,17 +493,17 @@
             </div>
             <div class="field">
               <label for="magnetic-quantity">Estimated quantity</label>
-              <input id="magnetic-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required>
+              <input id="magnetic-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required maxlength="80">
             </div>
             <div class="field">
               <label for="magnetic-dimensions">Product or box size</label>
-              <input id="magnetic-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit">
+              <input id="magnetic-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit" maxlength="160">
             </div>
-            <div class="field"><label for="magnetic-country">Delivery country / region</label><input id="magnetic-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="magnetic-target-date">Target in-hand date</label><input id="magnetic-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
+            <div class="field"><label for="magnetic-country">Delivery country / region</label><input id="magnetic-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="magnetic-target-date">Target in-hand date</label><input id="magnetic-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
             <div class="field field--full">
               <label for="magnetic-details">Project details</label>
-              <textarea id="magnetic-details" name="details" placeholder="Product weight, opening style, insert, finish, magnet-sensitive items, delivery country, and target date"></textarea>
+              <textarea id="magnetic-details" name="details" placeholder="Product weight, opening style, insert, finish, magnet-sensitive items, delivery country, and target date" maxlength="3000"></textarea>
             </div>
             <div class="field field--full">
               <label for="magnetic-file">Artwork or reference</label>
@@ -511,7 +512,7 @@
             </div>
             <div class="form-trap" aria-hidden="true">
               <label for="magnetic-website">Website</label>
-              <input id="magnetic-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              <input id="magnetic-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100">
             </div>
           </div>
           <div class="form-footer">
@@ -574,7 +575,7 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

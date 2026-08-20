@@ -20,11 +20,12 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/luxury-hangtag.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/luxury-hangtag.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -451,17 +452,17 @@
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
-            <div class="field"><label for="hang-tag-name">Full name</label><input id="hang-tag-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="hang-tag-email">Work email</label><input id="hang-tag-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="hang-tag-phone">Phone / WhatsApp</label><input id="hang-tag-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="hang-tag-name">Full name</label><input id="hang-tag-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="field"><label for="hang-tag-email">Work email</label><input id="hang-tag-email" name="email" type="email" autocomplete="email" required maxlength="180"></div>
+            <div class="field"><label for="hang-tag-phone">Phone / WhatsApp</label><input id="hang-tag-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
             <div class="field"><label for="hang-tag-product">Tag project</label><select id="hang-tag-product" name="product" required><option value="custom-hang-tags" selected>Custom hang tags</option><option value="garment-hang-tags">Garment hang tags</option><option value="retail-product-tags">Retail product tags</option><option value="variable-data-tags">Variable-data tags</option></select></div>
-            <div class="field"><label for="hang-tag-quantity">Estimated quantity</label><input id="hang-tag-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Total tags and quantity by SKU" required></div>
-            <div class="field"><label for="hang-tag-dimensions">Finished tag size</label><input id="hang-tag-dimensions" name="dimensions" type="text" placeholder="Width × height, with unit" required></div>
-            <div class="field"><label for="hang-tag-country">Delivery country / region</label><input id="hang-tag-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="hang-tag-target-date">Target in-hand date</label><input id="hang-tag-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
-            <div class="field field--full"><label for="hang-tag-details">Stock, attachment, data, and packing details</label><textarea id="hang-tag-details" name="details" placeholder="Stock and surface direction; front, back, head and foot orientation; hole or slot position; eyelet, string, ribbon or fastener; print, foil, emboss or coating; barcode symbology and variable-data fields; product application; durability exposure; kitting and carton plan; delivery country; and target date"></textarea></div>
+            <div class="field"><label for="hang-tag-quantity">Estimated quantity</label><input id="hang-tag-quantity" name="quantity" type="text" inputmode="numeric" placeholder="Total tags and quantity by SKU" required maxlength="80"></div>
+            <div class="field"><label for="hang-tag-dimensions">Finished tag size</label><input id="hang-tag-dimensions" name="dimensions" type="text" placeholder="Width × height, with unit" required maxlength="160"></div>
+            <div class="field"><label for="hang-tag-country">Delivery country / region</label><input id="hang-tag-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="hang-tag-target-date">Target in-hand date</label><input id="hang-tag-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
+            <div class="field field--full"><label for="hang-tag-details">Stock, attachment, data, and packing details</label><textarea id="hang-tag-details" name="details" placeholder="Stock and surface direction; front, back, head and foot orientation; hole or slot position; eyelet, string, ribbon or fastener; print, foil, emboss or coating; barcode symbology and variable-data fields; product application; durability exposure; kitting and carton plan; delivery country; and target date" maxlength="3000"></textarea></div>
             <div class="field field--full"><label for="hang-tag-file">Artwork, dieline, or data example</label><input id="hang-tag-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum</small></div>
-            <div class="form-trap" aria-hidden="true"><label for="hang-tag-website">Website</label><input id="hang-tag-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="form-trap" aria-hidden="true"><label for="hang-tag-website">Website</label><input id="hang-tag-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           </div>
           <div class="form-footer"><p class="form-note">Your details are used only to prepare and respond to this hang-tag request. See our <a href="privacy.html">privacy notice</a>.</p><button class="button button--dark" type="submit">Request my hang tag quote</button></div>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -483,7 +484,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Bags · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

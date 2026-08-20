@@ -20,12 +20,13 @@
   <meta name="twitter:image" content="https://glorystarpacking.com/assets/images/emerald-rigid-box.jpg">
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="GloryStarPack Buyer Guides" href="https://glorystarpacking.com/feed.xml">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/emerald-rigid-box.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,7 +39,13 @@
         "email": "kevin@GloryStarPack.com",
         "telephone": "+86-180-2075-5949",
         "description": "Factory-direct manufacturer of custom boxes and product labels for global brands.",
-        "logo": "https://glorystarpacking.com/assets/favicon.svg",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://glorystarpacking.com/assets/logo-512.png",
+          "contentUrl": "https://glorystarpacking.com/assets/logo-512.png",
+          "width": 512,
+          "height": 512
+        },
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "sales",
@@ -596,15 +603,15 @@
           <div class="form-grid">
             <div class="field">
               <label for="quote-name">Full name</label>
-              <input id="quote-name" name="name" type="text" autocomplete="name" required>
+              <input id="quote-name" name="name" type="text" autocomplete="name" required maxlength="120">
             </div>
             <div class="field">
               <label for="quote-email">Work email</label>
-              <input id="quote-email" name="email" type="email" autocomplete="email" required>
+              <input id="quote-email" name="email" type="email" autocomplete="email" required maxlength="180">
             </div>
             <div class="field">
               <label for="quote-phone">Phone / WhatsApp</label>
-              <input id="quote-phone" name="phone" type="tel" autocomplete="tel">
+              <input id="quote-phone" name="phone" type="tel" autocomplete="tel" maxlength="80">
             </div>
             <div class="field">
               <label for="quote-product">What do you need?</label>
@@ -638,17 +645,17 @@
             </div>
             <div class="field">
               <label for="quote-quantity">Estimated quantity</label>
-              <input id="quote-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required>
+              <input id="quote-quantity" name="quantity" type="text" inputmode="numeric" placeholder="e.g. 1,000" required maxlength="80">
             </div>
             <div class="field">
               <label for="quote-dimensions">Product or box size</label>
-              <input id="quote-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit">
+              <input id="quote-dimensions" name="dimensions" type="text" placeholder="L × W × H, with unit" maxlength="160">
             </div>
-            <div class="field"><label for="quote-country">Delivery country / region</label><input id="quote-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required></div>
-            <div class="field"><label for="quote-target-date">Target in-hand date</label><input id="quote-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible"></div>
+            <div class="field"><label for="quote-country">Delivery country / region</label><input id="quote-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
+            <div class="field"><label for="quote-target-date">Target in-hand date</label><input id="quote-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
             <div class="field field--full">
               <label for="quote-details">Project details</label>
-              <textarea id="quote-details" name="details" placeholder="Product, preferred material, finish, delivery country, and target date"></textarea>
+              <textarea id="quote-details" name="details" placeholder="Product, preferred material, finish, delivery country, and target date" maxlength="3000"></textarea>
             </div>
             <div class="field field--full">
               <label for="quote-file">Reference artwork</label>
@@ -657,7 +664,7 @@
             </div>
             <div class="form-trap" aria-hidden="true">
               <label for="quote-website">Website</label>
-              <input id="quote-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              <input id="quote-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100">
             </div>
           </div>
           <div class="form-footer">
@@ -705,7 +712,7 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=20260820-2" defer></script>
-  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/analytics.js?v=20260820-3" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>
