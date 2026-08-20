@@ -98,6 +98,7 @@
   };
 
   const denyAnalytics = () => {
+    const shouldReload = googleTagLoaded || vercelAnalyticsLoaded;
     saveConsent(consentDenied);
     window.gtag("consent", "update", {
       analytics_storage: consentDenied,
@@ -107,6 +108,7 @@
     });
     deleteAnalyticsCookies();
     document.dispatchEvent(new CustomEvent("glorystarpack:analytics-consent", { detail: { choice: consentDenied } }));
+    return shouldReload;
   };
 
   const track = (eventName, parameters = {}) => {
@@ -139,7 +141,11 @@
       </div>`;
 
     panel.querySelector("[data-analytics-deny]")?.addEventListener("click", () => {
-      denyAnalytics();
+      const shouldReload = denyAnalytics();
+      if (shouldReload) {
+        window.location.reload();
+        return;
+      }
       closeConsentPanel();
     });
     panel.querySelector("[data-analytics-allow]")?.addEventListener("click", () => {
@@ -229,6 +235,25 @@
 
   document.addEventListener("glorystarpack:quote-email-fallback", () => {
     track("quote_email_fallback", { form_name: "packaging_quote" });
+  });
+
+  document.addEventListener("glorystarpack:quote-submit-attempt", () => {
+    track("quote_submit_attempt", { form_name: "packaging_quote" });
+  });
+
+  document.addEventListener("glorystarpack:quote-validation-error", (event) => {
+    track("quote_validation_error", {
+      form_name: "packaging_quote",
+      error_reason: String(event.detail?.reason || "unknown").slice(0, 24),
+    });
+  });
+
+  document.addEventListener("glorystarpack:quote-delivery-error", (event) => {
+    track("quote_delivery_error", {
+      form_name: "packaging_quote",
+      error_reason: String(event.detail?.reason || "unknown").slice(0, 24),
+      status_group: String(event.detail?.statusGroup || "unknown").slice(0, 8),
+    });
   });
 
   document.addEventListener("glorystarpack:quote-fallback-action", (event) => {

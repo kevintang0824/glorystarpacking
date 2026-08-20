@@ -5,7 +5,9 @@ The site's 26 quote forms use the same field contract and work in two modes:
 1. On Vercel, `/api/quote` sends the request through Resend.
 2. On a static host or before Resend is configured, the form preserves the completed brief and offers explicit Email, WhatsApp, and copy-to-clipboard actions.
 
-Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The fallback Email and WhatsApp links include both values so the purchasing brief remains complete even when the API is unavailable. Browsers cannot transfer a selected attachment into another app, so the fallback explains that the visitor must add it again before sending.
+With JavaScript unavailable, the browser can still send the five required text fields as a standard URL-encoded request when Resend is configured. The API returns a small noindex HTML confirmation or recovery page for this route instead of exposing raw JSON. Optional artwork is delivered only through the enhanced JavaScript flow; a file input cannot be transferred through the basic URL-encoded fallback.
+
+Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The enhanced request stops after 18 seconds; timeout, network, DNS, 404, and server-delivery failures all expose the same Email, WhatsApp, and copy routes. Those routes include the entered country and target date so the purchasing brief remains complete. Browsers cannot transfer a selected attachment into another app, so the fallback explains that the visitor must add it again before sending.
 
 The frontend also retains first-visit attribution in session storage and includes the landing page, referrer, standard UTM fields, discovery channel, and discovery source with a submitted inquiry. Known ChatGPT, Perplexity, Copilot, Claude, Gemini, and You.com referrals are classified as `ai-search`; ordinary search, referral, campaign, and direct visits remain separate. This connects discovery to actual quote requests without enabling an advertising cookie. The privacy notice describes this behavior.
 

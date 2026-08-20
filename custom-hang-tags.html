@@ -20,11 +20,10 @@
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/luxury-hangtag.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-1">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -448,7 +447,8 @@
             <a class="contact-card" href="https://wa.me/8618020755949" target="_blank" rel="noopener"><span>WhatsApp</span><span>+86 180 2075 5949</span></a>
           </div>
         </div>
-        <form class="quote-form" action="/api/quote" method="post" enctype="multipart/form-data">
+        <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
+          <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
             <div class="field"><label for="hang-tag-name">Full name</label><input id="hang-tag-name" name="name" type="text" autocomplete="name" required></div>
             <div class="field"><label for="hang-tag-email">Work email</label><input id="hang-tag-email" name="email" type="email" autocomplete="email" required></div>
@@ -482,7 +482,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Bags · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-1" defer></script>
-  <script src="assets/analytics.js?v=20260820-1" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-2" defer></script>
+  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

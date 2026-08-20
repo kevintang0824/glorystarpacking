@@ -20,11 +20,10 @@
   <meta name="theme-color" content="#10100f">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/images/factory-printing-floor.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-1">
+  <link rel="stylesheet" href="assets/site.css?v=20260820-2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,6 +37,14 @@
         "isPartOf": {"@id": "https://glorystarpacking.com/#website"},
         "about": {"@id": "https://glorystarpacking.com/#organization"},
         "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://glorystarpacking.com/about.html#packaging-team",
+        "name": "GloryStarPack Packaging Team",
+        "url": "https://glorystarpacking.com/about.html#packaging-team",
+        "parentOrganization": {"@id": "https://glorystarpacking.com/#organization"},
+        "description": "The company byline used for GloryStarPack buyer guides, maintained through the packaging specification, sampling, production, quality-control, and sourcing workflow described on this page."
       },
       {
         "@type": "BreadcrumbList",
@@ -160,6 +167,20 @@
       </div>
     </section>
 
+    <section class="section section--bright" id="packaging-team">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Guide authorship</p><h2 class="section-title">GloryStarPack Packaging Team</h2></div>
+          <p class="section-intro">This is a company byline for our packaging buyer guides, not an individual author or a personal credential.</p>
+        </div>
+        <div class="detail-grid">
+          <article class="detail-card"><span class="detail-card__kicker">Preparation</span><h3>Start from the specification</h3><p>Guides organize the product, material, artwork, sampling, production, inspection, and delivery questions that buyers need to define with a supplier.</p></article>
+          <article class="detail-card"><span class="detail-card__kicker">Evidence</span><h3>Separate facts from project choices</h3><p>Public standards and source documents are linked where relevant. MOQ, price, lead time, certification scope, and acceptance criteria remain project-specific unless a cited source says otherwise.</p></article>
+          <article class="detail-card"><span class="detail-card__kicker">Maintenance</span><h3>Make substantive updates visible</h3><p>Published and updated dates are shown on each guide. Corrections or source questions can be sent to <a class="text-link" href="mailto:kevin@GloryStarPack.com">kevin@GloryStarPack.com</a>.</p></article>
+        </div>
+      </div>
+    </section>
+
     <section class="section section--ink">
       <div class="container split">
         <div class="split__media" data-reveal><img src="assets/images/embossing-process.webp" width="1024" height="1024" alt="Close-up of a packaging logo being embossed during finishing" loading="lazy" decoding="async"></div>
@@ -270,7 +291,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-1" defer></script>
-  <script src="assets/analytics.js?v=20260820-1" data-measurement-id="G-LYNMPWG9WK" defer></script>
+  <script src="assets/site.js?v=20260820-2" defer></script>
+  <script src="assets/analytics.js?v=20260820-2" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

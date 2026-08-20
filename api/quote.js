@@ -43,23 +43,47 @@ const decodeBase64 = (value) => {
   return decodedRoundTrip === normalized.replace(/=+$/, "") ? buffer : null;
 };
 
+const respond = (response, nativeFormRequest, statusCode, payload) => {
+  if (!nativeFormRequest) return response.status(statusCode).json(payload);
+
+  const successful = statusCode >= 200 && statusCode < 300;
+  const title = successful ? "Quote request received" : "Quote request not sent";
+  const message = successful
+    ? "Thank you. Your packaging brief has been delivered, and we will reply with the next technical questions."
+    : "We could not deliver this form. Return to review the required fields, or send the brief directly by email or WhatsApp.";
+  response.setHeader("Content-Type", "text/html; charset=utf-8");
+  return response.status(statusCode).send(`<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${title} | GloryStarPack</title><style>body{margin:0;background:#10100f;color:#f8f2e5;font:16px/1.65 system-ui,sans-serif}.card{max-width:660px;margin:12vh auto;padding:clamp(28px,6vw,64px);background:#1a1a18;border-top:4px solid #bdff3c}h1{margin:0 0 16px;font:600 clamp(2rem,6vw,4rem)/1.02 Georgia,serif}p{color:#d8d2c7}a{display:inline-block;margin:12px 14px 0 0;color:#10100f;background:#bdff3c;padding:12px 18px;font-weight:700;text-decoration:none}.secondary{color:#f8f2e5;background:transparent;border:1px solid #777}</style></head><body><main class="card"><p>GloryStarPack packaging project support</p><h1>${title}</h1><p>${message}</p><a href="/#quote">Return to the quote form</a><a class="secondary" href="mailto:kevin@GloryStarPack.com">Email Kevin</a><a class="secondary" href="https://wa.me/8618020755949">WhatsApp</a></main></body></html>`);
+};
+
 module.exports = async function handler(request, response) {
   response.setHeader("Cache-Control", "no-store");
+  const contentType = String(
+    request.headers?.["content-type"] || request.headers?.get?.("content-type") || ""
+  ).toLowerCase();
+  const nativeFormRequest = contentType.includes("application/x-www-form-urlencoded");
 
   if (request.method !== "POST") {
     response.setHeader("Allow", "POST");
-    return response.status(405).json({ error: "Method not allowed." });
+    return respond(response, nativeFormRequest, 405, { error: "Method not allowed." });
   }
 
   let body;
   try {
     body = request.body || {};
+    if (typeof body === "string") {
+      if (contentType.includes("application/json")) body = JSON.parse(body);
+      else if (contentType.includes("application/x-www-form-urlencoded")) {
+        body = Object.fromEntries(new URLSearchParams(body));
+      }
+    }
+    if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error("Invalid body");
   } catch {
-    return response.status(400).json({ error: "The request body is not valid JSON." });
+    return respond(response, nativeFormRequest, 400, { error: "The request body is not valid." });
   }
 
   if (clean(body.website, 100)) {
-    return response.status(200).json({ ok: true });
+    return respond(response, nativeFormRequest, 200, { ok: true });
   }
 
   const quote = {
@@ -91,7 +115,7 @@ module.exports = async function handler(request, response) {
     !quote.quantity ||
     !quote.country
   ) {
-    return response.status(400).json({
+    return respond(response, nativeFormRequest, 400, {
       error: "Name, a valid email, product type, quantity, and delivery country are required.",
     });
   }
@@ -101,7 +125,7 @@ module.exports = async function handler(request, response) {
   const fromEmail = process.env.QUOTE_FROM_EMAIL;
 
   if (!apiKey || !fromEmail) {
-    return response.status(503).json({
+    return respond(response, nativeFormRequest, 503, {
       code: "EMAIL_NOT_CONFIGURED",
       error: "Email delivery is not configured.",
     });
@@ -139,10 +163,12 @@ module.exports = async function handler(request, response) {
     ].join("\n"),
   };
 
-  const attachment = body.attachment;
+  const attachment = body.attachment && typeof body.attachment === "object" && !Array.isArray(body.attachment)
+    ? body.attachment
+    : null;
   if (attachment?.content && attachment?.filename) {
     if (attachmentSize(attachment.content) > MAX_ATTACHMENT_BYTES) {
-      return response.status(413).json({ error: "The attachment must be under 3 MB." });
+      return respond(response, nativeFormRequest, 413, { error: "The attachment must be under 3 MB." });
     }
 
     const filename = clean(attachment.filename, 180);
@@ -152,10 +178,10 @@ module.exports = async function handler(request, response) {
     const decoded = decodeBase64(attachment.content);
 
     if (!rule || !rule.extensions.some((extension) => lowerFilename.endsWith(extension))) {
-      return response.status(415).json({ error: "Attach a PDF, JPG, PNG, or WebP file." });
+      return respond(response, nativeFormRequest, 415, { error: "Attach a PDF, JPG, PNG, or WebP file." });
     }
     if (!decoded || decoded.length > MAX_ATTACHMENT_BYTES || !rule.hasValidSignature(decoded)) {
-      return response.status(415).json({ error: "The attachment content does not match its file type." });
+      return respond(response, nativeFormRequest, 415, { error: "The attachment content does not match its file type." });
     }
 
     message.attachments = [
@@ -178,15 +204,15 @@ module.exports = async function handler(request, response) {
       body: JSON.stringify(message),
     });
   } catch {
-    return response.status(502).json({ error: "Email delivery is temporarily unavailable." });
+    return respond(response, nativeFormRequest, 502, { error: "Email delivery is temporarily unavailable." });
   }
 
   if (!resendResponse.ok) {
     const resendError = await resendResponse.json().catch(() => ({}));
     console.error("Resend quote error", resendResponse.status, resendError);
-    return response.status(502).json({ error: "Email delivery is temporarily unavailable." });
+    return respond(response, nativeFormRequest, 502, { error: "Email delivery is temporarily unavailable." });
   }
 
   const result = await resendResponse.json();
-  return response.status(200).json({ ok: true, id: result.id });
+  return respond(response, nativeFormRequest, 200, { ok: true, id: result.id });
 };

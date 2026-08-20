@@ -1,15 +1,25 @@
 (() => {
+  document.documentElement.classList.add("js");
+
   const header = document.querySelector(".site-header");
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".site-nav");
+  const mobileNavigation = window.matchMedia("(max-width: 780px)");
 
-  const setNavOpen = (open) => {
+  const setNavOpen = (open, returnFocus = false) => {
     if (!navToggle || !nav) return;
-    navToggle.setAttribute("aria-expanded", String(open));
-    navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-    nav.classList.toggle("is-open", open);
-    document.body.classList.toggle("nav-open", open);
+    const shouldOpen = mobileNavigation.matches && open;
+    navToggle.setAttribute("aria-expanded", String(shouldOpen));
+    navToggle.setAttribute("aria-label", shouldOpen ? "Close navigation" : "Open navigation");
+    nav.classList.toggle("is-open", shouldOpen);
+    document.body.classList.toggle("nav-open", shouldOpen);
+    nav.toggleAttribute("inert", mobileNavigation.matches && !shouldOpen);
+    if (mobileNavigation.matches && !shouldOpen) nav.setAttribute("aria-hidden", "true");
+    else nav.removeAttribute("aria-hidden");
+    if (returnFocus) navToggle.focus();
   };
+
+  setNavOpen(false);
 
   navToggle?.addEventListener("click", () => {
     setNavOpen(navToggle.getAttribute("aria-expanded") !== "true");
@@ -20,8 +30,17 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setNavOpen(false);
+    if (event.key === "Escape" && navToggle?.getAttribute("aria-expanded") === "true") {
+      setNavOpen(false, true);
+    }
   });
+
+  const handleNavigationBreakpoint = () => setNavOpen(false);
+  if (typeof mobileNavigation.addEventListener === "function") {
+    mobileNavigation.addEventListener("change", handleNavigationBreakpoint);
+  } else {
+    mobileNavigation.addListener(handleNavigationBreakpoint);
+  }
 
   const updateHeader = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -319,26 +338,42 @@
         submitButton.textContent = "Sending…";
       }
 
+      let timeoutId;
+      let deliveryAttempted = false;
+
       try {
         const fileInput = form.querySelector('input[type="file"]');
         payload.attachment = await fileToAttachment(fileInput?.files?.[0]);
+
+        const controller = new AbortController();
+        timeoutId = window.setTimeout(() => controller.abort(), 18000);
+        deliveryAttempted = true;
+        document.dispatchEvent(new CustomEvent("glorystarpack:quote-submit-attempt"));
 
         const response = await fetch("/api/quote", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
+          signal: controller.signal,
         });
 
         if (!response.ok) {
           const result = await response.json().catch(() => ({}));
           if (response.status >= 500 || response.status === 404) {
+            document.dispatchEvent(new CustomEvent("glorystarpack:quote-delivery-error", {
+              detail: { reason: "server", statusGroup: `${Math.floor(response.status / 100)}xx` },
+            }));
             renderDeliveryFallback(status, payload);
             return;
           }
+          document.dispatchEvent(new CustomEvent("glorystarpack:quote-delivery-error", {
+            detail: { reason: "request", statusGroup: `${Math.floor(response.status / 100)}xx` },
+          }));
           throw new Error(result.error || "Please review the form and try again.");
         }
 
         form.reset();
+        delete form.dataset.analyticsStarted;
         const optionalDetails = form.querySelector(".quote-form__optional");
         if (optionalDetails) optionalDetails.open = false;
         if (status) {
@@ -349,11 +384,24 @@
           detail: { product: payload.product },
         }));
       } catch (error) {
+        if (deliveryAttempted && (error?.name === "AbortError" || error instanceof TypeError)) {
+          document.dispatchEvent(new CustomEvent("glorystarpack:quote-delivery-error", {
+            detail: { reason: error?.name === "AbortError" ? "timeout" : "network", statusGroup: "none" },
+          }));
+          renderDeliveryFallback(status, payload);
+          return;
+        }
+        if (!deliveryAttempted) {
+          document.dispatchEvent(new CustomEvent("glorystarpack:quote-validation-error", {
+            detail: { reason: "attachment" },
+          }));
+        }
         if (status) {
           status.textContent = error.message || "The request could not be sent. Please email us directly.";
           status.dataset.state = "error";
         }
       } finally {
+        if (timeoutId) window.clearTimeout(timeoutId);
         if (submitButton) {
           submitButton.disabled = false;
           submitButton.textContent = originalLabel;

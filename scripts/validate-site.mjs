@@ -47,9 +47,9 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260820-1";
-const requiredSiteScriptVersion = "20260820-1";
-const requiredAnalyticsVersion = "20260820-1";
+const requiredSiteStyleVersion = "20260820-2";
+const requiredSiteScriptVersion = "20260820-2";
+const requiredAnalyticsVersion = "20260820-2";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
@@ -287,14 +287,38 @@ for (const file of htmlFiles) {
   });
 
   if (pageArticleSchema) {
-    const hasLinkedAuthor = jsonLdBlocks.some((block) =>
-      block.includes('"name": "GloryStarPack Packaging Team"') &&
-      block.includes(`"url": "${siteOrigin}/about.html"`));
-    if (!hasLinkedAuthor) errors.push(`${file}: article author must link to the visible team profile`);
-    if (!/<p\b[^>]*class="[^"]*\barticle-meta\b[^"]*"[^>]*>\s*By\s+<a\b[^>]*href="about\.html"/i.test(html)) {
-      errors.push(`${file}: visible article byline must link to about.html`);
+    const author = pageArticleSchema.author;
+    const expectedAuthorId = `${siteOrigin}/about.html#packaging-team`;
+    if (
+      !author ||
+      author["@type"] !== "Organization" ||
+      author["@id"] !== expectedAuthorId ||
+      author.name !== "GloryStarPack Packaging Team" ||
+      author.url !== expectedAuthorId
+    ) {
+      errors.push(`${file}: article author must identify the visible Packaging Team entity`);
     }
-    const schemaModifiedDates = jsonLdBlocks.flatMap((block) => values(block, /"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/g));
+    const articleMeta = html.match(/<p\b[^>]*class="[^"]*\barticle-meta\b[^"]*"[^>]*>([\s\S]*?)<\/p>/i)?.[1] || "";
+    if (!/^\s*By\s+<a\b[^>]*href="about\.html#packaging-team"/i.test(articleMeta)) {
+      errors.push(`${file}: visible article byline must link to the Packaging Team profile`);
+    }
+
+    const schemaPublishedDate = String(pageArticleSchema.datePublished || "").trim();
+    const schemaModifiedDate = String(pageArticleSchema.dateModified || "").trim();
+    const visiblePublishedDates = values(articleMeta, /<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"[^>]*>\s*Published\b/gi);
+    const visibleUpdatedDates = values(articleMeta, /<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"[^>]*>\s*Updated\b/gi);
+    if (visiblePublishedDates.length !== 1 || visiblePublishedDates[0] !== schemaPublishedDate) {
+      errors.push(`${file}: visible Published date must match Article datePublished`);
+    }
+    const needsVisibleUpdate = schemaModifiedDate && schemaModifiedDate !== schemaPublishedDate;
+    if (needsVisibleUpdate && (visibleUpdatedDates.length !== 1 || visibleUpdatedDates[0] !== schemaModifiedDate)) {
+      errors.push(`${file}: visible Updated date must match Article dateModified`);
+    }
+    if (!needsVisibleUpdate && visibleUpdatedDates.length) {
+      errors.push(`${file}: visible Updated date must be omitted when published and modified dates are equal`);
+    }
+
+    const schemaModifiedDates = schemaModifiedDate ? [schemaModifiedDate] : [];
     const metaModifiedDates = values(html, /<meta\s+property="article:modified_time"\s+content="(\d{4}-\d{2}-\d{2})"/gi);
     if (schemaModifiedDates.length !== 1 || metaModifiedDates.length !== 1) {
       errors.push(`${file}: article must have one schema and one Open Graph modified date`);
@@ -307,7 +331,7 @@ for (const file of htmlFiles) {
       articleEntriesByCanonical.set(canonicals[0], {
         file,
         headline: String(pageArticleSchema.headline || "").trim(),
-        datePublished: String(pageArticleSchema.datePublished || "").trim(),
+        datePublished: schemaPublishedDate,
       });
     }
   }
@@ -385,6 +409,18 @@ for (const file of htmlFiles) {
     }
   });
 
+  if (/fonts\.(?:googleapis|gstatic)\.com/i.test(html)) {
+    errors.push(`${file}: external Google Fonts request must not be present`);
+  }
+  const fontPreloads = values(html, /<link\b[^>]*rel="preload"[^>]*as="font"[^>]*href="([^"]+)"/gi);
+  const requiredFontPreloads = [
+    "/assets/fonts/bodoni-moda-latin-v28.woff2",
+    "/assets/fonts/manrope-latin-v20.woff2",
+  ];
+  requiredFontPreloads.forEach((href) => {
+    if (!fontPreloads.includes(href)) errors.push(`${file}: missing local font preload "${href}"`);
+  });
+
   const forms = [...html.matchAll(/<form\b([^>]*)>([\s\S]*?)<\/form>/gi)];
   const quoteForms = forms.filter((match) => /\bclass="[^"]*\bquote-form\b[^"]*"/i.test(match[1]));
   quoteForms.forEach((match, formIndex) => {
@@ -393,7 +429,9 @@ for (const file of htmlFiles) {
     const formLabel = `${file}: quote form ${formIndex + 1}`;
     if (attribute(openingAttributes, "action") !== "/api/quote") errors.push(`${formLabel} must post to /api/quote`);
     if (attribute(openingAttributes, "method").toLowerCase() !== "post") errors.push(`${formLabel} must use POST`);
-    if (attribute(openingAttributes, "enctype") !== "multipart/form-data") errors.push(`${formLabel} must use multipart/form-data`);
+    if (attribute(openingAttributes, "enctype") !== "application/x-www-form-urlencoded") {
+      errors.push(`${formLabel} must use application/x-www-form-urlencoded for the no-JavaScript fallback`);
+    }
 
     const controls = body.match(/<(?:input|select|textarea)\b[^>]*>/gi) || [];
     const controlByName = new Map();
@@ -420,6 +458,10 @@ for (const file of htmlFiles) {
       errors.push(`${formLabel} attachment accept list is inconsistent`);
     }
     if (!/<a\b[^>]*href="privacy\.html"/i.test(body)) errors.push(`${formLabel} is missing a privacy notice link`);
+    const noscriptNote = body.match(/<noscript>([\s\S]*?)<\/noscript>/i)?.[1] || "";
+    if (!/mailto:kevin@GloryStarPack\.com/i.test(noscriptNote) || !/https:\/\/wa\.me\/8618020755949/i.test(noscriptNote)) {
+      errors.push(`${formLabel} no-JavaScript guidance must provide valid Email and WhatsApp routes`);
+    }
   });
 
   for (const asset of values(html, /<(?:link|script)\b[^>]*(?:href|src)="(\/?assets\/[^"]+)"/gi)) {
@@ -468,8 +510,11 @@ for (const file of htmlFiles) {
 
 const imagesDirectory = path.join(root, "assets", "images");
 const imageFiles = fs.readdirSync(imagesDirectory);
+const derivedDisplayWebps = new Set(["embossing-process-512.webp"]);
 const jpegStems = new Set(imageFiles.filter((file) => file.endsWith(".jpg")).map((file) => file.replace(/\.jpg$/, "")));
-const webpStems = new Set(imageFiles.filter((file) => file.endsWith(".webp")).map((file) => file.replace(/\.webp$/, "")));
+const webpStems = new Set(imageFiles
+  .filter((file) => file.endsWith(".webp") && !derivedDisplayWebps.has(file))
+  .map((file) => file.replace(/\.webp$/, "")));
 for (const stem of jpegStems) {
   if (!webpStems.has(stem)) errors.push(`assets/images: missing WebP display asset for ${stem}.jpg`);
 }
@@ -478,6 +523,38 @@ for (const stem of webpStems) {
 }
 if (jpegStems.size !== 39 || webpStems.size !== 39) {
   errors.push(`assets/images: expected 39 JPEG/WebP pairs, found ${jpegStems.size} JPEG and ${webpStems.size} WebP files`);
+}
+for (const derivedImage of derivedDisplayWebps) {
+  const derivedPath = path.join(imagesDirectory, derivedImage);
+  if (!fs.existsSync(derivedPath)) {
+    errors.push(`assets/images: missing derived display image ${derivedImage}`);
+  } else if (fs.statSync(derivedPath).size > 50000) {
+    errors.push(`assets/images: ${derivedImage} should remain under 50 KB`);
+  }
+}
+const homepageHtml = readPage("index.html")?.html || "";
+if (!/<img\b[^>]*class="[^"]*\bproof-frame__inset\b[^"]*"[^>]*src="assets\/images\/embossing-process-512\.webp"[^>]*width="512"[^>]*height="512"[^>]*fetchpriority="low"/i.test(homepageHtml)) {
+  errors.push("index.html: hero inset must use the 512px low-priority display asset");
+}
+
+const requiredFontAssets = [
+  "assets/fonts/bodoni-moda-latin-v28.woff2",
+  "assets/fonts/manrope-latin-v20.woff2",
+  "assets/fonts/OFL-Bodoni-Moda.txt",
+  "assets/fonts/OFL-Manrope.txt",
+];
+requiredFontAssets.forEach((asset) => {
+  if (!fs.existsSync(path.join(root, asset))) errors.push(`Self-hosted font asset is missing "${asset}"`);
+});
+const siteCssForFonts = fs.readFileSync(path.join(root, "assets", "site.css"), "utf8");
+for (const [signal, label] of [
+  ['url("fonts/bodoni-moda-latin-v28.woff2")', "Bodoni Moda source"],
+  ['font-weight: 500 600', "Bodoni Moda weight range"],
+  ['url("fonts/manrope-latin-v20.woff2")', "Manrope source"],
+  ['font-weight: 400 700', "Manrope weight range"],
+  ["font-display: swap", "font display strategy"],
+]) {
+  if (!siteCssForFonts.includes(signal)) errors.push(`Self-hosted fonts: missing ${label}`);
 }
 
 const blogPageHtml = readPage("blog.html")?.html || "";
@@ -569,6 +646,10 @@ if (!fs.existsSync(sitemapPath)) {
       errors.push(`sitemap.xml: ${canonical} lastmod must match article dateModified ${modifiedDate}`);
     }
   }
+  const sitemapPrivacyDate = readPage("privacy.html")?.html.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] || "";
+  if (sitemapPrivacyDate && sitemapLastModified.get(`${siteOrigin}/privacy.html`) !== sitemapPrivacyDate) {
+    errors.push("sitemap.xml: privacy.html lastmod must match its visible and structured date");
+  }
 }
 
 for (const targetFile of priorityPages) {
@@ -595,6 +676,10 @@ if (!fs.existsSync(analyticsAssetPath)) {
     ['resource_download', "resource-download conversion event"],
     ['resource_type: "csv_template"', "CSV-template event classification"],
     ['quote_optional_details_toggle', "optional-details interaction event"],
+    ['quote_submit_attempt', "quote-submit attempt event"],
+    ['quote_validation_error', "quote validation-error event"],
+    ['quote_delivery_error', "quote delivery-error event"],
+    ['window.location.reload()', "full analytics shutdown after consent withdrawal"],
   ];
   requiredAnalyticsSignals.forEach(([signal, label]) => {
     if (!analyticsAsset.includes(signal)) errors.push(`assets/analytics.js: missing ${label}`);
@@ -609,7 +694,16 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, 'const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"]', "five optional quote fields"],
   [siteScript, 'optionalDetails.className = "quote-form__optional field--full"', "optional quote disclosure"],
   [siteScript, 'if (optionalDetails) optionalDetails.open = false', "optional section reset"],
+  [siteScript, 'window.matchMedia("(max-width: 780px)")', "responsive navigation state"],
+  [siteScript, 'document.documentElement.classList.add("js")', "progressive navigation enhancement marker"],
+  [siteScript, 'nav.toggleAttribute("inert"', "closed-navigation keyboard guard"],
+  [siteScript, "new AbortController()", "quote request timeout controller"],
+  [siteScript, "18000", "bounded quote request timeout"],
+  [siteScript, 'glorystarpack:quote-submit-attempt', "quote-submit attempt signal"],
+  [siteScript, 'glorystarpack:quote-delivery-error', "quote-delivery error signal"],
   [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
+  [siteStyle, ".form-note--noscript", "no-JavaScript form guidance"],
+  [siteStyle, "html:not(.js) .site-nav", "no-JavaScript mobile navigation"],
 ];
 requiredProgressiveQuoteSignals.forEach(([source, signal, label]) => {
   if (!source.includes(signal)) errors.push(`Progressive quote form is missing ${label}`);
@@ -621,6 +715,20 @@ if (!privacyPage.includes("template file name and download-link text")) {
 }
 if (!privacyPage.includes("not the contents of a downloaded template")) {
   errors.push("privacy.html: analytics disclosure must exclude downloaded-template contents");
+}
+const privacySchemaDate = privacyPage.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] || "";
+const privacyVisibleDate = privacyPage.match(/Last updated\s*<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})"/i)?.[1] || "";
+if (!privacySchemaDate || privacySchemaDate !== privacyVisibleDate) {
+  errors.push("privacy.html: visible and structured last-updated dates must match");
+}
+
+const aboutPage = readPage("about.html")?.html || "";
+const packagingTeamId = `${siteOrigin}/about.html#packaging-team`;
+if (!aboutPage.includes('id="packaging-team"') || !aboutPage.includes("This is a company byline")) {
+  errors.push("about.html: visible Packaging Team authorship profile is missing");
+}
+if (!aboutPage.includes(`"@id": "${packagingTeamId}"`) || !aboutPage.includes(`"url": "${packagingTeamId}"`)) {
+  errors.push("about.html: Packaging Team structured entity is missing");
 }
 
 const quoteApiPath = path.join(root, "api", "quote.js");
@@ -639,6 +747,11 @@ if (!fs.existsSync(quoteApiPath)) {
     ['hasValidSignature', "attachment signature validation"],
     ['decodeBase64', "strict base64 decoding"],
     ['"Cache-Control", "no-store"', "no-store response header"],
+    ['application/x-www-form-urlencoded', "native form content type"],
+    ['new URLSearchParams(body)', "native form parser"],
+    ['nativeFormRequest', "native form response mode"],
+    ['text/html; charset=utf-8', "no-JavaScript result page"],
+    ['typeof body.attachment === "object"', "native attachment filename guard"],
   ];
   requiredApiSignals.forEach(([signal, label]) => {
     if (!quoteApi.includes(signal)) errors.push(`api/quote.js: missing ${label}`);
@@ -817,9 +930,21 @@ if (!fs.existsSync(vercelConfigPath)) {
       entry.headers.some((header) => header.key === "X-Robots-Tag" && header.value.includes("noindex")));
     const indexNowKeyHeader = headers.some((entry) => entry.source === `/${indexNowKey}.txt`);
     const feedHeader = headers.some((entry) => entry.source === "/feed.xml");
+    const generalAssetsPosition = headers.findIndex((entry) => entry.source === "/assets/(.*)");
+    const fontAssetsPosition = headers.findIndex((entry) => entry.source === "/assets/fonts/(.*)");
+    const fontAssetsHeader = headers[fontAssetsPosition];
+    const hasImmutableFontCache = Array.isArray(fontAssetsHeader?.headers) && fontAssetsHeader.headers.some((header) =>
+      header.key === "Cache-Control" && header.value === "public, max-age=31536000, immutable");
+    const hasFontCors = Array.isArray(fontAssetsHeader?.headers) && fontAssetsHeader.headers.some((header) =>
+      header.key === "Access-Control-Allow-Origin" && header.value === "*");
     if (!apiNoindex) errors.push("vercel.json: API routes need an X-Robots-Tag noindex header");
     if (!indexNowKeyHeader) errors.push("vercel.json: IndexNow key file cache header is missing");
     if (!feedHeader) errors.push("vercel.json: feed.xml cache header is missing");
+    if (generalAssetsPosition < 0 || fontAssetsPosition <= generalAssetsPosition) {
+      errors.push("vercel.json: the font header rule must follow and override the general assets rule");
+    }
+    if (!hasImmutableFontCache) errors.push("vercel.json: fonts need a one-year immutable cache header");
+    if (!hasFontCors) errors.push("vercel.json: fonts need an explicit cross-origin response header");
   } catch (error) {
     errors.push(`vercel.json is invalid (${error.message})`);
   }

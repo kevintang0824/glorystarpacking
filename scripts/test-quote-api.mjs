@@ -41,11 +41,12 @@ const validQuote = {
   utmMedium: "referral",
 };
 
-const invoke = async (body, method = "POST") => {
+const invoke = async (body, method = "POST", headers = {}) => {
   const result = {
     headers: new Map(),
     statusCode: 200,
     payload: null,
+    body: "",
   };
   const response = {
     setHeader(name, value) {
@@ -59,9 +60,13 @@ const invoke = async (body, method = "POST") => {
       result.payload = payload;
       return result;
     },
+    send(body) {
+      result.body = String(body);
+      return result;
+    },
   };
 
-  await handler({ method, body }, response);
+  await handler({ method, body, headers }, response);
   return result;
 };
 
@@ -73,6 +78,20 @@ try {
   assert.match(lastEmailRequest.text, /Discovery channel: ai-search/);
   assert.match(lastEmailRequest.text, /Discovery source: ChatGPT/);
   assert.match(lastEmailRequest.text, /Landing page: \/custom-wine-boxes\.html/);
+
+  const nativeForm = await invoke(
+    new URLSearchParams({ ...validQuote, attachment: "reference.pdf" }).toString(),
+    "POST",
+    { "content-type": "application/x-www-form-urlencoded" }
+  );
+  assert.equal(nativeForm.statusCode, 200);
+  assert.match(lastEmailRequest.text, /Name: Test buyer/);
+  assert.equal(lastEmailRequest.attachments, undefined);
+  assert.equal(nativeForm.headers.get("content-type"), "text/html; charset=utf-8");
+  assert.match(nativeForm.body, /Quote request received/);
+
+  const malformedJson = await invoke("{not-json", "POST", { "content-type": "application/json" });
+  assert.equal(malformedJson.statusCode, 400);
 
   const missingCountry = await invoke({ ...validQuote, country: "" });
   assert.equal(missingCountry.statusCode, 400);
@@ -127,7 +146,17 @@ try {
   assert.equal(unconfigured.statusCode, 503);
   assert.equal(unconfigured.payload.code, "EMAIL_NOT_CONFIGURED");
 
-  console.log("Quote API tests passed: valid request/PDF, attribution, required country, file allowlist, signature, Base64, no-store, method guard, and missing-configuration diagnostics.");
+  const nativeUnconfigured = await invoke(
+    new URLSearchParams(validQuote).toString(),
+    "POST",
+    { "content-type": "application/x-www-form-urlencoded" }
+  );
+  assert.equal(nativeUnconfigured.statusCode, 503);
+  assert.match(nativeUnconfigured.body, /Quote request not sent/);
+  assert.match(nativeUnconfigured.body, /mailto:kevin@GloryStarPack\.com/);
+  assert.match(nativeUnconfigured.body, /https:\/\/wa\.me\/8618020755949/);
+
+  console.log("Quote API tests passed: JSON/native form requests and result pages, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
   Object.entries(originalEnvironment).forEach(([name, value]) => {
