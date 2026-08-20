@@ -1088,6 +1088,62 @@ button {
   grid-column: 1 / -1;
 }
 
+.quote-form__optional {
+  border-top: 1px solid #c9c3b8;
+  border-bottom: 1px solid #c9c3b8;
+}
+
+.quote-form__optional > summary {
+  display: flex;
+  min-height: 58px;
+  padding: 12px 2px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.quote-form__optional > summary::-webkit-details-marker {
+  display: none;
+}
+
+.quote-form__optional > summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--register);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.quote-form__optional[open] > summary::after {
+  content: "−";
+}
+
+.quote-form__optional > summary:focus-visible {
+  outline: 2px solid var(--register);
+  outline-offset: 3px;
+}
+
+.quote-form__optional > summary span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quote-form__optional > summary small {
+  margin-left: auto;
+  color: var(--graphite);
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.quote-form__optional-grid {
+  padding: 8px 0 24px;
+}
+
 .field label {
   font-size: 0.67rem;
   font-weight: 700;

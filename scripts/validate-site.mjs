@@ -47,9 +47,9 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260814-1";
-const requiredSiteScriptVersion = "20260814-1";
-const requiredAnalyticsVersion = "20260814-1";
+const requiredSiteStyleVersion = "20260820-1";
+const requiredSiteScriptVersion = "20260820-1";
+const requiredAnalyticsVersion = "20260820-1";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
@@ -369,11 +369,21 @@ for (const file of htmlFiles) {
       errors.push(`${file}: image is missing numeric width or height: ${tag.slice(0, 100)}`);
     }
     const src = tag.match(/\ssrc="([^"]+)"/i)?.[1];
+    if (src?.startsWith("assets/images/") && !src.split(/[?#]/)[0].endsWith(".webp")) {
+      errors.push(`${file}: displayed local image must use WebP "${src}"`);
+    }
     if (src && !/^(?:https?:|data:|\/)/.test(src)) {
       const sourcePath = path.join(root, src.split(/[?#]/)[0]);
       if (!fs.existsSync(sourcePath)) errors.push(`${file}: missing image "${src}"`);
     }
   }
+
+  const imagePreloads = values(html, /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="([^"]+)"/gi);
+  imagePreloads.forEach((href) => {
+    if (href.startsWith("assets/images/") && !href.split(/[?#]/)[0].endsWith(".webp")) {
+      errors.push(`${file}: local image preload must use WebP "${href}"`);
+    }
+  });
 
   const forms = [...html.matchAll(/<form\b([^>]*)>([\s\S]*?)<\/form>/gi)];
   const quoteForms = forms.filter((match) => /\bclass="[^"]*\bquote-form\b[^"]*"/i.test(match[1]));
@@ -454,6 +464,20 @@ for (const file of htmlFiles) {
       errors.push(`${file}: link fragment "${targetFile}#${fragment}" is missing`);
     }
   }
+}
+
+const imagesDirectory = path.join(root, "assets", "images");
+const imageFiles = fs.readdirSync(imagesDirectory);
+const jpegStems = new Set(imageFiles.filter((file) => file.endsWith(".jpg")).map((file) => file.replace(/\.jpg$/, "")));
+const webpStems = new Set(imageFiles.filter((file) => file.endsWith(".webp")).map((file) => file.replace(/\.webp$/, "")));
+for (const stem of jpegStems) {
+  if (!webpStems.has(stem)) errors.push(`assets/images: missing WebP display asset for ${stem}.jpg`);
+}
+for (const stem of webpStems) {
+  if (!jpegStems.has(stem)) errors.push(`assets/images: missing JPEG social fallback for ${stem}.webp`);
+}
+if (jpegStems.size !== 39 || webpStems.size !== 39) {
+  errors.push(`assets/images: expected 39 JPEG/WebP pairs, found ${jpegStems.size} JPEG and ${webpStems.size} WebP files`);
 }
 
 const blogPageHtml = readPage("blog.html")?.html || "";
@@ -568,10 +592,35 @@ if (!fs.existsSync(analyticsAssetPath)) {
     ['/_vercel/insights/script.js', "Vercel Web Analytics loader"],
     ['getConsent() !== consentGranted', "consent gate"],
     ['quote_fallback_action', "fallback-action conversion event"],
+    ['resource_download', "resource-download conversion event"],
+    ['resource_type: "csv_template"', "CSV-template event classification"],
+    ['quote_optional_details_toggle', "optional-details interaction event"],
   ];
   requiredAnalyticsSignals.forEach(([signal, label]) => {
     if (!analyticsAsset.includes(signal)) errors.push(`assets/analytics.js: missing ${label}`);
   });
+}
+
+const siteScriptPath = path.join(root, "assets", "site.js");
+const siteStylePath = path.join(root, "assets", "site.css");
+const siteScript = fs.existsSync(siteScriptPath) ? fs.readFileSync(siteScriptPath, "utf8") : "";
+const siteStyle = fs.existsSync(siteStylePath) ? fs.readFileSync(siteStylePath, "utf8") : "";
+const requiredProgressiveQuoteSignals = [
+  [siteScript, 'const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"]', "five optional quote fields"],
+  [siteScript, 'optionalDetails.className = "quote-form__optional field--full"', "optional quote disclosure"],
+  [siteScript, 'if (optionalDetails) optionalDetails.open = false', "optional section reset"],
+  [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
+];
+requiredProgressiveQuoteSignals.forEach(([source, signal, label]) => {
+  if (!source.includes(signal)) errors.push(`Progressive quote form is missing ${label}`);
+});
+
+const privacyPage = readPage("privacy.html")?.html || "";
+if (!privacyPage.includes("template file name and download-link text")) {
+  errors.push("privacy.html: analytics disclosure must cover template-download metadata");
+}
+if (!privacyPage.includes("not the contents of a downloaded template")) {
+  errors.push("privacy.html: analytics disclosure must exclude downloaded-template contents");
 }
 
 const quoteApiPath = path.join(root, "api", "quote.js");

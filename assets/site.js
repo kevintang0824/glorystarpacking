@@ -264,6 +264,29 @@
   };
 
   document.querySelectorAll(".quote-form").forEach((form) => {
+    const formGrid = form.querySelector(".form-grid");
+    const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"];
+    const optionalFields = optionalFieldNames
+      .map((name) => form.querySelector(`[name="${name}"]`)?.closest(".field"))
+      .filter(Boolean);
+
+    if (formGrid && optionalFields.length === optionalFieldNames.length) {
+      const optionalDetails = document.createElement("details");
+      optionalDetails.className = "quote-form__optional field--full";
+
+      const optionalSummary = document.createElement("summary");
+      optionalSummary.dataset.quoteOptionalToggle = "true";
+      optionalSummary.innerHTML = `<span>Add project details or artwork</span><small>Optional · helps us prepare a more specific reply</small>`;
+
+      const optionalGrid = document.createElement("div");
+      optionalGrid.className = "form-grid quote-form__optional-grid";
+      optionalFields.forEach((field) => optionalGrid.append(field));
+      optionalDetails.append(optionalSummary, optionalGrid);
+
+      const trap = formGrid.querySelector(".form-trap");
+      formGrid.insertBefore(optionalDetails, trap || null);
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
@@ -316,6 +339,8 @@
         }
 
         form.reset();
+        const optionalDetails = form.querySelector(".quote-form__optional");
+        if (optionalDetails) optionalDetails.open = false;
         if (status) {
           status.textContent = "Request received. Kevin will follow up with the next project questions.";
           status.dataset.state = "success";

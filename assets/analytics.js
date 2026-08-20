@@ -177,6 +177,16 @@
     if (!link) return;
     const href = link.getAttribute("href") || "";
 
+    if (link.hasAttribute("download") || /\/assets\/templates\/[^?#]+\.csv(?:[?#]|$)/i.test(new URL(link.href, window.location.href).pathname)) {
+      const resourceUrl = new URL(link.href, window.location.href);
+      track("resource_download", {
+        resource_name: resourceUrl.pathname.split("/").pop()?.slice(0, 120) || "unknown",
+        resource_type: "csv_template",
+        link_text: (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 100),
+      });
+      return;
+    }
+
     if (href.startsWith("mailto:")) {
       track("contact_click", { contact_method: "email" });
       return;
@@ -188,6 +198,14 @@
     if (href.includes("#quote")) {
       track("quote_cta_click", { link_location: link.closest("header") ? "header" : "page" });
     }
+  });
+
+  document.addEventListener("click", (event) => {
+    const toggle = event.target.closest("[data-quote-optional-toggle]");
+    if (!toggle) return;
+    track("quote_optional_details_toggle", {
+      action: toggle.parentElement?.open ? "collapse" : "expand",
+    });
   });
 
   document.querySelectorAll(".quote-form").forEach((form) => {
