@@ -59,9 +59,9 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260820-3";
+const requiredSiteStyleVersion = "20260820-4";
 const requiredSiteScriptVersion = "20260820-3";
-const requiredAnalyticsVersion = "20260820-3";
+const requiredAnalyticsVersion = "20260820-4";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
@@ -488,6 +488,39 @@ for (const file of htmlFiles) {
     }
   });
 
+  const productCards = html.match(/<article\b[^>]*class="[^"]*\bproduct-card\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi) || [];
+  productCards.forEach((card, index) => {
+    const cardLabel = file + ": product card " + (index + 1);
+    const hrefs = values(card, /<a\b[^>]*\shref="([^"]+)"/gi);
+    const duplicateHref = hrefs.find((href, hrefIndex) => hrefs.indexOf(href) !== hrefIndex);
+    if (duplicateHref) errors.push(cardLabel + " repeats destination \"" + duplicateHref + "\" across multiple links");
+
+    const openingTag = card.match(/^<article\b[^>]*>/i)?.[0] || "";
+    if (/\bproduct-card--linked\b/i.test(attribute(openingTag, "class"))) {
+      if (hrefs.length !== 1) errors.push(cardLabel + " linked-card pattern must expose exactly one link");
+      if (!/<h3>\s*<a\b/i.test(card)) errors.push(cardLabel + " linked-card pattern must keep its heading as the link");
+      if (!/<span\b[^>]*class="text-link product-card__cta"[^>]*aria-hidden="true"/i.test(card)) {
+        errors.push(cardLabel + " linked-card pattern must keep a visual, assistive-technology-hidden CTA");
+      }
+    }
+  });
+
+  const tableRegions = html.match(/<div\b[^>]*class="[^"]*\btable-wrap\b[^"]*"[^>]*>[\s\S]*?<\/table>\s*<\/div>/gi) || [];
+  tableRegions.forEach((region, index) => {
+    const regionLabel = file + ": table region " + (index + 1);
+    const openingTag = region.match(/^<div\b[^>]*>/i)?.[0] || "";
+    const captionId = attribute(openingTag, "aria-labelledby");
+    const hintId = attribute(openingTag, "aria-describedby");
+    if (attribute(openingTag, "tabindex") !== "0") errors.push(regionLabel + " must be keyboard focusable");
+    if (attribute(openingTag, "role") !== "region") errors.push(regionLabel + " must use role=\"region\"");
+    if (!captionId || !region.includes('<caption id="' + captionId + '">')) {
+      errors.push(regionLabel + " must be labelled by its table caption");
+    }
+    if (!hintId || !html.includes('<p class="table-scroll-hint" id="' + hintId + '">Scroll horizontally to view all columns →</p>')) {
+      errors.push(regionLabel + " must reference the visible horizontal-scroll hint");
+    }
+  });
+
   for (const asset of values(html, /<(?:link|script)\b[^>]*(?:href|src)="(\/?assets\/[^"]+)"/gi)) {
     const assetPath = path.join(root, asset.replace(/^\//, "").split(/[?#]/)[0]);
     if (!fs.existsSync(assetPath)) errors.push(`${file}: missing asset "${asset}"`);
@@ -728,6 +761,8 @@ if (!fs.existsSync(analyticsAssetPath)) {
     ['quote_delivery_error', "quote delivery-error event"],
     ['window.location.reload()', "full analytics shutdown after consent withdrawal"],
     ['closeConsentPanel(true)', "analytics-preference focus return"],
+    ['panel.setAttribute("aria-live", "polite")', "non-blocking consent announcement"],
+    ['panel.setAttribute("aria-atomic", "true")', "complete consent announcement"],
   ];
   requiredAnalyticsSignals.forEach(([signal, label]) => {
     if (!analyticsAsset.includes(signal)) errors.push(`assets/analytics.js: missing ${label}`);

@@ -678,6 +678,26 @@ button {
   transform: translateY(-8px);
 }
 
+.product-card--linked h3 a::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+}
+
+.product-card--linked h3 a:focus-visible {
+  outline: 0;
+}
+
+.product-card--linked:focus-within {
+  outline: 3px solid var(--register);
+  outline-offset: 4px;
+}
+
+.product-card:hover .product-card__cta::after {
+  transform: translateX(5px);
+}
+
 .product-card__media {
   position: relative;
   aspect-ratio: 5 / 4;
@@ -1567,6 +1587,15 @@ button {
   border: 1px solid var(--line-light);
 }
 
+.table-wrap:focus-visible {
+  outline: 3px solid var(--register);
+  outline-offset: 4px;
+}
+
+.table-scroll-hint {
+  display: none;
+}
+
 .spec-table {
   width: 100%;
   min-width: 720px;
@@ -2346,6 +2375,16 @@ button {
   .card-grid,
   .detail-grid {
     grid-template-columns: 1fr;
+  }
+
+  .table-scroll-hint {
+    display: block;
+    margin: 0 0 10px;
+    color: var(--graphite);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .proof-list {

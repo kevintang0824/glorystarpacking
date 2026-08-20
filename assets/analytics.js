@@ -134,6 +134,8 @@
     panel.className = "analytics-consent";
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-label", "Analytics choices");
+    panel.setAttribute("aria-live", "polite");
+    panel.setAttribute("aria-atomic", "true");
     panel.innerHTML = `
       <div class="analytics-consent__copy">
         <strong>Help us improve this website?</strong>

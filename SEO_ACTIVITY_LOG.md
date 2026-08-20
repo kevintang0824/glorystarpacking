@@ -17,14 +17,18 @@
 - 全站增加严格 `Content-Security-Policy`：脚本只允许同源、Google Tag 和 9 个经过哈希确认的内联脚本，不允许任意内联脚本或事件属性；
 - CSP 同时限制表单目标、base URI、对象嵌入、frame ancestor、字体、图片和统计连接域，并启用不安全请求升级；
 - 扩展 Permissions Policy，并增加 COOP、DNS 预取关闭和跨域策略文件禁用头；
-- 从 Privacy 打开统计偏好后，保存选择并关闭面板会把焦点返回原触发链接。
+- 统计同意条保持非阻断 region，并以 polite live region 宣告首次出现；从 Privacy 打开偏好后，保存选择并关闭面板会把焦点返回原触发链接。
 - 将现有 SVG 品牌标识确定性导出为 512×512 PNG，加入 Web App Manifest、全站 Apple touch icon，并在 Organization schema 中声明 ImageObject 尺寸。
+- 合并 56 张产品卡内重复指向同一目的地的图片、标题与 CTA 链接；全站产品卡链接由 152 个降至 64 个，减少 88 个重复 Tab 停靠点，同时保留整卡点击区域与可见焦点框。
+- 92 个规格、测试和 RFQ 表格包装为可聚焦滚动区域，以各自 caption 提供可访问名称；移动端增加显式横向滚动提示。
 
 ### 验收与边界
 
 - 850px 浏览器测试确认：关闭菜单不可聚焦、打开后首焦点为 Products、背景全部 inert、Tab 正反向循环、Escape 正确返焦；
 - 950px 测试确认：导航 CTA 可见且页面无横向溢出；850px 无 JavaScript 测试确认内联导航和 CTA 仍可见；
 - 生产站模拟 CSP 覆盖首页和 8 个内联计算工具，启用统计同意后 0 个 CSP 阻断；
+- 产品目录在 1440px 与 390px 浏览器抽查中无横向溢出；22 张目录卡均只暴露一个语义链接，图片区域点击、键盘焦点和目标跳转正常；
+- 390px RFQ 表格抽查确认可用方向键横向滚动、焦点框可见、提示可见且页面本身无横向溢出；桌面端自动隐藏提示；
 - 全站静态校验、Quote API、Health API 和 JavaScript 语法回归通过；
 - 生产自动邮件仍因 Vercel 未配置 Resend 环境变量而不可用；该外部配置不能由代码优化替代。
 
