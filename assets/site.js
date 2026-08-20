@@ -252,12 +252,15 @@
     return `https://wa.me/8618020755949?text=${encodeURIComponent(message)}`;
   };
 
-  const renderDeliveryFallback = (status, payload) => {
+  let fallbackCopyIndex = 0;
+
+  const renderDeliveryFallback = (status, payload, options = {}) => {
     if (!status) return;
 
     const copy = document.createElement("span");
     copy.className = "form-fallback-copy";
-    copy.textContent = "Online delivery is temporarily unavailable. Your form is still filled in—choose another way to send the same brief.";
+    copy.textContent = options.message
+      || "Online delivery is temporarily unavailable. Your form is still filled in—choose another way to send the same brief.";
 
     const actions = document.createElement("span");
     actions.className = "form-fallback-actions";
@@ -290,24 +293,48 @@
         copyButton.textContent = "Brief copied";
         document.dispatchEvent(new CustomEvent("glorystarpack:quote-fallback-action", { detail: { method: "copy" } }));
       } catch {
-        copyButton.textContent = "Copy unavailable";
+        status.querySelector(".form-fallback-manual")?.remove();
+        fallbackCopyIndex += 1;
+
+        const manualCopy = document.createElement("span");
+        manualCopy.className = "form-fallback-manual";
+
+        const manualLabel = document.createElement("label");
+        const manualId = `fallback-brief-${fallbackCopyIndex}`;
+        manualLabel.htmlFor = manualId;
+        manualLabel.textContent = "Automatic copy is unavailable. Select this project brief manually:";
+
+        const manualBrief = document.createElement("textarea");
+        manualBrief.id = manualId;
+        manualBrief.readOnly = true;
+        manualBrief.rows = 8;
+        manualBrief.value = buildProjectBrief(payload);
+        manualBrief.addEventListener("focus", () => manualBrief.select());
+
+        manualCopy.append(manualLabel, manualBrief);
+        status.append(manualCopy);
+        copyButton.textContent = "Brief ready to select";
+        manualBrief.focus();
+        manualBrief.select();
       }
     });
 
     actions.append(emailLink, whatsappLink, copyButton);
     status.replaceChildren(copy, actions);
 
-    if (payload.attachment) {
+    const attachmentName = options.attachmentName || payload.attachment?.filename || "";
+    if (attachmentName || payload.attachment) {
       const note = document.createElement("small");
       note.className = "form-fallback-note";
-      note.textContent = "For privacy, browsers cannot transfer the selected attachment to Email or WhatsApp automatically. Add it again before sending.";
+      note.textContent = `The selected artwork${attachmentName ? ` (${attachmentName})` : ""} was not included automatically. Add it again as an Email or WhatsApp attachment before sending.`;
       status.append(note);
     }
 
     status.dataset.state = "fallback";
     document.dispatchEvent(new CustomEvent("glorystarpack:quote-email-fallback", {
-      detail: { hasAttachment: Boolean(payload.attachment) },
+      detail: { hasAttachment: Boolean(attachmentName || payload.attachment) },
     }));
+    if (options.focusFirst !== false) emailLink.focus();
   };
 
   document.querySelectorAll(".quote-form").forEach((form) => {
@@ -368,9 +395,9 @@
 
       let timeoutId;
       let deliveryAttempted = false;
+      const fileInput = form.querySelector('input[type="file"]');
 
       try {
-        const fileInput = form.querySelector('input[type="file"]');
         payload.attachment = await fileToAttachment(fileInput?.files?.[0]);
 
         const controller = new AbortController();
@@ -397,7 +424,10 @@
           document.dispatchEvent(new CustomEvent("glorystarpack:quote-delivery-error", {
             detail: { reason: "request", statusGroup: `${Math.floor(response.status / 100)}xx` },
           }));
-          throw new Error(result.error || "Please review the form and try again.");
+          renderDeliveryFallback(status, payload, {
+            message: `${result.error || "The online request could not be accepted."} Your form is still filled in—choose another way to send the same brief.`,
+          });
+          return;
         }
 
         form.reset();
@@ -423,11 +453,15 @@
           document.dispatchEvent(new CustomEvent("glorystarpack:quote-validation-error", {
             detail: { reason: "attachment" },
           }));
+          renderDeliveryFallback(status, payload, {
+            message: `${error.message || "The selected artwork could not be prepared."} Your form is still filled in—send the brief through Email or WhatsApp and add the artwork manually.`,
+            attachmentName: fileInput?.files?.[0]?.name || "",
+          });
+          return;
         }
-        if (status) {
-          status.textContent = error.message || "The request could not be sent. Please email us directly.";
-          status.dataset.state = "error";
-        }
+        renderDeliveryFallback(status, payload, {
+          message: `${error.message || "The request could not be sent."} Your form is still filled in—choose another way to send the same brief.`,
+        });
       } finally {
         if (timeoutId) window.clearTimeout(timeoutId);
         if (submitButton) {

@@ -25,9 +25,8 @@
   <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/images/presentation-box.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-4">
+  <link rel="preload" as="image" type="image/avif" href="assets/images/presentation-box.avif" fetchpriority="high">
+  <link rel="stylesheet" href="assets/site.css?v=20260821-1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -133,14 +132,14 @@
         <a href="industries.html">Industries</a>
         <a href="about.html">Factory</a>
         <a href="blog.html" aria-current="page">Guides</a>
-        <a class="button button--small" href="/#quote">Start a quote</a>
+        <a class="button button--small" href="custom-boxes.html#quote">Start a quote</a>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
     <section class="subhero">
-      <div class="subhero__background"><img src="assets/images/presentation-box.webp" width="1024" height="1024" alt="Open presentation-style rigid box used to compare opening structures" fetchpriority="high"></div>
+      <div class="subhero__background"><picture><source type="image/avif" srcset="assets/images/presentation-box.avif"><img src="assets/images/presentation-box.webp" width="1024" height="1024" alt="Open presentation-style rigid box used to compare opening structures" fetchpriority="high"></picture></div>
       <div class="container subhero__content" data-reveal>
         <ol class="breadcrumbs" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li><a href="blog.html">Guides</a></li><li aria-current="page">Magnetic box vs drawer box</li></ol>
         <p class="eyebrow">Buyer guide · August 1, 2026</p>
@@ -359,7 +358,7 @@
     <section class="cta-band">
       <div class="container cta-band__inner">
         <h2>Send one product brief and compare two production-ready structures.</h2>
-        <a class="button" href="/#quote">Start a packaging quote</a>
+        <a class="button" href="custom-boxes.html#quote">Start a packaging quote</a>
       </div>
     </section>
   </main>
@@ -377,7 +376,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/site.js?v=20260821-1" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

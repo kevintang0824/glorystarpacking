@@ -26,6 +26,23 @@ const quoteFieldLimits = {
   details: "3000",
   website: "100",
 };
+const contextualQuoteRoutes = {
+  "ecommerce-mailer-box-sizing-transit-test.html": "custom-mailer-boxes.html#quote",
+  "luxury-unboxing-guide.html": "custom-boxes.html#quote",
+  "magnetic-box-vs-drawer-box.html": "custom-boxes.html#quote",
+  "packaging-inserts-material-comparison.html": "custom-packaging-inserts.html#quote",
+  "rigid-box-cost-drivers.html": "custom-rigid-boxes.html#quote",
+  "rigid-box-vs-folding-carton.html": "custom-boxes.html#quote",
+  "wine-label-condensation-adhesive-testing.html": "custom-wine-labels.html#quote",
+};
+const avifHeroStems = new Set([
+  "factory-printing-floor",
+  "industrial-waterproof-labels",
+  "luxury-packaging-set",
+  "packaging-dieline-blueprint",
+  "presentation-box",
+  "warehouse-cartons",
+]);
 const priorityPages = [
   "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
@@ -59,8 +76,8 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260820-4";
-const requiredSiteScriptVersion = "20260820-3";
+const requiredSiteStyleVersion = "20260821-1";
+const requiredSiteScriptVersion = "20260821-1";
 const requiredAnalyticsVersion = "20260820-4";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
@@ -422,22 +439,37 @@ for (const file of htmlFiles) {
 
   const imagePreloads = values(html, /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="([^"]+)"/gi);
   imagePreloads.forEach((href) => {
-    if (href.startsWith("assets/images/") && !href.split(/[?#]/)[0].endsWith(".webp")) {
-      errors.push(`${file}: local image preload must use WebP "${href}"`);
+    if (href.startsWith("assets/images/") && !/\.(?:avif|webp)$/i.test(href.split(/[?#]/)[0])) {
+      errors.push(`${file}: local image preload must use AVIF or WebP "${href}"`);
     }
   });
+  for (const stem of avifHeroStems) {
+    const webpPath = `assets/images/${stem}.webp`;
+    const avifPath = `assets/images/${stem}.avif`;
+    if (html.includes(`rel="preload" as="image" href="${webpPath}"`)) {
+      errors.push(`${file}: selected hero "${stem}" must preload its AVIF source`);
+    }
+    if (!html.includes(`href="${avifPath}"`)) continue;
+    if (!html.includes(`rel="preload" as="image" type="image/avif" href="${avifPath}" fetchpriority="high"`)) {
+      errors.push(`${file}: AVIF hero preload for "${stem}" is incomplete`);
+    }
+    if (!html.includes(`<picture><source type="image/avif" srcset="${avifPath}"><img src="${webpPath}"`)) {
+      errors.push(`${file}: AVIF hero "${stem}" must keep a WebP picture fallback`);
+    }
+  }
 
   if (/fonts\.(?:googleapis|gstatic)\.com/i.test(html)) {
     errors.push(`${file}: external Google Fonts request must not be present`);
   }
   const fontPreloads = values(html, /<link\b[^>]*rel="preload"[^>]*as="font"[^>]*href="([^"]+)"/gi);
-  const requiredFontPreloads = [
-    "/assets/fonts/bodoni-moda-latin-v28.woff2",
-    "/assets/fonts/manrope-latin-v20.woff2",
-  ];
-  requiredFontPreloads.forEach((href) => {
-    if (!fontPreloads.includes(href)) errors.push(`${file}: missing local font preload "${href}"`);
-  });
+  const displayFontPreload = "/assets/fonts/bodoni-moda-latin-v28.woff2";
+  const bodyFontPreload = "/assets/fonts/manrope-latin-v20.woff2";
+  if (!fontPreloads.includes(displayFontPreload)) {
+    errors.push(`${file}: missing LCP display-font preload "${displayFontPreload}"`);
+  }
+  if (fontPreloads.includes(bodyFontPreload)) {
+    errors.push(`${file}: body font must load on demand instead of competing with the LCP font`);
+  }
 
   const forms = [...html.matchAll(/<form\b([^>]*)>([\s\S]*?)<\/form>/gi)];
   const quoteForms = forms.filter((match) => /\bclass="[^"]*\bquote-form\b[^"]*"/i.test(match[1]));
@@ -480,6 +512,9 @@ for (const file of htmlFiles) {
     const attachment = controlByName.get("attachment") || "";
     if (attribute(attachment, "accept") !== ".pdf,.jpg,.jpeg,.png,.webp") {
       errors.push(`${formLabel} attachment accept list is inconsistent`);
+    }
+    if (!/Add larger or source files by Email or WhatsApp after sending the brief\./i.test(body)) {
+      errors.push(`${formLabel} must explain the larger/source-file fallback`);
     }
     if (!/<a\b[^>]*href="privacy\.html"/i.test(body)) errors.push(`${formLabel} is missing a privacy notice link`);
     const noscriptNote = body.match(/<noscript>([\s\S]*?)<\/noscript>/i)?.[1] || "";
@@ -545,6 +580,16 @@ for (const file of htmlFiles) {
     errors.push(`${file}: expected GA4 measurement ID ${requiredAnalyticsMeasurementId}`);
   }
 
+  const contextualQuoteRoute = contextualQuoteRoutes[file];
+  if (contextualQuoteRoute) {
+    if (html.includes('href="/#quote"')) {
+      errors.push(`${file}: product-intent guide must not send quote CTAs to an unselected homepage form`);
+    }
+    if (!html.includes(`href="${contextualQuoteRoute}"`)) {
+      errors.push(`${file}: expected contextual quote route "${contextualQuoteRoute}"`);
+    }
+  }
+
   for (const href of values(html, /<a\b[^>]*\shref="([^"]+)"/gi)) {
     if (/^index\.html(?:[?#]|$)/.test(href)) {
       errors.push(`${file}: homepage link should use "/" instead of "${href}"`);
@@ -572,6 +617,9 @@ const jpegStems = new Set(imageFiles.filter((file) => file.endsWith(".jpg")).map
 const webpStems = new Set(imageFiles
   .filter((file) => file.endsWith(".webp") && !derivedDisplayWebps.has(file))
   .map((file) => file.replace(/\.webp$/, "")));
+const actualAvifHeroStems = new Set(imageFiles
+  .filter((file) => file.endsWith(".avif"))
+  .map((file) => file.replace(/\.avif$/, "")));
 for (const stem of jpegStems) {
   if (!webpStems.has(stem)) errors.push(`assets/images: missing WebP display asset for ${stem}.jpg`);
 }
@@ -580,6 +628,25 @@ for (const stem of webpStems) {
 }
 if (jpegStems.size !== 39 || webpStems.size !== 39) {
   errors.push(`assets/images: expected 39 JPEG/WebP pairs, found ${jpegStems.size} JPEG and ${webpStems.size} WebP files`);
+}
+if (actualAvifHeroStems.size !== avifHeroStems.size ||
+    [...avifHeroStems].some((stem) => !actualAvifHeroStems.has(stem))) {
+  errors.push(`assets/images: AVIF hero set must match the ${avifHeroStems.size} approved first-wave assets`);
+}
+for (const stem of avifHeroStems) {
+  const avifPath = path.join(imagesDirectory, `${stem}.avif`);
+  const webpPath = path.join(imagesDirectory, `${stem}.webp`);
+  if (!fs.existsSync(avifPath) || !fs.existsSync(webpPath)) continue;
+  if (fs.statSync(avifPath).size >= fs.statSync(webpPath).size) {
+    errors.push(`assets/images: ${stem}.avif must remain smaller than its WebP fallback`);
+  }
+}
+const avifHeroUsageCount = htmlFiles.reduce((count, file) => {
+  const html = readPage(file)?.html || "";
+  return count + (html.match(/<source\b[^>]*type="image\/avif"[^>]*srcset="assets\/images\/[^"]+\.avif"/gi) || []).length;
+}, 0);
+if (avifHeroUsageCount !== 23) {
+  errors.push(`HTML: expected 23 first-wave AVIF hero usages, found ${avifHeroUsageCount}`);
 }
 for (const derivedImage of derivedDisplayWebps) {
   const derivedPath = path.join(imagesDirectory, derivedImage);
@@ -590,6 +657,12 @@ for (const derivedImage of derivedDisplayWebps) {
   }
 }
 const homepageHtml = readPage("index.html")?.html || "";
+if (!/<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="assets\/images\/emerald-rigid-box\.webp"[^>]*media="\(min-width: 781px\)"[^>]*fetchpriority="high"/i.test(homepageHtml)) {
+  errors.push("index.html: homepage hero preload must be limited to the desktop two-column layout");
+}
+if (!/<img\b[^>]*class="[^"]*\bproof-frame__primary\b[^"]*"[^>]*src="assets\/images\/emerald-rigid-box\.webp"[^>]*loading="lazy"[^>]*decoding="async"[^>]*fetchpriority="low"/i.test(homepageHtml)) {
+  errors.push("index.html: below-fold mobile hero image must use native lazy loading and low priority");
+}
 if (!/<img\b[^>]*class="[^"]*\bproof-frame__inset\b[^"]*"[^>]*src="assets\/images\/embossing-process-512\.webp"[^>]*width="512"[^>]*height="512"[^>]*fetchpriority="low"/i.test(homepageHtml)) {
   errors.push("index.html: hero inset must use the 512px low-priority display asset");
 }
@@ -786,8 +859,13 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, "18000", "bounded quote request timeout"],
   [siteScript, 'glorystarpack:quote-submit-attempt', "quote-submit attempt signal"],
   [siteScript, 'glorystarpack:quote-delivery-error', "quote-delivery error signal"],
+  [siteScript, 'attachmentName: fileInput?.files?.[0]?.name || ""', "attachment-error fallback context"],
+  [siteScript, 'if (options.focusFirst !== false) emailLink.focus()', "fallback action focus"],
+  [siteScript, 'manualBrief.select()', "manual project-brief selection"],
   [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
   [siteStyle, ".form-note--noscript", "no-JavaScript form guidance"],
+  [siteStyle, ".form-fallback-manual textarea", "manual-copy fallback styling"],
+  [siteStyle, ".subhero__background picture", "AVIF hero picture sizing"],
   [siteStyle, "html:not(.js) .site-nav", "no-JavaScript mobile navigation"],
 ];
 requiredProgressiveQuoteSignals.forEach(([source, signal, label]) => {
@@ -848,6 +926,8 @@ if (!fs.existsSync(quoteApiPath)) {
     ['signal: resendController.signal', "Resend abort signal"],
     ['createHash("sha256")', "stable submission fingerprint"],
     ['`quote-${submissionFingerprint}`', "stable Resend idempotency key"],
+    ['Resend quote success response was not valid JSON', "invalid provider-success response handling"],
+    ['typeof result.id !== "string"', "provider email ID validation"],
   ];
   requiredApiSignals.forEach(([signal, label]) => {
     if (!quoteApi.includes(signal)) errors.push(`api/quote.js: missing ${label}`);
@@ -1044,6 +1124,15 @@ if (!fs.existsSync(vercelConfigPath)) {
     }
     if (!hasImmutableFontCache) errors.push("vercel.json: fonts need a one-year immutable cache header");
     if (!hasFontCors) errors.push("vercel.json: fonts need an explicit cross-origin response header");
+    for (const assetPath of ["/assets/site.css", "/assets/site.js", "/assets/analytics.js"]) {
+      const assetPosition = headers.findIndex((entry) => entry.source === assetPath);
+      const assetHeaders = headers[assetPosition]?.headers;
+      const hasImmutableCache = Array.isArray(assetHeaders) && assetHeaders.some((header) =>
+        header.key === "Cache-Control" && header.value === "public, max-age=31536000, immutable");
+      if (assetPosition <= generalAssetsPosition || !hasImmutableCache) {
+        errors.push(`vercel.json: ${assetPath} must override the general assets rule with a one-year immutable cache`);
+      }
+    }
 
     const requiredSecurityHeaders = [
       ["Cross-Origin-Opener-Policy", "same-origin"],

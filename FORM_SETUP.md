@@ -7,9 +7,11 @@ The site's 26 quote forms use the same field contract and work in two modes:
 
 With JavaScript unavailable, the browser can still send the five required text fields as a standard URL-encoded request when Resend is configured. The API returns a small noindex HTML confirmation or recovery page for this route instead of exposing raw JSON. Optional artwork is delivered only through the enhanced JavaScript flow; a file input cannot be transferred through the basic URL-encoded fallback.
 
-Browser field-length limits mirror the API limits, including 120 characters for name and destination, 180 for email, 80 for phone and quantity, 160 for dimensions, and 3,000 for project details. Resend delivery is bounded by a 10-second server timeout, while the browser switches to the direct-contact fallback after 18 seconds. Identical normalized submissions use the same SHA-256 idempotency key so a network retry does not create a second email during the provider's deduplication window.
+Browser field-length limits mirror the API limits, including 120 characters for name and destination, 180 for email, 80 for phone and quantity, 160 for dimensions, and 3,000 for project details. Resend delivery is bounded by a 10-second server timeout, while the browser switches to the direct-contact fallback after 18 seconds. Identical normalized submissions use the same SHA-256 idempotency key so a network retry does not create a second email during the provider's deduplication window. A provider success response is accepted only when it contains valid JSON and a non-empty email ID; malformed success responses become a generic delivery failure instead of an unhandled server error.
 
-Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The enhanced request stops after 18 seconds; timeout, network, DNS, 404, and server-delivery failures all expose the same Email, WhatsApp, and copy routes. Those routes include the entered country and target date so the purchasing brief remains complete. Browsers cannot transfer a selected attachment into another app, so the fallback explains that the visitor must add it again before sending.
+Every quote form requires a delivery country or region (`country`) and includes an optional target in-hand date (`targetDate`). The enhanced request stops after 18 seconds; timeout, network, DNS, 404, validation, and server-delivery failures all expose the same Email, WhatsApp, and copy routes. The first recovery action receives keyboard focus. Those routes include the entered country and target date so the purchasing brief remains complete. If automatic clipboard access is unavailable, the page reveals a labelled, read-only textarea and selects the full brief for manual copying.
+
+Attachment size, format, and local read failures use the same recovery panel instead of leaving the visitor at a text-only error. Browsers cannot transfer a selected attachment into another app, so the panel names the affected file when available and explains that the visitor must add it again before sending by Email or WhatsApp. Every form also tells visitors before submission to use those channels for larger files or unsupported source formats.
 
 The frontend also retains first-visit attribution in session storage and includes the landing page, referrer, standard UTM fields, discovery channel, and discovery source with a submitted inquiry. Known ChatGPT, Perplexity, Copilot, Claude, Gemini, and You.com referrals are classified as `ai-search`; ordinary search, referral, campaign, and direct visits remain separate. This connects discovery to actual quote requests without enabling an advertising cookie. The privacy notice describes this behavior.
 
@@ -53,7 +55,8 @@ Run `node scripts/test-service-health.mjs` for the health endpoint regression, a
 - Confirm delivery country is required and appears in the received email.
 - Confirm the optional target in-hand date is preserved when entered and may be left blank.
 - Confirm the email arrives and Reply goes to the visitor.
-- Confirm a file over 3 MB produces a clear error.
+- Confirm a file over 3 MB produces the recovery panel, preserves the brief, focuses Email, and explains how to attach the file manually.
 - Confirm a mismatched extension/MIME type, malformed Base64 payload, and incorrect file signature are rejected.
 - Confirm the hidden honeypot field silently rejects bots.
 - Confirm the email fallback opens with the full brief when the API is unavailable.
+- Deny clipboard permission and confirm the copy action reveals and selects the full brief in a read-only textarea.

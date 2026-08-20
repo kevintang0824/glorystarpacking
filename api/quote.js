@@ -224,6 +224,18 @@ module.exports = async function handler(request, response) {
     return respond(response, nativeFormRequest, 502, { error: "Email delivery is temporarily unavailable." });
   }
 
-  const result = await resendResponse.json();
-  return respond(response, nativeFormRequest, 200, { ok: true, id: result.id });
+  let result;
+  try {
+    result = await resendResponse.json();
+  } catch {
+    console.error("Resend quote success response was not valid JSON", resendResponse.status);
+    return respond(response, nativeFormRequest, 502, { error: "Email delivery is temporarily unavailable." });
+  }
+
+  if (!result || typeof result.id !== "string" || !result.id.trim()) {
+    console.error("Resend quote success response was missing an email ID", resendResponse.status);
+    return respond(response, nativeFormRequest, 502, { error: "Email delivery is temporarily unavailable." });
+  }
+
+  return respond(response, nativeFormRequest, 200, { ok: true, id: result.id.trim() });
 };

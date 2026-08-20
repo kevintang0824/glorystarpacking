@@ -23,9 +23,8 @@
   <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-v20.woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/images/luxury-packaging-set.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=20260820-4">
+  <link rel="preload" as="image" type="image/avif" href="assets/images/luxury-packaging-set.avif" fetchpriority="high">
+  <link rel="stylesheet" href="assets/site.css?v=20260821-1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -125,7 +124,7 @@
 
   <main id="main-content">
     <section class="subhero">
-      <div class="subhero__background"><img src="assets/images/luxury-packaging-set.webp" width="1024" height="1024" alt="" fetchpriority="high"></div>
+      <div class="subhero__background"><picture><source type="image/avif" srcset="assets/images/luxury-packaging-set.avif"><img src="assets/images/luxury-packaging-set.webp" width="1024" height="1024" alt="" fetchpriority="high"></picture></div>
       <div class="container subhero__content" data-reveal>
         <ol class="breadcrumbs" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">Industries</li></ol>
         <p class="eyebrow">Industry packaging programs</p>
@@ -271,7 +270,7 @@
             <div class="field"><label for="industry-country">Delivery country / region</label><input id="industry-country" name="country" type="text" autocomplete="country-name" placeholder="e.g. United States" required maxlength="120"></div>
             <div class="field"><label for="industry-target-date">Target in-hand date</label><input id="industry-target-date" name="targetDate" type="text" placeholder="e.g. October 2026 or flexible" maxlength="120"></div>
             <div class="field field--full"><label for="industry-details">Product and route</label><textarea id="industry-details" name="details" placeholder="What is being packed, sales channel, shipping destination, risks, preferred structure, and target date" maxlength="3000"></textarea></div>
-            <div class="field field--full"><label for="industry-file">Reference artwork</label><input id="industry-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum</small></div>
+            <div class="field field--full"><label for="industry-file">Reference artwork</label><input id="industry-file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp"><small>Optional · PDF, JPG, PNG, or WebP · 3 MB maximum. Add larger or source files by Email or WhatsApp after sending the brief.</small></div>
             <div class="form-trap" aria-hidden="true"><label for="industry-website">Website</label><input id="industry-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           </div>
           <div class="form-footer"><p class="form-note">Your details are used only to prepare and respond to this packaging request. See our <a href="privacy.html">privacy notice</a>.</p><button class="button button--dark" type="submit">Request an industry quote</button></div>
@@ -294,7 +293,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260820-3" defer></script>
+  <script src="assets/site.js?v=20260821-1" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

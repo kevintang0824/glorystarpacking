@@ -5,6 +5,7 @@ const require = createRequire(import.meta.url);
 const handler = require("../api/quote.js");
 
 const originalFetch = globalThis.fetch;
+const originalConsoleError = console.error;
 const originalEnvironment = {
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   QUOTE_FROM_EMAIL: process.env.QUOTE_FROM_EMAIL,
@@ -17,14 +18,15 @@ process.env.QUOTE_TO_EMAIL = "sales@example.com";
 
 let lastEmailRequest;
 let lastEmailOptions;
+let mockResendResponse = {
+  ok: true,
+  status: 200,
+  json: async () => ({ id: "test-email-id" }),
+};
 globalThis.fetch = async (_url, options = {}) => {
   lastEmailOptions = options;
   lastEmailRequest = JSON.parse(options.body || "{}");
-  return {
-    ok: true,
-    status: 200,
-    json: async () => ({ id: "test-email-id" }),
-  };
+  return mockResendResponse;
 };
 
 const validQuote = {
@@ -113,6 +115,38 @@ try {
   assert.equal(validPdf.statusCode, 200);
   assert.notEqual(lastEmailOptions.headers["Idempotency-Key"], validIdempotencyKey);
 
+  const providerErrorLogs = [];
+  console.error = (...parts) => providerErrorLogs.push(parts.join(" "));
+  mockResendResponse = {
+    ok: true,
+    status: 202,
+    json: async () => {
+      throw new SyntaxError("Unexpected end of JSON input");
+    },
+  };
+  const invalidSuccessJson = await invoke(validQuote);
+  assert.equal(invalidSuccessJson.statusCode, 502);
+  assert.equal(invalidSuccessJson.payload.error, "Email delivery is temporarily unavailable.");
+
+  mockResendResponse = {
+    ok: true,
+    status: 202,
+    json: async () => ({}),
+  };
+  const missingSuccessId = await invoke(validQuote);
+  assert.equal(missingSuccessId.statusCode, 502);
+  assert.equal(missingSuccessId.payload.error, "Email delivery is temporarily unavailable.");
+  console.error = originalConsoleError;
+  assert.equal(providerErrorLogs.length, 2);
+  assert.match(providerErrorLogs[0], /not valid JSON/);
+  assert.match(providerErrorLogs[1], /missing an email ID/);
+
+  mockResendResponse = {
+    ok: true,
+    status: 200,
+    json: async () => ({ id: "test-email-id" }),
+  };
+
   const unsupported = await invoke({
     ...validQuote,
     attachment: {
@@ -163,9 +197,10 @@ try {
   assert.match(nativeUnconfigured.body, /mailto:kevin@GloryStarPack\.com/);
   assert.match(nativeUnconfigured.body, /https:\/\/wa\.me\/8618020755949/);
 
-  console.log("Quote API tests passed: JSON/native form requests and result pages, bounded delivery, stable deduplication, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
+  console.log("Quote API tests passed: JSON/native form requests and result pages, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
+  console.error = originalConsoleError;
   Object.entries(originalEnvironment).forEach(([name, value]) => {
     if (value === undefined) delete process.env[name];
     else process.env[name] = value;
