@@ -63,12 +63,24 @@
     }
   });
 
-  const handleNavigationBreakpoint = () => setNavOpen(false);
+  const handleNavigationBreakpoint = () => {
+    const focusNeedsRecovery = mobileNavigation.matches && Boolean(nav?.contains(document.activeElement));
+    setNavOpen(false, focusNeedsRecovery);
+  };
   if (typeof mobileNavigation.addEventListener === "function") {
     mobileNavigation.addEventListener("change", handleNavigationBreakpoint);
   } else {
     mobileNavigation.addListener(handleNavigationBreakpoint);
   }
+
+  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+    const currentLabel = (link.getAttribute("aria-label") || link.innerText || link.textContent || "")
+      .replace(/\s*↗\s*/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!currentLabel || /opens in a new tab/i.test(currentLabel)) return;
+    link.setAttribute("aria-label", `${currentLabel} (opens in a new tab)`);
+  });
 
   const updateHeader = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 24);

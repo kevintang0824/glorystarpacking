@@ -52,6 +52,7 @@ vercel deploy --prebuilt --prod --yes
 ```
 
 Do not deploy `--prebuilt` if the validation command fails.
+If Vercel reports a successful build but this gate finds missing files, discard that Build Output and rebuild from a clean checkout in a non-synced local directory; never reuse or publish the partial `.vercel/output`.
 
 ## Test checklist
 

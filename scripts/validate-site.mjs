@@ -53,6 +53,17 @@ const avifHeroStems = new Set([
   "warehouse-shipping-box",
   "watch-display-box",
 ]);
+const responsiveAvifCardStems = new Set([
+  "black-embossed-box",
+  "factory-printing-floor",
+  "industrial-waterproof-labels",
+  "luxury-packaging-set",
+  "packaging-dieline-blueprint",
+  "presentation-box",
+  "warehouse-cartons",
+  "warehouse-shipping-box",
+  "watch-display-box",
+]);
 const responsiveCardWidths = [512, 768];
 const responsiveCardSpecs = [
   {
@@ -71,6 +82,7 @@ const responsiveCardSpecs = [
 const responsiveCardUsageCounts = new Map(responsiveCardSpecs.map((spec) => [spec.key, 0]));
 const responsiveCardStems = new Set();
 let responsiveSrcsetUsageCount = 0;
+let responsiveAvifCardUsageCount = 0;
 const priorityPages = [
   "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
@@ -104,8 +116,8 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260821-1";
-const requiredSiteScriptVersion = "20260821-2";
+const requiredSiteStyleVersion = "20260821-2";
+const requiredSiteScriptVersion = "20260821-3";
 const requiredAnalyticsVersion = "20260820-4";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
@@ -181,6 +193,20 @@ const readWebpDimensions = (filePath) => {
   }
 
   throw new Error("missing VP8 image chunk");
+};
+
+const readAvifDimensions = (filePath) => {
+  const buffer = fs.readFileSync(filePath);
+  const marker = Buffer.from("ispe", "ascii");
+  for (let offset = buffer.indexOf(marker); offset !== -1; offset = buffer.indexOf(marker, offset + 4)) {
+    if (offset < 4 || offset + 16 > buffer.length) continue;
+    const boxSize = buffer.readUInt32BE(offset - 4);
+    if (boxSize < 20 || offset - 4 + boxSize > buffer.length) continue;
+    const width = buffer.readUInt32BE(offset + 8);
+    const height = buffer.readUInt32BE(offset + 12);
+    if (width > 0 && height > 0) return { width, height };
+  }
+  throw new Error("missing AVIF image spatial-extents box");
 };
 
 const readPage = (file) => {
@@ -524,7 +550,8 @@ for (const file of htmlFiles) {
   )).length;
   for (const spec of responsiveCardSpecs) {
     for (const match of html.matchAll(spec.blockPattern)) {
-      const imageTag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+      const cardBlock = match[0];
+      const imageTag = cardBlock.match(/<img\b[^>]*>/i)?.[0] || "";
       const src = attribute(imageTag, "src");
       const stem = src.match(/^assets\/images\/([^/]+)\.webp$/i)?.[1] || "";
       responsiveCardUsageCounts.set(spec.key, responsiveCardUsageCounts.get(spec.key) + 1);
@@ -547,6 +574,32 @@ for (const file of htmlFiles) {
       }
       if (attribute(imageTag, "width") !== "1024" || attribute(imageTag, "height") !== "1024") {
         errors.push(`${file}: ${spec.key} card image "${stem}" must retain its 1024x1024 fallback dimensions`);
+      }
+
+      const avifSourceTags = cardBlock.match(/<source\b[^>]*type="image\/avif"[^>]*>/gi) || [];
+      if (responsiveAvifCardStems.has(stem)) {
+        responsiveAvifCardUsageCount += 1;
+        const expectedAvifSrcset = [
+          `assets/images/${stem}-w512.avif 512w`,
+          `assets/images/${stem}-w768.avif 768w`,
+          `assets/images/${stem}.avif 1024w`,
+        ].join(", ");
+        if (avifSourceTags.length !== 1) {
+          errors.push(`${file}: ${spec.key} card image "${stem}" must have one AVIF source`);
+          continue;
+        }
+        const sourceTag = avifSourceTags[0];
+        if (attribute(sourceTag, "srcset") !== expectedAvifSrcset) {
+          errors.push(`${file}: ${spec.key} card image "${stem}" has an incomplete AVIF srcset`);
+        }
+        if (attribute(sourceTag, "sizes") !== spec.sizes) {
+          errors.push(`${file}: ${spec.key} card image "${stem}" has an incorrect AVIF sizes rule`);
+        }
+        if (!cardBlock.includes(`<picture>${sourceTag}${imageTag}</picture>`)) {
+          errors.push(`${file}: ${spec.key} card image "${stem}" must keep its AVIF source and WebP fallback in one picture`);
+        }
+      } else if (avifSourceTags.length > 0) {
+        errors.push(`${file}: ${spec.key} card image "${stem}" has an unapproved AVIF source`);
       }
     }
   }
@@ -742,12 +795,22 @@ if (responsiveSrcsetUsageCount !== expectedResponsiveCardUsageCount) {
 if (responsiveCardStems.size !== 33) {
   errors.push(`HTML: expected responsive card srcsets to use 33 source images, found ${responsiveCardStems.size}`);
 }
+if (responsiveAvifCardUsageCount !== 53) {
+  errors.push(`HTML: expected 53 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
+}
+for (const stem of responsiveAvifCardStems) {
+  if (!responsiveCardStems.has(stem) || !avifHeroStems.has(stem)) {
+    errors.push(`HTML: responsive AVIF card source ${stem} must reuse an approved card and hero asset`);
+  }
+}
 
 const imagesDirectory = path.join(root, "assets", "images");
 const imageFiles = fs.readdirSync(imagesDirectory);
 const standaloneDerivedDisplayWebps = new Set(["embossing-process-512.webp"]);
 const responsiveWebpPattern = /^(.+)-w(512|768)\.webp$/;
+const responsiveAvifPattern = /^(.+)-w(512|768)\.avif$/;
 const responsiveWebpFiles = new Set(imageFiles.filter((file) => responsiveWebpPattern.test(file)));
+const responsiveAvifFiles = new Set(imageFiles.filter((file) => responsiveAvifPattern.test(file)));
 const jpegStems = new Set(imageFiles.filter((file) => file.endsWith(".jpg")).map((file) => file.replace(/\.jpg$/, "")));
 const webpStems = new Set(imageFiles
   .filter((file) => file.endsWith(".webp") &&
@@ -755,7 +818,7 @@ const webpStems = new Set(imageFiles
     !responsiveWebpPattern.test(file))
   .map((file) => file.replace(/\.webp$/, "")));
 const actualAvifHeroStems = new Set(imageFiles
-  .filter((file) => file.endsWith(".avif"))
+  .filter((file) => file.endsWith(".avif") && !responsiveAvifPattern.test(file))
   .map((file) => file.replace(/\.avif$/, "")));
 for (const stem of jpegStems) {
   if (!webpStems.has(stem)) errors.push(`assets/images: missing WebP display asset for ${stem}.jpg`);
@@ -819,6 +882,45 @@ if (responsiveWebpFiles.size !== 66 || expectedResponsiveWebpFiles.size !== 66) 
   errors.push(`assets/images: expected exactly 66 responsive WebP derivatives, found ${responsiveWebpFiles.size}`);
 }
 
+const expectedResponsiveAvifFiles = new Set();
+for (const stem of responsiveAvifCardStems) {
+  for (const width of responsiveCardWidths) {
+    const derivedFile = `${stem}-w${width}.avif`;
+    const derivedPath = path.join(imagesDirectory, derivedFile);
+    const fallbackFile = `${stem}-w${width}.webp`;
+    const fallbackPath = path.join(imagesDirectory, fallbackFile);
+    expectedResponsiveAvifFiles.add(derivedFile);
+    if (!fs.existsSync(derivedPath)) {
+      errors.push(`assets/images: missing responsive AVIF card image ${derivedFile}`);
+      continue;
+    }
+    try {
+      const derivedDimensions = readAvifDimensions(derivedPath);
+      if (derivedDimensions.width !== width || derivedDimensions.height !== width) {
+        errors.push(`assets/images: ${derivedFile} must be ${width}x${width}`);
+      }
+    } catch (error) {
+      errors.push(`assets/images: cannot read ${derivedFile} dimensions (${error.message})`);
+    }
+    if (!fs.existsSync(fallbackPath) || fs.statSync(derivedPath).size >= fs.statSync(fallbackPath).size) {
+      errors.push(`assets/images: ${derivedFile} must remain smaller than ${fallbackFile}`);
+    }
+  }
+}
+for (const expectedFile of expectedResponsiveAvifFiles) {
+  if (!responsiveAvifFiles.has(expectedFile)) {
+    errors.push(`assets/images: responsive AVIF derivative set is missing ${expectedFile}`);
+  }
+}
+for (const actualFile of responsiveAvifFiles) {
+  if (!expectedResponsiveAvifFiles.has(actualFile)) {
+    errors.push(`assets/images: unexpected responsive AVIF derivative ${actualFile}`);
+  }
+}
+if (responsiveAvifFiles.size !== 18 || expectedResponsiveAvifFiles.size !== 18) {
+  errors.push(`assets/images: expected exactly 18 responsive AVIF derivatives, found ${responsiveAvifFiles.size}`);
+}
+
 if (actualAvifHeroStems.size !== avifHeroStems.size ||
     [...avifHeroStems].some((stem) => !actualAvifHeroStems.has(stem))) {
   errors.push(`assets/images: AVIF hero set must match the ${avifHeroStems.size} approved hero assets`);
@@ -827,6 +929,14 @@ for (const stem of avifHeroStems) {
   const avifPath = path.join(imagesDirectory, `${stem}.avif`);
   const webpPath = path.join(imagesDirectory, `${stem}.webp`);
   if (!fs.existsSync(avifPath) || !fs.existsSync(webpPath)) continue;
+  try {
+    const avifDimensions = readAvifDimensions(avifPath);
+    if (avifDimensions.width !== 1024 || avifDimensions.height !== 1024) {
+      errors.push(`assets/images: ${stem}.avif must remain 1024x1024`);
+    }
+  } catch (error) {
+    errors.push(`assets/images: cannot read ${stem}.avif dimensions (${error.message})`);
+  }
   if (fs.statSync(avifPath).size >= fs.statSync(webpPath).size) {
     errors.push(`assets/images: ${stem}.avif must remain smaller than its WebP fallback`);
   }
@@ -1045,6 +1155,9 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, 'nav.toggleAttribute("inert"', "closed-navigation keyboard guard"],
   [siteScript, 'navigationBackground().forEach', "open-navigation background isolation"],
   [siteScript, 'event.key === "Tab" && navigationOpen', "open-navigation focus loop"],
+  [siteScript, "mobileNavigation.matches && Boolean(nav?.contains(document.activeElement))", "mobile-breakpoint focus recovery"],
+  [siteScript, "document.querySelectorAll('a[target=\"_blank\"]')", "new-tab link announcement"],
+  [siteScript, "opens in a new tab", "new-tab accessible-name disclosure"],
   [siteScript, "new AbortController()", "quote request timeout controller"],
   [siteScript, "18000", "bounded quote request timeout"],
   [siteScript, 'glorystarpack:quote-submit-attempt', "quote-submit attempt signal"],
@@ -1058,6 +1171,8 @@ const requiredProgressiveQuoteSignals = [
   [siteStyle, ".form-note--noscript", "no-JavaScript form guidance"],
   [siteStyle, ".form-fallback-manual textarea", "manual-copy fallback styling"],
   [siteStyle, ".subhero__background picture", "AVIF hero picture sizing"],
+  [siteStyle, ".product-card__media > picture", "responsive product-card picture sizing"],
+  [siteStyle, ".article-card > picture > img", "responsive article-card picture sizing"],
   [siteStyle, "html:not(.js) .site-nav", "no-JavaScript mobile navigation"],
 ];
 requiredProgressiveQuoteSignals.forEach(([source, signal, label]) => {
@@ -1127,6 +1242,7 @@ if (!fs.existsSync(quoteApiPath)) {
     ['createHash("sha256")', "stable submission fingerprint"],
     ['`quote-${submissionFingerprint}`', "stable Resend idempotency key"],
     ['!apiKey || !fromEmail || !toEmail', "required recipient configuration"],
+    ['console.error("Resend quote error", resendResponse.status);', "redacted provider-error logging"],
     ['Resend quote success response was not valid JSON', "invalid provider-success response handling"],
     ['typeof result.id !== "string"', "provider email ID validation"],
   ];

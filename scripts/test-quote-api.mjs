@@ -137,6 +137,15 @@ try {
   const providerErrorLogs = [];
   console.error = (...parts) => providerErrorLogs.push(parts.join(" "));
   mockResendResponse = {
+    ok: false,
+    status: 400,
+    json: async () => ({ message: "Rejected buyer@example.com payload" }),
+  };
+  const providerFailure = await invoke(validQuote);
+  assert.equal(providerFailure.statusCode, 502);
+  assert.equal(providerFailure.payload.error, "Email delivery is temporarily unavailable.");
+
+  mockResendResponse = {
     ok: true,
     status: 202,
     json: async () => {
@@ -156,9 +165,11 @@ try {
   assert.equal(missingSuccessId.statusCode, 502);
   assert.equal(missingSuccessId.payload.error, "Email delivery is temporarily unavailable.");
   console.error = originalConsoleError;
-  assert.equal(providerErrorLogs.length, 2);
-  assert.match(providerErrorLogs[0], /not valid JSON/);
-  assert.match(providerErrorLogs[1], /missing an email ID/);
+  assert.equal(providerErrorLogs.length, 3);
+  assert.equal(providerErrorLogs[0], "Resend quote error 400");
+  assert.doesNotMatch(providerErrorLogs[0], /buyer@example\.com/);
+  assert.match(providerErrorLogs[1], /not valid JSON/);
+  assert.match(providerErrorLogs[2], /missing an email ID/);
 
   mockResendResponse = {
     ok: true,

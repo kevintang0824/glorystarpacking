@@ -340,8 +340,7 @@ module.exports = async function handler(request, response) {
   }
 
   if (!resendResponse.ok) {
-    const resendError = await resendResponse.json().catch(() => ({}));
-    console.error("Resend quote error", resendResponse.status, resendError);
+    console.error("Resend quote error", resendResponse.status);
     return respond(response, nativeFormRequest, 502, { error: "Email delivery is temporarily unavailable." }, quote);
   }
 
