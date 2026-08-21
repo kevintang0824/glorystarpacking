@@ -120,6 +120,46 @@ try {
   assert.equal(unsupportedContentType.statusCode, 415);
   assert.equal(unsupportedContentType.payload.error, "Use a JSON or form-urlencoded request body.");
 
+  const emailRequestsBeforeCrossSiteRequests = emailRequestCount;
+  const crossSiteJson = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    origin: "https://attacker.example",
+    "sec-fetch-site": "cross-site",
+  });
+  assert.equal(crossSiteJson.statusCode, 403);
+  assert.equal(emailRequestCount, emailRequestsBeforeCrossSiteRequests);
+
+  const crossSiteNative = await invoke(
+    new URLSearchParams(validQuote).toString(),
+    "POST",
+    { "content-type": "application/x-www-form-urlencoded", "sec-fetch-site": "cross-site" }
+  );
+  assert.equal(crossSiteNative.statusCode, 403);
+  assert.equal(crossSiteNative.headers.get("content-type"), "text/html; charset=utf-8");
+  assert.equal(emailRequestCount, emailRequestsBeforeCrossSiteRequests);
+
+  const sameOrigin = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    origin: "https://glorystarpacking.com",
+    "sec-fetch-site": "same-origin",
+  });
+  assert.equal(sameOrigin.statusCode, 200);
+
+  const previewOrigin = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    host: "glorystarpacking-preview.vercel.app",
+    origin: "https://glorystarpacking-preview.vercel.app",
+    "sec-fetch-site": "same-origin",
+  });
+  assert.equal(previewOrigin.statusCode, 200);
+
+  const invalidOrigin = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    host: "glorystarpacking.com",
+    origin: "not a valid origin",
+  });
+  assert.equal(invalidOrigin.statusCode, 403);
+
   const missingCountry = await invoke({ ...validQuote, country: "" });
   assert.equal(missingCountry.statusCode, 400);
 
@@ -271,7 +311,7 @@ try {
   assert.equal(emojiSubjectProduct, `${"💥".repeat(59)}测`);
   assert.ok(emojiMailtoHref.length > 0 && emojiMailtoHref.length <= 1900);
 
-  console.log("Quote API tests passed: JSON/native form requests and result pages, safe native recovery links and brief escaping, bounded direct-channel URLs, strict request media types, header-safe subject fields, required recipient configuration, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
+  console.log("Quote API tests passed: JSON/native form requests and result pages, safe native recovery links and brief escaping, bounded direct-channel URLs, strict request media types, same-origin browser guard with preview compatibility, header-safe subject fields, required recipient configuration, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
   console.error = originalConsoleError;

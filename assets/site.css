@@ -831,12 +831,19 @@ button {
   position: relative;
 }
 
-.split__media > img {
+.split__media > picture {
+  display: block;
+  width: 100%;
+}
+
+.split__media > img,
+.split__media > picture > img {
   aspect-ratio: 5 / 6;
   object-fit: cover;
 }
 
-.split__media--landscape > img {
+.split__media--landscape > img,
+.split__media--landscape > picture > img {
   aspect-ratio: 6 / 5;
 }
 
@@ -1218,6 +1225,13 @@ button {
   box-shadow: 0 1px 0 var(--register);
 }
 
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border-color: #a53a28;
+  box-shadow: 0 1px 0 #a53a28;
+}
+
 .field input[type="file"] {
   padding: 14px;
   background: #ebe6dc;
@@ -1303,7 +1317,7 @@ button {
 }
 
 .form-fallback-actions .button {
-  min-height: 40px;
+  min-height: 44px;
   padding: 10px 13px;
   color: #fff;
   font-size: 0.66rem;

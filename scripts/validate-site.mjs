@@ -83,6 +83,9 @@ const responsiveCardUsageCounts = new Map(responsiveCardSpecs.map((spec) => [spe
 const responsiveCardStems = new Set();
 let responsiveSrcsetUsageCount = 0;
 let responsiveAvifCardUsageCount = 0;
+const responsiveBodySizes = "(max-width: 780px) calc(100vw - 50px), (max-width: 1228px) calc(46vw - 24px), (max-width: 1375px) calc(590px - 4vw), 535px";
+const responsiveBodyBlockPattern = /<div\b[^>]*class="[^"]*\bsplit__media\b[^"]*"[^>]*>[\s\S]*?<\/div>/gi;
+let responsiveBodyUsageCount = 0;
 const priorityPages = [
   "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
@@ -116,8 +119,8 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260821-2";
-const requiredSiteScriptVersion = "20260821-3";
+const requiredSiteStyleVersion = "20260821-3";
+const requiredSiteScriptVersion = "20260821-4";
 const requiredAnalyticsVersion = "20260820-4";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
@@ -545,9 +548,6 @@ for (const file of htmlFiles) {
     }
   }
 
-  responsiveSrcsetUsageCount += imageTags.filter((tag) => (
-    /\ssrcset="assets\/images\/[^" ]+-w512\.webp 512w, assets\/images\/[^" ]+-w768\.webp 768w, assets\/images\/[^" ]+\.webp 1024w"/i.test(tag)
-  )).length;
   for (const spec of responsiveCardSpecs) {
     for (const match of html.matchAll(spec.blockPattern)) {
       const cardBlock = match[0];
@@ -568,6 +568,8 @@ for (const file of htmlFiles) {
       ].join(", ");
       if (attribute(imageTag, "srcset") !== expectedSrcset) {
         errors.push(`${file}: ${spec.key} card image "${stem}" has an incomplete responsive srcset`);
+      } else {
+        responsiveSrcsetUsageCount += 1;
       }
       if (attribute(imageTag, "sizes") !== spec.sizes) {
         errors.push(`${file}: ${spec.key} card image "${stem}" has an incorrect sizes rule`);
@@ -601,6 +603,60 @@ for (const file of htmlFiles) {
       } else if (avifSourceTags.length > 0) {
         errors.push(`${file}: ${spec.key} card image "${stem}" has an unapproved AVIF source`);
       }
+    }
+  }
+
+  for (const match of html.matchAll(responsiveBodyBlockPattern)) {
+    const bodyBlock = match[0];
+    const imageTag = bodyBlock.match(/<img\b[^>]*>/i)?.[0] || "";
+    const src = attribute(imageTag, "src");
+    const stem = src.match(/^assets\/images\/([^/]+)\.webp$/i)?.[1] || "";
+    if (!avifHeroStems.has(stem)) continue;
+
+    responsiveBodyUsageCount += 1;
+    const expectedWebpSrcset = [
+      `assets/images/${stem}-w512.webp 512w`,
+      `assets/images/${stem}-w768.webp 768w`,
+      `assets/images/${stem}.webp 1024w`,
+    ].join(", ");
+    if (attribute(imageTag, "srcset") !== expectedWebpSrcset) {
+      errors.push(`${file}: split image "${stem}" has an incomplete responsive WebP srcset`);
+    }
+    if (attribute(imageTag, "sizes") !== responsiveBodySizes) {
+      errors.push(`${file}: split image "${stem}" has an incorrect sizes rule`);
+    }
+    if (attribute(imageTag, "width") !== "1024" || attribute(imageTag, "height") !== "1024") {
+      errors.push(`${file}: split image "${stem}" must retain its 1024x1024 fallback dimensions`);
+    }
+    if (attribute(imageTag, "loading") !== "lazy" || attribute(imageTag, "decoding") !== "async") {
+      errors.push(`${file}: split image "${stem}" must remain lazy-loaded with asynchronous decoding`);
+    }
+
+    const avifSourceTags = bodyBlock.match(/<source\b[^>]*type="image\/avif"[^>]*>/gi) || [];
+    if (avifSourceTags.length !== 1) {
+      errors.push(`${file}: split image "${stem}" must have one AVIF source`);
+      continue;
+    }
+    const sourceTag = avifSourceTags[0];
+    const expectedAvifSrcset = stem === "cosmetic-packaging"
+      ? `assets/images/${stem}.avif 1024w`
+      : [
+        `assets/images/${stem}-w512.avif 512w`,
+        `assets/images/${stem}-w768.avif 768w`,
+        `assets/images/${stem}.avif 1024w`,
+      ].join(", ");
+    if (attribute(sourceTag, "srcset") !== expectedAvifSrcset) {
+      errors.push(`${file}: split image "${stem}" has an incomplete AVIF srcset`);
+    }
+    if (attribute(sourceTag, "sizes") !== responsiveBodySizes) {
+      errors.push(`${file}: split image "${stem}" has an incorrect AVIF sizes rule`);
+    }
+    const expectedMedia = stem === "cosmetic-packaging" ? "(min-resolution: 2.5dppx)" : "";
+    if (attribute(sourceTag, "media") !== expectedMedia) {
+      errors.push(`${file}: split image "${stem}" has an incorrect AVIF density gate`);
+    }
+    if (!bodyBlock.includes(`<picture>${sourceTag}${imageTag}</picture>`)) {
+      errors.push(`${file}: split image "${stem}" must keep its AVIF source and WebP fallback in one picture`);
     }
   }
 
@@ -797,6 +853,9 @@ if (responsiveCardStems.size !== 33) {
 }
 if (responsiveAvifCardUsageCount !== 53) {
   errors.push(`HTML: expected 53 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
+}
+if (responsiveBodyUsageCount !== 80) {
+  errors.push(`HTML: expected 80 responsive AVIF split images, found ${responsiveBodyUsageCount}`);
 }
 for (const stem of responsiveAvifCardStems) {
   if (!responsiveCardStems.has(stem) || !avifHeroStems.has(stem)) {
@@ -1167,12 +1226,18 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, "Email and WhatsApp may use a shortened version. Copy project brief always contains every detail.", "direct-channel truncation disclosure"],
   [siteScript, 'if (options.focusFirst !== false) emailLink.focus()', "fallback action focus"],
   [siteScript, 'manualBrief.select()', "manual project-brief selection"],
+  [siteScript, 'form.addEventListener("invalid", showValidationState, true)', "native-validation error summary"],
+  [siteScript, 'field.setAttribute("aria-invalid", "true")', "persistent invalid-field semantics"],
+  [siteScript, 'unresolvedFieldCount', "live invalid-field count"],
   [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
   [siteStyle, ".form-note--noscript", "no-JavaScript form guidance"],
   [siteStyle, ".form-fallback-manual textarea", "manual-copy fallback styling"],
+  [siteStyle, '[aria-invalid="true"]', "persistent invalid-field styling"],
+  [siteStyle, "min-height: 44px", "fallback-action touch target"],
   [siteStyle, ".subhero__background picture", "AVIF hero picture sizing"],
   [siteStyle, ".product-card__media > picture", "responsive product-card picture sizing"],
   [siteStyle, ".article-card > picture > img", "responsive article-card picture sizing"],
+  [siteStyle, ".split__media > picture > img", "responsive split-media picture sizing"],
   [siteStyle, "html:not(.js) .site-nav", "no-JavaScript mobile navigation"],
 ];
 requiredProgressiveQuoteSignals.forEach(([source, signal, label]) => {
@@ -1242,6 +1307,9 @@ if (!fs.existsSync(quoteApiPath)) {
     ['createHash("sha256")', "stable submission fingerprint"],
     ['`quote-${submissionFingerprint}`', "stable Resend idempotency key"],
     ['!apiKey || !fromEmail || !toEmail', "required recipient configuration"],
+    ['const CANONICAL_ORIGIN', "canonical request origin"],
+    ['originMatchesHost', "same-host preview origin support"],
+    ['fetchSite === "cross-site"', "cross-site browser request rejection"],
     ['console.error("Resend quote error", resendResponse.status);', "redacted provider-error logging"],
     ['Resend quote success response was not valid JSON', "invalid provider-success response handling"],
     ['typeof result.id !== "string"', "provider email ID validation"],
@@ -1518,5 +1586,5 @@ if (errors.length) {
   errors.forEach((error) => console.error(`- ${error}`));
   process.exitCode = 1;
 } else {
-  console.log(`Validated ${canonicalOwners.size} indexable HTML pages and ${htmlFiles.length - canonicalOwners.size} non-indexable HTML page: metadata/social URLs, robots directives, canonicals, H1, JSON-LD/FAQ parity, article/blog discovery, navigation, IDs, responsive card images, image dimensions, quote forms, assets, links, inbound routes, redirects, crawler policy, API safeguards, and sitemap are consistent.`);
+  console.log(`Validated ${canonicalOwners.size} indexable HTML pages and ${htmlFiles.length - canonicalOwners.size} non-indexable HTML page: metadata/social URLs, robots directives, canonicals, H1, JSON-LD/FAQ parity, article/blog discovery, navigation, IDs, responsive card/body images, image dimensions, quote forms, assets, links, inbound routes, redirects, crawler policy, API safeguards, and sitemap are consistent.`);
 }

@@ -400,11 +400,27 @@
       formGrid.insertBefore(optionalDetails, trap || null);
     }
 
+    const showValidationState = () => {
+      const status = form.querySelector(".form-status");
+      const invalidFields = Array.from(form.querySelectorAll(":invalid"));
+      invalidFields.forEach((field) => field.setAttribute("aria-invalid", "true"));
+      if (status && invalidFields.length) {
+        status.textContent = invalidFields.length > 1
+          ? `Please correct the ${invalidFields.length} highlighted fields before sending.`
+          : "Please correct the highlighted field before sending.";
+        status.dataset.state = "error";
+      }
+    };
+    form.addEventListener("invalid", showValidationState, true);
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (!form.reportValidity()) return;
-
       const status = form.querySelector(".form-status");
+      if (!form.reportValidity()) {
+        showValidationState();
+        return;
+      }
+
       const submitButton = form.querySelector('button[type="submit"]');
       const originalLabel = submitButton?.textContent || "Request my quote";
       const formData = new FormData(form);
@@ -509,6 +525,27 @@
         }
       }
     });
+
+    const clearValidationState = (event) => {
+      const field = event.target;
+      if (!(field instanceof HTMLElement) || field.getAttribute("aria-invalid") !== "true") return;
+      if ("validity" in field && !field.validity.valid) return;
+      field.removeAttribute("aria-invalid");
+      const status = form.querySelector(".form-status");
+      if (status?.dataset.state === "error") {
+        const unresolvedFieldCount = form.querySelectorAll('[aria-invalid="true"]').length;
+        if (unresolvedFieldCount) {
+          status.textContent = unresolvedFieldCount > 1
+            ? `Please correct the ${unresolvedFieldCount} highlighted fields before sending.`
+            : "Please correct the highlighted field before sending.";
+        } else {
+          status.textContent = "";
+          status.dataset.state = "";
+        }
+      }
+    };
+    form.addEventListener("input", clearValidationState);
+    form.addEventListener("change", clearValidationState);
   });
 
   const roiCalculator = document.querySelector("#packaging-roi-calculator");

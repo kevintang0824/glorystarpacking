@@ -3,6 +3,7 @@ const { createHash } = require("node:crypto");
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_ATTACHMENT_BYTES = 3 * 1024 * 1024;
 const RESEND_TIMEOUT_MS = 10000;
+const CANONICAL_ORIGIN = "https://glorystarpacking.com";
 const ATTACHMENT_RULES = {
   "application/pdf": {
     extensions: [".pdf"],
@@ -40,6 +41,21 @@ const cleanHeader = (value, maximumLength = 500) =>
     .replace(/\s+/g, " ")
     .trim()
     .slice(0, maximumLength);
+
+const requestHeader = (request, name) => String(
+  request.headers?.[name] || request.headers?.get?.(name) || ""
+).trim();
+
+const originMatchesHost = (origin, host) => {
+  if (!origin || !host) return false;
+  try {
+    const parsedOrigin = new URL(origin);
+    const requestHost = host.split(",", 1)[0].trim().toLowerCase();
+    return ["http:", "https:"].includes(parsedOrigin.protocol) && parsedOrigin.host.toLowerCase() === requestHost;
+  } catch {
+    return false;
+  }
+};
 
 const attachmentSize = (base64) => Math.ceil((String(base64 || "").length * 3) / 4);
 
@@ -176,9 +192,7 @@ const respond = (response, nativeFormRequest, statusCode, payload, quote) => {
 
 module.exports = async function handler(request, response) {
   response.setHeader("Cache-Control", "no-store");
-  const contentType = String(
-    request.headers?.["content-type"] || request.headers?.get?.("content-type") || ""
-  ).toLowerCase();
+  const contentType = requestHeader(request, "content-type").toLowerCase();
   const mediaType = contentType.split(";", 1)[0].trim();
   const nativeFormRequest = mediaType === "application/x-www-form-urlencoded";
   const jsonRequest = mediaType === "application/json";
@@ -190,6 +204,16 @@ module.exports = async function handler(request, response) {
 
   if (!jsonRequest && !nativeFormRequest) {
     return respond(response, false, 415, { error: "Use a JSON or form-urlencoded request body." });
+  }
+
+  const origin = requestHeader(request, "origin");
+  const fetchSite = requestHeader(request, "sec-fetch-site").toLowerCase();
+  const host = requestHeader(request, "host");
+  const allowedOrigin = !origin || origin === CANONICAL_ORIGIN || originMatchesHost(origin, host);
+  if (fetchSite === "cross-site" || !allowedOrigin) {
+    return respond(response, nativeFormRequest, 403, {
+      error: "This form must be submitted from the GloryStarPack website.",
+    });
   }
 
   let body;
