@@ -9,3 +9,12 @@ node_modules/
 scripts/
 *.md
 CNAME
+
+# Ignore macOS/iCloud conflict copies such as "page 2.html". Keep the local
+# files untouched, but never publish them as accidental duplicate URLs.
+* [0-9].html
+* [0-9][0-9].html
+* [0-9][0-9][0-9].html
+* [0-9].webmanifest
+* [0-9][0-9].webmanifest
+* [0-9][0-9][0-9].webmanifest

@@ -4,9 +4,15 @@ import path from "node:path";
 import process from "node:process";
 
 const root = path.resolve(process.argv[2] || ".");
-const htmlFiles = fs.readdirSync(root).filter((file) => file.endsWith(".html")).sort();
+const conflictCopyPattern = / \d+\.html$/i;
+const rootHtmlFiles = fs.readdirSync(root).filter((file) => file.endsWith(".html")).sort();
+const ignoredHtmlConflictCopies = rootHtmlFiles.filter((file) => conflictCopyPattern.test(file));
+const htmlFiles = rootHtmlFiles.filter((file) => !conflictCopyPattern.test(file));
 const errors = [];
 const warnings = [];
+if (ignoredHtmlConflictCopies.length) {
+  warnings.push(`ignored ${ignoredHtmlConflictCopies.length} numbered HTML conflict copies: ${ignoredHtmlConflictCopies.join(", ")}`);
+}
 const canonicalOwners = new Map();
 const titleOwners = new Map();
 const articleModifiedByCanonical = new Map();
@@ -1211,6 +1217,7 @@ const indexNowKeyPath = path.join(root, `${indexNowKey}.txt`);
 const indexNowScriptPath = path.join(root, "scripts", "submit-indexnow.mjs");
 const productionIndexAuditPath = path.join(root, "scripts", "audit-production-indexing.mjs");
 const productionServiceAuditPath = path.join(root, "scripts", "audit-production-services.mjs");
+const buildOutputValidationPath = path.join(root, "scripts", "validate-build-output.mjs");
 if (!fs.existsSync(indexNowKeyPath) || fs.readFileSync(indexNowKeyPath, "utf8").trim() !== indexNowKey) {
   errors.push("IndexNow: root verification key file is missing or inconsistent");
 }
@@ -1226,6 +1233,9 @@ if (!fs.existsSync(productionServiceAuditPath)) {
   requiredProductionServiceSignals.forEach(([signal, label]) => {
     if (!productionServiceAudit.includes(signal)) errors.push(`Production service audit is missing ${label}`);
   });
+}
+if (!fs.existsSync(buildOutputValidationPath)) {
+  errors.push("Build Output validation script is missing");
 }
 if (!fs.existsSync(indexNowScriptPath)) {
   errors.push("IndexNow: submission script is missing");

@@ -39,9 +39,19 @@ Accepted files are sent through Resend as email attachments. The 3 MB limit leav
 
 ## Deployment scope
 
-- `.vercelignore` uses an allowlist so only public HTML, assets, the API, and required site/config files are included in the deployment.
+- `.vercelignore` excludes development files, credentials, local metadata, and numbered conflict copies from deployments.
 - `robots.txt` disallows `/api/`; the quote endpoint is not a search landing page.
 - `vercel.json` keeps `trailingSlash` set to `false`, matching the canonical `.html` URL format.
+
+For a local prebuilt deployment, always run the Build Output integrity gate after the build and before deploying it. It verifies every public page, SEO file, IndexNow key, asset, and both API functions against the generated output:
+
+```sh
+vercel build --prod --yes
+node scripts/validate-build-output.mjs
+vercel deploy --prebuilt --prod --yes
+```
+
+Do not deploy `--prebuilt` if the validation command fails.
 
 ## Test checklist
 
