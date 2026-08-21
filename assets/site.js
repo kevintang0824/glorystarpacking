@@ -381,9 +381,34 @@
     const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"];
     const optionalFields = optionalFieldNames
       .map((name) => form.querySelector(`[name="${name}"]`)?.closest(".field"))
-      .filter(Boolean);
+      .filter((field) => field && !field.querySelector(":required"));
 
-    if (formGrid && optionalFields.length === optionalFieldNames.length) {
+    if (formGrid) {
+      const requiredFields = Array.from(form.querySelectorAll(":required"));
+      if (requiredFields.length) {
+        const requiredNote = document.createElement("p");
+        requiredNote.className = "form-required-note";
+        requiredNote.append("Fields marked ");
+
+        const requiredMarker = document.createElement("span");
+        requiredMarker.className = "form-required-indicator";
+        requiredMarker.setAttribute("aria-hidden", "true");
+        requiredMarker.textContent = "*";
+        requiredNote.append(requiredMarker, " are required.");
+        form.insertBefore(requiredNote, formGrid);
+
+        requiredFields.forEach((field) => {
+          const label = Array.from(form.querySelectorAll("label"))
+            .find((candidate) => candidate.htmlFor === field.id);
+          if (!label || label.querySelector(".form-required-indicator")) return;
+
+          const indicator = requiredMarker.cloneNode(true);
+          label.append(indicator);
+        });
+      }
+    }
+
+    if (formGrid && optionalFields.length) {
       const optionalDetails = document.createElement("details");
       optionalDetails.className = "quote-form__optional field--full";
 

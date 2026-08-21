@@ -35,6 +35,7 @@ const walkFiles = (directory) => {
 };
 
 const digest = (filePath) => createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
+const contentVersion = (filePath) => digest(filePath).slice(0, 12);
 
 if (!fs.existsSync(outputRoot) || !fs.statSync(outputRoot).isDirectory()) {
   errors.push(`Build output directory is missing: ${outputRoot}`);
@@ -115,6 +116,27 @@ for (const relative of [...expectedFiles].sort()) {
   }
 
   verifiedFiles += 1;
+}
+
+const versionedAssets = ["site.css", "site.js", "analytics.js"];
+for (const assetName of versionedAssets) {
+  const sourceAsset = path.join(sourceRoot, "assets", assetName);
+  if (!fs.existsSync(sourceAsset) || !fs.statSync(sourceAsset).isFile()) continue;
+
+  const expectedVersion = contentVersion(sourceAsset);
+  const escapedAssetName = assetName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const referencePattern = new RegExp(`(?:href|src)="/?assets/${escapedAssetName}\\?v=([^"]+)"`, "g");
+
+  for (const relative of [...expectedFiles].filter((file) => file.endsWith(".html")).sort()) {
+    const outputFile = path.join(staticRoot, relative);
+    if (!fs.existsSync(outputFile) || !fs.statSync(outputFile).isFile()) continue;
+
+    const html = fs.readFileSync(outputFile, "utf8");
+    const versions = [...html.matchAll(referencePattern)].map((match) => match[1]);
+    if (versions.length !== 1 || versions[0] !== expectedVersion) {
+      errors.push(`${relative}: expected assets/${assetName} content version ${expectedVersion}`);
+    }
+  }
 }
 
 if (errors.length) {

@@ -1198,6 +1198,18 @@ button {
   text-transform: uppercase;
 }
 
+.form-required-note {
+  margin: 0 0 18px;
+  color: var(--graphite);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.form-required-indicator {
+  margin-left: 0.15em;
+  color: #a53a28;
+}
+
 .field input,
 .field select,
 .field textarea {

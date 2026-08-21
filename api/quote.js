@@ -4,6 +4,28 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_ATTACHMENT_BYTES = 3 * 1024 * 1024;
 const RESEND_TIMEOUT_MS = 10000;
 const CANONICAL_ORIGIN = "https://glorystarpacking.com";
+const TEXT_FIELD_NAMES = [
+  "name",
+  "email",
+  "phone",
+  "product",
+  "quantity",
+  "dimensions",
+  "country",
+  "targetDate",
+  "details",
+  "website",
+  "sourcePage",
+  "landingPage",
+  "referrer",
+  "discoveryChannel",
+  "discoverySource",
+  "utmSource",
+  "utmMedium",
+  "utmCampaign",
+  "utmTerm",
+  "utmContent",
+];
 const ATTACHMENT_RULES = {
   "application/pdf": {
     extensions: [".pdf"],
@@ -29,13 +51,13 @@ const ATTACHMENT_RULES = {
 };
 
 const clean = (value, maximumLength = 500) =>
-  String(value || "")
+  (typeof value === "string" ? value : "")
     .replace(/\0/g, "")
     .trim()
     .slice(0, maximumLength);
 
 const cleanHeader = (value, maximumLength = 500) =>
-  String(value || "")
+  (typeof value === "string" ? value : "")
     .replace(/\0/g, "")
     .replace(/[\r\n]+/g, " ")
     .replace(/\s+/g, " ")
@@ -46,12 +68,12 @@ const requestHeader = (request, name) => String(
   request.headers?.[name] || request.headers?.get?.(name) || ""
 ).trim();
 
-const originMatchesHost = (origin, host) => {
+const originMatchesHost = (origin, host, allowedProtocols = ["https:"]) => {
   if (!origin || !host) return false;
   try {
     const parsedOrigin = new URL(origin);
     const requestHost = host.split(",", 1)[0].trim().toLowerCase();
-    return ["http:", "https:"].includes(parsedOrigin.protocol) && parsedOrigin.host.toLowerCase() === requestHost;
+    return allowedProtocols.includes(parsedOrigin.protocol) && parsedOrigin.host.toLowerCase() === requestHost;
   } catch {
     return false;
   }
@@ -209,7 +231,14 @@ module.exports = async function handler(request, response) {
   const origin = requestHeader(request, "origin");
   const fetchSite = requestHeader(request, "sec-fetch-site").toLowerCase();
   const host = requestHeader(request, "host");
-  const allowedOrigin = !origin || origin === CANONICAL_ORIGIN || originMatchesHost(origin, host);
+  const vercelEnvironment = process.env.VERCEL_ENV;
+  const isPreview = vercelEnvironment === "preview";
+  const isLocalDevelopment = vercelEnvironment === "development" ||
+    (!vercelEnvironment && process.env.NODE_ENV === "development");
+  const allowedOrigin = !origin ||
+    origin === CANONICAL_ORIGIN ||
+    (isPreview && originMatchesHost(origin, host)) ||
+    (isLocalDevelopment && originMatchesHost(origin, host, ["http:", "https:"]));
   if (fetchSite === "cross-site" || !allowedOrigin) {
     return respond(response, nativeFormRequest, 403, {
       error: "This form must be submitted from the GloryStarPack website.",
@@ -228,6 +257,11 @@ module.exports = async function handler(request, response) {
     if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error("Invalid body");
   } catch {
     return respond(response, nativeFormRequest, 400, { error: "The request body is not valid." });
+  }
+
+  if (TEXT_FIELD_NAMES.some((name) =>
+    Object.prototype.hasOwnProperty.call(body, name) && typeof body[name] !== "string")) {
+    return respond(response, nativeFormRequest, 400, { error: "Text form fields must be strings." });
   }
 
   if (clean(body.website, 100)) {

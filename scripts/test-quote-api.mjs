@@ -10,11 +10,13 @@ const originalEnvironment = {
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   QUOTE_FROM_EMAIL: process.env.QUOTE_FROM_EMAIL,
   QUOTE_TO_EMAIL: process.env.QUOTE_TO_EMAIL,
+  VERCEL_ENV: process.env.VERCEL_ENV,
 };
 
 process.env.RESEND_API_KEY = "test-key";
 process.env.QUOTE_FROM_EMAIL = "Website <quotes@example.com>";
 process.env.QUOTE_TO_EMAIL = "sales@example.com";
+process.env.VERCEL_ENV = "production";
 
 let lastEmailRequest;
 let lastEmailOptions;
@@ -145,6 +147,26 @@ try {
   });
   assert.equal(sameOrigin.statusCode, 200);
 
+  const emailRequestsBeforeOriginRejections = emailRequestCount;
+  const httpProductionOrigin = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    host: "glorystarpacking.com",
+    origin: "http://glorystarpacking.com",
+    "sec-fetch-site": "same-origin",
+  });
+  assert.equal(httpProductionOrigin.statusCode, 403);
+  assert.equal(emailRequestCount, emailRequestsBeforeOriginRejections);
+
+  const productionAliasOrigin = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    host: "glorystarpacking-production.vercel.app",
+    origin: "https://glorystarpacking-production.vercel.app",
+    "sec-fetch-site": "same-origin",
+  });
+  assert.equal(productionAliasOrigin.statusCode, 403);
+  assert.equal(emailRequestCount, emailRequestsBeforeOriginRejections);
+
+  process.env.VERCEL_ENV = "preview";
   const previewOrigin = await invoke(validQuote, "POST", {
     "content-type": "application/json",
     host: "glorystarpacking-preview.vercel.app",
@@ -152,6 +174,24 @@ try {
     "sec-fetch-site": "same-origin",
   });
   assert.equal(previewOrigin.statusCode, 200);
+
+  const httpPreviewOrigin = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    host: "glorystarpacking-preview.vercel.app",
+    origin: "http://glorystarpacking-preview.vercel.app",
+    "sec-fetch-site": "same-origin",
+  });
+  assert.equal(httpPreviewOrigin.statusCode, 403);
+
+  process.env.VERCEL_ENV = "development";
+  const localDevelopmentOrigin = await invoke(validQuote, "POST", {
+    "content-type": "application/json",
+    host: "localhost:3000",
+    origin: "http://localhost:3000",
+    "sec-fetch-site": "same-origin",
+  });
+  assert.equal(localDevelopmentOrigin.statusCode, 200);
+  process.env.VERCEL_ENV = "production";
 
   const invalidOrigin = await invoke(validQuote, "POST", {
     "content-type": "application/json",
@@ -162,6 +202,16 @@ try {
 
   const missingCountry = await invoke({ ...validQuote, country: "" });
   assert.equal(missingCountry.statusCode, 400);
+
+  const emailRequestsBeforeInvalidTextFields = emailRequestCount;
+  for (const field of [
+    "name", "email", "phone", "product", "quantity", "dimensions", "country", "targetDate", "details", "website",
+    "sourcePage", "landingPage", "referrer", "discoveryChannel", "discoverySource", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent",
+  ]) {
+    const invalidTextField = await invoke({ ...validQuote, [field]: { invalid: true } });
+    assert.equal(invalidTextField.statusCode, 400, `${field} object value must be rejected`);
+    assert.equal(emailRequestCount, emailRequestsBeforeInvalidTextFields, `${field} object value must not call Resend`);
+  }
 
   const validPdf = await invoke({
     ...validQuote,
@@ -311,7 +361,7 @@ try {
   assert.equal(emojiSubjectProduct, `${"💥".repeat(59)}测`);
   assert.ok(emojiMailtoHref.length > 0 && emojiMailtoHref.length <= 1900);
 
-  console.log("Quote API tests passed: JSON/native form requests and result pages, safe native recovery links and brief escaping, bounded direct-channel URLs, strict request media types, same-origin browser guard with preview compatibility, header-safe subject fields, required recipient configuration, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
+  console.log("Quote API tests passed: JSON/native form requests and result pages, safe native recovery links and brief escaping, bounded direct-channel URLs, strict request media types, production/preview/development origin guards, string-only text fields, header-safe subject fields, required recipient configuration, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
   console.error = originalConsoleError;

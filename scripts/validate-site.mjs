@@ -10,6 +10,11 @@ const ignoredHtmlConflictCopies = rootHtmlFiles.filter((file) => conflictCopyPat
 const htmlFiles = rootHtmlFiles.filter((file) => !conflictCopyPattern.test(file));
 const errors = [];
 const warnings = [];
+const contentVersion = (relativePath) => {
+  const filePath = path.join(root, relativePath);
+  if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) return "missing";
+  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex").slice(0, 12);
+};
 if (ignoredHtmlConflictCopies.length) {
   warnings.push(`ignored ${ignoredHtmlConflictCopies.length} numbered HTML conflict copies: ${ignoredHtmlConflictCopies.join(", ")}`);
 }
@@ -86,6 +91,24 @@ let responsiveAvifCardUsageCount = 0;
 const responsiveBodySizes = "(max-width: 780px) calc(100vw - 50px), (max-width: 1228px) calc(46vw - 24px), (max-width: 1375px) calc(590px - 4vw), 535px";
 const responsiveBodyBlockPattern = /<div\b[^>]*class="[^"]*\bsplit__media\b[^"]*"[^>]*>[\s\S]*?<\/div>/gi;
 let responsiveBodyUsageCount = 0;
+const supplementalResponsiveSizes = {
+  split: "(max-width: 780px) min(calc(100vw - 50px), 658px), (max-width: 976px) calc(46vw - 18px), (max-width: 1040px) calc(470px - 4vw), (max-width: 1228px) calc(46vw - 24px), (max-width: 1375px) calc(590px - 4vw), 535px",
+  material: "(max-width: 780px) min(calc(100vw - 58px), 650px), (max-width: 976px) calc((100vw - 114px) / 2), (max-width: 1040px) 431px, (max-width: 1228px) calc((100vw - 222px) / 4), 251.5px",
+  finishFirst: "(max-width: 780px) min(calc(100vw - 28px), 680px), (max-width: 976px) calc(100vw - 36px), (max-width: 1040px) 940px, (max-width: 1228px) calc(42.8571vw - 36px), 490.3px",
+  finishOther: "(max-width: 780px) min(calc(100vw - 28px), 680px), (max-width: 976px) calc((100vw - 54px) / 2), (max-width: 1040px) 461px, (max-width: 1228px) calc(28.5714vw - 24px), 326.9px",
+  articleFeature: "(max-width: 780px) min(calc(100vw - 30px), 678px), (max-width: 976px) calc(57.5vw - 21.85px), (max-width: 1040px) 539.4px, (max-width: 1228px) calc(57.5vw - 28.75px), 677.4px",
+  proofFrame: "(max-width: 780px) min(calc(100vw - 70px), 478px), (max-width: 922px) 278px, (max-width: 976px) calc(38.2716vw - 74.91px), (max-width: 1040px) 298.6px, (max-width: 1228px) calc(38.069vw - 61.86px), (max-width: 1500px) calc(446.28px - 3.3103vw), 396.6px",
+};
+const supplementalResponsiveSpecs = [
+  { key: "split", expectedUsageCount: 33, blockPattern: responsiveBodyBlockPattern },
+  { key: "material", expectedUsageCount: 21, blockPattern: /<article\b[^>]*class="[^"]*\bmaterial-card\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi },
+  { key: "finish", expectedUsageCount: 7, blockPattern: /<article\b[^>]*class="[^"]*\bfinish-card\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi },
+  { key: "articleFeature", expectedUsageCount: 1, blockPattern: /<div\b[^>]*class="[^"]*\barticle-feature__media\b[^"]*"[^>]*>[\s\S]*?<\/div>/gi },
+  { key: "proofFrame", expectedUsageCount: 1, blockPattern: /<div\b[^>]*class="[^"]*\bproof-frame\b[^"]*"[^>]*>[\s\S]*?<\/div>/gi },
+];
+const supplementalResponsiveUsageCounts = new Map(supplementalResponsiveSpecs.map((spec) => [spec.key, 0]));
+let supplementalResponsiveFinishFirstCount = 0;
+let supplementalResponsiveFinishOtherCount = 0;
 const priorityPages = [
   "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
@@ -119,9 +142,9 @@ const priorityPages = [
   "magnetic-box-vs-drawer-box.html",
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
-const requiredSiteStyleVersion = "20260821-3";
-const requiredSiteScriptVersion = "20260821-4";
-const requiredAnalyticsVersion = "20260820-4";
+const requiredSiteStyleVersion = contentVersion("assets/site.css");
+const requiredSiteScriptVersion = contentVersion("assets/site.js");
+const requiredAnalyticsVersion = contentVersion("assets/analytics.js");
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
@@ -133,6 +156,14 @@ const packagingInspectionTemplatePath = path.join(root, "assets", "templates", "
 
 const values = (source, pattern) => [...source.matchAll(pattern)].map((match) => match[1]);
 const attribute = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1] || "";
+const responsiveWebpSrcset = (stem) => [
+  `assets/images/${stem}-w512.webp 512w`,
+  `assets/images/${stem}-w768.webp 768w`,
+  `assets/images/${stem}.webp 1024w`,
+].join(", ");
+const hasResponsiveWebpDerivatives = (stem) => responsiveCardWidths.every((width) => (
+  fs.existsSync(path.join(root, "assets", "images", `${stem}-w${width}.webp`))
+));
 const plainText = (source) => source
   .replace(/<[^>]+>/g, " ")
   .replace(/&(?:amp|#38);/g, "&")
@@ -660,6 +691,44 @@ for (const file of htmlFiles) {
     }
   }
 
+  for (const spec of supplementalResponsiveSpecs) {
+    for (const match of html.matchAll(spec.blockPattern)) {
+      const block = match[0];
+      if (spec.key === "split" && /<source\b[^>]*type="image\/avif"/i.test(block)) continue;
+      const imageTag = block.match(/<img\b[^>]*>/i)?.[0] || "";
+      const src = attribute(imageTag, "src");
+      const stem = src.match(/^assets\/images\/([^/]+)\.webp$/i)?.[1] || "";
+      if (!stem || !hasResponsiveWebpDerivatives(stem)) continue;
+
+      let expectedSizes = supplementalResponsiveSizes[spec.key];
+      if (spec.key === "finish") {
+        const sourceBeforeCard = html.slice(0, match.index);
+        const finishGridStart = sourceBeforeCard.lastIndexOf('<div class="finish-grid"');
+        const previousFinishCard = sourceBeforeCard.lastIndexOf('<article class="finish-card"');
+        const isFirstFinishCard = previousFinishCard < finishGridStart;
+        expectedSizes = isFirstFinishCard
+          ? supplementalResponsiveSizes.finishFirst
+          : supplementalResponsiveSizes.finishOther;
+        if (isFirstFinishCard) supplementalResponsiveFinishFirstCount += 1;
+        else supplementalResponsiveFinishOtherCount += 1;
+      }
+
+      supplementalResponsiveUsageCounts.set(spec.key, supplementalResponsiveUsageCounts.get(spec.key) + 1);
+      if (attribute(imageTag, "srcset") !== responsiveWebpSrcset(stem)) {
+        errors.push(`${file}: responsive ${spec.key} image "${stem}" has an incomplete WebP srcset`);
+      }
+      if (attribute(imageTag, "sizes") !== expectedSizes) {
+        errors.push(`${file}: responsive ${spec.key} image "${stem}" has an incorrect sizes rule`);
+      }
+      if (attribute(imageTag, "width") !== "1024" || attribute(imageTag, "height") !== "1024") {
+        errors.push(`${file}: responsive ${spec.key} image "${stem}" must retain its 1024x1024 fallback dimensions`);
+      }
+      if (attribute(imageTag, "loading") !== "lazy" || attribute(imageTag, "decoding") !== "async") {
+        errors.push(`${file}: responsive ${spec.key} image "${stem}" must remain lazy-loaded with asynchronous decoding`);
+      }
+    }
+  }
+
   const imagePreloads = values(html, /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="([^"]+)"/gi);
   imagePreloads.forEach((href) => {
     if (href.startsWith("assets/images/") && !/\.(?:avif|webp)$/i.test(href.split(/[?#]/)[0])) {
@@ -857,6 +926,15 @@ if (responsiveAvifCardUsageCount !== 53) {
 if (responsiveBodyUsageCount !== 80) {
   errors.push(`HTML: expected 80 responsive AVIF split images, found ${responsiveBodyUsageCount}`);
 }
+for (const spec of supplementalResponsiveSpecs) {
+  const actualUsageCount = supplementalResponsiveUsageCounts.get(spec.key);
+  if (actualUsageCount !== spec.expectedUsageCount) {
+    errors.push(`HTML: expected ${spec.expectedUsageCount} supplemental responsive ${spec.key} images, found ${actualUsageCount}`);
+  }
+}
+if (supplementalResponsiveFinishFirstCount !== 3 || supplementalResponsiveFinishOtherCount !== 4) {
+  errors.push(`HTML: expected supplemental responsive finish images to use 3 first-card and 4 other-card sizes, found ${supplementalResponsiveFinishFirstCount} and ${supplementalResponsiveFinishOtherCount}`);
+}
 for (const stem of responsiveAvifCardStems) {
   if (!responsiveCardStems.has(stem) || !avifHeroStems.has(stem)) {
     errors.push(`HTML: responsive AVIF card source ${stem} must reuse an approved card and hero asset`);
@@ -1018,6 +1096,11 @@ for (const derivedImage of standaloneDerivedDisplayWebps) {
 const homepageHtml = readPage("index.html")?.html || "";
 if (!/<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="assets\/images\/emerald-rigid-box\.webp"[^>]*media="\(min-width: 781px\)"[^>]*fetchpriority="high"/i.test(homepageHtml)) {
   errors.push("index.html: homepage hero preload must be limited to the desktop two-column layout");
+}
+const homepageProofPreload = homepageHtml.match(/<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="assets\/images\/emerald-rigid-box\.webp"[^>]*>/i)?.[0] || "";
+if (attribute(homepageProofPreload, "imagesrcset") !== responsiveWebpSrcset("emerald-rigid-box") ||
+    attribute(homepageProofPreload, "imagesizes") !== supplementalResponsiveSizes.proofFrame) {
+  errors.push("index.html: homepage hero preload must match the responsive proof-frame candidates");
 }
 if (!/<img\b[^>]*class="[^"]*\bproof-frame__primary\b[^"]*"[^>]*src="assets\/images\/emerald-rigid-box\.webp"[^>]*loading="lazy"[^>]*decoding="async"[^>]*fetchpriority="low"/i.test(homepageHtml)) {
   errors.push("index.html: below-fold mobile hero image must use native lazy loading and low priority");
@@ -1207,6 +1290,10 @@ const siteScript = fs.existsSync(siteScriptPath) ? fs.readFileSync(siteScriptPat
 const siteStyle = fs.existsSync(siteStylePath) ? fs.readFileSync(siteStylePath, "utf8") : "";
 const requiredProgressiveQuoteSignals = [
   [siteScript, 'const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"]', "five optional quote fields"],
+  [siteScript, '.filter((field) => field && !field.querySelector(":required"))', "required fields kept out of the optional disclosure"],
+  [siteScript, 'const requiredFields = Array.from(form.querySelectorAll(":required"))', "runtime required-field discovery"],
+  [siteScript, 'requiredNote.className = "form-required-note"', "visible required-field guidance"],
+  [siteScript, 'requiredMarker.setAttribute("aria-hidden", "true")', "assistive-technology-hidden required marker"],
   [siteScript, 'optionalDetails.className = "quote-form__optional field--full"', "optional quote disclosure"],
   [siteScript, 'if (optionalDetails) optionalDetails.open = false', "optional section reset"],
   [siteScript, 'window.matchMedia("(max-width: 900px)")', "tablet-safe responsive navigation state"],
@@ -1230,6 +1317,8 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, 'field.setAttribute("aria-invalid", "true")', "persistent invalid-field semantics"],
   [siteScript, 'unresolvedFieldCount', "live invalid-field count"],
   [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
+  [siteStyle, ".form-required-note", "required-field guidance styling"],
+  [siteStyle, ".form-required-indicator", "required-field marker styling"],
   [siteStyle, ".form-note--noscript", "no-JavaScript form guidance"],
   [siteStyle, ".form-fallback-manual textarea", "manual-copy fallback styling"],
   [siteStyle, '[aria-invalid="true"]', "persistent invalid-field styling"],
@@ -1307,8 +1396,11 @@ if (!fs.existsSync(quoteApiPath)) {
     ['createHash("sha256")', "stable submission fingerprint"],
     ['`quote-${submissionFingerprint}`', "stable Resend idempotency key"],
     ['!apiKey || !fromEmail || !toEmail', "required recipient configuration"],
+    ['const TEXT_FIELD_NAMES', "string-only text field contract"],
     ['const CANONICAL_ORIGIN', "canonical request origin"],
-    ['originMatchesHost', "same-host preview origin support"],
+    ['const isPreview = vercelEnvironment === "preview"', "preview-only same-host origin support"],
+    ['const isLocalDevelopment = vercelEnvironment === "development"', "explicit local-development origin support"],
+    ['allowedProtocols = ["https:"]', "HTTPS-only preview origin support"],
     ['fetchSite === "cross-site"', "cross-site browser request rejection"],
     ['console.error("Resend quote error", resendResponse.status);', "redacted provider-error logging"],
     ['Resend quote success response was not valid JSON', "invalid provider-success response handling"],
