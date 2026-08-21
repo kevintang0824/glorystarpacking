@@ -182,7 +182,7 @@
 
         <div class="card-grid">
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/ornate-bottle-label.webp" width="1024" height="1024" alt="Textured decorative label applied to a dark glass bottle" loading="lazy" decoding="async"><span class="product-card__code">WL–01</span></div>
+            <div class="product-card__media"><img src="assets/images/ornate-bottle-label.webp" srcset="assets/images/ornate-bottle-label-w512.webp 512w, assets/images/ornate-bottle-label-w768.webp 768w, assets/images/ornate-bottle-label.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Textured decorative label applied to a dark glass bottle" loading="lazy" decoding="async"><span class="product-card__code">WL–01</span></div>
             <div class="product-card__body">
               <h3>Textured paper</h3>
               <p>Uncoated and tactile papers for a natural, heritage, or cellar-led presentation. Wet-strength constructions should be reviewed where condensation is expected.</p>
@@ -190,7 +190,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/metallic-bottle-label.webp" width="1024" height="1024" alt="Reflective metallic label detail on a premium bottle" loading="lazy" decoding="async"><span class="product-card__code">WL–02</span></div>
+            <div class="product-card__media"><img src="assets/images/metallic-bottle-label.webp" srcset="assets/images/metallic-bottle-label-w512.webp 512w, assets/images/metallic-bottle-label-w768.webp 768w, assets/images/metallic-bottle-label.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Reflective metallic label detail on a premium bottle" loading="lazy" decoding="async"><span class="product-card__code">WL–02</span></div>
             <div class="product-card__body">
               <h3>Metallic detail</h3>
               <p>Foil, metallic film, or selective reflective areas can establish hierarchy without covering the full label in glare.</p>
@@ -198,7 +198,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/clear-label-film.webp" width="1024" height="1024" alt="Transparent pressure-sensitive label film lifting from its liner" loading="lazy" decoding="async"><span class="product-card__code">WL–03</span></div>
+            <div class="product-card__media"><img src="assets/images/clear-label-film.webp" srcset="assets/images/clear-label-film-w512.webp 512w, assets/images/clear-label-film-w768.webp 768w, assets/images/clear-label-film.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Transparent pressure-sensitive label film lifting from its liner" loading="lazy" decoding="async"><span class="product-card__code">WL–03</span></div>
             <div class="product-card__body">
               <h3>Clear or durable film</h3>
               <p>A moisture-resistant route for smooth containers and no-label looks. White ink, adhesive clarity, and bottle color affect the final appearance.</p>
@@ -380,6 +380,7 @@
           </div>
         </div>
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="sourcePage" value="/custom-wine-labels.html">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
             <div class="field"><label for="wine-name">Full name</label><input id="wine-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
@@ -414,7 +415,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260821-1" defer></script>
+  <script src="assets/site.js?v=20260821-2" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

@@ -36,13 +36,35 @@ const contextualQuoteRoutes = {
   "wine-label-condensation-adhesive-testing.html": "custom-wine-labels.html#quote",
 };
 const avifHeroStems = new Set([
+  "black-embossed-box",
+  "cosmetic-packaging",
   "factory-printing-floor",
   "industrial-waterproof-labels",
   "luxury-packaging-set",
   "packaging-dieline-blueprint",
   "presentation-box",
   "warehouse-cartons",
+  "warehouse-shipping-box",
+  "watch-display-box",
 ]);
+const responsiveCardWidths = [512, 768];
+const responsiveCardSpecs = [
+  {
+    key: "product",
+    expectedUsageCount: 97,
+    sizes: "(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px",
+    blockPattern: /<div\b[^>]*class="[^"]*\bproduct-card__media\b[^"]*"[^>]*>[\s\S]*?<\/div>/gi,
+  },
+  {
+    key: "article",
+    expectedUsageCount: 30,
+    sizes: "(max-width: 780px) calc(100vw - 28px), 310px",
+    blockPattern: /<article\b[^>]*class="[^"]*\barticle-card\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi,
+  },
+];
+const responsiveCardUsageCounts = new Map(responsiveCardSpecs.map((spec) => [spec.key, 0]));
+const responsiveCardStems = new Set();
+let responsiveSrcsetUsageCount = 0;
 const priorityPages = [
   "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
@@ -77,7 +99,7 @@ const priorityPages = [
 ];
 const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const requiredSiteStyleVersion = "20260821-1";
-const requiredSiteScriptVersion = "20260821-1";
+const requiredSiteScriptVersion = "20260821-2";
 const requiredAnalyticsVersion = "20260820-4";
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
@@ -100,6 +122,60 @@ const plainText = (source) => source
   .replace(/&nbsp;/g, " ")
   .replace(/\s+/g, " ")
   .trim();
+
+const readUint24LE = (buffer, offset) => (
+  buffer[offset] |
+  (buffer[offset + 1] << 8) |
+  (buffer[offset + 2] << 16)
+);
+
+const readWebpDimensions = (filePath) => {
+  const buffer = fs.readFileSync(filePath);
+  if (buffer.length < 20 ||
+      buffer.toString("ascii", 0, 4) !== "RIFF" ||
+      buffer.toString("ascii", 8, 12) !== "WEBP") {
+    throw new Error("invalid RIFF/WebP header");
+  }
+
+  for (let offset = 12; offset + 8 <= buffer.length;) {
+    const chunkType = buffer.toString("ascii", offset, offset + 4);
+    const chunkLength = buffer.readUInt32LE(offset + 4);
+    const dataOffset = offset + 8;
+    if (dataOffset + chunkLength > buffer.length) throw new Error("truncated WebP chunk");
+
+    if (chunkType === "VP8X" && chunkLength >= 10) {
+      return {
+        width: readUint24LE(buffer, dataOffset + 4) + 1,
+        height: readUint24LE(buffer, dataOffset + 7) + 1,
+      };
+    }
+    if (chunkType === "VP8 " && chunkLength >= 10) {
+      if (buffer[dataOffset + 3] !== 0x9d ||
+          buffer[dataOffset + 4] !== 0x01 ||
+          buffer[dataOffset + 5] !== 0x2a) {
+        throw new Error("invalid VP8 frame header");
+      }
+      return {
+        width: buffer.readUInt16LE(dataOffset + 6) & 0x3fff,
+        height: buffer.readUInt16LE(dataOffset + 8) & 0x3fff,
+      };
+    }
+    if (chunkType === "VP8L" && chunkLength >= 5) {
+      if (buffer[dataOffset] !== 0x2f) throw new Error("invalid VP8L frame header");
+      return {
+        width: 1 + buffer[dataOffset + 1] + ((buffer[dataOffset + 2] & 0x3f) << 8),
+        height: 1 +
+          ((buffer[dataOffset + 2] & 0xc0) >> 6) +
+          (buffer[dataOffset + 3] << 2) +
+          ((buffer[dataOffset + 4] & 0x0f) << 10),
+      };
+    }
+
+    offset = dataOffset + chunkLength + (chunkLength & 1);
+  }
+
+  throw new Error("missing VP8 image chunk");
+};
 
 const readPage = (file) => {
   if (!pageCache.has(file)) {
@@ -437,6 +513,38 @@ for (const file of htmlFiles) {
     }
   }
 
+  responsiveSrcsetUsageCount += imageTags.filter((tag) => (
+    /\ssrcset="assets\/images\/[^" ]+-w512\.webp 512w, assets\/images\/[^" ]+-w768\.webp 768w, assets\/images\/[^" ]+\.webp 1024w"/i.test(tag)
+  )).length;
+  for (const spec of responsiveCardSpecs) {
+    for (const match of html.matchAll(spec.blockPattern)) {
+      const imageTag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+      const src = attribute(imageTag, "src");
+      const stem = src.match(/^assets\/images\/([^/]+)\.webp$/i)?.[1] || "";
+      responsiveCardUsageCounts.set(spec.key, responsiveCardUsageCounts.get(spec.key) + 1);
+      if (!stem) {
+        errors.push(`${file}: ${spec.key} card image must retain its original local WebP src`);
+        continue;
+      }
+
+      responsiveCardStems.add(stem);
+      const expectedSrcset = [
+        `assets/images/${stem}-w512.webp 512w`,
+        `assets/images/${stem}-w768.webp 768w`,
+        `assets/images/${stem}.webp 1024w`,
+      ].join(", ");
+      if (attribute(imageTag, "srcset") !== expectedSrcset) {
+        errors.push(`${file}: ${spec.key} card image "${stem}" has an incomplete responsive srcset`);
+      }
+      if (attribute(imageTag, "sizes") !== spec.sizes) {
+        errors.push(`${file}: ${spec.key} card image "${stem}" has an incorrect sizes rule`);
+      }
+      if (attribute(imageTag, "width") !== "1024" || attribute(imageTag, "height") !== "1024") {
+        errors.push(`${file}: ${spec.key} card image "${stem}" must retain its 1024x1024 fallback dimensions`);
+      }
+    }
+  }
+
   const imagePreloads = values(html, /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="([^"]+)"/gi);
   imagePreloads.forEach((href) => {
     if (href.startsWith("assets/images/") && !/\.(?:avif|webp)$/i.test(href.split(/[?#]/)[0])) {
@@ -498,6 +606,11 @@ for (const file of htmlFiles) {
     quoteFieldNames.forEach((name) => {
       if (!controlByName.has(name)) errors.push(`${formLabel} is missing field "${name}"`);
     });
+    const sourcePage = controlByName.get("sourcePage") || "";
+    const expectedSourcePage = file === "index.html" ? "/" : `/${file}`;
+    if (attribute(sourcePage, "type").toLowerCase() !== "hidden" || attribute(sourcePage, "value") !== expectedSourcePage) {
+      errors.push(`${formLabel} must keep a static hidden sourcePage of "${expectedSourcePage}" for no-JavaScript recovery`);
+    }
     Object.entries(quoteFieldLimits).forEach(([name, limit]) => {
       const control = controlByName.get(name) || "";
       if (attribute(control, "maxlength") !== limit) {
@@ -610,12 +723,30 @@ for (const file of htmlFiles) {
   }
 }
 
+for (const spec of responsiveCardSpecs) {
+  const actualUsageCount = responsiveCardUsageCounts.get(spec.key);
+  if (actualUsageCount !== spec.expectedUsageCount) {
+    errors.push(`HTML: expected ${spec.expectedUsageCount} responsive ${spec.key} card images, found ${actualUsageCount}`);
+  }
+}
+const expectedResponsiveCardUsageCount = responsiveCardSpecs.reduce((count, spec) => count + spec.expectedUsageCount, 0);
+if (responsiveSrcsetUsageCount !== expectedResponsiveCardUsageCount) {
+  errors.push(`HTML: expected ${expectedResponsiveCardUsageCount} responsive card srcsets, found ${responsiveSrcsetUsageCount}`);
+}
+if (responsiveCardStems.size !== 33) {
+  errors.push(`HTML: expected responsive card srcsets to use 33 source images, found ${responsiveCardStems.size}`);
+}
+
 const imagesDirectory = path.join(root, "assets", "images");
 const imageFiles = fs.readdirSync(imagesDirectory);
-const derivedDisplayWebps = new Set(["embossing-process-512.webp"]);
+const standaloneDerivedDisplayWebps = new Set(["embossing-process-512.webp"]);
+const responsiveWebpPattern = /^(.+)-w(512|768)\.webp$/;
+const responsiveWebpFiles = new Set(imageFiles.filter((file) => responsiveWebpPattern.test(file)));
 const jpegStems = new Set(imageFiles.filter((file) => file.endsWith(".jpg")).map((file) => file.replace(/\.jpg$/, "")));
 const webpStems = new Set(imageFiles
-  .filter((file) => file.endsWith(".webp") && !derivedDisplayWebps.has(file))
+  .filter((file) => file.endsWith(".webp") &&
+    !standaloneDerivedDisplayWebps.has(file) &&
+    !responsiveWebpPattern.test(file))
   .map((file) => file.replace(/\.webp$/, "")));
 const actualAvifHeroStems = new Set(imageFiles
   .filter((file) => file.endsWith(".avif"))
@@ -629,9 +760,62 @@ for (const stem of webpStems) {
 if (jpegStems.size !== 39 || webpStems.size !== 39) {
   errors.push(`assets/images: expected 39 JPEG/WebP pairs, found ${jpegStems.size} JPEG and ${webpStems.size} WebP files`);
 }
+
+const expectedResponsiveWebpFiles = new Set();
+for (const stem of responsiveCardStems) {
+  const sourceFile = `${stem}.webp`;
+  const sourcePath = path.join(imagesDirectory, sourceFile);
+  if (!webpStems.has(stem) || !fs.existsSync(sourcePath)) {
+    errors.push(`assets/images: responsive card source ${sourceFile} is missing from the original WebP set`);
+    continue;
+  }
+  try {
+    const sourceDimensions = readWebpDimensions(sourcePath);
+    if (sourceDimensions.width !== 1024 || sourceDimensions.height !== 1024) {
+      errors.push(`assets/images: responsive card source ${sourceFile} must remain 1024x1024`);
+    }
+  } catch (error) {
+    errors.push(`assets/images: cannot read ${sourceFile} dimensions (${error.message})`);
+  }
+
+  for (const width of responsiveCardWidths) {
+    const derivedFile = `${stem}-w${width}.webp`;
+    const derivedPath = path.join(imagesDirectory, derivedFile);
+    expectedResponsiveWebpFiles.add(derivedFile);
+    if (!fs.existsSync(derivedPath)) {
+      errors.push(`assets/images: missing responsive card image ${derivedFile}`);
+      continue;
+    }
+    try {
+      const derivedDimensions = readWebpDimensions(derivedPath);
+      if (derivedDimensions.width !== width || derivedDimensions.height !== width) {
+        errors.push(`assets/images: ${derivedFile} must be ${width}x${width}`);
+      }
+    } catch (error) {
+      errors.push(`assets/images: cannot read ${derivedFile} dimensions (${error.message})`);
+    }
+    if (fs.statSync(derivedPath).size >= fs.statSync(sourcePath).size) {
+      errors.push(`assets/images: ${derivedFile} must remain smaller than ${sourceFile}`);
+    }
+  }
+}
+for (const expectedFile of expectedResponsiveWebpFiles) {
+  if (!responsiveWebpFiles.has(expectedFile)) {
+    errors.push(`assets/images: responsive derivative set is missing ${expectedFile}`);
+  }
+}
+for (const actualFile of responsiveWebpFiles) {
+  if (!expectedResponsiveWebpFiles.has(actualFile)) {
+    errors.push(`assets/images: unexpected responsive derivative ${actualFile}`);
+  }
+}
+if (responsiveWebpFiles.size !== 66 || expectedResponsiveWebpFiles.size !== 66) {
+  errors.push(`assets/images: expected exactly 66 responsive WebP derivatives, found ${responsiveWebpFiles.size}`);
+}
+
 if (actualAvifHeroStems.size !== avifHeroStems.size ||
     [...avifHeroStems].some((stem) => !actualAvifHeroStems.has(stem))) {
-  errors.push(`assets/images: AVIF hero set must match the ${avifHeroStems.size} approved first-wave assets`);
+  errors.push(`assets/images: AVIF hero set must match the ${avifHeroStems.size} approved hero assets`);
 }
 for (const stem of avifHeroStems) {
   const avifPath = path.join(imagesDirectory, `${stem}.avif`);
@@ -645,10 +829,10 @@ const avifHeroUsageCount = htmlFiles.reduce((count, file) => {
   const html = readPage(file)?.html || "";
   return count + (html.match(/<source\b[^>]*type="image\/avif"[^>]*srcset="assets\/images\/[^"]+\.avif"/gi) || []).length;
 }, 0);
-if (avifHeroUsageCount !== 23) {
-  errors.push(`HTML: expected 23 first-wave AVIF hero usages, found ${avifHeroUsageCount}`);
+if (avifHeroUsageCount !== 32) {
+  errors.push(`HTML: expected 32 AVIF hero usages, found ${avifHeroUsageCount}`);
 }
-for (const derivedImage of derivedDisplayWebps) {
+for (const derivedImage of standaloneDerivedDisplayWebps) {
   const derivedPath = path.join(imagesDirectory, derivedImage);
   if (!fs.existsSync(derivedPath)) {
     errors.push(`assets/images: missing derived display image ${derivedImage}`);
@@ -663,8 +847,8 @@ if (!/<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="assets\/images\/emerald
 if (!/<img\b[^>]*class="[^"]*\bproof-frame__primary\b[^"]*"[^>]*src="assets\/images\/emerald-rigid-box\.webp"[^>]*loading="lazy"[^>]*decoding="async"[^>]*fetchpriority="low"/i.test(homepageHtml)) {
   errors.push("index.html: below-fold mobile hero image must use native lazy loading and low priority");
 }
-if (!/<img\b[^>]*class="[^"]*\bproof-frame__inset\b[^"]*"[^>]*src="assets\/images\/embossing-process-512\.webp"[^>]*width="512"[^>]*height="512"[^>]*fetchpriority="low"/i.test(homepageHtml)) {
-  errors.push("index.html: hero inset must use the 512px low-priority display asset");
+if (!/<img\b[^>]*class="[^"]*\bproof-frame__inset\b[^"]*"[^>]*src="assets\/images\/embossing-process-512\.webp"[^>]*width="512"[^>]*height="512"[^>]*loading="lazy"[^>]*decoding="async"[^>]*fetchpriority="low"/i.test(homepageHtml)) {
+  errors.push("index.html: hero inset must use the 512px lazy, low-priority display asset");
 }
 
 const requiredFontAssets = [
@@ -860,6 +1044,8 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, 'glorystarpack:quote-submit-attempt', "quote-submit attempt signal"],
   [siteScript, 'glorystarpack:quote-delivery-error', "quote-delivery error signal"],
   [siteScript, 'attachmentName: fileInput?.files?.[0]?.name || ""', "attachment-error fallback context"],
+  [siteScript, "directUrlEncodedBudget = 1900", "bounded direct-channel URL budget"],
+  [siteScript, "Email and WhatsApp may use a shortened version. Copy project brief always contains every detail.", "direct-channel truncation disclosure"],
   [siteScript, 'if (options.focusFirst !== false) emailLink.focus()', "fallback action focus"],
   [siteScript, 'manualBrief.select()', "manual project-brief selection"],
   [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
@@ -916,16 +1102,25 @@ if (!fs.existsSync(quoteApiPath)) {
     ['ATTACHMENT_RULES', "attachment allowlist"],
     ['hasValidSignature', "attachment signature validation"],
     ['decodeBase64', "strict base64 decoding"],
+    ['const cleanHeader', "email-subject header sanitization"],
     ['"Cache-Control", "no-store"', "no-store response header"],
+    ['const mediaType = contentType.split', "strict request media-type parsing"],
+    ['!jsonRequest && !nativeFormRequest', "unsupported media-type rejection"],
     ['application/x-www-form-urlencoded', "native form content type"],
     ['new URLSearchParams(body)', "native form parser"],
     ['nativeFormRequest', "native form response mode"],
     ['text/html; charset=utf-8', "no-JavaScript result page"],
+    ['quoteFormPaths', "native return-path allowlist"],
+    ['htmlEscape', "escaped native project brief"],
+    ['Complete project brief', "native manual-copy fallback"],
+    ['shortenForDirectChannel', "bounded native direct-channel brief"],
+    ['limitCodePoints(quote.product, 60)', "bounded native mail subject"],
     ['typeof body.attachment === "object"', "native attachment filename guard"],
     ['RESEND_TIMEOUT_MS', "bounded Resend delivery timeout"],
     ['signal: resendController.signal', "Resend abort signal"],
     ['createHash("sha256")', "stable submission fingerprint"],
     ['`quote-${submissionFingerprint}`', "stable Resend idempotency key"],
+    ['!apiKey || !fromEmail || !toEmail', "required recipient configuration"],
     ['Resend quote success response was not valid JSON', "invalid provider-success response handling"],
     ['typeof result.id !== "string"', "provider email ID validation"],
   ];
@@ -1197,5 +1392,5 @@ if (errors.length) {
   errors.forEach((error) => console.error(`- ${error}`));
   process.exitCode = 1;
 } else {
-  console.log(`Validated ${canonicalOwners.size} indexable HTML pages and ${htmlFiles.length - canonicalOwners.size} non-indexable HTML page: metadata/social URLs, robots directives, canonicals, H1, JSON-LD/FAQ parity, article/blog discovery, navigation, IDs, image dimensions, quote forms, assets, links, inbound routes, redirects, crawler policy, API safeguards, and sitemap are consistent.`);
+  console.log(`Validated ${canonicalOwners.size} indexable HTML pages and ${htmlFiles.length - canonicalOwners.size} non-indexable HTML page: metadata/social URLs, robots directives, canonicals, H1, JSON-LD/FAQ parity, article/blog discovery, navigation, IDs, responsive card images, image dimensions, quote forms, assets, links, inbound routes, redirects, crawler policy, API safeguards, and sitemap are consistent.`);
 }

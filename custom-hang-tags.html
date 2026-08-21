@@ -191,7 +191,7 @@
 
         <div class="card-grid">
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/luxury-hangtag.webp" width="1024" height="1024" alt="Textured cream product hang tag with a punched hole, cord, and gold lettering" loading="lazy" decoding="async"><span class="product-card__code">HT–01</span></div>
+            <div class="product-card__media"><img src="assets/images/luxury-hangtag.webp" srcset="assets/images/luxury-hangtag-w512.webp 512w, assets/images/luxury-hangtag-w768.webp 768w, assets/images/luxury-hangtag.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Textured cream product hang tag with a punched hole, cord, and gold lettering" loading="lazy" decoding="async"><span class="product-card__code">HT–01</span></div>
             <div class="product-card__body">
               <h3>Single-stock hang tag</h3>
               <p>A direct route for branding, product information, and attachment on one tag. Stock stiffness, hole position, print, foil, and product scale should be reviewed together.</p>
@@ -199,7 +199,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/cotton-paper-stock.webp" width="1024" height="1024" alt="Pale textured paper shown as a hang-tag material reference" loading="lazy" decoding="async"><span class="product-card__code">HT–02</span></div>
+            <div class="product-card__media"><img src="assets/images/cotton-paper-stock.webp" srcset="assets/images/cotton-paper-stock-w512.webp 512w, assets/images/cotton-paper-stock-w768.webp 768w, assets/images/cotton-paper-stock.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Pale textured paper shown as a hang-tag material reference" loading="lazy" decoding="async"><span class="product-card__code">HT–02</span></div>
             <div class="product-card__body">
               <h3>Tactile and uncoated direction</h3>
               <p>Useful when surface feel and restrained graphics lead the design. Fiber direction, ink holdout, foil coverage, emboss definition, edge appearance, and rub should be sampled on the selected stock.</p>
@@ -207,7 +207,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/soft-touch-card.webp" width="1024" height="1024" alt="Dark soft-touch branded card used as a surface and finishing reference" loading="lazy" decoding="async"><span class="product-card__code">HT–03</span></div>
+            <div class="product-card__media"><img src="assets/images/soft-touch-card.webp" srcset="assets/images/soft-touch-card-w512.webp 512w, assets/images/soft-touch-card-w768.webp 768w, assets/images/soft-touch-card.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Dark soft-touch branded card used as a surface and finishing reference" loading="lazy" decoding="async"><span class="product-card__code">HT–03</span></div>
             <div class="product-card__body">
               <h3>Coated or laminated direction</h3>
               <p>A route for smooth color, surface protection, or a controlled tactile effect. Fold, edge, scratch, blocking, foil adhesion, and write-on requirements can influence the protection choice.</p>
@@ -451,6 +451,7 @@
           </div>
         </div>
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="sourcePage" value="/custom-hang-tags.html">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
             <div class="field"><label for="hang-tag-name">Full name</label><input id="hang-tag-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
@@ -485,7 +486,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Bags · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260821-1" defer></script>
+  <script src="assets/site.js?v=20260821-2" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

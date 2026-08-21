@@ -191,7 +191,7 @@
 
         <div class="card-grid">
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/cotton-paper-stock.webp" width="1024" height="1024" alt="Tactile light paper stock suitable for premium bag concepts" loading="lazy" decoding="async"><span class="product-card__code">PB–01</span></div>
+            <div class="product-card__media"><img src="assets/images/cotton-paper-stock.webp" srcset="assets/images/cotton-paper-stock-w512.webp 512w, assets/images/cotton-paper-stock-w768.webp 768w, assets/images/cotton-paper-stock.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Tactile light paper stock suitable for premium bag concepts" loading="lazy" decoding="async"><span class="product-card__code">PB–01</span></div>
             <div class="product-card__body">
               <h3>Uncoated and tactile papers</h3>
               <p>Useful when a natural hand feel or muted print character leads the design. Fold cracking, rub, foil coverage, and dark solid areas should be checked on the selected stock.</p>
@@ -199,7 +199,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/grey-paper-stock.webp" width="1024" height="1024" alt="Grey and coated paper swatches for custom packaging" loading="lazy" decoding="async"><span class="product-card__code">PB–02</span></div>
+            <div class="product-card__media"><img src="assets/images/grey-paper-stock.webp" srcset="assets/images/grey-paper-stock-w512.webp 512w, assets/images/grey-paper-stock-w768.webp 768w, assets/images/grey-paper-stock.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Grey and coated paper swatches for custom packaging" loading="lazy" decoding="async"><span class="product-card__code">PB–02</span></div>
             <div class="product-card__body">
               <h3>Coated or colored papers</h3>
               <p>A route for smooth graphics, controlled sheen, or a substrate color that becomes part of the design. White ink, opacity, edge color, and lamination can change the result.</p>
@@ -207,7 +207,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/sustainable-paper.webp" width="1024" height="1024" alt="Natural fiber paper samples for packaging development" loading="lazy" decoding="async"><span class="product-card__code">PB–03</span></div>
+            <div class="product-card__media"><img src="assets/images/sustainable-paper.webp" srcset="assets/images/sustainable-paper-w512.webp 512w, assets/images/sustainable-paper-w768.webp 768w, assets/images/sustainable-paper.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Natural fiber paper samples for packaging development" loading="lazy" decoding="async"><span class="product-card__code">PB–03</span></div>
             <div class="product-card__body">
               <h3>Fiber-led alternatives</h3>
               <p>Recycled-content, kraft-look, and other fiber-led papers can be explored against print, strength, finish, sourcing, and end-of-life requirements. Document the exact requested claim before selection.</p>
@@ -409,6 +409,7 @@
           </div>
         </div>
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="sourcePage" value="/custom-paper-bags.html">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
             <div class="field"><label for="paper-bag-name">Full name</label><input id="paper-bag-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
@@ -443,7 +444,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Bags · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260821-1" defer></script>
+  <script src="assets/site.js?v=20260821-2" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

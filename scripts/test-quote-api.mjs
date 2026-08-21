@@ -18,12 +18,14 @@ process.env.QUOTE_TO_EMAIL = "sales@example.com";
 
 let lastEmailRequest;
 let lastEmailOptions;
+let emailRequestCount = 0;
 let mockResendResponse = {
   ok: true,
   status: 200,
   json: async () => ({ id: "test-email-id" }),
 };
 globalThis.fetch = async (_url, options = {}) => {
+  emailRequestCount += 1;
   lastEmailOptions = options;
   lastEmailRequest = JSON.parse(options.body || "{}");
   return mockResendResponse;
@@ -45,7 +47,7 @@ const validQuote = {
   utmMedium: "referral",
 };
 
-const invoke = async (body, method = "POST", headers = {}) => {
+const invoke = async (body, method = "POST", headers = { "content-type": "application/json" }) => {
   const result = {
     headers: new Map(),
     statusCode: 200,
@@ -86,6 +88,18 @@ try {
   const validIdempotencyKey = lastEmailOptions.headers["Idempotency-Key"];
   assert.match(validIdempotencyKey, /^quote-[a-f0-9]{64}$/);
 
+  const headerSafeQuote = await invoke({
+    ...validQuote,
+    name: "Test buyer\r\nBcc: victim@example.com",
+    product: "custom-wine-boxes\nX-Test: injected",
+  });
+  assert.equal(headerSafeQuote.statusCode, 200);
+  assert.equal(
+    lastEmailRequest.subject,
+    "New packaging quote — custom-wine-boxes X-Test: injected — Test buyer Bcc: victim@example.com"
+  );
+  assert.doesNotMatch(lastEmailRequest.subject, /[\r\n]/);
+
   const nativeForm = await invoke(
     new URLSearchParams({ ...validQuote, attachment: "reference.pdf" }).toString(),
     "POST",
@@ -96,10 +110,15 @@ try {
   assert.equal(lastEmailRequest.attachments, undefined);
   assert.equal(nativeForm.headers.get("content-type"), "text/html; charset=utf-8");
   assert.match(nativeForm.body, /Quote request received/);
+  assert.match(nativeForm.body, /href="\/custom-wine-boxes\.html#quote"/);
   assert.equal(lastEmailOptions.headers["Idempotency-Key"], validIdempotencyKey);
 
   const malformedJson = await invoke("{not-json", "POST", { "content-type": "application/json" });
   assert.equal(malformedJson.statusCode, 400);
+
+  const unsupportedContentType = await invoke(validQuote, "POST", { "content-type": "text/plain" });
+  assert.equal(unsupportedContentType.statusCode, 415);
+  assert.equal(unsupportedContentType.payload.error, "Use a JSON or form-urlencoded request body.");
 
   const missingCountry = await invoke({ ...validQuote, country: "" });
   assert.equal(missingCountry.statusCode, 400);
@@ -146,6 +165,14 @@ try {
     status: 200,
     json: async () => ({ id: "test-email-id" }),
   };
+
+  const emailRequestsBeforeMissingRecipient = emailRequestCount;
+  delete process.env.QUOTE_TO_EMAIL;
+  const missingRecipient = await invoke(validQuote);
+  assert.equal(missingRecipient.statusCode, 503);
+  assert.equal(missingRecipient.payload.code, "EMAIL_NOT_CONFIGURED");
+  assert.equal(emailRequestCount, emailRequestsBeforeMissingRecipient);
+  process.env.QUOTE_TO_EMAIL = "sales@example.com";
 
   const unsupported = await invoke({
     ...validQuote,
@@ -194,10 +221,46 @@ try {
   );
   assert.equal(nativeUnconfigured.statusCode, 503);
   assert.match(nativeUnconfigured.body, /Quote request not sent/);
+  assert.match(nativeUnconfigured.body, /href="\/custom-wine-boxes\.html#quote"/);
   assert.match(nativeUnconfigured.body, /mailto:kevin@GloryStarPack\.com/);
   assert.match(nativeUnconfigured.body, /https:\/\/wa\.me\/8618020755949/);
+  assert.match(nativeUnconfigured.body, /Complete project brief/);
+  assert.match(nativeUnconfigured.body, /Test%20buyer/);
 
-  console.log("Quote API tests passed: JSON/native form requests and result pages, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
+  const nativeEscapedBrief = await invoke(
+    new URLSearchParams({ ...validQuote, details: '<img src=x onerror="alert(1)">', sourcePage: "/not-a-quote-form.html" }).toString(),
+    "POST",
+    { "content-type": "application/x-www-form-urlencoded" }
+  );
+  assert.match(nativeEscapedBrief.body, /href="\/#quote"/);
+  assert.match(nativeEscapedBrief.body, /&lt;img src=x onerror=&quot;alert\(1\)&quot;&gt;/);
+  assert.doesNotMatch(nativeEscapedBrief.body, /<img src=x onerror=/);
+
+  const nativeLongBrief = await invoke(
+    new URLSearchParams({ ...validQuote, product: "测".repeat(120), details: "测".repeat(3000) }).toString(),
+    "POST",
+    { "content-type": "application/x-www-form-urlencoded" }
+  );
+  const mailtoHref = nativeLongBrief.body.match(/href="(mailto:[^"]+)"/)?.[1].replace(/&amp;/g, "&") || "";
+  const whatsAppHref = nativeLongBrief.body.match(/href="(https:\/\/wa\.me\/8618020755949\?text=[^"]+)"/)?.[1] || "";
+  assert.ok(mailtoHref.length > 0 && mailtoHref.length <= 1900);
+  assert.ok(whatsAppHref.length > 0 && whatsAppHref.length <= 1900);
+  assert.match(nativeLongBrief.body, /Direct channels may contain a shortened brief/);
+
+  const emojiProduct = `${"💥".repeat(59)}${"测".repeat(62)}`;
+  const nativeEmojiSubject = await invoke(
+    new URLSearchParams({ ...validQuote, product: emojiProduct, details: "测".repeat(3000) }).toString(),
+    "POST",
+    { "content-type": "application/x-www-form-urlencoded" }
+  );
+  const emojiMailtoHref = nativeEmojiSubject.body.match(/href="(mailto:[^"]+)"/)?.[1].replace(/&amp;/g, "&") || "";
+  const emojiSubject = new URL(emojiMailtoHref).searchParams.get("subject") || "";
+  const emojiSubjectProduct = emojiSubject.replace("Packaging quote request — ", "");
+  assert.equal(Array.from(emojiSubjectProduct).length, 60);
+  assert.equal(emojiSubjectProduct, `${"💥".repeat(59)}测`);
+  assert.ok(emojiMailtoHref.length > 0 && emojiMailtoHref.length <= 1900);
+
+  console.log("Quote API tests passed: JSON/native form requests and result pages, safe native recovery links and brief escaping, bounded direct-channel URLs, strict request media types, header-safe subject fields, required recipient configuration, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
   console.error = originalConsoleError;

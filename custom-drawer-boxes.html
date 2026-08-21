@@ -189,7 +189,7 @@
         </div>
         <div class="card-grid">
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/black-embossed-box.webp" width="1024" height="1024" alt="Black rigid packaging with a textured wrapped surface" loading="lazy" decoding="async"><span class="product-card__code">DB–01</span></div>
+            <div class="product-card__media"><img src="assets/images/black-embossed-box.webp" srcset="assets/images/black-embossed-box-w512.webp 512w, assets/images/black-embossed-box-w768.webp 768w, assets/images/black-embossed-box.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Black rigid packaging with a textured wrapped surface" loading="lazy" decoding="async"><span class="product-card__code">DB–01</span></div>
             <div class="product-card__body">
               <h3>Outer sleeve</h3>
               <p>The sleeve controls tray guidance, exterior protection, seam placement, branding area, and the first resistance the user feels.</p>
@@ -197,7 +197,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/presentation-box.webp" width="1024" height="1024" alt="Presentation packaging with a fitted product platform" loading="lazy" decoding="async"><span class="product-card__code">DB–02</span></div>
+            <div class="product-card__media"><img src="assets/images/presentation-box.webp" srcset="assets/images/presentation-box-w512.webp 512w, assets/images/presentation-box-w768.webp 768w, assets/images/presentation-box.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Presentation packaging with a fitted product platform" loading="lazy" decoding="async"><span class="product-card__code">DB–02</span></div>
             <div class="product-card__body">
               <h3>Sliding tray</h3>
               <p>The tray carries the product load and must remain square through assembly, insertion, withdrawal, and final packing.</p>
@@ -205,7 +205,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/luxury-hangtag.webp" width="1024" height="1024" alt="Textured paper tag with a narrow ribbon detail" loading="lazy" decoding="async"><span class="product-card__code">DB–03</span></div>
+            <div class="product-card__media"><img src="assets/images/luxury-hangtag.webp" srcset="assets/images/luxury-hangtag-w512.webp 512w, assets/images/luxury-hangtag-w768.webp 768w, assets/images/luxury-hangtag.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Textured paper tag with a narrow ribbon detail" loading="lazy" decoding="async"><span class="product-card__code">DB–03</span></div>
             <div class="product-card__body">
               <h3>Pull access</h3>
               <p>A ribbon pull creates a separate tactile detail; a finger notch keeps the opening cue within the board structure.</p>
@@ -369,6 +369,7 @@
           </div>
         </div>
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="sourcePage" value="/custom-drawer-boxes.html">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
             <div class="field"><label for="drawer-name">Full name</label><input id="drawer-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
@@ -412,7 +413,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260821-1" defer></script>
+  <script src="assets/site.js?v=20260821-2" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

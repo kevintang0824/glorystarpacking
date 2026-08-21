@@ -232,24 +232,48 @@
     return lines.join("\n");
   };
 
-  const buildMailto = (payload) => {
-    const subject = `Packaging quote request — ${payload.product || "Custom project"}`;
-    const body = [
-      buildProjectBrief(payload),
-      "",
-      "Please attach any artwork directly to this email before sending.",
-    ].join("\n");
+  const directBriefNotice = "[This direct-channel brief was shortened. Return to the webpage and copy the complete project brief before sending.]";
+  const directUrlEncodedBudget = 1900;
 
-    return `mailto:kevin@GloryStarPack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const limitCodePoints = (value, maximumLength) => Array.from(String(value || ""))
+    .slice(0, maximumLength)
+    .join("");
+
+  const shortenForDirectChannel = (brief, encodedBudget) => {
+    if (encodeURIComponent(brief).length <= encodedBudget) return brief;
+
+    const suffix = `\n\n${directBriefNotice}`;
+    let shortened = "";
+    for (const character of brief) {
+      if (encodeURIComponent(`${shortened}${character}${suffix}`).length > encodedBudget) break;
+      shortened += character;
+    }
+    return `${shortened.trimEnd()}${suffix}`;
+  };
+
+  const buildDirectProjectBrief = (payload, reservedUrlLength) => {
+    const encodedBudget = Math.max(300, directUrlEncodedBudget - reservedUrlLength);
+    return shortenForDirectChannel(buildProjectBrief(payload, false), encodedBudget);
+  };
+
+  const buildMailto = (payload) => {
+    const subjectProduct = limitCodePoints(payload.product, 60)
+      .replace(/[\r\n]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const subject = `Packaging quote request — ${subjectProduct || "Custom project"}`;
+    const urlPrefix = `mailto:kevin@GloryStarPack.com?subject=${encodeURIComponent(subject)}&body=`;
+    const emailFootnote = "\n\nPlease attach any artwork directly to this email before sending.";
+    const body = `${buildDirectProjectBrief(payload, urlPrefix.length + encodeURIComponent(emailFootnote).length)}${emailFootnote}`;
+
+    return `${urlPrefix}${encodeURIComponent(body)}`;
   };
 
   const buildWhatsApp = (payload) => {
-    const message = [
-      "Hello Kevin, I would like a packaging quote.",
-      "",
-      buildProjectBrief(payload, false),
-    ].join("\n");
-    return `https://wa.me/8618020755949?text=${encodeURIComponent(message)}`;
+    const urlPrefix = "https://wa.me/8618020755949?text=";
+    const greeting = "Hello Kevin, I would like a packaging quote.\n\n";
+    const message = `${greeting}${buildDirectProjectBrief(payload, urlPrefix.length + encodeURIComponent(greeting).length)}`;
+    return `${urlPrefix}${encodeURIComponent(message)}`;
   };
 
   let fallbackCopyIndex = 0;
@@ -260,7 +284,7 @@
     const copy = document.createElement("span");
     copy.className = "form-fallback-copy";
     copy.textContent = options.message
-      || "Online delivery is temporarily unavailable. Your form is still filled in—choose another way to send the same brief.";
+      || "Online delivery is temporarily unavailable. Your form is still filled in—Email and WhatsApp may contain a shortened brief, so copy the full brief if needed.";
 
     const actions = document.createElement("span");
     actions.className = "form-fallback-actions";
@@ -320,7 +344,10 @@
     });
 
     actions.append(emailLink, whatsappLink, copyButton);
-    status.replaceChildren(copy, actions);
+    const directChannelNote = document.createElement("small");
+    directChannelNote.className = "form-fallback-note";
+    directChannelNote.textContent = "If your brief is long, Email and WhatsApp may use a shortened version. Copy project brief always contains every detail.";
+    status.replaceChildren(copy, actions, directChannelNote);
 
     const attachmentName = options.attachmentName || payload.attachment?.filename || "";
     if (attachmentName || payload.attachment) {

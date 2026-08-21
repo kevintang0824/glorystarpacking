@@ -191,7 +191,7 @@
 
         <div class="card-grid">
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/gold-foil-paper.webp" width="1024" height="1024" alt="Gold foil lettering on a textured paper label material" loading="lazy" decoding="async"><span class="product-card__code">EL–01</span></div>
+            <div class="product-card__media"><img src="assets/images/gold-foil-paper.webp" srcset="assets/images/gold-foil-paper-w512.webp 512w, assets/images/gold-foil-paper-w768.webp 768w, assets/images/gold-foil-paper.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Gold foil lettering on a textured paper label material" loading="lazy" decoding="async"><span class="product-card__code">EL–01</span></div>
             <div class="product-card__body">
               <h3>Textured paper</h3>
               <p>A tactile route for selective foil, emboss, or blind emboss. Grain, porosity, thickness, moisture exposure, and die-cut behavior should be reviewed together.</p>
@@ -199,7 +199,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/gold-metal-label.webp" width="1024" height="1024" alt="Reflective gold product label with dark printed detail" loading="lazy" decoding="async"><span class="product-card__code">EL–02</span></div>
+            <div class="product-card__media"><img src="assets/images/gold-metal-label.webp" srcset="assets/images/gold-metal-label-w512.webp 512w, assets/images/gold-metal-label-w768.webp 768w, assets/images/gold-metal-label.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Reflective gold product label with dark printed detail" loading="lazy" decoding="async"><span class="product-card__code">EL–02</span></div>
             <div class="product-card__body">
               <h3>Coated or metallic stock</h3>
               <p>Smooth paper, metallic paper, and film routes can support crisp graphics or broader reflectivity. Ink opacity, surface protection, stiffness, and container show-through affect the result.</p>
@@ -207,7 +207,7 @@
             </div>
           </article>
           <article class="product-card" data-reveal>
-            <div class="product-card__media"><img src="assets/images/metallic-bottle-label.webp" width="1024" height="1024" alt="Metallic label detail applied to a premium bottle" loading="lazy" decoding="async"><span class="product-card__code">EL–03</span></div>
+            <div class="product-card__media"><img src="assets/images/metallic-bottle-label.webp" srcset="assets/images/metallic-bottle-label-w512.webp 512w, assets/images/metallic-bottle-label-w768.webp 768w, assets/images/metallic-bottle-label.webp 1024w" sizes="(max-width: 780px) calc(100vw - 28px), (max-width: 1040px) calc((100vw - 58px) / 2), 379px" width="1024" height="1024" alt="Metallic label detail applied to a premium bottle" loading="lazy" decoding="async"><span class="product-card__code">EL–03</span></div>
             <div class="product-card__body">
               <h3>Moisture-aware construction</h3>
               <p>Wet-strength paper or film can be considered when condensation, humidity, oils, or repeated handling are expected. Final suitability depends on the adhesive, protection, container, and test conditions.</p>
@@ -463,6 +463,7 @@
           </div>
         </div>
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="sourcePage" value="/embossed-foil-labels.html">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
             <div class="field"><label for="embossed-label-name">Full name</label><input id="embossed-label-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
@@ -497,7 +498,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Bags · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260821-1" defer></script>
+  <script src="assets/site.js?v=20260821-2" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>

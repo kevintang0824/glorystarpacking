@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/assets/logo-512.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-moda-latin-v28.woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/images/cosmetic-packaging.webp" fetchpriority="high">
+  <link rel="preload" as="image" type="image/avif" href="assets/images/cosmetic-packaging.avif" fetchpriority="high">
   <link rel="stylesheet" href="assets/site.css?v=20260821-1">
   <script type="application/ld+json">
   {
@@ -187,7 +187,7 @@
   <main id="main-content">
     <section class="subhero">
       <div class="subhero__background">
-        <img src="assets/images/cosmetic-packaging.webp" width="1024" height="1024" alt="" fetchpriority="high">
+        <picture><source type="image/avif" srcset="assets/images/cosmetic-packaging.avif"><img src="assets/images/cosmetic-packaging.webp" width="1024" height="1024" alt="" fetchpriority="high"></picture>
       </div>
       <div class="container subhero__content" data-reveal>
         <ol class="breadcrumbs" aria-label="Breadcrumb">
@@ -452,6 +452,7 @@
           </div>
         </div>
         <form class="quote-form" action="/api/quote" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="sourcePage" value="/cosmetic-packaging-boxes.html">
           <noscript><p class="form-note form-note--noscript">Basic fields can be submitted without JavaScript. To include artwork or keep a copy of your brief, use <a href="mailto:kevin@GloryStarPack.com">Email</a> or <a href="https://wa.me/8618020755949">WhatsApp</a>.</p></noscript>
           <div class="form-grid">
             <div class="field"><label for="cosmetic-name">Full name</label><input id="cosmetic-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
@@ -497,7 +498,7 @@
       <div class="footer-bottom"><span>© 2026 GloryStarPack. All rights reserved.</span><span>Custom packaging · Boxes · Labels</span></div>
     </div>
   </footer>
-  <script src="assets/site.js?v=20260821-1" defer></script>
+  <script src="assets/site.js?v=20260821-2" defer></script>
   <script src="assets/analytics.js?v=20260820-4" data-measurement-id="G-LYNMPWG9WK" defer></script>
 </body>
 </html>
