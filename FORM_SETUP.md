@@ -43,7 +43,7 @@ Accepted files are sent through Resend as email attachments. The 3 MB limit leav
 - `robots.txt` disallows `/api/`; the quote endpoint is not a search landing page.
 - `vercel.json` keeps `trailingSlash` set to `false`, matching the canonical `.html` URL format.
 
-For a local prebuilt deployment, always run the Build Output integrity gate after the build and before deploying it. It verifies every public page, SEO file, IndexNow key, asset, and both API functions against the generated output:
+For a local prebuilt deployment, always run the Build Output integrity gate after the build and before deploying it. It verifies every public page, SEO file, IndexNow key, and asset byte-for-byte, and verifies both API function configs, handler bundles, and source digests against the generated output:
 
 ```sh
 vercel build --prod --yes

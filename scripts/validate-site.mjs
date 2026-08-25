@@ -70,6 +70,7 @@ const responsiveAvifCardStems = new Set([
   "watch-display-box",
 ]);
 const responsiveCardWidths = [512, 768];
+const marketplaceProductSizes = "(max-width: 780px) calc((100vw - 42px) / 2), (max-width: 976px) calc((100vw - 298px) / 3), (max-width: 1040px) 226px, 219px";
 const responsiveCardSpecs = [
   {
     key: "product",
@@ -561,6 +562,96 @@ for (const file of htmlFiles) {
         }
       });
     }
+
+    const expectedCategoryIds = [
+      "popular-packaging",
+      "sample-development",
+      "mailer-shipping-boxes",
+      "paper-bags",
+      "gift-boxes",
+      "clothing-packaging",
+      "cosmetic-packaging",
+      "food-packaging",
+      "sushi-packaging",
+      "cardboard-displays",
+      "tea-packaging",
+      "candle-packaging",
+      "wellness-packaging",
+      "paper-cards",
+      "stickers-labels",
+      "pouches",
+    ];
+    const categoryTags = html.match(/<article\b[^>]*class="[^"]*\bcatalog-category\b[^"]*"[^>]*>/gi) || [];
+    const categoryIds = categoryTags.map((tag) => attribute(tag, "id"));
+    if (categoryIds.length !== expectedCategoryIds.length) {
+      errors.push(`${file}: expected ${expectedCategoryIds.length} catalog categories, found ${categoryIds.length}`);
+    }
+    expectedCategoryIds.forEach((id, index) => {
+      if (categoryIds[index] !== id) {
+        errors.push(`${file}: catalog category ${index + 1} must be "${id}"`);
+      }
+    });
+
+    const filterButtons = html.match(/<button\b[^>]*data-catalog-filter="[^"]+"[^>]*>/gi) || [];
+    const filterValues = filterButtons.map((tag) => attribute(tag, "data-catalog-filter"));
+    const expectedFilterValues = ["all", ...expectedCategoryIds];
+    if (filterValues.length !== expectedFilterValues.length) {
+      errors.push(`${file}: expected ${expectedFilterValues.length} marketplace filters, found ${filterValues.length}`);
+    }
+    expectedFilterValues.forEach((value, index) => {
+      if (filterValues[index] !== value) {
+        errors.push(`${file}: marketplace filter ${index + 1} must be "${value}"`);
+      }
+    });
+    filterButtons.forEach((tag, index) => {
+      const expectedPressed = index === 0 ? "true" : "false";
+      if (attribute(tag, "aria-pressed") !== expectedPressed) {
+        errors.push(`${file}: marketplace filter ${index + 1} must initialize aria-pressed="${expectedPressed}"`);
+      }
+    });
+
+    if (!html.includes('id="marketplace-result-count"')) {
+      errors.push(`${file}: marketplace result count is missing`);
+    }
+    if (!html.includes("data-marketplace-empty")) {
+      errors.push(`${file}: marketplace feasibility empty state is missing`);
+    }
+    const marketplaceGroupCount = (html.match(/\bdata-marketplace-group\b/gi) || []).length;
+    if (marketplaceGroupCount !== 3) {
+      errors.push(`${file}: expected 3 marketplace product groups, found ${marketplaceGroupCount}`);
+    }
+    if (!/class="[^"]*\bcatalog-scope-details\b/i.test(html)) {
+      errors.push(`${file}: collapsed category scope and compliance details are missing`);
+    }
+
+    const requiredCategoryQuoteOptions = [
+      "clothing-packaging",
+      "food-packaging",
+      "sushi-packaging",
+      "cardboard-displays",
+      "tea-packaging",
+      "candle-packaging",
+      "wellness-packaging",
+      "paper-cards-booklets",
+      "pouches",
+    ];
+    requiredCategoryQuoteOptions.forEach((value) => {
+      if (!html.includes(`<option value="${value}">`)) {
+        errors.push(`${file}: quote form is missing category option "${value}"`);
+      }
+    });
+    if (/\$0\.01\b/i.test(html)) {
+      errors.push(`${file}: must not advertise an unverified $0.01 sample offer`);
+    }
+    if (!/Direct food contact, barrier performance, migration, temperature, shelf life, and destination rules are never assumed\./i.test(html)) {
+      errors.push(`${file}: food secondary packaging category is missing its compliance boundary`);
+    }
+    if (!/medical, pharmaceutical, sterile, child-resistant, or destination-specific compliance/i.test(html)) {
+      errors.push(`${file}: wellness category is missing its regulated-use boundary`);
+    }
+    if (!/not shown as current core production routes/i.test(html)) {
+      errors.push(`${file}: pouch category is missing its capability boundary`);
+    }
   }
 
   const imageTags = html.match(/<img\b[^>]*>/gi) || [];
@@ -582,6 +673,9 @@ for (const file of htmlFiles) {
   for (const spec of responsiveCardSpecs) {
     for (const match of html.matchAll(spec.blockPattern)) {
       const cardBlock = match[0];
+      const expectedCardSizes = spec.key === "product" && file === "products.html"
+        ? marketplaceProductSizes
+        : spec.sizes;
       const imageTag = cardBlock.match(/<img\b[^>]*>/i)?.[0] || "";
       const src = attribute(imageTag, "src");
       const stem = src.match(/^assets\/images\/([^/]+)\.webp$/i)?.[1] || "";
@@ -602,7 +696,7 @@ for (const file of htmlFiles) {
       } else {
         responsiveSrcsetUsageCount += 1;
       }
-      if (attribute(imageTag, "sizes") !== spec.sizes) {
+      if (attribute(imageTag, "sizes") !== expectedCardSizes) {
         errors.push(`${file}: ${spec.key} card image "${stem}" has an incorrect sizes rule`);
       }
       if (attribute(imageTag, "width") !== "1024" || attribute(imageTag, "height") !== "1024") {
@@ -625,7 +719,7 @@ for (const file of htmlFiles) {
         if (attribute(sourceTag, "srcset") !== expectedAvifSrcset) {
           errors.push(`${file}: ${spec.key} card image "${stem}" has an incomplete AVIF srcset`);
         }
-        if (attribute(sourceTag, "sizes") !== spec.sizes) {
+        if (attribute(sourceTag, "sizes") !== expectedCardSizes) {
           errors.push(`${file}: ${spec.key} card image "${stem}" has an incorrect AVIF sizes rule`);
         }
         if (!cardBlock.includes(`<picture>${sourceTag}${imageTag}</picture>`)) {
@@ -1316,6 +1410,10 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, 'form.addEventListener("invalid", showValidationState, true)', "native-validation error summary"],
   [siteScript, 'field.setAttribute("aria-invalid", "true")', "persistent invalid-field semantics"],
   [siteScript, 'unresolvedFieldCount', "live invalid-field count"],
+  [siteScript, 'const productCategoryMap = {', "marketplace product-to-category mapping"],
+  [siteScript, 'commercial.className = "marketplace-card__commercial"', "marketplace commercial context"],
+  [siteScript, 'const applyCatalogFilter = (filter, shouldScroll = false)', "marketplace category filtering"],
+  [siteScript, 'button.setAttribute("aria-pressed"', "marketplace filter state semantics"],
   [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
   [siteStyle, ".form-required-note", "required-field guidance styling"],
   [siteStyle, ".form-required-indicator", "required-field marker styling"],
@@ -1327,6 +1425,8 @@ const requiredProgressiveQuoteSignals = [
   [siteStyle, ".product-card__media > picture", "responsive product-card picture sizing"],
   [siteStyle, ".article-card > picture > img", "responsive article-card picture sizing"],
   [siteStyle, ".split__media > picture > img", "responsive split-media picture sizing"],
+  [siteStyle, ".marketplace-layout", "marketplace sidebar and results layout"],
+  [siteStyle, ".catalog-marketplace .card-grid", "marketplace product grid"],
   [siteStyle, "html:not(.js) .site-nav", "no-JavaScript mobile navigation"],
 ];
 requiredProgressiveQuoteSignals.forEach(([source, signal, label]) => {
@@ -1390,7 +1490,8 @@ if (!fs.existsSync(quoteApiPath)) {
     ['Complete project brief', "native manual-copy fallback"],
     ['shortenForDirectChannel', "bounded native direct-channel brief"],
     ['limitCodePoints(quote.product, 60)', "bounded native mail subject"],
-    ['typeof body.attachment === "object"', "native attachment filename guard"],
+    ['typeof attachmentValue === "object"', "attachment object guard"],
+    ['const malformedJsonAttachment', "complete JSON attachment contract"],
     ['RESEND_TIMEOUT_MS', "bounded Resend delivery timeout"],
     ['signal: resendController.signal', "Resend abort signal"],
     ['createHash("sha256")', "stable submission fingerprint"],
@@ -1512,6 +1613,16 @@ if (!fs.existsSync(productionServiceAuditPath)) {
 }
 if (!fs.existsSync(buildOutputValidationPath)) {
   errors.push("Build Output validation script is missing");
+} else {
+  const buildOutputValidation = fs.readFileSync(buildOutputValidationPath, "utf8");
+  const requiredBuildOutputSignals = [
+    ['Function config is not valid JSON', "API function config parsing"],
+    ['Missing function handler bundle', "API function handler presence"],
+    ['Function source mismatch', "API function source freshness"],
+  ];
+  requiredBuildOutputSignals.forEach(([signal, label]) => {
+    if (!buildOutputValidation.includes(signal)) errors.push(`Build Output validation is missing ${label}`);
+  });
 }
 if (!fs.existsSync(indexNowScriptPath)) {
   errors.push("IndexNow: submission script is missing");

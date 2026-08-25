@@ -86,11 +86,45 @@ if (!fs.existsSync(assetsRoot) || !fs.statSync(assetsRoot).isDirectory()) {
   walkFiles(assetsRoot).forEach(addExpectedFile);
 }
 
+let verifiedFunctions = 0;
 for (const functionName of ["health", "quote"]) {
-  const functionConfig = path.join(outputRoot, "functions", "api", `${functionName}.func`, ".vc-config.json");
+  const functionRoot = path.join(outputRoot, "functions", "api", `${functionName}.func`);
+  const functionConfig = path.join(functionRoot, ".vc-config.json");
+  const sourceHandler = path.join(sourceRoot, "api", `${functionName}.js`);
   if (!fs.existsSync(functionConfig) || !fs.statSync(functionConfig).isFile()) {
     errors.push(`Missing built API function: api/${functionName}`);
+    continue;
   }
+
+  let config;
+  try {
+    config = JSON.parse(fs.readFileSync(functionConfig, "utf8"));
+  } catch (error) {
+    errors.push(`Function config is not valid JSON: api/${functionName} (${error.message})`);
+    continue;
+  }
+
+  const expectedHandler = `api/${functionName}.js`;
+  if (!config || typeof config.handler !== "string" || config.handler !== expectedHandler) {
+    errors.push(`Function handler is invalid: api/${functionName} (expected ${expectedHandler})`);
+    continue;
+  }
+
+  const handlerPath = path.resolve(functionRoot, config.handler);
+  if (!handlerPath.startsWith(`${functionRoot}${path.sep}`) || !fs.existsSync(handlerPath) || !fs.statSync(handlerPath).isFile()) {
+    errors.push(`Missing function handler bundle: api/${functionName} (${config.handler})`);
+    continue;
+  }
+  if (!fs.existsSync(sourceHandler) || !fs.statSync(sourceHandler).isFile()) {
+    errors.push(`Missing source API handler: api/${functionName}`);
+    continue;
+  }
+  if (digest(sourceHandler) !== digest(handlerPath)) {
+    errors.push(`Function source mismatch: api/${functionName} (built handler is stale or altered)`);
+    continue;
+  }
+
+  verifiedFunctions += 1;
 }
 
 let verifiedFiles = 0;
@@ -146,7 +180,7 @@ if (errors.length) {
 }
 
 console.log(
-  `Build output validation passed: ${verifiedFiles} public files (including ${[...expectedFiles].filter((file) => file.endsWith(".html")).length} HTML files), assets and api/health + api/quote are complete.`
+  `Build output validation passed: ${verifiedFiles} public files (including ${[...expectedFiles].filter((file) => file.endsWith(".html")).length} HTML files), assets and ${verifiedFunctions} API handlers are complete and source-current.`
 );
 if (ignoredConflictCopies.length) {
   console.log(`Ignored ${ignoredConflictCopies.length} root conflict copy/copies: ${ignoredConflictCopies.join(", ")}`);

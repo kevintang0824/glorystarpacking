@@ -128,6 +128,203 @@
     });
   }
 
+  const catalogMarketplace = document.querySelector(".catalog-marketplace");
+  if (catalogMarketplace) {
+    const productCategoryMap = {
+      "custom-rigid-boxes.html": ["popular-packaging", "gift-boxes", "cosmetic-packaging", "tea-packaging", "candle-packaging"],
+      "custom-magnetic-boxes.html": ["gift-boxes", "cosmetic-packaging", "tea-packaging", "candle-packaging"],
+      "custom-drawer-boxes.html": ["gift-boxes", "cosmetic-packaging", "tea-packaging", "candle-packaging"],
+      "lid-and-base-boxes.html": ["gift-boxes", "cosmetic-packaging", "tea-packaging", "candle-packaging"],
+      "custom-mailer-boxes.html": ["popular-packaging", "mailer-shipping-boxes", "clothing-packaging"],
+      "folding-carton-boxes.html": ["clothing-packaging", "cosmetic-packaging", "food-packaging", "tea-packaging", "candle-packaging", "wellness-packaging"],
+      "collapsible-rigid-boxes.html": ["gift-boxes", "cosmetic-packaging"],
+      "custom-corrugated-shipping-boxes.html": ["mailer-shipping-boxes", "clothing-packaging"],
+      "custom-jewelry-boxes.html": ["gift-boxes"],
+      "custom-wine-boxes.html": ["gift-boxes"],
+      "custom-perfume-boxes.html": ["gift-boxes", "cosmetic-packaging"],
+      "cosmetic-packaging-boxes.html": ["popular-packaging", "gift-boxes", "cosmetic-packaging", "tea-packaging", "candle-packaging"],
+      "custom-packaging-inserts.html": ["mailer-shipping-boxes", "gift-boxes", "cosmetic-packaging", "tea-packaging", "candle-packaging", "wellness-packaging"],
+      "custom-paper-bags.html": ["popular-packaging", "paper-bags", "clothing-packaging"],
+      "custom-tube-packaging.html": ["gift-boxes", "food-packaging", "tea-packaging", "candle-packaging", "wellness-packaging"],
+      "custom-hang-tags.html": ["clothing-packaging", "paper-cards"],
+      "custom-tissue-paper.html": ["paper-bags", "gift-boxes", "clothing-packaging"],
+      "box-labels.html": ["popular-packaging", "cosmetic-packaging", "food-packaging", "tea-packaging", "candle-packaging", "wellness-packaging", "stickers-labels"],
+      "custom-clear-labels.html": ["cosmetic-packaging", "stickers-labels"],
+      "custom-waterproof-labels.html": ["food-packaging", "wellness-packaging", "stickers-labels"],
+      "custom-wine-labels.html": ["stickers-labels"],
+      "embossed-foil-labels.html": ["gift-boxes", "cosmetic-packaging", "tea-packaging", "candle-packaging", "stickers-labels"],
+    };
+    const filterConfig = {
+      all: {
+        title: "All products",
+        note: "Showing every verified box, component, bag, tube, tag, tissue, and label route in the current catalog.",
+        quoteValue: "packaging-set",
+      },
+      "popular-packaging": {
+        title: "Featured structures",
+        note: "A concise starting set selected from current core routes—not a sales ranking or promotional-price claim.",
+        quoteValue: "packaging-set",
+      },
+      "sample-development": {
+        title: "Sample development",
+        note: "Every current product route can begin with a structural, printed, or pre-production sample matched to the decision you need to make.",
+        quoteValue: "packaging-set",
+      },
+      "mailer-shipping-boxes": {
+        title: "Mailer & shipping boxes",
+        note: "Compare corrugated mailers, shipping cases, and fitted protection by packed weight, handling route, closure, and return needs.",
+        quoteValue: "mailer-boxes",
+      },
+      "paper-bags": {
+        title: "Paper bags",
+        note: "Retail carry and presentation routes coordinated through paper, gusset, reinforcement, handle, print, and tissue pack-out.",
+        quoteValue: "paper-bags",
+      },
+      "gift-boxes": {
+        title: "Gift boxes",
+        note: "Premium structures grouped by opening action, insert needs, storage volume, filled weight, and the intended reveal.",
+        quoteValue: "rigid-boxes",
+      },
+      "clothing-packaging": {
+        title: "Clothing packaging",
+        note: "Paper-based apparel presentation and delivery routes, including mailers, bags, cartons, tissue, and hang tags.",
+        quoteValue: "clothing-packaging",
+      },
+      "cosmetic-packaging": {
+        title: "Cosmetic packaging",
+        note: "Boxes, cartons, inserts, sets, and labels coordinated around the real bottle or jar, finish, product set, and retail channel.",
+        quoteValue: "cosmetic-packaging",
+      },
+      "food-packaging": {
+        title: "Food secondary packaging",
+        note: "Secondary cartons, tubes, and labels only. Direct contact, barrier, migration, temperature, shelf life, and destination rules require a project-specific review.",
+        quoteValue: "food-packaging",
+      },
+      "sushi-packaging": {
+        title: "Sushi packaging review",
+        note: "No validated core product is shown for this category.",
+        emptyTitle: "Food-contact feasibility review",
+        emptyCopy: "Send the contact surface, grease and moisture exposure, temperature range, ventilation, closure, shelf time, packing route, and destination requirements before a format is proposed.",
+        quoteValue: "sushi-packaging",
+      },
+      "cardboard-displays": {
+        title: "Cardboard display review",
+        note: "No current product photography accurately represents a validated display route.",
+        emptyTitle: "Retail display feasibility review",
+        emptyCopy: "Send the planogram, loaded weight, footprint, retail duration, assembly method, shipping case, and destination before capability is confirmed.",
+        quoteValue: "cardboard-displays",
+      },
+      "tea-packaging": {
+        title: "Tea packaging review",
+        note: "Secondary boxes, cartons, tubes, inserts, and labels can be reviewed; aroma, moisture, barrier, direct-contact, shelf-life, and inner-pack requirements remain part of the brief.",
+        quoteValue: "tea-packaging",
+      },
+      "candle-packaging": {
+        title: "Candle packaging",
+        note: "Presentation routes planned around vessel dimensions, filled weight, heat history, surface protection, cavity fit, and outer transit protection.",
+        quoteValue: "candle-packaging",
+      },
+      "wellness-packaging": {
+        title: "Wellness secondary packaging",
+        note: "Secondary cartons, tubes, inserts, and labels can be reviewed without implying medical, pharmaceutical, sterile, child-resistant, or destination-specific compliance.",
+        quoteValue: "wellness-packaging",
+      },
+      "paper-cards": {
+        title: "Paper cards & printed inserts",
+        note: "Current routes cover hang tags, care cards, information cards, and pack-in cards; multi-page booklets require a separate feasibility review.",
+        quoteValue: "paper-cards-booklets",
+      },
+      "stickers-labels": {
+        title: "Stickers & labels",
+        note: "Compare label constructions by the real surface, adhesive, exposure, print, finish, roll or sheet format, and application direction.",
+        quoteValue: "custom-labels",
+      },
+      pouches: {
+        title: "Pouch & flexible pack review",
+        note: "Pouches and printed poly bags are not shown as current core production routes.",
+        emptyTitle: "Flexible packaging feasibility review",
+        emptyCopy: "Send the film or paper construction, barrier, seal, closure, print, contact, quantity, packing route, and destination for an honest feasibility or sourcing review.",
+        quoteValue: "pouches",
+      },
+    };
+
+    const cards = Array.from(catalogMarketplace.querySelectorAll(".product-card"));
+    const groups = Array.from(catalogMarketplace.querySelectorAll("[data-marketplace-group]"));
+    const filterButtons = Array.from(catalogMarketplace.querySelectorAll("[data-catalog-filter]"));
+    const resultTitle = catalogMarketplace.querySelector("#marketplace-result-title");
+    const resultCount = catalogMarketplace.querySelector("#marketplace-result-count");
+    const filterNote = catalogMarketplace.querySelector("#marketplace-filter-note");
+    const emptyState = catalogMarketplace.querySelector("[data-marketplace-empty]");
+    const emptyTitle = catalogMarketplace.querySelector("[data-marketplace-empty-title]");
+    const emptyCopy = catalogMarketplace.querySelector("[data-marketplace-empty-copy]");
+    const quoteLinks = Array.from(catalogMarketplace.querySelectorAll("[data-marketplace-quote], [data-marketplace-empty-quote]"));
+
+    cards.forEach((card) => {
+      const productHref = card.querySelector("h3 a[href]")?.getAttribute("href") || "";
+      const categories = ["sample-development", ...(productCategoryMap[productHref] || [])];
+      card.dataset.catalogCategories = [...new Set(categories)].join(" ");
+
+      const body = card.querySelector(".product-card__body");
+      const cta = body?.querySelector(".product-card__cta");
+      if (body && cta && !body.querySelector(".marketplace-card__commercial")) {
+        const commercial = document.createElement("div");
+        commercial.className = "marketplace-card__commercial";
+        commercial.innerHTML = "<strong>Custom quote</strong><span>MOQ · project-specific</span>";
+        body.insertBefore(commercial, cta);
+      }
+    });
+
+    filterButtons.forEach((button) => {
+      const filter = button.dataset.catalogFilter;
+      const count = filter === "all"
+        ? cards.length
+        : cards.filter((card) => card.dataset.catalogCategories.split(" ").includes(filter)).length;
+      const counter = button.querySelector("[data-filter-count]");
+      if (counter) counter.textContent = String(count);
+    });
+
+    const applyCatalogFilter = (filter, shouldScroll = false) => {
+      const config = filterConfig[filter] || filterConfig.all;
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const visible = filter === "all" || card.dataset.catalogCategories.split(" ").includes(filter);
+        card.hidden = !visible;
+        if (visible) visibleCount += 1;
+      });
+      groups.forEach((group) => {
+        group.hidden = !Array.from(group.querySelectorAll(".product-card")).some((card) => !card.hidden);
+      });
+      filterButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.catalogFilter === filter));
+      });
+
+      if (resultTitle) resultTitle.textContent = config.title;
+      if (resultCount) resultCount.textContent = `${visibleCount} ${visibleCount === 1 ? "result" : "results"}`;
+      if (filterNote) filterNote.textContent = config.note;
+      if (emptyState) emptyState.hidden = visibleCount !== 0;
+      if (emptyTitle) emptyTitle.textContent = config.emptyTitle || "Specification review";
+      if (emptyCopy) emptyCopy.textContent = config.emptyCopy || "Send the project requirements so the correct structure can be reviewed before it is represented as a product.";
+
+      const quoteHref = config.quoteValue
+        ? `products.html?product=${encodeURIComponent(config.quoteValue)}#quote`
+        : "#quote";
+      quoteLinks.forEach((link) => link.setAttribute("href", quoteHref));
+
+      if (shouldScroll) {
+        catalogMarketplace.querySelector("#marketplace-results")?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "start",
+        });
+      }
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => applyCatalogFilter(button.dataset.catalogFilter || "all", true));
+    });
+    applyCatalogFilter("all");
+  }
+
   const classifyDiscovery = () => {
     const explicitSource = (params.get("utm_source") || "").trim().toLowerCase();
     const aiSources = [

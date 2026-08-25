@@ -278,3 +278,14 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 2. 获取 GSC 最近 28 天查询与页面导出，生成首批排名 8–20 机会页；
 3. 获取 GA4 落地页、询价与联系事件基线，判断优先优化哪个商业页面；
 4. 在数据到位前，不新增缺乏一手证据的内容页。
+# 2026-08-25：正式站收录启动
+
+- 正式站抓取审计通过：sitemap 中 60 个 URL 均直接返回 HTTP 200，canonical 与 URL 一致并允许索引；
+- `www` 与 `/index.html` 规范化跳转通过；
+- 公开搜索结果仍显示旧首页与旧 `custom-boxes.html` 摘要，记录为优先重新抓取对象；
+- 首页和 `custom-boxes.html` 已发生实质内容更新，sitemap `lastmod` 更新为 `2026-08-25`；
+- 新增 `.vercelignore`，阻止 5 个 `* 2.html` 与 1 个重复 manifest 冲突副本进入正式部署；
+- 新增 `INDEXING_LAUNCH_CHECKLIST.md`，统一 GSC、Bing、IndexNow、GA4 和 7 天复测步骤。
+- 复核首页主图加载策略：桌面使用带媒体条件的高优先级 preload，移动端图片位于首屏文字之后，继续使用 lazy/low priority，避免移动端无效抢占带宽；
+- 首页新增明确的 WebPage 与主图实体，并加强 Organization 的域名标识、别名和产品知识范围；
+- 产品目录、盒型集合页和工厂页补充 publisher、about 与真实修改日期关系，帮助搜索和 AI 系统建立页面归属。

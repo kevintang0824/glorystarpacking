@@ -10,7 +10,7 @@ Contact: kevin@GloryStarPack.com
 ## Primary pages
 
 - [Home](https://glorystarpacking.com/): Company positioning, packaging workflow, common buying questions, and project quote entry.
-- [Product catalog](https://glorystarpacking.com/products.html): Index of custom boxes, inserts, bags, tissue, hang tags, and labels.
+- [Product catalog](https://glorystarpacking.com/products.html): Sixteen buyer-led categories mapped to 22 core custom box, insert, bag, tube, tissue, hang-tag, and label routes, with feasibility-review boundaries for unverified formats.
 - [Custom boxes](https://glorystarpacking.com/custom-boxes.html): Box structure comparison and custom box specification route.
 - [Custom labels](https://glorystarpacking.com/box-labels.html): Label material, adhesive, finishing, application, and environmental-use routes.
 - [Industries](https://glorystarpacking.com/industries.html): Packaging considerations by product and sales context.
@@ -89,6 +89,8 @@ Contact: kevin@GloryStarPack.com
 - Minimum order quantity is project-specific and depends on structure, dimensions, materials, finishing, inserts, versions, packing, and production route.
 - Sampling, production, and delivery timing must be confirmed for the actual project and destination.
 - Certifications, test standards, material claims, regulatory documents, and sustainability claims apply only when their holder, scope, material, production site, destination, and validity are verified.
+- Food, tea, sushi, and wellness content refers only to specification review or secondary-packaging routes unless direct-contact, barrier, migration, shelf-life, regulated-use, and destination requirements are separately verified for the project.
+- Sushi packs, cardboard displays, multi-page booklets, pouches, flexible mailers, and printed poly bags are not represented as current core products without a feasibility review and supporting capability evidence.
 - Freight, duty, tax, importer responsibilities, and destination charges depend on the named Incoterm, place, and shipment route.
 - Website content is procurement guidance and does not replace a project quotation, controlled specification, physical sample approval, compliance review, or qualified logistics and legal advice.
 

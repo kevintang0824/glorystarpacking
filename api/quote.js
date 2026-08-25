@@ -302,6 +302,46 @@ module.exports = async function handler(request, response) {
     }, quote);
   }
 
+  const attachmentValue = body.attachment;
+  const malformedJsonAttachment = !nativeFormRequest && attachmentValue !== undefined && attachmentValue !== null && (
+    typeof attachmentValue !== "object" ||
+    Array.isArray(attachmentValue) ||
+    typeof attachmentValue.filename !== "string" || !attachmentValue.filename.trim() ||
+    typeof attachmentValue.contentType !== "string" || !attachmentValue.contentType.trim() ||
+    typeof attachmentValue.content !== "string" || !attachmentValue.content.trim()
+  );
+  if (malformedJsonAttachment) {
+    return respond(response, nativeFormRequest, 415, { error: "Attach a PDF, JPG, PNG, or WebP file." }, quote);
+  }
+
+  const attachment = attachmentValue && typeof attachmentValue === "object" && !Array.isArray(attachmentValue)
+    ? attachmentValue
+    : null;
+  let safeAttachment;
+  if (attachment?.content && attachment?.filename) {
+    if (attachmentSize(attachment.content) > MAX_ATTACHMENT_BYTES) {
+      return respond(response, nativeFormRequest, 413, { error: "The attachment must be under 3 MB." }, quote);
+    }
+
+    const filename = clean(attachment.filename, 180);
+    const contentType = clean(attachment.contentType, 100).toLowerCase();
+    const rule = ATTACHMENT_RULES[contentType];
+    const lowerFilename = filename.toLowerCase();
+    const decoded = decodeBase64(attachment.content);
+
+    if (!rule || !rule.extensions.some((extension) => lowerFilename.endsWith(extension))) {
+      return respond(response, nativeFormRequest, 415, { error: "Attach a PDF, JPG, PNG, or WebP file." }, quote);
+    }
+    if (!decoded || decoded.length > MAX_ATTACHMENT_BYTES || !rule.hasValidSignature(decoded)) {
+      return respond(response, nativeFormRequest, 415, { error: "The attachment content does not match its file type." }, quote);
+    }
+
+    safeAttachment = {
+      filename: filename.replace(/[^\w.\- ()]/g, "_"),
+      content: decoded.toString("base64"),
+    };
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.QUOTE_TO_EMAIL;
   const fromEmail = process.env.QUOTE_FROM_EMAIL;
@@ -344,35 +384,7 @@ module.exports = async function handler(request, response) {
       quote.details || "Not provided",
     ].join("\n"),
   };
-
-  const attachment = body.attachment && typeof body.attachment === "object" && !Array.isArray(body.attachment)
-    ? body.attachment
-    : null;
-  if (attachment?.content && attachment?.filename) {
-    if (attachmentSize(attachment.content) > MAX_ATTACHMENT_BYTES) {
-      return respond(response, nativeFormRequest, 413, { error: "The attachment must be under 3 MB." }, quote);
-    }
-
-    const filename = clean(attachment.filename, 180);
-    const contentType = clean(attachment.contentType, 100).toLowerCase();
-    const rule = ATTACHMENT_RULES[contentType];
-    const lowerFilename = filename.toLowerCase();
-    const decoded = decodeBase64(attachment.content);
-
-    if (!rule || !rule.extensions.some((extension) => lowerFilename.endsWith(extension))) {
-      return respond(response, nativeFormRequest, 415, { error: "Attach a PDF, JPG, PNG, or WebP file." }, quote);
-    }
-    if (!decoded || decoded.length > MAX_ATTACHMENT_BYTES || !rule.hasValidSignature(decoded)) {
-      return respond(response, nativeFormRequest, 415, { error: "The attachment content does not match its file type." }, quote);
-    }
-
-    message.attachments = [
-      {
-        filename: filename.replace(/[^\w.\- ()]/g, "_"),
-        content: decoded.toString("base64"),
-      },
-    ];
-  }
+  if (safeAttachment) message.attachments = [safeAttachment];
 
   const submissionFingerprint = createHash("sha256")
     .update(JSON.stringify({ quote, attachment: message.attachments?.[0] || null }))

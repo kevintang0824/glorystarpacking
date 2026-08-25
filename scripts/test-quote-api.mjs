@@ -213,6 +213,23 @@ try {
     assert.equal(emailRequestCount, emailRequestsBeforeInvalidTextFields, `${field} object value must not call Resend`);
   }
 
+  const nullAttachment = await invoke({ ...validQuote, attachment: null });
+  assert.equal(nullAttachment.statusCode, 200);
+
+  const emailRequestsBeforeMalformedAttachments = emailRequestCount;
+  for (const [label, attachment] of [
+    ["string", "reference.pdf"],
+    ["array", []],
+    ["empty object", {}],
+    ["missing content", { filename: "reference.pdf", contentType: "application/pdf" }],
+    ["missing content type", { filename: "reference.pdf", content: Buffer.from("%PDF-1.7").toString("base64") }],
+    ["non-string fields", { filename: 1, contentType: {}, content: [] }],
+  ]) {
+    const malformedAttachment = await invoke({ ...validQuote, attachment });
+    assert.equal(malformedAttachment.statusCode, 415, `${label} JSON attachment must be rejected`);
+    assert.equal(emailRequestCount, emailRequestsBeforeMalformedAttachments, `${label} JSON attachment must not call Resend`);
+  }
+
   const validPdf = await invoke({
     ...validQuote,
     attachment: {
@@ -315,6 +332,14 @@ try {
   assert.equal(unconfigured.statusCode, 503);
   assert.equal(unconfigured.payload.code, "EMAIL_NOT_CONFIGURED");
 
+  const emailRequestsBeforeUnconfiguredMalformedAttachment = emailRequestCount;
+  const unconfiguredMalformedAttachment = await invoke({
+    ...validQuote,
+    attachment: { filename: "reference.pdf", contentType: "application/pdf" },
+  });
+  assert.equal(unconfiguredMalformedAttachment.statusCode, 415);
+  assert.equal(emailRequestCount, emailRequestsBeforeUnconfiguredMalformedAttachment);
+
   const nativeUnconfigured = await invoke(
     new URLSearchParams(validQuote).toString(),
     "POST",
@@ -361,7 +386,7 @@ try {
   assert.equal(emojiSubjectProduct, `${"💥".repeat(59)}测`);
   assert.ok(emojiMailtoHref.length > 0 && emojiMailtoHref.length <= 1900);
 
-  console.log("Quote API tests passed: JSON/native form requests and result pages, safe native recovery links and brief escaping, bounded direct-channel URLs, strict request media types, production/preview/development origin guards, string-only text fields, header-safe subject fields, required recipient configuration, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
+  console.log("Quote API tests passed: JSON/native form requests and result pages, safe native recovery links and brief escaping, bounded direct-channel URLs, strict request media types, production/preview/development origin guards, string-only text fields, complete JSON attachment contract, header-safe subject fields, required recipient configuration, bounded delivery, stable deduplication, validated provider success responses, valid PDF, attribution, required country, file allowlist/signature/Base64, no-store, method guard, and missing-configuration diagnostics.");
 } finally {
   globalThis.fetch = originalFetch;
   console.error = originalConsoleError;
