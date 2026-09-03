@@ -54,7 +54,10 @@
   });
 
   nav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => setNavOpen(false));
+    // Let the browser complete the link's default navigation before the menu
+    // becomes inert. Making the link's ancestor inert during the click event
+    // can cancel navigation in mobile browsers.
+    link.addEventListener("click", () => window.setTimeout(() => setNavOpen(false), 0));
   });
 
   document.addEventListener("keydown", (event) => {
