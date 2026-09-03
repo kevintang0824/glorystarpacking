@@ -10,7 +10,9 @@ const errors = [];
 const expectedFiles = new Set();
 
 const conflictCopyPattern = / \d+\.(?:html|webmanifest)$/i;
-const requiredRootFiles = ["robots.txt", "sitemap.xml", "feed.xml", "llms.txt", "site.webmanifest"];
+const catalogConflictCopyPattern = /assets\/catalog\/(?:products|previews)\/[^/]+ \d+\.jpg$/i;
+const catalogBuildInputPattern = /^(?:assets\/catalog\/clean-sources\/|assets\/catalog\/categories\/|assets\/catalog\/(?:import-report|curated-products)\.json$|assets\/catalog\/previews\/60697040446\.jpg$)/;
+const requiredRootFiles = ["robots.txt", "sitemap.xml", "sitemap-languages.xml", "image-sitemap.xml", "feed.xml", "llms.txt", "site.webmanifest"];
 
 const relativePath = (filePath) => path.relative(sourceRoot, filePath).split(path.sep).join("/");
 
@@ -65,6 +67,9 @@ const ignoredConflictCopies = rootEntries
 rootEntries
   .filter((entry) => entry.isFile() && entry.name.endsWith(".html") && !conflictCopyPattern.test(entry.name))
   .forEach((entry) => addExpectedFile(path.join(sourceRoot, entry.name)));
+for (const language of ["fr", "es", "pt", "ru", "zh-CN"]) {
+  walkFiles(path.join(sourceRoot, language)).forEach(addExpectedFile);
+}
 
 for (const fileName of requiredRootFiles) {
   const filePath = path.join(sourceRoot, fileName);
@@ -83,7 +88,12 @@ const assetsRoot = path.join(sourceRoot, "assets");
 if (!fs.existsSync(assetsRoot) || !fs.statSync(assetsRoot).isDirectory()) {
   errors.push("Required public assets directory is missing: assets");
 } else {
-  walkFiles(assetsRoot).forEach(addExpectedFile);
+  walkFiles(assetsRoot)
+    .filter((filePath) => {
+      const relative = relativePath(filePath);
+      return !catalogConflictCopyPattern.test(relative) && !catalogBuildInputPattern.test(relative);
+    })
+    .forEach(addExpectedFile);
 }
 
 let verifiedFunctions = 0;
@@ -150,6 +160,14 @@ for (const relative of [...expectedFiles].sort()) {
   }
 
   verifiedFiles += 1;
+}
+
+if (fs.existsSync(staticRoot) && fs.statSync(staticRoot).isDirectory()) {
+  const unexpectedFiles = walkFiles(staticRoot)
+    .map((filePath) => path.relative(staticRoot, filePath).split(path.sep).join("/"))
+    .filter((relative) => !expectedFiles.has(relative))
+    .sort();
+  unexpectedFiles.forEach((relative) => errors.push(`Unexpected static file: ${relative}`));
 }
 
 const versionedAssets = ["site.css", "site.js", "analytics.js"];

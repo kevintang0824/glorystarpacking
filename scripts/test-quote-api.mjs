@@ -114,6 +114,17 @@ try {
   assert.match(nativeForm.body, /Quote request received/);
   assert.match(nativeForm.body, /href="\/custom-wine-boxes\.html#quote"/);
   assert.equal(lastEmailOptions.headers["Idempotency-Key"], validIdempotencyKey);
+  for (const language of ["fr", "es", "pt", "ru", "zh-CN"]) {
+    for (const sourcePage of [`/${language}`, `/${language}/custom-wine-boxes.html`]) {
+      const localized = await invoke(new URLSearchParams({ ...validQuote, sourcePage }).toString(), "POST", { "content-type": "application/x-www-form-urlencoded" });
+      assert.equal(localized.statusCode, 200);
+      assert.ok(localized.body.includes(`<html lang="${language}">`));
+      assert.ok(localized.body.includes(`href="${sourcePage}#quote"`));
+      assert.doesNotMatch(localized.body, /Quote request received/);
+    }
+  }
+  const unsafeLocalized = await invoke(new URLSearchParams({ ...validQuote, sourcePage: "/fr//evil.example/" }).toString(), "POST", { "content-type": "application/x-www-form-urlencoded" });
+  assert.ok(unsafeLocalized.body.includes('href="/#quote"'));
 
   const malformedJson = await invoke("{not-json", "POST", { "content-type": "application/json" });
   assert.equal(malformedJson.statusCode, 400);
@@ -349,7 +360,7 @@ try {
   assert.match(nativeUnconfigured.body, /Quote request not sent/);
   assert.match(nativeUnconfigured.body, /href="\/custom-wine-boxes\.html#quote"/);
   assert.match(nativeUnconfigured.body, /mailto:kevin@GloryStarPack\.com/);
-  assert.match(nativeUnconfigured.body, /https:\/\/wa\.me\/8618020755949/);
+  assert.match(nativeUnconfigured.body, /https:\/\/wa\.me\/8619577608248/);
   assert.match(nativeUnconfigured.body, /Complete project brief/);
   assert.match(nativeUnconfigured.body, /Test%20buyer/);
 
@@ -368,7 +379,7 @@ try {
     { "content-type": "application/x-www-form-urlencoded" }
   );
   const mailtoHref = nativeLongBrief.body.match(/href="(mailto:[^"]+)"/)?.[1].replace(/&amp;/g, "&") || "";
-  const whatsAppHref = nativeLongBrief.body.match(/href="(https:\/\/wa\.me\/8618020755949\?text=[^"]+)"/)?.[1] || "";
+  const whatsAppHref = nativeLongBrief.body.match(/href="(https:\/\/wa\.me\/8619577608248\?text=[^"]+)"/)?.[1] || "";
   assert.ok(mailtoHref.length > 0 && mailtoHref.length <= 1900);
   assert.ok(whatsAppHref.length > 0 && whatsAppHref.length <= 1900);
   assert.match(nativeLongBrief.body, /Direct channels may contain a shortened brief/);

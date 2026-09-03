@@ -1,4 +1,5 @@
 const { createHash } = require("node:crypto");
+const nativeCopies = require("./quote-locales.json");
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_ATTACHMENT_BYTES = 3 * 1024 * 1024;
@@ -174,10 +175,21 @@ const shortenForDirectChannel = (brief, encodedBudget) => {
   return `${shortened.trimEnd()}${suffix}`;
 };
 
-const nativeReturnPath = (quote) => quoteFormPaths.has(quote?.sourcePage) ? `${quote.sourcePage}#quote` : "/#quote";
+const quoteLanguage = (quote) => {
+  const prefix = String(quote?.sourcePage || "").split("/")[1];
+  return Object.hasOwn(nativeCopies, prefix) ? prefix : "en";
+};
+const nativeText = (quote, text) => nativeCopies[quoteLanguage(quote)]?.[text] || text;
+const nativeReturnPath = (quote) => {
+  const language = quoteLanguage(quote);
+  const original = String(quote?.sourcePage || "");
+  const unprefixed = language === "en" ? original : original.slice(language.length + 1) || "/";
+  return quoteFormPaths.has(unprefixed) ? `${original}#quote` : "/#quote";
+};
 
 const nativeFallbackMarkup = (quote) => {
-  if (!quote) return '<a href="/#quote">Return to the quote form</a><a class="secondary" href="mailto:kevin@GloryStarPack.com">Email Kevin</a><a class="secondary" href="https://wa.me/8618020755949">WhatsApp</a>';
+  const t = (text) => htmlEscape(nativeText(quote, text));
+  if (!quote) return '<a href="/#quote">Return to the quote form</a><a class="secondary" href="mailto:kevin@GloryStarPack.com">Email Kevin</a><a class="secondary" href="https://wa.me/8619577608248">WhatsApp</a>';
 
   const fullBrief = buildProjectBrief(quote);
   const subject = `Packaging quote request — ${limitCodePoints(quote.product, 60) || "Custom project"}`;
@@ -187,7 +199,7 @@ const nativeFallbackMarkup = (quote) => {
     buildProjectBrief(quote, false),
     Math.max(300, 1900 - emailUrlPrefix.length - encodeURIComponent(emailFootnote).length)
   );
-  const whatsAppUrlPrefix = "https://wa.me/8618020755949?text=";
+  const whatsAppUrlPrefix = "https://wa.me/8619577608248?text=";
   const whatsAppGreeting = "Hello Kevin, I would like a packaging quote.\n\n";
   const whatsAppBrief = shortenForDirectChannel(
     buildProjectBrief(quote, false),
@@ -196,20 +208,21 @@ const nativeFallbackMarkup = (quote) => {
   const emailUrl = `${emailUrlPrefix}${encodeURIComponent(`${emailBrief}${emailFootnote}`)}`;
   const whatsAppUrl = `${whatsAppUrlPrefix}${encodeURIComponent(`${whatsAppGreeting}${whatsAppBrief}`)}`;
 
-  return `<a href="${htmlEscape(nativeReturnPath(quote))}">Return to the quote form</a><a class="secondary" href="${htmlEscape(emailUrl)}">Continue by email</a><a class="secondary" href="${htmlEscape(whatsAppUrl)}">Send by WhatsApp</a><p>Direct channels may contain a shortened brief. Copy the full brief below to send every detail.</p><label for="project-brief">Complete project brief</label><textarea id="project-brief" readonly rows="12">${htmlEscape(fullBrief)}</textarea>`;
+  return `<a href="${htmlEscape(nativeReturnPath(quote))}">${t("Return to the quote form")}</a><a class="secondary" href="${htmlEscape(emailUrl)}">${t("Continue by email")}</a><a class="secondary" href="${htmlEscape(whatsAppUrl)}">${t("Send by WhatsApp")}</a><p>${t("Direct channels may contain a shortened brief. Copy the full brief below to send every detail.")}</p><label for="project-brief">${t("Complete project brief")}</label><textarea id="project-brief" readonly rows="12">${htmlEscape(fullBrief)}</textarea>`;
 };
 
 const respond = (response, nativeFormRequest, statusCode, payload, quote) => {
   if (!nativeFormRequest) return response.status(statusCode).json(payload);
 
+  const t = (text) => htmlEscape(nativeText(quote, text));
   const successful = statusCode >= 200 && statusCode < 300;
-  const title = successful ? "Quote request received" : "Quote request not sent";
+  const title = t(successful ? "Quote request received" : "Quote request not sent");
   const message = successful
     ? "Thank you. Your packaging brief has been delivered, and we will reply with the next technical questions."
     : "We could not deliver this form. Return to review the required fields, or send the brief directly by email or WhatsApp.";
   response.setHeader("Content-Type", "text/html; charset=utf-8");
   return response.status(statusCode).send(`<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${title} | GloryStarPack</title><style>body{margin:0;background:#10100f;color:#f8f2e5;font:16px/1.65 system-ui,sans-serif}.card{max-width:660px;margin:12vh auto;padding:clamp(28px,6vw,64px);background:#1a1a18;border-top:4px solid #bdff3c}h1{margin:0 0 16px;font:600 clamp(2rem,6vw,4rem)/1.02 Georgia,serif}p,label{color:#d8d2c7}a{display:inline-block;margin:12px 14px 0 0;color:#10100f;background:#bdff3c;padding:12px 18px;font-weight:700;text-decoration:none}.secondary{color:#f8f2e5;background:transparent;border:1px solid #777}textarea{display:block;box-sizing:border-box;width:100%;margin-top:8px;padding:12px;background:#10100f;color:#f8f2e5;border:1px solid #777;font:14px/1.45 ui-monospace,monospace}</style></head><body><main class="card"><p>GloryStarPack packaging project support</p><h1>${title}</h1><p>${message}</p>${successful ? `<a href="${htmlEscape(nativeReturnPath(quote))}">Return to the quote form</a>` : nativeFallbackMarkup(quote)}</main></body></html>`);
+<html lang="${quoteLanguage(quote)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${title} | GloryStarPack</title><style>body{margin:0;background:#10100f;color:#f8f2e5;font:16px/1.65 system-ui,sans-serif}.card{max-width:660px;margin:12vh auto;padding:clamp(28px,6vw,64px);background:#1a1a18;border-top:4px solid #bdff3c}h1{margin:0 0 16px;font:600 clamp(2rem,6vw,4rem)/1.02 Georgia,serif}p,label{color:#d8d2c7}a{display:inline-block;margin:12px 14px 0 0;color:#10100f;background:#bdff3c;padding:12px 18px;font-weight:700;text-decoration:none}.secondary{color:#f8f2e5;background:transparent;border:1px solid #777}textarea{display:block;box-sizing:border-box;width:100%;margin-top:8px;padding:12px;background:#10100f;color:#f8f2e5;border:1px solid #777;font:14px/1.45 ui-monospace,monospace}</style></head><body><main class="card"><p>${t("GloryStarPack packaging project support")}</p><h1>${title}</h1><p>${t(message)}</p>${successful ? `<a href="${htmlEscape(nativeReturnPath(quote))}">${t("Return to the quote form")}</a>` : nativeFallbackMarkup(quote)}</main></body></html>`);
 };
 
 module.exports = async function handler(request, response) {

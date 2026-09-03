@@ -1,0 +1,779 @@
+{
+  "_languages": [
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "zh-CN"
+  ],
+  "Products": [
+    "Produits",
+    "Productos",
+    "Produtos",
+    "Продукция",
+    "产品"
+  ],
+  "Labels": [
+    "Étiquettes",
+    "Etiquetas",
+    "Etiquetas",
+    "Этикетки",
+    "标签"
+  ],
+  "Industries": [
+    "Secteurs",
+    "Sectores",
+    "Setores",
+    "Отрасли",
+    "行业方案"
+  ],
+  "Factory": [
+    "Notre usine",
+    "Nuestra fábrica",
+    "Nossa fábrica",
+    "Производство",
+    "工厂实力"
+  ],
+  "Guides": [
+    "Guides",
+    "Guías",
+    "Guias",
+    "Руководства",
+    "采购指南"
+  ],
+  "Start a quote": [
+    "Demander un devis",
+    "Pedir presupuesto",
+    "Pedir orçamento",
+    "Запросить цену",
+    "获取报价"
+  ],
+  "Select language": [
+    "Choisir la langue",
+    "Elegir idioma",
+    "Escolher idioma",
+    "Выбрать язык",
+    "选择语言"
+  ],
+  "Open navigation": [
+    "Ouvrir le menu",
+    "Abrir menú",
+    "Abrir menu",
+    "Открыть меню",
+    "打开导航"
+  ],
+  "Close navigation": [
+    "Fermer le menu",
+    "Cerrar menú",
+    "Fechar menu",
+    "Закрыть меню",
+    "关闭导航"
+  ],
+  "Primary navigation": [
+    "Navigation principale",
+    "Navegación principal",
+    "Navegação principal",
+    "Основная навигация",
+    "主导航"
+  ],
+  "Skip to content": [
+    "Aller au contenu",
+    "Ir al contenido",
+    "Ir para o conteúdo",
+    "Перейти к содержанию",
+    "跳转到正文"
+  ],
+  "Factory-direct custom packaging · Technical project support": [
+    "Emballages sur mesure, directement de l’usine · Accompagnement technique",
+    "Embalajes a medida, directos de fábrica · Asistencia técnica",
+    "Embalagens por medida, diretamente da fábrica · Apoio técnico",
+    "Упаковка на заказ от производителя · Техническая поддержка проекта",
+    "源头工厂定制包装 · 专业项目技术支持"
+  ],
+  "Custom packaging manufacturer in China": [
+    "Fabricant d’emballages sur mesure en Chine",
+    "Fabricante de embalajes a medida en China",
+    "Fabricante de embalagens por medida na China",
+    "Производитель упаковки на заказ в Китае",
+    "中国定制包装制造商"
+  ],
+  "Custom Packaging Manufacturer in China | GloryStarPack": [
+    "Emballages sur mesure en Chine | GloryStarPack",
+    "Embalajes a medida en China | GloryStarPack",
+    "Embalagens por medida na China | GloryStarPack",
+    "Упаковка на заказ из Китая | GloryStarPack",
+    "中国定制包装制造商 | GloryStarPack"
+  ],
+  "Packaging built around the": [
+    "Des emballages conçus pour votre",
+    "Embalajes diseñados para tu",
+    "Embalagens pensadas para o seu",
+    "Упаковка, созданная для вашего",
+    "为您的产品量身打造"
+  ],
+  "product.": [
+    "produit.",
+    "producto.",
+    "produto.",
+    "продукта.",
+    "专属包装。"
+  ],
+  "Develop rigid boxes, mailers, and product labels in one workflow—matched to your dimensions, brand references, budget, and delivery plan.": [
+    "Concevez vos coffrets rigides, boîtes d’expédition et étiquettes dans un même projet, selon vos dimensions, votre identité de marque, votre budget et votre calendrier de livraison.",
+    "Desarrollamos cajas rígidas, cajas de envío y etiquetas en un único proyecto, adaptado a tus medidas, identidad de marca, presupuesto y calendario de entrega.",
+    "Desenvolvemos caixas rígidas, caixas de envio e etiquetas num único projeto, adaptado às suas dimensões, identidade de marca, orçamento e plano de entrega.",
+    "Разрабатываем жесткие коробки, почтовую упаковку и этикетки в рамках одного проекта с учетом размеров изделия, фирменного стиля, бюджета и сроков доставки.",
+    "从精品硬盒、邮寄盒到产品标签，统一开发与生产，匹配您的产品尺寸、品牌要求、预算和交付计划。"
+  ],
+  "Request a production quote": [
+    "Obtenir un devis de fabrication",
+    "Solicitar presupuesto de fabricación",
+    "Pedir orçamento de produção",
+    "Рассчитать стоимость производства",
+    "获取生产报价"
+  ],
+  "Request my quote": [
+    "Envoyer ma demande",
+    "Enviar mi solicitud",
+    "Enviar o meu pedido",
+    "Отправить запрос",
+    "提交询价"
+  ],
+  "Explore all products": [
+    "Voir tous les produits",
+    "Ver todos los productos",
+    "Ver todos os produtos",
+    "Смотреть всю продукцию",
+    "浏览全部产品"
+  ],
+  "Project-specific MOQ": [
+    "Quantité minimale selon le projet",
+    "Pedido mínimo según el proyecto",
+    "Quantidade mínima por projeto",
+    "Минимальный тираж по проекту",
+    "按项目确定起订量"
+  ],
+  "Box + label coordination": [
+    "Coffrets et étiquettes coordonnés",
+    "Cajas y etiquetas coordinadas",
+    "Caixas e etiquetas coordenadas",
+    "Единый стиль коробок и этикеток",
+    "包装盒与标签一体配套"
+  ],
+  "Delivery route planning": [
+    "Organisation de la livraison",
+    "Planificación de la entrega",
+    "Planeamento da entrega",
+    "Планирование доставки",
+    "交付路线规划"
+  ],
+  "Quoted by construction": [
+    "Selon la structure",
+    "Según la estructura",
+    "Conforme a estrutura",
+    "С учетом конструкции",
+    "根据结构核算"
+  ],
+  "Technical project contact": [
+    "Interlocuteur technique dédié",
+    "Contacto técnico del proyecto",
+    "Contacto técnico do projeto",
+    "Технический специалист проекта",
+    "专属技术对接"
+  ],
+  "Confirmed by project": [
+    "Confirmé pour chaque projet",
+    "Confirmado para cada proyecto",
+    "Confirmado por projeto",
+    "Уточняется по проекту",
+    "按项目确认"
+  ],
+  "Quoted by destination": [
+    "Selon la destination",
+    "Según el destino",
+    "Conforme o destino",
+    "С учетом места доставки",
+    "根据目的地核算"
+  ],
+  "Packaging systems": [
+    "Solutions d’emballage",
+    "Soluciones de embalaje",
+    "Soluções de embalagem",
+    "Упаковочные решения",
+    "全品类包装方案"
+  ],
+  "One supplier from structure to surface.": [
+    "Un seul fabricant, de la structure aux finitions.",
+    "Un solo fabricante, de la estructura al acabado.",
+    "Um só fabricante, da estrutura ao acabamento.",
+    "Один производитель: от конструкции до отделки.",
+    "从结构到表面工艺，一站式配套。"
+  ],
+  "Build a coordinated packaging family with shared brand references and a clear quality standard across boxes, shipping packs, bags, and labels.": [
+    "Créez une gamme cohérente de coffrets, emballages d’expédition, sacs et étiquettes, avec une identité de marque commune et des critères de qualité clairement définis.",
+    "Crea una gama coherente de cajas, embalajes de envío, bolsas y etiquetas, con una identidad de marca común y criterios de calidad definidos.",
+    "Crie uma gama coerente de caixas, embalagens de envio, sacos e etiquetas, com uma identidade de marca comum e critérios de qualidade definidos.",
+    "Создайте согласованную линейку коробок, транспортной упаковки, пакетов и этикеток с единым фирменным стилем и четкими требованиями к качеству.",
+    "统一品牌设计与质量标准，让包装盒、运输包装、纸袋和标签形成完整的品牌包装体系。"
+  ],
+  "Rigid boxes": [
+    "Coffrets rigides",
+    "Cajas rígidas",
+    "Caixas rígidas",
+    "Жесткие коробки",
+    "精品硬盒"
+  ],
+  "Custom rigid boxes": [
+    "Coffrets rigides sur mesure",
+    "Cajas rígidas a medida",
+    "Caixas rígidas por medida",
+    "Жесткие коробки на заказ",
+    "定制精品硬盒"
+  ],
+  "Magnetic boxes": [
+    "Coffrets aimantés",
+    "Cajas con cierre magnético",
+    "Caixas com fecho magnético",
+    "Коробки с магнитным клапаном",
+    "磁吸盒"
+  ],
+  "Magnetic rigid boxes": [
+    "Coffrets rigides aimantés",
+    "Cajas rígidas con cierre magnético",
+    "Caixas rígidas com fecho magnético",
+    "Жесткие коробки с магнитным клапаном",
+    "磁吸精品硬盒"
+  ],
+  "Drawer boxes": [
+    "Coffrets à tiroir",
+    "Cajas tipo cajón",
+    "Caixas de gaveta",
+    "Коробки-пеналы",
+    "抽屉盒"
+  ],
+  "Lid & base boxes": [
+    "Coffrets à couvercle séparé",
+    "Cajas de tapa y base",
+    "Caixas de tampa e base",
+    "Коробки «крышка-дно»",
+    "天地盖盒"
+  ],
+  "Collapsible rigid boxes": [
+    "Coffrets rigides pliables",
+    "Cajas rígidas plegables",
+    "Caixas rígidas dobráveis",
+    "Складные жесткие коробки",
+    "可折叠精品硬盒"
+  ],
+  "Mailer boxes": [
+    "Boîtes d’expédition",
+    "Cajas de envío",
+    "Caixas de envio",
+    "Почтовые коробки",
+    "邮寄盒"
+  ],
+  "Corrugated shipping boxes": [
+    "Caisses en carton ondulé",
+    "Cajas de transporte de cartón ondulado",
+    "Caixas de transporte em cartão canelado",
+    "Транспортные гофрокороба",
+    "瓦楞运输箱"
+  ],
+  "Folding cartons": [
+    "Étuis pliants",
+    "Estuches plegables",
+    "Caixas de cartão dobráveis",
+    "Складные картонные коробки",
+    "折叠彩盒"
+  ],
+  "Jewelry boxes": [
+    "Écrins à bijoux",
+    "Cajas para joyas",
+    "Caixas para joias",
+    "Коробки для ювелирных изделий",
+    "珠宝盒"
+  ],
+  "Wine & spirits boxes": [
+    "Coffrets pour vins et spiritueux",
+    "Cajas para vinos y licores",
+    "Caixas para vinhos e bebidas espirituosas",
+    "Коробки для вина и крепких напитков",
+    "葡萄酒与烈酒包装盒"
+  ],
+  "Perfume boxes": [
+    "Coffrets pour parfums",
+    "Cajas para perfumes",
+    "Caixas para perfumes",
+    "Коробки для парфюмерии",
+    "香水盒"
+  ],
+  "Cosmetic packaging boxes": [
+    "Emballages pour cosmétiques",
+    "Cajas para cosméticos",
+    "Caixas para cosméticos",
+    "Коробки для косметики",
+    "化妆品包装盒"
+  ],
+  "Packaging inserts": [
+    "Calages intérieurs",
+    "Insertos protectores",
+    "Insertos de proteção",
+    "Упаковочные ложементы",
+    "包装内托"
+  ],
+  "Custom packaging inserts": [
+    "Calages sur mesure",
+    "Insertos protectores a medida",
+    "Insertos de proteção por medida",
+    "Ложементы на заказ",
+    "定制包装内托"
+  ],
+  "Custom labels": [
+    "Étiquettes sur mesure",
+    "Etiquetas a medida",
+    "Etiquetas por medida",
+    "Этикетки на заказ",
+    "定制标签"
+  ],
+  "Clear film labels": [
+    "Étiquettes transparentes",
+    "Etiquetas transparentes",
+    "Etiquetas transparentes",
+    "Прозрачные пленочные этикетки",
+    "透明薄膜标签"
+  ],
+  "Waterproof & durable labels": [
+    "Étiquettes résistantes à l’eau et à l’usure",
+    "Etiquetas resistentes al agua y al desgaste",
+    "Etiquetas resistentes à água e ao desgaste",
+    "Водостойкие и износостойкие этикетки",
+    "防水耐用标签"
+  ],
+  "Embossed & foil labels": [
+    "Étiquettes en relief et dorées",
+    "Etiquetas con relieve y estampado",
+    "Etiquetas com relevo e estampagem",
+    "Этикетки с рельефным и фольгированным тиснением",
+    "压纹与烫金标签"
+  ],
+  "Wine & spirits labels": [
+    "Étiquettes pour vins et spiritueux",
+    "Etiquetas para vinos y licores",
+    "Etiquetas para vinhos e bebidas espirituosas",
+    "Этикетки для вина и крепких напитков",
+    "葡萄酒与烈酒标签"
+  ],
+  "Paper bags": [
+    "Sacs en papier",
+    "Bolsas de papel",
+    "Sacos de papel",
+    "Бумажные пакеты",
+    "纸袋"
+  ],
+  "Custom paper bags": [
+    "Sacs en papier sur mesure",
+    "Bolsas de papel a medida",
+    "Sacos de papel por medida",
+    "Бумажные пакеты на заказ",
+    "定制纸袋"
+  ],
+  "Paper tubes": [
+    "Tubes en carton",
+    "Tubos de cartón",
+    "Tubos de cartão",
+    "Картонные тубусы",
+    "纸筒包装"
+  ],
+  "Hang tags & cards": [
+    "Étiquettes suspendues et cartes",
+    "Etiquetas colgantes y tarjetas",
+    "Etiquetas suspensas e cartões",
+    "Навесные бирки и карточки",
+    "吊牌与卡片"
+  ],
+  "Custom tissue paper": [
+    "Papier de soie personnalisé",
+    "Papel de seda personalizado",
+    "Papel de seda personalizado",
+    "Бумага тишью с печатью",
+    "定制印刷拷贝纸"
+  ],
+  "Complete packaging set": [
+    "Ensemble d’emballages coordonnés",
+    "Conjunto completo de embalaje",
+    "Conjunto completo de embalagens",
+    "Полный комплект упаковки",
+    "整套包装配套"
+  ],
+  "Full name": [
+    "Nom complet",
+    "Nombre completo",
+    "Nome completo",
+    "Имя и фамилия",
+    "联系人姓名"
+  ],
+  "Work email": [
+    "E-mail professionnel",
+    "Correo de trabajo",
+    "E-mail profissional",
+    "Рабочая электронная почта",
+    "工作邮箱"
+  ],
+  "Phone / WhatsApp": [
+    "Téléphone / WhatsApp",
+    "Teléfono / WhatsApp",
+    "Telefone / WhatsApp",
+    "Телефон / WhatsApp",
+    "电话 / WhatsApp"
+  ],
+  "What do you need?": [
+    "Quel emballage recherchez-vous ?",
+    "¿Qué embalaje necesitas?",
+    "De que embalagem precisa?",
+    "Какая упаковка вам нужна?",
+    "您需要什么产品？"
+  ],
+  "Product family": [
+    "Famille de produits",
+    "Familia de productos",
+    "Família de produtos",
+    "Категория продукции",
+    "产品类别"
+  ],
+  "Select a product": [
+    "Sélectionner un produit",
+    "Seleccionar un producto",
+    "Selecionar um produto",
+    "Выберите продукт",
+    "请选择产品"
+  ],
+  "Estimated quantity": [
+    "Quantité estimée",
+    "Cantidad estimada",
+    "Quantidade estimada",
+    "Ориентировочное количество",
+    "预计数量"
+  ],
+  "Product or box size": [
+    "Dimensions du produit ou de la boîte",
+    "Medidas del producto o de la caja",
+    "Dimensões do produto ou da caixa",
+    "Размеры изделия или коробки",
+    "产品或包装尺寸"
+  ],
+  "Product or pack size": [
+    "Dimensions du produit ou de l’emballage",
+    "Medidas del producto o del embalaje",
+    "Dimensões do produto ou da embalagem",
+    "Размеры изделия или упаковки",
+    "产品或包装尺寸"
+  ],
+  "L × W × H, with unit": [
+    "L × l × H, avec l’unité",
+    "Largo × ancho × alto, con unidad",
+    "Comprimento × largura × altura, com unidade",
+    "Д × Ш × В, с единицами измерения",
+    "长 × 宽 × 高，请注明单位"
+  ],
+  "Delivery country / region": [
+    "Pays / région de livraison",
+    "País o región de entrega",
+    "País / região de entrega",
+    "Страна / регион доставки",
+    "交付国家或地区"
+  ],
+  "e.g. United States": [
+    "Ex. : France",
+    "Ej.: España",
+    "Ex.: Portugal",
+    "Например, Казахстан",
+    "例如：中国、美国、法国"
+  ],
+  "e.g. October 2026 or flexible": [
+    "Ex. : octobre 2026 ou date flexible",
+    "Ej.: octubre de 2026 o fecha flexible",
+    "Ex.: outubro de 2026 ou data flexível",
+    "Например, октябрь 2026 или гибкие сроки",
+    "例如：2026年10月，或时间灵活"
+  ],
+  "Target in-hand date": [
+    "Date de réception souhaitée",
+    "Fecha deseada de recepción",
+    "Data de receção pretendida",
+    "Желаемая дата получения",
+    "期望收货日期"
+  ],
+  "Project details": [
+    "Détails du projet",
+    "Detalles del proyecto",
+    "Detalhes do projeto",
+    "Описание проекта",
+    "项目需求"
+  ],
+  "Reference artwork": [
+    "Fichier graphique de référence",
+    "Archivo de diseño de referencia",
+    "Ficheiro de design de referência",
+    "Макет или изображение для образца",
+    "参考设计文件"
+  ],
+  "Other": [
+    "Autre",
+    "Otro",
+    "Outro",
+    "Другое",
+    "其他"
+  ],
+  "Contact": [
+    "Contact",
+    "Contacto",
+    "Contacto",
+    "Контакты",
+    "联系我们"
+  ],
+  "Explore": [
+    "Découvrir",
+    "Explorar",
+    "Explorar",
+    "Подробнее",
+    "了解更多"
+  ],
+  "Privacy": [
+    "Confidentialité",
+    "Privacidad",
+    "Privacidade",
+    "Конфиденциальность",
+    "隐私政策"
+  ],
+  "privacy notice": [
+    "politique de confidentialité",
+    "aviso de privacidad",
+    "política de privacidade",
+    "политикой конфиденциальности",
+    "隐私政策"
+  ],
+  "© 2026 GloryStarPack. All rights reserved.": [
+    "© 2026 GloryStarPack. Tous droits réservés.",
+    "© 2026 GloryStarPack. Todos los derechos reservados.",
+    "© 2026 GloryStarPack. Todos os direitos reservados.",
+    "© 2026 GloryStarPack. Все права защищены.",
+    "© 2026 GloryStarPack. 保留所有权利。"
+  ],
+  "Custom packaging · Boxes · Bags · Labels": [
+    "Emballages sur mesure · Coffrets · Sacs · Étiquettes",
+    "Embalajes a medida · Cajas · Bolsas · Etiquetas",
+    "Embalagens por medida · Caixas · Sacos · Etiquetas",
+    "Упаковка на заказ · Коробки · Пакеты · Этикетки",
+    "定制包装 · 包装盒 · 纸袋 · 标签"
+  ],
+  "Get a quote your team can use.": [
+    "Un devis clair pour votre équipe.",
+    "Un presupuesto claro para tu equipo.",
+    "Um orçamento claro para a sua equipa.",
+    "Понятный расчет для вашей команды.",
+    "获取清晰、可执行的包装报价。"
+  ],
+  "Tell Kevin what you are packing, how many you need, and where it is going. You will receive the next technical questions and a clear path to pricing.": [
+    "Indiquez à Kevin le produit à emballer, les quantités et la destination. Nous préciserons les points techniques nécessaires pour établir votre devis.",
+    "Cuéntale a Kevin qué producto quieres embalar, cuántas unidades necesitas y dónde se entregarán. Aclararemos los detalles técnicos necesarios para preparar el presupuesto.",
+    "Diga ao Kevin que produto pretende embalar, a quantidade e o destino. Vamos esclarecer os detalhes técnicos necessários para preparar o orçamento.",
+    "Сообщите Кевину, какой товар нужно упаковать, в каком количестве и куда доставить. Мы уточним технические детали и подготовим основу для расчета стоимости.",
+    "告诉 Kevin 您要包装的产品、所需数量和交付地点。我们将进一步确认技术细节，为您提供明确的报价方案。"
+  ],
+  "Buying questions, answered": [
+    "Vos questions sur la commande",
+    "Respuestas para tu compra",
+    "Respostas sobre a encomenda",
+    "Ответы на вопросы о заказе",
+    "采购常见问题"
+  ],
+  "What is your minimum order quantity?": [
+    "Quelle est la quantité minimale de commande ?",
+    "¿Cuál es la cantidad mínima de pedido?",
+    "Qual é a quantidade mínima de encomenda?",
+    "Каков минимальный тираж заказа?",
+    "最低起订量是多少？"
+  ],
+  "How long does production take?": [
+    "Quel est le délai de fabrication ?",
+    "¿Cuánto tarda la fabricación?",
+    "Qual é o prazo de produção?",
+    "Сколько времени занимает производство?",
+    "生产需要多长时间？"
+  ],
+  "Can you create the dieline and 3D mockup?": [
+    "Pouvez-vous préparer le tracé de découpe et une maquette 3D ?",
+    "¿Podéis preparar el troquel y una maqueta 3D?",
+    "Podem preparar o desenho de corte e uma simulação 3D?",
+    "Можете ли вы подготовить развертку и 3D-макет?",
+    "能否提供刀模图和3D效果图？"
+  ],
+  "Can you ship directly to our warehouse?": [
+    "Pouvez-vous livrer directement à notre entrepôt ?",
+    "¿Podéis entregar directamente en nuestro almacén?",
+    "Podem entregar diretamente no nosso armazém?",
+    "Возможна ли доставка прямо на наш склад?",
+    "可以直接送货到我们的仓库吗？"
+  ],
+  "Can you develop custom boxes and product labels together?": [
+    "Pouvez-vous développer les boîtes et les étiquettes ensemble ?",
+    "¿Podéis desarrollar las cajas y las etiquetas en el mismo proyecto?",
+    "Podem desenvolver as caixas e as etiquetas no mesmo projeto?",
+    "Можно ли разработать коробки и этикетки в одном проекте?",
+    "可以一起开发包装盒和产品标签吗？"
+  ],
+  "Custom quote": [
+    "Devis sur mesure",
+    "Presupuesto a medida",
+    "Orçamento por medida",
+    "Индивидуальный расчет",
+    "按需报价"
+  ],
+  "MOQ · specification-led": [
+    "Quantité minimale selon les spécifications",
+    "Pedido mínimo según especificaciones",
+    "Quantidade mínima conforme as especificações",
+    "Минимальный тираж по спецификации",
+    "起订量按规格确认"
+  ],
+  "Loading catalog…": [
+    "Chargement du catalogue…",
+    "Cargando catálogo…",
+    "A carregar o catálogo…",
+    "Загрузка каталога…",
+    "正在加载产品目录…"
+  ],
+  "All products": [
+    "Tous les produits",
+    "Todos los productos",
+    "Todos os produtos",
+    "Вся продукция",
+    "全部产品"
+  ],
+  "Catalog order": [
+    "Ordre du catalogue",
+    "Orden del catálogo",
+    "Ordem do catálogo",
+    "Порядок каталога",
+    "默认排序"
+  ],
+  "Product name A–Z": [
+    "Nom du produit A–Z",
+    "Nombre del producto A–Z",
+    "Nome do produto A–Z",
+    "По названию",
+    "按产品名称排序"
+  ],
+  "Category": [
+    "Catégorie",
+    "Categoría",
+    "Categoria",
+    "Категория",
+    "产品类别"
+  ],
+  "Search box, bag, cosmetic, candle…": [
+    "Rechercher : boîte, sac, cosmétique, bougie…",
+    "Buscar: caja, bolsa, cosmético, vela…",
+    "Pesquisar: caixa, saco, cosmético, vela…",
+    "Поиск: коробка, пакет, косметика, свеча…",
+    "搜索包装盒、纸袋、化妆品、蜡烛…"
+  ],
+  "Continue by email": [
+    "Continuer par e-mail",
+    "Continuar por correo",
+    "Continuar por e-mail",
+    "Отправить по электронной почте",
+    "通过邮件发送"
+  ],
+  "Send by WhatsApp": [
+    "Envoyer par WhatsApp",
+    "Enviar por WhatsApp",
+    "Enviar por WhatsApp",
+    "Отправить в WhatsApp",
+    "通过 WhatsApp 发送"
+  ],
+  "Copy project brief": [
+    "Copier le descriptif du projet",
+    "Copiar los detalles del proyecto",
+    "Copiar os detalhes do projeto",
+    "Скопировать описание проекта",
+    "复制项目需求"
+  ],
+  "Brief copied": [
+    "Descriptif copié",
+    "Detalles copiados",
+    "Detalhes copiados",
+    "Описание скопировано",
+    "项目需求已复制"
+  ],
+  "Please keep the attachment under 3 MB.": [
+    "La pièce jointe doit faire moins de 3 Mo.",
+    "El archivo adjunto debe ser inferior a 3 MB.",
+    "O anexo deve ter menos de 3 MB.",
+    "Размер вложения не должен превышать 3 МБ.",
+    "附件大小请控制在 3 MB 以内。"
+  ],
+  "Please attach a PDF, JPG, PNG, or WebP file.": [
+    "Joignez un fichier PDF, JPG, PNG ou WebP.",
+    "Adjunta un archivo PDF, JPG, PNG o WebP.",
+    "Anexe um ficheiro PDF, JPG, PNG ou WebP.",
+    "Прикрепите файл PDF, JPG, PNG или WebP.",
+    "请上传 PDF、JPG、PNG 或 WebP 文件。"
+  ],
+  "{{0}} is a visual catalog reference. Size, material, printing, finish, packing method, and delivery are confirmed for each project.": [
+    "{{0}} est une référence visuelle du catalogue. Les dimensions, matériaux, impressions, finitions, conditionnements et modalités de livraison sont confirmés pour chaque projet.",
+    "{{0}} es una referencia visual del catálogo. Las medidas, los materiales, la impresión, el acabado, el embalado y la entrega se confirman para cada proyecto.",
+    "{{0}} é uma referência visual do catálogo. As dimensões, os materiais, a impressão, o acabamento, o acondicionamento e a entrega são confirmados para cada projeto.",
+    "{{0}} — визуальный образец из каталога. Размеры, материалы, печать, отделка, способ упаковки и условия доставки согласуются для каждого проекта.",
+    "{{0}} 为目录中的外观参考。具体尺寸、材料、印刷、表面工艺、装箱方式和交付方案均需按项目确认。"
+  ],
+  "Certification, sustainability, food-contact, and performance requirements need project-specific documentation and approval.": [
+    "Les exigences de certification, de durabilité, de contact alimentaire et de performance nécessitent des documents et une validation propres au projet.",
+    "Los requisitos de certificación, sostenibilidad, contacto alimentario y rendimiento requieren documentación y aprobación específicas del proyecto.",
+    "Os requisitos de certificação, sustentabilidade, contacto alimentar e desempenho exigem documentação e aprovação específicas do projeto.",
+    "Требования к сертификации, экологичности, контакту с пищевыми продуктами и эксплуатационным характеристикам требуют документов и согласования по конкретному проекту.",
+    "认证、可持续性、食品接触和性能要求均需提供项目对应的资料并经过确认。"
+  ],
+  "Food-contact, barrier, temperature, and destination requirements need an application-specific review.": [
+    "Les exigences de contact alimentaire, de barrière, de température et du pays de destination doivent être examinées selon l’application.",
+    "Los requisitos de contacto alimentario, barrera, temperatura y destino deben revisarse según la aplicación.",
+    "Os requisitos de contacto alimentar, barreira, temperatura e destino devem ser analisados conforme a aplicação.",
+    "Требования к контакту с пищевыми продуктами, барьерным свойствам, температуре и рынку назначения проверяются для конкретного применения.",
+    "食品接触、阻隔性能、温度和目的地要求，需要结合具体应用进行评估。"
+  ],
+  "This secondary-packaging reference does not establish medical, sterile, pharmaceutical, or child-resistant compliance.": [
+    "Cette référence d’emballage secondaire ne démontre pas une conformité médicale, stérile, pharmaceutique ou de sécurité enfant.",
+    "Esta referencia de embalaje secundario no acredita conformidad médica, estéril, farmacéutica ni de seguridad infantil.",
+    "Esta referência de embalagem secundária não comprova conformidade médica, estéril, farmacêutica ou de segurança infantil.",
+    "Этот образец вторичной упаковки не подтверждает соответствие медицинским, стерильным, фармацевтическим требованиям или требованиям защиты от вскрытия детьми.",
+    "此外包装参考不代表已满足医疗、无菌、药品包装或儿童防开启合规要求。"
+  ],
+  "Quote request received": [
+    "Demande de devis reçue",
+    "Solicitud de presupuesto recibida",
+    "Pedido de orçamento recebido",
+    "Запрос на расчет получен",
+    "询价已收到"
+  ],
+  "Quote request not sent": [
+    "Demande de devis non envoyée",
+    "No se ha enviado la solicitud",
+    "O pedido não foi enviado",
+    "Запрос не отправлен",
+    "询价未发送"
+  ],
+  "Return to the quote form": [
+    "Revenir au formulaire",
+    "Volver al formulario",
+    "Voltar ao formulário",
+    "Вернуться к форме запроса",
+    "返回询价表单"
+  ],
+  "GloryStarPack packaging project support": [
+    "Accompagnement de votre projet GloryStarPack",
+    "Asistencia para tu proyecto GloryStarPack",
+    "Apoio ao seu projeto GloryStarPack",
+    "Поддержка упаковочных проектов GloryStarPack",
+    "GloryStarPack 包装项目支持"
+  ]
+}

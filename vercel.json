@@ -38,6 +38,31 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/fr/index.html",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/es/index.html",
+      "destination": "/es",
+      "permanent": true
+    },
+    {
+      "source": "/pt/index.html",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/ru/index.html",
+      "destination": "/ru",
+      "permanent": true
+    },
+    {
+      "source": "/zh-CN/index.html",
+      "destination": "/zh-CN",
+      "permanent": true
     }
   ],
   "headers": [
@@ -69,6 +94,32 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-languages.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
+      "source": "/image-sitemap.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         }
       ]
     },
@@ -121,6 +172,32 @@
       ]
     },
     {
+      "source": "/assets/catalog.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
+      "source": "/assets/catalog/catalog.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
       "source": "/assets/fonts/(.*)",
       "headers": [
         {
@@ -152,6 +229,37 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/languages.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/languages.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/i18n/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         }
       ]
     },
@@ -200,6 +308,28 @@
           "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-WZRJfWvsnNCPcxzZwvyhovnZGqhZaC+8gPGPRbx6wTk=' 'sha256-viLahDxqGTlYuNRO+z6OzT51Mbj1mNiU2TGTq3fTRgE=' 'sha256-N6UJimrpTc4k6soOXyMRNUpczBdrNH6GwUgbrbuxz8Y=' 'sha256-7pbn79KeVUag9QBQeJsocIt/tEaRdLjHPwYJG2aBLHE=' 'sha256-gcBWIsmdPAzFmjXqneOAoqey0J5I+3GlDm3IL+7blLE=' 'sha256-z8dKEM25nAIszCanUnSoAzWrg0XwKNmpuWsEqJBUcVE=' 'sha256-77A/tjY/ZKJ3vi4NbawxMQ0XA2PwUpmMFPxL1O/7hOY=' 'sha256-kSE8DOy8j5O0vrSxOA4hYHvCvzti4HJoWkh1viGVluA=' 'sha256-4Ff50/ovw4xMmgaDE/w7SiggV/ZC+smOcf9BqGQpGpo='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com; manifest-src 'self'; upgrade-insecure-requests"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/fr",
+      "destination": "/fr/index.html"
+    },
+    {
+      "source": "/es",
+      "destination": "/es/index.html"
+    },
+    {
+      "source": "/pt",
+      "destination": "/pt/index.html"
+    },
+    {
+      "source": "/ru",
+      "destination": "/ru/index.html"
+    },
+    {
+      "source": "/zh-CN",
+      "destination": "/zh-CN/index.html"
     }
   ]
 }

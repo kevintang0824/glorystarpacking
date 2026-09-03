@@ -25,6 +25,18 @@ try {
 
   execFileSync(process.execPath, [validator, fixtureRoot], { cwd: root, stdio: "pipe" });
 
+  const unexpectedStaticFile = path.join(fixtureRoot, "static", "tmp", "internal-audit.json");
+  fs.mkdirSync(path.dirname(unexpectedStaticFile), { recursive: true });
+  fs.writeFileSync(unexpectedStaticFile, "{}\n");
+  let unexpectedOutput = "";
+  try {
+    execFileSync(process.execPath, [validator, fixtureRoot], { cwd: root, stdio: "pipe" });
+  } catch (error) {
+    unexpectedOutput = String(error.stderr);
+  }
+  assert.match(unexpectedOutput, /Unexpected static file: tmp\/internal-audit\.json/);
+  fs.rmSync(path.join(fixtureRoot, "static", "tmp"), { recursive: true, force: true });
+
   const quoteBundle = path.join(fixtureRoot, "functions", "api", "quote.func", "api", "quote.js");
   const healthConfig = path.join(fixtureRoot, "functions", "api", "health.func", ".vc-config.json");
   const originalHealthConfig = fs.readFileSync(healthConfig, "utf8");
@@ -56,7 +68,7 @@ try {
   }
   assert.match(missingBundleOutput, /Missing function handler bundle: api\/quote/);
 
-  console.log("Build output validation tests passed: current handlers, stale handler rejection, invalid function config rejection, and missing handler bundle rejection.");
+  console.log("Build output validation tests passed: current handlers, unexpected static file rejection, stale handler rejection, invalid function config rejection, and missing handler bundle rejection.");
 } finally {
   fs.rmSync(fixtureRoot, { recursive: true, force: true });
 }

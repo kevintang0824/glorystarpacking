@@ -2,12 +2,19 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import path from "node:path";
 import process from "node:process";
+import {
+  catalogCopyTemplates,
+  hasUnverifiedCatalogClaim,
+  publicCatalogProductKeys,
+} from "./catalog-copy-policy.mjs";
+import { inspectJpegMetadata } from "./jpeg-metadata.mjs";
 
 const root = path.resolve(process.argv[2] || ".");
 const conflictCopyPattern = / \d+\.html$/i;
 const rootHtmlFiles = fs.readdirSync(root).filter((file) => file.endsWith(".html")).sort();
 const ignoredHtmlConflictCopies = rootHtmlFiles.filter((file) => conflictCopyPattern.test(file));
 const htmlFiles = rootHtmlFiles.filter((file) => !conflictCopyPattern.test(file));
+const htmlFileSet = new Set(htmlFiles);
 const errors = [];
 const warnings = [];
 const contentVersion = (relativePath) => {
@@ -21,10 +28,17 @@ if (ignoredHtmlConflictCopies.length) {
 const canonicalOwners = new Map();
 const titleOwners = new Map();
 const articleModifiedByCanonical = new Map();
+const structuredModifiedByCanonical = new Map();
 const articleEntriesByCanonical = new Map();
+const primaryImageByCanonical = new Map();
+const internalLinkGraph = new Map();
 let blogSchema = null;
 const pageCache = new Map();
 const siteOrigin = "https://glorystarpacking.com";
+const requiredToplinePrimary = "Factory-direct custom packaging · Technical project support";
+const requiredFooterBrand = "Custom boxes, bags, inserts, and labels developed through one accountable sampling, production, and delivery workflow.";
+const requiredFooterSignature = "Custom packaging · Boxes · Bags · Labels";
+const requiredFooterHeadings = ["Products", "Explore", "Contact"];
 const quoteFieldNames = ["name", "email", "product", "quantity", "country", "targetDate", "details", "attachment", "website"];
 const quoteFieldLimits = {
   name: "120",
@@ -41,6 +55,8 @@ const contextualQuoteRoutes = {
   "ecommerce-mailer-box-sizing-transit-test.html": "custom-mailer-boxes.html#quote",
   "luxury-unboxing-guide.html": "custom-boxes.html#quote",
   "magnetic-box-vs-drawer-box.html": "custom-boxes.html#quote",
+  "custom-packaging-lead-time-planner.html": "custom-boxes.html#quote",
+  "paper-thickness-gsm-pt-mm-conversion-guide.html": "custom-boxes.html#quote",
   "packaging-inserts-material-comparison.html": "custom-packaging-inserts.html#quote",
   "rigid-box-cost-drivers.html": "custom-rigid-boxes.html#quote",
   "rigid-box-vs-folding-carton.html": "custom-boxes.html#quote",
@@ -80,7 +96,7 @@ const responsiveCardSpecs = [
   },
   {
     key: "article",
-    expectedUsageCount: 30,
+    expectedUsageCount: 32,
     sizes: "(max-width: 780px) calc(100vw - 28px), 310px",
     blockPattern: /<article\b[^>]*class="[^"]*\barticle-card\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi,
   },
@@ -111,6 +127,8 @@ const supplementalResponsiveUsageCounts = new Map(supplementalResponsiveSpecs.ma
 let supplementalResponsiveFinishFirstCount = 0;
 let supplementalResponsiveFinishOtherCount = 0;
 const priorityPages = [
+  "custom-packaging-lead-time-planner.html",
+  "paper-thickness-gsm-pt-mm-conversion-guide.html",
   "custom-packaging-quality-inspection-checklist.html",
   "custom-packaging-rfq-template.html",
   "waterproof-label-testing-guide.html",
@@ -146,7 +164,42 @@ const requiredRobotsDirective = "index,follow,max-image-preview:large,max-snippe
 const requiredSiteStyleVersion = contentVersion("assets/site.css");
 const requiredSiteScriptVersion = contentVersion("assets/site.js");
 const requiredAnalyticsVersion = contentVersion("assets/analytics.js");
+const requiredCatalogScriptVersion = contentVersion("assets/catalog.js");
+const requiredCatalogDataVersion = contentVersion("assets/catalog/catalog.json");
 const requiredAnalyticsMeasurementId = "G-LYNMPWG9WK";
+const authorizedCatalogPath = path.join(root, "assets", "catalog", "catalog.json");
+const cleanCatalogSourceManifestPath = path.join(root, "assets", "catalog", "clean-sources", "manifest.json");
+const catalogBuildAuditPath = path.join(root, "assets", "catalog", "clean-sources", "catalog-build-audit.json");
+let authorizedCatalog = null;
+let cleanCatalogSourceManifest = null;
+let catalogBuildAudit = null;
+if (!fs.existsSync(authorizedCatalogPath)) {
+  errors.push("assets/catalog/catalog.json is missing");
+} else {
+  try {
+    authorizedCatalog = JSON.parse(fs.readFileSync(authorizedCatalogPath, "utf8"));
+  } catch (error) {
+    errors.push(`assets/catalog/catalog.json is invalid JSON: ${error.message}`);
+  }
+}
+if (!fs.existsSync(cleanCatalogSourceManifestPath)) {
+  errors.push("assets/catalog/clean-sources/manifest.json is missing");
+} else {
+  try {
+    cleanCatalogSourceManifest = JSON.parse(fs.readFileSync(cleanCatalogSourceManifestPath, "utf8"));
+  } catch (error) {
+    errors.push(`assets/catalog/clean-sources/manifest.json is invalid JSON: ${error.message}`);
+  }
+}
+if (!fs.existsSync(catalogBuildAuditPath)) {
+  errors.push("assets/catalog/clean-sources/catalog-build-audit.json is missing");
+} else {
+  try {
+    catalogBuildAudit = JSON.parse(fs.readFileSync(catalogBuildAuditPath, "utf8"));
+  } catch (error) {
+    errors.push(`assets/catalog/clean-sources/catalog-build-audit.json is invalid JSON: ${error.message}`);
+  }
+}
 const hangTagTemplatePath = path.join(root, "assets", "templates", "hang-tag-variable-data-template.csv");
 const wineGiftBoxTemplatePath = path.join(root, "assets", "templates", "wine-bottle-gift-box-rfq-template.csv");
 const perfumeInsertTemplatePath = path.join(root, "assets", "templates", "perfume-box-insert-rfq-template.csv");
@@ -175,6 +228,30 @@ const plainText = (source) => source
   .replace(/&nbsp;/g, " ")
   .replace(/\s+/g, " ")
   .trim();
+const escapeXml = (value) => String(value)
+  .replace(/&/g, "&amp;")
+  .replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;")
+  .replace(/'/g, "&apos;");
+const normalizedPageUrl = (href, baseUrl) => {
+  const url = new URL(href, baseUrl);
+  url.hash = "";
+  url.search = "";
+  return url.href;
+};
+const internalHtmlFile = (href, baseUrl) => {
+  try {
+    const url = new URL(href, baseUrl);
+    if (url.origin !== siteOrigin) return null;
+    const pathname = decodeURIComponent(url.pathname);
+    if (pathname === "/" || pathname === "/index.html") return "index.html";
+    if (!/^\/[A-Za-z0-9._-]+\.html$/.test(pathname)) return null;
+    return pathname.slice(1);
+  } catch {
+    return null;
+  }
+};
 
 const readUint24LE = (buffer, offset) => (
   buffer[offset] |
@@ -387,6 +464,7 @@ for (const file of htmlFiles) {
     }
     if (canonicalOwners.has(canonicals[0])) errors.push(`${file}: duplicate canonical also used by ${canonicalOwners.get(canonicals[0])}`);
     canonicalOwners.set(canonicals[0], file);
+    if (ogImages.length === 1) primaryImageByCanonical.set(canonicals[0], ogImages[0]);
   }
 
   for (const socialImage of [...ogImages, ...twitterImages]) {
@@ -411,6 +489,10 @@ for (const file of htmlFiles) {
   for (const control of values(html, /\saria-controls="([^"]+)"/g)) {
     if (!ids.has(control)) errors.push(`${file}: aria-controls target "#${control}" is missing`);
   }
+  if (!/<a\b[^>]*class="skip-link"[^>]*href="#main-content"/i.test(html) ||
+      !/<main id="main-content" tabindex="-1">/i.test(html)) {
+    errors.push(`${file}: skip link and focusable main-content target must remain paired`);
+  }
 
   const faqButtons = html.match(/<button\b[^>]*class="[^"]*\bfaq-question\b[^"]*"[^>]*>/gi) || [];
   for (const button of faqButtons) {
@@ -419,8 +501,67 @@ for (const file of htmlFiles) {
   }
 
   const primaryNav = html.match(/<nav\b[^>]*aria-label="Primary navigation"[^>]*>([\s\S]*?)<\/nav>/i)?.[1] || "";
-  const currentNavItems = primaryNav.match(/\saria-current="page"/gi) || [];
-  if (currentNavItems.length > 1) errors.push(`${file}: primary navigation has ${currentNavItems.length} current-page links`);
+  const currentNavItems = primaryNav.match(/<a\b[^>]*\saria-current="(?:page|location)"[^>]*>/gi) || [];
+  if (currentNavItems.length > 1) errors.push(`${file}: primary navigation has ${currentNavItems.length} current-location links`);
+  currentNavItems.forEach((anchor) => {
+    const token = attribute(anchor, "aria-current");
+    const href = attribute(anchor, "href");
+    try {
+      const targetPath = new URL(href, canonicals[0] || `${siteOrigin}/${file}`).pathname;
+      const currentPath = file === "index.html" ? "/" : `/${file}`;
+      if (token === "page" && targetPath !== currentPath) {
+        errors.push(`${file}: aria-current="page" must point to the current document`);
+      }
+      if (token === "location" && targetPath === currentPath) {
+        errors.push(`${file}: a current-document navigation link must use aria-current="page"`);
+      }
+    } catch {
+      errors.push(`${file}: current navigation item has an invalid href`);
+    }
+  });
+
+  const normalizeShellText = (value) => String(value || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+  const toplinePrimary = normalizeShellText(html.match(/<div class="topline">\s*<div class="container topline__inner">\s*<span>([\s\S]*?)<\/span>/i)?.[1]);
+  if (toplinePrimary !== requiredToplinePrimary) {
+    errors.push(`${file}: shared topline message is inconsistent`);
+  }
+  const footerMarkup = html.match(/<footer class="site-footer">([\s\S]*?)<\/footer>/i)?.[1] || "";
+  if (!footerMarkup) {
+    errors.push(`${file}: shared site footer is missing`);
+  } else {
+    const footerBrand = normalizeShellText(footerMarkup.match(/<div class="footer-brand">[\s\S]*?<p>([\s\S]*?)<\/p>/i)?.[1]);
+    if (footerBrand !== requiredFooterBrand) errors.push(`${file}: shared footer brand statement is inconsistent`);
+    const footerSignature = normalizeShellText(footerMarkup.match(/<div class="footer-bottom">\s*<span>[\s\S]*?<\/span>\s*<span>([\s\S]*?)<\/span>/i)?.[1]);
+    if (footerSignature !== requiredFooterSignature) errors.push(`${file}: shared footer signature is inconsistent`);
+    const footerHeadings = values(footerMarkup, /<div class="footer-col">\s*<h2>([\s\S]*?)<\/h2>/gi).map(normalizeShellText);
+    if (JSON.stringify(footerHeadings) !== JSON.stringify(requiredFooterHeadings)) {
+      errors.push(`${file}: footer columns must be Products, Explore, and Contact`);
+    }
+  }
+  const floatingContacts = html.match(/<nav class="floating-contact\b[^"]*"[^>]*>[\s\S]*?<\/nav>/gi) || [];
+  if (floatingContacts.length !== 1) {
+    errors.push(`${file}: expected one shared quick-contact toolbar, found ${floatingContacts.length}`);
+  } else {
+    const floatingContact = floatingContacts[0];
+    if (!/class="floating-contact floating-contact--home"/i.test(floatingContact)) {
+      errors.push(`${file}: quick-contact toolbar must use the shared visual variant`);
+    }
+    if (!/href="mailto:kevin@GloryStarPack\.com"/i.test(floatingContact) ||
+        !/href="https:\/\/wa\.me\/8619577608248"/i.test(floatingContact) ||
+        !/href="tel:\+8619577608248"/i.test(floatingContact)) {
+      errors.push(`${file}: quick-contact toolbar must provide Email, WhatsApp, and phone`);
+    }
+    if ((floatingContact.match(/<svg\b/gi) || []).length !== 2 ||
+        !/>Email<\/span>/i.test(floatingContact) ||
+        !/>WhatsApp<\/span>/i.test(floatingContact) ||
+        !/>Call<\/span>/i.test(floatingContact)) {
+      errors.push(`${file}: quick-contact toolbar must provide three labeled actions`);
+    }
+  }
 
   const visibleMarkupWithoutLinks = html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
@@ -429,13 +570,28 @@ for (const file of htmlFiles) {
   if (/kevin@glorystarpack\.com/i.test(visibleMarkupWithoutLinks)) {
     errors.push(`${file}: visible contact email must be a mailto link`);
   }
-  if (/\+86[\s-]*180[\s-]*2075[\s-]*5949/i.test(visibleMarkupWithoutLinks)) {
-    errors.push(`${file}: visible contact phone must be a clickable link`);
+  if (/8618020755949|\+86[\s-]*180[\s-]*2075[\s-]*5949/i.test(html)) {
+    errors.push(`${file}: retired contact number must not appear`);
+  }
+  if (!html.includes("https://wa.me/8619577608248")) {
+    errors.push(`${file}: current WhatsApp contact route is missing`);
+  }
+  if (/\+86[\s-]*195[\s-]*7760[\s-]*8248/i.test(visibleMarkupWithoutLinks)) {
+    errors.push(`${file}: visible current contact phone must be a clickable link`);
+  }
+
+  if (file === "index.html") {
+    const structuredTelephones = values(html, /"telephone":\s*"([^"]+)"/g);
+    if (structuredTelephones.length !== 2 || structuredTelephones.some((telephone) => telephone !== "+86-195-7760-8248")) {
+      errors.push(`${file}: Organization and sales ContactPoint telephone must use the current number`);
+    }
   }
 
   const jsonLdBlocks = values(html, /<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi);
   const schemaFaqItems = [];
   const schemaItemLists = [];
+  const schemaBreadcrumbLists = [];
+  const pageSchemaModifiedDates = new Set();
   let pageArticleSchema = null;
   if (!jsonLdBlocks.length && !isErrorPage) warnings.push(`${file}: no JSON-LD block`);
   jsonLdBlocks.forEach((block, index) => {
@@ -443,8 +599,17 @@ for (const file of htmlFiles) {
       const data = JSON.parse(block);
       const visit = (value) => {
         if (!value || typeof value !== "object") return;
-        if (value["@type"] === "Article") pageArticleSchema = value;
+        if (Object.prototype.hasOwnProperty.call(value, "dateModified")) {
+          const modifiedDate = String(value.dateModified || "").trim();
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(modifiedDate)) {
+            errors.push(`${file}: schema dateModified must use YYYY-MM-DD`);
+          } else {
+            pageSchemaModifiedDates.add(modifiedDate);
+          }
+        }
+        if (value["@type"] === "Article" || value["@type"] === "BlogPosting") pageArticleSchema = value;
         if (value["@type"] === "Blog") blogSchema = value;
+        if (value["@type"] === "BreadcrumbList") schemaBreadcrumbLists.push(value);
         if (value["@type"] === "FAQPage" && Array.isArray(value.mainEntity)) {
           value.mainEntity.forEach((item) => {
             schemaFaqItems.push({
@@ -463,8 +628,58 @@ for (const file of htmlFiles) {
       errors.push(`${file}: JSON-LD block ${index + 1} is invalid (${error.message})`);
     }
   });
+  if (!isErrorPage && canonicals[0]) {
+    if (pageSchemaModifiedDates.size > 1) {
+      errors.push(`${file}: structured data contains conflicting dateModified values`);
+    } else if (pageSchemaModifiedDates.size === 1) {
+      structuredModifiedByCanonical.set(canonicals[0], [...pageSchemaModifiedDates][0]);
+    }
+  }
+
+  if (!isErrorPage && file !== "index.html" && canonicals[0]) {
+    const visibleBreadcrumbBlocks = html.match(/<ol\b[^>]*class="[^"]*\bbreadcrumbs\b[^"]*"[^>]*>[\s\S]*?<\/ol>/gi) || [];
+    if (visibleBreadcrumbBlocks.length !== 1) {
+      errors.push(`${file}: expected one visible breadcrumb trail`);
+    }
+    if (schemaBreadcrumbLists.length !== 1) {
+      errors.push(`${file}: expected one BreadcrumbList entity`);
+    }
+    if (visibleBreadcrumbBlocks.length === 1 && schemaBreadcrumbLists.length === 1) {
+      const visibleUrls = (visibleBreadcrumbBlocks[0].match(/<li\b[^>]*>[\s\S]*?<\/li>/gi) || []).map((item) => {
+        const href = item.match(/<a\b[^>]*href="([^"]+)"/i)?.[1];
+        return href ? normalizedPageUrl(href, canonicals[0]) : canonicals[0];
+      });
+      const schemaItems = Array.isArray(schemaBreadcrumbLists[0].itemListElement)
+        ? schemaBreadcrumbLists[0].itemListElement
+        : [];
+      const schemaUrls = schemaItems.map((item, index) => {
+        if (item?.position !== index + 1) errors.push(`${file}: BreadcrumbList positions must be sequential`);
+        return normalizedPageUrl(String(item?.item || ""), canonicals[0]);
+      });
+      if (visibleUrls.length !== schemaUrls.length || visibleUrls.some((url, index) => url !== schemaUrls[index])) {
+        errors.push(`${file}: visible and structured breadcrumb URL order must match`);
+      }
+      if (!schemaUrls.length || schemaUrls.at(-1) !== canonicals[0]) {
+        errors.push(`${file}: final BreadcrumbList item must equal the canonical URL`);
+      }
+    }
+  }
 
   if (pageArticleSchema) {
+    const pageCanonical = canonicals[0] || "";
+    if (
+      pageArticleSchema["@id"] !== `${pageCanonical}#article` ||
+      pageArticleSchema.mainEntityOfPage?.["@type"] !== "WebPage" ||
+      pageArticleSchema.mainEntityOfPage?.["@id"] !== pageCanonical
+    ) {
+      errors.push(`${file}: BlogPosting identity must match its canonical page`);
+    }
+    if (pageArticleSchema["@type"] !== "BlogPosting") {
+      errors.push(`${file}: buyer guide must use the specific BlogPosting type`);
+    }
+    if (pageArticleSchema.isPartOf?.["@id"] !== `${siteOrigin}/blog.html#blog`) {
+      errors.push(`${file}: BlogPosting must reference the Buyer Guides Blog entity`);
+    }
     const author = pageArticleSchema.author;
     const expectedAuthorId = `${siteOrigin}/about.html#packaging-team`;
     if (
@@ -477,8 +692,9 @@ for (const file of htmlFiles) {
       errors.push(`${file}: article author must identify the visible Packaging Team entity`);
     }
     const articleMeta = html.match(/<p\b[^>]*class="[^"]*\barticle-meta\b[^"]*"[^>]*>([\s\S]*?)<\/p>/i)?.[1] || "";
-    if (!/^\s*By\s+<a\b[^>]*href="about\.html#packaging-team"/i.test(articleMeta)) {
-      errors.push(`${file}: visible article byline must link to the Packaging Team profile`);
+    const visibleAuthor = articleMeta.match(/^\s*By\s+<a\b[^>]*href="about\.html#packaging-team"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!visibleAuthor || plainText(visibleAuthor[1]) !== String(author?.name || "").trim()) {
+      errors.push(`${file}: visible author name and structured author must match`);
     }
 
     const schemaPublishedDate = String(pageArticleSchema.datePublished || "").trim();
@@ -497,6 +713,10 @@ for (const file of htmlFiles) {
     }
 
     const schemaModifiedDates = schemaModifiedDate ? [schemaModifiedDate] : [];
+    const metaPublishedDates = values(html, /<meta\s+property="article:published_time"\s+content="(\d{4}-\d{2}-\d{2})"/gi);
+    if (metaPublishedDates.length !== 1 || metaPublishedDates[0] !== schemaPublishedDate) {
+      errors.push(`${file}: article schema and Open Graph published dates do not match`);
+    }
     const metaModifiedDates = values(html, /<meta\s+property="article:modified_time"\s+content="(\d{4}-\d{2}-\d{2})"/gi);
     if (schemaModifiedDates.length !== 1 || metaModifiedDates.length !== 1) {
       errors.push(`${file}: article must have one schema and one Open Graph modified date`);
@@ -510,6 +730,8 @@ for (const file of htmlFiles) {
         file,
         headline: String(pageArticleSchema.headline || "").trim(),
         datePublished: schemaPublishedDate,
+        dateModified: schemaModifiedDate,
+        description: descriptions[0] || "",
       });
     }
   }
@@ -536,6 +758,165 @@ for (const file of htmlFiles) {
   }
 
   if (file === "products.html") {
+    const requiredCatalogMarkup = [
+      ["data-authorized-catalog", "authorized catalog root"],
+      ["data-catalog-library-grid", "authorized catalog product grid"],
+      ["data-catalog-library-dialog", "authorized catalog product dialog"],
+      ["data-catalog-library-categories", "authorized catalog category navigation"],
+      ["data-catalog-library-category-select", "mobile catalog category selector"],
+      ["data-catalog-library-search", "authorized catalog search"],
+      ['id="catalog-library-status"', "single catalog result announcement"],
+      ['aria-controls="catalog-library-grid"', "catalog control relationship"],
+      ['aria-describedby="catalog-dialog-description catalog-dialog-image-note"', "catalog dialog description relationship"],
+    ];
+    requiredCatalogMarkup.forEach(([signal, label]) => {
+      if (!html.includes(signal)) errors.push(`${file}: ${label} is missing`);
+    });
+    const catalogScriptVersions = values(html, /<script\b[^>]*src="\/?assets\/catalog\.js\?v=([^"]+)"[^>]*>/gi);
+    if (catalogScriptVersions.length !== 1 || catalogScriptVersions[0] !== requiredCatalogScriptVersion) {
+      errors.push(`${file}: expected catalog.js cache version ${requiredCatalogScriptVersion}`);
+    }
+
+    if (authorizedCatalog) {
+      const products = Array.isArray(authorizedCatalog.products) ? authorizedCatalog.products : [];
+      const categories = Array.isArray(authorizedCatalog.categories) ? authorizedCatalog.categories : [];
+      if (authorizedCatalog.sourceAuthorized !== true) errors.push("assets/catalog/catalog.json: sourceAuthorized must be true");
+      if (authorizedCatalog.total !== 1969 || products.length !== 1969) {
+        errors.push(`assets/catalog/catalog.json: expected 1969 products, found ${products.length}`);
+      }
+      if (categories.length !== 16) errors.push(`assets/catalog/catalog.json: expected 16 categories, found ${categories.length}`);
+      const categoryTotal = categories.reduce((total, category) => total + Number(category.count || 0), 0);
+      if (categoryTotal !== products.length) errors.push("assets/catalog/catalog.json: category counts do not match product count");
+      if (Number(authorizedCatalog.correspondingImageCount || 0) !== products.length) {
+        errors.push("assets/catalog/catalog.json: every product must use its corresponding source image");
+      }
+      if (Number(authorizedCatalog.highResolutionPreviewCount || 0) !== products.length) {
+        errors.push("assets/catalog/catalog.json: every product must include a dedicated preview image");
+      }
+      if (Number(authorizedCatalog.categoryReferenceCount || 0) !== 0) {
+        errors.push("assets/catalog/catalog.json: category fallback images are not allowed on product records");
+      }
+      if (JSON.stringify(authorizedCatalog.copyPolicy) !== JSON.stringify(catalogCopyTemplates)) {
+        errors.push("assets/catalog/catalog.json: controlled runtime copy policy is missing or mismatched");
+      }
+      const productIds = new Set();
+      const publishedImageHashes = new Map();
+      const allowedPublicProductKeys = new Set(publicCatalogProductKeys);
+      const auditProducts = Array.isArray(catalogBuildAudit?.products) ? catalogBuildAudit.products : [];
+      const auditById = new Map(auditProducts.map((product) => [String(product.id), product]));
+      if (auditProducts.length !== products.length) {
+        errors.push(`assets/catalog/clean-sources/catalog-build-audit.json: expected ${products.length} products, found ${auditProducts.length}`);
+      }
+      let claimReviewCount = 0;
+      products.forEach((product, index) => {
+        const label = `assets/catalog/catalog.json: product ${index + 1}`;
+        const auditProduct = auditById.get(String(product.id));
+        if (!String(product.id || "").trim()) errors.push(`${label} is missing an ID`);
+        if (productIds.has(product.id)) errors.push(`${label} repeats ID ${product.id}`);
+        productIds.add(product.id);
+        if (!String(product.title || "").trim() || !String(product.category || "").trim()) {
+          errors.push(`${label} is missing title or category`);
+        }
+        const unexpectedPublicKeys = Object.keys(product).filter((key) => !allowedPublicProductKeys.has(key));
+        if (unexpectedPublicKeys.length) {
+          errors.push(`${label} exposes internal field(s): ${unexpectedPublicKeys.join(", ")}`);
+        }
+        if (hasUnverifiedCatalogClaim(product.title)) {
+          errors.push(`${label} contains an unqualified certification, sustainability, food-contact, or performance claim in its public title`);
+        }
+        if (Object.hasOwn(product, "claimReviewRequired") && product.claimReviewRequired !== true) {
+          errors.push(`${label} claimReviewRequired must be omitted or true`);
+        }
+        if (product.claimReviewRequired === true) claimReviewCount += 1;
+        if (!auditProduct) {
+          errors.push(`${label} is missing its private build-audit record`);
+        } else {
+          const sourceImagePosition = Number(auditProduct.sourceImagePosition);
+          if (!Number.isInteger(sourceImagePosition) || sourceImagePosition < 1 || sourceImagePosition > Number(auditProduct.galleryCount || 1)) {
+            errors.push(`${label} has an invalid audited source image position`);
+          }
+          if (auditProduct.legacyBrandingRemoved === true && !String(auditProduct.imageCleanupMethod || "").trim()) {
+            errors.push(`${label} private audit must declare its legacy-brand cleanup method`);
+          }
+        }
+        const imageUrl = String(product.image || "");
+        const imagePath = imageUrl.split(/[?#]/)[0];
+        if (!/^assets\/catalog\/products\/[a-z0-9-]+\.jpg$/i.test(imagePath)) {
+          errors.push(`${label} has an invalid image path "${imageUrl}"`);
+        } else if (!fs.existsSync(path.join(root, imagePath))) {
+          errors.push(`${label} image is missing: ${imagePath}`);
+        } else {
+          const imageHash = crypto.createHash("sha256").update(fs.readFileSync(path.join(root, imagePath))).digest("hex");
+          publishedImageHashes.set(imageHash, (publishedImageHashes.get(imageHash) || 0) + 1);
+        }
+        const previewUrl = String(product.previewImage || "");
+        const previewPath = previewUrl.split(/[?#]/)[0];
+        if (!/^assets\/catalog\/previews\/[a-z0-9-]+\.jpg$/i.test(previewPath)) {
+          errors.push(`${label} has an invalid preview image path "${previewUrl}"`);
+        } else if (!fs.existsSync(path.join(root, previewPath))) {
+          errors.push(`${label} preview image is missing: ${previewPath}`);
+        }
+        const sourceWidth = Number(auditProduct?.sourceWidth || 0);
+        const sourceHeight = Number(auditProduct?.sourceHeight || 0);
+        const previewWidth = Number(product.previewWidth || 0);
+        const previewHeight = Number(product.previewHeight || 0);
+        const previewReconstructed = auditProduct?.previewReconstructed === true;
+        const sourceMax = Math.max(sourceWidth, sourceHeight);
+        const previewMax = Math.max(previewWidth, previewHeight);
+        if (![sourceWidth, sourceHeight, previewWidth, previewHeight].every(Number.isInteger) || Math.min(sourceWidth, sourceHeight, previewWidth, previewHeight) < 1) {
+          errors.push(`${label} has invalid source or preview dimensions`);
+        } else if (previewMax > 960 || (!previewReconstructed && (previewWidth > sourceWidth || previewHeight > sourceHeight))) {
+          errors.push(`${label} preview must be capped at 960px without upscaling`);
+        } else if (!previewReconstructed && ((sourceMax >= 960 && previewMax !== 960) || (sourceMax < 960 && previewMax !== sourceMax))) {
+          errors.push(`${label} preview dimensions do not match the no-upscale 960px policy`);
+        } else if (previewReconstructed && (!auditProduct.previewEnhancementMethod || previewMax !== 960)) {
+          errors.push(`${label} reconstructed preview must declare its enhancement method and use a 960px maximum dimension`);
+        }
+        if (auditProduct && (previewWidth !== Number(auditProduct.previewWidth) || previewHeight !== Number(auditProduct.previewHeight))) {
+          errors.push(`${label} public preview dimensions do not match the private build audit`);
+        }
+      });
+      const auditedClaimReviewCount = auditProducts.filter((product) => product.claimReviewRequired === true).length;
+      if (claimReviewCount !== auditedClaimReviewCount) {
+        errors.push(`assets/catalog/catalog.json: ${claimReviewCount} public claim-review records do not match ${auditedClaimReviewCount} audited records`);
+      }
+      if (publishedImageHashes.size < 1544) {
+        errors.push(`assets/catalog/catalog.json: expected at least 1544 distinct corresponding product images, found ${publishedImageHashes.size}`);
+      }
+      const largestDuplicateGroup = Math.max(0, ...publishedImageHashes.values());
+      if (largestDuplicateGroup > 5) {
+        errors.push(`assets/catalog/catalog.json: a product image is repeated ${largestDuplicateGroup} times; source-primary maximum is 5`);
+      }
+      if (cleanCatalogSourceManifest) {
+        const cleanSources = cleanCatalogSourceManifest.products || {};
+        const productsById = new Map(products.map((product) => [String(product.id), product]));
+        Object.entries(cleanSources).forEach(([id, cleanSource]) => {
+          const cleanFile = String(cleanSource?.file || "");
+          const cleanProduct = productsById.get(id);
+          const auditProduct = auditById.get(id);
+          if (cleanFile !== `${id}.jpg`) errors.push(`assets/catalog/clean-sources/manifest.json: ${id} has an invalid clean source filename`);
+          if (!fs.existsSync(path.join(root, "assets", "catalog", "clean-sources", cleanFile))) {
+            errors.push(`assets/catalog/clean-sources/manifest.json: ${id} clean source image is missing`);
+          }
+          if (!cleanProduct) {
+            errors.push(`assets/catalog/clean-sources/manifest.json: ${id} is not a catalog product`);
+          } else if (!auditProduct || auditProduct.legacyBrandingRemoved !== true || auditProduct.imageCleanupMethod !== cleanSource.method || Number(auditProduct.sourceImagePosition) !== Number(cleanSource.sourceImagePosition)) {
+            errors.push(`assets/catalog/clean-sources/manifest.json: ${id} cleanup metadata does not match its private build audit`);
+          }
+        });
+        auditProducts.filter((product) => product.legacyBrandingRemoved === true).forEach((product) => {
+          if (!cleanSources[String(product.id)]) errors.push(`assets/catalog/catalog.json: product ${product.id} is missing from the clean source manifest`);
+        });
+      }
+      const serializedCatalog = JSON.stringify(authorizedCatalog);
+      if (/finerpackaging|alicdn|alibaba/i.test(serializedCatalog)) {
+        errors.push("assets/catalog/catalog.json: source marketplace names or URLs must not appear in published data");
+      }
+      if (/\$0\.01\b/i.test(serializedCatalog)) {
+        errors.push("assets/catalog/catalog.json: must not publish an unverified $0.01 offer");
+      }
+    }
+
     const catalogList = schemaItemLists[0];
     const productCards = [...html.matchAll(/<article\b[^>]*class="[^"]*\bproduct-card\b[^"]*"[^>]*>([\s\S]*?)<\/article>/gi)];
     const productCardCount = productCards.length;
@@ -868,6 +1249,14 @@ for (const file of htmlFiles) {
     if (attribute(openingAttributes, "enctype") !== "application/x-www-form-urlencoded") {
       errors.push(`${formLabel} must use application/x-www-form-urlencoded for the no-JavaScript fallback`);
     }
+    if (attribute(openingAttributes, "aria-labelledby") !== "quote-section-title" ||
+        attribute(openingAttributes, "aria-describedby") !== "quote-form-status") {
+      errors.push(`${formLabel} must be named by its quote heading and described by its status`);
+    }
+    if (!/<h2\b[^>]*id="quote-section-title"/i.test(html) ||
+        !/<p class="form-status" id="quote-form-status" role="status" aria-live="polite"><\/p>/i.test(body)) {
+      errors.push(`${formLabel} is missing its stable heading or live-status relationship`);
+    }
 
     const controls = body.match(/<(?:input|select|textarea)\b[^>]*>/gi) || [];
     const controlByName = new Map();
@@ -904,12 +1293,17 @@ for (const file of htmlFiles) {
     if (attribute(attachment, "accept") !== ".pdf,.jpg,.jpeg,.png,.webp") {
       errors.push(`${formLabel} attachment accept list is inconsistent`);
     }
+    const attachmentId = attribute(attachment, "id");
+    if (attribute(attachment, "aria-describedby") !== `${attachmentId}-help` ||
+        !new RegExp(`<small\\s+id="${attachmentId}-help">`, "i").test(body)) {
+      errors.push(`${formLabel} attachment guidance must be programmatically associated`);
+    }
     if (!/Add larger or source files by Email or WhatsApp after sending the brief\./i.test(body)) {
       errors.push(`${formLabel} must explain the larger/source-file fallback`);
     }
     if (!/<a\b[^>]*href="privacy\.html"/i.test(body)) errors.push(`${formLabel} is missing a privacy notice link`);
     const noscriptNote = body.match(/<noscript>([\s\S]*?)<\/noscript>/i)?.[1] || "";
-    if (!/mailto:kevin@GloryStarPack\.com/i.test(noscriptNote) || !/https:\/\/wa\.me\/8618020755949/i.test(noscriptNote)) {
+    if (!/mailto:kevin@GloryStarPack\.com/i.test(noscriptNote) || !/https:\/\/wa\.me\/8619577608248/i.test(noscriptNote)) {
       errors.push(`${formLabel} no-JavaScript guidance must provide valid Email and WhatsApp routes`);
     }
   });
@@ -981,6 +1375,22 @@ for (const file of htmlFiles) {
     }
   }
 
+  const pageBaseUrl = canonicals[0] || `${siteOrigin}/${file}`;
+  const linkedHtmlFiles = new Set();
+  for (const href of values(html, /<a\b[^>]*\shref="([^"]+)"/gi)) {
+    const linkedFile = internalHtmlFile(href, pageBaseUrl);
+    if (linkedFile && htmlFileSet.has(linkedFile) && linkedFile !== "404.html") linkedHtmlFiles.add(linkedFile);
+  }
+  internalLinkGraph.set(file, linkedHtmlFiles);
+
+  if (!isErrorPage && file !== "index.html" && /<form\b[^>]*class="[^"]*\bquote-form\b/i.test(html)) {
+    const mainHtml = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] || "";
+    const meaningfulMainLinks = values(mainHtml, /<a\b[^>]*\shref="([^"]+)"/gi)
+      .map((href) => internalHtmlFile(href, pageBaseUrl))
+      .filter((linkedFile) => linkedFile && linkedFile !== file && linkedFile !== "privacy.html");
+    if (!meaningfulMainLinks.length) errors.push(`${file}: commercial main content has no contextual internal route`);
+  }
+
   for (const href of values(html, /<a\b[^>]*\shref="([^"]+)"/gi)) {
     if (/^index\.html(?:[?#]|$)/.test(href)) {
       errors.push(`${file}: homepage link should use "/" instead of "${href}"`);
@@ -1001,6 +1411,23 @@ for (const file of htmlFiles) {
   }
 }
 
+const crawlDepth = new Map([["index.html", 0]]);
+const crawlQueue = ["index.html"];
+for (let queueIndex = 0; queueIndex < crawlQueue.length; queueIndex += 1) {
+  const sourceFile = crawlQueue[queueIndex];
+  const nextDepth = crawlDepth.get(sourceFile) + 1;
+  for (const targetFile of internalLinkGraph.get(sourceFile) || []) {
+    if (crawlDepth.has(targetFile)) continue;
+    crawlDepth.set(targetFile, nextDepth);
+    crawlQueue.push(targetFile);
+  }
+}
+for (const indexableFile of canonicalOwners.values()) {
+  if (!crawlDepth.has(indexableFile)) errors.push(`${indexableFile}: indexable page is unreachable from the homepage link graph`);
+}
+const maximumCrawlDepth = Math.max(0, ...[...canonicalOwners.values()].map((file) => crawlDepth.get(file) ?? Infinity));
+if (maximumCrawlDepth > 2) errors.push(`HTML: maximum homepage crawl depth is ${maximumCrawlDepth}; expected 2 or less`);
+
 for (const spec of responsiveCardSpecs) {
   const actualUsageCount = responsiveCardUsageCounts.get(spec.key);
   if (actualUsageCount !== spec.expectedUsageCount) {
@@ -1014,8 +1441,8 @@ if (responsiveSrcsetUsageCount !== expectedResponsiveCardUsageCount) {
 if (responsiveCardStems.size !== 33) {
   errors.push(`HTML: expected responsive card srcsets to use 33 source images, found ${responsiveCardStems.size}`);
 }
-if (responsiveAvifCardUsageCount !== 53) {
-  errors.push(`HTML: expected 53 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
+if (responsiveAvifCardUsageCount !== 54) {
+  errors.push(`HTML: expected 54 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
 }
 if (responsiveBodyUsageCount !== 80) {
   errors.push(`HTML: expected 80 responsive AVIF split images, found ${responsiveBodyUsageCount}`);
@@ -1036,6 +1463,32 @@ for (const stem of responsiveAvifCardStems) {
 }
 
 const imagesDirectory = path.join(root, "assets", "images");
+const publicJpegPaths = [];
+const catalogCleanSourceDirectory = path.join(root, "assets", "catalog", "clean-sources");
+const catalogUnusedCategoryDirectory = path.join(root, "assets", "catalog", "categories");
+const catalogSupersededPreview = path.join(root, "assets", "catalog", "previews", "60697040446.jpg");
+const collectPublicJpegs = (directory) => {
+  if (!fs.existsSync(directory)) return;
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      if (entryPath !== catalogCleanSourceDirectory && entryPath !== catalogUnusedCategoryDirectory) collectPublicJpegs(entryPath);
+    } else if (entryPath !== catalogSupersededPreview && /\.jpe?g$/i.test(entry.name) && !/ \d+\.jpe?g$/i.test(entry.name)) {
+      publicJpegPaths.push(entryPath);
+    }
+  }
+};
+collectPublicJpegs(path.join(root, "assets"));
+for (const jpegPath of publicJpegPaths) {
+  try {
+    const metadata = inspectJpegMetadata(fs.readFileSync(jpegPath));
+    if (metadata.length) {
+      errors.push(`${path.relative(root, jpegPath)}: public JPEG contains removable ${metadata.map((segment) => segment.name).join(", ")} metadata`);
+    }
+  } catch (error) {
+    errors.push(`${path.relative(root, jpegPath)}: cannot inspect JPEG metadata (${error.message})`);
+  }
+}
 const imageFiles = fs.readdirSync(imagesDirectory);
 const standaloneDerivedDisplayWebps = new Set(["embossing-process-512.webp"]);
 const responsiveWebpPattern = /^(.+)-w(512|768)\.webp$/;
@@ -1176,8 +1629,8 @@ const avifHeroUsageCount = htmlFiles.reduce((count, file) => {
   const html = readPage(file)?.html || "";
   return count + (html.match(/<source\b[^>]*type="image\/avif"[^>]*srcset="assets\/images\/[^"]+\.avif"/gi) || []).length;
 }, 0);
-if (avifHeroUsageCount !== 32) {
-  errors.push(`HTML: expected 32 AVIF hero usages, found ${avifHeroUsageCount}`);
+if (avifHeroUsageCount !== 33) {
+  errors.push(`HTML: expected 33 AVIF hero usages, found ${avifHeroUsageCount}`);
 }
 for (const derivedImage of standaloneDerivedDisplayWebps) {
   const derivedPath = path.join(imagesDirectory, derivedImage);
@@ -1247,18 +1700,49 @@ if (!fs.existsSync(manifestPath)) {
 }
 
 const blogPageHtml = readPage("blog.html")?.html || "";
+const visibleBlogDates = new Map();
+const monthNumbers = new Map([
+  ["January", "01"], ["February", "02"], ["March", "03"], ["April", "04"],
+  ["May", "05"], ["June", "06"], ["July", "07"], ["August", "08"],
+  ["September", "09"], ["October", "10"], ["November", "11"], ["December", "12"],
+]);
+for (const block of blogPageHtml.match(/<article\b[^>]*class="[^"]*\barticle-(?:feature|card)\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi) || []) {
+  const guideFile = block.match(/<h2>\s*<a\s+href="([^"]+\.html)"/i)?.[1] || "";
+  const dateMatch = block.match(/<span\s+class="article-meta">[^<]*?([A-Z][a-z]+)\s+(\d{1,2}),\s+(\d{4})\b/i);
+  if (!guideFile || !dateMatch || !monthNumbers.has(dateMatch[1])) {
+    errors.push("blog.html: visible guide card is missing a valid page link or publication date");
+    continue;
+  }
+  const visibleDate = `${dateMatch[3]}-${monthNumbers.get(dateMatch[1])}-${dateMatch[2].padStart(2, "0")}`;
+  if (visibleBlogDates.has(guideFile)) errors.push(`blog.html: duplicate visible guide card for ${guideFile}`);
+  visibleBlogDates.set(guideFile, visibleDate);
+}
 if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
   errors.push("blog.html: Blog schema with a blogPost list is missing");
 } else {
+  if (
+    blogSchema["@id"] !== `${siteOrigin}/blog.html#blog` ||
+    blogSchema.url !== `${siteOrigin}/blog.html` ||
+    blogSchema.publisher?.["@id"] !== `${siteOrigin}/#organization`
+  ) {
+    errors.push("blog.html: Blog identity, URL, or publisher is inconsistent");
+  }
   const blogPostsByUrl = new Map();
   for (const post of blogSchema.blogPost) {
-    const url = String(post?.url || "").trim();
-    if (!url) {
-      errors.push("blog.html: BlogPosting is missing its URL");
+    const postId = String(post?.["@id"] || "").trim();
+    if (!postId.endsWith("#article")) {
+      errors.push("blog.html: blogPost reference is missing a valid #article @id");
       continue;
     }
+    const url = postId.slice(0, -"#article".length);
     if (blogPostsByUrl.has(url)) errors.push(`blog.html: duplicate BlogPosting URL ${url}`);
     blogPostsByUrl.set(url, post);
+    if (Object.keys(post).length !== 1) {
+      errors.push(`blog.html: blogPost must reference ${postId} without duplicating article fields`);
+    }
+  }
+  if (blogSchema.isPartOf?.["@id"] !== `${siteOrigin}/#website`) {
+    errors.push("blog.html: Blog entity must reference the canonical WebSite");
   }
 
   for (const [canonical, article] of articleEntriesByCanonical) {
@@ -1267,14 +1751,17 @@ if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
       errors.push(`blog.html: Blog schema is missing article ${canonical}`);
       continue;
     }
-    if (String(post.headline || "").trim() !== article.headline) {
-      errors.push(`blog.html: BlogPosting headline does not match ${article.file}`);
+    if (post["@id"] !== `${canonical}#article`) {
+      errors.push(`blog.html: BlogPosting reference does not match ${article.file}`);
     }
-    if (String(post.datePublished || "").trim() !== article.datePublished) {
-      errors.push(`blog.html: BlogPosting datePublished does not match ${article.file}`);
+    if (visibleBlogDates.get(article.file) !== article.datePublished) {
+      errors.push(`blog.html: visible card date does not match ${article.file}`);
     }
-    if (!blogPageHtml.includes(`href="${article.file}"`)) {
-      errors.push(`blog.html: visible guide list is missing ${article.file}`);
+  }
+
+  for (const visibleFile of visibleBlogDates.keys()) {
+    if (![...articleEntriesByCanonical.values()].some((article) => article.file === visibleFile)) {
+      errors.push(`blog.html: visible guide card has no matching BlogPosting page ${visibleFile}`);
     }
   }
 
@@ -1292,6 +1779,7 @@ if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
     const feed = fs.readFileSync(feedPath, "utf8");
     const feedUrls = values(feed, /<guid\s+isPermaLink="true">([^<]+)<\/guid>/gi);
     const feedUrlSet = new Set(feedUrls);
+    const feedItems = feed.match(/<item>[\s\S]*?<\/item>/g) || [];
     if (!feed.includes(`<atom:link href="${siteOrigin}/feed.xml" rel="self" type="application/rss+xml"/>`)) {
       errors.push("feed.xml: canonical self link is missing");
     }
@@ -1301,9 +1789,36 @@ if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
     for (const url of blogPostsByUrl.keys()) {
       if (!feedUrlSet.has(url)) errors.push(`feed.xml: missing guide ${url}`);
     }
+    const latestModified = [...articleEntriesByCanonical.values()]
+      .map((article) => article.dateModified)
+      .sort()
+      .at(-1);
+    const expectedLastBuildDate = latestModified
+      ? new Date(`${latestModified}T00:00:00Z`).toUTCString()
+      : "";
+    if (!feed.includes(`<lastBuildDate>${expectedLastBuildDate}</lastBuildDate>`)) {
+      errors.push(`feed.xml: lastBuildDate must use the latest Article dateModified (${expectedLastBuildDate})`);
+    }
+    for (const [url, article] of articleEntriesByCanonical) {
+      const escapedUrl = escapeXml(url);
+      const item = feedItems.find((block) => block.includes(`<guid isPermaLink="true">${escapedUrl}</guid>`));
+      if (!item) continue;
+      const expectedSignals = [
+        `<title>${escapeXml(article.headline)}</title>`,
+        `<link>${escapedUrl}</link>`,
+        `<guid isPermaLink="true">${escapedUrl}</guid>`,
+        `<pubDate>${new Date(`${article.datePublished}T00:00:00Z`).toUTCString()}</pubDate>`,
+        `<description>${escapeXml(article.description)}</description>`,
+      ];
+      expectedSignals.forEach((signal) => {
+        if (!item.includes(signal)) errors.push(`feed.xml: item fields do not match ${article.file}`);
+      });
+    }
   }
   if (!fs.existsSync(feedGeneratorPath)) {
     errors.push("RSS feed generator is missing");
+  } else if (!fs.readFileSync(feedGeneratorPath, "utf8").includes('process.argv.includes("--check")')) {
+    errors.push("RSS feed generator is missing the non-mutating --check release guard");
   }
 
   for (const feedDiscoveryPage of ["index.html", "blog.html"]) {
@@ -1315,30 +1830,67 @@ if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
 }
 
 const sitemapPath = path.join(root, "sitemap.xml");
+let sitemapUrlSet = new Set();
+let sitemapLastModified = new Map();
 if (!fs.existsSync(sitemapPath)) {
   errors.push("sitemap.xml is missing");
 } else {
   const sitemap = fs.readFileSync(sitemapPath, "utf8");
   const sitemapUrls = values(sitemap, /<loc>([^<]+)<\/loc>/gi);
-  const sitemapUrlSet = new Set(sitemapUrls);
-  const sitemapLastModified = new Map([...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/gi)]
+  sitemapUrlSet = new Set(sitemapUrls);
+  sitemapLastModified = new Map([...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/gi)]
     .map((match) => [match[1], match[2]]));
   if (sitemapUrls.length !== sitemapUrlSet.size) errors.push("sitemap.xml: duplicate URL entries");
+  if (sitemapLastModified.size !== sitemapUrlSet.size) {
+    errors.push(`sitemap.xml: every URL needs one YYYY-MM-DD lastmod (${sitemapLastModified.size}/${sitemapUrlSet.size} valid)`);
+  }
   for (const canonical of canonicalOwners.keys()) {
     if (!sitemapUrlSet.has(canonical)) errors.push(`sitemap.xml: missing canonical ${canonical}`);
   }
   for (const sitemapUrl of sitemapUrlSet) {
     if (!canonicalOwners.has(sitemapUrl)) errors.push(`sitemap.xml: URL has no matching canonical page ${sitemapUrl}`);
   }
-  for (const [canonical, modifiedDate] of articleModifiedByCanonical) {
+  for (const [canonical, modifiedDate] of structuredModifiedByCanonical) {
     if (sitemapLastModified.get(canonical) !== modifiedDate) {
-      errors.push(`sitemap.xml: ${canonical} lastmod must match article dateModified ${modifiedDate}`);
+      errors.push(`sitemap.xml: ${canonical} lastmod must match structured dateModified ${modifiedDate}`);
     }
   }
-  const sitemapPrivacyDate = readPage("privacy.html")?.html.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] || "";
-  if (sitemapPrivacyDate && sitemapLastModified.get(`${siteOrigin}/privacy.html`) !== sitemapPrivacyDate) {
-    errors.push("sitemap.xml: privacy.html lastmod must match its visible and structured date");
+}
+
+const imageSitemapPath = path.join(root, "image-sitemap.xml");
+const imageSitemapGeneratorPath = path.join(root, "scripts", "generate-image-sitemap.mjs");
+if (!fs.existsSync(imageSitemapPath)) {
+  errors.push("image-sitemap.xml is missing");
+} else {
+  const imageSitemap = fs.readFileSync(imageSitemapPath, "utf8");
+  const imageEntries = [...imageSitemap.matchAll(/<url>([\s\S]*?)<\/url>/gi)].map((match) => ({
+    page: match[1].match(/<loc>([^<]+)<\/loc>/i)?.[1]?.trim() || "",
+    lastmod: match[1].match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/i)?.[1] || "",
+    image: match[1].match(/<image:loc>([^<]+)<\/image:loc>/i)?.[1]?.trim() || "",
+  }));
+  const imagePages = new Set(imageEntries.map((entry) => entry.page));
+  const imageUrls = new Set(imageEntries.map((entry) => entry.image));
+  const expectedUniqueImages = new Set(primaryImageByCanonical.values());
+  if (!imageSitemap.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"')) {
+    errors.push("image-sitemap.xml: Google image namespace is missing");
   }
+  if (imagePages.size !== imageEntries.length) errors.push("image-sitemap.xml: duplicate page entries");
+  if (imageUrls.size !== imageEntries.length) errors.push("image-sitemap.xml: duplicate primary-image entries");
+  if (imageUrls.size !== expectedUniqueImages.size || [...expectedUniqueImages].some((image) => !imageUrls.has(image))) {
+    errors.push(`image-sitemap.xml: expected all ${expectedUniqueImages.size} unique page primary images, found ${imageUrls.size}`);
+  }
+  for (const entry of imageEntries) {
+    if (!sitemapUrlSet.has(entry.page)) errors.push(`image-sitemap.xml: page is absent from sitemap.xml (${entry.page})`);
+    if (primaryImageByCanonical.get(entry.page) !== entry.image) errors.push(`image-sitemap.xml: page does not expose mapped og:image (${entry.page})`);
+    if (!entry.lastmod || sitemapLastModified.get(entry.page) !== entry.lastmod) {
+      errors.push(`image-sitemap.xml: lastmod does not match sitemap.xml (${entry.page})`);
+    }
+  }
+}
+if (!fs.existsSync(imageSitemapGeneratorPath)) {
+  errors.push("Image sitemap generator is missing");
+} else if (!fs.readFileSync(imageSitemapGeneratorPath, "utf8").includes('process.argv.includes("--check")')) {
+  errors.push("Image sitemap generator is missing the non-mutating --check release guard");
 }
 
 for (const targetFile of priorityPages) {
@@ -1372,6 +1924,12 @@ if (!fs.existsSync(analyticsAssetPath)) {
     ['closeConsentPanel(true)', "analytics-preference focus return"],
     ['panel.setAttribute("aria-live", "polite")', "non-blocking consent announcement"],
     ['panel.setAttribute("aria-atomic", "true")', "complete consent announcement"],
+    ['document.body.classList.add("analytics-consent-open")', "mobile quick-contact collision guard"],
+    ['document.body.classList.remove("analytics-consent-open")', "mobile quick-contact restoration"],
+    ['href.startsWith("tel:")', "phone-contact conversion event"],
+    ['paper_caliper_unit_converter', "paper-caliper converter event"],
+    ['custom_packaging_lead_time_planner', "lead-time planner event"],
+    ['planning_mode', "lead-time planner direction only"],
   ];
   requiredAnalyticsSignals.forEach(([signal, label]) => {
     if (!analyticsAsset.includes(signal)) errors.push(`assets/analytics.js: missing ${label}`);
@@ -1380,8 +1938,38 @@ if (!fs.existsSync(analyticsAssetPath)) {
 
 const siteScriptPath = path.join(root, "assets", "site.js");
 const siteStylePath = path.join(root, "assets", "site.css");
+const catalogScriptPath = path.join(root, "assets", "catalog.js");
 const siteScript = fs.existsSync(siteScriptPath) ? fs.readFileSync(siteScriptPath, "utf8") : "";
 const siteStyle = fs.existsSync(siteStylePath) ? fs.readFileSync(siteStylePath, "utf8") : "";
+const catalogScript = fs.existsSync(catalogScriptPath) ? fs.readFileSync(catalogScriptPath, "utf8") : "";
+const requiredCatalogPerformanceSignals = [
+  ["catalogLoadPromise", "single-flight catalog loading"],
+  ["new IntersectionObserver", "near-viewport catalog loading"],
+  ['rootMargin: "800px 0px"', "catalog loading lead distance"],
+  ['root.addEventListener("pointerenter"', "pointer interaction fallback"],
+  ['root.addEventListener("focusin"', "keyboard interaction fallback"],
+  ['root.setAttribute("aria-busy", "true")', "catalog loading semantics"],
+  ['root.removeAttribute("aria-busy")', "catalog loaded semantics"],
+  ["const catalogDescriptionFor = (product, policy)", "controlled runtime product descriptions"],
+  ["product.description = catalogDescriptionFor(product, payload.copyPolicy)", "runtime product-description hydration"],
+  ["product.searchText = normalize", "precomputed product search text"],
+  ["window.setTimeout(() => renderProducts(), 120)", "mobile-safe search rendering schedule"],
+  ["readCatalogStateFromUrl", "restorable catalog URL state"],
+  ["writeCatalogStateToUrl", "catalog URL-state updates"],
+  ['window.addEventListener("popstate"', "browser-history catalog restoration"],
+  ['data-catalog-library-category-select', "mobile category selector"],
+  ['document.body.classList.add("catalog-dialog-open")', "catalog dialog collision state"],
+  ["dialogReturnFocus", "catalog dialog focus return"],
+  ['event.target === dialog', "catalog backdrop close"],
+  ['?.focus({ preventScroll: true })', "catalog category focus preservation"],
+];
+requiredCatalogPerformanceSignals.forEach(([signal, label]) => {
+  if (!catalogScript.includes(signal)) errors.push(`assets/catalog.js: missing ${label}`);
+});
+const catalogDataVersions = values(catalogScript, /assets\/catalog\/catalog\.json\?v=([a-f0-9]{12})/gi);
+if (catalogDataVersions.length !== 1 || catalogDataVersions[0] !== requiredCatalogDataVersion) {
+  errors.push(`assets/catalog.js: expected catalog.json content version ${requiredCatalogDataVersion}`);
+}
 const requiredProgressiveQuoteSignals = [
   [siteScript, 'const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"]', "five optional quote fields"],
   [siteScript, '.filter((field) => field && !field.querySelector(":required"))', "required fields kept out of the optional disclosure"],
@@ -1402,7 +1990,6 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, "18000", "bounded quote request timeout"],
   [siteScript, 'glorystarpack:quote-submit-attempt', "quote-submit attempt signal"],
   [siteScript, 'glorystarpack:quote-delivery-error', "quote-delivery error signal"],
-  [siteScript, 'attachmentName: fileInput?.files?.[0]?.name || ""', "attachment-error fallback context"],
   [siteScript, "directUrlEncodedBudget = 1900", "bounded direct-channel URL budget"],
   [siteScript, "Email and WhatsApp may use a shortened version. Copy project brief always contains every detail.", "direct-channel truncation disclosure"],
   [siteScript, 'if (options.focusFirst !== false) emailLink.focus()', "fallback action focus"],
@@ -1410,10 +1997,25 @@ const requiredProgressiveQuoteSignals = [
   [siteScript, 'form.addEventListener("invalid", showValidationState, true)', "native-validation error summary"],
   [siteScript, 'field.setAttribute("aria-invalid", "true")', "persistent invalid-field semantics"],
   [siteScript, 'unresolvedFieldCount', "live invalid-field count"],
+  [siteScript, 'field.setAttribute("aria-errormessage", status.id)', "field-to-error relationship"],
+  [siteScript, 'status.setAttribute("role", urgent ? "alert" : "status")', "adaptive error announcement"],
+  [siteScript, 'Choose another file, or remove it and send the brief without an attachment.', "correctable attachment error"],
+  [siteScript, 'fileInput?.focus()', "attachment-error focus recovery"],
+  [siteScript, 'headerLogo,', "mobile-navigation logo focus order"],
+  [siteScript, '--navigation-viewport-height', "measured mobile-navigation height"],
+  [siteScript, 'mainContent?.focus({ preventScroll: true })', "skip-link focus transfer"],
+  [siteScript, 'optionalSummary.querySelector("small").textContent', "catalog-reference quote continuity"],
   [siteScript, 'const productCategoryMap = {', "marketplace product-to-category mapping"],
   [siteScript, 'commercial.className = "marketplace-card__commercial"', "marketplace commercial context"],
   [siteScript, 'const applyCatalogFilter = (filter, shouldScroll = false)', "marketplace category filtering"],
   [siteScript, 'button.setAttribute("aria-pressed"', "marketplace filter state semantics"],
+  [siteScript, 'const paperCaliperConverter = document.querySelector("#paper-caliper-converter-form")', "paper-caliper converter"],
+  [siteScript, 'const unitToMillimetres = {', "exact paper-caliper unit factors"],
+  [siteScript, 'const packagingLeadTimePlanner = document.querySelector("#packaging-lead-time-planner")', "custom packaging lead-time planner"],
+  [siteScript, 'const addCalendarDays = (date, days)', "UTC calendar-day schedule arithmetic"],
+  [siteScript, 'const stageDays = [', "explicit lead-time stage formula"],
+  [siteScript, 'const revisionDays = values.revisionRounds * values.revisionCycleDays', "controlled revision-cycle calculation"],
+  [siteScript, 'navigator.clipboard?.writeText', "copyable lead-time planning brief"],
   [siteStyle, ".quote-form__optional > summary:focus-visible", "optional-section keyboard focus"],
   [siteStyle, ".form-required-note", "required-field guidance styling"],
   [siteStyle, ".form-required-indicator", "required-field marker styling"],
@@ -1428,9 +2030,66 @@ const requiredProgressiveQuoteSignals = [
   [siteStyle, ".marketplace-layout", "marketplace sidebar and results layout"],
   [siteStyle, ".catalog-marketplace .card-grid", "marketplace product grid"],
   [siteStyle, "html:not(.js) .site-nav", "no-JavaScript mobile navigation"],
+  [siteStyle, '.field input:focus-visible,', "form-control keyboard focus ring"],
+  [siteStyle, '.js .site-nav > a[aria-current]:not(.button)', "mobile current-section marker"],
 ];
 requiredProgressiveQuoteSignals.forEach(([source, signal, label]) => {
   if (!source.includes(signal)) errors.push(`Progressive quote form is missing ${label}`);
+});
+
+const leadTimePlannerPage = readPage("custom-packaging-lead-time-planner.html")?.html || "";
+const requiredLeadTimePlannerSignals = [
+  ['id="packaging-lead-time-planner"', "planner form"],
+  ['name="mode"', "planning direction"],
+  ['name="anchorDate"', "anchor date"],
+  ['name="scopeDays"', "scope duration"],
+  ['name="artworkDays"', "artwork duration"],
+  ['name="sampleBuildDays"', "sample build duration"],
+  ['name="sampleTransitDays"', "sample transit duration"],
+  ['name="buyerReviewDays"', "buyer review duration"],
+  ['name="revisionRounds"', "revision rounds"],
+  ['name="revisionCycleDays"', "revision duration"],
+  ['name="materialDays"', "material and tooling duration"],
+  ['name="productionDays"', "production duration"],
+  ['name="releaseDays"', "inspection and packing duration"],
+  ['name="deliveryDays"', "freight and delivery duration"],
+  ['name="bufferDays"', "visible contingency"],
+  ['data-lead-time-copy', "copyable planning brief"],
+  ['data-lead-time-output="milestones" aria-live="polite"', "live milestone schedule"],
+  ['buyer-entered planning scenario', "non-guarantee boundary"],
+  ['"@type": "WebApplication"', "planner structured entity"],
+];
+requiredLeadTimePlannerSignals.forEach(([signal, label]) => {
+  if (!leadTimePlannerPage.includes(signal)) errors.push(`custom-packaging-lead-time-planner.html: missing ${label}`);
+});
+
+const requiredVisualSystemSignals = [
+  ["/* Cohesive visual system shared by every page family. */", "shared visual-system layer"],
+  ["--shadow-card", "shared card elevation token"],
+  [".button--outline {", "secondary button treatment"],
+  [".subhero::before", "shared hero registration grid"],
+  [".catalog-library-card h3,", "shared catalog typography"],
+  [".catalog-library {\n  background: var(--paper);", "catalog section hierarchy"],
+  [".reference-hero {\n  position: relative;\n  color: #fff;", "dark product-reference hero"],
+  [".reference-hero .button--outline", "product-reference secondary action contrast"],
+  ['grid-template-areas:\n    "media intro"\n    "media details";', "desktop product-reference narrative grid"],
+  ['grid-template-areas:\n      "intro"\n      "media"\n      "details";', "mobile title-image-details reading order"],
+  [".reference-hero__details .hero__actions", "mobile product-reference action spacing"],
+  [".catalog-library-dialog {\n  width: min(980px, calc(100% - 32px));\n  color: #fff;", "catalog preview visual continuity"],
+  [".catalog-library-dialog__content .button--outline", "catalog preview secondary action contrast"],
+  [".topline__inner > span:last-child", "desktop topline separation"],
+  [".footer-col {\n    padding-left: 28px;", "desktop footer column rhythm"],
+  [".content-prose,\n.article-copy {\n  max-width: 72ch;", "shared long-form reading width"],
+  ["padding-bottom: calc(96px + env(safe-area-inset-bottom));", "mobile footer clearance"],
+  ["body.analytics-consent-open .floating-contact", "mobile consent-panel collision guard"],
+  ["grid-template-columns: repeat(3, minmax(0, 1fr));\n    flex-direction: row;", "mobile quick-contact action layout"],
+  [".js .catalog-library__mobile-category", "mobile catalog category selector"],
+  [".catalog-library-dialog__close {\n    position: sticky;", "mobile sticky catalog close action"],
+  ["body.catalog-dialog-open .floating-contact", "catalog-dialog contact collision guard"],
+  [".site-footer {\n  border-top: 1px solid rgba(194, 163, 94, 0.28);", "site-wide footer seam"],
+];
+requiredVisualSystemSignals.forEach(([signal, label]) => {
+  if (!siteStyle.includes(signal)) errors.push(`Visual system is missing ${label}`);
 });
 
 const privacyPage = readPage("privacy.html")?.html || "";
@@ -1538,6 +2197,7 @@ if (!fs.existsSync(robotsPath)) {
     ["User-agent: OAI-SearchBot", "OAI-SearchBot policy"],
     ["Disallow: /api/", "API crawl block"],
     [`Sitemap: ${siteOrigin}/sitemap.xml`, "sitemap declaration"],
+    [`Sitemap: ${siteOrigin}/image-sitemap.xml`, "image sitemap declaration"],
     [`Sitemap: ${siteOrigin}/feed.xml`, "RSS feed declaration"],
   ];
   requiredRobotsSignals.forEach(([signal, label]) => {
@@ -1563,6 +2223,8 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/wine-bottle-gift-box-specification.html`, "wine bottle gift box specification guide"],
     [`${siteOrigin}/hang-tag-production-checklist.html`, "hang tag production checklist"],
     [`${siteOrigin}/custom-tissue-paper-printing-guide.html`, "custom tissue paper printing guide"],
+    [`${siteOrigin}/custom-packaging-lead-time-planner.html`, "custom packaging lead time planner"],
+    [`${siteOrigin}/paper-thickness-gsm-pt-mm-conversion-guide.html`, "paper thickness conversion guide"],
     [`${siteOrigin}/paper-tube-packaging-size-guide.html`, "paper tube packaging size guide"],
     [`${siteOrigin}/jewelry-box-insert-design-guide.html`, "jewelry box insert design guide"],
     [`${siteOrigin}/corrugated-shipping-box-specification-guide.html`, "corrugated shipping box specification guide"],
@@ -1593,7 +2255,11 @@ const indexNowKey = "22368291acb50c0fb4b3a1ab806495d4";
 const indexNowKeyPath = path.join(root, `${indexNowKey}.txt`);
 const indexNowScriptPath = path.join(root, "scripts", "submit-indexnow.mjs");
 const productionIndexAuditPath = path.join(root, "scripts", "audit-production-indexing.mjs");
+const productionImageAuditPath = path.join(root, "scripts", "audit-production-image-sitemap.mjs");
 const productionServiceAuditPath = path.join(root, "scripts", "audit-production-services.mjs");
+const productionContactAuditPath = path.join(root, "scripts", "audit-production-contact.mjs");
+const productionShellAuditPath = path.join(root, "scripts", "audit-production-shell.mjs");
+const siteShellSyncPath = path.join(root, "scripts", "synchronize-site-shell.mjs");
 const buildOutputValidationPath = path.join(root, "scripts", "validate-build-output.mjs");
 if (!fs.existsSync(indexNowKeyPath) || fs.readFileSync(indexNowKeyPath, "utf8").trim() !== indexNowKey) {
   errors.push("IndexNow: root verification key file is missing or inconsistent");
@@ -1611,6 +2277,74 @@ if (!fs.existsSync(productionServiceAuditPath)) {
     if (!productionServiceAudit.includes(signal)) errors.push(`Production service audit is missing ${label}`);
   });
 }
+if (!fs.existsSync(productionContactAuditPath)) {
+  errors.push("Production contact audit script is missing");
+} else {
+  const productionContactAudit = fs.readFileSync(productionContactAuditPath, "utf8");
+  const requiredProductionContactSignals = [
+    ["https://wa.me/8619577608248", "current WhatsApp route"],
+    ["tel:+8619577608248", "current direct-call route"],
+    ["+86-195-7760-8248", "current structured telephone"],
+    ["retiredPhonePattern", "retired-number rejection"],
+    ["sitemap.xml", "whole-site contact crawl"],
+    ["assets/site.js", "browser quote fallback check"],
+  ];
+  requiredProductionContactSignals.forEach(([signal, label]) => {
+    if (!productionContactAudit.includes(signal)) errors.push(`Production contact audit is missing ${label}`);
+  });
+}
+if (!fs.existsSync(siteShellSyncPath)) {
+  errors.push("Site-shell synchronization script is missing");
+} else {
+  const siteShellSync = fs.readFileSync(siteShellSyncPath, "utf8");
+  const requiredSiteShellSignals = [
+    [requiredToplinePrimary, "shared topline message"],
+    [requiredFooterBrand, "shared footer brand statement"],
+    [requiredFooterSignature, "shared footer signature"],
+    ['const footerHeadings = ["Products", "Explore", "Contact"]', "shared footer column headings"],
+    ['floating-contact floating-contact--home', "shared quick-contact toolbar"],
+    ['href="tel:+8619577608248"', "shared direct-call action"],
+    ["floatingContactPattern", "existing quick-contact replacement"],
+    ["mainContentPattern", "focusable main-content target"],
+    ["normalizedNavigation", "current-navigation token normalization"],
+    ['aria-labelledby="quote-section-title"', "quote-form accessible name"],
+    ["assetVersions", "content-derived shared asset versions"],
+    ["expected three footer navigation columns", "footer column-count guard"],
+  ];
+  requiredSiteShellSignals.forEach(([signal, label]) => {
+    if (!siteShellSync.includes(signal)) errors.push(`Site-shell synchronization is missing ${label}`);
+  });
+}
+if (!fs.existsSync(productionShellAuditPath)) {
+  errors.push("Production shell audit script is missing");
+} else {
+  const productionShellAudit = fs.readFileSync(productionShellAuditPath, "utf8");
+  const requiredProductionShellSignals = [
+    [requiredToplinePrimary, "shared topline message"],
+    [requiredFooterBrand, "shared footer brand statement"],
+    [requiredFooterSignature, "shared footer signature"],
+    ["sitemap.xml", "whole-site crawl"],
+    ["404.html", "non-indexable shell check"],
+    ["shared quick-contact toolbar mismatch", "quick-contact toolbar check"],
+    ["focusable main-content target mismatch", "skip-link target check"],
+    ["quote-form accessibility relationship mismatch", "quote-form relationship check"],
+    ["assets/site.css", "production visual-system hash check"],
+    ["production content differs from the local release", "stale production CSS rejection"],
+    ["mobile quick-contact collision guard is missing", "mobile quick-contact style check"],
+    ["assets/analytics.js", "production interaction-script hash check"],
+    ["expected analytics.js version", "per-page interaction-script version check"],
+    ["consent collision restoration is missing", "mobile consent-state restoration check"],
+    ["assets/site.js", "production shared-interaction hash check"],
+    ["expected site.js version", "per-page shared-interaction version check"],
+    ["assets/catalog.js", "production catalog-interaction hash check"],
+    ["expected catalog.js version", "catalog interaction-version check"],
+    ["restorable URL state is missing", "catalog URL-state check"],
+    ["correctable attachment error is missing", "attachment correction check"],
+  ];
+  requiredProductionShellSignals.forEach(([signal, label]) => {
+    if (!productionShellAudit.includes(signal)) errors.push(`Production shell audit is missing ${label}`);
+  });
+}
 if (!fs.existsSync(buildOutputValidationPath)) {
   errors.push("Build Output validation script is missing");
 } else {
@@ -1619,6 +2353,7 @@ if (!fs.existsSync(buildOutputValidationPath)) {
     ['Function config is not valid JSON', "API function config parsing"],
     ['Missing function handler bundle', "API function handler presence"],
     ['Function source mismatch', "API function source freshness"],
+    ['Unexpected static file', "unexpected static file rejection"],
   ];
   requiredBuildOutputSignals.forEach(([signal, label]) => {
     if (!buildOutputValidation.includes(signal)) errors.push(`Build Output validation is missing ${label}`);
@@ -1633,6 +2368,8 @@ if (!fs.existsSync(indexNowScriptPath)) {
     ["const keyLocation = `${siteOrigin}/${indexNowKey}.txt`;", "root key location"],
     ["sitemap.xml", "sitemap URL source"],
     ["url.origin !== siteOrigin", "same-origin submission guard"],
+    ["Production sitemap does not exactly match the local release", "production sitemap release guard"],
+    ["production HTML does not match the local release", "production HTML release guard"],
   ];
   requiredIndexNowSignals.forEach(([signal, label]) => {
     if (!indexNowScript.includes(signal)) errors.push(`IndexNow: submission script is missing ${label}`);
@@ -1647,9 +2384,38 @@ if (!fs.existsSync(productionIndexAuditPath)) {
     ["redirect: \"manual\"", "redirect tracing"],
     ["rel=[\\\"']canonical", "canonical verification"],
     ["www.glorystarpacking.com/index.html", "www index redirect probe"],
+    ["/tmp/authorized-catalog-image-selection.json", "private temporary artifact 404 probe"],
+    ["/assets/catalog/clean-sources/manifest.json", "private clean-source artifact 404 probe"],
+    ["/assets/catalog/import-report.json", "private catalog report 404 probe"],
+    ["/assets/catalog/curated-products.json", "private curated manifest 404 probe"],
   ];
   requiredProductionAuditSignals.forEach(([signal, label]) => {
     if (!productionIndexAudit.includes(signal)) errors.push(`Production indexing audit is missing ${label}`);
+  });
+}
+if (!fs.existsSync(productionImageAuditPath)) {
+  errors.push("Production image sitemap audit script is missing");
+} else {
+  const productionImageAudit = fs.readFileSync(productionImageAuditPath, "utf8");
+  const requiredProductionImageAuditSignals = [
+    ["image-sitemap.xml", "image sitemap crawl source"],
+    ["http://www.google.com/schemas/sitemap-image/1.1", "Google image sitemap namespace check"],
+    ["content-type", "XML and JPEG content-type checks"],
+    ["localImageSitemap", "validated local-release comparison"],
+    ["expectedEntryCount", "dynamic whole-site image count check"],
+    ["entry.page", "detail-page HTTP check"],
+    ["entry.image", "image HTTP check"],
+    ["page primary-image metadata does not match the sitemap image", "whole-site primary-image metadata check"],
+    ["detail page title-image-details order is missing", "product-reference reading-order check"],
+    ["legacy monolithic reference hero remains", "legacy product-reference wrapper check"],
+    ["expected 12 curated reference pages", "curated-reference coverage check"],
+    ["x-robots-tag", "X-Robots-Tag crawl check"],
+    ["robots.txt", "robots declaration check"],
+    ["inspectJpegMetadata", "JPEG metadata inspection"],
+    ["1600727801473.jpg", "known GPS-metadata derivative probe"],
+  ];
+  requiredProductionImageAuditSignals.forEach(([signal, label]) => {
+    if (!productionImageAudit.includes(signal)) errors.push(`Production image sitemap audit is missing ${label}`);
   });
 }
 
@@ -1698,6 +2464,11 @@ if (!fs.existsSync(vercelConfigPath)) {
       entry.headers.some((header) => header.key === "X-Robots-Tag" && header.value.includes("noindex")));
     const indexNowKeyHeader = headers.some((entry) => entry.source === `/${indexNowKey}.txt`);
     const feedHeader = headers.some((entry) => entry.source === "/feed.xml");
+    const imageSitemapHeader = headers.find((entry) => entry.source === "/image-sitemap.xml");
+    const hasImageSitemapCache = Array.isArray(imageSitemapHeader?.headers) && imageSitemapHeader.headers.some((header) =>
+      header.key === "Cache-Control" && header.value.includes("stale-while-revalidate"));
+    const hasImageSitemapNosniff = Array.isArray(imageSitemapHeader?.headers) && imageSitemapHeader.headers.some((header) =>
+      header.key === "X-Content-Type-Options" && header.value === "nosniff");
     const generalAssetsPosition = headers.findIndex((entry) => entry.source === "/assets/(.*)");
     const fontAssetsPosition = headers.findIndex((entry) => entry.source === "/assets/fonts/(.*)");
     const fontAssetsHeader = headers[fontAssetsPosition];
@@ -1711,12 +2482,14 @@ if (!fs.existsSync(vercelConfigPath)) {
     if (!apiNoindex) errors.push("vercel.json: API routes need an X-Robots-Tag noindex header");
     if (!indexNowKeyHeader) errors.push("vercel.json: IndexNow key file cache header is missing");
     if (!feedHeader) errors.push("vercel.json: feed.xml cache header is missing");
+    if (!hasImageSitemapCache) errors.push("vercel.json: image-sitemap.xml cache header is missing");
+    if (!hasImageSitemapNosniff) errors.push("vercel.json: image-sitemap.xml nosniff header is missing");
     if (generalAssetsPosition < 0 || fontAssetsPosition <= generalAssetsPosition) {
       errors.push("vercel.json: the font header rule must follow and override the general assets rule");
     }
     if (!hasImmutableFontCache) errors.push("vercel.json: fonts need a one-year immutable cache header");
     if (!hasFontCors) errors.push("vercel.json: fonts need an explicit cross-origin response header");
-    for (const assetPath of ["/assets/site.css", "/assets/site.js", "/assets/analytics.js"]) {
+    for (const assetPath of ["/assets/site.css", "/assets/site.js", "/assets/analytics.js", "/assets/catalog.js", "/assets/catalog/catalog.json"]) {
       const assetPosition = headers.findIndex((entry) => entry.source === assetPath);
       const assetHeaders = headers[assetPosition]?.headers;
       const hasImmutableCache = Array.isArray(assetHeaders) && assetHeaders.some((header) =>

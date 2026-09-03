@@ -7,6 +7,8 @@
 .vercel/
 node_modules/
 scripts/
+tmp/
+translations/
 *.md
 CNAME
 
@@ -18,3 +20,20 @@ CNAME
 * [0-9].webmanifest
 * [0-9][0-9].webmanifest
 * [0-9][0-9][0-9].webmanifest
+
+# Ignore iCloud conflict copies created inside generated catalog image folders.
+assets/catalog/products/* [0-9].jpg
+assets/catalog/products/* [0-9][0-9].jpg
+assets/catalog/previews/* [0-9].jpg
+assets/catalog/previews/* [0-9][0-9].jpg
+
+# Clean source masters are build inputs. Only their optimized card and preview
+# derivatives are public.
+assets/catalog/clean-sources/
+
+# Catalog build reports, unused category fallbacks, and superseded previews are
+# local inputs/audits rather than public site assets.
+assets/catalog/import-report.json
+assets/catalog/curated-products.json
+assets/catalog/categories/
+assets/catalog/previews/60697040446.jpg

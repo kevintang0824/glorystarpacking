@@ -2,8 +2,10 @@
   document.documentElement.classList.add("js");
 
   const header = document.querySelector(".site-header");
+  const headerLogo = header?.querySelector('.logo[href]');
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".site-nav");
+  const mainContent = document.querySelector("#main-content");
   const mobileNavigation = window.matchMedia("(max-width: 900px)");
   const navigationBackground = () => [
     document.querySelector(".topline"),
@@ -14,9 +16,20 @@
   ].filter(Boolean);
 
   const navigationFocusables = () => [
+    headerLogo,
     navToggle,
-    ...nav.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
-  ].filter((element) => element && !element.hasAttribute("disabled"));
+    ...nav.querySelectorAll('a[href], summary, button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+  ].filter((element) => element && !element.hasAttribute("disabled") && element.getClientRects().length);
+
+  const updateNavigationViewport = () => {
+    if (!nav) return;
+    if (!mobileNavigation.matches) {
+      nav.style.removeProperty("--navigation-viewport-height");
+      return;
+    }
+    const navigationTop = Math.max(0, nav.getBoundingClientRect().top);
+    nav.style.setProperty("--navigation-viewport-height", `${Math.max(240, window.innerHeight - navigationTop)}px`);
+  };
 
   const setNavOpen = (open, returnFocus = false) => {
     if (!navToggle || !nav) return;
@@ -24,6 +37,7 @@
     navToggle.setAttribute("aria-expanded", String(shouldOpen));
     navToggle.setAttribute("aria-label", shouldOpen ? "Close navigation" : "Open navigation");
     nav.classList.toggle("is-open", shouldOpen);
+    updateNavigationViewport();
     document.body.classList.toggle("nav-open", shouldOpen);
     nav.toggleAttribute("inert", mobileNavigation.matches && !shouldOpen);
     navigationBackground().forEach((element) => element.toggleAttribute("inert", shouldOpen));
@@ -72,6 +86,11 @@
   } else {
     mobileNavigation.addListener(handleNavigationBreakpoint);
   }
+  window.addEventListener("resize", updateNavigationViewport, { passive: true });
+
+  document.querySelector('.skip-link[href="#main-content"]')?.addEventListener("click", () => {
+    window.requestAnimationFrame(() => mainContent?.focus({ preventScroll: true }));
+  });
 
   document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     const currentLabel = (link.getAttribute("aria-label") || link.innerText || link.textContent || "")
@@ -125,6 +144,13 @@
     document.querySelectorAll('select[name="product"]').forEach((select) => {
       const hasOption = Array.from(select.options).some((option) => option.value === requestedProduct);
       if (hasOption) select.value = requestedProduct;
+    });
+  }
+  const requestedCatalog = (params.get("catalog") || "").trim().toUpperCase();
+  if (/^GS-\d{7}$/.test(requestedCatalog)) {
+    document.querySelectorAll('textarea[name="details"]').forEach((textarea) => {
+      if (textarea.value.trim()) return;
+      textarea.value = `Catalog reference: ${requestedCatalog}\nPlease quote this product reference against the dimensions, quantity, artwork, and destination provided below.`;
     });
   }
 
@@ -479,7 +505,7 @@
   };
 
   const buildWhatsApp = (payload) => {
-    const urlPrefix = "https://wa.me/8618020755949?text=";
+    const urlPrefix = "https://wa.me/8619577608248?text=";
     const greeting = "Hello Kevin, I would like a packaging quote.\n\n";
     const message = `${greeting}${buildDirectProjectBrief(payload, urlPrefix.length + encodeURIComponent(greeting).length)}`;
     return `${urlPrefix}${encodeURIComponent(message)}`;
@@ -512,6 +538,7 @@
     whatsappLink.target = "_blank";
     whatsappLink.rel = "noopener";
     whatsappLink.textContent = "Send by WhatsApp";
+    whatsappLink.setAttribute("aria-label", "Send by WhatsApp (opens in a new tab)");
     whatsappLink.addEventListener("click", () => {
       document.dispatchEvent(new CustomEvent("glorystarpack:quote-fallback-action", { detail: { method: "whatsapp" } }));
     });
@@ -567,10 +594,37 @@
     }
 
     status.dataset.state = "fallback";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
     document.dispatchEvent(new CustomEvent("glorystarpack:quote-email-fallback", {
       detail: { hasAttachment: Boolean(attachmentName || payload.attachment) },
     }));
     if (options.focusFirst !== false) emailLink.focus();
+  };
+
+  let quoteDeliveryAvailabilityPromise;
+  const checkQuoteDeliveryAvailability = () => {
+    if (quoteDeliveryAvailabilityPromise) return quoteDeliveryAvailabilityPromise;
+    quoteDeliveryAvailabilityPromise = (async () => {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 2500);
+      try {
+        const response = await fetch("/api/health", {
+          credentials: "same-origin",
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        const result = await response.json().catch(() => null);
+        if (response.status === 503 && result?.services?.quoteEmail?.configured === false) return "unconfigured";
+        if (response.ok && result?.services?.quoteEmail?.configured === true) return "available";
+        return "unknown";
+      } catch {
+        return "unknown";
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
+    })();
+    return quoteDeliveryAvailabilityPromise;
   };
 
   document.querySelectorAll(".quote-form").forEach((form) => {
@@ -618,22 +672,58 @@
       optionalFields.forEach((field) => optionalGrid.append(field));
       optionalDetails.append(optionalSummary, optionalGrid);
 
+      const formDetails = form.querySelector('textarea[name="details"]');
+      if (requestedCatalog && formDetails?.value.includes(`Catalog reference: ${requestedCatalog}`)) {
+        optionalDetails.open = true;
+        optionalSummary.querySelector("small").textContent = `${requestedCatalog} is included · add dimensions, date, details, or artwork`;
+      }
+
       const trap = formGrid.querySelector(".form-trap");
       formGrid.insertBefore(optionalDetails, trap || null);
     }
 
+    const setStatusAnnouncement = (urgent = false) => {
+      const status = form.querySelector(".form-status");
+      if (!status) return;
+      status.setAttribute("role", urgent ? "alert" : "status");
+      status.setAttribute("aria-live", urgent ? "assertive" : "polite");
+    };
+
     const showValidationState = () => {
       const status = form.querySelector(".form-status");
       const invalidFields = Array.from(form.querySelectorAll(":invalid"));
-      invalidFields.forEach((field) => field.setAttribute("aria-invalid", "true"));
+      invalidFields.forEach((field) => {
+        field.setAttribute("aria-invalid", "true");
+        if (status?.id) field.setAttribute("aria-errormessage", status.id);
+      });
       if (status && invalidFields.length) {
+        setStatusAnnouncement(true);
         status.textContent = invalidFields.length > 1
           ? `Please correct the ${invalidFields.length} highlighted fields before sending.`
           : "Please correct the highlighted field before sending.";
         status.dataset.state = "error";
+        if (!form.dataset.validationFocusPending) {
+          form.dataset.validationFocusPending = "true";
+          window.requestAnimationFrame(() => {
+            invalidFields[0]?.focus();
+            delete form.dataset.validationFocusPending;
+          });
+        }
       }
     };
     form.addEventListener("invalid", showValidationState, true);
+
+    checkQuoteDeliveryAvailability().then((availability) => {
+      if (availability !== "unconfigured") return;
+      form.dataset.quoteDelivery = "direct";
+      const submitButton = form.querySelector('button[type="submit"]');
+      const status = form.querySelector(".form-status");
+      if (submitButton && !submitButton.disabled) submitButton.textContent = "Prepare email or WhatsApp";
+      if (status && !status.textContent.trim()) {
+        status.textContent = "Automatic email delivery is temporarily unavailable. Complete the form to prepare the same brief for Email or WhatsApp.";
+        status.dataset.state = "notice";
+      }
+    });
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -662,6 +752,7 @@
       };
 
       if (status) {
+        setStatusAnnouncement();
         status.textContent = "Preparing your request…";
         status.dataset.state = "";
       }
@@ -676,6 +767,19 @@
 
       try {
         payload.attachment = await fileToAttachment(fileInput?.files?.[0]);
+
+        const deliveryAvailability = form.dataset.quoteDelivery === "direct"
+          ? "unconfigured"
+          : await checkQuoteDeliveryAvailability();
+        if (deliveryAvailability === "unconfigured") {
+          document.dispatchEvent(new CustomEvent("glorystarpack:quote-delivery-error", {
+            detail: { reason: "not_configured", statusGroup: "none" },
+          }));
+          renderDeliveryFallback(status, payload, {
+            message: "Automatic email delivery is temporarily unavailable. Your completed brief is ready—continue by Email or WhatsApp, or copy the full project brief.",
+          });
+          return;
+        }
 
         const controller = new AbortController();
         timeoutId = window.setTimeout(() => controller.abort(), 18000);
@@ -730,10 +834,18 @@
           document.dispatchEvent(new CustomEvent("glorystarpack:quote-validation-error", {
             detail: { reason: "attachment" },
           }));
-          renderDeliveryFallback(status, payload, {
-            message: `${error.message || "The selected artwork could not be prepared."} Your form is still filled in—send the brief through Email or WhatsApp and add the artwork manually.`,
-            attachmentName: fileInput?.files?.[0]?.name || "",
-          });
+          const optionalDetails = fileInput?.closest("details");
+          if (optionalDetails) optionalDetails.open = true;
+          if (fileInput) {
+            fileInput.setAttribute("aria-invalid", "true");
+            if (status?.id) fileInput.setAttribute("aria-errormessage", status.id);
+          }
+          if (status) {
+            setStatusAnnouncement(true);
+            status.textContent = `${error.message || "The selected artwork could not be prepared."} Choose another file, or remove it and send the brief without an attachment.`;
+            status.dataset.state = "error";
+          }
+          fileInput?.focus();
           return;
         }
         renderDeliveryFallback(status, payload, {
@@ -753,6 +865,7 @@
       if (!(field instanceof HTMLElement) || field.getAttribute("aria-invalid") !== "true") return;
       if ("validity" in field && !field.validity.valid) return;
       field.removeAttribute("aria-invalid");
+      field.removeAttribute("aria-errormessage");
       const status = form.querySelector(".form-status");
       if (status?.dataset.state === "error") {
         const unresolvedFieldCount = form.querySelectorAll('[aria-invalid="true"]').length;
@@ -763,6 +876,7 @@
         } else {
           status.textContent = "";
           status.dataset.state = "";
+          setStatusAnnouncement();
         }
       }
     };
@@ -774,7 +888,7 @@
   if (roiCalculator) {
     const output = (name) => roiCalculator.querySelector(`[data-roi-output="${name}"]`);
     const formatNumber = (value, fractionDigits = 2) =>
-      new Intl.NumberFormat(undefined, {
+      new Intl.NumberFormat(document.documentElement.lang, {
         minimumFractionDigits: fractionDigits,
         maximumFractionDigits: fractionDigits,
       }).format(value);
@@ -797,13 +911,13 @@
 
       output("investment").textContent = formatNumber(investment);
       output("unit-delta").textContent = formatNumber(unitDelta);
-      output("orders").textContent = new Intl.NumberFormat().format(breakEvenOrders);
+      output("orders").textContent = new Intl.NumberFormat(document.documentElement.lang).format(breakEvenOrders);
       output("lift").textContent = `${formatNumber(requiredLift, 1)}%`;
 
       if (investment <= 0) {
         output("interpretation").textContent = `With these assumptions, the custom route is ${formatNumber(Math.abs(investment))} lower across the run in your chosen currency after one-time costs. Verify that both routes include the same usable landed scope.`;
       } else {
-        output("interpretation").textContent = `With these assumptions, the upgrade needs contribution from ${new Intl.NumberFormat().format(breakEvenOrders)} incremental orders to recover ${formatNumber(investment)} in your chosen currency, before any verified operating savings are counted.`;
+        output("interpretation").textContent = `With these assumptions, the upgrade needs contribution from ${new Intl.NumberFormat(document.documentElement.lang).format(breakEvenOrders)} incremental orders to recover ${formatNumber(investment)} in your chosen currency, before any verified operating savings are counted.`;
       }
     };
 
@@ -819,7 +933,7 @@
   if (rigidBoxLogisticsCalculator) {
     const output = (name) => rigidBoxLogisticsCalculator.querySelector(`[data-rigid-output="${name}"]`);
     const formatNumber = (value, fractionDigits = 2) =>
-      new Intl.NumberFormat(undefined, {
+      new Intl.NumberFormat(document.documentElement.lang, {
         minimumFractionDigits: fractionDigits,
         maximumFractionDigits: fractionDigits,
       }).format(value);
@@ -877,7 +991,7 @@
       output("planning-balance").textContent = `${planningBalance < 0 ? "−" : ""}${formatNumber(Math.abs(planningBalance))}`;
 
       const direction = cubeDifference >= 0 ? "reduces" : "increases";
-      output("interpretation").textContent = `Across ${new Intl.NumberFormat().format(quantity)} units, these inputs use ${new Intl.NumberFormat().format(setupCartons)} setup-box cartons and ${new Intl.NumberFormat().format(flatCartons)} collapsible cartons. The collapsible route ${direction} calculated empty-box cube by ${formatNumber(Math.abs(cubeDifference))} m³ and adds ${formatNumber(assemblyHours)} assembly hours. The optional planning balance is cube value minus assembly labor only.`;
+      output("interpretation").textContent = `Across ${new Intl.NumberFormat(document.documentElement.lang).format(quantity)} units, these inputs use ${new Intl.NumberFormat(document.documentElement.lang).format(setupCartons)} setup-box cartons and ${new Intl.NumberFormat(document.documentElement.lang).format(flatCartons)} collapsible cartons. The collapsible route ${direction} calculated empty-box cube by ${formatNumber(Math.abs(cubeDifference))} m³ and adds ${formatNumber(assemblyHours)} assembly hours. The optional planning balance is cube value minus assembly labor only.`;
     };
 
     rigidBoxLogisticsCalculator.addEventListener("submit", (event) => {
@@ -892,7 +1006,7 @@
   if (shippingCasePlanner) {
     const output = (name) => shippingCasePlanner.querySelector(`[data-case-output="${name}"]`);
     const formatNumber = (value, fractionDigits = 2) =>
-      new Intl.NumberFormat(undefined, {
+      new Intl.NumberFormat(document.documentElement.lang, {
         minimumFractionDigits: fractionDigits,
         maximumFractionDigits: fractionDigits,
       }).format(value);
@@ -924,19 +1038,19 @@
       const palletCount = casesPerPallet > 0 ? Math.ceil(Math.floor(caseCount) / casesPerPallet) : 0;
       const orientation = rotatedPerLayer > unrotatedPerLayer ? "rotated" : "unrotated";
 
-      output("units").textContent = new Intl.NumberFormat().format(shippedUnits);
+      output("units").textContent = new Intl.NumberFormat(document.documentElement.lang).format(shippedUnits);
       output("case-cube").textContent = `${formatNumber(caseCube, 3)} m³`;
       output("total-cube").textContent = `${formatNumber(totalCube)} m³`;
       output("total-weight").textContent = `${formatNumber(totalWeight)} kg`;
-      output("per-layer").textContent = new Intl.NumberFormat().format(casesPerLayer);
-      output("pallets").textContent = casesPerPallet > 0 ? new Intl.NumberFormat().format(palletCount) : "No full layer";
+      output("per-layer").textContent = new Intl.NumberFormat(document.documentElement.lang).format(casesPerLayer);
+      output("pallets").textContent = casesPerPallet > 0 ? new Intl.NumberFormat(document.documentElement.lang).format(palletCount) : "No full layer";
 
       if (!casesPerLayer || !layers) {
         output("interpretation").textContent = "The entered case does not fit a complete same-orientation grid within the entered pallet footprint or available load height. Check the dimensions and obtain an engineered load plan.";
         return;
       }
 
-      output("interpretation").textContent = `The ${orientation} same-orientation check fits ${new Intl.NumberFormat().format(casesPerLayer)} cases per layer. At ${new Intl.NumberFormat().format(layers)} full case layers, the simple grid holds ${new Intl.NumberFormat().format(casesPerPallet)} cases per pallet and requires ${new Intl.NumberFormat().format(palletCount)} pallet positions for ${new Intl.NumberFormat().format(Math.floor(caseCount))} cases. Confirm a physical unit load before approval.`;
+      output("interpretation").textContent = `The ${orientation} same-orientation check fits ${new Intl.NumberFormat(document.documentElement.lang).format(casesPerLayer)} cases per layer. At ${new Intl.NumberFormat(document.documentElement.lang).format(layers)} full case layers, the simple grid holds ${new Intl.NumberFormat(document.documentElement.lang).format(casesPerPallet)} cases per pallet and requires ${new Intl.NumberFormat(document.documentElement.lang).format(palletCount)} pallet positions for ${new Intl.NumberFormat(document.documentElement.lang).format(Math.floor(caseCount))} cases. Confirm a physical unit load before approval.`;
     };
 
     shippingCasePlanner.addEventListener("submit", (event) => {
@@ -951,7 +1065,7 @@
   if (jewelryInsertFitPlanner) {
     const output = (name) => jewelryInsertFitPlanner.querySelector(`[data-jewelry-output="${name}"]`);
     const formatNumber = (value, fractionDigits = 1) =>
-      new Intl.NumberFormat(undefined, {
+      new Intl.NumberFormat(document.documentElement.lang, {
         minimumFractionDigits: fractionDigits,
         maximumFractionDigits: fractionDigits,
       }).format(value);
@@ -1033,7 +1147,7 @@
   if (paperTubeSizePlanner) {
     const output = (name) => paperTubeSizePlanner.querySelector(`[data-tube-output="${name}"]`);
     const formatNumber = (value) =>
-      new Intl.NumberFormat(undefined, {
+      new Intl.NumberFormat(document.documentElement.lang, {
         minimumFractionDigits: 1,
         maximumFractionDigits: 1,
       }).format(value);
@@ -1087,5 +1201,264 @@
     });
     paperTubeSizePlanner.addEventListener("input", calculatePaperTubeSize);
     calculatePaperTubeSize();
+  }
+
+  const paperCaliperConverter = document.querySelector("#paper-caliper-converter-form");
+  if (paperCaliperConverter) {
+    const output = (name) => paperCaliperConverter.querySelector(`[data-caliper-output="${name}"]`);
+    const unitToMillimetres = {
+      pt: 0.0254,
+      mm: 1,
+      micron: 0.001,
+      inch: 25.4,
+    };
+    const formatNumber = (value, fractionDigits) =>
+      new Intl.NumberFormat(document.documentElement.lang, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      }).format(value);
+
+    const calculatePaperCaliper = () => {
+      const formData = new FormData(paperCaliperConverter);
+      const value = Number(formData.get("caliperValue"));
+      const unit = String(formData.get("caliperUnit") || "pt");
+      const multiplier = unitToMillimetres[unit];
+      if (!Number.isFinite(value) || value <= 0 || !multiplier) return;
+
+      const millimetres = value * multiplier;
+      const points = millimetres / unitToMillimetres.pt;
+      const micrometres = millimetres / unitToMillimetres.micron;
+      const inches = millimetres / unitToMillimetres.inch;
+
+      output("pt").textContent = `${formatNumber(points, 3)} pt`;
+      output("mm").textContent = `${formatNumber(millimetres, 4)} mm`;
+      output("micron").textContent = `${formatNumber(micrometres, 1)} µm`;
+      output("inch").textContent = `${formatNumber(inches, 5)} in`;
+      output("interpretation").textContent = `${formatNumber(points, 3)} pt equals ${formatNumber(millimetres, 4)} mm. Confirm the actual board grade, tolerance, stiffness, surface, crease behavior, and production-equivalent sample before approval.`;
+    };
+
+    paperCaliperConverter.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (paperCaliperConverter.reportValidity()) calculatePaperCaliper();
+    });
+    paperCaliperConverter.addEventListener("input", calculatePaperCaliper);
+    paperCaliperConverter.addEventListener("change", calculatePaperCaliper);
+    calculatePaperCaliper();
+  }
+
+  const packagingLeadTimePlanner = document.querySelector("#packaging-lead-time-planner");
+  if (packagingLeadTimePlanner) {
+    const output = (name) => packagingLeadTimePlanner.querySelector(`[data-lead-time-output="${name}"]`);
+    const copyButton = packagingLeadTimePlanner.querySelector("[data-lead-time-copy]");
+    const copyStatus = packagingLeadTimePlanner.querySelector("[data-lead-time-copy-status]");
+    const modeField = packagingLeadTimePlanner.elements.mode;
+    const anchorDateField = packagingLeadTimePlanner.elements.anchorDate;
+    const dateHelp = packagingLeadTimePlanner.querySelector("[data-lead-time-date-help]");
+    const dateFormatter = new Intl.DateTimeFormat(document.documentElement.lang, {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+    const boundaryLabels = [
+      "Brief ready / planning starts",
+      "Scope and quotation locked",
+      "Dieline and artwork ready",
+      "Initial sample built",
+      "Initial sample received",
+      "Initial review completed",
+      "Final approval after revisions",
+      "Material and tooling ready",
+      "Bulk goods ready",
+      "Inspection and export packing complete",
+      "Planned warehouse arrival",
+      "Required delivery / contingency reserve",
+    ];
+    let lastSummary = "";
+
+    const utcToday = () => {
+      const now = new Date();
+      return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    };
+    const addCalendarDays = (date, days) => {
+      const result = new Date(date.getTime());
+      result.setUTCDate(result.getUTCDate() + days);
+      return result;
+    };
+    const parseDate = (value) => {
+      const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (!match) return null;
+      const date = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+      return Number.isNaN(date.getTime()) ? null : date;
+    };
+    const formatDate = (date) => dateFormatter.format(date);
+    const formatInputDate = (date) => date.toISOString().slice(0, 10);
+    const daysBetween = (start, end) => Math.round((end.getTime() - start.getTime()) / 86_400_000);
+    const readInteger = (formData, name) => {
+      const raw = String(formData.get(name) ?? "").trim();
+      if (!raw) return null;
+      const value = Number(raw);
+      return Number.isInteger(value) && value >= 0 ? value : null;
+    };
+    const setDefaultAnchorDate = () => {
+      const defaultDate = modeField.value === "backward" ? addCalendarDays(utcToday(), 90) : utcToday();
+      anchorDateField.value = formatInputDate(defaultDate);
+    };
+    const updateModeCopy = () => {
+      const backward = modeField.value === "backward";
+      dateHelp.textContent = backward ? "Required warehouse delivery date" : "Date the complete project brief is ready";
+      output("date-label").textContent = backward ? "Latest brief-ready date" : "Projected delivery date";
+    };
+    const clearResults = () => {
+      output("total-days").textContent = "—";
+      output("weeks").textContent = "—";
+      output("calculated-date").textContent = "—";
+      output("status").textContent = "Awaiting inputs";
+      output("interpretation").textContent = "Enter the date and every buyer- or supplier-confirmed stage duration. The tool uses calendar days and does not remove weekends, public holidays, shutdowns, congestion, or customs time.";
+      output("milestones").innerHTML = "<li><strong>Awaiting inputs</strong><span>Complete every stage to generate the dated milestone path.</span></li>";
+      copyStatus.textContent = "Enter every stage to calculate.";
+      lastSummary = "";
+    };
+    const calculateLeadTime = () => {
+      const formData = new FormData(packagingLeadTimePlanner);
+      const anchorDate = parseDate(formData.get("anchorDate"));
+      const inputNames = [
+        "scopeDays",
+        "artworkDays",
+        "sampleBuildDays",
+        "sampleTransitDays",
+        "buyerReviewDays",
+        "revisionRounds",
+        "revisionCycleDays",
+        "materialDays",
+        "productionDays",
+        "releaseDays",
+        "deliveryDays",
+        "bufferDays",
+      ];
+      const values = Object.fromEntries(inputNames.map((name) => [name, readInteger(formData, name)]));
+      if (!anchorDate || Object.values(values).some((value) => value === null)) {
+        clearResults();
+        return false;
+      }
+
+      const revisionDays = values.revisionRounds * values.revisionCycleDays;
+      const stageDays = [
+        values.scopeDays,
+        values.artworkDays,
+        values.sampleBuildDays,
+        values.sampleTransitDays,
+        values.buyerReviewDays,
+        revisionDays,
+        values.materialDays,
+        values.productionDays,
+        values.releaseDays,
+        values.deliveryDays,
+        values.bufferDays,
+      ];
+      const totalDays = stageDays.reduce((sum, days) => sum + days, 0);
+      const backward = formData.get("mode") === "backward";
+      const milestoneDates = new Array(boundaryLabels.length);
+      let currentDate = anchorDate;
+
+      if (backward) {
+        milestoneDates[milestoneDates.length - 1] = currentDate;
+        for (let index = stageDays.length - 1; index >= 0; index -= 1) {
+          currentDate = addCalendarDays(currentDate, -stageDays[index]);
+          milestoneDates[index] = currentDate;
+        }
+      } else {
+        milestoneDates[0] = currentDate;
+        stageDays.forEach((days, index) => {
+          currentDate = addCalendarDays(currentDate, days);
+          milestoneDates[index + 1] = currentDate;
+        });
+      }
+
+      const calculatedDate = backward ? milestoneDates[0] : milestoneDates.at(-1);
+      const slackDays = backward ? daysBetween(utcToday(), calculatedDate) : null;
+      const status = backward
+        ? (slackDays >= 0
+          ? `${slackDays} day${slackDays === 1 ? "" : "s"} until latest start`
+          : `Latest start was ${Math.abs(slackDays)} day${Math.abs(slackDays) === 1 ? "" : "s"} ago`)
+        : "Forward scenario";
+
+      output("total-days").textContent = totalDays.toLocaleString(document.documentElement.lang);
+      output("weeks").textContent = `${(totalDays / 7).toFixed(1)} weeks`;
+      output("calculated-date").textContent = formatDate(calculatedDate);
+      output("status").textContent = status;
+      output("interpretation").textContent = backward
+        ? `Working backward ${totalDays} calendar days from ${formatDate(anchorDate)} produces a latest brief-ready date of ${formatDate(calculatedDate)}. Confirm every duration, dependency, holiday, approval trigger, capacity assumption, inspection route, and freight milestone with the responsible party.`
+        : `Projecting ${totalDays} calendar days from ${formatDate(anchorDate)} produces a planning delivery date of ${formatDate(calculatedDate)}. Confirm every duration, dependency, holiday, approval trigger, capacity assumption, inspection route, and freight milestone with the responsible party.`;
+      output("milestones").innerHTML = boundaryLabels.map((label, index) =>
+        `<li><strong>${formatDate(milestoneDates[index])}</strong><span>${String(index + 1).padStart(2, "0")} · ${label}</span></li>`
+      ).join("");
+
+      const summaryLines = [
+        "Custom packaging lead-time planning brief",
+        `Planning mode: ${backward ? "Work backward from required delivery" : "Project forward from brief-ready date"}`,
+        `Anchor date: ${formatInputDate(anchorDate)}`,
+        `Scope and quotation: ${values.scopeDays} calendar days`,
+        `Dieline and artwork: ${values.artworkDays} calendar days`,
+        `Initial sample build: ${values.sampleBuildDays} calendar days`,
+        `Sample transit: ${values.sampleTransitDays} calendar days`,
+        `Buyer review: ${values.buyerReviewDays} calendar days`,
+        `Revision rounds: ${values.revisionRounds}`,
+        `Days per revision: ${values.revisionCycleDays} calendar days`,
+        `Revision total: ${revisionDays} calendar days`,
+        `Material and tooling readiness: ${values.materialDays} calendar days`,
+        `Bulk production: ${values.productionDays} calendar days`,
+        `Inspection and export packing: ${values.releaseDays} calendar days`,
+        `Freight and final delivery: ${values.deliveryDays} calendar days`,
+        `Planning contingency: ${values.bufferDays} calendar days`,
+        `Calculated total: ${totalDays} calendar days (${(totalDays / 7).toFixed(1)} weeks)`,
+        `${backward ? "Calculated latest brief-ready date" : "Calculated projected delivery date"}: ${formatInputDate(calculatedDate)}`,
+        "Boundary: Buyer-entered planning scenario only; not a quotation, production reservation, freight forecast, customs estimate, or delivery guarantee.",
+      ];
+      lastSummary = summaryLines.join("\n");
+      copyStatus.textContent = "Planning brief ready to copy.";
+      return true;
+    };
+
+    packagingLeadTimePlanner.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (packagingLeadTimePlanner.reportValidity()) calculateLeadTime();
+    });
+    packagingLeadTimePlanner.addEventListener("reset", () => {
+      window.setTimeout(() => {
+        updateModeCopy();
+        setDefaultAnchorDate();
+        clearResults();
+      }, 0);
+    });
+    modeField.addEventListener("change", () => {
+      updateModeCopy();
+      if (lastSummary) calculateLeadTime();
+    });
+    copyButton.addEventListener("click", async () => {
+      if (!lastSummary && (!packagingLeadTimePlanner.reportValidity() || !calculateLeadTime())) return;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(lastSummary);
+        } else {
+          const fallback = document.createElement("textarea");
+          fallback.value = lastSummary;
+          fallback.setAttribute("readonly", "");
+          fallback.style.position = "fixed";
+          fallback.style.opacity = "0";
+          document.body.append(fallback);
+          fallback.select();
+          document.execCommand("copy");
+          fallback.remove();
+        }
+        copyStatus.textContent = "Planning brief copied.";
+      } catch {
+        copyStatus.textContent = "Copy unavailable. Select and copy the milestone dates manually.";
+      }
+    });
+
+    updateModeCopy();
+    setDefaultAnchorDate();
+    clearResults();
   }
 })();

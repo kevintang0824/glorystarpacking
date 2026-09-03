@@ -1,0 +1,795 @@
+{
+  "version": "url-only-cleanup-20260827-158-products",
+  "products": {
+    "60519970698": {
+      "file": "60519970698.jpg",
+      "sourceImagePosition": 1,
+      "method": "Pixel-local removal of legacy storefront URL only; original product branding preserved"
+    },
+    "60684605813": {
+      "file": "60684605813.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "60684610689": {
+      "file": "60684610689.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "60732172279": {
+      "file": "60732172279.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1600659075264": {
+      "file": "1600659075264.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1600764304851": {
+      "file": "1600764304851.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1600768789952": {
+      "file": "1600768789952.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1600791405818": {
+      "file": "1600791405818.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1600797576136": {
+      "file": "1600797576136.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601080567716": {
+      "file": "1601080567716.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601113592780": {
+      "file": "1601113592780.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601175357960": {
+      "file": "1601175357960.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601197142349": {
+      "file": "1601197142349.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601201294765": {
+      "file": "1601201294765.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601204563347": {
+      "file": "1601204563347.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601206842703": {
+      "file": "1601206842703.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601585891012": {
+      "file": "1601585891012.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601585909249": {
+      "file": "1601585909249.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601728016942": {
+      "file": "1601728016942.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601728024658": {
+      "file": "1601728024658.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601728064767": {
+      "file": "1601728064767.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601728067953": {
+      "file": "1601728067953.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601728075782": {
+      "file": "1601728075782.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601728176119": {
+      "file": "1601728176119.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601729943770": {
+      "file": "1601729943770.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730005330": {
+      "file": "1601730005330.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730029028": {
+      "file": "1601730029028.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730044982": {
+      "file": "1601730044982.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730049563": {
+      "file": "1601730049563.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730079996": {
+      "file": "1601730079996.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730107175": {
+      "file": "1601730107175.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730129140": {
+      "file": "1601730129140.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730163710": {
+      "file": "1601730163710.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730202322": {
+      "file": "1601730202322.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730325524": {
+      "file": "1601730325524.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730346472": {
+      "file": "1601730346472.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730365932": {
+      "file": "1601730365932.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730399545": {
+      "file": "1601730399545.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601730433696": {
+      "file": "1601730433696.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601731066678": {
+      "file": "1601731066678.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601731113860": {
+      "file": "1601731113860.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601731186246": {
+      "file": "1601731186246.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601731938998": {
+      "file": "1601731938998.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601731979330": {
+      "file": "1601731979330.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601731979694": {
+      "file": "1601731979694.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601732073491": {
+      "file": "1601732073491.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601732076453": {
+      "file": "1601732076453.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601732819057": {
+      "file": "1601732819057.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601733110770": {
+      "file": "1601733110770.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601735073990": {
+      "file": "1601735073990.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601735144462": {
+      "file": "1601735144462.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601735154397": {
+      "file": "1601735154397.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601735178447": {
+      "file": "1601735178447.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601735181334": {
+      "file": "1601735181334.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601738947962": {
+      "file": "1601738947962.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601739013917": {
+      "file": "1601739013917.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601739292211": {
+      "file": "1601739292211.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601739294213": {
+      "file": "1601739294213.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601739320235": {
+      "file": "1601739320235.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601739563382": {
+      "file": "1601739563382.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601740232573": {
+      "file": "1601740232573.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601740287583": {
+      "file": "1601740287583.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601740327287": {
+      "file": "1601740327287.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601740334359": {
+      "file": "1601740334359.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601740363332": {
+      "file": "1601740363332.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601742211713": {
+      "file": "1601742211713.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601742225976": {
+      "file": "1601742225976.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601742302615": {
+      "file": "1601742302615.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601742306537": {
+      "file": "1601742306537.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601742368067": {
+      "file": "1601742368067.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601748908173": {
+      "file": "1601748908173.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601748936945": {
+      "file": "1601748936945.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601748972890": {
+      "file": "1601748972890.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601748976478": {
+      "file": "1601748976478.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749013523": {
+      "file": "1601749013523.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749052625": {
+      "file": "1601749052625.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749064308": {
+      "file": "1601749064308.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749105270": {
+      "file": "1601749105270.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749107213": {
+      "file": "1601749107213.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749221931": {
+      "file": "1601749221931.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749268780": {
+      "file": "1601749268780.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749311584": {
+      "file": "1601749311584.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749350356": {
+      "file": "1601749350356.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749365237": {
+      "file": "1601749365237.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601749382255": {
+      "file": "1601749382255.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751490930": {
+      "file": "1601751490930.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751496956": {
+      "file": "1601751496956.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751508996": {
+      "file": "1601751508996.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751550828": {
+      "file": "1601751550828.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751572990": {
+      "file": "1601751572990.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751674510": {
+      "file": "1601751674510.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751701307": {
+      "file": "1601751701307.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751739608": {
+      "file": "1601751739608.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751785683": {
+      "file": "1601751785683.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751841577": {
+      "file": "1601751841577.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751849565": {
+      "file": "1601751849565.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751867504": {
+      "file": "1601751867504.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751892122": {
+      "file": "1601751892122.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601751915030": {
+      "file": "1601751915030.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601755930957": {
+      "file": "1601755930957.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601756005557": {
+      "file": "1601756005557.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601756018481": {
+      "file": "1601756018481.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601756059299": {
+      "file": "1601756059299.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601760456935": {
+      "file": "1601760456935.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601760547595": {
+      "file": "1601760547595.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601760587427": {
+      "file": "1601760587427.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601760598092": {
+      "file": "1601760598092.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601760628200": {
+      "file": "1601760628200.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601761898965": {
+      "file": "1601761898965.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763252737": {
+      "file": "1601763252737.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763262783": {
+      "file": "1601763262783.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763284953": {
+      "file": "1601763284953.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763292962": {
+      "file": "1601763292962.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763336268": {
+      "file": "1601763336268.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763350253": {
+      "file": "1601763350253.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763363273": {
+      "file": "1601763363273.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763399282": {
+      "file": "1601763399282.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601763434030": {
+      "file": "1601763434030.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601765679780": {
+      "file": "1601765679780.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601765934004": {
+      "file": "1601765934004.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601766201999": {
+      "file": "1601766201999.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601766340178": {
+      "file": "1601766340178.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601766449012": {
+      "file": "1601766449012.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601769200714": {
+      "file": "1601769200714.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601769216606": {
+      "file": "1601769216606.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601769355053": {
+      "file": "1601769355053.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601770636087": {
+      "file": "1601770636087.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601771036627": {
+      "file": "1601771036627.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601771087403": {
+      "file": "1601771087403.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601771135164": {
+      "file": "1601771135164.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601771138038": {
+      "file": "1601771138038.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772090858": {
+      "file": "1601772090858.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772115846": {
+      "file": "1601772115846.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772181409": {
+      "file": "1601772181409.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772715852": {
+      "file": "1601772715852.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772717767": {
+      "file": "1601772717767.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772722891": {
+      "file": "1601772722891.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772729718": {
+      "file": "1601772729718.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772733500": {
+      "file": "1601772733500.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772761361": {
+      "file": "1601772761361.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772791244": {
+      "file": "1601772791244.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772792290": {
+      "file": "1601772792290.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772795234": {
+      "file": "1601772795234.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772798156": {
+      "file": "1601772798156.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772804126": {
+      "file": "1601772804126.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772825073": {
+      "file": "1601772825073.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772826154": {
+      "file": "1601772826154.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601772829119": {
+      "file": "1601772829119.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778164937": {
+      "file": "1601778164937.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778197472": {
+      "file": "1601778197472.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778217966": {
+      "file": "1601778217966.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778230594": {
+      "file": "1601778230594.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778232454": {
+      "file": "1601778232454.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778284966": {
+      "file": "1601778284966.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778293167": {
+      "file": "1601778293167.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778328623": {
+      "file": "1601778328623.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778329428": {
+      "file": "1601778329428.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    },
+    "1601778364334": {
+      "file": "1601778364334.jpg",
+      "sourceImagePosition": 1,
+      "method": "URL-only cleanup: high-fidelity edge trim or precise reconstruction; original product and customer branding preserved"
+    }
+  }
+}

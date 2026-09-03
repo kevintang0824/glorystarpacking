@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
@@ -21,13 +22,15 @@ if (showHelp) {
     "  node scripts/submit-indexnow.mjs / custom-rigid-boxes.html",
     "  INDEXNOW_URLS='/ custom-rigid-boxes.html' node scripts/submit-indexnow.mjs",
     "",
-    "With no URL arguments, the script submits every URL in sitemap.xml for initial launch.",
+    "With no URL arguments, the script submits every URL in the English and language sitemaps.",
   ].join("\n"));
   process.exit(0);
 }
 
-const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
-const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((match) => match[1].trim());
+const sitemapFiles = ["sitemap.xml", "sitemap-languages.xml"];
+const sitemaps = sitemapFiles.map((file) => ({ file, body: fs.readFileSync(path.join(root, file), "utf8") }));
+const sitemapUrls = sitemaps.flatMap(({ body }) => [...body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((match) => match[1].trim()));
+const sitemapUrlSet = new Set(sitemapUrls);
 const environmentUrls = String(process.env.INDEXNOW_URLS || "").split(/\s+/).filter(Boolean);
 const requestedUrls = [
   ...cliArguments.filter((argument) => !argument.startsWith("--")),
@@ -44,6 +47,10 @@ const normalizeUrl = (value) => {
 const urlList = [...new Set((requestedUrls.length ? requestedUrls : sitemapUrls).map(normalizeUrl))];
 if (!urlList.length) throw new Error("No URLs were found to submit.");
 if (urlList.length > 10000) throw new Error("IndexNow accepts at most 10,000 URLs per request.");
+const urlsOutsideSitemap = urlList.filter((url) => !sitemapUrlSet.has(url));
+if (urlsOutsideSitemap.length) {
+  throw new Error(`Refusing to submit URL(s) missing from the site maps: ${urlsOutsideSitemap.join(", ")}`);
+}
 
 const payload = {
   host: siteHost,
@@ -56,6 +63,60 @@ if (dryRun) {
   console.log(`IndexNow dry run: ${urlList.length} URL${urlList.length === 1 ? "" : "s"} ready.`);
   urlList.forEach((url) => console.log(`- ${url}`));
   process.exit(0);
+}
+
+const keyResponse = await fetch(keyLocation, { redirect: "manual", cache: "no-store" });
+const liveKey = (await keyResponse.text()).trim();
+if (keyResponse.status !== 200 || liveKey !== indexNowKey) {
+  throw new Error(`IndexNow key preflight failed with HTTP ${keyResponse.status}`);
+}
+
+for (const sitemap of sitemaps) {
+  const liveSitemapResponse = await fetch(`${siteOrigin}/${sitemap.file}`, { redirect: "manual", cache: "no-store" });
+  const liveSitemap = await liveSitemapResponse.text();
+  if (liveSitemapResponse.status !== 200 || liveSitemap !== sitemap.body) {
+    throw new Error(`Production sitemap does not exactly match the local release (${sitemap.file}); deploy and verify the current build before submitting IndexNow.`);
+  }
+}
+
+const digest = (value) => createHash("sha256").update(value).digest("hex");
+
+let nextPreflightIndex = 0;
+const preflightFailures = [];
+const preflightWorker = async () => {
+  while (nextPreflightIndex < urlList.length) {
+    const url = urlList[nextPreflightIndex++];
+    try {
+      const response = await fetch(url, { redirect: "manual", cache: "no-store" });
+      const html = await response.text();
+      if (response.status !== 200) {
+        preflightFailures.push(`${url} returned HTTP ${response.status}`);
+      } else if (!html.includes(`<link rel="canonical" href="${url}">`)) {
+        preflightFailures.push(`${url} has no matching canonical`);
+      } else {
+        const parsedUrl = new URL(url);
+        let relativeFile = parsedUrl.pathname === "/"
+          ? "index.html"
+          : decodeURIComponent(parsedUrl.pathname.replace(/^\//, ""));
+        if (!relativeFile.endsWith(".html")) relativeFile += "/index.html";
+        const localPath = path.join(root, relativeFile);
+        if (!relativeFile.endsWith(".html") || !fs.existsSync(localPath)) {
+          preflightFailures.push(`${url} has no matching local HTML release file`);
+        } else {
+          const localHtml = fs.readFileSync(localPath, "utf8");
+          if (digest(html) !== digest(localHtml)) {
+            preflightFailures.push(`${url} production HTML does not match the local release`);
+          }
+        }
+      }
+    } catch (error) {
+      preflightFailures.push(`${url} failed: ${error.message}`);
+    }
+  }
+};
+await Promise.all(Array.from({ length: Math.min(8, urlList.length) }, preflightWorker));
+if (preflightFailures.length) {
+  throw new Error(`Production preflight failed:\n- ${preflightFailures.join("\n- ")}`);
 }
 
 const response = await fetch(endpoint, {

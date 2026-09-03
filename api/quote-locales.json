@@ -1,0 +1,67 @@
+{
+  "fr": {
+    "Quote request received": "Demande de devis reçue",
+    "Quote request not sent": "Demande de devis non envoyée",
+    "Thank you. Your packaging brief has been delivered, and we will reply with the next technical questions.": "Merci. Votre dossier d'emballage a été livré, et nous répondrons avec les prochaines questions techniques.",
+    "We could not deliver this form. Return to review the required fields, or send the brief directly by email or WhatsApp.": "Nous n'avons pas pu livrer ce formulaire. Retournez à la page d'examen des champs requis, ou envoyez le mémoire directement par courriel ou WhatsApp- Oui.",
+    "GloryStarPack packaging project support": "Accompagnement de votre projet GloryStarPack",
+    "Return to the quote form": "Revenir au formulaire",
+    "Email Kevin": "Courriel Kevin",
+    "Continue by email": "Continuer par e-mail",
+    "Send by WhatsApp": "Envoyer par WhatsApp",
+    "Direct channels may contain a shortened brief. Copy the full brief below to send every detail.": "Les canaux directs peuvent contenir un bref abrégé. Copiez le résumé complet ci-dessous pour envoyer chaque détail.",
+    "Complete project brief": "Exposé complet du projet"
+  },
+  "es": {
+    "Quote request received": "Solicitud de presupuesto recibida",
+    "Quote request not sent": "No se ha enviado la solicitud",
+    "Thank you. Your packaging brief has been delivered, and we will reply with the next technical questions.": "Gracias. Se ha entregado su informe de embalaje, y responderemos con las siguientes preguntas técnicas.",
+    "We could not deliver this form. Return to review the required fields, or send the brief directly by email or WhatsApp.": "No podíamos entregar este formulario. Regresar para revisar los campos requeridos, o enviar el breve directamente por correo electrónico o WhatsApp.",
+    "GloryStarPack packaging project support": "Asistencia para tu proyecto GloryStarPack",
+    "Return to the quote form": "Volver al formulario",
+    "Email Kevin": "Email Kevin",
+    "Continue by email": "Continuar por correo",
+    "Send by WhatsApp": "Enviar por WhatsApp",
+    "Direct channels may contain a shortened brief. Copy the full brief below to send every detail.": "Los canales directos pueden contener un breve acortado. Copia el resumen completo a continuación para enviar cada detalle.",
+    "Complete project brief": "Cifras completas del proyecto"
+  },
+  "pt": {
+    "Quote request received": "Pedido de orçamento recebido",
+    "Quote request not sent": "O pedido não foi enviado",
+    "Thank you. Your packaging brief has been delivered, and we will reply with the next technical questions.": "Obrigado. Seu resumo de embalagem foi entregue, e vamos responder com as próximas perguntas técnicas.",
+    "We could not deliver this form. Return to review the required fields, or send the brief directly by email or WhatsApp.": "Não foi possível entregar este formulário. Retornar para rever os campos necessários, ou enviar o resumo diretamente por e-mail ou WhatsApp.",
+    "GloryStarPack packaging project support": "Apoio ao seu projeto GloryStarPack",
+    "Return to the quote form": "Voltar ao formulário",
+    "Email Kevin": "E- mail Kevin",
+    "Continue by email": "Continuar por e-mail",
+    "Send by WhatsApp": "Enviar por WhatsApp",
+    "Direct channels may contain a shortened brief. Copy the full brief below to send every detail.": "Os canais diretos podem conter um breve abreviado. Copie o resumo completo abaixo para enviar todos os detalhes.",
+    "Complete project brief": "Resumo completo do projeto"
+  },
+  "ru": {
+    "Quote request received": "Запрос на расчет получен",
+    "Quote request not sent": "Запрос не отправлен",
+    "Thank you. Your packaging brief has been delivered, and we will reply with the next technical questions.": "Ваша упаковка доставлена, и мы ответим на следующие технические вопросы.",
+    "We could not deliver this form. Return to review the required fields, or send the brief directly by email or WhatsApp.": "Мы не могли предоставить эту форму. Возврат к просмотру необходимых полей или отправка резюме непосредственно по электронной почте или WhatsApp.",
+    "GloryStarPack packaging project support": "Поддержка упаковочных проектов GloryStarPack",
+    "Return to the quote form": "Вернуться к форме запроса",
+    "Email Kevin": "Электронная почта Кевин",
+    "Continue by email": "Отправить по электронной почте",
+    "Send by WhatsApp": "Отправить в WhatsApp",
+    "Direct channels may contain a shortened brief. Copy the full brief below to send every detail.": "Прямые каналы могут содержать сокращенное резюме. Копируйте полное резюме ниже, чтобы отправить каждую деталь.",
+    "Complete project brief": "Полный проект краткий"
+  },
+  "zh-CN": {
+    "Quote request received": "询价已收到",
+    "Quote request not sent": "询价未发送",
+    "Thank you. Your packaging brief has been delivered, and we will reply with the next technical questions.": "谢谢,你的包装需求说明已经送达,我们将回答下面的技术问题。",
+    "We could not deliver this form. Return to review the required fields, or send the brief directly by email or WhatsApp.": "我们无法提供此表格。 返回审查所需的字段, 或者直接通过电子邮件发送需求说明 。 WhatsApp曰如何是无碍境界.",
+    "GloryStarPack packaging project support": "GloryStarPack 包装项目支持",
+    "Return to the quote form": "返回询价表单",
+    "Email Kevin": "电子邮件 Kevin",
+    "Continue by email": "通过邮件发送",
+    "Send by WhatsApp": "通过 WhatsApp 发送",
+    "Direct channels may contain a shortened brief. Copy the full brief below to send every detail.": "直接频道可能包含一个缩短的短篇。 复制下面的完整短篇, 以发送每个细节 。",
+    "Complete project brief": "完成项目需求说明"
+  }
+}

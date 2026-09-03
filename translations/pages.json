@@ -1,0 +1,534 @@
+{
+  "_languages": [
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "zh-CN"
+  ],
+  "index.html": [
+    "Des emballages conçus pour votre produit.",
+    "Embalajes diseñados para tu producto.",
+    "Embalagens pensadas para o seu produto.",
+    "Упаковка, созданная для вашего продукта.",
+    "为您的产品量身打造专属包装。"
+  ],
+  "products.html": [
+    "Votre gamme d’emballages sur mesure.",
+    "Tu sistema de embalaje a medida.",
+    "O seu sistema de embalagens por medida.",
+    "Подберите упаковку для вашего проекта.",
+    "打造适合您的品牌包装体系。"
+  ],
+  "blog.html": [
+    "Mieux définir le besoin, mieux concevoir l’emballage.",
+    "Un proyecto bien definido empieza con un buen embalaje.",
+    "Definir bem o projeto para criar a embalagem certa.",
+    "Четкие требования — качественная упаковка.",
+    "清晰的采购需求，成就更好的包装。"
+  ],
+  "about.html": [
+    "Un processus de fabrication que vous pouvez suivre.",
+    "Un proceso de fabricación que puedes verificar.",
+    "Um processo de produção que pode acompanhar.",
+    "Производство упаковки с прозрачными этапами контроля.",
+    "从打样到交付，每一步都可核验。"
+  ],
+  "industries.html": [
+    "Des emballages adaptés à votre secteur.",
+    "Embalajes adaptados a tu sector.",
+    "Embalagens adaptadas ao seu setor.",
+    "Упаковочные решения для вашей отрасли.",
+    "面向不同产品与行业的定制包装方案。"
+  ],
+  "custom-boxes.html": [
+    "Des boîtes sur mesure pour votre produit.",
+    "Cajas a medida para tu producto.",
+    "Caixas por medida para o seu produto.",
+    "Коробки на заказ для вашего изделия.",
+    "为您的产品定制包装盒。"
+  ],
+  "custom-rigid-boxes.html": [
+    "Des coffrets rigides conçus autour du produit.",
+    "Cajas rígidas diseñadas para tu producto.",
+    "Caixas rígidas concebidas para o seu produto.",
+    "Жесткие коробки с учетом особенностей изделия.",
+    "围绕产品结构开发的精品硬盒。"
+  ],
+  "custom-magnetic-boxes.html": [
+    "Des coffrets aimantés à la fermeture soignée.",
+    "Cajas magnéticas con un cierre preciso.",
+    "Caixas magnéticas com fecho preciso.",
+    "Коробки с надежным магнитным клапаном.",
+    "开合手感与结构协调的定制磁吸盒。"
+  ],
+  "custom-drawer-boxes.html": [
+    "Des coffrets à tiroir au coulissement maîtrisé.",
+    "Cajas tipo cajón con deslizamiento controlado.",
+    "Caixas de gaveta com deslizamento controlado.",
+    "Коробки-пеналы с плавным выдвижением.",
+    "滑动顺畅、取用便捷的定制抽屉盒。"
+  ],
+  "lid-and-base-boxes.html": [
+    "Des coffrets à couvercle séparé pour une ouverture soignée.",
+    "Cajas de tapa y base para una presentación cuidada.",
+    "Caixas de tampa e base para uma apresentação cuidada.",
+    "Коробки «крышка-дно» для выразительной презентации.",
+    "以恰当的开盒体验呈现产品的天地盖盒。"
+  ],
+  "collapsible-rigid-boxes.html": [
+    "Des coffrets rigides pliables, conçus pour l’assemblage.",
+    "Cajas rígidas plegables, diseñadas para el montaje.",
+    "Caixas rígidas dobráveis, pensadas para a montagem.",
+    "Складные жесткие коробки с продуманной сборкой.",
+    "兼顾折叠运输与成型效果的精品硬盒。"
+  ],
+  "custom-mailer-boxes.html": [
+    "Des boîtes d’expédition conçues pour le transport.",
+    "Cajas de envío diseñadas para el transporte.",
+    "Caixas de envio preparadas para o transporte.",
+    "Почтовые коробки, рассчитанные на доставку.",
+    "为运输过程与开箱体验设计的邮寄盒。"
+  ],
+  "custom-corrugated-shipping-boxes.html": [
+    "Des caisses en carton ondulé adaptées à la charge.",
+    "Cajas de cartón ondulado adaptadas a la carga.",
+    "Caixas de cartão canelado adaptadas à carga.",
+    "Транспортные гофрокороба с учетом нагрузки.",
+    "根据承重与物流要求开发的瓦楞运输箱。"
+  ],
+  "folding-carton-boxes.html": [
+    "Des étuis pliants adaptés à votre ligne de conditionnement.",
+    "Estuches plegables para tu línea de envasado.",
+    "Caixas dobráveis para a sua linha de embalagem.",
+    "Складные картонные коробки для упаковочной линии.",
+    "适配包装产线的定制折叠彩盒。"
+  ],
+  "custom-jewelry-boxes.html": [
+    "Des écrins conçus pour chaque bijou.",
+    "Cajas diseñadas para cada joya.",
+    "Caixas concebidas para cada joia.",
+    "Коробки с учетом формы ювелирного изделия.",
+    "围绕珠宝形态开发的定制包装盒。"
+  ],
+  "custom-wine-boxes.html": [
+    "Des coffrets à vin qui soutiennent la bouteille pleine.",
+    "Cajas para vino que sujetan la botella llena.",
+    "Caixas para vinho que apoiam a garrafa cheia.",
+    "Винные коробки с опорой для наполненной бутылки.",
+    "为装满的酒瓶提供可靠支撑的定制酒盒。"
+  ],
+  "custom-perfume-boxes.html": [
+    "Des coffrets à parfum conçus autour du flacon.",
+    "Cajas para perfumes diseñadas alrededor del frasco.",
+    "Caixas para perfumes concebidas em torno do frasco.",
+    "Парфюмерные коробки с учетом стеклянного флакона.",
+    "围绕玻璃瓶尺寸与保护要求设计的香水盒。"
+  ],
+  "cosmetic-packaging-boxes.html": [
+    "Des emballages cosmétiques adaptés au contenant.",
+    "Cajas para cosméticos adaptadas al envase.",
+    "Caixas para cosméticos adaptadas ao recipiente.",
+    "Косметическая упаковка под конкретный флакон.",
+    "匹配瓶罐结构的定制化妆品包装盒。"
+  ],
+  "custom-packaging-inserts.html": [
+    "Des calages sur mesure pour protéger et retirer le produit.",
+    "Insertos a medida para proteger y extraer el producto.",
+    "Insertos por medida para proteger e retirar o produto.",
+    "Ложементы для фиксации, защиты и удобного извлечения.",
+    "兼顾贴合、保护与取用的定制包装内托。"
+  ],
+  "custom-paper-bags.html": [
+    "Des sacs en papier à votre marque, adaptés au produit.",
+    "Bolsas de papel con tu marca, adaptadas al producto.",
+    "Sacos de papel com a sua marca, adaptados ao produto.",
+    "Бумажные пакеты с логотипом под ваш продукт.",
+    "匹配产品与品牌形象的定制纸袋。"
+  ],
+  "custom-tube-packaging.html": [
+    "Des tubes en carton dimensionnés de l’intérieur.",
+    "Tubos de cartón definidos por su diámetro interior.",
+    "Tubos de cartão definidos pelo diâmetro interior.",
+    "Картонные тубусы с учетом внутреннего диаметра.",
+    "从内径与可用空间出发设计纸筒包装。"
+  ],
+  "custom-hang-tags.html": [
+    "Des étiquettes suspendues pour le produit et sa traçabilité.",
+    "Etiquetas colgantes para el producto y su trazabilidad.",
+    "Etiquetas suspensas para o produto e a sua rastreabilidade.",
+    "Навесные бирки для изделия и учета данных.",
+    "面向产品、信息管理与包装产线的定制吊牌。"
+  ],
+  "custom-tissue-paper.html": [
+    "Du papier de soie personnalisé pour chaque geste d’emballage.",
+    "Papel de seda personalizado para envolver tu producto.",
+    "Papel de seda personalizado para envolver o produto.",
+    "Бумага тишью с печатью для упаковки изделий.",
+    "根据包裹方式定制印刷拷贝纸。"
+  ],
+  "box-labels.html": [
+    "Des étiquettes adaptées aux conditions réelles d’utilisation.",
+    "Etiquetas diseñadas para las condiciones reales de uso.",
+    "Etiquetas pensadas para as condições reais de utilização.",
+    "Этикетки для реальных условий эксплуатации.",
+    "适应实际使用环境的定制产品标签。"
+  ],
+  "custom-clear-labels.html": [
+    "Des étiquettes transparentes pour un effet sans étiquette.",
+    "Etiquetas transparentes para un efecto sin etiqueta.",
+    "Etiquetas transparentes para um efeito sem etiqueta.",
+    "Прозрачные этикетки с эффектом прямой печати.",
+    "实现自然无标签视觉效果的透明标签。"
+  ],
+  "custom-waterproof-labels.html": [
+    "Des étiquettes résistantes à l’eau, selon leur usage.",
+    "Etiquetas resistentes al agua, según su uso.",
+    "Etiquetas resistentes à água, conforme a utilização.",
+    "Водостойкие этикетки под условия применения.",
+    "根据实际接触环境定义防水标签。"
+  ],
+  "embossed-foil-labels.html": [
+    "Relief et dorure réunis dans une même étiquette.",
+    "Relieve y estampado en una sola etiqueta.",
+    "Relevo e estampagem numa só etiqueta.",
+    "Рельеф и фольга в единой конструкции этикетки.",
+    "压纹与烫金协同设计的定制标签。"
+  ],
+  "custom-wine-labels.html": [
+    "Des étiquettes à vin conçues pour la bouteille.",
+    "Etiquetas para vino diseñadas para la botella.",
+    "Etiquetas para vinho concebidas para a garrafa.",
+    "Винные этикетки под вашу бутылку.",
+    "匹配酒瓶与使用环境的定制酒标。"
+  ],
+  "foil-vs-spot-uv.html": [
+    "Dorure ou vernis UV : choisir selon l’effet recherché.",
+    "Estampado o barniz UV: elegir según su función.",
+    "Estampagem ou verniz UV: escolher conforme a função.",
+    "Фольга или УФ-лак: выбираем по задаче.",
+    "烫金还是局部 UV？根据设计目的选择工艺。"
+  ],
+  "packaging-logistics-guide.html": [
+    "Planifier la livraison à partir de l’arrivée en entrepôt.",
+    "Planificar la entrega desde la llegada al almacén.",
+    "Planear a entrega a partir da chegada ao armazém.",
+    "Планируйте доставку от даты поступления на склад.",
+    "从仓库收货时间倒推包装交付计划。"
+  ],
+  "custom-packaging-lead-time-planner.html": [
+    "Calculer le délai d’emballage à partir de la date de livraison.",
+    "Planificar los plazos desde la fecha de entrega.",
+    "Planear os prazos a partir da data de entrega.",
+    "Рассчитайте сроки от требуемой даты доставки.",
+    "从要求的交付日期规划包装生产周期。"
+  ],
+  "exw-fob-cif-ddp-packaging-sourcing-guide.html": [
+    "EXW, FOB, CIF et DDP pour l’achat d’emballages.",
+    "EXW, FOB, CIF y DDP en la compra de embalajes.",
+    "EXW, FOB, CIF e DDP na compra de embalagens.",
+    "EXW, FOB, CIF и DDP при закупке упаковки.",
+    "包装采购中的 EXW、FOB、CIF 与 DDP。"
+  ],
+  "custom-packaging-china-vs-local-supplier.html": [
+    "Emballages : fabricant chinois ou fournisseur local ?",
+    "Embalajes: ¿fabricante en China o proveedor local?",
+    "Embalagens: fabricante na China ou fornecedor local?",
+    "Упаковка из Китая или от местного поставщика?",
+    "包装采购：选择中国工厂还是本地供应商？"
+  ],
+  "packaging-sample-approval-checklist.html": [
+    "Valider l’échantillon complet, au-delà de son apparence.",
+    "Aprobar la muestra completa, más allá de su apariencia.",
+    "Aprovar a amostra completa, para além da aparência.",
+    "Проверяйте весь образец, а не только внешний вид.",
+    "样品确认不只看外观，还要验证功能与细节。"
+  ],
+  "hang-tag-production-checklist.html": [
+    "Maîtriser chaque étiquette, du fichier au produit.",
+    "Controlar cada etiqueta, del archivo al producto.",
+    "Controlar cada etiqueta, do ficheiro ao produto.",
+    "Контроль каждой бирки: от файла до изделия.",
+    "从设计文件到成品，管控每一张吊牌。"
+  ],
+  "rigid-box-cost-drivers.html": [
+    "Quels facteurs déterminent le coût d’un coffret rigide ?",
+    "¿Qué determina el coste de una caja rígida?",
+    "O que determina o custo de uma caixa rígida?",
+    "От чего зависит стоимость жесткой коробки?",
+    "哪些因素决定精品硬盒的成本？"
+  ],
+  "custom-packaging-dieline-artwork-requirements.html": [
+    "Tracés de découpe et fichiers graphiques pour l’emballage.",
+    "Troqueles y archivos de diseño para embalajes.",
+    "Desenhos de corte e ficheiros gráficos para embalagens.",
+    "Требования к разверткам и макетам упаковки.",
+    "定制包装的刀模图与印刷设计文件要求。"
+  ],
+  "waterproof-label-testing-guide.html": [
+    "Tester les étiquettes face aux défaillances à éviter.",
+    "Probar las etiquetas frente a los fallos que debes evitar.",
+    "Testar etiquetas perante as falhas que deve evitar.",
+    "Испытания этикеток на недопустимые отказы.",
+    "围绕不可接受的失效情况设计防水标签测试。"
+  ],
+  "paper-tube-packaging-size-guide.html": [
+    "Dimensionner le tube selon l’espace réellement utilisable.",
+    "Dimensionar el tubo según el espacio útil real.",
+    "Dimensionar o tubo pelo espaço realmente utilizável.",
+    "Размеры тубуса по фактически полезному объему.",
+    "根据实际可用空间确定纸筒尺寸。"
+  ],
+  "packaging-inserts-material-comparison.html": [
+    "Comparer les calages en carton, pulpe moulée et mousse.",
+    "Comparar insertos de cartón, pulpa moldeada y espuma.",
+    "Comparar insertos de cartão, polpa moldada e espuma.",
+    "Сравнение ложементов из картона, формованной массы и пены.",
+    "纸板、纸浆模塑与泡棉内托如何选择？"
+  ],
+  "custom-tissue-paper-printing-guide.html": [
+    "Planifier le papier de soie, de l’enveloppement au conditionnement.",
+    "Planificar el papel de seda, del envoltorio al embalado.",
+    "Planear o papel de seda, do envolvimento ao acondicionamento.",
+    "Планирование бумаги тишью: от обертывания до укладки.",
+    "从包裹方式到分装数量，规划印刷拷贝纸。"
+  ],
+  "collapsible-rigid-box-vs-setup-box.html": [
+    "Coffret rigide pliable ou coffret monté ?",
+    "¿Caja rígida plegable o caja ya montada?",
+    "Caixa rígida dobrável ou caixa já montada?",
+    "Складная или готовая жесткая коробка?",
+    "可折叠硬盒与成型硬盒如何选择？"
+  ],
+  "magnetic-box-vs-drawer-box.html": [
+    "Coffret aimanté ou à tiroir : choisir l’ouverture.",
+    "Caja magnética o tipo cajón: elegir la apertura.",
+    "Caixa magnética ou de gaveta: escolher a abertura.",
+    "Магнитная коробка или пенал: выбор открывания.",
+    "磁吸盒还是抽屉盒？选择合适的开盒结构。"
+  ],
+  "sustainable-luxury-packaging.html": [
+    "L’emballage haut de gamme durable commence par la sobriété.",
+    "El embalaje de lujo sostenible empieza por reducir.",
+    "A embalagem de luxo sustentável começa pela redução.",
+    "Экологичная премиальная упаковка начинается с сокращения лишнего.",
+    "可持续高端包装，从减少不必要的材料开始。"
+  ],
+  "pantone-color-matching-packaging.html": [
+    "Harmoniser les couleurs Pantone des boîtes et des étiquettes.",
+    "Coordinar colores Pantone en cajas y etiquetas.",
+    "Coordenar cores Pantone em caixas e etiquetas.",
+    "Согласование цветов Pantone для коробок и этикеток.",
+    "包装盒与标签的 Pantone 色彩匹配指南。"
+  ],
+  "jewelry-box-insert-design-guide.html": [
+    "Concevoir le calage d’un écrin à bijoux.",
+    "Diseñar el inserto de una caja para joyas.",
+    "Conceber o inserto de uma caixa para joias.",
+    "Проектирование ложемента для ювелирной коробки.",
+    "珠宝盒内托设计指南。"
+  ],
+  "verify-fsc-packaging-supplier.html": [
+    "Vérifier un fournisseur d’emballages certifié FSC.",
+    "Cómo verificar un proveedor de embalajes certificado FSC.",
+    "Como verificar um fornecedor de embalagens certificado FSC.",
+    "Как проверить поставщика упаковки с сертификатом FSC.",
+    "如何核验包装供应商的 FSC 认证？"
+  ],
+  "perfume-box-insert-checklist.html": [
+    "Soutenir le flacon plein et préserver le dégagement de la pompe.",
+    "Sujetar el frasco lleno y dejar espacio para la bomba.",
+    "Apoiar o frasco cheio e preservar a folga da bomba.",
+    "Зафиксируйте наполненный флакон и оставьте зазор для помпы.",
+    "稳固支撑满瓶，为泵头预留空间。"
+  ],
+  "rigid-box-vs-folding-carton.html": [
+    "Coffret rigide ou étui pliant : comparer l’ensemble du système.",
+    "Caja rígida o estuche plegable: comparar todo el sistema.",
+    "Caixa rígida ou dobrável: comparar todo o sistema.",
+    "Жесткая или складная коробка: сравнивайте всю систему.",
+    "精品硬盒还是折叠彩盒？从整体包装系统做判断。"
+  ],
+  "paper-thickness-gsm-pt-mm-conversion-guide.html": [
+    "Convertir l’épaisseur et préciser le carton utilisé.",
+    "Convertir el espesor y especificar el cartón real.",
+    "Converter a espessura e especificar o cartão real.",
+    "Перевод единиц толщины и выбор картона.",
+    "换算纸张厚度，明确实际纸板规格。"
+  ],
+  "custom-packaging-cost-moq-guide.html": [
+    "Comprendre le coût et la quantité minimale de commande.",
+    "Entender el coste y la cantidad mínima de pedido.",
+    "Compreender o custo e a quantidade mínima de encomenda.",
+    "От чего зависят стоимость и минимальный тираж упаковки?",
+    "哪些因素决定定制包装成本与起订量？"
+  ],
+  "ecommerce-mailer-box-sizing-transit-test.html": [
+    "Dimensionner et tester les boîtes d’expédition e-commerce.",
+    "Dimensionar y probar cajas de envío para comercio electrónico.",
+    "Dimensionar e testar caixas de envio para comércio eletrónico.",
+    "Размеры и транспортные испытания почтовых коробок.",
+    "电商邮寄盒的尺寸设计与运输测试。"
+  ],
+  "custom-packaging-quality-inspection-checklist.html": [
+    "Contrôler la qualité avant d’autoriser l’expédition.",
+    "Inspeccionar la calidad antes de autorizar el envío.",
+    "Inspecionar a qualidade antes de autorizar a expedição.",
+    "Контроль качества упаковки перед отгрузкой.",
+    "以质量检验管控包装成品的出货放行。"
+  ],
+  "wine-label-condensation-adhesive-testing.html": [
+    "Tester les étiquettes à vin face à la condensation.",
+    "Probar etiquetas de vino frente a la condensación.",
+    "Testar etiquetas de vinho perante a condensação.",
+    "Испытания винных этикеток на конденсат и адгезию.",
+    "酒标的冷凝水与胶黏性能测试。"
+  ],
+  "low-moq-custom-packaging-small-business.html": [
+    "Emballages à faible quantité minimale pour petites entreprises.",
+    "Embalajes de pedido mínimo reducido para pequeños negocios.",
+    "Embalagens de quantidade mínima reduzida para pequenos negócios.",
+    "Упаковка малыми тиражами для небольших компаний.",
+    "适合小型企业的低起订量定制包装。"
+  ],
+  "clear-label-white-ink-artwork-guide.html": [
+    "Préparer le blanc de soutien pour les étiquettes transparentes.",
+    "Preparar la tinta blanca para etiquetas transparentes.",
+    "Preparar a tinta branca para etiquetas transparentes.",
+    "Подготовка белой подложки для прозрачных этикеток.",
+    "适配实际容器的透明标签白墨设计稿。"
+  ],
+  "wine-bottle-gift-box-specification.html": [
+    "Ajuster la bouteille pleine et protéger l’ensemble.",
+    "Ajustar la botella llena y proteger el conjunto.",
+    "Ajustar a garrafa cheia e proteger o conjunto.",
+    "Зафиксируйте полную бутылку и защитите весь комплект.",
+    "贴合满瓶尺寸，保护整套包装。"
+  ],
+  "is-custom-packaging-worth-it.html": [
+    "L’emballage sur mesure est-il rentable ?",
+    "¿Merece la pena el embalaje a medida?",
+    "Vale a pena investir em embalagens por medida?",
+    "Оправданы ли вложения в упаковку на заказ?",
+    "定制包装值得投入吗？"
+  ],
+  "custom-packaging-rfq-template.html": [
+    "Une demande de devis pour comparer sur des bases claires.",
+    "Una solicitud de presupuesto que permite comparar de verdad.",
+    "Um pedido de orçamento que permite comparar com clareza.",
+    "Запрос цены для сопоставимых коммерческих предложений.",
+    "让供应商报价真正可比的包装询价模板。"
+  ],
+  "luxury-unboxing-guide.html": [
+    "Concevoir une expérience d’ouverture haut de gamme.",
+    "Diseñar una experiencia de apertura de alta gama.",
+    "Conceber uma experiência de abertura de alta qualidade.",
+    "Как спроектировать премиальное распаковывание.",
+    "设计流畅而精致的高端开箱体验。"
+  ],
+  "corrugated-shipping-box-specification-guide.html": [
+    "Définir les spécifications d’une caisse en carton ondulé.",
+    "Definir las especificaciones de una caja de cartón ondulado.",
+    "Definir as especificações de uma caixa de cartão canelado.",
+    "Спецификация транспортного гофрокороба.",
+    "瓦楞运输箱规格制定指南。"
+  ],
+  "privacy.html": [
+    "Politique de confidentialité.",
+    "Aviso de privacidad.",
+    "Política de privacidade.",
+    "Политика конфиденциальности.",
+    "隐私政策。"
+  ],
+  "404.html": [
+    "Cette page n’est plus disponible.",
+    "Esta página ya no está disponible.",
+    "Esta página já não está disponível.",
+    "Эта страница больше недоступна.",
+    "您访问的页面不存在。"
+  ],
+  "printed-tea-carton-gs-5878715.html": [
+    "Étui à thé imprimé à motif botanique.",
+    "Estuche de té con motivos botánicos.",
+    "Caixa de chá com motivos botânicos.",
+    "Чайная коробка с ботаническим рисунком.",
+    "植物图案印刷茶叶折叠彩盒。"
+  ],
+  "embossed-apparel-hang-tags-gs-5461726.html": [
+    "Étiquettes suspendues en relief avec cordon.",
+    "Etiquetas para ropa con relieve y cordón.",
+    "Etiquetas para vestuário com relevo e cordão.",
+    "Бирки для одежды с тиснением и шнурком.",
+    "带挂绳的压纹服装吊牌。"
+  ],
+  "printed-corrugated-ecommerce-mailer-gs-5909249.html": [
+    "Boîte d’expédition e-commerce en carton ondulé imprimé.",
+    "Caja de envío de cartón ondulado impreso.",
+    "Caixa de envio em cartão canelado impresso.",
+    "Печатная гофрокоробка для интернет-магазинов.",
+    "印刷瓦楞电商邮寄盒。"
+  ],
+  "essential-oil-folding-cartons-gs-6445340.html": [
+    "Étuis dorés pour une gamme d’huiles essentielles.",
+    "Estuches dorados para una gama de aceites esenciales.",
+    "Caixas douradas para uma gama de óleos essenciais.",
+    "Золотистые коробки для серии эфирных масел.",
+    "精油系列金色折叠彩盒。"
+  ],
+  "perfume-carton-gs-1294765.html": [
+    "Étui à parfum bleu, haut, avec détails dorés.",
+    "Estuche alto azul para perfume con detalles dorados.",
+    "Caixa alta azul para perfume com detalhes dourados.",
+    "Высокая синяя парфюмерная коробка с золотистыми деталями.",
+    "带金色细节的蓝色高款香水彩盒。"
+  ],
+  "window-sushi-takeaway-box-gs-0659772.html": [
+    "Boîte à sushi avec fenêtre : référence de faisabilité.",
+    "Caja para sushi con ventana: referencia de viabilidad.",
+    "Caixa para sushi com janela: referência de viabilidade.",
+    "Коробка для суши с окном: образец для оценки.",
+    "开窗寿司外卖盒可行性参考。"
+  ],
+  "ribbon-paper-gift-boxes-gs-2295707.html": [
+    "Ensemble de coffrets cadeaux avec rubans.",
+    "Conjunto de cajas de regalo con cinta.",
+    "Conjunto de caixas de presente com fita.",
+    "Комплект подарочных коробок с лентами.",
+    "配套丝带礼品包装盒。"
+  ],
+  "black-gold-paper-shopping-bag-gs-5409107.html": [
+    "Sac en papier noir avec détails dorés.",
+    "Bolsa de papel negra con detalles dorados.",
+    "Saco de papel preto com detalhes dourados.",
+    "Черный бумажный пакет с золотистыми деталями.",
+    "带金色细节的黑色纸质购物袋。"
+  ],
+  "candle-folding-carton-gs-3423123.html": [
+    "Étui à bougie à motif botanique.",
+    "Estuche para velas con motivos botánicos.",
+    "Caixa para velas com motivos botânicos.",
+    "Коробка для свечи с ботаническим рисунком.",
+    "植物图案蜡烛折叠彩盒。"
+  ],
+  "jewelry-display-card-gs-8039093.html": [
+    "Carte de présentation pliable pour bijoux.",
+    "Tarjeta plegable para presentar joyas.",
+    "Cartão dobrável para apresentar joias.",
+    "Складная карточка для демонстрации украшений.",
+    "折叠式珠宝展示卡。"
+  ],
+  "chocolate-bar-carton-gs-6842703.html": [
+    "Étui extérieur imprimé pour tablette de chocolat.",
+    "Estuche exterior impreso para tableta de chocolate.",
+    "Caixa exterior impressa para tablete de chocolate.",
+    "Печатная внешняя коробка для плитки шоколада.",
+    "巧克力条印刷外包装彩盒。"
+  ],
+  "pdq-counter-display-gs-5045668.html": [
+    "Présentoir de comptoir PDQ : référence de faisabilité.",
+    "Expositor PDQ de mostrador: referencia de viabilidad.",
+    "Expositor PDQ de balcão: referência de viabilidade.",
+    "Прилавочный дисплей PDQ: образец для оценки.",
+    "印刷 PDQ 柜台展示架可行性参考。"
+  ]
+}

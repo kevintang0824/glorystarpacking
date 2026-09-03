@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://glorystarpacking.com";
+const checkMode = process.argv.includes("--check");
 const blogPath = path.join(root, "blog.html");
 const outputPath = path.join(root, "feed.xml");
 const blogHtml = fs.readFileSync(blogPath, "utf8");
@@ -25,7 +26,9 @@ if (!blog || !Array.isArray(blog.blogPost) || !blog.blogPost.length) {
 }
 
 const items = blog.blogPost.map((post) => {
-  const url = new URL(post.url, siteOrigin);
+  const postId = String(post?.["@id"] || "").trim();
+  if (!postId.endsWith("#article")) throw new Error(`Blog post reference is invalid: ${postId || "missing @id"}`);
+  const url = new URL(postId.slice(0, -"#article".length), siteOrigin);
   if (url.origin !== siteOrigin) throw new Error(`Feed item is outside the canonical origin: ${url.href}`);
   const file = url.pathname.replace(/^\//, "");
   const pagePath = path.join(root, file);
@@ -33,16 +36,25 @@ const items = blog.blogPost.map((post) => {
   const pageHtml = fs.readFileSync(pagePath, "utf8");
   const description = pageHtml.match(/<meta\s+name="description"\s+content="([^"]+)"/i)?.[1];
   if (!description) throw new Error(`Feed page has no meta description: ${file}`);
+  const pageStructuredData = [...pageHtml.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)]
+    .map((match) => JSON.parse(match[1]));
+  const pageNodes = pageStructuredData.flatMap((entry) => entry["@graph"] || [entry]);
+  const article = pageNodes.find((entry) => entry["@type"] === "BlogPosting" && entry["@id"] === postId);
+  if (!article) throw new Error(`Feed page has no matching BlogPosting schema: ${file}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(article.dateModified || "")) {
+    throw new Error(`Feed page has no valid Article dateModified: ${file}`);
+  }
 
   return {
-    title: post.headline,
+    title: article.headline,
     url: url.href,
-    published: new Date(`${post.datePublished}T00:00:00Z`),
+    published: new Date(`${article.datePublished}T00:00:00Z`),
+    modified: new Date(`${article.dateModified}T00:00:00Z`),
     description,
   };
 }).sort((a, b) => b.published - a.published);
 
-const lastBuildDate = items[0].published.toUTCString();
+const lastBuildDate = new Date(Math.max(...items.map((item) => item.modified.getTime()))).toUTCString();
 const itemXml = items.map((item) => [
   "    <item>",
   `      <title>${escapeXml(item.title)}</title>`,
@@ -69,5 +81,12 @@ const feed = [
   "",
 ].join("\n");
 
-fs.writeFileSync(outputPath, feed);
-console.log(`Generated feed.xml with ${items.length} buyer-guide entries.`);
+if (checkMode) {
+  if (!fs.existsSync(outputPath) || fs.readFileSync(outputPath, "utf8") !== feed) {
+    throw new Error("feed.xml is stale; run node scripts/generate-feed.mjs and commit the generated feed");
+  }
+  console.log(`Verified feed.xml with ${items.length} buyer-guide entries.`);
+} else {
+  fs.writeFileSync(outputPath, feed);
+  console.log(`Generated feed.xml with ${items.length} buyer-guide entries.`);
+}

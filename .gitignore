@@ -5,3 +5,11 @@
 node_modules/
 .vercel/
 *.log
+tmp/
+scripts/__pycache__/
+* [0-9].html
+* [0-9][0-9].html
+* [0-9][0-9][0-9].html
+* [0-9].webmanifest
+assets/catalog/products/* [0-9].jpg
+assets/catalog/previews/* [0-9].jpg

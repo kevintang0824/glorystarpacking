@@ -1,7 +1,7 @@
 import process from "node:process";
 
 const siteOrigin = new URL(process.argv[2] || "https://glorystarpacking.com").origin;
-const sitemapUrl = `${siteOrigin}/sitemap.xml`;
+const sitemapUrlsToAudit = [`${siteOrigin}/sitemap.xml`, `${siteOrigin}/sitemap-languages.xml`];
 const requestHeaders = {
   "user-agent": "GloryStarPackProductionAudit/1.0",
   accept: "text/html,application/xhtml+xml,application/xml,text/plain;q=0.9,*/*;q=0.8",
@@ -82,13 +82,21 @@ const auditRedirectProbe = async ({ url, finalUrl, maximumRedirects }) => {
   }
 };
 
-const sitemapResult = await followRedirects(sitemapUrl);
-if (sitemapResult.response.status !== 200) {
-  console.error(`${sitemapUrl}: expected HTTP 200, received ${sitemapResult.response.status}`);
-  process.exit(1);
-}
+const auditNonPublicPath = async (pathname) => {
+  const url = `${siteOrigin}${pathname}`;
+  try {
+    const response = await fetch(url, { redirect: "manual", headers: requestHeaders, cache: "no-store" });
+    if (response.status !== 404) errors.push(`${url}: private build artifact must return HTTP 404, received ${response.status}`);
+  } catch (error) {
+    errors.push(`${url}: ${error.message}`);
+  }
+};
 
-const sitemapUrls = [...sitemapResult.body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((match) => match[1].trim());
+const sitemapResults = await Promise.all(sitemapUrlsToAudit.map(followRedirects));
+for (let index = 0; index < sitemapResults.length; index += 1) {
+  if (sitemapResults[index].response.status !== 200) errors.push(`${sitemapUrlsToAudit[index]}: expected HTTP 200, received ${sitemapResults[index].response.status}`);
+}
+const sitemapUrls = sitemapResults.flatMap((result) => [...result.body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((match) => match[1].trim()));
 if (!sitemapUrls.length) errors.push("sitemap.xml contains no URLs");
 if (new Set(sitemapUrls).size !== sitemapUrls.length) errors.push("sitemap.xml contains duplicate URLs");
 if (sitemapUrls.some((url) => new URL(url).origin !== siteOrigin)) errors.push("sitemap.xml contains a URL outside the canonical origin");
@@ -99,7 +107,9 @@ for (let index = 0; index < sitemapUrls.length; index += 8) {
 
 const robotsResult = await followRedirects(`${siteOrigin}/robots.txt`);
 if (robotsResult.response.status !== 200) errors.push("robots.txt does not return HTTP 200");
-if (!robotsResult.body.includes(`Sitemap: ${sitemapUrl}`)) errors.push("robots.txt does not declare the canonical sitemap");
+for (const sitemapUrl of sitemapUrlsToAudit) {
+  if (!robotsResult.body.includes(`Sitemap: ${sitemapUrl}`)) errors.push(`robots.txt does not declare ${sitemapUrl}`);
+}
 if (!robotsResult.body.includes("User-agent: OAI-SearchBot")) errors.push("robots.txt does not define OAI-SearchBot access");
 
 await Promise.all([
@@ -108,10 +118,20 @@ await Promise.all([
   auditRedirectProbe({ url: "https://www.glorystarpacking.com/index.html", finalUrl: `${siteOrigin}/`, maximumRedirects: 1 }),
 ]);
 
+await Promise.all([
+  "/tmp/authorized-catalog-image-selection.json",
+  "/assets/catalog/clean-sources/manifest.json",
+  "/assets/catalog/clean-sources/catalog-build-audit.json",
+  "/assets/catalog/import-report.json",
+  "/assets/catalog/curated-products.json",
+  "/assets/catalog/categories/paper-bags.jpg",
+  "/assets/catalog/previews/60697040446.jpg",
+].map(auditNonPublicPath));
+
 if (errors.length) {
   console.error(`Production indexing audit failed with ${errors.length} issue${errors.length === 1 ? "" : "s"}:`);
   errors.forEach((error) => console.error(`- ${error}`));
   process.exit(1);
 }
 
-console.log(`Production indexing audit passed: ${sitemapUrls.length} sitemap URLs return direct HTTP 200 responses with matching canonicals and indexable robots directives; canonical-host probes use at most one redirect.`);
+console.log(`Production indexing audit passed: ${sitemapUrls.length} sitemap URLs return direct HTTP 200 responses with matching canonicals and indexable robots directives; canonical-host probes use at most one redirect and private build artifacts return 404.`);

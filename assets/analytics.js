@@ -123,6 +123,7 @@
 
   const closeConsentPanel = (restoreFocus = false) => {
     document.querySelector(".analytics-consent")?.remove();
+    document.body.classList.remove("analytics-consent-open");
     if (restoreFocus && consentReturnFocus?.isConnected) consentReturnFocus.focus();
     if (restoreFocus) consentReturnFocus = null;
   };
@@ -158,6 +159,7 @@
       grantAnalytics();
       closeConsentPanel(true);
     });
+    document.body.classList.add("analytics-consent-open");
     document.body.append(panel);
     if (moveFocus) {
       panel.querySelector(getConsent() === consentGranted ? "[data-analytics-deny]" : "[data-analytics-allow]")?.focus();
@@ -205,6 +207,10 @@
     }
     if (/^https:\/\/wa\.me\//i.test(href)) {
       track("contact_click", { contact_method: "whatsapp" });
+      return;
+    }
+    if (href.startsWith("tel:")) {
+      track("contact_click", { contact_method: "phone" });
       return;
     }
     if (href.includes("#quote")) {
@@ -287,6 +293,18 @@
 
   document.querySelector("#paper-tube-size-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "paper_tube_size_and_fit" });
+  });
+
+  document.querySelector("#paper-caliper-converter-form")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "paper_caliper_unit_converter" });
+  });
+
+  document.querySelector("#packaging-lead-time-planner")?.addEventListener("submit", (event) => {
+    const mode = new FormData(event.currentTarget).get("mode") === "forward" ? "forward" : "backward";
+    track("calculator_use", {
+      calculator_name: "custom_packaging_lead_time_planner",
+      planning_mode: mode,
+    });
   });
 
   document.querySelector("#tissue-paper-sheet-planner")?.addEventListener("submit", () => {
