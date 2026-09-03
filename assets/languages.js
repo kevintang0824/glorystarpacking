@@ -56,9 +56,6 @@
         options[next]?.focus();
       }
     });
-    picker.addEventListener("focusout", () => {
-      queueMicrotask(() => { if (!picker.contains(document.activeElement)) picker.open = false; });
-    });
   });
   document.addEventListener("click", (event) => {
     pickers.forEach((picker) => { if (!picker.contains(event.target)) picker.open = false; });
