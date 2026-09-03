@@ -121,8 +121,49 @@ def picker(file, language):
 def version(file):
     return hashlib.sha256((ROOT / file).read_bytes()).hexdigest()[:12]
 
+def content_text_nodes(tag):
+    return [
+        node for node in tag.descendants
+        if isinstance(node, NavigableString) and not isinstance(node, Comment) and normalize(node)
+    ]
+
+def apply_headline_preserving_markup(tag, headline, source_slots, language):
+    target_slots = content_text_nodes(tag)
+    if not target_slots:
+        tag.append(headline)
+        return
+    if len(target_slots) == 1:
+        target_slots[0].replace_with(headline)
+        return
+
+    if language == "zh-CN":
+        units = list(headline)
+        weights = [max(1, len(normalize(node))) for node in target_slots]
+    else:
+        units = re.findall(r"\S+\s*", headline)
+        weights = [max(1, len(normalize(node).split())) for node in source_slots]
+        if len(weights) != len(target_slots):
+            weights = [max(1, len(normalize(node).split())) for node in target_slots]
+
+    if len(units) < len(target_slots):
+        target_slots[0].replace_with(headline)
+        for node in target_slots[1:]: node.replace_with("\u2060")
+        return
+
+    total_weight = sum(weights)
+    boundaries = [0]
+    for index in range(1, len(target_slots)):
+        proposed = round(len(units) * sum(weights[:index]) / total_weight)
+        minimum = boundaries[-1] + 1
+        maximum = len(units) - (len(target_slots) - index)
+        boundaries.append(max(minimum, min(proposed, maximum)))
+    boundaries.append(len(units))
+    for index, node in enumerate(target_slots):
+        node.replace_with("".join(units[boundaries[index]:boundaries[index + 1]]))
+
 def translate_page(page, language, dictionary):
     soup = BeautifulSoup(page.read_text(), "html.parser")
+    source_h1_slots = content_text_nodes(soup.h1)
     def tr(value):
         key = normalize(value)
         if not key or not prose(key): return value
@@ -159,9 +200,11 @@ def translate_page(page, language, dictionary):
         script.string = json.dumps(translate_schema(json.loads(script.string)), ensure_ascii=False).replace("</", "<\\/")
     soup.html["lang"] = language
     headlines = json.loads((ROOT / "translations/pages.json").read_text())
-    headline = headlines[page.name][headlines["_languages"].index(language)]
-    soup.h1.clear()
-    soup.h1.append(headline)
+    native_headline = headlines[page.name][headlines["_languages"].index(language)]
+    # Keep the English H1's inline markup (for example emphasis spans), while
+    # distributing the reviewed native headline across the same text slots.
+    apply_headline_preserving_markup(soup.h1, native_headline, source_h1_slots, language)
+    headline = normalize(soup.h1.get_text(" ", strip=True))
     title = headline.rstrip(".!?。？！") + " | GloryStarPack"
     soup.title.string = title
     for tag in soup.select('meta[property="og:title"], meta[name="twitter:title"]'):
