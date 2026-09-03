@@ -41,6 +41,13 @@ const canonicalFrom = (html) =>
   html.match(/<link\b[^>]*href=[\"']([^\"']+)[\"'][^>]*rel=[\"']canonical[\"']/i)?.[1] ||
   "";
 
+const robotsContentFrom = (html) => {
+  const robotsTag = [...html.matchAll(/<meta\b[^>]*>/gi)].find((match) =>
+    /\bname=[\"']robots[\"']/i.test(match[0])
+  )?.[0];
+  return robotsTag?.match(/\bcontent=[\"']([^\"']*)[\"']/i)?.[1] || "";
+};
+
 const auditSitemapUrl = async (url) => {
   try {
     const result = await followRedirects(url);
@@ -61,7 +68,7 @@ const auditSitemapUrl = async (url) => {
     }
     const canonical = canonicalFrom(result.body);
     if (canonical !== url) errors.push(`${url}: canonical is ${canonical || "missing"}`);
-    if (!/<meta\s+name=[\"']robots[\"']\s+content=[\"'][^\"']*index,follow/i.test(result.body)) {
+    if (!robotsContentFrom(result.body).toLowerCase().includes("index,follow")) {
       errors.push(`${url}: index,follow robots meta directive is missing`);
     }
   } catch (error) {

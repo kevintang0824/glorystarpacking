@@ -80,6 +80,10 @@ for (const sitemap of sitemaps) {
 }
 
 const digest = (value) => createHash("sha256").update(value).digest("hex");
+const canonicalFrom = (html) =>
+  html.match(/<link\b[^>]*rel=[\"']canonical[\"'][^>]*href=[\"']([^\"']+)[\"']/i)?.[1] ||
+  html.match(/<link\b[^>]*href=[\"']([^\"']+)[\"'][^>]*rel=[\"']canonical[\"']/i)?.[1] ||
+  "";
 
 let nextPreflightIndex = 0;
 const preflightFailures = [];
@@ -91,7 +95,7 @@ const preflightWorker = async () => {
       const html = await response.text();
       if (response.status !== 200) {
         preflightFailures.push(`${url} returned HTTP ${response.status}`);
-      } else if (!html.includes(`<link rel="canonical" href="${url}">`)) {
+      } else if (canonicalFrom(html) !== url) {
         preflightFailures.push(`${url} has no matching canonical`);
       } else {
         const parsedUrl = new URL(url);
