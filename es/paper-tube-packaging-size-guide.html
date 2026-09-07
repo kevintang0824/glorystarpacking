@@ -93,7 +93,7 @@
 <div class="field"><label for="tube-product-height">Altura máxima de carga del producto</label><input id="tube-product-height" min="0.1" name="productHeight" required="" step="0.1" type="number" value="145"/><small>Incluye tapa, proyección, plegado o accesorio, mm</small></div>
 <div class="field"><label for="tube-radial-allowance">Prestaciones radiales por lado</label><input id="tube-radial-allowance" min="0" name="radialAllowance" required="" step="0.1" type="number" value="2"/><small>Hipótesis de planificación incorporada al comprador, mm</small></div>
 <div class="field"><label for="tube-bottom-allowance">Apoyo básico / subsidio</label><input id="tube-bottom-allowance" min="0" name="bottomAllowance" required="" step="0.1" type="number" value="5"/><small>Insertar, base, almohadilla o espacio claro, mm</small></div>
-<div class="field"><label for="tube-top-allowance">Subsidio</label><input id="tube-top-allowance" min="0" name="topAllowance" required="" step="0.1" type="number" value="5"/><small>Limpieza debajo de la tapa cerrada o el extremo, mm</small></div>
+<div class="field"><label for="tube-top-allowance">Subsidio</label><input id="tube-top-allowance" min="0" name="topAllowance" required="" step="0.1" type="number" value="5"/><small>Holgura debajo de la tapa cerrada o el extremo, mm</small></div>
 <div class="field"><label for="tube-proposed-id">Diámetro interior terminado propuesto</label><input id="tube-proposed-id" min="0.1" name="proposedId" required="" step="0.1" type="number" value="74"/><small>Proposición del proveedor después de forro o inserción, mm</small></div>
 <div class="field"><label for="tube-proposed-height">Altura interna utilizable propuesta</label><input id="tube-proposed-height" min="0.1" name="proposedHeight" required="" step="0.1" type="number" value="158"/><small>Altura clara disponible para el producto cargado, mm</small></div>
 <div class="field"><label for="tube-wall-thickness">Construcción propuesta de muro por lado</label><input id="tube-wall-thickness" min="0" name="wallThickness" required="" step="0.1" type="number" value="2"/><small>Entrada de planificación solamente; OD terminado también depende de envolturas, mm</small></div>
@@ -132,7 +132,7 @@
 <tbody>
 <tr><th scope="row">Sección transversal del producto</th><td>Diámetro más grande, diagonal, proyección, plegado, paquete o accesorio que debe entrar en la orientación declarada.</td><td>Muestras, dibujos, rango de tolerancia, ensayo de carga y método de medición.</td></tr>
 <tr><th scope="row">Diámetro interior acabado</th><td>Diámetro de tubo-cuerpo transparente después del revestimiento especificado, efecto envolvente, hombro, manga o condición de inserción.</td><td>Múltiples mediciones sobre la longitud usable, revisión de redondez, muestra de go/no-go, carga y eliminación.</td></tr>
-<tr><th scope="row">Altura interna utilizable</th><td>Espacio vertical claro entre la base interna terminada y la tapa cerrada, el extremo, la plataforma, la almohadilla u otra intrusión.</td><td>Muestra cargada, limpieza superior e inferior, asientos de cierre, compresión del producto y control de movimiento.</td></tr>
+<tr><th scope="row">Altura interna utilizable</th><td>Espacio vertical claro entre la base interna terminada y la tapa cerrada, el extremo, la plataforma, la almohadilla u otra intrusión.</td><td>Muestra cargada, holgura superior e inferior, asientos de cierre, compresión del producto y control de movimiento.</td></tr>
 <tr><th scope="row">Tube cuerpo de diámetro exterior</th><td>Envoltura de cuerpo terminado incluyendo la construcción de pared controlada y envolvente, pero excluyendo una tapa más grande donde sea aplicable.</td><td>Circunferencia de arte, interfaz de tapa, fijación al por menor, divider, etiqueta, cartón y tolerancia del proveedor.</td></tr>
 <tr><th scope="row">Diámetro máximo cerrado</th><td>Diámetro acabado más grande en la tapa, etiqueta, costura, borde, extremo o componente decorativo cuando esté completamente cerrado.</td><td>Estante, datos de comercio electrónico, celda interior, cartón principal, dimensión de paquete y muestra de producción.</td></tr>
 <tr><th scope="row">Altura cerrada general</th><td>Altura máxima base a la parte superior del paquete de venta en lugar de la longitud nominal del cuerpo del tubo.</td><td>Regla de medición GS1 o minorista cuando sea aplicable, ajuste del cargador, obras de arte, recuento de casos y plan de palet.</td></tr>
@@ -152,7 +152,7 @@
 <li>Viajes, compromiso, revelación, alineación, brecha, retención, fuerza de apertura, recloso y uso repetido</li>
 <li>Cargue el producto real y compruebe si el aire atrapado o el producto cercano encajan ralentiza la tapa o la eliminación del producto</li>
 <li>Prueba las combinaciones de ajuste alto y bajo del producto, cuerpo, tapa, hombro, inserción, recubrimiento y variación de almacenamiento</li>
-<li>Agregue una cinta, plataforma de elevación, acceso a los dedos, ruta de ventilación, acceso al extremo opuesto o limpieza revisada sólo después de la prueba de muestreo</li>
+<li>Agregue una cinta, plataforma de elevación, acceso a los dedos, ruta de ventilación, acceso al extremo opuesto o holgura revisada sólo después de la prueba de muestreo</li>
 </ul>
 </div>
 <div class="split__media" data-reveal=""><img alt="Cuerpo de tubo de papel y tapa ajustada para diámetro interior, solapa, apertura y eliminación del producto" decoding="async" height="1024" loading="lazy" sizes="(max-width: 780px) min(calc(100vw - 50px), 658px), (max-width: 976px) calc(46vw - 18px), (max-width: 1040px) calc(470px - 4vw), (max-width: 1228px) calc(46vw - 24px), (max-width: 1375px) calc(590px - 4vw), 535px" src="/assets/images/eco-tube-packaging.webp" srcset="/assets/images/eco-tube-packaging-w512.webp 512w, /assets/images/eco-tube-packaging-w768.webp 768w, /assets/images/eco-tube-packaging.webp 1024w" width="1024"/></div>
@@ -284,7 +284,7 @@
 <div class="footer-bottom"><span>© 2026 GloryStarPack. Todos los derechos reservados.</span><span>Embalajes a medida · Cajas · Bolsas · Etiquetas</span></div>
 </div>
 </footer>
-<script data-language-dictionary="es" defer="" src="/assets/i18n/es.js?v=fbd109b967c8"></script><script defer="" src="/assets/languages.js?v=4700cc809326"></script>
+<script data-language-dictionary="es" defer="" src="/assets/i18n/es.js?v=6bd09d8076a5"></script><script defer="" src="/assets/languages.js?v=4700cc809326"></script>
 <script defer="" src="/assets/site.js?v=9a0c31454b44"></script>
 <script data-measurement-id="G-LYNMPWG9WK" defer="" src="/assets/analytics.js?v=22d0f34abfd0"></script>
 </body>
