@@ -20,6 +20,209 @@ SCHEMA_TEXT = {"name", "description", "text", "headline", "caption", "articleBod
 PAGES = sorted(p for p in ROOT.glob("*.html") if not re.search(r" \d+\.html$", p.name))
 PAGE_NAMES = {p.name for p in PAGES}
 
+# Search snippets need a native, intent-focused title and description.  Keep
+# these separate from the visible H1 so a natural editorial headline can sit
+# above a precise commercial query target.  Only the core pages are overridden
+# here; all other pages continue to use their reviewed dictionary metadata.
+SEO_META = {
+    "index.html": {
+        "fr": ("Fabricant d’emballages personnalisés en Chine | GloryStarPack", "Fabricant chinois de boîtes, emballages d’expédition, sacs, calages et étiquettes personnalisés. Validez structure, échantillon, qualité et livraison avant production."),
+        "es": ("Fabricante de embalajes personalizados en China | GloryStarPack", "Fábrica china de cajas, mailers, bolsas, insertos y etiquetas personalizadas. Revisa estructura, muestra, calidad y entrega antes de producir."),
+        "pt": ("Fabricante de embalagens personalizadas na China | GloryStarPack", "Fábrica na China de caixas, mailers, sacos, berços e etiquetas personalizadas. Valide estrutura, amostra, qualidade e entrega antes da produção."),
+        "ru": ("Производитель упаковки на заказ в Китае | GloryStarPack", "Китайский завод выпускает коробки, транспортную упаковку, пакеты, ложементы и этикетки на заказ. Согласуйте конструкцию, образец, качество и доставку до производства."),
+        "zh-CN": ("中国定制包装制造商｜包装盒、标签与内托 | GloryStarPack", "中国工厂提供定制硬盒、邮寄盒、纸袋、内托和产品标签。生产前确认结构、实物样、质检要求与交付计划。"),
+    },
+    "products.html": {
+        "fr": ("Produits d’emballage sur mesure | GloryStarPack", "Découvrez boîtes rigides, boîtes d’expédition, étiquettes, sacs et calages. Comparez les structures et préparez une demande de devis adaptée."),
+        "es": ("Productos y cajas de embalaje personalizados | GloryStarPack", "Explora cajas rígidas, mailers, etiquetas, bolsas e insertos. Compara estructuras y prepara una solicitud de presupuesto según tu proyecto."),
+        "pt": ("Produtos e caixas de embalagem por medida | GloryStarPack", "Explore caixas rígidas, caixas de envio, etiquetas, sacos e berços. Compare estruturas e prepare um pedido de orçamento para o seu projeto."),
+        "ru": ("Каталог упаковки и коробок на заказ | GloryStarPack", "Изучите жесткие коробки, транспортную упаковку, этикетки, пакеты и ложементы. Сравните конструкции и подготовьте запрос цены под свой проект."),
+        "zh-CN": ("定制包装产品与包装盒目录 | GloryStarPack", "浏览定制硬盒、邮寄盒、标签、纸袋和内托，比较不同结构与工艺，并准备符合项目要求的询价资料。"),
+    },
+    "custom-boxes.html": {
+        "fr": ("Boîtes d’emballage personnalisées avec logo | GloryStarPack", "Comparez les boîtes rigides, magnétiques, à tiroir, d’expédition et de présentation avec calage, finitions et échantillonnage en usine."),
+        "es": ("Cajas de embalaje personalizadas con logo | GloryStarPack", "Compara cajas rígidas, magnéticas, de cajón, de envío y de presentación con insertos, acabados y muestras de fábrica."),
+        "pt": ("Caixas de embalagem personalizadas com logótipo | GloryStarPack", "Compare caixas rígidas, magnéticas, de gaveta, de envio e de apresentação com berços, acabamentos e amostras de fábrica."),
+        "ru": ("Упаковочные коробки с логотипом на заказ | GloryStarPack", "Сравните жесткие, магнитные, выдвижные, транспортные и подарочные коробки с ложементами, отделкой и заводским образцом."),
+        "zh-CN": ("带品牌标识的定制包装盒 | GloryStarPack", "比较硬盒、磁吸盒、抽屉盒、邮寄盒和展示盒，了解内托、表面工艺、打样和工厂生产流程。"),
+    },
+    "custom-rigid-boxes.html": {
+        "fr": ("Fabricant de boîtes rigides sur mesure en Chine | GloryStarPack", "Développez une boîte rigide autour du produit, du calage, de l’ouverture, des matériaux, de la finition, de la quantité et du calendrier de livraison."),
+        "es": ("Fabricante de cajas rígidas personalizadas en China | GloryStarPack", "Desarrolla una caja rígida según el producto, el inserto, la apertura, los materiales, el acabado, la cantidad y el plan de entrega."),
+        "pt": ("Fabricante de caixas rígidas por medida na China | GloryStarPack", "Desenvolva uma caixa rígida de acordo com o produto, o berço, a abertura, os materiais, o acabamento, a quantidade e o plano de entrega."),
+        "ru": ("Производитель жестких коробок на заказ в Китае | GloryStarPack", "Разработаем жесткую коробку с учетом изделия, ложемента, сценария открытия, материалов, отделки, тиража и плана доставки."),
+        "zh-CN": ("中国定制精品硬盒制造商 | GloryStarPack", "根据产品、内托、开启方式、材料、表面工艺、数量和交付计划，开发适合量产的精品硬盒。"),
+    },
+    "custom-perfume-boxes.html": {
+        "fr": ("Boîtes à parfum sur mesure pour flacons en verre | GloryStarPack", "Développez un étui pour flacon en verre selon ses dimensions, son poids, son support, le dégagement du bouchon, la protection de surface, l’échantillon et le transport."),
+        "es": ("Cajas de perfume personalizadas para frascos de vidrio | GloryStarPack", "Desarrolla el estuche según las medidas y el peso del frasco, el soporte de base y hombro, el espacio para el tapón, la protección y el transporte."),
+        "pt": ("Caixas de perfume por medida para frascos de vidro | GloryStarPack", "Desenvolva a caixa de acordo com as dimensões e o peso do frasco, o apoio da base e do ombro, a folga da tampa, a proteção e o transporte."),
+        "ru": ("Коробки для духов на заказ под стеклянные флаконы | GloryStarPack", "Разработаем упаковку по размерам и весу флакона, опоре основания и плечиков, зазору для крышки, защите поверхности, образцу и доставке."),
+        "zh-CN": ("适用于玻璃香水瓶的定制香水盒 | GloryStarPack", "根据香水瓶尺寸与重量、底部和肩部支撑、瓶盖间隙、表面保护、打样和运输要求开发香水盒。"),
+    },
+    "custom-mailer-boxes.html": {
+        "fr": ("Boîtes d’expédition personnalisées pour l’e-commerce | GloryStarPack", "Concevez une boîte d’expédition en carton ondulé selon le produit, le calage, l’impression, la fermeture, le stockage à plat et les contraintes du transport."),
+        "es": ("Cajas mailer personalizadas para envíos de ecommerce | GloryStarPack", "Diseña una caja de cartón ondulado según el producto, el inserto, la impresión, el cierre, el almacenamiento plano y el transporte."),
+        "pt": ("Caixas mailer personalizadas para envios de e-commerce | GloryStarPack", "Desenvolva uma caixa de cartão canelado segundo o produto, o berço, a impressão, o fecho, o armazenamento plano e o transporte."),
+        "ru": ("Почтовые коробки на заказ для e-commerce | GloryStarPack", "Разработайте гофрокороб с учетом изделия, ложемента, печати, замка, плоской поставки и транспортных нагрузок."),
+        "zh-CN": ("适用于电商运输的定制邮寄盒 | GloryStarPack", "根据产品、内托、印刷、封口、平铺存储和运输受力，开发定制瓦楞邮寄盒。"),
+    },
+    "custom-jewelry-boxes.html": {
+        "fr": ("Écrins à bijoux personnalisés pour bagues et montres | GloryStarPack", "Développez des écrins pour bagues, boucles d’oreilles, colliers et montres avec calage, protection de surface, retrait, échantillon et contrôle qualité."),
+        "es": ("Cajas de joyería personalizadas para anillos y relojes | GloryStarPack", "Desarrolla cajas para anillos, pendientes, collares y relojes con inserto, protección, extracción, muestras y control de calidad."),
+        "pt": ("Caixas de joias por medida para anéis e relógios | GloryStarPack", "Desenvolva caixas para anéis, brincos, colares e relógios com berço, proteção, remoção, amostras e controlo de qualidade."),
+        "ru": ("Коробки для ювелирных изделий на заказ | GloryStarPack", "Разработаем коробки для колец, серег, ожерелий и часов с ложементом, защитой поверхности, удобным извлечением, образцами и контролем качества."),
+        "zh-CN": ("适用于戒指和手表的定制珠宝盒 | GloryStarPack", "为戒指、耳环、项链和手表开发定制珠宝盒，规划内托、表面保护、取放、打样和质量控制。"),
+    },
+    "custom-corrugated-shipping-boxes.html": {
+        "fr": ("Caisses d’expédition en carton ondulé sur mesure | GloryStarPack", "Spécifiez la caisse selon la charge, les dimensions intérieures, le carton, l’impression, la fermeture, la protection et le plan de palettisation."),
+        "es": ("Cajas de envío de cartón ondulado personalizadas | GloryStarPack", "Especifica la caja según la carga, las medidas interiores, el cartón, la impresión, el cierre, la protección y la paletización."),
+        "pt": ("Caixas de envio em cartão canelado por medida | GloryStarPack", "Especifique a caixa segundo a carga, as dimensões interiores, o cartão, a impressão, o fecho, a proteção e a paletização."),
+        "ru": ("Транспортные гофрокороба на заказ | GloryStarPack", "Задайте коробку по нагрузке, внутренним размерам, конструкции картона, печати, закрытию, защите и схеме палетирования."),
+        "zh-CN": ("定制瓦楞运输箱 | GloryStarPack", "根据承重、内部尺寸、纸板结构、印刷、封箱、内包装保护和托盘方案确定运输箱规格。"),
+    },
+    "custom-paper-bags.html": {
+        "fr": ("Sacs en papier personnalisés avec logo pour le retail | GloryStarPack", "Concevez des sacs en papier selon le produit, la charge, le soufflet, le renfort, les poignées, l’impression, la finition et le transport."),
+        "es": ("Bolsas de papel personalizadas con logo para retail | GloryStarPack", "Diseña bolsas de papel según el producto, la carga, el fuelle, el refuerzo, las asas, la impresión, el acabado y el transporte."),
+        "pt": ("Sacos de papel personalizados com logótipo para retalho | GloryStarPack", "Desenvolva sacos de papel segundo o produto, a carga, o fole, o reforço, as pegas, a impressão, o acabamento e o transporte."),
+        "ru": ("Бумажные пакеты с логотипом на заказ для розницы | GloryStarPack", "Разработаем пакет по изделию, нагрузке, боковым складкам, усилению, ручкам, печати, отделке и транспортировке."),
+        "zh-CN": ("适用于零售的定制品牌纸袋 | GloryStarPack", "根据产品、承重、风琴褶、加固、提手、印刷、表面工艺和运输要求开发纸袋。"),
+    },
+    "box-labels.html": {
+        "fr": ("Fabricant d’étiquettes personnalisées pour produits | GloryStarPack", "Comparez les étiquettes selon la surface, l’exposition, l’application, l’adhésif, l’impression et la finition avant de demander un devis."),
+        "es": ("Fabricante de etiquetas personalizadas para productos | GloryStarPack", "Compara etiquetas según la superficie, la exposición, la aplicación, el adhesivo, la impresión y el acabado antes de solicitar presupuesto."),
+        "pt": ("Fabricante de etiquetas personalizadas para produtos | GloryStarPack", "Compare etiquetas por superfície, exposição, aplicação, adesivo, impressão e acabamento antes de pedir orçamento."),
+        "ru": ("Производитель этикеток на заказ для продукции | GloryStarPack", "Сравните этикетки по поверхности, условиям эксплуатации, нанесению, клею, печати и отделке перед запросом цены."),
+        "zh-CN": ("定制产品标签制造商 | GloryStarPack", "按产品表面、使用环境、贴标方式、材料、胶黏剂、印刷和表面工艺比较标签方案，再提交询价。"),
+    },
+    "custom-clear-labels.html": {
+        "fr": ("Étiquettes transparentes sur mesure pour un effet sans étiquette | GloryStarPack", "Développez l’étiquette selon la couleur et la courbure du contenant, l’encre blanche, l’adhésif, l’application, les essais et le contrôle qualité."),
+        "es": ("Etiquetas transparentes personalizadas para un acabado sin etiqueta | GloryStarPack", "Desarrolla etiquetas según el color y la curvatura del envase, la tinta blanca, el adhesivo, la aplicación, las pruebas y el control de calidad."),
+        "pt": ("Etiquetas transparentes por medida para um efeito sem etiqueta | GloryStarPack", "Desenvolva etiquetas segundo a cor e a curvatura do recipiente, tinta branca, adesivo, aplicação, ensaios e controlo de qualidade."),
+        "ru": ("Прозрачные этикетки на заказ с эффектом печати без этикетки | GloryStarPack", "Разработаем этикетку с учетом цвета и кривизны тары, белой краски, клея, нанесения, испытаний и контроля качества."),
+        "zh-CN": ("适用于无标签视觉效果的定制透明标签 | GloryStarPack", "根据容器颜色与曲面、白墨、胶黏剂、贴标方式、卷材规格、装填试验和质检方案开发透明标签。"),
+    },
+    "custom-drawer-boxes.html": {
+        "fr": ("Fabricant de boîtes à tiroir sur mesure | GloryStarPack", "Développez le fourreau et le tiroir selon l’ajustement, la course d’ouverture, l’insert, les matériaux, l’échantillon et le conditionnement."),
+        "es": ("Fabricante de cajas tipo cajón personalizadas | GloryStarPack", "Desarrolla el estuche y la bandeja según el ajuste, el recorrido de apertura, el inserto, los materiales, la muestra y el embalaje."),
+        "pt": ("Fabricante de caixas de gaveta por medida | GloryStarPack", "Desenvolva a capa e a gaveta segundo o ajuste, o curso de abertura, o berço, os materiais, a amostra e o acondicionamento."),
+        "ru": ("Производитель коробок-лотков на заказ | GloryStarPack", "Разработаем пенал и лоток с учетом посадки, хода открытия, ложемента, материалов, образца и упаковки."),
+        "zh-CN": ("中国定制抽屉盒制造商 | GloryStarPack", "根据套筒与托盘适配、开启行程、取放空间、内托、材料、打样和装箱要求开发抽屉盒。"),
+    },
+    "custom-magnetic-boxes.html": {
+        "fr": ("Fabricant de boîtes magnétiques sur mesure | GloryStarPack", "Développez une boîte magnétique selon le produit, l’insert, la fermeture, les matériaux, la finition, le volume, l’échantillon et la livraison."),
+        "es": ("Fabricante de cajas magnéticas personalizadas | GloryStarPack", "Desarrolla una caja magnética según el producto, el inserto, el cierre, los materiales, el acabado, la cantidad, la muestra y la entrega."),
+        "pt": ("Fabricante de caixas magnéticas por medida | GloryStarPack", "Desenvolva uma caixa magnética segundo o produto, o berço, o fecho, os materiais, o acabamento, a quantidade, a amostra e a entrega."),
+        "ru": ("Производитель магнитных коробок на заказ | GloryStarPack", "Разработаем магнитную коробку с учетом изделия, ложемента, закрывания, материалов, отделки, тиража, образца и доставки."),
+        "zh-CN": ("中国定制磁吸盒制造商 | GloryStarPack", "根据产品、内托、磁吸闭合、材料、表面工艺、数量、打样和交付要求开发磁吸盒。"),
+    },
+    "collapsible-rigid-boxes.html": {
+        "fr": ("Boîtes rigides pliables et emballage à plat | GloryStarPack", "Développez une boîte rigide pliable selon le stockage à plat, le verrouillage des angles, le carton, le revêtement, le montage et le transport."),
+        "es": ("Cajas rígidas plegables y diseño flat-pack | GloryStarPack", "Desarrolla cajas rígidas plegables según el almacenamiento plano, el cierre de esquinas, el cartón, el forro, el montaje y el transporte."),
+        "pt": ("Caixas rígidas dobráveis e design flat-pack | GloryStarPack", "Desenvolva caixas rígidas dobráveis segundo o armazenamento plano, o bloqueio dos cantos, o cartão, o revestimento, a montagem e o transporte."),
+        "ru": ("Складные жесткие коробки и поставка в плоском виде | GloryStarPack", "Разработаем складную жесткую коробку с учетом хранения в плоском виде, фиксации углов, картона, облицовки, сборки и доставки."),
+        "zh-CN": ("可折叠精品硬盒与平铺包装设计 | GloryStarPack", "围绕平铺存储、边角锁定、纸板与裱糊、组装、装箱和运输要求开发可折叠精品硬盒。"),
+    },
+    "cosmetic-packaging-boxes.html": {
+        "fr": ("Boîtes d’emballage cosmétiques sur mesure | GloryStarPack", "Développez des boîtes papier, calages et étiquettes pour flacons, pots, tubes et pompes selon le produit, le rayon, l’échantillon et le transport."),
+        "es": ("Cajas de embalaje cosmético personalizadas | GloryStarPack", "Desarrolla cajas de papel, insertos y etiquetas para frascos, tarros, tubos y bombas según el producto, el punto de venta, la muestra y el transporte."),
+        "pt": ("Caixas de embalagem cosmética por medida | GloryStarPack", "Desenvolva caixas de papel, berços e etiquetas para frascos, boiões, tubos e bombas segundo o produto, o retalho, a amostra e o transporte."),
+        "ru": ("Косметические упаковочные коробки на заказ | GloryStarPack", "Разработаем бумажные коробки, ложементы и этикетки для флаконов, банок, туб и дозаторов с учетом товара, розницы, образца и доставки."),
+        "zh-CN": ("定制化妆品包装盒与内托 | GloryStarPack", "为瓶、罐、软管和泵头产品开发纸盒、内托和标签，匹配产品、零售陈列、打样与运输要求。"),
+    },
+    "custom-hang-tags.html": {
+        "fr": ("Étiquettes suspendues personnalisées pour mode et retail | GloryStarPack", "Définissez le papier, le format, le trou, la ficelle, l’impression, la dorure, le code-barres, le conditionnement et le contrôle qualité."),
+        "es": ("Etiquetas colgantes personalizadas para moda y retail | GloryStarPack", "Define papel, tamaño, agujero, cordón, impresión, foil, código de barras, preparación de kits y control de calidad."),
+        "pt": ("Etiquetas pendentes personalizadas para moda e retalho | GloryStarPack", "Defina papel, formato, furo, fio, impressão, foil, código de barras, preparação de kits e controlo de qualidade."),
+        "ru": ("Бирки на заказ для одежды и розницы | GloryStarPack", "Задайте бумагу, формат, отверстие, шнур, печать, фольгу, штрихкод, комплектацию и контроль качества."),
+        "zh-CN": ("适用于服装与零售的定制吊牌 | GloryStarPack", "确定纸张、尺寸、打孔、挂绳、印刷、烫金、条码、套装和质量控制要求，开发可量产吊牌。"),
+    },
+    "custom-waterproof-labels.html": {
+        "fr": ("Étiquettes résistantes à l’eau sur mesure pour produits exposés | GloryStarPack", "Développez des étiquettes selon l’eau, la condensation, l’huile, le froid, le frottement, l’extérieur, la lisibilité du code-barres et les essais."),
+        "es": ("Etiquetas resistentes al agua personalizadas para productos expuestos | GloryStarPack", "Desarrolla etiquetas según el agua, la condensación, el aceite, el frío, el roce, el exterior, la lectura del código de barras y las pruebas."),
+        "pt": ("Etiquetas resistentes à água por medida para produtos expostos | GloryStarPack", "Desenvolva etiquetas segundo água, condensação, óleo, frio, abrasão, uso exterior, leitura de códigos e ensaios."),
+        "ru": ("Водостойкие этикетки на заказ для продукции в сложных условиях | GloryStarPack", "Разработаем этикетки с учетом воды, конденсата, масла, холода, истирания, улицы, читаемости штрихкода и испытаний."),
+        "zh-CN": ("适用于复杂环境的定制防水标签 | GloryStarPack", "围绕水、冷凝、油、低温、摩擦、户外使用、条码可读性和测试要求开发防水标签。"),
+    },
+    "custom-wine-boxes.html": {
+        "fr": ("Boîtes à vin sur mesure pour bouteilles et coffrets | GloryStarPack", "Développez un coffret vin selon le poids, le col et les épaules de la bouteille, le calage, le retrait, la présentation, l’échantillon et le transport."),
+        "es": ("Cajas de vino personalizadas para botellas y sets de regalo | GloryStarPack", "Desarrolla cajas según el peso, cuello y hombros de la botella, el inserto, la extracción, la presentación, la muestra y el transporte."),
+        "pt": ("Caixas de vinho por medida para garrafas e conjuntos de oferta | GloryStarPack", "Desenvolva a caixa segundo o peso, gargalo e ombros da garrafa, o berço, a remoção, a apresentação, a amostra e o transporte."),
+        "ru": ("Винные коробки на заказ для бутылок и подарочных наборов | GloryStarPack", "Разработаем коробку с учетом веса, горлышка и плечиков бутылки, ложемента, извлечения, презентации, образца и доставки."),
+        "zh-CN": ("适用于酒瓶与礼盒套装的定制酒盒 | GloryStarPack", "根据酒瓶尺寸与重量、瓶颈和肩部支撑、内托、取放、陈列、打样和运输要求开发酒盒。"),
+    },
+    "custom-wine-labels.html": {
+        "fr": ("Étiquettes de vin sur mesure avec dorure et relief | GloryStarPack", "Choisissez papier, résistance à l’humidité, dorure, relief, adhésif, format rouleau et essais selon la bouteille, la cave et l’application."),
+        "es": ("Etiquetas de vino personalizadas con foil y relieve | GloryStarPack", "Define papel, resistencia a la humedad, foil, relieve, adhesivo, formato en rollo y pruebas según la botella y la aplicación."),
+        "pt": ("Etiquetas de vinho personalizadas com foil e relevo | GloryStarPack", "Defina papel, resistência à humidade, foil, relevo, adesivo, formato em rolo e ensaios segundo a garrafa e a aplicação."),
+        "ru": ("Винные этикетки на заказ с фольгой и тиснением | GloryStarPack", "Подберем бумагу, влагостойкость, фольгу, тиснение, клей, рулонный формат и испытания под бутылку и способ нанесения."),
+        "zh-CN": ("带烫金与压纹的定制葡萄酒标签 | GloryStarPack", "根据酒瓶和贴标方式确定纸张、耐湿性、烫金、压纹、胶黏剂、卷材规格和测试方案。"),
+    },
+    "custom-tube-packaging.html": {
+        "fr": ("Emballage en tube papier et boîtes cylindriques sur mesure | GloryStarPack", "Spécifiez le diamètre, la hauteur, la paroi, le bord, la jointure, le couvercle, l’insert, le décor, l’échantillon et le carton extérieur."),
+        "es": ("Tubos de papel y cajas cilíndricas personalizadas | GloryStarPack", "Especifica diámetro, altura, pared, borde, unión, tapa, inserto, diseño, muestra y caja exterior de transporte."),
+        "pt": ("Embalagem em tubo de papel e caixas cilíndricas por medida | GloryStarPack", "Especifique diâmetro, altura, parede, bordo, união, tampa, berço, arte, amostra e caixa exterior."),
+        "ru": ("Бумажные тубы и цилиндрические коробки на заказ | GloryStarPack", "Задайте диаметр, высоту, стенку, край, шов, крышку, ложемент, оформление, образец и внешнюю транспортную коробку."),
+        "zh-CN": ("定制纸管包装与圆筒盒 | GloryStarPack", "确定直径、高度、管壁、边缘、接缝、盒盖、内托、设计稿、打样和外箱要求，开发纸管包装。"),
+    },
+    "custom-tissue-paper.html": {
+        "fr": ("Papier de soie imprimé sur mesure pour emballage | GloryStarPack", "Développez le papier de soie selon le grammage, l’opacité, le format, l’impression, la couleur, le pliage, le conditionnement et la quantité."),
+        "es": ("Papel de seda impreso personalizado para embalaje | GloryStarPack", "Desarrolla papel de seda según gramaje, opacidad, tamaño, impresión, color, plegado, embalaje y cantidad."),
+        "pt": ("Papel de seda impresso por medida para embalagem | GloryStarPack", "Desenvolva papel de seda segundo a gramagem, opacidade, formato, impressão, cor, dobragem, acondicionamento e quantidade."),
+        "ru": ("Печатная папиросная бумага на заказ для упаковки | GloryStarPack", "Разработаем бумагу с учетом плотности, непрозрачности, формата, печати, цвета, складывания, упаковки и тиража."),
+        "zh-CN": ("适用于包装的定制印刷拷贝纸 | GloryStarPack", "根据克重、不透明度、尺寸、印刷、颜色、折叠、装箱和数量要求开发印刷拷贝纸。"),
+    },
+    "custom-packaging-inserts.html": {
+        "fr": ("Calages d’emballage sur mesure adaptés au produit | GloryStarPack", "Développez un calage en carton, pulpe moulée, EVA, EPE ou tissu selon la cavité, le retrait, la protection, l’échantillon et le transport."),
+        "es": ("Insertos de embalaje personalizados adaptados al producto | GloryStarPack", "Desarrolla insertos de cartón, pulpa moldeada, EVA, EPE o tela según la cavidad, la extracción, la protección, la muestra y el transporte."),
+        "pt": ("Berços de embalagem por medida para o seu produto | GloryStarPack", "Desenvolva berços de cartão, pasta moldada, EVA, EPE ou tecido segundo a cavidade, remoção, proteção, amostra e transporte."),
+        "ru": ("Ложементы для упаковки на заказ под конкретное изделие | GloryStarPack", "Разработаем ложемент из картона, формованной пульпы, EVA, EPE или ткани с учетом ячейки, извлечения, защиты, образца и доставки."),
+        "zh-CN": ("适配产品的定制包装内托 | GloryStarPack", "根据产品尺寸、内腔适配、取放、运输保护、材料、打样和量产要求开发纸板、模塑纸浆、EVA、EPE或包布内托。"),
+    },
+    "folding-carton-boxes.html": {
+        "fr": ("Étuis pliants en carton sur mesure | GloryStarPack", "Spécifiez le carton, le grammage, la structure à rabat ou autobloquante, l’impression, la finition, le conditionnement, l’échantillon et le contrôle qualité."),
+        "es": ("Cajas plegables de cartón personalizadas | GloryStarPack", "Especifica cartón, calibre, estructura con solapa o automontable, impresión, acabado, embalaje, muestra y control de calidad."),
+        "pt": ("Caixas dobráveis de cartão por medida | GloryStarPack", "Especifique cartão, espessura, estrutura com abas ou fundo automático, impressão, acabamento, acondicionamento, amostra e controlo de qualidade."),
+        "ru": ("Складные картонные коробки на заказ | GloryStarPack", "Задайте картон, толщину, конструкцию с клапаном или автодном, печать, отделку, упаковку, образец и контроль качества."),
+        "zh-CN": ("定制折叠纸盒与彩盒 | GloryStarPack", "根据纸板、厚度、插舌或自锁结构、印刷、表面工艺、装箱、打样和质检要求开发折叠纸盒。"),
+    },
+    "lid-and-base-boxes.html": {
+        "fr": ("Fabricant de boîtes cloche sur mesure | GloryStarPack", "Développez une boîte couvercle et fond selon la profondeur, le recouvrement, l’ajustement, le carton, le revêtement, l’insert et l’échantillon."),
+        "es": ("Fabricante de cajas con tapa y base personalizadas | GloryStarPack", "Desarrolla la caja según la profundidad de la tapa, el solape, el ajuste, el cartón, el forro, el inserto y la muestra."),
+        "pt": ("Fabricante de caixas de tampa e base por medida | GloryStarPack", "Desenvolva a caixa segundo a profundidade da tampa, a sobreposição, o ajuste, o cartão, o revestimento, o berço e a amostra."),
+        "ru": ("Производитель коробок с крышкой и дном на заказ | GloryStarPack", "Разработаем коробку с учетом глубины крышки, нахлеста, посадки, картона, облицовки, ложемента и образца."),
+        "zh-CN": ("中国天地盖盒制造商 | GloryStarPack", "根据盒盖深度、覆盖量、适配、纸板、裱糊、内托和打样要求开发天地盖盒。"),
+    },
+    "industries.html": {
+        "fr": ("Emballage sur mesure par secteur | GloryStarPack", "Découvrez des solutions pour cosmétiques, bijoux, montres, e-commerce, vin, bien-être et cadeaux d’entreprise selon les risques du produit et du canal."),
+        "es": ("Embalaje personalizado por sector | GloryStarPack", "Explora soluciones para cosmética, joyería, relojes, ecommerce, vino, bienestar y regalos corporativos según el producto y el canal."),
+        "pt": ("Embalagem por medida por setor | GloryStarPack", "Explore soluções para cosmética, joalharia, relógios, e-commerce, vinho, bem-estar e ofertas empresariais segundo o produto e o canal."),
+        "ru": ("Упаковка на заказ по отраслям | GloryStarPack", "Изучите решения для косметики, ювелирных изделий, часов, e-commerce, вина, товаров для здоровья и корпоративных подарков."),
+        "zh-CN": ("按行业提供定制包装方案 | GloryStarPack", "浏览化妆品、珠宝、手表、电商、酒类、健康用品和企业礼赠包装方案，匹配产品与销售渠道风险。"),
+    },
+    "clear-label-white-ink-artwork-guide.html": {
+        "fr": ("Guide graphique pour étiquettes transparentes et encre blanche | GloryStarPack", "Préparez le fichier d’étiquettes transparentes avec encre blanche, fenêtres, contraste des codes-barres, essais sur contenant et matrice d’échantillons."),
+        "es": ("Guía de diseño para etiquetas transparentes y tinta blanca | GloryStarPack", "Prepara archivos con tinta blanca, ventanas transparentes, contraste de códigos, pruebas en envase y matriz de muestras para solicitar presupuesto."),
+        "pt": ("Guia de arte para etiquetas transparentes e tinta branca | GloryStarPack", "Prepare arte com tinta branca, janelas transparentes, contraste de códigos, ensaios no recipiente e matriz de amostras para pedir orçamento."),
+        "ru": ("Гайд по макету прозрачных этикеток и белой краске | GloryStarPack", "Подготовьте макет с белой краской, прозрачными окнами, контрастом штрихкодов, испытаниями на таре и матрицей образцов."),
+        "zh-CN": ("透明标签与白墨设计稿指南 | GloryStarPack", "规划白墨、透明窗口、条码对比、容器试验和打样矩阵，准备适用于生产询价的透明标签设计稿。"),
+    },
+    "about.html": {
+        "fr": ("Usine d’emballage et contrôle qualité | GloryStarPack", "Découvrez comment GloryStarPack suit la découpe, l’échantillon physique, la production, le contrôle qualité, l’emballage et la livraison."),
+        "es": ("Fábrica de embalajes y control de calidad | GloryStarPack", "Conoce cómo GloryStarPack controla el troquelado, la muestra física, la producción, la inspección, el embalaje y la entrega."),
+        "pt": ("Fábrica de embalagens e controlo de qualidade | GloryStarPack", "Veja como a GloryStarPack acompanha o corte, a amostra física, a produção, o controlo de qualidade, a embalagem e a entrega."),
+        "ru": ("Упаковочное производство и контроль качества | GloryStarPack", "Узнайте, как GloryStarPack контролирует вырубку, физический образец, производство, проверку качества, упаковку и доставку."),
+        "zh-CN": ("包装工厂与质量控制 | GloryStarPack", "了解 GloryStarPack 如何管理刀模、实物打样、生产检验、装箱和交付全过程。"),
+    },
+    "blog.html": {
+        "fr": ("Guides d’achat pour l’emballage sur mesure | GloryStarPack", "Guides pratiques sur les structures, matériaux, échantillons, contrôle qualité, coûts, tests, approvisionnement et livraison."),
+        "es": ("Guías de compra sobre embalajes personalizados | GloryStarPack", "Guías prácticas sobre estructuras, materiales, muestras, control de calidad, costes, pruebas, abastecimiento y entrega."),
+        "pt": ("Guias de compra sobre embalagens por medida | GloryStarPack", "Guias práticos sobre estruturas, materiais, amostras, controlo de qualidade, custos, testes, aprovisionamento e entrega."),
+        "ru": ("Гайды по закупке упаковки на заказ | GloryStarPack", "Практические материалы о конструкциях, материалах, образцах, контроле качества, стоимости, испытаниях, закупке и доставке."),
+        "zh-CN": ("定制包装采购指南 | GloryStarPack", "阅读包装结构、材料、打样、质检、成本、测试、采购和交付方面的实用指南。"),
+    },
+}
+
 # These are maintained product terms and interface sentences. They keep the
 # generated editions readable when a source sentence contains a term that a
 # literal dictionary entry translated incorrectly (for example, treating
@@ -27,6 +230,44 @@ PAGE_NAMES = {p.name for p in PAGES}
 # deterministic; the production build never calls a translation service.
 EXACT_COPY = {
     "zh-CN": {
+        "Home": "首页",
+        "Next": "下一页",
+        "Custom Boxes": "定制包装盒",
+        "Custom boxes": "定制包装盒",
+        "custom boxes": "定制包装盒",
+        "Custom boxes page": "定制包装盒页面",
+        "Explore custom boxes": "探索定制包装盒",
+        "Plan custom boxes": "规划定制包装盒",
+        "Compare custom boxes": "比较定制包装盒",
+        "Custom packaging boxes built around the": "围绕产品打造的定制包装盒",
+        "Custom mailer boxes": "定制邮寄盒",
+        "Custom Mailer Boxes": "定制邮寄盒",
+        "Custom mailer box options": "定制邮寄盒选项",
+        "Custom mailer box service overview": "定制邮寄盒服务概览",
+        "Custom Mailer Boxes Manufacturer | GloryStarPack": "定制邮寄盒制造商 | GloryStarPack",
+        "Custom Mailer Boxes | GloryStarPack": "定制邮寄盒 | GloryStarPack",
+        "Quote a custom mailer": "获取定制邮寄盒报价",
+        "Quote my box": "获取我的包装盒报价",
+        "Custom Corrugated Shipping Boxes": "定制瓦楞运输箱",
+        "Custom corrugated shipping boxes": "定制瓦楞运输箱",
+        "Custom Corrugated Shipping Box Development": "定制瓦楞运输箱开发",
+        "Custom Corrugated Shipping Boxes | GloryStarPack": "定制瓦楞运输箱 | GloryStarPack",
+        "Custom Packaging Boxes With Logo": "带标识的定制包装盒",
+        "Custom Packaging Boxes With Logo | GloryStarPack": "带标识的定制包装盒 | GloryStarPack",
+        "Packaging cost and MOQ": "包装成本与 MOQ",
+        "Custom packaging cost and MOQ guide": "定制包装成本与 MOQ 指南",
+        "Lid and base boxes": "天地盖盒",
+        "Custom hang tags": "定制服装吊牌",
+        "Custom Hang Tags": "定制服装吊牌",
+        "Custom packaging inserts": "定制包装内托",
+        "Custom clear labels": "定制透明标签",
+        "Boxes": "包装盒",
+        "Rigid boxes": "精品硬盒",
+        "Custom packaging": "定制包装",
+        "Custom packaging boxes": "定制包装盒",
+        "Factory-direct manufacturer of custom boxes and product labels for global brands.": "面向全球品牌提供定制包装盒和产品标签的源头工厂。",
+        "Packaging Factory and Quality Control": "包装工厂与质量控制",
+        "Custom Rigid Box Development and Manufacturing": "定制硬盒开发与生产",
         "Foil": "箔材",
         "Embossed": "击凸",
         "Tuck end": "插舌式",
@@ -145,6 +386,36 @@ EXACT_COPY = {
         "Waterproof-label test matrix": "防水标签测试矩阵",
     },
     "es": {
+        "Home": "Inicio",
+        "Next": "Siguiente",
+        "Custom Boxes": "Cajas personalizadas",
+        "Custom boxes": "Cajas personalizadas",
+        "custom boxes": "Cajas personalizadas",
+        "Custom boxes page": "Página de cajas personalizadas",
+        "Explore custom boxes": "Explorar cajas personalizadas",
+        "Plan custom boxes": "Planificar cajas personalizadas",
+        "Compare custom boxes": "Comparar cajas personalizadas",
+        "Custom packaging boxes built around the": "Cajas personalizadas diseñadas alrededor del producto",
+        "Custom mailer boxes": "Cajas mailer personalizadas",
+        "Custom Mailer Boxes": "Cajas mailer personalizadas",
+        "Custom mailer box options": "Opciones de cajas mailer personalizadas",
+        "Custom mailer box service overview": "Descripción del servicio de cajas mailer personalizadas",
+        "Custom Mailer Boxes Manufacturer | GloryStarPack": "Fabricante de cajas mailer personalizadas | GloryStarPack",
+        "Custom Mailer Boxes | GloryStarPack": "Cajas mailer personalizadas | GloryStarPack",
+        "Quote a custom mailer": "Solicitar presupuesto para una caja mailer",
+        "Quote my box": "Solicitar presupuesto para mi caja",
+        "Custom Corrugated Shipping Boxes": "Cajas de envío de cartón ondulado personalizadas",
+        "Custom corrugated shipping boxes": "Cajas de envío de cartón ondulado personalizadas",
+        "Custom Corrugated Shipping Box Development": "Desarrollo de cajas de envío de cartón ondulado personalizadas",
+        "Custom Corrugated Shipping Boxes | GloryStarPack": "Cajas de envío de cartón ondulado personalizadas | GloryStarPack",
+        "Custom Packaging Boxes With Logo": "Cajas de embalaje personalizadas con logo",
+        "Custom Packaging Boxes With Logo | GloryStarPack": "Cajas de embalaje personalizadas con logo | GloryStarPack",
+        "Boxes": "Cajas",
+        "Rigid boxes": "Cajas rígidas",
+        "Custom packaging": "Embalaje personalizado",
+        "Factory-direct manufacturer of custom boxes and product labels for global brands.": "Fabricante directo de fábrica de cajas y etiquetas personalizadas para marcas globales.",
+        "Packaging Factory and Quality Control": "Fábrica de embalajes y control de calidad",
+        "Packaging Factory & Quality Control | GloryStarPack": "Fábrica de embalajes y control de calidad | GloryStarPack",
         "Foil": "Estampado en foil",
         "Embossed": "Relieve",
         "Tuck end": "Solapa de cierre",
@@ -239,6 +510,36 @@ EXACT_COPY = {
         "Waterproof-label test matrix": "Matriz de pruebas para etiquetas resistentes al agua",
     },
     "pt": {
+        "Home": "Início",
+        "Next": "Seguinte",
+        "Custom Boxes": "Caixas personalizadas",
+        "Custom boxes": "Caixas personalizadas",
+        "custom boxes": "Caixas personalizadas",
+        "Custom boxes page": "Página de caixas personalizadas",
+        "Explore custom boxes": "Explorar caixas personalizadas",
+        "Plan custom boxes": "Planear caixas personalizadas",
+        "Compare custom boxes": "Comparar caixas personalizadas",
+        "Custom packaging boxes built around the": "Caixas personalizadas desenvolvidas à volta do produto",
+        "Custom mailer boxes": "Caixas mailer personalizadas",
+        "Custom Mailer Boxes": "Caixas mailer personalizadas",
+        "Custom mailer box options": "Opções de caixas mailer personalizadas",
+        "Custom mailer box service overview": "Visão geral do serviço de caixas mailer personalizadas",
+        "Custom Mailer Boxes Manufacturer | GloryStarPack": "Fabricante de caixas mailer personalizadas | GloryStarPack",
+        "Custom Mailer Boxes | GloryStarPack": "Caixas mailer personalizadas | GloryStarPack",
+        "Quote a custom mailer": "Pedir orçamento para uma caixa mailer",
+        "Quote my box": "Pedir orçamento para a minha caixa",
+        "Custom Corrugated Shipping Boxes": "Caixas de envio em cartão canelado por medida",
+        "Custom corrugated shipping boxes": "Caixas de envio em cartão canelado por medida",
+        "Custom Corrugated Shipping Box Development": "Desenvolvimento de caixas de envio em cartão canelado por medida",
+        "Custom Corrugated Shipping Boxes | GloryStarPack": "Caixas de envio em cartão canelado por medida | GloryStarPack",
+        "Custom Packaging Boxes With Logo": "Caixas de embalagem personalizadas com logótipo",
+        "Custom Packaging Boxes With Logo | GloryStarPack": "Caixas de embalagem personalizadas com logótipo | GloryStarPack",
+        "Boxes": "Caixas",
+        "Rigid boxes": "Caixas rígidas",
+        "Custom packaging": "Embalagem personalizada",
+        "Factory-direct manufacturer of custom boxes and product labels for global brands.": "Fabricante direto da fábrica de caixas e etiquetas personalizadas para marcas globais.",
+        "Packaging Factory and Quality Control": "Fábrica de embalagens e controlo de qualidade",
+        "Packaging Factory & Quality Control | GloryStarPack": "Fábrica de embalagens e controlo de qualidade | GloryStarPack",
         "Foil": "Foil",
         "Embossed": "Relevo",
         "Tuck end": "Fecho tuck-end",
@@ -338,6 +639,36 @@ EXACT_COPY = {
         "Waterproof-label test matrix": "Matriz de testes para etiquetas resistentes à água",
     },
     "fr": {
+        "Home": "Accueil",
+        "Next": "Suivant",
+        "Custom Boxes": "Boîtes personnalisées",
+        "Custom boxes": "Boîtes personnalisées",
+        "custom boxes": "Boîtes personnalisées",
+        "Custom boxes page": "Page des boîtes personnalisées",
+        "Explore custom boxes": "Découvrir les boîtes personnalisées",
+        "Plan custom boxes": "Planifier des boîtes personnalisées",
+        "Compare custom boxes": "Comparer les boîtes personnalisées",
+        "Custom packaging boxes built around the": "Boîtes personnalisées conçues autour du produit",
+        "Custom mailer boxes": "Boîtes mailer personnalisées",
+        "Custom Mailer Boxes": "Boîtes mailer personnalisées",
+        "Custom mailer box options": "Options de boîtes mailer personnalisées",
+        "Custom mailer box service overview": "Présentation du service de boîtes mailer personnalisées",
+        "Custom Mailer Boxes Manufacturer | GloryStarPack": "Fabricant de boîtes mailer personnalisées | GloryStarPack",
+        "Custom Mailer Boxes | GloryStarPack": "Boîtes mailer personnalisées | GloryStarPack",
+        "Quote a custom mailer": "Demander un devis pour une boîte mailer",
+        "Quote my box": "Demander un devis pour ma boîte",
+        "Custom Corrugated Shipping Boxes": "Caisses d’expédition en carton ondulé sur mesure",
+        "Custom corrugated shipping boxes": "Caisses d’expédition en carton ondulé sur mesure",
+        "Custom Corrugated Shipping Box Development": "Développement de caisses d’expédition en carton ondulé sur mesure",
+        "Custom Corrugated Shipping Boxes | GloryStarPack": "Caisses d’expédition en carton ondulé sur mesure | GloryStarPack",
+        "Custom Packaging Boxes With Logo": "Boîtes d’emballage personnalisées avec logo",
+        "Custom Packaging Boxes With Logo | GloryStarPack": "Boîtes d’emballage personnalisées avec logo | GloryStarPack",
+        "Boxes": "Boîtes",
+        "Rigid boxes": "Boîtes rigides",
+        "Custom packaging": "Emballage sur mesure",
+        "Factory-direct manufacturer of custom boxes and product labels for global brands.": "Fabricant direct d’usine de boîtes et d’étiquettes personnalisées pour les marques internationales.",
+        "Packaging Factory and Quality Control": "Usine d’emballage et contrôle qualité",
+        "Packaging Factory & Quality Control | GloryStarPack": "Usine d’emballage et contrôle qualité | GloryStarPack",
         "Foil": "Dorure à chaud",
         "Embossed": "Relief",
         "Tuck end": "Rabat rentrant",
@@ -423,6 +754,37 @@ EXACT_COPY = {
         "Waterproof-label test matrix": "Matrice d’essai des étiquettes résistantes à l’eau",
     },
     "ru": {
+        "Home": "Главная",
+        "Next": "Далее",
+        "Custom Boxes": "Коробки на заказ",
+        "Custom boxes": "Коробки на заказ",
+        "custom boxes": "Коробки на заказ",
+        "Custom boxes page": "Страница коробок на заказ",
+        "Explore custom boxes": "Изучить коробки на заказ",
+        "Plan custom boxes": "Спланировать коробки на заказ",
+        "Compare custom boxes": "Сравнить коробки на заказ",
+        "Custom packaging boxes built around the": "Упаковочные коробки на заказ под конкретное изделие",
+        "Custom mailer boxes": "Почтовые коробки на заказ",
+        "Custom Mailer Boxes": "Почтовые коробки на заказ",
+        "Custom mailer box options": "Варианты почтовых коробок на заказ",
+        "Custom mailer box service overview": "Описание услуги по изготовлению почтовых коробок на заказ",
+        "Custom Mailer Boxes Manufacturer | GloryStarPack": "Производитель почтовых коробок на заказ | GloryStarPack",
+        "Custom Mailer Boxes | GloryStarPack": "Почтовые коробки на заказ | GloryStarPack",
+        "Quote a custom mailer": "Запросить цену на почтовую коробку",
+        "Quote my box": "Запросить цену на мою коробку",
+        "Custom Corrugated Shipping Boxes": "Транспортные гофрокороба на заказ",
+        "Custom corrugated shipping boxes": "Транспортные гофрокороба на заказ",
+        "Custom Corrugated Shipping Box Development": "Разработка транспортных гофрокоробов на заказ",
+        "Custom Corrugated Shipping Boxes | GloryStarPack": "Транспортные гофрокороба на заказ | GloryStarPack",
+        "Custom Packaging Boxes With Logo": "Упаковочные коробки с логотипом на заказ",
+        "Custom Packaging Boxes With Logo | GloryStarPack": "Упаковочные коробки с логотипом на заказ | GloryStarPack",
+        "Boxes": "Коробки",
+        "Rigid boxes": "Жесткие коробки",
+        "Custom packaging": "Упаковка на заказ",
+        "Custom packaging boxes": "Упаковочные коробки на заказ",
+        "Factory-direct manufacturer of custom boxes and product labels for global brands.": "Производитель коробок и этикеток на заказ для международных брендов.",
+        "Packaging Factory and Quality Control": "Упаковочное производство и контроль качества",
+        "Packaging Factory & Quality Control | GloryStarPack": "Упаковочное производство и контроль качества | GloryStarPack",
         "Foil": "Фольга",
         "Embossed": "Тиснение",
         "Tuck end": "Клапан tuck-end",
@@ -544,6 +906,20 @@ def normalize_language_value(language, source, value):
     result = html.unescape(result)
 
     if language == "zh-CN":
+        # Keep recurring product labels idiomatic across body copy, schema and
+        # form controls even when the source sentence is longer than a
+        # dictionary key.
+        result = (result.replace("定制框", "定制包装盒")
+                  .replace("邮件框", "邮寄盒")
+                  .replace("邮件盒", "邮寄盒")
+                  .replace("电子商务邮箱", "电子商务邮寄盒")
+                  .replace("装潢邮箱", "装潢邮寄盒")
+                  .replace("定制清晰的标签", "定制透明标签")
+                  .replace("嵌入和挫败标签", "压纹与箔材标签")
+                  .replace("立方箱和基箱", "天地盖盒")
+                  .replace("定制挂起标记", "定制服装吊牌")
+                  .replace("定制经校正的货运箱", "定制瓦楞运输箱")
+                  .replace("定制折叠的运货箱", "定制瓦楞运输箱"))
         if "corrugated" in source_lower:
             result = re.sub(r"腐蚀(?:性|的|式)?", "瓦楞", result)
         if "planning envelope" in source_lower:
@@ -803,7 +1179,7 @@ def translate_page(page, language, dictionary):
         if key == "inLanguage": return language
         if key in SCHEMA_TEXT and prose(value): return tr(value)
         # Organization/website identities and shared images remain stable.
-        if value.startswith(ORIGIN) and key in {"url", "@id"} and not value.endswith(("#organization", "#website")):
+        if value.startswith(ORIGIN) and key in {"url", "@id", "item"} and not value.endswith(("#organization", "#website")):
             return localize_url(value, language)
         return value
     for script in soup.select('script[type="application/ld+json"]'):
@@ -815,10 +1191,15 @@ def translate_page(page, language, dictionary):
     # distributing the reviewed native headline across the same text slots.
     apply_headline_preserving_markup(soup.h1, native_headline, source_h1_slots, language)
     headline = normalize(soup.h1.get_text(" ", strip=True))
-    title = headline.rstrip(".!?。？！") + " | GloryStarPack"
+    seo_meta = SEO_META.get(page.name, {}).get(language)
+    title = seo_meta[0] if seo_meta else headline.rstrip(".!?。？！") + " | GloryStarPack"
+    description = seo_meta[1] if seo_meta else None
     soup.title.string = title
     for tag in soup.select('meta[property="og:title"], meta[name="twitter:title"]'):
         tag["content"] = title
+    if description:
+        for tag in soup.select('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]'):
+            tag["content"] = description
     for script in soup.select('script[type="application/ld+json"]'):
         schema = json.loads(script.string)
         def update_headline(value):
@@ -826,6 +1207,9 @@ def translate_page(page, language, dictionary):
                 if value.get("@type") in {"WebPage", "Article", "BlogPosting"}:
                     if "name" in value: value["name"] = title
                     if "headline" in value: value["headline"] = headline
+                    if description and "description" in value: value["description"] = description
+                elif description and value.get("@type") in {"CollectionPage", "Blog", "Service"} and "description" in value:
+                    value["description"] = description
                 for item in value.values(): update_headline(item)
             elif isinstance(value, list):
                 for item in value: update_headline(item)
@@ -843,7 +1227,45 @@ def translate_page(page, language, dictionary):
     runtime_path = f"assets/i18n/{language}.js"
     script = soup.new_tag("script", src=f"/{runtime_path}?v={version(runtime_path)}", defer="", attrs={"data-language-dictionary": language})
     soup.select_one('script[src*="assets/languages.js"]').insert_before(script)
-    return str(soup)
+    serialized = str(soup)
+    if language == "zh-CN":
+        # A few catalog and headline strings are authored outside the page
+        # dictionary. Polish those recurring labels after serialization so
+        # schema, runtime catalog cards, and visible controls use the same
+        # buyer-facing terminology.
+        serialized = (serialized.replace("定制框", "定制包装盒")
+                      .replace("定制清晰的标签", "定制透明标签")
+                      .replace("定制打印的邮件箱服务", "定制印刷邮寄盒服务")
+                      .replace("指定清晰的标签", "指定透明标签")
+                      .replace("清晰的标签", "透明标签")
+                      .replace("嵌入和挫败标签", "压纹与箔材标签")
+                      .replace("挂起标记", "吊牌")
+                      .replace("挂标签", "吊牌")
+                      .replace("经校正的航运箱", "瓦楞运输箱")
+                      .replace("定制经校正的货运箱", "定制瓦楞运输箱")
+                      .replace("定制折叠的运货箱", "定制瓦楞运输箱")
+                      .replace("工作邮箱", "工作邮寄盒")
+                      .replace("邮箱", "邮寄盒")
+                      .replace("工作邮寄盒", "工作邮箱"))
+    elif language == "pt":
+        serialized = (serialized.replace("Citar esta referência", "Pedir orçamento para esta referência")
+                      .replace("Citar ", "Pedir orçamento para ")
+                      .replace("caixas de transporte onduladas personalizadas", "caixas de transporte em cartão canelado por medida"))
+    elif language == "es":
+        serialized = (serialized.replace("cajas de envío onduladas personalizadas", "cajas de envío de cartón ondulado personalizadas")
+                      .replace("Cita esta referencia", "Solicitar presupuesto para esta referencia")
+                      .replace("Cita mi ", "Solicitar presupuesto para mi ")
+                      .replace("Cita mis ", "Solicitar presupuesto para mis ")
+                      .replace("Cita una ", "Solicitar presupuesto para una ")
+                      .replace("Cita de ", "Solicitud de presupuesto para "))
+    elif language == "fr":
+        serialized = (serialized.replace("boîtes d'expédition ondulées personnalisées", "caisses d’expédition en carton ondulé sur mesure")
+                      .replace("boîtes d'expédition ondulées", "caisses d’expédition en carton ondulé")
+                      .replace("boîtes d’expédition ondulées", "caisses d’expédition en carton ondulé"))
+    elif language == "ru":
+        serialized = (serialized.replace("Процитирую", "Запросить цену на")
+                      .replace("коррумпированные коробки", "гофрокороба"))
+    return serialized
 
 def build():
     runtime = runtime_strings()
