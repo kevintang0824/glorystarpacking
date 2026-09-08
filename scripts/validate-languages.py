@@ -2,20 +2,40 @@
 import hashlib
 import json
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlsplit
 from bs4 import BeautifulSoup, Comment, NavigableString, Tag
 
 ROOT = Path(__file__).resolve().parent.parent
 LANGUAGES = ["en", "fr", "es", "pt", "ru", "zh-CN"]
+INDEXING = json.loads((ROOT / "translations/indexing.json").read_text())
+REVIEWED_TRANSLATIONS = {
+    language: set(INDEXING.get("reviewed", {}).get(language, []))
+    for language in LANGUAGES if language != "en"
+}
 pages = [p for p in ROOT.glob("*.html") if not re.search(r" \d+\.html$", p.name)]
 page_names = {page.name for page in pages}
 errors = []
 count = 0
 
+if set(INDEXING.get("reviewed", {})) != set(REVIEWED_TRANSLATIONS):
+    errors.append("translations/indexing.json: must define exactly fr, es, pt, ru and zh-CN")
+for language, reviewed_pages in REVIEWED_TRANSLATIONS.items():
+    for unknown_page in sorted(reviewed_pages - page_names):
+        errors.append(f"translations/indexing.json: unknown {language} page: {unknown_page}")
+
 def route(file, language):
     suffix = "" if file == "index.html" else file
     return "/" + suffix if language == "en" else f"/{language}" + (f"/{suffix}" if suffix else "")
+
+def reviewed_languages(file):
+    return [language for language in LANGUAGES[1:] if file in REVIEWED_TRANSLATIONS[language]]
+
+def expected_alternates(file, language):
+    if file == "404.html" or (language != "en" and file not in REVIEWED_TRANSLATIONS[language]):
+        return set()
+    return {"en", *reviewed_languages(file), "x-default"}
 
 def localized_url(value, language):
     parsed = urlsplit(value)
@@ -96,8 +116,13 @@ for language in LANGUAGES:
         check(soup.select_one('.language-switcher a[aria-current="true"]').get("data-language") == language, "incorrect selected language")
         if page.name != "404.html":
             check(soup.select_one('link[rel="canonical"]')["href"] == "https://glorystarpacking.com" + expected, "incorrect canonical")
+        robots = soup.select_one('meta[name="robots"]')
+        robots_tokens = {token.strip().lower() for token in robots.get("content", "").split(",")} if robots else set()
+        should_index = page.name != "404.html" and (language == "en" or page.name in REVIEWED_TRANSLATIONS[language])
+        check("index" in robots_tokens and "noindex" not in robots_tokens if should_index else "noindex" in robots_tokens, "incorrect robots indexing directive")
+        check("follow" in robots_tokens, "robots directive must allow link following")
         alternates = {link["hreflang"]: link["href"] for link in soup.select('link[hreflang]')}
-        check(set(alternates) == set([*LANGUAGES, "x-default"]), "incomplete hreflang set")
+        check(set(alternates) == expected_alternates(page.name, language), "hreflang set does not match the review gate")
         for link in soup.select('a[href], script[src], link[href], img[src], source[src]'):
             value = link.get("href") or link.get("src")
             url = urlsplit(value)
@@ -129,7 +154,22 @@ for language in LANGUAGES:
         check(not re.search(r"translate_a/|cdn\.gtranslate|translate\.google", str(soup)), "external translation dependency")
         check(not re.search(r"\{\{\d+\}\}|▁", soup.get_text()), "unresolved content token")
         count += 1
+
+sitemap = ET.parse(ROOT / "sitemap-languages.xml")
+actual_sitemap_urls = {
+    loc.text.strip()
+    for loc in sitemap.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+    if loc.text
+}
+expected_sitemap_urls = {
+    "https://glorystarpacking.com" + route(page.name, language)
+    for language in LANGUAGES[1:]
+    for page in pages
+    if page.name != "404.html" and page.name in REVIEWED_TRANSLATIONS[language]
+}
+if actual_sitemap_urls != expected_sitemap_urls:
+    errors.append("sitemap-languages.xml: URLs do not match translations/indexing.json")
 if errors:
     print("\n".join(errors))
     raise SystemExit(f"Language validation failed: {len(errors)} issue(s)")
-print(f"Validated {count} pages: every language matches the English page set, DOM structure, media, links, forms, assets, metadata and script versions.")
+print(f"Validated {count} pages: language parity, review-gated indexing, hreflang, sitemap, links, forms, assets, metadata and script versions all match.")

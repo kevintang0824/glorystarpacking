@@ -2808,6 +2808,14 @@ main[tabindex="-1"]:focus-visible {
   font-size: 0.86rem;
 }
 
+.company-identity-note {
+  margin: 0 0 28px;
+}
+
+.company-identity-note a + a {
+  margin-left: 12px;
+}
+
 .proof-list {
   display: grid;
   margin: 34px 0 0;

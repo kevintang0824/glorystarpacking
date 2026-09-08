@@ -1,7 +1,15 @@
+import fs from "node:fs";
+import path from "node:path";
 import process from "node:process";
 
 const siteOrigin = new URL(process.argv[2] || "https://glorystarpacking.com").origin;
+const root = path.resolve(import.meta.dirname, "..");
 const sitemapUrlsToAudit = [`${siteOrigin}/sitemap.xml`, `${siteOrigin}/sitemap-languages.xml`];
+const languageIndexing = JSON.parse(fs.readFileSync(path.join(root, "translations/indexing.json"), "utf8"));
+const languageCodes = ["fr", "es", "pt", "ru", "zh-CN"];
+const pageNames = fs.readdirSync(root)
+  .filter((file) => file.endsWith(".html") && file !== "404.html" && !/ \d+\.html$/i.test(file))
+  .sort();
 const requestHeaders = {
   "user-agent": "GloryStarPackProductionAudit/1.0",
   accept: "text/html,application/xhtml+xml,application/xml,text/plain;q=0.9,*/*;q=0.8",
@@ -76,6 +84,35 @@ const auditSitemapUrl = async (url) => {
   }
 };
 
+const auditUnreviewedTranslation = async (url) => {
+  try {
+    const result = await followRedirects(url);
+    if (result.response.status !== 200) {
+      errors.push(`${url}: expected an accessible HTTP 200 translation, received ${result.response.status}`);
+      return;
+    }
+    if (result.redirects.length || result.finalUrl !== url) {
+      errors.push(`${url}: unreviewed translation redirects to ${result.finalUrl}`);
+    }
+    const contentType = result.response.headers.get("content-type") || "";
+    if (!contentType.includes("text/html")) {
+      errors.push(`${url}: expected an HTML translation, received ${contentType || "no content type"}`);
+      return;
+    }
+    const canonical = canonicalFrom(result.body);
+    if (canonical !== url) errors.push(`${url}: canonical is ${canonical || "missing"}`);
+    const robotsTokens = new Set(robotsContentFrom(result.body).toLowerCase().split(",").map((token) => token.trim()));
+    if (!robotsTokens.has("noindex") || !robotsTokens.has("follow")) {
+      errors.push(`${url}: unreviewed translation must use noindex,follow`);
+    }
+    if (/<link\b[^>]*\bhreflang=["'][^"']+["'][^>]*>/i.test(result.body)) {
+      errors.push(`${url}: unreviewed translation must not publish head hreflang alternates`);
+    }
+  } catch (error) {
+    errors.push(`${url}: ${error.message}`);
+  }
+};
+
 const auditRedirectProbe = async ({ url, finalUrl, maximumRedirects }) => {
   try {
     const result = await followRedirects(url);
@@ -103,13 +140,34 @@ const sitemapResults = await Promise.all(sitemapUrlsToAudit.map(followRedirects)
 for (let index = 0; index < sitemapResults.length; index += 1) {
   if (sitemapResults[index].response.status !== 200) errors.push(`${sitemapUrlsToAudit[index]}: expected HTTP 200, received ${sitemapResults[index].response.status}`);
 }
-const sitemapUrls = sitemapResults.flatMap((result) => [...result.body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((match) => match[1].trim()));
+const urlsFromSitemap = (result) => [...result.body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((match) => match[1].trim());
+const primarySitemapUrls = urlsFromSitemap(sitemapResults[0]);
+const languageSitemapUrls = urlsFromSitemap(sitemapResults[1]);
+const sitemapUrls = [...primarySitemapUrls, ...languageSitemapUrls];
 if (!sitemapUrls.length) errors.push("sitemap.xml contains no URLs");
 if (new Set(sitemapUrls).size !== sitemapUrls.length) errors.push("sitemap.xml contains duplicate URLs");
 if (sitemapUrls.some((url) => new URL(url).origin !== siteOrigin)) errors.push("sitemap.xml contains a URL outside the canonical origin");
 
+const expectedLanguageSitemapUrls = new Set(languageCodes.flatMap((language) =>
+  (languageIndexing.reviewed?.[language] || []).map((file) => `${siteOrigin}/${language}${file === "index.html" ? "" : `/${file}`}`)
+));
+if (languageSitemapUrls.length !== expectedLanguageSitemapUrls.size ||
+    languageSitemapUrls.some((url) => !expectedLanguageSitemapUrls.has(url))) {
+  errors.push("sitemap-languages.xml does not match translations/indexing.json");
+}
+
+const unreviewedTranslationUrls = languageCodes.flatMap((language) => {
+  const reviewed = new Set(languageIndexing.reviewed?.[language] || []);
+  return pageNames
+    .filter((file) => !reviewed.has(file))
+    .map((file) => `${siteOrigin}/${language}${file === "index.html" ? "" : `/${file}`}`);
+});
+
 for (let index = 0; index < sitemapUrls.length; index += 8) {
   await Promise.all(sitemapUrls.slice(index, index + 8).map(auditSitemapUrl));
+}
+for (let index = 0; index < unreviewedTranslationUrls.length; index += 8) {
+  await Promise.all(unreviewedTranslationUrls.slice(index, index + 8).map(auditUnreviewedTranslation));
 }
 
 const robotsResult = await followRedirects(`${siteOrigin}/robots.txt`);
@@ -141,4 +199,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Production indexing audit passed: ${sitemapUrls.length} sitemap URLs return direct HTTP 200 responses with matching canonicals and indexable robots directives; canonical-host probes use at most one redirect and private build artifacts return 404.`);
+console.log(`Production indexing audit passed: ${sitemapUrls.length} sitemap URLs are indexable, ${unreviewedTranslationUrls.length} accessible translations are held behind the noindex review gate, canonical-host probes use at most one redirect, and private build artifacts return 404.`);

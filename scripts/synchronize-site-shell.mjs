@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
+const languageIndexing = JSON.parse(fs.readFileSync(path.join(root, "translations/indexing.json"), "utf8"));
 const primaryTopline = "Factory-direct custom packaging · Technical project support";
 const footerBrand = "Custom boxes, bags, inserts, and labels developed through one accountable sampling, production, and delivery workflow.";
 const footerSignature = "Custom packaging · Boxes · Bags · Labels";
@@ -25,6 +26,9 @@ const languages = [
   ["ru", "Русский", "🇷🇺"], ["zh-CN", "简体中文", "🇨🇳"],
 ];
 const languagePath = (file, code) => code === "en" ? (file === "index.html" ? "/" : `/${file}`) : `/${code}${file === "index.html" ? "" : `/${file}`}`;
+const reviewedLanguages = (file) => languages
+  .map(([code]) => code)
+  .filter((code) => code !== "en" && (languageIndexing.reviewed?.[code] || []).includes(file));
 const languagePicker = (file) => `<details class="language-switcher" translate="no">
           <summary aria-label="Select language"><svg class="language-switcher__globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg><span>English</span></summary>
           <ul class="language-switcher__menu">${languages.map(([code, name, flag]) => `<li><a href="${languagePath(file, code)}" lang="${code}" hreflang="${code}" data-language="${code}"${code === "en" ? ' aria-current="true"' : ""}><span class="language-switcher__flag" aria-hidden="true">${flag}</span><span>${name}</span></a></li>`).join("")}</ul>
@@ -64,9 +68,9 @@ for (const file of pages) {
     html = html.replace(/(<script src="\/?assets\/site\.js[^>]+>)/, `<script src="/assets/languages.js?v=${assetVersions["assets/languages.js"]}" defer></script>\n  $1`);
   }
   html = html.replace(/\s*<link\b(?=[^>]*\bhreflang=)[^>]*>/g, "");
-  const languageAlternates = [...languages.map(([code]) => [code, code]), ["x-default", "en"]]
+  const languageAlternates = (file === "404.html" ? [] : [["en", "en"], ...reviewedLanguages(file).map((code) => [code, code]), ["x-default", "en"]])
     .map(([hreflang, code]) => `  <link rel="alternate" hreflang="${hreflang}" href="https://glorystarpacking.com${languagePath(file, code)}">`).join("\n");
-  html = html.replace("</head>", `${languageAlternates}\n</head>`);
+  html = html.replace("</head>", `${languageAlternates ? `${languageAlternates}\n` : ""}</head>`);
 
   for (const [asset, version] of Object.entries(assetVersions)) {
     html = html.replace(new RegExp(`${asset.replace(".", "\\.")}\\?v=[a-f0-9]{12}`, "g"), `${asset}?v=${version}`);

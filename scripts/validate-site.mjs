@@ -2309,6 +2309,8 @@ if (!fs.existsSync(siteShellSyncPath)) {
     ["normalizedNavigation", "current-navigation token normalization"],
     ['aria-labelledby="quote-section-title"', "quote-form accessible name"],
     ["assetVersions", "content-derived shared asset versions"],
+    ["translations/indexing.json", "translation review-gate configuration"],
+    ["reviewedLanguages", "reviewed-language alternate selection"],
     ["expected three footer navigation columns", "footer column-count guard"],
   ];
   requiredSiteShellSignals.forEach(([signal, label]) => {
@@ -2381,6 +2383,10 @@ if (!fs.existsSync(productionIndexAuditPath)) {
   const productionIndexAudit = fs.readFileSync(productionIndexAuditPath, "utf8");
   const requiredProductionAuditSignals = [
     ["sitemap.xml", "sitemap crawl source"],
+    ["sitemap-languages.xml", "language sitemap crawl source"],
+    ["translations/indexing.json", "translation review-gate source"],
+    ["auditUnreviewedTranslation", "unreviewed-translation production check"],
+    ["noindex,follow", "translation indexing guard"],
     ["redirect: \"manual\"", "redirect tracing"],
     ["rel=[\\\"']canonical", "canonical verification"],
     ["www.glorystarpacking.com/index.html", "www index redirect probe"],

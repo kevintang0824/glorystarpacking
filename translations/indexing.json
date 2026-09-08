@@ -1,0 +1,10 @@
+{
+  "_comment": "Only add a page after a native speaker has reviewed the complete rendered page, metadata, structured data, forms and buyer-facing terminology. Unlisted translations stay accessible but noindex.",
+  "reviewed": {
+    "fr": [],
+    "es": [],
+    "pt": [],
+    "ru": [],
+    "zh-CN": []
+  }
+}

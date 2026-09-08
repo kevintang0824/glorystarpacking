@@ -1,4 +1,4 @@
-"""Build local, indexable language editions from reviewed translation dictionaries.
+"""Build local language editions with an explicit human-review indexing gate.
 
 Run with --extract to refresh source strings. Translation generation is separate;
 the production build never calls a translation service or downloads a model.
@@ -19,6 +19,22 @@ ATTRIBUTES = ("alt", "title", "placeholder", "aria-label")
 SCHEMA_TEXT = {"name", "description", "text", "headline", "caption", "articleBody", "knowsAbout"}
 PAGES = sorted(p for p in ROOT.glob("*.html") if not re.search(r" \d+\.html$", p.name))
 PAGE_NAMES = {p.name for p in PAGES}
+INDEXING = json.loads((ROOT / "translations/indexing.json").read_text())
+REVIEWED_TRANSLATIONS = {
+    language: set(INDEXING.get("reviewed", {}).get(language, []))
+    for language in LANGUAGES if language != "en"
+}
+if set(INDEXING.get("reviewed", {})) != set(REVIEWED_TRANSLATIONS):
+    raise ValueError("translations/indexing.json must define exactly fr, es, pt, ru and zh-CN")
+for language, reviewed_pages in REVIEWED_TRANSLATIONS.items():
+    unknown_pages = reviewed_pages - PAGE_NAMES
+    if unknown_pages:
+        raise ValueError(f"translations/indexing.json lists unknown {language} pages: {sorted(unknown_pages)}")
+INDEX_ROBOTS = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+NOINDEX_ROBOTS = "noindex,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+
+def reviewed_languages(page_name):
+    return [language for language in LANGUAGES if language != "en" and page_name in REVIEWED_TRANSLATIONS[language]]
 
 # Search snippets need a native, intent-focused title and description.  Keep
 # these separate from the visible H1 so a natural editorial headline can sit
@@ -1185,6 +1201,13 @@ def translate_page(page, language, dictionary):
     for script in soup.select('script[type="application/ld+json"]'):
         script.string = json.dumps(translate_schema(json.loads(script.string)), ensure_ascii=False).replace("</", "<\\/")
     soup.html["lang"] = language
+    is_reviewed = page.name != "404.html" and page.name in REVIEWED_TRANSLATIONS[language]
+    robots = soup.select_one('meta[name="robots"]')
+    if robots:
+        robots["content"] = INDEX_ROBOTS if is_reviewed else NOINDEX_ROBOTS
+    else:
+        robots = soup.new_tag("meta", attrs={"name": "robots", "content": INDEX_ROBOTS if is_reviewed else NOINDEX_ROBOTS})
+        soup.head.append(robots)
     headlines = json.loads((ROOT / "translations/pages.json").read_text())
     native_headline = headlines[page.name][headlines["_languages"].index(language)]
     # Keep the English H1's inline markup (for example emphasis spans), while
@@ -1219,9 +1242,10 @@ def translate_page(page, language, dictionary):
         existing.decompose()
     soup.select_one(".site-nav").append(BeautifulSoup(picker(page.name, language), "html.parser"))
     soup.select_one('.language-switcher summary')["aria-label"] = dictionary["Select language"]
-    for code in [*LANGUAGES, "x-default"]:
-        link = soup.new_tag("link", rel="alternate", hreflang=code, href=ORIGIN + route(page.name, "en" if code == "x-default" else code))
-        soup.head.append(link)
+    if is_reviewed:
+        for code in ["en", *reviewed_languages(page.name), "x-default"]:
+            link = soup.new_tag("link", rel="alternate", hreflang=code, href=ORIGIN + route(page.name, "en" if code == "x-default" else code))
+            soup.head.append(link)
     for field in soup.select('input[name="sourcePage"]'):
         field["value"] = route(page.name, language)
     runtime_path = f"assets/i18n/{language}.js"
@@ -1288,7 +1312,12 @@ def build():
         for page in PAGES:
             (ROOT / language / page.name).write_text(translate_page(page, language, dictionary))
         print(f"Built {language}: {len(PAGES)} pages; {len(runtime_dict)} dynamic translations.", flush=True)
-    entries = [f"  <url><loc>{ORIGIN}{route(page.name, language)}</loc></url>" for language in LANGUAGES if language != "en" for page in PAGES if page.name != "404.html"]
+    entries = [
+        f"  <url><loc>{ORIGIN}{route(page.name, language)}</loc></url>"
+        for language in LANGUAGES if language != "en"
+        for page in PAGES
+        if page.name != "404.html" and page.name in REVIEWED_TRANSLATIONS[language]
+    ]
     (ROOT / "sitemap-languages.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(entries) + '\n</urlset>\n')
     (ROOT / "api/quote-locales.json").write_text(json.dumps(native_copy, ensure_ascii=False, indent=2) + "\n")
 
