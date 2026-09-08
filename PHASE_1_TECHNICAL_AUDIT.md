@@ -1,11 +1,13 @@
 # 第一阶段：技术 SEO、收录与分析审计
 
-执行日期：2026-09-08
+执行日期：2026-09-09（第一阶段复核）
 站点：`https://glorystarpacking.com`
 
 ## 当前结果
 
 本地和生产环境的技术校验已完成。当前站点具备提交 Google/Bing 收录所需的基础，但搜索引擎是否实际收录、排名和带来流量，仍需在已验证的站长平台中观察，不能由 sitemap、结构化数据或 IndexNow 保证。
+
+2026-09-09 已重新执行下方全部校验：除生产询价邮件健康检查因缺少 Resend 环境变量返回 HTTP 503 外，其余技术、抓取、构建、图片、联系方式和接口回归均通过。
 
 | 项目 | 结果 | 说明 |
 | --- | --- | --- |
@@ -16,6 +18,7 @@
 | 生产页面外壳 | 通过 | 75 个公开页面的外壳、资源版本和联系方式一致 |
 | 询盘接口测试 | 通过 | 请求类型、附件签名、大小、来源归因、错误回退和安全响应通过回归测试 |
 | GA4 埋点 | 已部署 | 使用 `G-LYNMPWG9WK`；默认拒绝分析存储，用户同意后加载并记录页面、联系、询价和下载事件 |
+| Bing Webmaster Tools | 已完成 | 已从 GSC 导入 `https://glorystarpacking.com/`；主 Sitemap 状态 Success，发现 74 个 URL，错误 0、警告 0 |
 | 生产询价邮件 | 待配置 | `/api/health` 返回 HTTP 503，缺少 `RESEND_API_KEY`、`QUOTE_TO_EMAIL`、`QUOTE_FROM_EMAIL` |
 | 生产部署 | 已完成 | Vercel Production deployment `dpl_67r7SAgwXnrW7kvupFJNXnG1KTU4` 已 READY，并已绑定 `https://glorystarpacking.com` |
 
@@ -72,21 +75,20 @@ node scripts/audit-production-contact.mjs https://glorystarpacking.com
 
 ### Bing Webmaster Tools
 
-1. 从已验证的 Google Search Console 导入站点，或使用 DNS 验证。
-2. 提交主 Sitemap。
-3. 发布真实页面更新后，通过现有 IndexNow 工作流提交变更 URL。
+1. 已从已验证的 Google Search Console 导入 `https://glorystarpacking.com/`，并完成只读授权。
+2. 已提交 `https://glorystarpacking.com/sitemap.xml`；Bing 页面显示 `Success`，发现 74 个 URL，错误 0、警告 0。
+3. 发布真实页面更新后，继续通过现有 IndexNow 工作流提交变更 URL。
 
 ### GA4
 
-1. 在 GA4 属性中确认数据流对应 `G-LYNMPWG9WK`。
-2. 在浏览器中选择允许分析，访问网站并检查 Realtime 的 `page_view`。
-3. 验证 `contact_click`、`quote_cta_click`、`quote_form_start`、`generate_lead` 和 `resource_download`。
-4. 将 `generate_lead` 标记为关键事件。
+1. 已在 `Glorystarpacking` 属性中确认 GA4 数据收集正常；Realtime 显示过去 30 分钟有活跃用户记录，并收到 `page_view`、`user_engagement`、`first_visit`、`session_start`。
+2. `generate_lead` 已在关键事件列表中启用（开关值为 `1`）。
+3. 代码已部署 `contact_click`、`quote_cta_click`、`quote_form_start`、`generate_lead`、`resource_download` 等事件；未提交测试报价，不伪造 lead 数据。
 
 ## 第一阶段的剩余阻塞
 
 - GSC 的核心页 Request Indexing 需要在正确的 `glorystarpacking.com` 资源下操作；错误资源会提示“此网址不在该资源中”。当前 `/cosmetic-packaging-boxes.html`、`/custom-boxes.html`、`/perfume-carton-gs-1294765.html` 均已提交请求，等待 Google 后续抓取与处理。
-- Bing 和 GA4 的实际数据必须在对应账号内确认；代码中存在 Measurement ID 不等于已经收到数据。
+- GA4 和 Bing 账号侧已完成本轮确认；Bing 后续抓取与索引数量仍需在 24–48 小时后复测，提交成功不等于立即收录。
 - Vercel 需要补齐 Resend 环境变量并完成一次真实收件测试，否则询价自动邮件仍不可用；Email、WhatsApp、电话和复制简报兜底仍可用。
 - 已完成生产部署后的冒烟检查：旧 URL 返回 308 并指向新页面，`/sitemap.xml`、`/robots.txt`、首页及核心页面均返回 200；部署后收录审计通过。GSC 仍需等待新增页面处理，暂不批量新增文章或根据假设宣称排名增长。
 

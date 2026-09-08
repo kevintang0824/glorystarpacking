@@ -1,40 +1,41 @@
 # GloryStarPack 收录启动清单
 
-更新日期：2026-08-25
+更新日期：2026-09-09
+
+## 本次发布候选的索引边界
+
+- 74 个英语业务与内容页面继续允许 `index,follow` 并保留在主 Sitemap；
+- 5 种语言共 370 个非英语内容页仍可供访客阅读和切换语言，但在母语人工整页校对前统一使用 `noindex,follow`；另有 5 个本地化 404 页面同样不可收录；
+- `sitemap-languages.xml` 当前为空是有意的质量保护，不要在 Search Console 单独提交它；
+- 只有加入 `translations/indexing.json` 审核白名单的页面，才会自动获得双向 `hreflang` 并进入语言 Sitemap。
 
 ## 当前已确认
 
 - 正式域名 `https://glorystarpacking.com` 可访问；
-- sitemap 内 60 个 URL 均直接返回 HTTP 200；
-- 60 个 URL 的 canonical 与页面 URL 一致；
+- 主 Sitemap 内 74 个英文 URL 均可抓取并允许收录；
+- 74 个 URL 的 canonical 与页面 URL 一致；
 - 页面允许 `index,follow`；
 - `www`、`/index.html` 正确跳转到规范首页；
 - `robots.txt` 允许 Google、Bing 和 OAI-SearchBot 抓取；
-- 搜索结果仍显示约三个月前的旧首页和旧产品页摘要，因此需要优先请求重新抓取核心 URL；
+- GSC 的主 Sitemap 状态为成功，已发现 74 个网页；首页及 4 个已检查核心页已收录，另外 3 个核心页已请求编入索引；
+- Bing 的主 Sitemap 状态为 `Success`，发现 74 个 URL，错误 0、警告 0；
+- GA4 Realtime 已收到页面和互动事件，`generate_lead` 已标记为关键事件；
 - 5 个 `* 2.html` 和 1 个 `site 2.webmanifest` 是本地完全相同的冲突副本，已通过 `.vercelignore` 阻止进入正式部署。
 
-## 负责人现在需要完成
+## 账号侧执行状态
 
 ### 1. Google Search Console
 
-1. 打开 <https://search.google.com/search-console>；
-2. 新建“网域”资源：`glorystarpacking.com`；
-3. 按 Google 提示在域名 DNS 中添加 TXT 验证记录；
-4. 验证成功后打开“站点地图”，提交：`sitemap.xml`；
-5. 依次使用“网址检查”检查并请求编入索引：
-   - `https://glorystarpacking.com/`
-   - `https://glorystarpacking.com/products.html`
-   - `https://glorystarpacking.com/custom-boxes.html`
-   - `https://glorystarpacking.com/custom-rigid-boxes.html`
-   - `https://glorystarpacking.com/custom-magnetic-boxes.html`
-   - `https://glorystarpacking.com/custom-mailer-boxes.html`
-   - `https://glorystarpacking.com/cosmetic-packaging-boxes.html`
-   - `https://glorystarpacking.com/custom-wine-boxes.html`
-   - `https://glorystarpacking.com/custom-perfume-boxes.html`
-   - `https://glorystarpacking.com/about.html`
-6. 不要一天重复提交同一个 URL；Google 是否收录及何时更新摘要由 Google 决定。
+当前状态：已完成基础配置与本轮核心页检查。使用正确资源 `sc-domain:glorystarpacking.com`，不要与同账号的 `sc-domain:glorystarpack.com` 混用。
+
+- 主 Sitemap 已提交并显示成功，发现 74 个网页；
+- 首页、`/products.html`、`/wine-bottle-gift-box-specification.html`、`/custom-mailer-boxes.html`、`/about.html` 已确认收录；
+- `/cosmetic-packaging-boxes.html`、`/custom-boxes.html`、`/perfume-carton-gs-1294765.html` 已请求编入索引，等待 Google 抓取与处理；
+- 不要一天重复提交同一个 URL，也不要为尚未进入 `translations/indexing.json` 的翻译页请求编入索引。
 
 ### 2. Bing Webmaster Tools
+
+当前状态：已完成。准确域名 `https://glorystarpacking.com/` 已从 GSC 导入并授权；`https://glorystarpacking.com/sitemap.xml` 已提交，Bing 显示 `Success`，发现 74 个 URL，错误 0、警告 0。
 
 1. 打开 <https://www.bing.com/webmasters/>；
 2. 直接从 Google Search Console 导入站点，或使用 DNS 验证；
@@ -47,6 +48,8 @@ node scripts/submit-indexnow.mjs / products.html custom-boxes.html custom-rigid-
 ```
 
 ### 3. Google Analytics 4
+
+当前状态：已完成基础确认。`Glorystarpacking` 属性 Realtime 已收到页面和互动事件；`generate_lead` 已标记为关键事件。由于生产邮件环境变量尚未配置，当前不提交测试报价来制造该事件。
 
 1. 登录与 `G-LYNMPWG9WK` 对应的 GA4 属性；
 2. 在实时报告中允许网站 Analytics 后访问一次网站；
@@ -66,6 +69,10 @@ node scripts/test-quote-api.mjs
 node scripts/test-service-health.mjs
 node scripts/validate-build-output.mjs
 node scripts/audit-production-indexing.mjs https://glorystarpacking.com
+node scripts/audit-production-shell.mjs https://glorystarpacking.com
+node scripts/audit-production-image-sitemap.mjs https://glorystarpacking.com
+node scripts/audit-production-contact.mjs https://glorystarpacking.com
+node scripts/audit-production-services.mjs https://glorystarpacking.com
 ```
 
 ## 7 天后记录
