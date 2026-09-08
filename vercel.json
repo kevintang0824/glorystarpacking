@@ -63,6 +63,26 @@
       "source": "/zh-CN/index.html",
       "destination": "/zh-CN",
       "permanent": true
+    },
+    {
+      "source": "/cosmetic-packaging-supplier-china/",
+      "destination": "/cosmetic-packaging-boxes.html",
+      "permanent": true
+    },
+    {
+      "source": "/cosmetic-packaging-supplier-china",
+      "destination": "/cosmetic-packaging-boxes.html",
+      "permanent": true
+    },
+    {
+      "source": "/cosmetic-packaging-moq/",
+      "destination": "/custom-packaging-cost-moq-guide.html",
+      "permanent": true
+    },
+    {
+      "source": "/cosmetic-packaging-moq",
+      "destination": "/custom-packaging-cost-moq-guide.html",
+      "permanent": true
     }
   ],
   "headers": [
