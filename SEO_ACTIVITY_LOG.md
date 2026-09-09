@@ -669,3 +669,10 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 
 - 开发案例是证据链流程案例，不发布虚构客户、订单量、节省、交期、测试结果、认证或性能结果。
 - 测试记录指南不选择通用标准或 pass/fail 数值；实际测试必须绑定具体样品、方法、条件、结果和责任人。
+
+### 生产验收
+
+- 正式部署 `dpl_8RJWfNNDwNeEVSn17K9MyUBUChpS` 已完成并绑定 `https://glorystarpacking.com`；Git commit `3f9727e` 已推送至 `origin/main`。
+- 正式站 78/78 个 Sitemap URL 可收录，390 个多语言页面继续保持 `noindex` 审核门槛；4 篇新文章均 HTTP 200、canonical 正确、BlogPosting 有效并出现在 Blog 与 RSS。
+- 生产外壳、图片 Sitemap、联系入口和新内容专项审计全部通过；IndexNow 已接受 4 个新文章 URL，HTTP 200。
+- 生产 `/api/health` 仍因上一阶段未配置 `RESEND_API_KEY`、`QUOTE_TO_EMAIL`、`QUOTE_FROM_EMAIL` 返回 503；本轮未改变邮件配置，Email、WhatsApp、电话和复制简报兜底继续可用。
