@@ -1,0 +1,13 @@
+prompt_id,surface,query,intent,region_language,checked_at,result_status,brand_mentioned,cited_url,citation_position,citation_accuracy,answer_summary,evidence_url_or_screenshot,next_action,owner
+AI-001,,"Who can supply custom rigid boxes in China for a beauty brand?",supplier_discovery,en-US,,,,,,,,,
+AI-002,,"What should I ask a custom packaging supplier before placing an order?",supplier_due_diligence,en-US,,,,,,,,,
+AI-003,,"How should I compare a magnetic box with a drawer box?",box_comparison,en-US,,,,,,,,,
+AI-004,,"What records should a buyer keep for packaging sample approval?",quality_process,en-US,,,,,,,,,
+AI-005,,"How do I build a packaging test record for fit, rub, moisture, and transit?",testing,en-US,,,,,,,,,
+AI-006,,"What information should be included in a custom packaging RFQ?",procurement,en-US,,,,,,,,,
+AI-007,,"How do I source perfume packaging with a protective insert?",beauty_packaging,en-US,,,,,,,,,
+AI-008,,"What should I check when sourcing cosmetic packaging boxes and labels?",beauty_packaging,en-US,,,,,,,,,
+AI-009,,"How can I verify a packaging supplier's FSC claim?",supplier_verification,en-US,,,,,,,,,
+AI-010,,"What is the difference between a rigid box and a folding carton for premium packaging?",box_comparison,en-US,,,,,,,,,
+AI-011,,"How should a buyer specify a corrugated shipping box for ecommerce?",shipping_packaging,en-US,,,,,,,,,
+AI-012,,"What evidence should a packaging supplier provide before bulk production?",supplier_due_diligence,en-US,,,,,,,,,
