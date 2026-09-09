@@ -16,6 +16,7 @@
 
 - 真实合作方、外部引用 URL、引用上下文和检查日期写入 `assets/templates/phase-4-outreach-tracker.csv`；
 - AI 搜索抽查必须保留入口、提示词、地区/语言、结果状态、引用 URL 和准确性，写入 `assets/templates/ai-search-visibility-log.csv`；
+- 每周将 GSC、Bing、GA4、referral 和 AI 观察汇总到 `assets/templates/seo-weekly-review.csv`，只根据真实数据决定标题、内链和 CTA 的下一轮调整；
 - 外部引用和 AI 提及均不得用未核验的客户、认证、结果数字或排名替代证据。
 
 默认备份目录为相邻工作区的 `backups/glorystarpacking/`。需要更换目录时，可设置 `GLORYSTARPACK_BACKUP_DIR` 后再运行脚本。
