@@ -1,0 +1,6 @@
+record_id,test_family,failure_mode,sample_id,packaging_revision,material_build,method_or_procedure,equipment,conditioning,load_or_exposure,sequence,observations,measurements,photo_refs,deviations,result,decision_owner,corrective_action,retest_trigger,record_date
+TR-001,Fit and closure,,,,,,,,,,,,,,,,,,
+TR-002,Rub and appearance,,,,,,,,,,,,,,,,,,
+TR-003,Adhesion and exposure,,,,,,,,,,,,,,,,,,
+TR-004,Handling and transit,,,,,,,,,,,,,,,,,,
+TR-005,Information and scanning,,,,,,,,,,,,,,,,,,

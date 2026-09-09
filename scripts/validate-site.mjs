@@ -96,7 +96,7 @@ const responsiveCardSpecs = [
   },
   {
     key: "article",
-    expectedUsageCount: 32,
+    expectedUsageCount: 36,
     sizes: "(max-width: 780px) calc(100vw - 28px), 310px",
     blockPattern: /<article\b[^>]*class="[^"]*\barticle-card\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi,
   },
@@ -1441,11 +1441,11 @@ if (responsiveSrcsetUsageCount !== expectedResponsiveCardUsageCount) {
 if (responsiveCardStems.size !== 33) {
   errors.push(`HTML: expected responsive card srcsets to use 33 source images, found ${responsiveCardStems.size}`);
 }
-if (responsiveAvifCardUsageCount !== 54) {
-  errors.push(`HTML: expected 54 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
+if (responsiveAvifCardUsageCount !== 58) {
+  errors.push(`HTML: expected 58 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
 }
-if (responsiveBodyUsageCount !== 80) {
-  errors.push(`HTML: expected 80 responsive AVIF split images, found ${responsiveBodyUsageCount}`);
+if (responsiveBodyUsageCount !== 84) {
+  errors.push(`HTML: expected 84 responsive AVIF split images, found ${responsiveBodyUsageCount}`);
 }
 for (const spec of supplementalResponsiveSpecs) {
   const actualUsageCount = supplementalResponsiveUsageCounts.get(spec.key);
@@ -1629,8 +1629,8 @@ const avifHeroUsageCount = htmlFiles.reduce((count, file) => {
   const html = readPage(file)?.html || "";
   return count + (html.match(/<source\b[^>]*type="image\/avif"[^>]*srcset="assets\/images\/[^"]+\.avif"/gi) || []).length;
 }, 0);
-if (avifHeroUsageCount !== 33) {
-  errors.push(`HTML: expected 33 AVIF hero usages, found ${avifHeroUsageCount}`);
+if (avifHeroUsageCount !== 37) {
+  errors.push(`HTML: expected 37 AVIF hero usages, found ${avifHeroUsageCount}`);
 }
 for (const derivedImage of standaloneDerivedDisplayWebps) {
   const derivedPath = path.join(imagesDirectory, derivedImage);
@@ -1830,6 +1830,7 @@ if (!blogSchema || !Array.isArray(blogSchema.blogPost)) {
 }
 
 const sitemapPath = path.join(root, "sitemap.xml");
+const sitemapGeneratorPath = path.join(root, "scripts", "generate-sitemap.mjs");
 let sitemapUrlSet = new Set();
 let sitemapLastModified = new Map();
 if (!fs.existsSync(sitemapPath)) {
@@ -1855,6 +1856,11 @@ if (!fs.existsSync(sitemapPath)) {
       errors.push(`sitemap.xml: ${canonical} lastmod must match structured dateModified ${modifiedDate}`);
     }
   }
+}
+if (!fs.existsSync(sitemapGeneratorPath)) {
+  errors.push("Sitemap generator is missing");
+} else if (!fs.readFileSync(sitemapGeneratorPath, "utf8").includes('process.argv.includes("--check")')) {
+  errors.push("Sitemap generator is missing the non-mutating --check release guard");
 }
 
 const imageSitemapPath = path.join(root, "image-sitemap.xml");

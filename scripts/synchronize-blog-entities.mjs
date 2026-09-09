@@ -6,6 +6,7 @@ const siteOrigin = "https://glorystarpacking.com";
 const blogId = `${siteOrigin}/blog.html#blog`;
 const organizationId = `${siteOrigin}/#organization`;
 const conflictCopyPattern = / \d+\.html$/i;
+const minimumBlogPostingPages = 33;
 const blogPath = path.join(root, "blog.html");
 const originalBlogHtml = fs.readFileSync(blogPath, "utf8");
 const currentOrder = new Map();
@@ -39,7 +40,9 @@ for (const file of htmlFiles) {
   if (!/"@type"\s*:\s*"(?:Article|BlogPosting)"/.test(html) || !/#article"/.test(html)) continue;
 
   html = html.replace(/"@type"\s*:\s*"Article"/, '"@type": "BlogPosting"');
-  if (!html.includes(`"isPartOf": {"@id": "${blogId}"}`)) {
+  const compactHtml = html.replace(/\s/g, "");
+  const hasBlogRelation = compactHtml.includes(`"isPartOf":{"@id":"${blogId}"}`);
+  if (!hasBlogRelation) {
     const articleTypeIndex = html.indexOf('"@type": "BlogPosting"');
     const publisherIndex = html.indexOf('"publisher":', articleTypeIndex);
     const objectStart = html.indexOf("{", publisherIndex);
@@ -86,7 +89,7 @@ for (const file of htmlFiles) {
   posts.push({ file, canonical, ...post });
 }
 
-if (posts.length !== 33) throw new Error(`Expected 33 BlogPosting pages, found ${posts.length}`);
+if (posts.length < minimumBlogPostingPages) throw new Error(`Expected at least ${minimumBlogPostingPages} BlogPosting pages, found ${posts.length}`);
 posts.sort((left, right) => (
   right.datePublished.localeCompare(left.datePublished) ||
   (currentOrder.get(left.canonical) ?? Number.MAX_SAFE_INTEGER) - (currentOrder.get(right.canonical) ?? Number.MAX_SAFE_INTEGER) ||

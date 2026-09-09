@@ -530,5 +530,33 @@
     "Expositor PDQ de balcão: referência de viabilidade.",
     "Прилавочный дисплей PDQ: образец для оценки.",
     "印刷 PDQ 柜台展示架可行性参考。"
+  ],
+  "packaging-supplier-qualification-checklist.html": [
+    "Checklist de qualification d’un fournisseur d’emballages.",
+    "Checklist para cualificar proveedores de embalaje.",
+    "Checklist de qualificação de fornecedores de embalagens.",
+    "Чек-лист квалификации поставщика упаковки.",
+    "包装供应商资格审核清单。"
+  ],
+  "custom-packaging-development-case-study.html": [
+    "Étude de cas : développement d’un emballage sur mesure.",
+    "Caso de estudio: desarrollo de embalaje personalizado.",
+    "Estudo de caso: desenvolvimento de embalagem por medida.",
+    "Кейс разработки упаковки на заказ.",
+    "定制包装开发案例。"
+  ],
+  "packaging-test-records-guide.html": [
+    "Guide des rapports d’essai pour emballages.",
+    "Guía de registros de pruebas de embalaje.",
+    "Guia de registos de ensaios de embalagens.",
+    "Руководство по протоколам испытаний упаковки.",
+    "包装测试记录指南。"
+  ],
+  "beauty-packaging-industry-guide.html": [
+    "Guide d’achat des emballages pour la beauté.",
+    "Guía de compra de embalajes para belleza.",
+    "Guia de compra de embalagens para beleza.",
+    "Руководство по закупке упаковки для косметики.",
+    "美妆行业包装采购指南。"
   ]
 }

@@ -1165,12 +1165,18 @@ def apply_headline_preserving_markup(tag, headline, source_slots, language):
 
 def translate_page(page, language, dictionary):
     soup = BeautifulSoup(page.read_text(), "html.parser")
+    is_reviewed = page.name != "404.html" and page.name in REVIEWED_TRANSLATIONS[language]
     source_h1_slots = content_text_nodes(soup.h1)
     def tr(value):
         key = normalize(value)
         if not key or not prose(key): return value
         translated = dictionary.get(key)
-        if translated is None: raise ValueError(f"{language}: missing translation: {key[:100]}")
+        # New English content can ship behind the noindex review gate before
+        # a native translation is available. Reviewed pages remain strict so
+        # a language can never become indexable with missing copy.
+        if translated is None:
+            if not is_reviewed: return value
+            raise ValueError(f"{language}: missing translation: {key[:100]}")
         # Preserve spacing at inline boundaries.
         return re.match(r"^\s*", value)[0] + translated + re.search(r"\s*$", value)[0]
     for node in list(text_nodes(soup)):
@@ -1201,7 +1207,6 @@ def translate_page(page, language, dictionary):
     for script in soup.select('script[type="application/ld+json"]'):
         script.string = json.dumps(translate_schema(json.loads(script.string)), ensure_ascii=False).replace("</", "<\\/")
     soup.html["lang"] = language
-    is_reviewed = page.name != "404.html" and page.name in REVIEWED_TRANSLATIONS[language]
     robots = soup.select_one('meta[name="robots"]')
     if robots:
         robots["content"] = INDEX_ROBOTS if is_reviewed else NOINDEX_ROBOTS
@@ -1209,7 +1214,8 @@ def translate_page(page, language, dictionary):
         robots = soup.new_tag("meta", attrs={"name": "robots", "content": INDEX_ROBOTS if is_reviewed else NOINDEX_ROBOTS})
         soup.head.append(robots)
     headlines = json.loads((ROOT / "translations/pages.json").read_text())
-    native_headline = headlines[page.name][headlines["_languages"].index(language)]
+    headline_record = headlines.get(page.name)
+    native_headline = headline_record[headlines["_languages"].index(language)] if headline_record else soup.h1.get_text(" ", strip=True)
     # Keep the English H1's inline markup (for example emphasis spans), while
     # distributing the reviewed native headline across the same text slots.
     apply_headline_preserving_markup(soup.h1, native_headline, source_h1_slots, language)
