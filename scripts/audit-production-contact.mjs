@@ -1,6 +1,7 @@
 import process from "node:process";
 
 const origin = new URL(process.argv[2] || "https://glorystarpacking.com").origin;
+const currentEmail = "kevin@GloryStarPack.com";
 const currentWhatsAppUrl = "https://wa.me/8619577608248";
 const currentTelUrl = "tel:+8619577608248";
 const currentStructuredPhone = "+86-195-7760-8248";
@@ -32,6 +33,9 @@ const worker = async () => {
         continue;
       }
       pageHtml.set(url, result.text);
+      if (!result.text.toLowerCase().includes(`mailto:${currentEmail.toLowerCase()}`)) {
+        errors.push(`${url}: direct email route is missing`);
+      }
       if (!result.text.includes(currentWhatsAppUrl)) errors.push(`${url}: current WhatsApp route is missing`);
       if (!result.text.includes(currentTelUrl)) errors.push(`${url}: direct-call route is missing`);
       if (retiredPhonePattern.test(result.text)) errors.push(`${url}: retired contact number is still present`);
@@ -46,6 +50,10 @@ const homeHtml = pageHtml.get(`${origin}/`) || "";
 const structuredPhones = [...homeHtml.matchAll(/"telephone":\s*"([^"]+)"/g)].map((match) => match[1]);
 if (structuredPhones.length !== 2 || structuredPhones.some((phone) => phone !== currentStructuredPhone)) {
   errors.push("Homepage Organization and ContactPoint telephone are not current");
+}
+const structuredEmails = [...homeHtml.matchAll(/"email":\s*"([^"]+)"/g)].map((match) => match[1]);
+if (structuredEmails.length !== 2 || structuredEmails.some((email) => email.toLowerCase() !== currentEmail.toLowerCase())) {
+  errors.push("Homepage Organization and ContactPoint email are not current");
 }
 const siteScriptAsset = "assets/site.js";
 const siteScriptPath = homeHtml.match(/<script\b[^>]*src="(assets\/site\.js\?v=[a-f0-9]{12})"/i)?.[1] || "";
@@ -68,4 +76,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Production contact audit passed: ${urls.length} indexable pages use current WhatsApp and direct-call routes, no retired number remains, homepage structured telephone is ${currentStructuredPhone}, and the browser quote fallback is current.`);
+console.log(`Production contact audit passed: ${urls.length} indexable pages expose ${currentEmail}, current WhatsApp and direct-call routes, no retired number remains, homepage structured contact is current, and the browser quote fallback is current.`);

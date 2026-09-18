@@ -181,6 +181,26 @@ await Promise.all([
   auditRedirectProbe({ url: `${siteOrigin}/index.html`, finalUrl: `${siteOrigin}/`, maximumRedirects: 1 }),
   auditRedirectProbe({ url: "https://www.glorystarpacking.com/", finalUrl: `${siteOrigin}/`, maximumRedirects: 1 }),
   auditRedirectProbe({ url: "https://www.glorystarpacking.com/index.html", finalUrl: `${siteOrigin}/`, maximumRedirects: 1 }),
+  auditRedirectProbe({
+    url: `${siteOrigin}/insights/glass-bottle-neck-finish-closure-guide`,
+    finalUrl: "https://www.glorystarpack.com/insights/glass-bottle-neck-finish-closure-guide/",
+    maximumRedirects: 1,
+  }),
+  auditRedirectProbe({
+    url: `${siteOrigin}/insights/cosmetic-packaging-compatibility-testing-guide`,
+    finalUrl: "https://www.glorystarpack.com/insights/cosmetic-packaging-compatibility-testing-guide/",
+    maximumRedirects: 1,
+  }),
+  auditRedirectProbe({
+    url: `${siteOrigin}/insights/cosmetic-pump-not-working-troubleshooting`,
+    finalUrl: "https://www.glorystarpack.com/insights/cosmetic-pump-not-working-troubleshooting/",
+    maximumRedirects: 1,
+  }),
+  auditRedirectProbe({
+    url: `${siteOrigin}/insights/accessible-cosmetic-packaging-design-guide`,
+    finalUrl: "https://www.glorystarpack.com/insights/accessible-cosmetic-packaging-design-guide/",
+    maximumRedirects: 1,
+  }),
 ]);
 
 await Promise.all([

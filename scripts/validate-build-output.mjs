@@ -12,6 +12,7 @@ const expectedFiles = new Set();
 const conflictCopyPattern = / \d+\.(?:html|webmanifest)$/i;
 const catalogConflictCopyPattern = /assets\/catalog\/(?:products|previews)\/[^/]+ \d+\.jpg$/i;
 const catalogBuildInputPattern = /^(?:assets\/catalog\/clean-sources\/|assets\/catalog\/categories\/|assets\/catalog\/(?:import-report|curated-products)\.json$|assets\/catalog\/previews\/60697040446\.jpg$)/;
+const systemMetadataPattern = /(?:^|\/)\.DS_Store$/;
 const requiredRootFiles = ["robots.txt", "sitemap.xml", "sitemap-languages.xml", "image-sitemap.xml", "feed.xml", "llms.txt", "site.webmanifest"];
 
 const relativePath = (filePath) => path.relative(sourceRoot, filePath).split(path.sep).join("/");
@@ -91,7 +92,7 @@ if (!fs.existsSync(assetsRoot) || !fs.statSync(assetsRoot).isDirectory()) {
   walkFiles(assetsRoot)
     .filter((filePath) => {
       const relative = relativePath(filePath);
-      return !catalogConflictCopyPattern.test(relative) && !catalogBuildInputPattern.test(relative);
+      return !systemMetadataPattern.test(relative) && !catalogConflictCopyPattern.test(relative) && !catalogBuildInputPattern.test(relative);
     })
     .forEach(addExpectedFile);
 }
@@ -165,7 +166,7 @@ for (const relative of [...expectedFiles].sort()) {
 if (fs.existsSync(staticRoot) && fs.statSync(staticRoot).isDirectory()) {
   const unexpectedFiles = walkFiles(staticRoot)
     .map((filePath) => path.relative(staticRoot, filePath).split(path.sep).join("/"))
-    .filter((relative) => !expectedFiles.has(relative))
+    .filter((relative) => !systemMetadataPattern.test(relative) && !expectedFiles.has(relative))
     .sort();
   unexpectedFiles.forEach((relative) => errors.push(`Unexpected static file: ${relative}`));
 }

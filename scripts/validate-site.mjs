@@ -2249,6 +2249,8 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/magnetic-box-vs-drawer-box.html`, "magnetic-versus-drawer comparison guide"],
     [`${siteOrigin}/custom-packaging-cost-moq-guide.html`, "cost and MOQ guide"],
     [`${siteOrigin}/feed.xml`, "buyer-guide RSS feed"],
+    ["## Quote and direct contact", "quote and direct-contact guidance"],
+    ["mailto:kevin@GloryStarPack.com", "machine-readable email route"],
     ["Minimum order quantity is project-specific", "MOQ factual boundary"],
     ["Certifications, test standards", "certification factual boundary"],
   ];
@@ -2288,8 +2290,10 @@ if (!fs.existsSync(productionContactAuditPath)) {
 } else {
   const productionContactAudit = fs.readFileSync(productionContactAuditPath, "utf8");
   const requiredProductionContactSignals = [
+    ["kevin@GloryStarPack.com", "direct email route"],
     ["https://wa.me/8619577608248", "current WhatsApp route"],
     ["tel:+8619577608248", "current direct-call route"],
+    ["structuredEmails", "structured email check"],
     ["+86-195-7760-8248", "current structured telephone"],
     ["retiredPhonePattern", "retired-number rejection"],
     ["sitemap.xml", "whole-site contact crawl"],
@@ -2468,6 +2472,19 @@ if (!fs.existsSync(vercelConfigPath)) {
     }
     if (directWwwIndexPosition < 0 || catchAllWwwPosition < 0 || directWwwIndexPosition > catchAllWwwPosition) {
       errors.push("vercel.json: www /index.html must redirect directly to the canonical homepage before the www catch-all");
+    }
+    const requiredLegacyRedirects = new Map([
+      ["/insights/glass-bottle-neck-finish-closure-guide", "https://www.glorystarpack.com/insights/glass-bottle-neck-finish-closure-guide/"],
+      ["/insights/cosmetic-packaging-compatibility-testing-guide", "https://www.glorystarpack.com/insights/cosmetic-packaging-compatibility-testing-guide/"],
+      ["/insights/cosmetic-pump-not-working-troubleshooting", "https://www.glorystarpack.com/insights/cosmetic-pump-not-working-troubleshooting/"],
+      ["/insights/accessible-cosmetic-packaging-design-guide", "https://www.glorystarpack.com/insights/accessible-cosmetic-packaging-design-guide/"],
+    ]);
+    for (const [source, destination] of requiredLegacyRedirects) {
+      for (const legacySource of [source, `${source}/`]) {
+        const exists = redirects.some((redirect) =>
+          redirect.source === legacySource && redirect.destination === destination && redirect.permanent === true);
+        if (!exists) errors.push(`vercel.json: missing permanent legacy redirect from ${legacySource}`);
+      }
     }
     const headers = Array.isArray(vercelConfig.headers) ? vercelConfig.headers : [];
     const apiNoindex = headers.some((entry) =>

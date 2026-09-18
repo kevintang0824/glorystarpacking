@@ -83,6 +83,46 @@
       "source": "/cosmetic-packaging-moq",
       "destination": "/custom-packaging-cost-moq-guide.html",
       "permanent": true
+    },
+    {
+      "source": "/insights/glass-bottle-neck-finish-closure-guide/",
+      "destination": "https://www.glorystarpack.com/insights/glass-bottle-neck-finish-closure-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/glass-bottle-neck-finish-closure-guide",
+      "destination": "https://www.glorystarpack.com/insights/glass-bottle-neck-finish-closure-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/cosmetic-packaging-compatibility-testing-guide/",
+      "destination": "https://www.glorystarpack.com/insights/cosmetic-packaging-compatibility-testing-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/cosmetic-packaging-compatibility-testing-guide",
+      "destination": "https://www.glorystarpack.com/insights/cosmetic-packaging-compatibility-testing-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/cosmetic-pump-not-working-troubleshooting/",
+      "destination": "https://www.glorystarpack.com/insights/cosmetic-pump-not-working-troubleshooting/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/cosmetic-pump-not-working-troubleshooting",
+      "destination": "https://www.glorystarpack.com/insights/cosmetic-pump-not-working-troubleshooting/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/accessible-cosmetic-packaging-design-guide/",
+      "destination": "https://www.glorystarpack.com/insights/accessible-cosmetic-packaging-design-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/accessible-cosmetic-packaging-design-guide",
+      "destination": "https://www.glorystarpack.com/insights/accessible-cosmetic-packaging-design-guide/",
+      "permanent": true
     }
   ],
   "headers": [
