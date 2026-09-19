@@ -1,5 +1,20 @@
 # GloryStarPack SEO 运营日志
 
+## 2026-09-19 · GSC/GA4 实际事件复核与跨域实体回链
+
+### 数据源与基线
+
+- 使用用户指定的 Search Console Domain property `sc-domain:glorystarpacking.com`，Web 搜索最近完整 28 天（2026-08-20 至 2026-09-16）：1,120 次展示、7 次点击、CTR 0.6%、平均排名 13.9。查询样本包括 `gsm to mm`（40 展示、0 点击）、`mm to gsm converter`（10 展示、2 点击）、`packaging approval workflow`（7 展示、0 点击）和 `flat-pack rigid box packaging`（8 展示、0 点击）；样本量不足以据此承诺增长，也不对未核实的查询—页面映射做推断。
+- 使用 GA4 `Glorystarpacking` 属性 ID `548891831`，最近 28 天共 470 个事件、10 位活跃用户；事件列表显示 `contact_click` 1 次、GA 自动表单事件 `form_start` 5 次/3 位用户、`form_submit` 13 次/3 位用户。未见 `quote_form_start` 或 `generate_lead` 事件，关键事件报表为 0。
+- `generate_lead` 已在 GA4 标记为关键事件，但过去 28 天未检测到该事件的活跃数据流。代码只在询价 API 成功响应后派发 `generate_lead`；`contact_click` 带 `contact_method` 参数。两类事件均遵守现有分析同意机制：默认拒绝，访客选择允许后才加载分析脚本并发送事件。`form_submit` 属于 GA 自动测量，不能单独证明 RFQ 已被邮件系统接受；本轮没有提交虚假询价或制造 lead 数据。
+- 报告概况仅有 1 位 Google organic 活跃用户；考虑到分析需访客主动同意及当前流量规模，不能把 GA4 报告直接当作完整站点访问量或市场需求。
+
+### 已完成与待补证据
+
+- 在玻璃瓶站英文首页 Company 页脚加入指向 `https://glorystarpacking.com/` 的明确纸包装入口，锚文本覆盖 custom paper packaging、boxes、bags、inserts 和 labels；法、西、葡、俄、简体中文首页同步本地化链接。提交 `9b1a9504` 已部署到 Vercel Production 并显示 Ready；`node scripts/check-live-site.mjs` 通过，站点核验 844 个 Sitemap URL 和关键页面；英文及 5 个本地化首页均返回 HTTP 200 且包含目标回链，纸包装目标域名返回 HTTP 200。
+- 检查本地 `factory-printing-floor.jpg`：图像本身无法证明拍摄来源、所属工厂或真实生产批次，因此不将它用作工厂证据，也未新增未核验的生产、打样或 QC 记录。
+- 下一步：仅使用用户提供且获授权公开的真实车间/打样照片、脱敏样品批准或 QC 记录、以及可公开核验的证书链接；为 GA4 报表注册事件级 `contact_method` 自定义维度（如尚未存在），然后在访客已同意且出现真实联系动作后核对 Email/WhatsApp 分布。成功询价继续以服务器接受的 `generate_lead` 为准，不使用自动表单 `form_submit` 代替。
+
 ## 2026-09-19 · SEO 技能包页面标题与采购意图复核
 
 ### 本轮完成
