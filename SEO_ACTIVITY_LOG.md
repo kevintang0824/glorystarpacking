@@ -20,7 +20,8 @@
 - 预期影响：提高上述高排名查询的结果相关性与点击率，同时保留采购规格边界；不承诺排名或流量增长。GA4/询盘来源数据本轮未通过已连接的数据源取得，故不推断转化变化。
 - 本地站点/语言审计、RFQ API、安全/语言运行时/移动导航测试、JavaScript 语法、Sitemap/RSS/Image Sitemap 检查均通过；Vercel production build 与输出校验通过（4,624 个公开文件、474 个 HTML、2 个 API handler）。生产索引 78/78、联系入口 78/78、AI 发现审计均通过；生产图片 Sitemap 首次遇到临时抓取失败，重试后 37/37 主图通过。
 - RFQ API 单元测试通过；生产 `/api/health` 仍为 HTTP 503，因为 quote email 未配置，且 `Cache-Control: no-store` 正常。本轮不改外部邮件凭据；Email/WhatsApp/电话直达仍可用。
-- 复测：部署后确认线上摘要一致；在 GSC 可用下一轮完整 14/28 天窗口比较目标查询点击与 CTR，并结合询盘数据决定保留或回滚。
+- Vercel production deployment `dpl_EUwp5avidSZBwo78TbnGBszQ7696` 已 READY 并绑定正式域名；目标页线上 HTTP 200，Title、Description 与 canonical 匹配。部署后复审：索引 78/78、联系入口 78/78、图片 Sitemap 37/37、AI discovery 均通过。
+- 下一步：在 GSC 可用下一轮完整 14/28 天窗口比较目标查询点击与 CTR，并结合合格询盘数据决定保留或回滚；邮件询价自动投递仍需用户提供并配置 Resend/收件邮箱凭据后再处理。
 
 ## 2026-09-17 · 历史搜索入口迁移与发布门禁修复
 
