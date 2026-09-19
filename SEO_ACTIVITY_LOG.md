@@ -13,6 +13,15 @@
 - 78 个英文可收录页面的核心 SEO 标签、canonical、H1、JSON-LD、FAQ、内链和资源校验继续通过；除隐私页外，Title 均落在约 45–65 字符范围内。
 - RSS feed 37 条内容与文章结构化数据一致，sitemap 保持 78 个可收录 canonical URL。
 
+### 本轮 GSC 证据与低 CTR 摘要试验
+
+- Search Console（Web，2026-08-20 至 2026-09-16）显示 `paper-thickness-gsm-pt-mm-conversion-guide.html` 获得 764 次展示、3 次点击、CTR 0.39%、平均排名 8.68；`gsm to mm` 有 40 次展示/平均排名 3.83，`gsm to mm converter` 有 15 次展示/平均排名 6.53，均为 0 点击。
+- 仅调整该英文可收录页的 Title、Meta Description、Open Graph、Twitter 与 BlogPosting headline/description，使摘要直接回应 “GSM to mm” 意图并明确 GSM 不可直接换算；工具仍只做 pt/mm/µm/inch 厚度单位换算，没有增加不实换算承诺。正文、可见发布日期、`dateModified` 与 Sitemap 未改；RSS 条目标题/摘要已同步。
+- 预期影响：提高上述高排名查询的结果相关性与点击率，同时保留采购规格边界；不承诺排名或流量增长。GA4/询盘来源数据本轮未通过已连接的数据源取得，故不推断转化变化。
+- 本地站点/语言审计、RFQ API、安全/语言运行时/移动导航测试、JavaScript 语法、Sitemap/RSS/Image Sitemap 检查均通过；Vercel production build 与输出校验通过（4,624 个公开文件、474 个 HTML、2 个 API handler）。生产索引 78/78、联系入口 78/78、AI 发现审计均通过；生产图片 Sitemap 首次遇到临时抓取失败，重试后 37/37 主图通过。
+- RFQ API 单元测试通过；生产 `/api/health` 仍为 HTTP 503，因为 quote email 未配置，且 `Cache-Control: no-store` 正常。本轮不改外部邮件凭据；Email/WhatsApp/电话直达仍可用。
+- 复测：部署后确认线上摘要一致；在 GSC 可用下一轮完整 14/28 天窗口比较目标查询点击与 CTR，并结合询盘数据决定保留或回滚。
+
 ## 2026-09-17 · 历史搜索入口迁移与发布门禁修复
 
 ### 今日唯一主任务
