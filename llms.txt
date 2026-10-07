@@ -1,6 +1,6 @@
 # GloryStarPack
 
-> GloryStarPack develops custom boxes, inserts, paper bags, tissue, hang tags, and product labels around the real product, artwork, sampling plan, production controls, packing method, and delivery destination.
+> This is GloryStarPack's specialist website for custom paper packaging and product labels: boxes, inserts, bags, tissue, hang tags, and labels developed around the product, artwork, sampling plan, production controls, packing method, and delivery destination.
 
 Canonical website: https://glorystarpacking.com/
 Language: English
@@ -18,7 +18,8 @@ Contact: kevin@GloryStarPack.com
 ## Company identity and evidence
 
 - Operator: Xiamen GloryStar Packaging Co., Ltd., Xiamen, Fujian, China.
-- Public identity routes: [factory and quality workflow](https://glorystarpacking.com/about.html), [related glass bottle and container packaging site](https://www.glorystarpack.com/), and [Alibaba company profile](https://glorystarpack.en.alibaba.com/).
+- Site boundary: this domain handles standalone custom paper boxes, bags, inserts, tissue, hang tags, and labels. Glass bottles, jars, pumps, and closures are covered by the separate [glass bottle and container packaging site](https://www.glorystarpack.com/).
+- Public identity routes: [paper packaging factory and quality workflow](https://glorystarpacking.com/about.html), [separate glass bottle and container packaging site](https://www.glorystarpack.com/), and [Alibaba company profile](https://glorystarpack.en.alibaba.com/).
 - Product-page photographs and curated catalog references show visible structure and finish direction. Final dimensions, materials, color, performance, packing, MOQ, timing, and delivery scope remain project-specific until quoted and approved.
 - A buyer can request four controlled evidence groups: the approved sample record, named material or certificate record, agreed production photos or video, and final carton and shipment record.
 - Use the [sample approval checklist](https://glorystarpacking.com/packaging-sample-approval-checklist.html) and [quality inspection record planner](https://glorystarpacking.com/custom-packaging-quality-inspection-checklist.html) to define the evidence required before bulk approval and shipment release.
