@@ -29,11 +29,14 @@
 
 | 站点/入口 | 与本站资料的匹配方式 | 核查/下一步 |
 | --- | --- | --- |
-| [Packaging Strategies 供应商名录](https://www.packagingstrategies.com/get-listed) | 公司信息与纸包装产品分类 | 页面提供提交入口；先确认资格、费用、链接属性与公司资料准确性。 |
-| [Packaging Editorial 投稿说明](https://packagingeditorial.com/article-submission-guidelines/) | 以样品审核或质量记录方法写原创技术稿 | 需核对当前编辑标准、作者资格、是否接受供应商、链接是否允许。 |
-| [PakFactory 投稿入口](https://pakfactory.com/blog/contribute) | 包装买家教育主题与现有 RFQ/测试资产匹配 | 该站是同行；仅在编辑接受独立、可验证的技术内容时考虑，不能预期获得反向链接。 |
+| [Pinterest 内容链接](https://help.pinterest.com/en/guide/guide-to-creating-pins) | 抽屉盒、香水内托、RFQ 模板分别承接不同买家问题 | 已准备 3 条文案和对应 UTM；需账号和有授权图片后发布。 |
+| [Packaging Strategies 供应商名录](https://www.packagingstrategies.com/get-listed) | 公司信息与纸包装产品分类 | 已准备英文公司简介；先确认资格、费用和网站链接展示方式。 |
+| [Packaging of the World 官方 FAQ](https://packagingoftheworld.com/faq) | 有授权的包装作品和实际角色署名 | 免费投稿需策展审核；官网链接优先放资料页，需先确认真实作品与图片。 |
+| [DIELINE 项目投稿](https://thedieline.com/submit/) | 结构、工艺、样品和完整署名组成的作品资料 | 官方提供免费投稿入口；需图片与项目事实，编辑决定是否刊登。 |
 
 外链应以公开发布页、上下文、目标 URL、检查日期回填 `assets/templates/phase-4-outreach-tracker.csv`。以上只是候选，不计为已获得外链；本轮没有发帖、投稿或联系对方。
+
+完整 7 渠道核查、发布草稿、落地页与衡量方法见 [外链与引荐流量执行清单](BACKLINK_TRAFFIC_PLAN_20261013.md)；候选状态见 [CSV 清单](reports/backlink-opportunities-20261013.csv)。
 
 ## WhatsApp 询盘归因
 
