@@ -104,6 +104,48 @@
     link.setAttribute("aria-label", `${currentLabel} (opens in a new tab)`);
   });
 
+  // Keep every WhatsApp entry on a product page tied to the page the buyer viewed.
+  // The buyer can edit the draft in WhatsApp; a click alone is not an inquiry.
+  const whatsappProducts = {
+    "products.html": "custom packaging products",
+    "custom-boxes.html": "custom packaging boxes",
+    "custom-rigid-boxes.html": "custom rigid boxes",
+    "custom-magnetic-boxes.html": "custom magnetic boxes",
+    "custom-drawer-boxes.html": "custom drawer boxes",
+    "lid-and-base-boxes.html": "lid and base boxes",
+    "collapsible-rigid-boxes.html": "collapsible rigid boxes",
+    "custom-mailer-boxes.html": "custom mailer boxes",
+    "custom-corrugated-shipping-boxes.html": "custom corrugated shipping boxes",
+    "folding-carton-boxes.html": "folding carton boxes",
+    "cosmetic-packaging-boxes.html": "cosmetic packaging boxes",
+    "custom-jewelry-boxes.html": "custom jewelry boxes",
+    "custom-wine-boxes.html": "custom wine boxes",
+    "custom-perfume-boxes.html": "custom perfume boxes",
+    "custom-packaging-inserts.html": "custom packaging inserts",
+    "custom-paper-bags.html": "custom paper bags",
+    "custom-tube-packaging.html": "custom paper tube packaging",
+    "custom-tissue-paper.html": "custom tissue paper",
+    "custom-hang-tags.html": "custom hang tags",
+    "box-labels.html": "custom box labels",
+    "custom-clear-labels.html": "custom clear labels",
+    "custom-waterproof-labels.html": "custom waterproof labels",
+    "custom-wine-labels.html": "custom wine labels",
+    "embossed-foil-labels.html": "embossed foil labels",
+  };
+  const productFile = window.location.pathname.split("/").pop();
+  const catalogReference = productFile.match(/-gs-(\d{7})\.html$/i)?.[1]
+    || (productFile === "products.html" ? new URLSearchParams(window.location.search).get("catalog")?.match(/^GS-(\d{7})$/i)?.[1] : "");
+  const productName = whatsappProducts[productFile]
+    || (catalogReference ? document.querySelector("main h1")?.textContent.replace(/\s+/g, " ").replace(/[.]+$/, "").trim().toLowerCase() : "");
+  if (productName) {
+    const reference = catalogReference ? ` (reference GS-${catalogReference})` : "";
+    document.querySelectorAll('a[href^="https://wa.me/8619577608248"]').forEach((link) => {
+      const viewedProduct = link.dataset.whatsappProduct?.trim() || productName;
+      const message = `Hello GlorystarPack, I just viewed your ${viewedProduct}${reference} and would like to discuss a project. Can we chat?`;
+      link.href = `https://wa.me/8619577608248?text=${encodeURIComponent(message)}`;
+    });
+  }
+
   const updateHeader = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 24);
   };
