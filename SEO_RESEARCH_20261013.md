@@ -38,3 +38,15 @@
 ## WhatsApp 询盘归因
 
 产品页所有 `wa.me` 入口在页面加载后写入产品名；目录参考页附 `GS-` 编号。抽屉盒页当前标记为 `custom drawer boxes`；若以后创建独立的 Advent calendar 产品页，再将其明确标记为 `advent calendar drawer box`。客户仍需在 WhatsApp 点击发送，且可编辑或删除预填文字，所以销售应以**实际收到的首条消息**确认来源，不能把按钮点击等同于有效询盘。GA4 的 `contact_click` 只记录获同意用户的点击，不证明消息已送达。
+
+## GSC 与 Bing 提交记录 · 2026-10-13
+
+- 正式站上线后核对了 `sitemap.xml`、`image-sitemap.xml`、抽屉盒页和 `assets/site.js`：均返回 HTTP 200，内容与发布文件一致。
+- GSC `glorystarpacking.com` 域名资源中的 `https://glorystarpacking.com/sitemap.xml` 状态为“成功”；检查时上次读取日期为 2026-10-10，发现 84 个网页。同一 sitemap URL 已在 GSC 中，无需重复添加。
+- GSC 网址检查：`custom-drawer-boxes.html` 已收录；本次更新后点击“请求编入索引”，界面确认加入优先抓取队列。
+- GSC 网址检查：`branded-packaging-tape-vs-custom-boxes.html`、`multi-sku-packaging-system-guide.html`、`retail-box-vs-shipping-box-guide.html`、`rigid-box-prototype-small-run-guide.html` 均显示“已发现 - 尚未编入索引”；逐页请求后，界面均确认加入优先抓取队列。
+- GSC 网址检查：`dimensional-weight-packaging-guide.html`、`packaging-design-brief-guide.html` 已收录，因此没有重复请求。
+- IndexNow 提交上述 7 个 URL 返回 HTTP 200；Bing Webmaster Tools 的 `glorystarpacking.com` → IndexNow 列表显示这 7 个 URL 均于 2026-10-13 14:36 提交。
+- Bing Webmaster Tools 中重新提交 `https://glorystarpacking.com/sitemap.xml`，界面提示“successfully submitted for processing”；提交日期为 2026-10-13，状态为“Processing”。当时旧抓取记录是 2026-09-20、发现 78 个 URL，需等 Bing 完成重抓后复查是否更新为当前 84 个。
+
+“已请求编入索引”只表示进入 Google 的抓取队列；IndexNow HTTP 200 与 Bing 列表只证明通知已接收，均不保证最终收录。建议数日后复查上述 4 篇未收录文章和 Bing sitemap 的处理结果。
