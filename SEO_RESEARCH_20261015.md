@@ -4,8 +4,8 @@
 
 | 平台 | 已核实状态 | 当前基线 | 本轮动作 |
 | --- | --- | --- | --- |
-| Google Search Console | `sc-domain:glorystarpacking.com` 的 `sitemap.xml` 已提交且成功，2026-10-14 最后读取，84 个 URL；约 80 个已编入索引 | 近 28 天（9/16–10/13）10 点击、1,650 展示、CTR 0.6%、平均排名 15.5 | 更新两个已有页面和站点地图；上线后重新提交 sitemap。GSC 收录由 Google 决定。 |
-| Bing Webmaster Tools | `https://glorystarpacking.com/` 的 `sitemap.xml` 已提交且成功，2026-10-13 最后抓取，84 个 URL，0 错误/警告 | 近 30 天（9/15–10/14）1 点击、58 展示、CTR 1.72% | 上线后用 IndexNow 提交改动 URL，并重新核查 Bing sitemap。 |
+| Google Search Console | `sc-domain:glorystarpacking.com` 的 `sitemap.xml` 已提交且成功，2026-10-14 最后读取，84 个 URL；约 80 个已编入索引 | 近 28 天（9/16–10/13）10 点击、1,650 展示、CTR 0.6%、平均排名 15.5 | 2026-10-15 重新提交 sitemap，界面显示“已成功提交站点地图”。GSC 收录由 Google 决定。 |
+| Bing Webmaster Tools | `https://glorystarpacking.com/` 的 `sitemap.xml` 已提交且成功，2026-10-13 最后抓取，84 个 URL，0 错误/警告 | 近 30 天（9/15–10/14）1 点击、58 展示、CTR 1.72% | 2026-10-15 重新提交 sitemap，界面显示提交成功、状态 Processing；同日 IndexNow 接受 2 个更新 URL（HTTP 200）。 |
 
 GSC 近 28 天曝光较高但尚无点击的页面：`folding-carton-boxes.html` 127 展示/平均排名 16.85；`box-labels.html` 83/15.25；`sustainable-luxury-packaging.html` 65/18.71；`clear-label-white-ink-artwork-guide.html` 54/7.89。对应查询包括 `sustainable luxury packaging` 36 展示/排名 18.58、`custom film labels` 22/5.05、`custom durable labels` 19/10.68、`custom drawer boxes` 17/9.18。样本小，先观察更新后 28 天，不据此断言标题问题。
 
@@ -49,6 +49,6 @@ GSC 导出原始文件：`~/Downloads/glorystarpacking.com-Performance-on-Search
 
 ## 上线后复核
 
-1. 核对正式站两个更新页面和 `sitemap.xml` 的 HTTP 200、canonical、`lastmod` 与内容。
-2. IndexNow 提交两个改动 URL；GSC 和 Bing 的 sitemap 重新提交/检查。
+1. 已核对正式站两个更新页面与 `sitemap.xml`；IndexNow 生产预检验证两页 HTML 与本地发布文件完全一致，并接受 2 个 URL。
+2. 已重新提交 GSC 与 Bing 站点地图；等待平台处理及实际抓取。
 3. 28 天后对照 GSC 页面与查询、Bing 展示和询盘来源，保留有效内容，避免继续按工具估算堆词。
