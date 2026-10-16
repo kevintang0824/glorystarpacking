@@ -2,9 +2,9 @@
 
 ## 1. GSC 与 Bing
 
-目标资源为 `sc-domain:glorystarpacking.com` 和 Bing `https://glorystarpacking.com/`。Chrome 原先打开的两个标签分别指向相近的 `glorystarpack.com` 资源；**其 215 点击 / 2.76 万展示和 5 点击 / 336 展示均不属于本站，不计入基线**。切换到目标资源后页面内容一直空白，今天未取得新的查询、页面、索引或站点地图界面数据，也不能据此推断登录失效或指标变化。
+目标资源为 `sc-domain:glorystarpacking.com` 和 Bing `https://glorystarpacking.com/`。Chrome 原先打开的两个标签分别指向相近的 `glorystarpack.com` 资源；**其 215 点击 / 2.76 万展示和 5 点击 / 336 展示均不属于本站，不计入基线**。GA4 原标签也指向 `Glorystarpack` 资源，不能把显示的询盘数据归到本站。切换到目标 GSC、Bing 和 GA4 资源后页面内容一直空白，今天未取得新的查询、页面、索引、站点地图或有效询盘界面数据，也不能据此推断登录失效或指标变化。
 
-沿用 2026-10-15 已核实的最近基线：GSC 近 28 天（9/16–10/13）10 点击、1,650 展示；站点地图 84 个 URL、约 80 个已索引。Bing 近 30 天（9/15–10/14）1 点击、58 展示；站点地图此前成功、84 个 URL。昨日已重新提交两平台站点地图，Bing 当时显示 Processing；今天的处理状态仍待核验。上线后核对正式站 `sitemap.xml` 和更新 URL，并提交 IndexNow；GSC 界面恢复时再核对站点地图状态及提交重点 URL，不把提交回执视为收录。
+沿用 2026-10-15 已核实的最近基线：GSC 近 28 天（9/16–10/13）10 点击、1,650 展示；站点地图 84 个 URL、约 80 个已索引。Bing 近 30 天（9/15–10/14）1 点击、58 展示；站点地图此前成功、84 个 URL。昨日已重新提交两平台站点地图，Bing 当时显示 Processing；今天的处理状态仍待核验。正式站 `sitemap.xml`、`image-sitemap.xml` 和更新 URL 已与发布文件逐字节一致；2026-10-16 IndexNow 对该 URL 返回 HTTP 200。GSC 界面恢复时再核对站点地图状态及提交重点 URL；今天未声称完成 GSC 重新提交，也不把 IndexNow 回执视为收录。
 
 ## 2. Semrush 同行页面与本轮覆盖
 
@@ -32,4 +32,4 @@
 
 本轮改动：`custom-mailer-boxes.html`、`sitemap.xml`、`image-sitemap.xml`。使用独立于主工作区的干净 `origin/main` 分支，保留主工作区现有未提交文件。通过站点静态校验、询盘 API/服务健康测试、脚本语法检查和 IndexNow 单 URL dry run。构建输出检查需要先生成 `.vercel/output`，直接在源码目录运行出现缺失输出目录，不能解读为线上构建失败。
 
-上线后记录部署提交、正式页与 sitemap 校验、询盘服务、IndexNow 回执。后续用 GSC/Bing 的该页查询和真实有效询盘验证，不保证排名或询盘增长。
+发布提交 `e3849afa` 已推送至 `origin/main`。正式页、主站点地图和图片站点地图的 SHA-256 与本地完全一致；生产索引审计通过（84 个可索引 URL），生产页面壳审计通过，`/api/health` 确认询盘邮件配置存在。IndexNow 单 URL 提交返回 HTTP 200。发布前后 Git bundle 均保存在工作区外的 `backups/glorystarpacking/`。GSC/Bing/GA4 目标资源界面本次未加载，待恢复后补充真实搜索和有效询盘数据；不保证排名或询盘增长。
