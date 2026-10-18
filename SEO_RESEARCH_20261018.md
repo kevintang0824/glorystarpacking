@@ -35,3 +35,14 @@
 - 静态站点校验、AI 发现性审计、站点地图检查、询盘 API/健康测试、JavaScript 语法检查和 IndexNow dry run 通过。Vercel 构建输出校验在该隔离工作区缺少 `.vercel/output`，因此未执行其产物测试；不将此当作线上构建失败。
 - 正式指南、sitemap、feed 均 HTTP 200 且 SHA-256 与本地发布文件一致。生产索引审计 84 个可索引 URL 通过；页面壳、联系人和 `/api/health` 审计通过，询盘邮件配置存在。GSC 和 IndexNow 回执见第一步。
 - 下轮以同一站点属性比较 GSC/Bing 的页面、查询和实收有效询盘；样品指南需要观察更长窗口，不因当天提交推断流量增长。若能核实真实客户项目的样品、版次和成盒验收照片，可进一步完善案例。外链候选先做资格与费用核查，再考虑人工申请。
+
+## 同日继续执行：标签采购页与询盘口径
+
+1. **GSC/Bing 与提交。** 在正确的 GSC 域名资源中按页面筛选近 28 天数据：`box-labels.html` 为 86 展示、0 点击、平均排名 15.2；可见查询 `custom film labels` 22、`custom durable labels` 19、`custom label manufacturer` 9、`label material manufacturer` 8 展示。`folding-carton-boxes.html` 为 135 展示、0 点击、平均排名 17，但可见查询仍集中在该页已经覆盖的通用纸盒词，本轮未重复改写。当天 GSC 主 sitemap 已重新读取为成功、84 URL。标签页实质更新上线后，IndexNow 接收该 URL（HTTP 200），GSC 对完整 sitemap URL 再次显示“已成功提交站点地图”。不把提交算作新收录。
+2. **同行与覆盖。** 3ue/ Semrush 仍受平台禁止自动化访问的提示约束，未重新抓取；本轮没有新增同行估算值。借助上述本站实际查询，在已有标签总览页新增“透明视觉效果还是耐用标识”采购对照、材料/胶黏剂/印刷组合打样要求及询价资料清单，并链接既有透明标签、耐用标签和白墨图稿指南，避免新建相似页。材料选择原则参考 [UPM Raflatac 膜标签材料指南](https://www.upmraflatac.com/siteassets/documents/brochures/product/upmr-films-selection-guide-global-en.pdf)和 [Avery Dennison 膜材料技术指南](https://label.averydennison.com/content/dam/averydennison/lpm-responsive/na/doc/product-overviews/product/Film/po-film-technical-guide.pdf)；未将任何供应商产品参数冒认为本站承诺。
+3. **Reddit。** [清洁产品标签采购讨论](https://www.reddit.com/r/Entrepreneurs/comments/1mqupsf/struggling_to_find_reliable_label_printing_for/)提出水湿后洇墨、起边、胶黏与小批量采购问题；[透明标签白墨印刷讨论](https://www.reddit.com/r/CommercialPrinting/comments/1vf545w/entry_level_cmykwhite_label_printer/)体现白墨与透明材料组合需要明确印刷方法。这些仅作定性问题线索。本页新增实际容器、使用环境、印刷和胶黏组合样品验证，不自动发帖或私信。
+4. **外链。** Packaging Strategies 与 NPTA 仍是待核资格/费用/公开页面链接的候选；本轮未申请、联系或取得外链，未将其计为成果。
+
+询盘追踪核查：站点代码仅在 `/api/quote` 成功响应后触发 `generate_lead`；历史 GA4 记录确认该事件已设为关键事件。当天正确 GA4 资源的关键事件卡片“没有可用数据”，不能用自动 `form_submit` 或点击数代替有效询盘。本轮没有提交测试或虚构询盘。
+
+标签页发布提交 `9f77d112` 已推送 `origin/main`，改动仅 `box-labels.html`、`sitemap.xml`、`image-sitemap.xml`。发布前 Git bundle 已生成；静态站点校验、AI 发现审计、站点地图检查、IndexNow dry run 均通过。正式三文件 HTTP 200 且 SHA-256 与本地一致；生产索引审计 84 URL、页面壳和询盘服务健康审计通过。后续仍用 GSC/Bing 的同页窗口和实际送达询盘复盘，避免因当天改动推断增长。
