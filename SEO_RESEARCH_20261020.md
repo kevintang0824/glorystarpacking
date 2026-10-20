@@ -32,3 +32,15 @@ AI 仅整理候选与要求；以上要求均以各站公开入口核验。候�
 ## 本轮结果与下次动作
 
 今日完成昨日遗漏的 GSC sitemap 提交，并核对重点更新页已收录。没有新的正式站页面改动，故没有部署、重复 IndexNow 或重新提交 Bing sitemap；本文件是本轮唯一 Git 变更。下一轮按同一资源和可比日期窗口看有采购意图的查询、产品页点击、报价入口与已送达有效询盘，再决定是否优化页面。Semrush 新数据需允许的人工导出渠道。Google/Bing 接收和收录报告不保证排名、点击或询盘。
+
+## 同日继续优化：折叠纸盒采购入口
+
+用户要求继续优化。本轮选择 `folding-carton-boxes.html`，因为 GSC 近 28 天该产品页有 135 展示、0 点击，且 10-15 的 Semrush 美国数据库 2026-09 历史估算显示 Berlin Packaging 的 `reverse tuck cartons` 月搜索量约 140；这些数值只用于确定优先级，不能推断效果。页面已有反向插口盒 RFQ 指南与包含数量、尺寸、目的地和目标到货日的报价表单。新增指南旁直达表单的语境链接，明确让买家提供尺寸、数量和交付目标，避免只得到泛泛的关键词访问。
+
+同时发现该页 10-15 曾实质更新，但 `sitemap.xml` 的 `lastmod` 仍为 2026-09-09。为本次页面修改补入结构化 `dateModified: 2026-10-20`，重新生成主站点地图和图片站点地图；后者原有日期也随之修正。未新建相似页、未承诺 MOQ、价格、交期或排名。
+
+发布前备份：`/Users/kevintang/.codex/worktrees/seo-oct15/backups/glorystarpacking/glorystarpacking-20261020-133706-2dfab3bb.bundle` 已验证。Quote API、服务健康、JS 语法、AI 发现、站点地图及单 URL IndexNow dry run 通过。首次静态校验指出图片站点地图日期不一致；重新生成后，静态校验覆盖 84 个可索引页面并通过。
+
+- **部署：** 仅 `folding-carton-boxes.html`、`sitemap.xml`、`image-sitemap.xml` 提交 `d7c9349` 并推送 `origin/main`。三份正式文件 HTTP 200 且 SHA-256 与本地一致。生产索引审计覆盖 84 个可索引 URL 并通过；页面壳、联系方式和询盘服务审计通过，`/api/health` 显示报价邮件配置存在。这些是可访问与配置证据，不是已送达询盘证据。
+- **搜索提交：** 正式站核验后，IndexNow 接受更新的 `https://glorystarpacking.com/folding-carton-boxes.html`，HTTP 200。GSC 正确资源 `sc-domain:glorystarpacking.com` 的 `https://glorystarpacking.com/sitemap.xml` 重新提交，界面显示“已成功提交站点地图”；列表状态成功、发现 84 URL。提交仅说明平台接收，不代表新版已抓取、收录或产生排名。
+- **后续复盘：** 用同口径 28 天 GSC 数据观察该页采购相关查询的展示、点击、报价表单使用和实际送达的合格询盘；不要把历史 Semrush 估算或提交回执算作增长。
