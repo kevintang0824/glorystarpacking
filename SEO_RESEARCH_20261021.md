@@ -106,3 +106,16 @@ Semrush 仍仅使用 10-15 合规导出的**美国数据库、2026-09** 同行�
 **询盘衡量校准：** 已登录 GA4 确认为本站 `Glorystarpacking` 属性 ID `548891831`、网站数据流 ID `15390500899`，近 48 小时接收流量。管理 > 数据显示 > 事件中，`generate_lead` **已经标记为关键事件**，但“过去 28 天内处于活跃状态的数据流”为“未检测到任何数据流”；`qualify_lead` 与 `close_convert_lead` 也已标记但无数据流。这说明“关键事件卡片没有可用数据”不能归因为未设置关键事件，也不能证明没有邮件或线下成交。站点代码仅在 `/api/quote` 成功响应后触发 `generate_lead`，`contact_click` 另记录邮箱/WhatsApp/电话点击，不当作已送达有效询盘。Resend 接受后的送达和销售资格仍需邮件/销售记录核实。
 
 本轮审查了首页、标签、纸厚、样品审批、透明标签、香水盒页面的采购信息及 CTA；现有结构和报价入口完整。今天已实质更新标签、化妆品和抽屉盒页，缺少新的同域点击或有效询盘变化，继续改标题、堆内容或增加必填表单字段可能降低可比性及提交率。因此本轮只修正证据口径，不改网站、不部署、不重复提交。下一步需取得同口径 GSC 页面查询、GA4 报价开始/成功事件以及实收有效询盘，优先评估已上线页，再决定下一处具体产品页改动。
+
+## 22:10 AI 搜索可发现性与准确引用
+
+用户希望让 AI 更多推荐本站。先核对最新 `origin/main` 和清洁隔离工作树、发布流程、正式站首页及询盘健康，再检查站点 AI 抓取与可引用材料。本站已公开允许 `OAI-SearchBot`，有索引页 sitemap、图片 sitemap、RSS、`llms.txt`、公司身份与产品页结构化数据。官方资料表明，允许搜索抓取和提供可访问、准确、原创且与可见内容一致的资料有助于 AI 搜索理解和引用，但无法保证被推荐、排名或展示次数：[OpenAI 搜索发布者说明](https://help.openai.com/en/articles/12627856)、[Google AI 搜索建议](https://developers.google.com/search/blog/2025/05/succeeding-in-ai-search?hl=en)。`llms.txt` 仅作为本站可读的资料目录，不能当作任何搜索服务已采用它的证明。
+
+1. **GSC / Bing：** 本轮没有取得新查询或索引读数；正确 GSC 域名资源的 sitemap 标签内容区空白，正确 Bing 资源的 AI Performance 标签也未显示报告主体，故没有新的 GSC URL/sitemap 回执或可靠的 AI 引用计数。最近可核实的 GSC 9/21–10/18 为 7 点击、1,670 展示；索引报告 80 已索引、377 未索引（369 个预期的翻译 `noindex`）。Bing 9/22–10/19 为 0 点击、50 展示，地图此前显示成功、发现 84 URL。不能把空白报告当成 0 引用，或把地图发现当成收录。Bing 的 [AI Performance](https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/) 指标应按引用页和 grounding phrase 跟踪；待界面恢复后建立真实基线。
+2. **Semrush 同行与本站覆盖：** `sem.3ue.com` 第三方页面禁止自动化抓取，本轮仅使用 10-15 合规导出的美国数据库、2026-09 估算：Packhelp 盒型模板页约 112 估算自然访问/210 排名词；Berlin Packaging `reverse tuck cartons` 约 140、`mailer boxes wholesale` 约 210 美国估算月搜索量。均非本站成果或当前实时数据。本站已有相关盒型与采购页面，本轮选择修补现有产品页到已上线采购指南的上下文路径，不复制同行文章。
+3. **Reddit 买家问题：** 复核本日已记录的 10-21 小批量化妆品包装讨论和 5-27 多 SKU 抽屉盒讨论：买家关心结构/现货方案、样品放行、各 SKU 尺寸与装载；既有刚性盒打样及多 SKU 指南已回答。本轮把硬盒页接至小批量原型/样品放行指南；邮寄盒页接至按成箱尺寸和承运商规则核算体积重量指南。未发帖或私信。
+4. **外链候选：** 公开搜索抽样主要找到本站、玻璃包装姊妹域 `glorystarpack.com` 和无关同名实体；这不是完整外链审计。已核验的 [Packaging Strategies Get Listed](https://www.packagingstrategies.com/get-listed) 与 [NPTA Supplier Search](https://nptasuppliersearch.com/Guide/CUI) 仍为候选：需进一步确认资格、费用和实际公司链接；未申请、联系、投稿或获得链接。真实第三方提及需独立核实后才记为外链。
+
+**本次改动与回执：** `llms.txt` 补列六篇原本遗漏但已经索引开放的采购指南；`custom-rigid-boxes.html` 在相关工艺说明中指向刚性盒小批量打样指南，`custom-mailer-boxes.html` 在运输说明中指向体积重量指南；两页 `Service.dateModified` 更新至 2026-10-21，主/图片地图重新生成，仍为 84 个可索引页、37 张唯一主图。未虚构价格、MOQ、交期、认证或第三方推荐。发布前 Git bundle `glorystarpacking-20261021-221049-24a8f38d.bundle` 已验证。静态 84 页、Quote API、服务健康、JS 语法、两份地图、AI 可发现性、IndexNow dry run 和 `git diff --check` 通过。站点提交 `89762e7b` 已推送 `origin/main`；五个更新文件在正式站 HTTP 200、带版本参数校验与本地逐字节一致。正式 `/api/health` 返回 `ok: true`、`quoteEmail.configured: true`；生产页面壳、联系入口、服务和 AI 可发现性审计通过。上线后两条更新 URL 的 IndexNow 提交获 HTTP 200 接收，不能当作抓取或收录。GSC 本轮无新提交回执，待报告恢复后补查 sitemap/重点 URL 状态。
+
+**衡量：** GA4 9/23–10/20 有 7 活跃用户，来源表含 1 名 `gemini.google.com / ai-assistant` 活跃用户；这只是来源读数，不能解释成 AI 推荐或有效询盘。`generate_lead` 已设关键事件但本轮没有新事件/邮件送达证据。后续同口径记录 Bing AI Performance 的实际引用页、GSC/Bing 采购查询与点击、GA4 来源/报价事件，并以实际送达及销售确认的合格询盘判断价值。
