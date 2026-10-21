@@ -119,3 +119,5 @@ Semrush 仍仅使用 10-15 合规导出的**美国数据库、2026-09** 同行�
 **本次改动与回执：** `llms.txt` 补列六篇原本遗漏但已经索引开放的采购指南；`custom-rigid-boxes.html` 在相关工艺说明中指向刚性盒小批量打样指南，`custom-mailer-boxes.html` 在运输说明中指向体积重量指南；两页 `Service.dateModified` 更新至 2026-10-21，主/图片地图重新生成，仍为 84 个可索引页、37 张唯一主图。未虚构价格、MOQ、交期、认证或第三方推荐。发布前 Git bundle `glorystarpacking-20261021-221049-24a8f38d.bundle` 已验证。静态 84 页、Quote API、服务健康、JS 语法、两份地图、AI 可发现性、IndexNow dry run 和 `git diff --check` 通过。站点提交 `89762e7b` 已推送 `origin/main`；五个更新文件在正式站 HTTP 200、带版本参数校验与本地逐字节一致。正式 `/api/health` 返回 `ok: true`、`quoteEmail.configured: true`；生产页面壳、联系入口、服务和 AI 可发现性审计通过。上线后两条更新 URL 的 IndexNow 提交获 HTTP 200 接收，不能当作抓取或收录。GSC 本轮无新提交回执，待报告恢复后补查 sitemap/重点 URL 状态。
 
 **衡量：** GA4 9/23–10/20 有 7 活跃用户，来源表含 1 名 `gemini.google.com / ai-assistant` 活跃用户；这只是来源读数，不能解释成 AI 推荐或有效询盘。`generate_lead` 已设关键事件但本轮没有新事件/邮件送达证据。后续同口径记录 Bing AI Performance 的实际引用页、GSC/Bing 采购查询与点击、GA4 来源/报价事件，并以实际送达及销售确认的合格询盘判断价值。
+
+**生产审计补记：** 全量图片地图审计在四个未改动产品页的并发请求上遇到超时/连接失败，因此本轮不记为全量通过。对这四个页面及其 sitemap 所列主图逐一重试，均返回 HTTP 200，图片为 `image/jpeg` 且有实际内容；这排除了当时可复现的 404，但单独的 HTTP 检查不等同于全量图片审计通过。全量索引审计的后台进程结束时未保留可核对回执，也不记为通过；本轮已上线两页、地图逐字节核对及前述定向生产检查仍成立。下轮网络稳定时再跑两项全量审计。
