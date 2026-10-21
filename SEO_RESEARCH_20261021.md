@@ -44,3 +44,16 @@ Semrush 仍仅使用 10-15 合规导出的**美国数据库、2026-09** 同行�
 - 页面和两份地图提交 `277625c` 并推送 `origin/main`；正式站带版本参数的三个文件均 HTTP 200，SHA-256 与本地一致。生产索引审计覆盖 84 个 sitemap URL 通过；页面壳、联系方式、图片地图和询盘服务审计通过。`quoteEmail.configured: true` 只表示邮件配置存在，无法从这里确认实际有效询盘已送达。
 - 上线核验后，`https://glorystarpacking.com/box-labels.html` 的 IndexNow 单 URL 提交获 HTTP 200 接收。GSC 正确资源站点地图页仍空白，未能重提 sitemap 或取得回执；Bing Webmaster 正确资源页也空白，无法核查后台状态。IndexNow 接收不等于 Bing/Google 已抓取或收录。
 - 后续用同口径 GSC 标签相关查询、标签页点击、报价表单进入与实际送达的合格询盘复盘。先排查两个控制台空白页面的浏览器环境，再补 GSC sitemap 提交；不要从当前空白页面推断账号过期。
+
+## 晚间继续优化：小批量化妆品外包装采购路径
+
+用户再次要求继续优化。开始时隔离工作树清洁，`HEAD` 与最新 `origin/main` 均为 `d6322fe`；正式首页 HTTP 200，`/api/health` 返回 `ok: true` 且报价邮件配置存在。重读 10-15 研究、本日记录和发布流程。
+
+1. **GSC / Bing：** 已登录 Chrome 的正确 GSC 域名资源短暂恢复：主 sitemap 列表显示 10-20 提交/读取、状态“成功”、发现 84 网页；三个月效果报告显示 2026-07-29 至 10-18 共 20 点击、3,331 展示、CTR 0.6%、平均排名 15.8，界面称 5 小时前更新。前列查询 `custom film labels` 22 展示、`custom durable labels` 19 展示、均 0 点击；此为三个月口径，**不可与 10-20 的 28 天数字直接比较**。在切换 28 天和网页/索引报告时内容区再次空白，未取得完整新查询、页面和索引读数。Bing 正确资源 `https://glorystarpacking.com/` 的站点地图页刷新后仍空白；最近可靠的 Bing 读数仍为 10-20 的 30 天 0 点击、48 展示。10-21 早些时候更新的标签页已在正式 sitemap，但 GSC 站点地图重新提交及今日更新 URL 的 GSC 提交均因页面空白无法取得回执；不得把 IndexNow 接收说成 GSC/Bing 已收录。
+2. **Semrush 同行与本站缺口：** 仍仅采用 10-15 合规导出的美国数据库、2026-09 估算。Packhelp 盒型模板页约 112 估算自然流量/210 排名词，Berlin Packaging `reverse tuck cartons` 月搜索量估算约 140；这些纸盒主题本站已有对应指南或产品页，且工具估算不能证明本站增长。本次选题**不声称来自 Semrush 新关键词**。对照现有 `cosmetic-packaging-boxes.html` 与低 MOQ 指南，发现化妆品页虽明确本公司只做外包装和标签，但没有为首次小批量买家解释“现货盒加标签”与“新结构定制”的采购比较和询盘入口。
+3. **近期 Reddit：** [2026-10-21 化妆品初创品牌小订单讨论](https://www.reddit.com/r/Packaging/comments/1xbdi7e/custom_packaging/) 中，发帖者寻求少于 100 件的定制包装；回复追问其所需的是瓶/罐还是外盒、是结构定制还是只印刷，并建议比较现货包装加定制标签。帖子仅作定性需求线索，未在 Reddit 发帖或私信。化妆品页据此新增采购说明：先区分本公司范围与瓶罐，再以同一数量、目的地和到货日比较现货尺寸加标签与全定制结构，核对样品、模具、单价、运费、实物适配及项目 MOQ，不承诺任何固定最低量或交期；内链至已有低 MOQ 指南及本页报价表单。
+4. **外链候选：** 再次核验 [Packaging Strategies 官方登记入口](https://www.packagingstrategies.com/get-listed) 和 [NPTA Supplier Search 官方登记说明](https://nptasuppliersearch.com/Guide/CUI)。前者需创建账户、填公司/品类并提交，后者说明纸张/包装分销行业供应商可登记 basic listing；适用资格、费用与最终公司链接仍待确认。两者均未申请、未获得外链，AI 摘要不计作已发布链接。
+
+改动仅为 `cosmetic-packaging-boxes.html` 的采购决策说明、`dateModified: 2026-10-21` 和相应 `sitemap.xml` 日期。发布前 Git bundle `/Users/kevintang/.codex/worktrees/seo-oct15/backups/glorystarpacking/glorystarpacking-20261021-205137-d6322fe0.bundle` 验证通过；84 页静态校验、Quote API、服务健康、JS 语法、AI 发现、单 URL IndexNow dry run 通过。网站提交 `7908466` 推送 `origin/main`，正式页与 sitemap 均 HTTP 200、SHA-256 与本地一致；生产索引审计、页面壳、联系方式及报价服务审计通过。上线后单 URL IndexNow 提交获 HTTP 200 接收。服务配置和抓取提交不是已送达有效询盘或排名提升的证据。
+
+下一步：待 GSC/Bing 正确资源界面稳定后读取相同时间窗口的查询、页面、索引和 sitemap 状态，补 GSC sitemap/重点 URL 提交回执；结合报价表单进入及实际送达的合格询盘评估小批量与定制结构内容是否引来合适买家。避免依据一次 Reddit 提问推断需求规模。
