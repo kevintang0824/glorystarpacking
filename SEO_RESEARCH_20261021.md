@@ -70,3 +70,13 @@ Semrush 仍仅使用 10-15 合规导出的**美国数据库、2026-09** 同行�
 **GA4 资源校验：** 当前 Chrome GA4 初始属性为 `Glorystarpack`（媒体资源 ID `548854103`），热门页面为玻璃瓶等另一站内容。其流量与线索数**不能归入** `glorystarpacking.com`。同一账号的选择器确实列出本站独立属性 `Glorystarpacking`（媒体资源 ID `548891831`）；切换并刷新后，目标属性报告内容区一直空白，没有可靠的本站 GA4 流量或 `generate_lead` 读数。本站前端只在 `/api/quote` 返回成功后触发该事件；服务成功响应最多说明邮件服务商接受请求，并非已送达或合格询盘。
 
 由于今天刚发布两处实质优化且新平台读数不可用，本轮不改网站页面、不部署、不重复推送索引请求。优先修复/等待三个正确资源的浏览器报告加载，再用相同时间窗口的搜索查询、报价入口及实际送达合格询盘决定下一处修改。
+
+## 21:24 报告加载问题复核与数据恢复
+
+用户要求查明并改善新读数不可用的问题。再次进入同一已登录 Chrome 会话后，三个**正确资源**的报告主体最终都加载成功，说明此前的“空白”不能直接解释为没有数据或账号失效。GA4 切换属性时一度出现“地址已变、主体仍为另站旧报告”，随后刷新时主体空白，稍后才呈现本站数字。Bing 空白页的 Chrome 开发工具显示 service worker `Failed to fetch`、`/webmasters/api/locale/supportedlanguages` HTTP 500、外部 `jquery.flot.min.js` 404，以及慢网络提示；其中遥测接口 439 和扩展脚本日志不能单独证明根因。综合看是浏览器/平台加载不稳定与资源混淆的双重风险，尚不能把某个错误归咎于本站代码。未关闭用户扩展、清除登录数据或更改浏览器安全设置。
+
+- **GSC** `sc-domain:glorystarpacking.com`：28 天 2026-09-21 至 10-18，报告约 5.5 小时前更新；7 点击、1,670 展示、CTR 0.4%、平均排名 16.8。可见采购相关查询 `custom film labels` 22 展示、`custom durable labels` 19、`custom drawer boxes` 17、`custom label manufacturer` 9、`custom perfume boxes` 9，均 0 点击。索引报告更新截至 10-12：80 已索引、377 未索引；其中 369 为 `noindex`（样本为多语言路径，仓库相应文件确有 noindex 标记）、4 为重定向、4 为“已抓取但未编入索引”。后者示例为刚发布的四篇指南，10-13/14 最后抓取，需后续复查而非立即当作技术错误。正式 sitemap 原显示 10-20 提交/读取、成功、84 个网页；本次对同一 URL `https://glorystarpacking.com/sitemap.xml` 重新提交，界面显示“已成功提交站点地图”。此回执不等于重新抓取或已收录。
+- **Bing Webmaster Tools** `https://glorystarpacking.com/`：Search Performance 自定义范围 2026-09-22 至 10-19，0 点击、50 展示、CTR 0%；可见查询以纸板厚度换算等信息型长尾为主，数量很小。sitemap 页显示 1 个已知地图、0 错误、0 警告、84 个发现 URL；上次提交 10-15、上次抓取 10-18、状态 Success。此前当天两处内容变更的 IndexNow HTTP 200 接收仍是单独回执，不等于 Bing 已索引。本次不重复提交 Bing sitemap。
+- **GA4** 正确媒体资源 `Glorystarpacking` ID `548891831`，数据流 URL 为 `https://Glorystarpacking.com`、测量 ID `G-LYNMPWG9WK`，与本站 `index.html` 配置一致，数据收集面板显示启用并接收近期流量。9/23–10/20 的 28 天概览为 7 活跃用户、5 新用户、38 事件；首次来源 `google / organic` 2 名活跃用户，`gemini.google.com / ai-assistant` 1 名。关键事件卡片显示“没有可用数据”，不能声称有新询盘。数据量小，且 GA4 与 GSC 指标口径不同，不比较为同一流量变化。
+
+已在 `PUBLISH_WORKFLOW.md` 增加资源 ID、报告主体加载和日期口径校验。本站页面及询盘服务未改动或重新部署；本次只修正数据读取流程与研究记录。下一步按相同日期区间持续观察采购查询和四篇待索引指南，实收有效询盘仍须由邮件送达/销售记录确认。
