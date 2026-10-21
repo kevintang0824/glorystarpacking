@@ -57,3 +57,16 @@ Semrush 仍仅使用 10-15 合规导出的**美国数据库、2026-09** 同行�
 改动仅为 `cosmetic-packaging-boxes.html` 的采购决策说明、`dateModified: 2026-10-21` 和相应 `sitemap.xml` 日期。发布前 Git bundle `/Users/kevintang/.codex/worktrees/seo-oct15/backups/glorystarpacking/glorystarpacking-20261021-205137-d6322fe0.bundle` 验证通过；84 页静态校验、Quote API、服务健康、JS 语法、AI 发现、单 URL IndexNow dry run 通过。网站提交 `7908466` 推送 `origin/main`，正式页与 sitemap 均 HTTP 200、SHA-256 与本地一致；生产索引审计、页面壳、联系方式及报价服务审计通过。上线后单 URL IndexNow 提交获 HTTP 200 接收。服务配置和抓取提交不是已送达有效询盘或排名提升的证据。
 
 下一步：待 GSC/Bing 正确资源界面稳定后读取相同时间窗口的查询、页面、索引和 sitemap 状态，补 GSC sitemap/重点 URL 提交回执；结合报价表单进入及实际送达的合格询盘评估小批量与定制结构内容是否引来合适买家。避免依据一次 Reddit 提问推断需求规模。
+
+## 21:17 再次复核：先纠正资源口径
+
+用户要求继续优化。开始时隔离工作树清洁，`HEAD` 与最新 `origin/main` 均为 `241448ca`；正式首页 HTTP 200，`/api/health` 显示服务 `ok: true`、报价邮件已配置。该检查仍不能证明邮件实际送达或询盘合格。
+
+1. **GSC 与 Bing：** Chrome 打开的既有标签首先指向另一个站 `glorystarpack.com`。切到本站 GSC `sc-domain:glorystarpacking.com` 和 Bing `https://glorystarpacking.com/` 后，内容区依旧空白，因此无法取得本轮新的查询、页面、索引和 sitemap 状态。继续沿用上文已注明日期的正确资源历史读数，不使用另站数字。本轮没有新增或实质修改的线上 URL，无需重复提交；今日稍早发布的标签和化妆品页已有 IndexNow HTTP 200 接收，GSC sitemap 仍无本轮提交回执，不等于收录。
+2. **Semrush：** 仅复核 10-15 合规导出的美国数据库、2026-09 同行关键词和自然流量页面估算。纸盒、刀模、标签相关主题已有对应页面，今天也刚更新两处采购决策内容；没有新的同域搜索或询盘证据支持马上再写相似页或改标题。估算不是本站访问量。
+3. **Reddit：** 复核上文今天的化妆品少量采购讨论以及紧急包装采购、刀模讨论。对应买家问题已转化为本站的现货盒加标签比较、样品/规格/到货日期和刀模验收内容；没有新增独立问题值得同日再发相似文章。未发帖或私信。
+4. **外链：** 继续保留上文已核验官方入口 Packaging Strategies 与 NPTA Supplier Search 作为候选；未申请、未取得链接，未将 AI 整理的候选计入外链成果。
+
+**GA4 资源校验：** 当前 Chrome GA4 初始属性为 `Glorystarpack`（媒体资源 ID `548854103`），热门页面为玻璃瓶等另一站内容。其流量与线索数**不能归入** `glorystarpacking.com`。同一账号的选择器确实列出本站独立属性 `Glorystarpacking`（媒体资源 ID `548891831`）；切换并刷新后，目标属性报告内容区一直空白，没有可靠的本站 GA4 流量或 `generate_lead` 读数。本站前端只在 `/api/quote` 返回成功后触发该事件；服务成功响应最多说明邮件服务商接受请求，并非已送达或合格询盘。
+
+由于今天刚发布两处实质优化且新平台读数不可用，本轮不改网站页面、不部署、不重复推送索引请求。优先修复/等待三个正确资源的浏览器报告加载，再用相同时间窗口的搜索查询、报价入口及实际送达合格询盘决定下一处修改。
