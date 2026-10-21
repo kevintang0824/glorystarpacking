@@ -80,3 +80,16 @@ Semrush 仍仅使用 10-15 合规导出的**美国数据库、2026-09** 同行�
 - **GA4** 正确媒体资源 `Glorystarpacking` ID `548891831`，数据流 URL 为 `https://Glorystarpacking.com`、测量 ID `G-LYNMPWG9WK`，与本站 `index.html` 配置一致，数据收集面板显示启用并接收近期流量。9/23–10/20 的 28 天概览为 7 活跃用户、5 新用户、38 事件；首次来源 `google / organic` 2 名活跃用户，`gemini.google.com / ai-assistant` 1 名。关键事件卡片显示“没有可用数据”，不能声称有新询盘。数据量小，且 GA4 与 GSC 指标口径不同，不比较为同一流量变化。
 
 已在 `PUBLISH_WORKFLOW.md` 增加资源 ID、报告主体加载和日期口径校验。本站页面及询盘服务未改动或重新部署；本次只修正数据读取流程与研究记录。下一步按相同日期区间持续观察采购查询和四篇待索引指南，实收有效询盘仍须由邮件送达/销售记录确认。
+
+## 21:29 抽屉盒多 SKU 礼盒采购内容上线
+
+开始前复核 10-15 研究、本日记录、发布流程、最新 `origin/main` 与正式站；隔离工作树清洁，起点 `f01c0391`。本轮针对 GSC 已核实的 28 天（9/21–10/18）查询 `custom drawer boxes`：17 次展示、0 点击。样本小，只据此选现有采购页核查内容缺口，不将展示当成需求规模。
+
+1. **GSC / Bing：** 正确 GSC 资源 `sc-domain:glorystarpacking.com` 最近可靠 28 天口径为 7 点击、1,670 展示、CTR 0.4%、平均排名 16.8；索引报告截至 10-12 为 80 已索引、377 未索引（其中 369 为预期的多语言 `noindex`，4 为重定向，4 为已抓取未收录）。主地图在本轮开始前显示成功、84 URL；此前同日一次重新提交有“已成功提交站点地图”回执。正确 Bing 资源 `https://glorystarpacking.com/` 9/22–10/19 为 0 点击、50 展示，地图成功、84 URL、上次抓取 10-18。上线后本次抽屉盒单 URL 的 IndexNow 提交获 HTTP 200 接收。试图再次打开并刷新正确 GSC sitemap 页时，报告主体仍空白，因此**本轮没有新的 GSC 提交回执**；已有同日提交回执不能冒充本次请求。提交与地图成功都不代表页面已重新抓取或收录。
+2. **Semrush 与页面缺口：** 没有自动化抓取限制自动访问的第三方 `3ue` 页面；复核 10-15 合规导出的美国数据库、2026-09 同行估算：Packhelp 盒型模板页约 112 估算自然流量/210 排名词，Berlin Packaging `reverse tuck cartons` 美国月搜索量估算约 140、`mailer boxes wholesale` 约 210。工具估算不是本站流量。本次选题直接依据本站 GSC 查询和现有产品页：`custom-drawer-boxes.html` 已说明结构/打样，但缺少多种产品组合时按 SKU 提供尺寸、重量、数量及共用部件的采购指引。更新选型段落与报价提示，要求明确每个内装产品/内盒的最大尺寸、装满重量、件数、抽取方向，先判断共用外套筒与独立托盘/内衬，再用装载样确认结构；内链至现有多 SKU 包装系统与刚性盒打样指南。没有新增相似文章、堆关键词或虚构 MOQ/交期。
+3. **Reddit：** [PackagingDesign 多产品抽屉式/展开式包装讨论](https://www.reddit.com/r/PackagingDesign/comments/1tp3eh5/help_i_have_to_take_over_the_tasks_of_a_packaging/)（2026-05-27）提到 9 种内装产品、抽屉与展开式选择、打样及供应商最终刀模。该帖距今数月，仅作定性补充；同日较新的[小批量化妆品包装讨论](https://www.reddit.com/r/Packaging/comments/1xbdi7e/custom_packaging/)提示需先分清内装、外盒、印刷与数量。抽屉页内容转化为规格清单、结构比较与装载样验证，没有以帖子推断订单规模。未自动发帖或私信。
+4. **外链：** 核验 [Packaging Strategies 官方 Get Listed](https://www.packagingstrategies.com/get-listed) 的账户、公司与品类提交入口，和 [NPTA Supplier Search 官方说明](https://nptasuppliersearch.com/Guide/CUI) 的基本供应商登记。前者需核查费用与最终链接，后者还需核实制造商是否符合资格。均为候选，未申请、未联系、未投稿、未获得外链。
+
+发布前 Git bundle：`/Users/kevintang/.codex/worktrees/seo-oct15/backups/glorystarpacking/glorystarpacking-20261021-212858-f01c0391.bundle`，验证通过。页面 `Service` 结构化数据 `dateModified` 更新为 2026-10-21，主/图片 sitemap 对齐。84 个可索引页的静态校验、Quote API、服务健康、JS 语法、AI 可发现性、IndexNow dry run、地图生成检查和 `git diff --check` 均通过。站点改动提交 `9eb65974` 推送 `origin/main`；正式抽屉页、主地图和图片地图 HTTP 200 且与本地逐字节一致，`/api/health` 返回 `ok: true` 与 `quoteEmail.configured: true`。生产索引、页面壳、联系入口、询盘服务审计通过；图片地图审计首次因 `products.html` 网络超时未完成，重试通过，37 张主图。健康与配置检查不证明邮件实际送达，也没有已核实合格询盘数据。
+
+后续按同口径观察抽屉盒查询和页面点击、报价入口、实收有效询盘，并在 GSC 页面恢复后补核查本次 URL/地图状态。四篇已抓取未收录指南中的多 SKU 与刚性盒打样页现有了相关内链，但 Google 是否收录仍待复查。
