@@ -797,9 +797,13 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 
 ### 上线与搜索提交
 
-- 发布提交与 Vercel 部署回执：待本轮推送并核实后补录。
-- 正式首页、询盘服务与 sitemap 在线核验：待部署完成后补录。
-- Bing IndexNow 与 GSC Sitemap/URL inspection：待正式内容核对后提交并补录回执；提交不等于收录。
+- Git commit `ad0eb599` 已推送到 GitHub `main`；正式首页于 2026-10-26 06:23 UTC 更新（HTTP 200，页面标题、主报价按钮、产品入口和首页 lastmod 均与本轮一致）。
+- 正式生产壳层审计通过：85 个公开页共享同一外壳；索引审计通过：84 个 Sitemap URL 可索引、420 个未审本地化页维持 noindex、私有构建文件为 404；图片 Sitemap 审计通过：37 张主图均在线映射到可索引页。
+- 正式 `/api/health` 审计通过，HTTP 200、`no-store`、quote email delivery configured；没有制造测试询盘或声称已有有效询盘。
+- GSC `https://glorystarpacking.com/sitemap.xml` 于 2026-10-26 提交成功；GSC 显示 84 个已发现网页、0 视频。首页 URL Inspection 显示“网址已收录”，更新后的重新抓取请求已接受并加入优先抓取队列；请求不代表重新收录。
+- Bing `https://glorystarpacking.com/sitemap.xml` 于 2026-10-26 提交成功；当前回执为 Processing，84 个 URL，0 错误、0 警告，上次抓取仍为 2026-10-23。IndexNow 接受首页 1 URL，HTTP 200。
+- 上线前校验：`validate-site.mjs`、服务健康测试、Quote API 测试、JS 语法检查、普通/图片 Sitemap 检查、IndexNow dry-run、AI discovery audit 均通过；生产 shell/indexing/image/service 审计通过。
+- Semrush 登录失效页显示“登录过期或无效”；需要重新登录后才能补充本月同行数据。
 
 ### 下一步
 

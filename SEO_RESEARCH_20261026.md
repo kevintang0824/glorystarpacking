@@ -46,7 +46,9 @@
 
 - 首页 H1 改为明确的采购品类和用途；下调首页 H1 的桌面与移动最大字级，并收紧首屏留白，让报价按钮更早进入视线。同步 WebPage 结构化数据 title、description、dateModified；首页 `sitemap.xml` 与图片 Sitemap lastmod 更新为 2026-10-26。其余站点页面仅更新共享 CSS 的缓存版本。
 - 发布前校验：`validate-site.mjs`、服务健康测试、Quote API 测试、站点 JS 语法检查、IndexNow dry-run、AI discovery audit 通过；生产询盘健康审计通过。
-- 正式发布与线上页面/服务核验回执记录在 `SEO_ACTIVITY_LOG.md` 本日条目。
+- 正式首页通过 HTTP 200 与浏览器核验；共享外壳、索引和图片 Sitemap 审计均通过；`/api/health` 返回成功且询盘邮件已配置。
+- GSC Sitemap 于 2026-10-26 提交成功、84 URL；URL Inspection 显示首页已收录，更新后的重新抓取请求已接受并加入优先抓取队列（提交请求不代表再次收录）。Bing Sitemap 于 2026-10-26 提交，平台回执为 Success/Processing、84 URL、0 错误/警告；IndexNow 接受首页 1 URL（HTTP 200）。
+- Git/Vercel 部署与搜索提交回执记录在 `SEO_ACTIVITY_LOG.md` 本日条目。
 
 ## 下一步
 
