@@ -776,3 +776,32 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 正式站 78/78 个 Sitemap URL 可收录，390 个多语言页面继续保持 `noindex` 审核门槛；4 篇新文章均 HTTP 200、canonical 正确、BlogPosting 有效并出现在 Blog 与 RSS。
 - 生产外壳、图片 Sitemap、联系入口和新内容专项审计全部通过；IndexNow 已接受 4 个新文章 URL，HTTP 200。
 - 生产 `/api/health` 仍因上一阶段未配置 `RESEND_API_KEY`、`QUOTE_TO_EMAIL`、`QUOTE_FROM_EMAIL` 返回 503；本轮未改变邮件配置，Email、WhatsApp、电话和复制简报兜底继续可用。
+
+## 2026-10-26 · 首页采购意图与首屏报价入口优化
+
+### 数据与判断
+
+- GSC 正确资源 `sc-domain:glorystarpacking.com`，近 28 天（2026-09-27 至 2026-10-24，上次更新约 3.5 小时前）：1,825 展示、8 点击、CTR 0.4%、平均排名 16.2。购买相关查询包含 `sustainable luxury packaging`、`custom drawer boxes`、`custom inserts`、`custom perfume boxes`、`custom durable labels` 和 `custom film labels`。高曝光产品/指南页已分别承接相应意图，不另建重复主题页。
+- GSC 概览显示 83 个已编入索引、385 个未编入索引；未编入项包含站点主动 noindex 的多语言页。`sitemap.xml` 原提交状态成功，发现 84 个 URL，最后提交 2026-10-22；索引报告最近更新 2026-10-19。
+- Bing 正确属性 `glorystarpacking.com/`，近 30 天（2026-09-26 至 2026-10-25）49 展示、0 点击；采购类查询含纸盒及包装产品组合词。相似域名 `glorystarpack.com` 的报表没有混入。
+- GA4 使用正确属性 `548891831`（measurement ID `G-LYNMPWG9WK`），近 28 天（2026-09-28 至 2026-10-25）潜在客户获取报告为 0 个新潜在客户、无可用图表数据；这不能代替邮箱、电话和 WhatsApp 实际询盘核查。发布前 `/api/health` 审计显示 quote email delivery configured，未创建测试询盘。
+- Semrush `sem.3ue.com` 当前跳转至登录页并明确提示登录过期/无效；没有把旧数据标作本轮新报告。最近可用同行估算仍为 2026-09 美国数据库（详见 [SEO_RESEARCH_20261015.md](SEO_RESEARCH_20261015.md)），仅作历史候选参考，等待重新登录后再更新。
+- Reddit 近期讨论显示低 MOQ 买家会比较现货包装+定制标签与完全定制；现有低 MOQ 与小批原型指南已经覆盖该问题，不重复发文。未在 Reddit 发帖/私信。
+
+### 已完成
+
+- 首页 H1 调整为 `Custom paper packaging for your product.`，提高品类和采购用途的直观性；缩小桌面及移动首屏标题、缩短上下留白，让生产报价 CTA 更早进入视线。
+- 同步首页 WebPage 结构化数据标题、摘要和修改日期；重生成普通 Sitemap 与图片 Sitemap，首页 lastmod 为 2026-10-26。更新其余页面共享 CSS 哈希，避免缓存旧样式。
+- 补充两个外链目录候选到 `assets/templates/phase-4-outreach-tracker.csv`：Packaging Strategies 与 PackWow。已记录匹配类目、入口和待核实的费用/资格/链接属性；均未联系、未提交、未获得。
+- 校验通过：84 个可索引 HTML 的站点静态验证、服务健康测试、Quote API 测试、站点脚本语法、IndexNow 首页 dry-run、AI discovery audit。生产 `/api/health` 审计通过。
+
+### 上线与搜索提交
+
+- 发布提交与 Vercel 部署回执：待本轮推送并核实后补录。
+- 正式首页、询盘服务与 sitemap 在线核验：待部署完成后补录。
+- Bing IndexNow 与 GSC Sitemap/URL inspection：待正式内容核对后提交并补录回执；提交不等于收录。
+
+### 下一步
+
+- 需要重新登录 Semrush 后重抓美国数据库同行页面和关键词。
+- 28 天后复核首页与高曝光产品页的 GSC 展示、点击和 CTR；以 GA4 lead 事件、quote API 成功状态及实际收件箱/CRM 确认有效询盘，不把流量估算或提交成功当作成果。

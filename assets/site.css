@@ -505,7 +505,7 @@ main[tabindex="-1"]:focus-visible {
   grid-template-columns: minmax(0, 1.02fr) minmax(390px, 0.72fr);
   gap: clamp(50px, 8vw, 120px);
   align-items: center;
-  padding: 82px 0 96px;
+  padding: 56px 0 64px;
 }
 
 .hero__copy {
@@ -531,13 +531,14 @@ main[tabindex="-1"]:focus-visible {
 }
 
 .hero h1 {
-  font-size: clamp(3.8rem, 7.3vw, 7.2rem);
-  line-height: 0.87;
+  max-width: 720px;
+  font-size: clamp(3.3rem, 6.2vw, 6.2rem);
+  line-height: 0.91;
 }
 
 .hero__lead {
   max-width: 640px;
-  margin: 34px 0 0;
+  margin: 26px 0 0;
   color: rgba(255, 255, 255, 0.72);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
 }
@@ -546,14 +547,14 @@ main[tabindex="-1"]:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 38px;
+  margin-top: 28px;
 }
 
 .hero__proof {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 28px;
-  margin: 38px 0 0;
+  margin: 28px 0 0;
   padding: 0;
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.73rem;
@@ -3457,11 +3458,12 @@ main[tabindex="-1"]:focus-visible {
 
   .hero__grid {
     grid-template-columns: 1fr;
-    padding: 74px 0 98px;
+    padding: 48px 0 64px;
   }
 
   .hero h1 {
-    font-size: clamp(4rem, 18vw, 6.6rem);
+    font-size: clamp(3.15rem, 12.5vw, 4.8rem);
+    line-height: 0.94;
   }
 
   .subhero h1 {
