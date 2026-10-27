@@ -46,5 +46,7 @@
 
 - 正式站验证（变更前）：生产 Shell 审计通过（85 个公开页面共享无障碍外壳及直接联系栏）；生产索引审计通过（84 个 Sitemap URL 可索引、420 个开放翻译受 noindex 审核门槛保护、主机规范化至多一次跳转、私有产物为 404）；`/api/health` 返回已配置询盘邮件的健康状态。没有提交测试询盘。
 - 变更前已建立仓库外 Git bundle 备份。基于 Bing Pages 的实际高位展示，以及 Bing 关键词报告中 `converting paperboard caliper points to mm`、`what does pt in paper caliper mean` 等吻合页面的低量查询，对已有纸张卡尺换算器作单页标题优化：页面 Title/OG/Twitter/BlogPosting headline 明确写出 `pt to mm` 与 `µm`，H1 改为 “Convert paper caliper from pt to mm.”；校验工具的准确性与 GSM 不可直接换算正文保持不变。结构化 dateModified、可见修改日期、RSS 与 sitemap lastmod 同步到 2026-10-27。不是扩词或新增相似页。
-- 发布前检查/线上部署及 URL 提交回执尚待完成。由于 URL 已实质更新，必须在上线并确认正式页内容哈希、规范链接、索引指令及有效 CTA 后，再提交 GSC/Bing；提交不表示收录。
+- 发布前检查通过：`validate-site.mjs`（84 个 indexable HTML）、Quote API/服务健康、JS 语法、RSS/普通 Sitemap/图片 Sitemap `--check`、IndexNow dry run 和 AI discovery audit 均通过。注意：额外运行 `validate-build-output.mjs` 时，本 worktree 尚无 `.vercel/output` 构建目录，因此它报告缺少本地 build output；实际推送已触发 Vercel 自动部署，随后以正式站逐页审计核实部署结果。
+- Git commit `37f10aea` 已推送 `main`，正式页面 HTTP 200，线上 HTML 与本地发布版匹配；Title、H1、`dateModified`、canonical、robots、两个报价入口均通过检查。生产 Shell/Indexing/Image Sitemap audits 全通过（85 个公开页、84 个可索引 sitemap 页面、37 张主图）；生产 `/api/health` 为 HTTP 200 且邮件询价已配置。
+- GSC 正确资源于 2026-10-27 成功提交 sitemap，回执显示 84 个发现网页、0 视频；URL Inspection 显示页面原本已收录，重新抓取请求已接受并加入优先抓取队列。Bing Sitemap 于 2026-10-27 提交，UI 回执为 Success / Processing、84 URLs、0 errors、0 warnings；IndexNow 接受单个页面 URL，HTTP 200。以上是提交/排队回执，不保证重新抓取或收录结果。
 - 需要用户重新登录 `sem.3ue.com`，才能按用户要求补抓 Semrush 同行词/流量页。下一轮继续以最新同资源 GSC 报告检查高意图词、相关落地页的点击/CTR、GA4 实际 lead 事件及经 CRM/收件箱核实的有效询盘决定实质改动。

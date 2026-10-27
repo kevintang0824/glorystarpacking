@@ -819,7 +819,9 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - Semrush 镜像 `sem.3ue.com` 跳转至 `dash.3ue.com` 登录页，显示“登录过期或无效，请重新登录”；本轮没有 2026-10 美国数据库同行关键词/自然页面报告。10-15 的美国数据库 2026-09 估算只保留为历史依据。
 - Reddit 近期讨论（10-21 发布，10-25/26 更新）强调整套包装终端处理、目标市场本地回收流、部件与胶/涂层、减材不能损害产品保护。现有 sustainable-luxury-packaging 指南已覆盖；未重复建文、未发帖/私信。
 - 外链机会复核：Packaging Strategies 的申请入口/需企业资料、选产品类别并邮件确认已由官方页核实；新增 Global Packaging Network 供应商目录为 OUT-007，官方页说明通过联系申请建档、能力/材料/市场/联系人需管理员审批；费用、海外资格和外链属性都未知。两者均仅候选、未联系、未提交、未获得链接。详情见 `SEO_RESEARCH_20261027.md` 与 `assets/templates/phase-4-outreach-tracker.csv`。
-- 正式生产 Shell 审计通过（变更前 85 公共页面）；索引审计通过（84 Sitemap URL 可索引、420 未审核翻译 noindex、私有产物 404）；生产 `/api/health` 审计通过，询盘邮件已配置。未提交测试询盘。
+- 正式生产审计通过：Shell 85 公共页面、84 Sitemap URL 可索引、420 未审核翻译 noindex、私有产物 404、主机规范化最多一次跳转、37 张图片映射，`/api/health` HTTP 200 且询盘邮件已配置。未提交测试询盘。
 - 变更前创建仓库外 bundle 备份。根据 Bing 页面高位曝光与吻合的低量换算查询，优化 `paper-thickness-gsm-pt-mm-conversion-guide.html` 的 Title、OG/Twitter、BlogPosting 标题和 H1，明确覆盖 `pt to mm` / `µm`；不变更正文的换算事实和 GSM 区分。同步 dateModified、可见更新时间、RSS 与普通 Sitemap lastmod 至 2026-10-27。发布前验证、部署、生产验收、索引提交回执待补。
-- 因有实质页面更新，待正式 URL 通过 HTTP、canonical、robots、内容哈希与询价 CTA 核验后，重新提交 GSC sitemap/重点 URL、Bing Sitemap 或 IndexNow；不把提交回执当成收录。Reddit 已有内容匹配，本轮不另建文章；OUT-007 是经过官方页核验的外链候选，未联系或提交。
-- **后续动作：** Semrush 镜像需要用户重新登录；完成上线核验和提交后，以后续同资源 GSC 点击/CTR、GA4 lead 事件和 CRM/收件箱实际有效询盘复盘；GA4 当前无 Search Console 关联。
+- commit `37f10aea` 已推送 GitHub `main`，Vercel 部署后目标页面 HTTP 200，线上 Title、H1、修改日期、规范链接、索引指令和询价入口与本轮内容一致。
+- GSC sitemap 于 10-27 提交成功，84 网页/0 视频；更新页 URL Inspection 原已收录，重新抓取请求已接受进入优先抓取队列。Bing sitemap 10-27 提交回执为 Success/Processing、84 URL、0 错误/警告；IndexNow 接受该页 1 URL，HTTP 200。提交不是重新收录或流量结果。Reddit 已有内容匹配，本轮不另建文章；OUT-007 是经官方页核验的候选，未联系或提交。
+- 本地额外尝试 `validate-build-output.mjs` 时该 worktree 没有 `.vercel/output`，故 build-output audit 报告缺少本地构建产物；发布实际由 Vercel push 部署完成，所需静态/服务检查和正式站 production audits 均通过。
+- **后续动作：** Semrush 镜像需要用户重新登录；后续以同资源 GSC 点击/CTR、GA4 lead 事件和 CRM/收件箱已送达有效询盘复盘；GA4 当前没有 Search Console 关联，暂无 GA 联结后的自然搜索报告。
