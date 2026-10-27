@@ -809,3 +809,17 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 
 - 需要重新登录 Semrush 后重抓美国数据库同行页面和关键词。
 - 28 天后复核首页与高曝光产品页的 GSC 展示、点击和 CTR；以 GA4 lead 事件、quote API 成功状态及实际收件箱/CRM 确认有效询盘，不把流量估算或提交成功当作成果。
+
+## 2026-10-27 · 资源复核与高意图内容审查
+
+- GSC 正确资源 `sc-domain:glorystarpacking.com`，Web 搜索近 28 天（2026-09-27 至 2026-10-24，界面更新约 4.5 小时前）：1,825 展示、8 点击、CTR 0.4%、平均排名 16.2。查询 `sustainable luxury packaging` 为 25 展示、0 点击、平均排名 17.6，唯一页面为 `/sustainable-luxury-packaging.html`。页面现有的组件 BOM、目标市场终端处理、保护验证与同条件报价已覆盖相同买家问题；不为追关键词新增相似内容。索引报告最后更新 2026-10-23：83 已编入索引、385 未编入索引，其中 380 主动 noindex、4 重定向、1 已抓取尚未编入索引。GSC Sitemap 最近于 10-26 成功，发现 84 页面。
+- Bing 正确站点 `glorystarpacking.com/`，30 天（2026-09-27 至 2026-10-26）49 展示、0 点击。关键词报告有 45 个查询，混有少量拼写/主题噪声；只保留明确包装采购意图。Sitemap 84 URL，0 错误、0 警告，最近提交/抓取均为 10-26，状态 Success。
+- Bing Pages 视图总计 13 个 URL；`/paper-thickness-gsm-pt-mm-conversion-guide.html` 13 展示、0 点击、平均位置 6.54；样品批准指南 10 展示、首页 9 展示，其他可见页均为 0 点击。
+- GA4 已确认属性 Glorystarpacking `548891831` 与测量 ID `G-LYNMPWG9WK`；最近 7 天（10-20 至 10-26）新潜在客户/符合条件潜在客户/完成转化均为 0。概览仅 1 活跃用户、0 新用户、34 秒平均互动、27 事件、11 direct/none 会话；小样本不作增长结论。GA4 管理页显示尚无 Search Console 关联；本轮未更改属性关联，GA 不能提供联结后的自然查询/落地页报告。
+- Semrush 镜像 `sem.3ue.com` 跳转至 `dash.3ue.com` 登录页，显示“登录过期或无效，请重新登录”；本轮没有 2026-10 美国数据库同行关键词/自然页面报告。10-15 的美国数据库 2026-09 估算只保留为历史依据。
+- Reddit 近期讨论（10-21 发布，10-25/26 更新）强调整套包装终端处理、目标市场本地回收流、部件与胶/涂层、减材不能损害产品保护。现有 sustainable-luxury-packaging 指南已覆盖；未重复建文、未发帖/私信。
+- 外链机会复核：Packaging Strategies 的申请入口/需企业资料、选产品类别并邮件确认已由官方页核实；新增 Global Packaging Network 供应商目录为 OUT-007，官方页说明通过联系申请建档、能力/材料/市场/联系人需管理员审批；费用、海外资格和外链属性都未知。两者均仅候选、未联系、未提交、未获得链接。详情见 `SEO_RESEARCH_20261027.md` 与 `assets/templates/phase-4-outreach-tracker.csv`。
+- 正式生产 Shell 审计通过（变更前 85 公共页面）；索引审计通过（84 Sitemap URL 可索引、420 未审核翻译 noindex、私有产物 404）；生产 `/api/health` 审计通过，询盘邮件已配置。未提交测试询盘。
+- 变更前创建仓库外 bundle 备份。根据 Bing 页面高位曝光与吻合的低量换算查询，优化 `paper-thickness-gsm-pt-mm-conversion-guide.html` 的 Title、OG/Twitter、BlogPosting 标题和 H1，明确覆盖 `pt to mm` / `µm`；不变更正文的换算事实和 GSM 区分。同步 dateModified、可见更新时间、RSS 与普通 Sitemap lastmod 至 2026-10-27。发布前验证、部署、生产验收、索引提交回执待补。
+- 因有实质页面更新，待正式 URL 通过 HTTP、canonical、robots、内容哈希与询价 CTA 核验后，重新提交 GSC sitemap/重点 URL、Bing Sitemap 或 IndexNow；不把提交回执当成收录。Reddit 已有内容匹配，本轮不另建文章；OUT-007 是经过官方页核验的外链候选，未联系或提交。
+- **后续动作：** Semrush 镜像需要用户重新登录；完成上线核验和提交后，以后续同资源 GSC 点击/CTR、GA4 lead 事件和 CRM/收件箱实际有效询盘复盘；GA4 当前无 Search Console 关联。
