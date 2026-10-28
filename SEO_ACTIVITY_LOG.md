@@ -1,5 +1,14 @@
 # GloryStarPack SEO 运营日志
 
+## 2026-10-28 · GSC 复核、Reddit 需求对照与平台会话检查
+
+- GSC 正确资源 `sc-domain:glorystarpacking.com`，Web 搜索近 28 天（2026-09-28 至 2026-10-25，界面上次更新约 4 小时前）：1,839 展示、9 点击、CTR 0.5%、平均排名 16.2。高展示页面包括纸管尺寸指南 140/1、纸厚度换算 163/0、瓦楞运输箱规格指南 102/2、折叠纸盒产品页 108/0、透明标签白墨指南 65/1、首页 64/1。正确资源索引报告上次更新 10-23：83 已索引、385 未索引（其中 380 主动 noindex、4 自动重定向、1 已抓取未索引）；Sitemap 10-27 成功，84 网页/0 视频。
+- 本轮 Chrome 当前配置访问 GSC 正常，但 Bing 首页要求 Sign In，GA4 进入“欢迎使用 Google Analytics / 开始衡量”配置页，Semrush 跳到 `dash.3ue.com/zh-Hans/#/login` 登录页。后三者今日没有有效站点/属性数据；只保留历史报告日期，不据此报告零流量/零询盘。需要在具备这些服务登录会话的 Chrome 配置中重新打开。GA4 必须先确认 `Glorystarpacking` 属性 548891831 与测量 ID `G-LYNMPWG9WK`。
+- Reddit 讨论提到外箱尺寸/DIM 运费、过度包装与储存、对小批次在 stock structure 上定制图稿、定稿前确认 dieline，以及按目标市场评估整包可回收性。已检查 dimensional-weight 指南、成本/MOQ 指南及 RFQ 模板，均有相应测量、完整到岸成本、MOQ、样品、规格和供应商报价覆盖；站内主题无实质缺口，不发布重复页面或为了日更调整文案。未发帖/私信。
+- 外链候选 Packaging Strategies、Global Packaging Network、PackWow 沿用 10-27 核验状态；未联系、未投稿或获得新链接。生产 AI discovery audit 通过，含 `llms.txt`、RSS、Sitemap 等发现端点正常；不能据此声称 AI 推荐/引用增长。
+- 工作区初始干净，HEAD 与 `origin/main` 同为 `fd1b8f7f`。正式首页及纸卡尺页 HTTP 200，询价 `/api/health` HTTP 200 且邮件服务已配置；生产索引、图片 Sitemap、服务和 AI discovery audits 全通过。无内容变更，本轮不部署、不重复提交 Sitemap/IndexNow；GSC 上次提交仍成功（10-27），不把提交当作收录结果。
+- 下一步先恢复 Bing、GA4、Semrush 登录后补取站点报告；GSC 优先追查纸厚度页与折叠纸盒页的查询明细、市场和 CTR，再决定是否改标题或页面。详情见 `SEO_RESEARCH_20261028.md`。
+
 ## 2026-09-19 · GSC/GA4 实际事件复核与跨域实体回链
 
 ### 数据源与基线
