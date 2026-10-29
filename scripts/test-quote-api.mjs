@@ -39,6 +39,8 @@ const validQuote = {
   product: "custom-wine-boxes",
   quantity: "1000",
   country: "United States",
+  postalCode: "10001",
+  receivingType: "Commercial warehouse",
   targetDate: "October 2026",
   sourcePage: "/custom-wine-boxes.html",
   landingPage: "/custom-wine-boxes.html?utm_source=chatgpt.com&utm_medium=referral",
@@ -82,6 +84,8 @@ try {
   const valid = await invoke(validQuote);
   assert.equal(valid.statusCode, 200);
   assert.equal(valid.headers.get("cache-control"), "no-store");
+  assert.match(lastEmailRequest.text, /Delivery ZIP \/ postal code: 10001/);
+  assert.match(lastEmailRequest.text, /Receiving location type: Commercial warehouse/);
   assert.match(lastEmailRequest.text, /UTM source: chatgpt\.com/);
   assert.match(lastEmailRequest.text, /Discovery channel: ai-search/);
   assert.match(lastEmailRequest.text, /Discovery source: ChatGPT/);
@@ -102,6 +106,17 @@ try {
   );
   assert.doesNotMatch(lastEmailRequest.subject, /[\r\n]/);
 
+  const canada = await invoke({ ...validQuote, country: "Canada", postalCode: "M5V 3L9", receivingType: "Third-party fulfillment center (3PL)" });
+  assert.equal(canada.statusCode, 200);
+  assert.match(lastEmailRequest.text, /Delivery ZIP \/ postal code: M5V 3L9/);
+  assert.match(lastEmailRequest.text, /Receiving location type: Third-party fulfillment center/);
+  const { postalCode: omittedPostal, receivingType: omittedReceiving, ...legacyQuote } = validQuote;
+  const legacy = await invoke(legacyQuote);
+  assert.equal(legacy.statusCode, 200, "Delivery qualifiers remain optional for old clients");
+  const bounded = await invoke({ ...validQuote, postalCode: "X".repeat(80), receivingType: "Y".repeat(180) });
+  assert.equal(bounded.statusCode, 200);
+  assert.match(lastEmailRequest.text, /postal code: X{32}\n/);
+  assert.match(lastEmailRequest.text, /location type: Y{120}\n/);
   const nativeForm = await invoke(
     new URLSearchParams({ ...validQuote, attachment: "reference.pdf" }).toString(),
     "POST",
@@ -216,7 +231,7 @@ try {
 
   const emailRequestsBeforeInvalidTextFields = emailRequestCount;
   for (const field of [
-    "name", "email", "phone", "product", "quantity", "dimensions", "country", "targetDate", "details", "website",
+    "name", "email", "phone", "product", "quantity", "dimensions", "country", "postalCode", "receivingType", "targetDate", "details", "website",
     "sourcePage", "landingPage", "referrer", "discoveryChannel", "discoverySource", "utmSource", "utmMedium", "utmCampaign", "utmTerm", "utmContent",
   ]) {
     const invalidTextField = await invoke({ ...validQuote, [field]: { invalid: true } });
@@ -362,6 +377,8 @@ try {
   assert.match(nativeUnconfigured.body, /mailto:kevin@GloryStarPack\.com/);
   assert.match(nativeUnconfigured.body, /https:\/\/wa\.me\/8619577608248/);
   assert.match(nativeUnconfigured.body, /Complete project brief/);
+  assert.match(nativeUnconfigured.body, /Delivery ZIP \/ postal code: 10001/);
+  assert.match(nativeUnconfigured.body, /Receiving location type: Commercial warehouse/);
   assert.match(nativeUnconfigured.body, /Test%20buyer/);
 
   const nativeEscapedBrief = await invoke(

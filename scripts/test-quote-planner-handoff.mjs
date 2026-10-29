@@ -57,7 +57,7 @@ function page(file, path, options = {}) {
     sessionStorage, localStorage, Node: window.Node, CustomEvent: window.CustomEvent,
     IntersectionObserver: IntersectionObserverStub, AbortController, queueMicrotask,
     setTimeout: window.setTimeout, clearTimeout: window.clearTimeout,
-    fetch: async (url) => { requests.push(url); assert.equal(url, "/api/health", "Tests must never submit an inquiry"); return { status: 200, ok: true, json: async () => ({ services: { quoteEmail: { configured: true } } }) }; },
+    fetch: async (url) => { requests.push(url); assert.equal(url, "/api/health", "Tests must never submit an inquiry"); return { status: options.unconfigured ? 503 : 200, ok: !options.unconfigured, json: async () => ({ services: { quoteEmail: { configured: !options.unconfigured } } }) }; },
   });
   vm.runInContext(script, context);
   const loadAnalytics = () => {
@@ -68,6 +68,32 @@ function page(file, path, options = {}) {
   const click = (selector) => document.querySelector(selector).dispatchEvent(new window.Event("click", { bubbles: true, cancelable: true }));
   return { window, document, storage, copied, handoffs, requests, navigations, click, context, loadAnalytics };
 }
+
+// Delivery qualifiers are optional, uniquely labelled, and stay inside the optional panel.
+for (const file of ["index.html", "products.html", "custom-clear-labels.html", "custom-tube-packaging.html"]) {
+  const delivery = page(file, `/${file}`);
+  for (const name of ["postalCode", "receivingType"]) {
+    const fields = delivery.document.querySelectorAll(`[name="${name}"]`);
+    assert.equal(fields.length, 1);
+    assert.equal(fields[0].required || fields[0].hasAttribute("required"), false);
+    assert.ok(fields[0].closest(".quote-form__optional"));
+    assert.ok(delivery.document.querySelector(`label[for="${fields[0].id}"]`));
+  }
+  assert.equal(delivery.document.querySelector('[name="postalCode"]').getAttribute("maxlength"), "32");
+  assert.equal(delivery.document.querySelectorAll('[name="receivingType"] option').length, 6);
+  assert.equal(Boolean(delivery.document.querySelector(".quote-form__optional").open), false);
+}
+
+const deliveryFallback = page("index.html", "/", { unconfigured: true });
+deliveryFallback.document.querySelector('[name="postalCode"]').value = "M5V 3L9";
+deliveryFallback.document.querySelector('[name="receivingType"] option[value="Commercial warehouse"]').selected = true;
+deliveryFallback.document.querySelector(".quote-form").dispatchEvent(new deliveryFallback.window.Event("submit", { cancelable: true }));
+for (let step = 0; step < 12; step += 1) await Promise.resolve();
+deliveryFallback.click(".form-fallback-actions button");
+for (let step = 0; step < 4; step += 1) await Promise.resolve();
+assert.match(deliveryFallback.copied[0], /Delivery ZIP \/ postal code: M5V 3L9/);
+assert.match(deliveryFallback.copied[0], /Receiving location type: Commercial warehouse/);
+assert.equal(deliveryFallback.requests.includes("/api/quote"), false, "Unconfigured delivery must keep the brief local");
 
 // No automatic carryover from the example or a calculator edit.
 const originalAttribution = JSON.stringify({ landingPage: `/${sourceFile}?utm_source=chatgpt`, discoveryChannel: "ai-search", discoverySource: "ChatGPT" });

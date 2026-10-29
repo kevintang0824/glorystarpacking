@@ -1977,7 +1977,7 @@ if (catalogDataVersions.length !== 1 || catalogDataVersions[0] !== requiredCatal
   errors.push(`assets/catalog.js: expected catalog.json content version ${requiredCatalogDataVersion}`);
 }
 const requiredProgressiveQuoteSignals = [
-  [siteScript, 'const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"]', "five optional quote fields"],
+  [siteScript, 'const optionalFieldNames = ["phone", "dimensions", "targetDate", "postalCode", "receivingType", "details", "attachment"]', "seven optional quote fields including delivery qualifiers"],
   [siteScript, '.filter((field) => field && !field.querySelector(":required"))', "required fields kept out of the optional disclosure"],
   [siteScript, 'const requiredFields = Array.from(form.querySelectorAll(":required"))', "runtime required-field discovery"],
   [siteScript, 'requiredNote.className = "form-required-note"', "visible required-field guidance"],

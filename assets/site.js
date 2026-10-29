@@ -552,6 +552,8 @@
       `Quantity: ${payload.quantity || ""}`,
       `Dimensions: ${payload.dimensions || "Not provided"}`,
       `Delivery country / region: ${payload.country || ""}`,
+      `Delivery ZIP / postal code: ${payload.postalCode || "Not provided"}`,
+      `Receiving location type: ${payload.receivingType || "Not provided"}`,
       `Target in-hand date: ${payload.targetDate || "Flexible / not provided"}`,
       "",
       "Project details:",
@@ -559,7 +561,7 @@
     ];
 
     if (includeAttribution) {
-      lines.splice(8, 0,
+      lines.splice(10, 0,
         `Landing page: ${payload.landingPage || "Not provided"}`,
         `Referrer: ${payload.referrer || "Direct / not provided"}`,
         `Discovery channel: ${payload.discoveryChannel || "Not provided"}`,
@@ -731,9 +733,21 @@
     return quoteDeliveryAvailabilityPromise;
   };
 
-  document.querySelectorAll(".quote-form").forEach((form) => {
+  document.querySelectorAll(".quote-form").forEach((form, formIndex) => {
     const formGrid = form.querySelector(".form-grid");
-    const optionalFieldNames = ["phone", "dimensions", "targetDate", "details", "attachment"];
+    if (formGrid && !form.querySelector('[name="postalCode"]')) {
+      const prefix = `quote-delivery-${formIndex}`;
+      const postal = document.createElement("div");
+      postal.className = "field";
+      postal.innerHTML = `<label for="${prefix}-postal">Delivery ZIP / postal code</label><input id="${prefix}-postal" name="postalCode" type="text" autocomplete="shipping postal-code" maxlength="32" placeholder="e.g. 10001 or M5V 3L9"><small>Optional · helps scope delivery to your receiving location</small>`;
+      const receiving = document.createElement("div");
+      receiving.className = "field";
+      receiving.innerHTML = `<label for="${prefix}-receiving">Receiving location type</label><select id="${prefix}-receiving" name="receivingType"><option value="">Not decided / not provided</option><option value="Commercial warehouse">Commercial warehouse</option><option value="Third-party fulfillment center (3PL)">Third-party fulfillment center (3PL)</option><option value="Retail store">Retail store</option><option value="Residential address">Residential address</option><option value="Other receiving location">Other receiving location</option></select>`;
+      const trap = formGrid.querySelector(".form-trap");
+      formGrid.insertBefore(postal, trap || null);
+      formGrid.insertBefore(receiving, trap || null);
+    }
+    const optionalFieldNames = ["phone", "dimensions", "targetDate", "postalCode", "receivingType", "details", "attachment"];
     const optionalFields = optionalFieldNames
       .map((name) => form.querySelector(`[name="${name}"]`)?.closest(".field"))
       .filter((field) => field && !field.querySelector(":required"));
@@ -769,7 +783,7 @@
 
       const optionalSummary = document.createElement("summary");
       optionalSummary.dataset.quoteOptionalToggle = "true";
-      optionalSummary.innerHTML = `<span>Add project details or artwork</span><small>Optional · helps us prepare a more specific reply</small>`;
+      optionalSummary.innerHTML = `<span>Add delivery details, project notes or artwork</span><small>Optional · helps us prepare a more specific reply</small>`;
 
       const optionalGrid = document.createElement("div");
       optionalGrid.className = "form-grid quote-form__optional-grid";
@@ -873,6 +887,8 @@
         quantity: String(formData.get("quantity") || "").trim(),
         dimensions: String(formData.get("dimensions") || "").trim(),
         country: String(formData.get("country") || "").trim(),
+        postalCode: String(formData.get("postalCode") || "").trim(),
+        receivingType: String(formData.get("receivingType") || "").trim(),
         targetDate: String(formData.get("targetDate") || "").trim(),
         details: String(formData.get("details") || "").trim(),
         website: String(formData.get("website") || "").trim(),
