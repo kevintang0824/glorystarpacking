@@ -954,3 +954,5 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 新增回归覆盖美国和加拿大邮编、旧客户端缺省字段、长度限制、非字符串拒绝、原生失败页摘要、前端选填显示、6 个下拉选项与备用摘要。浏览器发现商业仓库选项标记错误，已修复并用下拉选项数量和实际选择复核；加拿大示例邮编和商业仓库可正常填写。未发送真实测试询盘。
 - China vs local 指南新增美国/加拿大采购路线段落，按小批/变化需求、稳定纸盒订单和混合采购比较，引用已确认 MOQ 与样品批准后生产条件；物流指南提供入口。没有新增未经证实的价格、客户结果、关税或当地仓库承诺。
 - 同步共享 JS 哈希、5 种语言、Sitemap/图片 Sitemap/RSS。站点静态校验、多语言、Quote API、配送/纸管衔接、服务健康、移动导航、语言运行时、语法、发现性审计和 6 URL IndexNow dry run 通过。原 GSC AI 展示基线未更新，不将本轮工作记为新增推荐或询盘增长；正式发布回执另记。
+
+- Production verification: source `71e1a8e5` deployed READY as `dpl_GdNDUiYANdddDurD3rBKjaF23fub`. All 87 public-page shell/script versions match local; production service configuration and AI discovery audits passed. IndexNow accepted 6 priority URLs with HTTP 200 after release checks; image Sitemap and RSS hashes match local. Browser confirmed optional Canadian postal code and Commercial warehouse selection on the canonical homepage; no quote was submitted. GSC returned sitemap submission success. No new AI impression or inquiry growth is attributed to this release.
