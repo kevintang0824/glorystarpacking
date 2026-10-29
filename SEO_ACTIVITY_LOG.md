@@ -943,3 +943,5 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 运输纸箱规格指南在计算工具旁补 RFQ 输入和产品报价入口，要求区分内外尺寸并注明托盘数为需复核估算；加入北美收货地点、邮编和到货日期要求。
 - 修复 RFQ 指南的发送指引：下载 CSV 后通过 email 发送，或把关键行粘贴到匹配表单的详情；明确网页附件只支持 PDF、JPG、PNG、WebP，3 MB 上限。没有扩大上传类型或改变邮件接口。
 - 4 页真实修改日期、Sitemap、图片 Sitemap、RSS 和 5 种语言页同步，保留标题/描述试验。AI discovery 的公司事实来源检查扩展至 17 页。发布前站点、多语言、Quote API、服务健康、脚本语法、Sitemap/RSS、本地发现性审计与 4 URL IndexNow dry run 已通过；浏览器确认示例标签、内容与链接可见。生产回执另记。
+
+- Production verification: source commit `6e0ee5f8` deployed READY at `glorystarpacking-jsylu46te-glorystarpack-s-projects.vercel.app`; production 17-page supplier-source discovery audit and quote service configuration checks passed. IndexNow verified changed pages and Sitemap against the release and accepted 4 URLs with HTTP 200. Production image Sitemap and RSS hashes match local. Browser confirmed the new example on the canonical domain; GSC returned sitemap submission success. No test inquiry was sent, and no new AI impression or inquiry result is attributed to this release.
