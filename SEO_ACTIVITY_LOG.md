@@ -859,3 +859,15 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 查询中出现 AI 搜索式长提示（如 clear stickers + white ink 42 展示），说明 AI 检索已在抓取本站内容。可见商业查询：`custom drawer boxes` 9.2、`custom perfume packaging` 7.2、`perfume packaging company` 7.0、`retail box` 4.0、`overbox meaning` 7.2、`mailer box manufacturer` 10.8。
 - 改写 8 页 Title/Description（同步 OG/Twitter/JSON-LD）：paper-tube、retail-box-vs-shipping-box、foil-vs-spot-uv、custom-packaging-rfq-template、custom-perfume-boxes、custom-drawer-boxes、clear-label-white-ink-artwork-guide、corrugated-shipping-box-specification-guide；只使用页面正文已支持的表述。重建 RSS 与语言页，validate-site / validate-languages / sitemap check 全部通过。
 - GA4（548891831）将 `contact_click`（邮件/WhatsApp/电话点击，28 天内已有触发）标记为关键事件；`generate_lead` 原已为关键事件。GA4 ↔ Search Console 关联尚未建立，需账号所有者确认后操作。
+- 上线：commit `d0452858` 推送至 GitHub `main`，Vercel 45 秒内完成生产部署。生产索引（84 可索引 / 420 noindex）、外壳、服务（询价邮件已配置）、图片 Sitemap、AI discovery 审计全部通过；IndexNow 接受 10 个 URL（HTTP 200）。
+- GA4 ↔ Search Console 关联已建立（`glorystarpacking.com` 域资源 ↔ Glorystarpacking 网站数据流）。
+- GSC 网址检查：纸张厚度、纸管尺寸、零售盒对比、香水盒 4 页均“网址已收录”，已请求重新编入索引（进入优先抓取队列，不代表立即更新摘要）。
+
+## 2026-10-29（续）· 对标 LuxoPack 第一批
+
+- 对标 luxopack.com（用户分享的 ChatGPT 分析 + 10-29 亲自核对站点）：60+ 篇采购型文章（尺寸指南、春节/斋月截单、付款安全、关税、EPR）、产品页摘要直接写起订量与交期、每页末尾“How buyers search in other markets”多语言词表。
+- 新增 `chinese-new-year-2027-packaging-order-deadlines.html`（春节 2027 = 2027-02-06，来源 Drip Capital 引香港政府日历；大陆放假安排未公布，页面要求向供应商书面确认四个日期）；已加入 Blog、RSS、Sitemap、llms.txt。
+- 10 个核心产品页新增德/法/西/意/葡五种语言的常见搜索词表（`#market-search-terms`）。
+- validate-site（85 可索引页）、validate-languages（516 页）、Sitemap/图片 Sitemap 检查通过；Playwright 手机端无横向溢出、无脚本错误。
+- 尚待用户提供：各品类起订量、打样/量产天数、价格区间——LuxoPack 产品页摘要的核心优势，本站不在未确认前写入。
+- 用户确认订单事实：MOQ 1,000 pcs/款、打样 7 个工作日、量产 25–35 个工作日（打样确认后）、工厂福建厦门。已写入首页、custom-boxes 与 10 个核心产品页的 Title/Description、首屏事实行或 spec rail、FAQ（可见文本与 FAQPage 同步），并更新 MOQ 指南的 MOQ 问答。价格区间：LuxoPack 与其成本文章均未公开单价，市场平台报价差异极大，未发布任何价格数字。
