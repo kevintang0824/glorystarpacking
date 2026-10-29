@@ -102,6 +102,16 @@ const supplierPaths = [
   "/custom-packaging-inserts.html",
   "/custom-perfume-boxes.html",
   "/folding-carton-boxes.html",
+  "/custom-drawer-boxes.html",
+  "/custom-magnetic-boxes.html",
+  "/custom-jewelry-boxes.html",
+  "/custom-wine-boxes.html",
+  "/custom-paper-bags.html",
+  "/cosmetic-packaging-boxes.html",
+  "/custom-tube-packaging.html",
+  "/custom-corrugated-shipping-boxes.html",
+  "/collapsible-rigid-boxes.html",
+  "/lid-and-base-boxes.html",
 ];
 for (const supplierPath of supplierPaths) {
   try {
