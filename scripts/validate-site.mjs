@@ -96,7 +96,7 @@ const responsiveCardSpecs = [
   },
   {
     key: "article",
-    expectedUsageCount: 37,
+    expectedUsageCount: 38,
     sizes: "(max-width: 780px) calc(100vw - 28px), 310px",
     blockPattern: /<article\b[^>]*class="[^"]*\barticle-card\b[^"]*"[^>]*>[\s\S]*?<\/article>/gi,
   },
@@ -1441,11 +1441,11 @@ if (responsiveSrcsetUsageCount !== expectedResponsiveCardUsageCount) {
 if (responsiveCardStems.size !== 33) {
   errors.push(`HTML: expected responsive card srcsets to use 33 source images, found ${responsiveCardStems.size}`);
 }
-if (responsiveAvifCardUsageCount !== 59) {
-  errors.push(`HTML: expected 59 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
+if (responsiveAvifCardUsageCount !== 60) {
+  errors.push(`HTML: expected 60 responsive AVIF card sources, found ${responsiveAvifCardUsageCount}`);
 }
-if (responsiveBodyUsageCount !== 85) {
-  errors.push(`HTML: expected 85 responsive AVIF split images, found ${responsiveBodyUsageCount}`);
+if (responsiveBodyUsageCount !== 86) {
+  errors.push(`HTML: expected 86 responsive AVIF split images, found ${responsiveBodyUsageCount}`);
 }
 for (const spec of supplementalResponsiveSpecs) {
   const actualUsageCount = supplementalResponsiveUsageCounts.get(spec.key);
@@ -1629,8 +1629,8 @@ const avifHeroUsageCount = htmlFiles.reduce((count, file) => {
   const html = readPage(file)?.html || "";
   return count + (html.match(/<source\b[^>]*type="image\/avif"[^>]*srcset="assets\/images\/[^"]+\.avif"/gi) || []).length;
 }, 0);
-if (avifHeroUsageCount !== 38) {
-  errors.push(`HTML: expected 38 AVIF hero usages, found ${avifHeroUsageCount}`);
+if (avifHeroUsageCount !== 39) {
+  errors.push(`HTML: expected 39 AVIF hero usages, found ${avifHeroUsageCount}`);
 }
 for (const derivedImage of standaloneDerivedDisplayWebps) {
   const derivedPath = path.join(imagesDirectory, derivedImage);

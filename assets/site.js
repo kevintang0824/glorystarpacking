@@ -1291,6 +1291,21 @@
     calculatePaperCaliper();
   }
 
+  // Prefill WhatsApp messages with the page the buyer is viewing.
+  const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me/8619577608248"]');
+  if (whatsappLinks.length && document.documentElement.lang === "en") {
+    const heading = document.querySelector("h1")?.textContent.replace(/\s+/g, " ").trim() || document.title;
+    const topic = heading.replace(/[.。]$/, "").slice(0, 90);
+    const message = `Hello GloryStarPack, I am interested in: ${topic} (${location.pathname}).\nProduct / box style:\nSize (L×W×H):\nQuantity:\nDestination country:`;
+    whatsappLinks.forEach((link) => {
+      const url = new URL(link.href);
+      if (!url.searchParams.has("text")) {
+        url.searchParams.set("text", message);
+        link.href = url.toString();
+      }
+    });
+  }
+
   const gsmThicknessEstimator = document.querySelector("#gsm-thickness-estimator-form");
   if (gsmThicknessEstimator) {
     const output = (name) => gsmThicknessEstimator.querySelector(`[data-gsm-output="${name}"]`);

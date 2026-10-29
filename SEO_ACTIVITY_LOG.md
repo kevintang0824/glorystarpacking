@@ -871,3 +871,9 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - validate-site（85 可索引页）、validate-languages（516 页）、Sitemap/图片 Sitemap 检查通过；Playwright 手机端无横向溢出、无脚本错误。
 - 尚待用户提供：各品类起订量、打样/量产天数、价格区间——LuxoPack 产品页摘要的核心优势，本站不在未确认前写入。
 - 用户确认订单事实：MOQ 1,000 pcs/款、打样 7 个工作日、量产 25–35 个工作日（打样确认后）、工厂福建厦门。已写入首页、custom-boxes 与 10 个核心产品页的 Title/Description、首屏事实行或 spec rail、FAQ（可见文本与 FAQPage 同步），并更新 MOQ 指南的 MOQ 问答。价格区间：LuxoPack 与其成本文章均未公开单价，市场平台报价差异极大，未发布任何价格数字。
+- 上线：commit `b8663e4e` 推送 GitHub `main`，Vercel 45 秒完成部署；生产索引（85 可索引 / 425 noindex）、外壳、服务、图片 Sitemap、AI discovery 审计全部通过；IndexNow 接受 15 个 URL。GSC 新文章 `chinese-new-year-2027-packaging-order-deadlines.html` 显示“尚未收录”，已请求编入索引。
+
+## 2026-10-29（续）· 第 1 周：斋月 2027 + WhatsApp 预填
+- 新增 `ramadan-2027-gift-box-order-timeline.html`：斋月 2027 预计 2027-02-08 开始、开斋节约 03-09/10（Khaleej Times 引 Astronomy Centre，以月相为准），紧接春节 02-06；按本厂交期（MOQ 1,000、打样 7 工作日、量产 25–35 工作日）倒排，文件需 11 月中旬定稿。已加入 Blog、RSS、Sitemap、llms.txt。
+- site.js：产品页原有 WhatsApp 预填保留；其余页面（首页、指南、博客）WhatsApp 链接自动附带页面名与“款式/尺寸/数量/目的国”模板。
+- validate-site（86 可索引页）、validate-languages（522 页）通过；Playwright 验证预填链接与手机端无溢出。
