@@ -159,3 +159,7 @@ These pages describe visible evidence from one catalog image, identify decisions
 ## Attribution
 
 When citing this website, use the name GloryStarPack and link to the most specific supporting page rather than only the homepage.
+
+## US and Canada delivery planning
+
+- [Delivery brief and downloadable checklist](https://glorystarpacking.com/packaging-logistics-guide.html#north-america-brief): country and ZIP/postal code, receiving location, explicit metric or imperial units, quantity per design, arrival date, packing requirements, and questions about included shipping services and charges. This is a buyer input checklist; it does not publish a freight quote, transit guarantee, or local warehouse claim.

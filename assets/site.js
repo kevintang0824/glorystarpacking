@@ -199,6 +199,65 @@
     });
   }
 
+  const tubeBriefStorageKey = "glorystarpack-paper-tube-brief-v1";
+  const tubeBriefMarker = "paper-tube-v1";
+  const tubeBriefLifetime = 30 * 60 * 1000;
+  const tubeInputNames = ["productCrossSection", "productHeight", "radialAllowance", "bottomAllowance", "topAllowance", "proposedId", "proposedHeight", "wallThickness"];
+  const tubeQuotePathPattern = /^\/(?:(?:fr|es|pt|ru|zh-CN)\/)?custom-tube-packaging\.html$/;
+  const evaluateTubePlan = (values) => {
+    if (!values || tubeInputNames.some((name) => typeof values[name] !== "number" || !Number.isFinite(values[name]))) return null;
+    if (["productCrossSection", "productHeight", "proposedId", "proposedHeight"].some((name) => values[name] <= 0)) return null;
+    if (["radialAllowance", "bottomAllowance", "topAllowance", "wallThickness"].some((name) => values[name] < 0)) return null;
+    const minimumId = values.productCrossSection + values.radialAllowance * 2;
+    const minimumHeight = values.productHeight + values.bottomAllowance + values.topAllowance;
+    const idMargin = values.proposedId - minimumId;
+    const heightMargin = values.proposedHeight - minimumHeight;
+    const estimatedOd = values.proposedId + values.wallThickness * 2;
+    if (![minimumId, minimumHeight, idMargin, heightMargin, estimatedOd].every(Number.isFinite)) return null;
+    return { minimumId, minimumHeight, idMargin, heightMargin, estimatedOd };
+  };
+  const buildTubePlanningBrief = (values, plan) => {
+    const mm = (value) => `${Number(value.toFixed(3))} mm`;
+    const dimensions = `Proposed tube ID ${mm(values.proposedId)} × usable height ${mm(values.proposedHeight)}; product cross-section ${mm(values.productCrossSection)} × height ${mm(values.productHeight)}`;
+    const details = [
+      "Paper tube planning brief — buyer-entered dimensions, not an approved specification.",
+      `Product maximum cross-section: ${mm(values.productCrossSection)}`,
+      `Product loaded height: ${mm(values.productHeight)}`,
+      `Radial allowance per side: ${mm(values.radialAllowance)}`,
+      `Bottom allowance: ${mm(values.bottomAllowance)}`,
+      `Top allowance: ${mm(values.topAllowance)}`,
+      `Proposed inside diameter: ${mm(values.proposedId)}`,
+      `Proposed usable height: ${mm(values.proposedHeight)}`,
+      `Proposed wall build per side: ${mm(values.wallThickness)}`,
+      `Minimum planning ID: ${mm(plan.minimumId)}; minimum usable height: ${mm(plan.minimumHeight)}`,
+      `ID margin: ${mm(plan.idMargin)}; height margin: ${mm(plan.heightMargin)}`,
+      `Estimated body OD: ${mm(plan.estimatedOd)}`,
+      plan.idMargin < 0 || plan.heightMargin < 0
+        ? "REVIEW REQUIRED: the proposed tube is smaller than the entered planning envelope. Please advise on revised dimensions."
+        : "The entered planning envelope clears. Physical fit and production tolerances still require sample approval.",
+      "Please review the real loading path, cap and insert intrusion, removal, materials, and shipping requirements before approving production.",
+    ].join("\n");
+    return { dimensions, details };
+  };
+  const emitTubeHandoff = (action) => document.dispatchEvent(new CustomEvent("glorystarpack:planner-handoff", { detail: { action } }));
+  const readTubeQuoteBrief = () => {
+    if (params.get("brief") !== tubeBriefMarker || !tubeQuotePathPattern.test(window.location.pathname)) return null;
+    try {
+      const saved = sessionStorage.getItem(tubeBriefStorageKey);
+      sessionStorage.removeItem(tubeBriefStorageKey);
+      if (saved && saved.length > 4096) return { unavailable: true };
+      const draft = JSON.parse(saved || "null");
+      const age = Date.now() - draft?.createdAt;
+      if (!draft || draft.version !== 1 || draft.targetPath !== window.location.pathname
+        || !Number.isFinite(draft.createdAt) || age < 0 || age > tubeBriefLifetime) return { unavailable: true };
+      const plan = evaluateTubePlan(draft.values);
+      return plan ? buildTubePlanningBrief(draft.values, plan) : { unavailable: true };
+    } catch {
+      return { unavailable: true };
+    }
+  };
+  const pendingTubeQuoteBrief = readTubeQuoteBrief();
+
   const catalogMarketplace = document.querySelector(".catalog-marketplace");
   if (catalogMarketplace) {
     const productCategoryMap = {
@@ -727,6 +786,31 @@
       formGrid.insertBefore(optionalDetails, trap || null);
     }
 
+    if (form.hasAttribute("data-tube-quote") && pendingTubeQuoteBrief) {
+      const note = form.querySelector("[data-tube-brief-status]");
+      let added = 0;
+      if (!pendingTubeQuoteBrief.unavailable) {
+        for (const name of ["dimensions", "details"]) {
+          const field = form.querySelector(`[name="${name}"]`);
+          if (!field || field.value.trim()) continue;
+          const maximum = Number(field.getAttribute("maxlength")) || (name === "dimensions" ? 160 : 3000);
+          field.value = pendingTubeQuoteBrief[name].slice(0, maximum);
+          added += 1;
+        }
+        const optional = form.querySelector(".quote-form__optional");
+        if (optional && added) optional.open = true;
+        form.dataset.quotePlannerHandoff = added ? "imported" : "kept_existing";
+      }
+      if (note) {
+        note.hidden = false;
+        note.textContent = pendingTubeQuoteBrief.unavailable
+          ? "Saved measurements are unavailable or expired. Enter your dimensions below, or return to the size planner."
+          : added
+            ? "Planning measurements added. Review the dimensions and project details before sending; existing entries were kept."
+            : "Your existing dimensions and project details were kept. Review them before sending.";
+      }
+    }
+
     const setStatusAnnouncement = (urgent = false) => {
       const status = form.querySelector(".form-status");
       if (!status) return;
@@ -1197,27 +1281,23 @@
         maximumFractionDigits: 1,
       }).format(value);
 
+    const readTubeInputs = () => {
+      const data = new FormData(paperTubeSizePlanner);
+      return Object.fromEntries(tubeInputNames.map((name) => {
+        const raw = String(data.get(name) ?? "").trim();
+        return [name, raw ? Number(raw) : NaN];
+      }));
+    };
     const calculatePaperTubeSize = () => {
-      const formData = new FormData(paperTubeSizePlanner);
-      const productCrossSection = Number(formData.get("productCrossSection"));
-      const productHeight = Number(formData.get("productHeight"));
-      const radialAllowance = Number(formData.get("radialAllowance"));
-      const bottomAllowance = Number(formData.get("bottomAllowance"));
-      const topAllowance = Number(formData.get("topAllowance"));
-      const proposedId = Number(formData.get("proposedId"));
-      const proposedHeight = Number(formData.get("proposedHeight"));
-      const wallThickness = Number(formData.get("wallThickness"));
-      const values = [productCrossSection, productHeight, radialAllowance, bottomAllowance, topAllowance, proposedId, proposedHeight, wallThickness];
-
-      if (values.some((value) => !Number.isFinite(value))) return;
-      if ([productCrossSection, productHeight, proposedId, proposedHeight].some((value) => value <= 0)) return;
-      if ([radialAllowance, bottomAllowance, topAllowance, wallThickness].some((value) => value < 0)) return;
-
-      const minimumId = productCrossSection + radialAllowance * 2;
-      const minimumHeight = productHeight + bottomAllowance + topAllowance;
-      const idMargin = proposedId - minimumId;
-      const heightMargin = proposedHeight - minimumHeight;
-      const estimatedOd = proposedId + wallThickness * 2;
+      const values = readTubeInputs();
+      const plan = evaluateTubePlan(values);
+      if (!plan) {
+        ["minimum-id", "minimum-height", "id-margin", "height-margin", "estimated-od"].forEach((name) => { output(name).textContent = "—"; });
+        output("status").textContent = "Check the inputs";
+        output("interpretation").textContent = "Enter every product and proposed tube dimension, plus non-negative allowances and wall build.";
+        return null;
+      }
+      const { minimumId, minimumHeight, idMargin, heightMargin, estimatedOd } = plan;
       const formatMargin = (value) => `${value >= 0 ? "+" : "−"}${formatNumber(Math.abs(value))} mm`;
 
       output("minimum-id").textContent = `${formatNumber(minimumId)} mm`;
@@ -1233,18 +1313,74 @@
       if (!shortfalls.length) {
         output("status").textContent = "Envelope clears";
         output("interpretation").textContent = "The proposed usable space clears the entered planning envelope. Next confirm the real loading path, insert, tube roundness, cap or shoulder intrusion, opening and removal force, tolerances, and production-equivalent sample.";
-        return;
+        return { values, plan };
       }
 
       output("status").textContent = "Review shortfall";
       output("interpretation").textContent = `The proposed tube is below the entered planning envelope in ${shortfalls.join(" and ")}. Revise the loading orientation, allowance, usable space, insert, or tube proposal, then confirm the physical fit and full tolerance stack.`;
+      return { values, plan };
     };
+
+    const handoffButton = document.querySelector("[data-tube-quote-handoff]");
+    const briefPanel = document.querySelector("[data-tube-brief-panel]");
+    const briefText = document.querySelector("[data-tube-brief-text]");
+    const briefCopy = document.querySelector("[data-tube-brief-copy]");
+    const briefStatus = document.querySelector("[data-tube-brief-copy-status]");
+    if (handoffButton) {
+      handoffButton.hidden = false;
+      handoffButton.addEventListener("click", () => {
+        if (!paperTubeSizePlanner.reportValidity()) return;
+        const result = calculatePaperTubeSize();
+        if (!result) return;
+        const sourceMatch = window.location.pathname.match(/^\/(?:(fr|es|pt|ru|zh-CN)\/)?paper-tube-packaging-size-guide\.html$/);
+        if (!sourceMatch) return;
+        const targetPath = `/${sourceMatch[1] ? `${sourceMatch[1]}/` : ""}custom-tube-packaging.html`;
+        const draft = { version: 1, createdAt: Date.now(), targetPath, values: result.values };
+        const serialized = JSON.stringify(draft);
+        try {
+          sessionStorage.setItem(tubeBriefStorageKey, serialized);
+          if (sessionStorage.getItem(tubeBriefStorageKey) !== serialized) throw new Error("Brief storage unavailable");
+        } catch {
+          const brief = buildTubePlanningBrief(result.values, result.plan);
+          if (briefText) briefText.value = `${brief.dimensions}\n\n${brief.details}`;
+          if (briefPanel) briefPanel.hidden = false;
+          if (briefStatus) briefStatus.textContent = "Copy this planning brief, then paste it into your quote request.";
+          briefText?.focus();
+          emitTubeHandoff("storage_unavailable");
+          return;
+        }
+        emitTubeHandoff("prepared");
+        window.location.assign(`${targetPath}?brief=${tubeBriefMarker}#quote`);
+      });
+    }
+    briefCopy?.addEventListener("click", async () => {
+      if (!paperTubeSizePlanner.reportValidity()) return;
+      const result = calculatePaperTubeSize();
+      if (!result) return;
+      const brief = buildTubePlanningBrief(result.values, result.plan);
+      briefText.value = `${brief.dimensions}\n\n${brief.details}`;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(briefText.value);
+        briefStatus.textContent = "Planning brief copied. Paste it into the quote form's project details.";
+        emitTubeHandoff("copied");
+      } catch {
+        briefText?.focus();
+        briefText?.select();
+        briefStatus.textContent = "Select and copy the planning brief above, then continue to the quote form.";
+        emitTubeHandoff("manual_copy");
+      }
+    });
 
     paperTubeSizePlanner.addEventListener("submit", (event) => {
       event.preventDefault();
       if (paperTubeSizePlanner.reportValidity()) calculatePaperTubeSize();
     });
-    paperTubeSizePlanner.addEventListener("input", calculatePaperTubeSize);
+    paperTubeSizePlanner.addEventListener("input", () => {
+      calculatePaperTubeSize();
+      if (briefPanel) briefPanel.hidden = true;
+      if (briefText) briefText.value = "";
+    });
     calculatePaperTubeSize();
   }
 

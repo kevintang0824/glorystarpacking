@@ -291,6 +291,15 @@
     track("calculator_use", { calculator_name: "jewelry_insert_fit_planner" });
   });
 
+  const trackTubeHandoff = (action) => {
+    if (!["prepared", "imported", "kept_existing", "storage_unavailable", "copied", "manual_copy"].includes(action)) return;
+    track("quote_planner_handoff", { calculator_name: "paper_tube_size_and_fit", action });
+  };
+  document.addEventListener("glorystarpack:planner-handoff", (event) => trackTubeHandoff(event.detail?.action));
+  // site.js imports before this deferred analytics script loads.
+  const importedTubeBrief = document.querySelector("[data-tube-quote][data-quote-planner-handoff]");
+  if (importedTubeBrief) trackTubeHandoff(importedTubeBrief.dataset.quotePlannerHandoff);
+
   document.querySelector("#paper-tube-size-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "paper_tube_size_and_fit" });
   });

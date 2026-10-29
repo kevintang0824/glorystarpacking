@@ -2787,6 +2787,11 @@ main[tabindex="-1"]:focus-visible {
   text-underline-offset: 3px;
 }
 
+[data-tube-brief-panel][hidden],
+[data-tube-quote-handoff][hidden] {
+  display: none;
+}
+
 .purchase-note {
   display: grid;
   margin-top: 34px;
