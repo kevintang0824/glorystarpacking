@@ -1291,6 +1291,62 @@
     calculatePaperCaliper();
   }
 
+  const gsmThicknessEstimator = document.querySelector("#gsm-thickness-estimator-form");
+  if (gsmThicknessEstimator) {
+    const output = (name) => gsmThicknessEstimator.querySelector(`[data-gsm-output="${name}"]`);
+    const field = (name) => gsmThicknessEstimator.querySelector(`[data-gsm-field="${name}"]`);
+    const format = (value, fractionDigits) =>
+      new Intl.NumberFormat(document.documentElement.lang, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      }).format(value);
+
+    const estimateGsmThickness = () => {
+      const formData = new FormData(gsmThicknessEstimator);
+      const solveFor = String(formData.get("solveFor") || "thickness");
+      ["gsm", "thickness", "density"].forEach((name) => {
+        const wrapper = field(name);
+        const input = wrapper?.querySelector("input");
+        if (!wrapper || !input) return;
+        const isUnknown = name === solveFor;
+        wrapper.hidden = isUnknown;
+        wrapper.style.display = isUnknown ? "none" : "";
+        input.disabled = isUnknown;
+        input.required = !isUnknown;
+      });
+
+      let gsm = Number(formData.get("gsm"));
+      let millimetres = Number(formData.get("thicknessMm"));
+      let density = Number(formData.get("density"));
+      // thickness (µm) = GSM ÷ density (g/cm³)
+      if (solveFor === "thickness") millimetres = gsm / density / 1000;
+      if (solveFor === "gsm") gsm = millimetres * 1000 * density;
+      if (solveFor === "density") density = gsm / (millimetres * 1000);
+      if (![gsm, millimetres, density].every((value) => Number.isFinite(value) && value > 0)) return;
+
+      const micrometres = millimetres * 1000;
+      const points = millimetres / 0.0254;
+      output("mm").textContent = `${format(millimetres, 4)} mm`;
+      output("micron").textContent = `${format(micrometres, 1)} µm · ${format(points, 1)} pt`;
+      output("gsm").textContent = `${format(gsm, 0)} g/m²`;
+      output("density").textContent = `${format(density, 3)} g/cm³ · ${format(1 / density, 2)} cm³/g`;
+      const summary = {
+        thickness: `${format(gsm, 0)} GSM at ${format(density, 3)} g/cm³ is an estimated ${format(millimetres, 4)} mm (${format(micrometres, 1)} µm).`,
+        gsm: `${format(millimetres, 4)} mm at ${format(density, 3)} g/cm³ is an estimated ${format(gsm, 0)} GSM.`,
+        density: `${format(gsm, 0)} GSM at ${format(millimetres, 4)} mm implies a density of ${format(density, 3)} g/cm³ (bulk ${format(1 / density, 2)} cm³/g).`,
+      }[solveFor];
+      output("interpretation").textContent = `${summary} This is an estimate: confirm the mill-declared caliper, tolerance, and a physical sample before approval.`;
+    };
+
+    gsmThicknessEstimator.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (gsmThicknessEstimator.reportValidity()) estimateGsmThickness();
+    });
+    gsmThicknessEstimator.addEventListener("input", estimateGsmThickness);
+    gsmThicknessEstimator.addEventListener("change", estimateGsmThickness);
+    estimateGsmThickness();
+  }
+
   const packagingLeadTimePlanner = document.querySelector("#packaging-lead-time-planner");
   if (packagingLeadTimePlanner) {
     const output = (name) => packagingLeadTimePlanner.querySelector(`[data-lead-time-output="${name}"]`);

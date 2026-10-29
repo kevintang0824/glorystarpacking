@@ -295,6 +295,9 @@
     track("calculator_use", { calculator_name: "paper_tube_size_and_fit" });
   });
 
+  document.querySelector("#gsm-thickness-estimator-form")?.addEventListener("submit", () => {
+    track("calculator_use", { calculator_name: "gsm_thickness_estimator" });
+  });
   document.querySelector("#paper-caliper-converter-form")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "paper_caliper_unit_converter" });
   });

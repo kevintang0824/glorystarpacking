@@ -834,3 +834,28 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - GSC sitemap 于 10-27 提交成功，84 网页/0 视频；更新页 URL Inspection 原已收录，重新抓取请求已接受进入优先抓取队列。Bing sitemap 10-27 提交回执为 Success/Processing、84 URL、0 错误/警告；IndexNow 接受该页 1 URL，HTTP 200。提交不是重新收录或流量结果。Reddit 已有内容匹配，本轮不另建文章；OUT-007 是经官方页核验的候选，未联系或提交。
 - 本地额外尝试 `validate-build-output.mjs` 时该 worktree 没有 `.vercel/output`，故 build-output audit 报告缺少本地构建产物；发布实际由 Vercel push 部署完成，所需静态/服务检查和正式站 production audits 均通过。
 - **后续动作：** Semrush 镜像需要用户重新登录；后续以同资源 GSC 点击/CTR、GA4 lead 事件和 CRM/收件箱已送达有效询盘复盘；GA4 当前没有 Search Console 关联，暂无 GA 联结后的自然搜索报告。
+
+## 2026-10-29 · 纸张厚度页：补上 GSM→mm 搜索意图
+
+### 数据与判断
+
+- 依据 10-28 GSC 正确资源读数：`paper-thickness-gsm-pt-mm-conversion-guide.html` 163 展示/0 点击（全站展示最高页之一），查询 `gsm to mm` 45 展示/0 点击、`mm to gsm converter` 12/2。原页面标题只写 pt→mm，并明确写着“GSM is intentionally not an option”，与搜索者意图不匹配，是低 CTR 的最可能原因。本轮 GSC 网页端在内置浏览器中未登录，未取得新的页面级查询明细。
+- 本地移动端性能抽测（Chromium 模拟 Pixel 5、4× CPU 限速）：首页、产品页、Blog、指南页 LCP 约 0.5–0.8 s、CLS 0，性能不是当前瓶颈，本轮不做性能改动。
+
+### 已完成
+
+- 新增“GSM to thickness estimator”区块（`#gsm-thickness-estimator`）：按 `厚度 µm = GSM ÷ 密度 g/cm³` 计算，可求厚度、GSM 或密度/松厚度；密度默认 0.8 仅作示例，界面要求替换为纸厂/供应商数据表数值，并保留“估算不代替实物样批准”的边界说明。不发布通用 GSM→mm 对照表。
+- Title 改为 `GSM to mm & pt to mm: Paper Thickness Converter`；同步 meta/OG/Twitter 描述、BlogPosting headline、WebApplication 描述、H1、首屏副标题与按钮（新增“Estimate GSM to mm”锚点）；FAQ 第 1 题（可见文本与 FAQPage 同步）改为说明需借助密度换算并给出算例。
+- `site.js` 新增估算器逻辑，`analytics.js` 新增 `gsm_thickness_estimator` 计算器事件；Blog 卡片与 `llms.txt` 描述同步；dateModified、可见更新日期、Sitemap/RSS lastmod 更新至 2026-10-29；重新同步站点外壳哈希并重建 5 种语言页（新区块在未审核语言页按英文回退，仍 noindex）。
+
+### 校验
+
+- `validate-site.mjs`（84 可索引页）、`validate-languages.py`（510 页）、Sitemap/图片 Sitemap `--check`、Quote API、服务健康、移动导航、语言运行时测试、JS 语法检查全部通过；Playwright 验证三种计算模式结果正确、手机/桌面无横向溢出、无控制台错误。
+- 尚未推送 / 部署 / 提交 IndexNow 与 GSC；上线后按 PUBLISH_WORKFLOW 第 5–7 步执行，28 天后复核该页 CTR 与 `gsm to mm` 查询点击。
+
+## 2026-10-29（续）· 按 GSC 真实查询改写首页级排名页的标题
+
+- GSC 正确资源，近 28 天按网页：多篇指南已在第一页但 0 点击——纸张厚度 158 展示/排名 8.4、纸管 141/7.0（1 点击）、零售盒对比 63/10.3、烫金对比 48/6.1、RFQ 模板 43/9.5；商业产品页排名偏后：inserts 49.3、mailer 56.6、rigid 48.8、perfume 36.5。
+- 查询中出现 AI 搜索式长提示（如 clear stickers + white ink 42 展示），说明 AI 检索已在抓取本站内容。可见商业查询：`custom drawer boxes` 9.2、`custom perfume packaging` 7.2、`perfume packaging company` 7.0、`retail box` 4.0、`overbox meaning` 7.2、`mailer box manufacturer` 10.8。
+- 改写 8 页 Title/Description（同步 OG/Twitter/JSON-LD）：paper-tube、retail-box-vs-shipping-box、foil-vs-spot-uv、custom-packaging-rfq-template、custom-perfume-boxes、custom-drawer-boxes、clear-label-white-ink-artwork-guide、corrugated-shipping-box-specification-guide；只使用页面正文已支持的表述。重建 RSS 与语言页，validate-site / validate-languages / sitemap check 全部通过。
+- GA4（548891831）将 `contact_click`（邮件/WhatsApp/电话点击，28 天内已有触发）标记为关键事件；`generate_lead` 原已为关键事件。GA4 ↔ Search Console 关联尚未建立，需账号所有者确认后操作。
