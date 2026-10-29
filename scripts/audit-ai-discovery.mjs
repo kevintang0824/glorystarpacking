@@ -4,6 +4,7 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const requestedOrigin = process.argv.find((argument) => argument.startsWith("--origin="))?.slice("--origin=".length);
 const origin = (requestedOrigin || "https://glorystarpacking.com").replace(/\/$/, "");
+const canonicalOrigin = "https://glorystarpacking.com";
 const errors = [];
 
 const requiredFiles = [
@@ -49,6 +50,7 @@ const liveChecks = [
     test: (body) => body.includes("## Company identity and evidence")
       && body.includes("## High-intent buyer guides")
       && body.includes("## Attribution")
+      && body.includes("about.html#supplier-facts")
       && body.includes("packaging-supplier-qualification-checklist.html"),
     label: "machine-readable citation map",
   },
@@ -83,13 +85,41 @@ for (const articlePath of articlePaths) {
     const canonical = body.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)/i)?.[1] || "";
     const robots = body.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)/i)?.[1] || "";
     const hasBlogPosting = body.includes('"@type":"BlogPosting"') || body.includes('"@type": "BlogPosting"');
-    if (response.status !== 200 || canonical !== `${origin}${articlePath}` || /noindex/i.test(robots) || !hasBlogPosting) {
+    if (response.status !== 200 || canonical !== `${canonicalOrigin}${articlePath}` || /noindex/i.test(robots) || !hasBlogPosting) {
       errors.push(`${articlePath}: article discovery contract failed`);
     } else {
       console.log(`PASS ${articlePath} · article discovery contract`);
     }
   } catch (error) {
     errors.push(`${articlePath}: ${error.message}`);
+  }
+}
+
+const supplierPaths = [
+  "/about.html",
+  "/custom-rigid-boxes.html",
+  "/custom-mailer-boxes.html",
+  "/custom-packaging-inserts.html",
+  "/custom-perfume-boxes.html",
+  "/folding-carton-boxes.html",
+];
+for (const supplierPath of supplierPaths) {
+  try {
+    const response = await fetch(`${origin}${supplierPath}`, { redirect: "manual" });
+    const body = await response.text();
+    const canonical = body.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)/i)?.[1] || "";
+    const robots = body.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)/i)?.[1] || "";
+    const main = body.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || "";
+    const hasSupplierSource = supplierPath === "/about.html"
+      ? /id=["']supplier-facts["']/.test(main) && main.includes("Xiamen GloryStar Packaging Co., Ltd.")
+      : /href=["'](?:\/)?about\.html#supplier-facts["']/.test(main);
+    if (response.status !== 200 || canonical !== `${canonicalOrigin}${supplierPath}` || !/\bindex\b/i.test(robots) || /noindex/i.test(robots) || !hasSupplierSource) {
+      errors.push(`${supplierPath}: indexable supplier facts and source-link contract failed`);
+    } else {
+      console.log(`PASS ${supplierPath} · indexable supplier facts and source link`);
+    }
+  } catch (error) {
+    errors.push(`${supplierPath}: ${error.message}`);
   }
 }
 
