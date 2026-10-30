@@ -52,6 +52,11 @@
   let dialogReturnFocus = null;
   let restoreDialogFocus = true;
   let searchRenderTimeout = 0;
+  const initialFragment = window.location.hash;
+  let initialFragmentUntouched = true;
+  if (initialFragment) ["wheel", "touchstart", "pointerdown", "keydown"].forEach((name) => {
+    window.addEventListener(name, () => { initialFragmentUntouched = false; }, { once: true, passive: true });
+  });
 
   const curatedProductPages = new Map([
     ["1601585909249", { title: "Printed Corrugated Ecommerce Mailer", href: "printed-corrugated-ecommerce-mailer-gs-5909249.html" }],
@@ -237,7 +242,7 @@
     return article;
   };
 
-  const renderCategories = () => {
+  const renderCategories = (scrollToActive = false) => {
     if (!catalog) return;
     const categories = [{ name: "All products", slug: "all", count: catalog.total }, ...catalog.categories];
     if (categoryList) categoryList.replaceChildren();
@@ -264,7 +269,7 @@
       button.addEventListener("click", () => {
         state.category = category.slug;
         state.page = 1;
-        renderCategories();
+        renderCategories(true);
         renderProducts(true);
         writeCatalogStateToUrl("push");
         window.requestAnimationFrame(() => {
@@ -280,7 +285,7 @@
       categorySelect.disabled = false;
       categorySelect.value = state.category;
     }
-    window.requestAnimationFrame(() => {
+    if (scrollToActive) window.requestAnimationFrame(() => {
       categoryList?.querySelector('[aria-pressed="true"]')?.scrollIntoView({ block: "nearest", inline: "center" });
     });
   };
@@ -326,7 +331,7 @@
   categorySelect?.addEventListener("change", () => {
     state.category = categorySelect.value || "all";
     state.page = 1;
-    renderCategories();
+    renderCategories(true);
     renderProducts(true);
     writeCatalogStateToUrl("push");
   });
@@ -370,7 +375,10 @@
   });
 
   window.addEventListener("popstate", () => {
-    Object.assign(state, readCatalogStateFromUrl());
+    const nextState = readCatalogStateFromUrl();
+    // Hash-only navigation belongs to the browser, including quote/brief links.
+    if (Object.keys(catalogStateParams).every((key) => state[key] === nextState[key])) return;
+    Object.assign(state, nextState);
     if (!catalog) {
       loadCatalog();
       return;
@@ -405,9 +413,16 @@
           }
         });
         catalog = payload;
+        const fragmentId = window.location.hash.slice(1);
+        const fragmentTarget = fragmentId ? document.getElementById(fragmentId) : null;
+        const preserveFragment = fragmentTarget && !root.contains(fragmentTarget)
+          && ((initialFragmentUntouched && window.location.hash === initialFragment)
+            || Math.abs(fragmentTarget.getBoundingClientRect().top) < window.innerHeight);
         normalizeCatalogState();
         renderCategories();
         renderProducts();
+        // Inserting catalog rows above a visible fragment must not displace it.
+        if (preserveFragment) fragmentTarget.scrollIntoView({ behavior: "instant", block: "start" });
         writeCatalogStateToUrl();
         return payload;
       })

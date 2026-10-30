@@ -986,3 +986,7 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 多 SKU 指南加入明确标为假设算例的 1,200 套组件数量表，展示 2 张薄页纸/套对应 2,400 张，不作为客户订单、MOQ 或批准规格；按 SKU/图稿继续拆行。美妆指南补齐配套询价层次，并链接产品总页及清单。
 - 浏览器确认配套报价入口进入 `product=packaging-set#quote`，实际选项为 Complete packaging set。CSV 校验为 7 行、每行 16 列且数量列为空；样例为客户自供参考，不将主产品当作本域报价能力。
 - 同步 5 种语言、Sitemap/图片 Sitemap/RSS，保留原发布日与标题试验；发现性审计新增产品配套入口、公开 CSV 和多 SKU 文章检查。本轮没有新增索引 URL 或未经核实的客户案例、价格/时效结果。上线验收另记。
+
+- Production verification: source `80bb41e9` deployed READY at `glorystarpacking-34sdhtfyp-glorystarpack-s-projects.vercel.app`. Production service configuration and AI discovery checks passed, including the component brief CSV. IndexNow accepted 3 URLs with HTTP 200; image Sitemap, RSS and CSV hashes match local. GSC returned sitemap submission success (receipt: tmp/gsc-sitemap-ai-round-8.png). No live inquiry was sent and no AI impression or lead growth is claimed.
+
+- Final browser verification revealed that catalog history handling could redirect hash-only navigation to product results, and late catalog rows could displace a direct fragment destination. Catalog state changes now control catalog scrolling; initial loading preserves a visible or untouched initial fragment without overriding observed user scrolling. Regression coverage includes fragment history, delayed loading, user interruption, catalog history and category selection. The six product-page script versions were synchronized; rollout verification follows.
