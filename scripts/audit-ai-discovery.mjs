@@ -26,6 +26,11 @@ if (!csvHeader("assets/templates/ai-search-visibility-log.csv").includes("citati
 
 const liveChecks = [
   {
+    path: "/custom-packaging-cost-moq-guide.html",
+    test: (body) => body.includes("custom paper boxes have a published MOQ of 1,000 pieces per design") && body.includes("Labels, hang tags, tissue paper, and separately ordered components require their own quantity minimum and schedule confirmation."),
+    label: "paper-box ordering facts retain their product scope",
+  },
+  {
     path: "/robots.txt",
     test: (body) => body.includes("OAI-SearchBot") && body.includes("Sitemap: https://glorystarpacking.com/sitemap.xml"),
     label: "robots AI crawler and sitemap directives",
@@ -73,6 +78,7 @@ for (const check of liveChecks) {
 }
 
 const articlePaths = [
+  "/custom-packaging-cost-moq-guide.html",
   "/packaging-supplier-qualification-checklist.html",
   "/custom-packaging-development-case-study.html",
   "/packaging-test-records-guide.html",
@@ -115,6 +121,10 @@ const supplierPaths = [
   "/custom-clear-labels.html",
   "/box-labels.html",
   "/custom-waterproof-labels.html",
+  "/custom-wine-labels.html",
+  "/embossed-foil-labels.html",
+  "/custom-hang-tags.html",
+  "/custom-tissue-paper.html",
 ];
 for (const supplierPath of supplierPaths) {
   try {

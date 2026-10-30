@@ -148,7 +148,7 @@ These pages describe visible evidence from one catalog image, identify decisions
 
 ## Important factual boundaries
 
-- Minimum order quantity is project-specific and depends on structure, dimensions, materials, finishing, inserts, versions, packing, and production route.
+- The published 1,000-piece minimum and paper-box sample/production schedule apply to custom paper boxes per design. Labels, hang tags, tissue paper, paper tubes, and separately ordered components need their own quantity minimum, construction, and schedule confirmation; do not infer those terms from the paper-box facts.
 - Sampling, production, and delivery timing must be confirmed for the actual project and destination.
 - Certifications, test standards, material claims, regulatory documents, and sustainability claims apply only when their holder, scope, material, production site, destination, and validity are verified.
 - Food, tea, sushi, and wellness content refers only to specification review or secondary-packaging routes unless direct-contact, barrier, migration, shelf-life, regulated-use, and destination requirements are separately verified for the project.

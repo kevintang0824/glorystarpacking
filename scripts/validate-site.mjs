@@ -2251,7 +2251,8 @@ if (!fs.existsSync(llmsPath)) {
     [`${siteOrigin}/feed.xml`, "buyer-guide RSS feed"],
     ["## Quote and direct contact", "quote and direct-contact guidance"],
     ["mailto:kevin@GloryStarPack.com", "machine-readable email route"],
-    ["Minimum order quantity is project-specific", "MOQ factual boundary"],
+    ["paper-box sample/production schedule apply to custom paper boxes per design", "paper-box MOQ factual boundary"],
+    ["separately ordered components need their own quantity minimum", "separate-component MOQ boundary"],
     ["Certifications, test standards", "certification factual boundary"],
   ];
   requiredLlmsSignals.forEach(([signal, label]) => {

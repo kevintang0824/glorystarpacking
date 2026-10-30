@@ -967,3 +967,11 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 共享脚本、5 种语言、Sitemap/图片 Sitemap/RSS 同步；公司来源审计扩展至 19 页。本轮测试覆盖来源识别、原询盘接口、配送与纸管衔接、移动导航、语言运行时及发现入口，不发送真实询盘。原 Google AI 展示基线未重读或计作本轮增长。发布验收另记。
 
 - Production verification: source `4e697909` deployed READY at `glorystarpacking-c1tpgcsgj-glorystarpack-s-projects.vercel.app`. All 87 public-page shell and script versions match local; production service configuration and 19-page supplier-source discovery audit passed. IndexNow verified the release and accepted 3 priority URLs with HTTP 200. Production image Sitemap and RSS match local hashes. Browser confirmed the four label quote routes; GSC returned sitemap submission success. No live test inquiry was submitted and no new traffic or lead growth is claimed.
+
+
+## 2026-10-30 · 起订条件适用范围与剩余组件询价信息
+
+- 成本/MOQ 指南原 FAQ 把 1,000 件及样品/生产时间写为全品类条件，与已确认的定制纸盒范围不符；可见 FAQ 和结构化答案现同时明确 custom paper boxes per design、样品批准后量产、货运另计，标签/吊牌/薄页纸/单独组件需另行确认。首段补公司事实来源，保留原发布日并更新实际修改日期。
+- 酒标、压纹烫金标签、吊牌、印刷薄页纸 4 个产品页补供应商、厦门所在地、公司事实来源和项目报价条件。各页增加具体输入：酒瓶冷湿试验、装饰标签工艺定位、吊牌 SKU/附件/数据版本、薄页纸尺寸与包数；引导美国和加拿大买家填写邮编、收货地点及到货日期。未套用纸盒 MOQ/交期。
+- llms.txt 的条件边界同步纠正，不将该文件当作 Google AI 展示保证。AI discovery audit 扩展为 23 个公司事实来源页面，并增加成本指南的条件范围及文章索引检查；所有 5 页及 5 种语言、Sitemap/图片 Sitemap/RSS 同步。
+- 发布前站点与多语言校验、FAQ/JSON-LD 一致性、Quote API、服务健康、语法、Sitemap/RSS、本地发现性审计及 5 URL IndexNow dry run 已通过。未发送真实询盘，没有将同日优化记录为新增 AI 展示、推荐或询盘结果。上线验收另记。
