@@ -977,3 +977,12 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 发布前站点与多语言校验、FAQ/JSON-LD 一致性、Quote API、服务健康、语法、Sitemap/RSS、本地发现性审计及 5 URL IndexNow dry run 已通过。未发送真实询盘，没有将同日优化记录为新增 AI 展示、推荐或询盘结果。上线验收另记。
 
 - Production verification: source `64d0c7c4` deployed READY as `dpl_GnsKPwRGgKup8geTMqdB35AVxgwK`. Production service configuration, the 23-page supplier-source audit, and the new paper-box MOQ-scope check passed. IndexNow verified the release and accepted 5 URLs with HTTP 200; image Sitemap, RSS, and llms.txt hashes match local. Browser confirmed the corrected ordering scope on the canonical domain. GSC returned sitemap submission success. No live test inquiry was sent and no traffic or inquiry growth is claimed for this release.
+
+
+## 2026-10-30 · 配套包装组件清单与北美组合询价
+
+- 产品总页将原配套说明整合为可定位的 `#packaging-set-brief`：区分成品套数、每套零件数量、组件总数量、SKU/图稿版本、客户自供产品、整装或散件供货，并加入 US/Canada 邮编、收货地点与到货日期。明确组合套数不能合并各组件起订要求。
+- 新增公开空白 `packaging-set-component-brief.csv`，16 列、5 类待报价组件行及 1 行客户自供产品参考；不预填数量、价格、交期或审批结果。说明完成 CSV 可用 email 发送，或将关键行粘贴到网页详情；网页附件仍只支持 PDF/图片。
+- 多 SKU 指南加入明确标为假设算例的 1,200 套组件数量表，展示 2 张薄页纸/套对应 2,400 张，不作为客户订单、MOQ 或批准规格；按 SKU/图稿继续拆行。美妆指南补齐配套询价层次，并链接产品总页及清单。
+- 浏览器确认配套报价入口进入 `product=packaging-set#quote`，实际选项为 Complete packaging set。CSV 校验为 7 行、每行 16 列且数量列为空；样例为客户自供参考，不将主产品当作本域报价能力。
+- 同步 5 种语言、Sitemap/图片 Sitemap/RSS，保留原发布日与标题试验；发现性审计新增产品配套入口、公开 CSV 和多 SKU 文章检查。本轮没有新增索引 URL 或未经核实的客户案例、价格/时效结果。上线验收另记。

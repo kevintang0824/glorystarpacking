@@ -1,0 +1,7 @@
+component_id,component_type,supply_scope,product_sku,pieces_per_finished_set,requested_component_quantity,size_and_units,material_or_construction,artwork_revision,assembly_or_supply_state,sample_approval_needed,required_arrival_date,delivery_country,zip_or_postal_code,receiving_type,open_questions
+BOX-01,Paper box,Quote requested,,,,,,,,,,,,,
+INSERT-01,Insert,Quote requested,,,,,,,,,,,,,
+LABEL-01,Label,Quote requested,,,,,,,,,,,,,
+TISSUE-01,Tissue sheet,Quote requested,,,,,,,,,,,,,
+BAG-01,Paper bag,Quote requested,,,,,,,,,,,,,
+PRODUCT-REF,Product / primary container,Buyer supplied,,,,,,,,,,,,,

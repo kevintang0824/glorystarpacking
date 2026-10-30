@@ -26,6 +26,20 @@ if (!csvHeader("assets/templates/ai-search-visibility-log.csv").includes("citati
 
 const liveChecks = [
   {
+    path: "/products.html",
+    test: (body) => body.includes('id="packaging-set-brief"')
+      && body.includes("assets/templates/packaging-set-component-brief.csv")
+      && body.includes("combined set quantity does not pool those minimums"),
+    label: "coordinated-set quote brief and component-specific ordering scope",
+  },
+  {
+    path: "/assets/templates/packaging-set-component-brief.csv",
+    test: (body) => body.startsWith("component_id,component_type,supply_scope,")
+      && body.includes("pieces_per_finished_set,requested_component_quantity")
+      && body.includes("Buyer supplied"),
+    label: "downloadable component brief with buyer-supplied scope",
+  },
+  {
     path: "/custom-packaging-cost-moq-guide.html",
     test: (body) => body.includes("custom paper boxes have a published MOQ of 1,000 pieces per design") && body.includes("Labels, hang tags, tissue paper, and separately ordered components require their own quantity minimum and schedule confirmation."),
     label: "paper-box ordering facts retain their product scope",
@@ -78,6 +92,7 @@ for (const check of liveChecks) {
 }
 
 const articlePaths = [
+  "/multi-sku-packaging-system-guide.html",
   "/custom-packaging-cost-moq-guide.html",
   "/packaging-supplier-qualification-checklist.html",
   "/custom-packaging-development-case-study.html",
