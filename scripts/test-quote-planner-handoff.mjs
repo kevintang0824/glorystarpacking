@@ -17,6 +17,7 @@ function page(file, path, options = {}) {
   const window = { Node: domWindow.Node, CustomEvent: domWindow.CustomEvent, Event: domWindow.Event, addEventListener: domWindow.addEventListener.bind(domWindow), innerHeight: 800, scrollY: 0 };
   document.documentElement.lang = options.language || "en";
   document.cookie = "";
+  document.referrer = options.referrer || "";
   const location = new URL(path, "https://glorystarpacking.com");
   const navigations = [];
   location.assign = (url) => navigations.push(new URL(url, location.href).href);
@@ -68,6 +69,37 @@ function page(file, path, options = {}) {
   const click = (selector) => document.querySelector(selector).dispatchEvent(new window.Event("click", { bubbles: true, cancelable: true }));
   return { window, document, storage, copied, handoffs, requests, navigations, click, context, loadAnalytics };
 }
+
+// Only explicit recognized campaign labels or real host boundaries count as AI.
+for (const [referrer, channel, source] of [
+  ["https://chatgpt.com/", "ai-search", "ChatGPT"],
+  ["https://chat.openai.com/c/123", "ai-search", "ChatGPT"],
+  ["https://www.perplexity.ai/search/test", "ai-search", "Perplexity"],
+  ["https://copilot.microsoft.com/", "ai-search", "Microsoft Copilot"],
+  ["https://copilot.com/", "ai-search", "Microsoft Copilot"],
+  ["https://notcopilot.com/", "referral", "notcopilot.com"],
+  ["https://openai.com/", "referral", "openai.com"],
+  ["https://claude.ai/", "ai-search", "Claude"],
+  ["https://gemini.google.com/", "ai-search", "Google Gemini"],
+  ["https://you.com/", "ai-search", "You.com"],
+  ["https://chatgpt.example.org/", "referral", "chatgpt.example.org"],
+  ["https://notperplexity.ai/", "referral", "notperplexity.ai"],
+  ["https://claude.ai.example.org/", "referral", "claude.ai.example.org"],
+  ["https://www.google.ca/search?q=boxes", "organic-search", "www.google.ca"],
+  ["malformed", "direct", "Direct"],
+]) {
+  const entry = page("index.html", "/", { referrer });
+  const attribution = JSON.parse(entry.storage.get("glorystarpack-attribution"));
+  assert.equal(attribution.discoveryChannel, channel, referrer);
+  assert.equal(attribution.discoverySource, source, referrer);
+}
+for (const [utm, channel] of [["chatgpt.com", "ai-search"], ["Perplexity", "ai-search"], ["chatgpt-newsletter", "campaign"], ["openair", "campaign"]]) {
+  const entry = page("index.html", `/?utm_source=${encodeURIComponent(utm)}`);
+  assert.equal(JSON.parse(entry.storage.get("glorystarpack-attribution")).discoveryChannel, channel);
+}
+const firstTouch = new Map([["glorystarpack-attribution", JSON.stringify({ discoveryChannel: "referral", discoverySource: "first.example" })]]);
+page("index.html", "/?utm_source=chatgpt", { storage: firstTouch });
+assert.equal(JSON.parse(firstTouch.get("glorystarpack-attribution")).discoverySource, "first.example");
 
 // Delivery qualifiers are optional, uniquely labelled, and stay inside the optional panel.
 for (const file of ["index.html", "products.html", "custom-clear-labels.html", "custom-tube-packaging.html"]) {

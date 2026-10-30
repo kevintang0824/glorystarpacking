@@ -956,3 +956,12 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 同步共享 JS 哈希、5 种语言、Sitemap/图片 Sitemap/RSS。站点静态校验、多语言、Quote API、配送/纸管衔接、服务健康、移动导航、语言运行时、语法、发现性审计和 6 URL IndexNow dry run 通过。原 GSC AI 展示基线未更新，不将本轮工作记为新增推荐或询盘增长；正式发布回执另记。
 
 - Production verification: source `71e1a8e5` deployed READY as `dpl_GdNDUiYANdddDurD3rBKjaF23fub`. All 87 public-page shell/script versions match local; production service configuration and AI discovery audits passed. IndexNow accepted 6 priority URLs with HTTP 200 after release checks; image Sitemap and RSS hashes match local. Browser confirmed optional Canadian postal code and Commercial warehouse selection on the canonical homepage; no quote was submitted. GSC returned sitemap submission success. No new AI impression or inquiry growth is attributed to this release.
+
+
+## 2026-10-30 · 标签询价路径与 AI 来源识别质量
+
+- 将 AI 来源识别从品牌子串匹配改为已知入口的主机边界匹配，以及明确的 UTM 来源标签匹配。保留首次访问记录、原有普通搜索归因及缺失 referrer 时的 direct 分类；不把无法观察到的 AI 应用来源推断为已确认推荐。
+- 回归覆盖 ChatGPT、Perplexity、Copilot、Claude、Gemini、You.com 的入口、相似但不匹配的域名、普通含品牌字样的活动标签、格式错误 referrer 和既有首次访问记录。官方 Copilot 旧入口在检查时重定向到 copilot.com，已加入新旧入口；该工具未能读取跳转后的页面正文，不作为页面内容或推荐结果证据。
+- 标签总页新增按透明外观、环境暴露、酒瓶冷湿场景、装饰工艺选择报价入口的对比表；每行列出报价输入并直达对应产品表单。浏览器确认耐水标签入口到达正确页面并预选 Custom waterproof labels。
+- 标签总页和耐水标签页补齐公司所在地、公司事实来源、项目报价条件和具体选型输入，北美配送信息明确引导使用表单的选填项。标签 MOQ/交期保持按项目确认，不套用纸盒条件。
+- 共享脚本、5 种语言、Sitemap/图片 Sitemap/RSS 同步；公司来源审计扩展至 19 页。本轮测试覆盖来源识别、原询盘接口、配送与纸管衔接、移动导航、语言运行时及发现入口，不发送真实询盘。原 Google AI 展示基线未重读或计作本轮增长。发布验收另记。

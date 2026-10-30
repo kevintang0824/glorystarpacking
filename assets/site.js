@@ -458,17 +458,19 @@
   const classifyDiscovery = () => {
     const explicitSource = (params.get("utm_source") || "").trim().toLowerCase();
     const aiSources = [
-      { pattern: /chatgpt|openai/, source: "ChatGPT" },
-      { pattern: /perplexity/, source: "Perplexity" },
-      { pattern: /copilot/, source: "Microsoft Copilot" },
-      { pattern: /claude|anthropic/, source: "Claude" },
-      { pattern: /gemini/, source: "Google Gemini" },
-      { pattern: /you\.com/, source: "You.com" },
+      { hosts: ["chatgpt.com", "chat.openai.com"], campaigns: ["chatgpt", "openai", "openai.com"], source: "ChatGPT" },
+      { hosts: ["perplexity.ai"], campaigns: ["perplexity"], source: "Perplexity" },
+      { hosts: ["copilot.microsoft.com", "copilot.com"], campaigns: ["copilot", "microsoft copilot"], source: "Microsoft Copilot" },
+      { hosts: ["claude.ai"], campaigns: ["claude", "anthropic"], source: "Claude" },
+      { hosts: ["gemini.google.com"], campaigns: ["gemini", "google gemini"], source: "Google Gemini" },
+      { hosts: ["you.com"], campaigns: ["you.com"], source: "You.com" },
     ];
+    const matchesHost = (hostname, base) => hostname === base || hostname.endsWith(`.${base}`);
     const searchHosts = /(^|\.)(google|bing|yahoo|duckduckgo|baidu|yandex)\./;
 
     if (explicitSource) {
-      const aiMatch = aiSources.find(({ pattern }) => pattern.test(explicitSource));
+      const normalizedSource = explicitSource.replace(/^www\./, "").replace(/\/$/, "");
+      const aiMatch = aiSources.find(({ hosts, campaigns }) => [...hosts, ...campaigns].includes(normalizedSource));
       return {
         discoveryChannel: aiMatch ? "ai-search" : "campaign",
         discoverySource: aiMatch?.source || explicitSource,
@@ -482,7 +484,7 @@
       // An empty or malformed referrer is treated as direct traffic.
     }
 
-    const aiMatch = aiSources.find(({ pattern }) => pattern.test(referrerHost));
+    const aiMatch = aiSources.find(({ hosts }) => hosts.some((host) => matchesHost(referrerHost, host)));
     if (aiMatch) return { discoveryChannel: "ai-search", discoverySource: aiMatch.source };
     if (searchHosts.test(referrerHost)) return { discoveryChannel: "organic-search", discoverySource: referrerHost };
     if (referrerHost) return { discoveryChannel: "referral", discoverySource: referrerHost };

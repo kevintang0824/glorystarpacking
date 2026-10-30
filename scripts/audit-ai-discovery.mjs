@@ -113,6 +113,8 @@ const supplierPaths = [
   "/collapsible-rigid-boxes.html",
   "/lid-and-base-boxes.html",
   "/custom-clear-labels.html",
+  "/box-labels.html",
+  "/custom-waterproof-labels.html",
 ];
 for (const supplierPath of supplierPaths) {
   try {
