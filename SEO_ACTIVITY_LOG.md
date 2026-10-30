@@ -975,3 +975,5 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 酒标、压纹烫金标签、吊牌、印刷薄页纸 4 个产品页补供应商、厦门所在地、公司事实来源和项目报价条件。各页增加具体输入：酒瓶冷湿试验、装饰标签工艺定位、吊牌 SKU/附件/数据版本、薄页纸尺寸与包数；引导美国和加拿大买家填写邮编、收货地点及到货日期。未套用纸盒 MOQ/交期。
 - llms.txt 的条件边界同步纠正，不将该文件当作 Google AI 展示保证。AI discovery audit 扩展为 23 个公司事实来源页面，并增加成本指南的条件范围及文章索引检查；所有 5 页及 5 种语言、Sitemap/图片 Sitemap/RSS 同步。
 - 发布前站点与多语言校验、FAQ/JSON-LD 一致性、Quote API、服务健康、语法、Sitemap/RSS、本地发现性审计及 5 URL IndexNow dry run 已通过。未发送真实询盘，没有将同日优化记录为新增 AI 展示、推荐或询盘结果。上线验收另记。
+
+- Production verification: source `64d0c7c4` deployed READY as `dpl_GnsKPwRGgKup8geTMqdB35AVxgwK`. Production service configuration, the 23-page supplier-source audit, and the new paper-box MOQ-scope check passed. IndexNow verified the release and accepted 5 URLs with HTTP 200; image Sitemap, RSS, and llms.txt hashes match local. Browser confirmed the corrected ordering scope on the canonical domain. GSC returned sitemap submission success. No live test inquiry was sent and no traffic or inquiry growth is claimed for this release.
