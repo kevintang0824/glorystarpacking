@@ -965,3 +965,5 @@ Vercel 生产环境缺少完整的 Resend 邮件配置。需要在 Vercel 项目
 - 标签总页新增按透明外观、环境暴露、酒瓶冷湿场景、装饰工艺选择报价入口的对比表；每行列出报价输入并直达对应产品表单。浏览器确认耐水标签入口到达正确页面并预选 Custom waterproof labels。
 - 标签总页和耐水标签页补齐公司所在地、公司事实来源、项目报价条件和具体选型输入，北美配送信息明确引导使用表单的选填项。标签 MOQ/交期保持按项目确认，不套用纸盒条件。
 - 共享脚本、5 种语言、Sitemap/图片 Sitemap/RSS 同步；公司来源审计扩展至 19 页。本轮测试覆盖来源识别、原询盘接口、配送与纸管衔接、移动导航、语言运行时及发现入口，不发送真实询盘。原 Google AI 展示基线未重读或计作本轮增长。发布验收另记。
+
+- Production verification: source `4e697909` deployed READY at `glorystarpacking-c1tpgcsgj-glorystarpack-s-projects.vercel.app`. All 87 public-page shell and script versions match local; production service configuration and 19-page supplier-source discovery audit passed. IndexNow verified the release and accepted 3 priority URLs with HTTP 200. Production image Sitemap and RSS match local hashes. Browser confirmed the four label quote routes; GSC returned sitemap submission success. No live test inquiry was submitted and no new traffic or lead growth is claimed.
