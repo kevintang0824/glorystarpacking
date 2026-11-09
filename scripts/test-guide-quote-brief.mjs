@@ -97,6 +97,10 @@ for (const route of routes) {
   assert.equal(existing.events()[0][2].action, "kept_existing");
   const shortField = page(route.target, targetUrl, { storage: new Map([[key, saved]]), maxlength: "30" });
   assert.equal(shortField.document.querySelector('[name="details"]').value, "", "Do not truncate a planning boundary");
+  const injectedQuantity = JSON.parse(saved);
+  injectedQuantity.values.requestedQuantity = 777;
+  const ignoredQuantity = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(injectedQuantity)]]) });
+  assert.equal(ignoredQuantity.document.querySelector('[name="quantity"]').value, "", "Only routes declaring an order quantity may populate it");
 
   const valid = JSON.parse(saved);
   for (const invalid of [
@@ -166,4 +170,98 @@ for (const route of routes) {
     assert.ok(body.indexOf('src="assets/analytics.js') < body.indexOf('src="assets/guide-quote-brief.js'), "Analytics listener loads before the import event");
   }
 }
-console.log("Guide quote briefs passed: both routes, current inputs, expiry, tamper checks, non-overwrite, bounded fields, locale paths/copy, attribution, consent-safe analytics and fallbacks. No inquiry was submitted.");
+const briefRoutes = [
+  { id: "rigid-box-brief-v1", source: "rigid-box-cost-drivers.html", target: "custom-rigid-boxes.html", choice: "structure", choiceValue: "Drawer box", calculator: "rigid_box_quote_brief" },
+  { id: "mailer-box-brief-v1", source: "ecommerce-mailer-box-sizing-transit-test.html", target: "custom-mailer-boxes.html", choice: "printCoverage", choiceValue: "Inside and outside printing", calculator: "mailer_box_quote_brief" },
+  { id: "insert-material-brief-v1", source: "packaging-inserts-material-comparison.html", target: "custom-packaging-inserts.html", choice: "materialFirst", choiceValue: "Molded pulp", calculator: "insert_material_quote_brief" },
+];
+const importMessage = "Planning inputs added to your project details. Review your brief and order quantity before sending.";
+for (const route of briefRoutes) {
+  const key = keyFor(route.id);
+  const targetUrl = `/${route.target}?planning=${route.id}#quote`;
+  const blank = page(route.source, `/${route.source}`);
+  assert.equal(blank.document.querySelector('[data-guide-brief-status]').textContent.trim(), "", "Do not show errors before any input");
+  blank.click('[data-guide-brief-send]');
+  assert.equal(blank.navigations.length, 0, "An empty brief cannot be carried over");
+  const buyerText = "Sample kit <b>matte</b> & refill";
+  const inputs = { productSummary: buyerText, productSize: "180 × 90 × 30 mm", requestedQuantity: "1200", projectNotes: "Protect the finish\nAllow easy removal" };
+  const source = page(route.source, `/${route.source}`, { prefill: inputs });
+  assert.equal(source.document.querySelector('[data-guide-brief-fields]').disabled, false);
+  const choose = source.document.querySelector(`[name="${route.choice}"]`);
+  choose.querySelector(`option[value="${route.choiceValue}"]`).selected = true;
+  source.click('[data-guide-brief-send]');
+  assert.deepEqual(source.navigations, [`https://glorystarpacking.com${targetUrl}`]);
+  const saved = source.storage.get(key);
+  const draft = JSON.parse(saved);
+  assert.equal(draft.values.projectNotes, "Protect the finish Allow easy removal");
+  assert.equal(draft.values[route.choice], route.choiceValue);
+  assert.equal(source.events()[0][2].calculator_name, route.calculator);
+  const target = page(route.target, targetUrl, { storage: source.storage });
+  const details = target.document.querySelector('[name="details"]');
+  assert.ok(details.value.includes(buyerText), "Buyer text must remain plain text");
+  assert.ok(details.value.includes(route.choiceValue));
+  assert.equal(target.document.querySelector('[name="quantity"]').value, "1200");
+  assert.equal(target.document.querySelector('[name="dimensions"]').value, "", "Product measurements must not become packaging size");
+  assert.equal(target.document.querySelector('[data-guide-brief-status]').textContent, importMessage);
+  assert.equal(target.storage.has(key), false);
+  assert.equal(target.events()[0][2].action, 'imported');
+  assert.deepEqual(Object.keys(target.events()[0][2]).sort(), ["action", "calculator_name", "page_path", "send_to"]);
+  assert.equal(target.window.dataLayer.some(args => args[1] === "generate_lead"), false);
+
+  const minimal = page(route.source, `/${route.source}`, { prefill: { productSummary: 'One gift set' } });
+  minimal.document.querySelector('[data-quote-brief-builder]').dispatchEvent(new minimal.window.Event('submit', { cancelable: true }));
+  assert.equal(minimal.navigations.length, 1, "A form submit event uses the same local handoff");
+  assert.equal(JSON.parse(minimal.storage.get(key)).values.requestedQuantity, null, "Blank optional numbers must not become zero");
+  const minimalTarget = page(route.target, targetUrl, { storage: minimal.storage });
+  assert.equal(minimalTarget.document.querySelector('[name="quantity"]').value, "");
+  assert.ok(!minimalTarget.document.querySelector('[name="details"]').value.includes('undefined'));
+  const existing = page(route.target, targetUrl, { storage: new Map([[key, saved]]), prefill: { details: 'Existing project', quantity: '5000' } });
+  assert.equal(existing.document.querySelector('[name="details"]').value, 'Existing project');
+  assert.equal(existing.document.querySelector('[name="quantity"]').value, '5000');
+  assert.equal(existing.events()[0][2].action, 'kept_existing');
+  const existingQuantity = page(route.target, targetUrl, { storage: new Map([[key, saved]]), prefill: { quantity: '7000' } });
+  assert.equal(existingQuantity.document.querySelector('[name="quantity"]').value, '7000');
+
+  for (const values of [
+    { ...draft.values, [route.choice]: 'Unlisted option' },
+    { ...draft.values, productSummary: '' },
+    { ...draft.values, productSummary: 'x'.repeat(181) },
+    { ...draft.values, productSummary: 'line\nbreak' },
+    { ...draft.values, projectNotes: 'x'.repeat(401) },
+    { ...draft.values, requestedQuantity: -1 },
+    { ...draft.values, requestedQuantity: 1.5 },
+    { ...draft.values, requestedQuantity: '1200' },
+  ]) {
+    const rejected = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify({ ...draft, values })]]) });
+    assert.equal(rejected.document.querySelector('[name="details"]').value, '');
+    assert.equal(rejected.document.querySelector('[name="quantity"]').value, '');
+  }
+  const expired = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify({ ...draft, createdAt: Date.now() - 31 * 60000 })]]) });
+  assert.match(expired.document.querySelector('[data-guide-brief-status]').textContent, /expired/);
+  const fallback = page(route.source, `/${route.source}`, { prefill: inputs, blockStorage: true, noClipboard: true });
+  fallback.click('[data-guide-brief-send]');
+  assert.equal(fallback.navigations.length, 0);
+  assert.equal(fallback.document.querySelector('[data-guide-brief-preview]').open, true);
+  fallback.click('[data-guide-brief-copy]');
+  await Promise.resolve();
+  assert.equal(fallback.document.querySelector('[data-guide-brief-text]').dataset.selected, 'true');
+  const denied = page(route.source, `/${route.source}`, { prefill: inputs, consent: 'denied' });
+  denied.click('[data-guide-brief-send]');
+  assert.equal(denied.events().length, 0);
+  for (const language of ['fr', 'es', 'pt', 'ru', 'zh-CN']) {
+    const localized = page(`${language}/${route.source}`, `/${language}/${route.source}`, { prefill: inputs });
+    localized.click('[data-guide-brief-send]');
+    assert.deepEqual(localized.navigations, [`https://glorystarpacking.com/${language}/${route.target}?planning=${route.id}#quote`]);
+    const translated = page(`${language}/${route.target}`, `/${language}/${route.target}?planning=${route.id}#quote`, { storage: localized.storage });
+    const dictionary = JSON.parse(fs.readFileSync(`translations/${language}.json`, 'utf8'));
+    assert.equal(translated.document.querySelector('[data-guide-brief-status]').textContent, dictionary[importMessage]);
+    assert.ok(translated.document.querySelector('[name="details"]').value.includes(`${dictionary['Product or set to pack']}: ${buyerText}`));
+    assert.ok(translated.document.querySelector('[name="details"]').value.includes(dictionary['Please advise']));
+    assert.equal(translated.document.querySelector('[name="quantity"]').value, '1200');
+  }
+  const markup = parseHTML(fs.readFileSync(route.source, 'utf8')).document;
+  assert.equal(markup.querySelector('[data-guide-brief-fields]').hidden, true);
+  assert.ok(markup.querySelector('[data-guide-brief-fields]').hasAttribute('disabled'), 'Without JavaScript, a draft cannot submit inputs through a GET URL');
+  assert.ok(markup.querySelector(`[data-guide-brief] a[href="${route.target}#quote"]`));
+}
+console.log("All five core guide-to-quote routes passed: current inputs, optional fields, choices, safe text, explicit quantities, non-overwrite, expiry, locale paths/copy, attribution, analytics consent and fallbacks. No inquiry was submitted.");

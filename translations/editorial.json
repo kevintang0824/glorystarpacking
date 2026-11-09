@@ -1384,5 +1384,271 @@
     "Momentos de observação",
     "Число моментов наблюдения",
     "观察时间点数量"
+  ],
+  "Rigid box quotation brief": [
+    "Descriptif pour un devis de boîte rigide",
+    "Resumen para cotizar una caja rígida",
+    "Resumo para orçamento de caixa rígida",
+    "Описание для расчёта жёсткой коробки",
+    "硬盒询价需求"
+  ],
+  "Mailer box quotation brief": [
+    "Descriptif pour un devis de boîte d’expédition",
+    "Resumen para cotizar una caja de envío",
+    "Resumo para orçamento de caixa de envio",
+    "Описание для расчёта почтовой коробки",
+    "邮寄盒询价需求"
+  ],
+  "Packaging insert material comparison brief": [
+    "Descriptif pour comparer les matériaux de calage",
+    "Resumen para comparar materiales de insertos",
+    "Resumo para comparar materiais de berços",
+    "Описание для сравнения материалов ложемента",
+    "包装内托材料对比需求"
+  ],
+  "Product or set to pack": [
+    "Produit ou ensemble à emballer",
+    "Producto o conjunto que se va a embalar",
+    "Produto ou conjunto a embalar",
+    "Изделие или набор для упаковки",
+    "需要包装的产品或套装"
+  ],
+  "Product dimensions and units, if known": [
+    "Dimensions du produit et unité, si connues",
+    "Dimensiones del producto y unidades, si se conocen",
+    "Dimensões do produto e unidades, se conhecidas",
+    "Размеры изделия и единицы измерения, если известны",
+    "产品尺寸及单位（如已知）"
+  ],
+  "Preferred rigid box structure": [
+    "Structure de boîte rigide souhaitée",
+    "Estructura de caja rígida preferida",
+    "Estrutura de caixa rígida preferida",
+    "Предпочтительная конструкция жёсткой коробки",
+    "倾向的硬盒结构"
+  ],
+  "Requested quantity per design": [
+    "Quantité souhaitée par modèle",
+    "Cantidad solicitada por diseño",
+    "Quantidade solicitada por modelo",
+    "Требуемое количество на каждый дизайн",
+    "每款设计的需求数量"
+  ],
+  "Insert and finishing requirements": [
+    "Exigences de calage et de finition",
+    "Requisitos de inserto y acabados",
+    "Requisitos de berço e acabamento",
+    "Требования к ложементу и отделке",
+    "内托及表面工艺要求"
+  ],
+  "Packed shipment weight (kg), if known": [
+    "Poids du colis chargé (kg), si connu",
+    "Peso del paquete completo (kg), si se conoce",
+    "Peso da embalagem carregada (kg), se conhecido",
+    "Масса упакованной посылки (кг), если известна",
+    "装箱后的包裹重量（千克，如已知）"
+  ],
+  "Mailer print coverage": [
+    "Zones imprimées de la boîte d’expédition",
+    "Zonas de impresión de la caja de envío",
+    "Áreas de impressão da caixa de envio",
+    "Зоны печати почтовой коробки",
+    "邮寄盒印刷范围"
+  ],
+  "Outside printing only": [
+    "Impression extérieure uniquement",
+    "Impresión solo en el exterior",
+    "Impressão somente externa",
+    "Печать только снаружи",
+    "仅外侧印刷"
+  ],
+  "Inside and outside printing": [
+    "Impression intérieure et extérieure",
+    "Impresión interior y exterior",
+    "Impressão interna e externa",
+    "Печать внутри и снаружи",
+    "内外侧印刷"
+  ],
+  "Unprinted mailer": [
+    "Boîte d’expédition sans impression",
+    "Caja de envío sin impresión",
+    "Caixa de envio sem impressão",
+    "Почтовая коробка без печати",
+    "不印刷的邮寄盒"
+  ],
+  "Closure, protection and shipping requirements": [
+    "Exigences de fermeture, protection et expédition",
+    "Requisitos de cierre, protección y envío",
+    "Requisitos de fechamento, proteção e envio",
+    "Требования к закрытию, защите и доставке",
+    "闭合、保护及运输要求"
+  ],
+  "Outer box inside dimensions and units, if known": [
+    "Dimensions intérieures de la boîte extérieure et unité, si connues",
+    "Dimensiones interiores de la caja exterior y unidades, si se conocen",
+    "Dimensões internas da caixa externa e unidades, se conhecidas",
+    "Внутренние размеры внешней коробки и единицы измерения, если известны",
+    "外盒内部尺寸及单位（如已知）"
+  ],
+  "First material to evaluate": [
+    "Premier matériau à évaluer",
+    "Primer material que se evaluará",
+    "Primeiro material a avaliar",
+    "Первый материал для оценки",
+    "优先评估的材料"
+  ],
+  "Second material to compare": [
+    "Second matériau à comparer",
+    "Segundo material que se comparará",
+    "Segundo material a comparar",
+    "Второй материал для сравнения",
+    "希望对比的另一种材料"
+  ],
+  "Product weight, fragile areas and removal needs": [
+    "Poids du produit, zones fragiles et besoins de retrait",
+    "Peso del producto, zonas frágiles y requisitos de extracción",
+    "Peso do produto, áreas frágeis e necessidades de retirada",
+    "Масса изделия, хрупкие участки и требования к извлечению",
+    "产品重量、易损部位及取出要求"
+  ],
+  "Please advise": [
+    "À conseiller",
+    "Solicito asesoramiento",
+    "Solicito orientação",
+    "Нужна рекомендация",
+    "请协助建议"
+  ],
+  "Lid-and-base box": [
+    "Boîte à couvercle séparé",
+    "Caja con tapa y base",
+    "Caixa com tampa e base",
+    "Коробка «крышка-дно»",
+    "天地盖盒"
+  ],
+  "From guide to quotation": [
+    "Du guide au devis",
+    "De la guía al presupuesto",
+    "Do guia ao orçamento",
+    "От руководства к расчёту",
+    "从指南到询价"
+  ],
+  "Project requirements": [
+    "Exigences du projet",
+    "Requisitos del proyecto",
+    "Requisitos do projeto",
+    "Требования к проекту",
+    "项目要求"
+  ],
+  "Prepare my quote brief": [
+    "Préparer ma demande de devis",
+    "Preparar mi solicitud de presupuesto",
+    "Preparar meu pedido de orçamento",
+    "Подготовить запрос на расчёт",
+    "整理我的询价需求"
+  ],
+  "Prepare a quote brief in the guide": [
+    "Préparer une demande de devis dans le guide",
+    "Preparar una solicitud de presupuesto en la guía",
+    "Preparar um pedido de orçamento no guia",
+    "Подготовить запрос в руководстве",
+    "在指南中整理询价需求"
+  ],
+  "Open the product quote form": [
+    "Ouvrir le formulaire de devis du produit",
+    "Abrir el formulario de presupuesto del producto",
+    "Abrir o formulário de orçamento do produto",
+    "Открыть форму запроса по продукту",
+    "打开产品询盘表单"
+  ],
+  "Describe the product first. Add the specifications you know; only the product description is required. Contact and delivery details come next on the product quote form.": [
+    "Décrivez d’abord le produit. Ajoutez les spécifications connues ; seule la description du produit est obligatoire. Les coordonnées et les informations de livraison seront demandées ensuite dans le formulaire de devis.",
+    "Primero describe el producto. Añade las especificaciones que conozcas; solo la descripción del producto es obligatoria. Después podrás indicar tus datos de contacto y entrega en el formulario de presupuesto.",
+    "Descreva primeiro o produto. Adicione as especificações que souber; somente a descrição do produto é obrigatória. Os dados de contato e entrega serão solicitados em seguida no formulário de orçamento.",
+    "Сначала опишите изделие. Добавьте известные характеристики; обязательно только описание изделия. Контактные данные и сведения о доставке можно указать далее в форме запроса.",
+    "先描述产品，再补充已知规格；只有产品描述是必填项。联系方式和收货信息可在下一步的产品询盘表单中填写。"
+  ],
+  "Review your brief before continuing. Nothing is sent until you submit the product quote form.": [
+    "Vérifiez votre descriptif avant de continuer. Rien n’est envoyé avant la soumission du formulaire de devis du produit.",
+    "Revisa el resumen antes de continuar. No se enviará nada hasta que envíes el formulario de presupuesto del producto.",
+    "Revise o resumo antes de continuar. Nada será enviado até você enviar o formulário de orçamento do produto.",
+    "Проверьте описание перед продолжением. Данные будут отправлены только после отправки формы запроса по продукту.",
+    "继续前请检查需求说明。只有提交产品询盘表单后，需求才会发送。"
+  ],
+  "Planning inputs added to your project details. Review your brief and order quantity before sending.": [
+    "Les données ont été ajoutées aux détails du projet. Vérifiez le descriptif et la quantité commandée avant l’envoi.",
+    "Los datos se añadieron a los detalles del proyecto. Revisa el resumen y la cantidad del pedido antes de enviar.",
+    "Os dados foram adicionados aos detalhes do projeto. Revise o resumo e a quantidade do pedido antes de enviar.",
+    "Данные добавлены в описание проекта. Проверьте описание и объём заказа перед отправкой.",
+    "规划参数已加入项目详情。发送前请核对需求说明和订单数量。"
+  ],
+  "Buyer requirements for quotation only. Confirm finished dimensions, construction, insert, decoration, packing and sample approval before production.": [
+    "Exigences de l’acheteur pour devis uniquement. Confirmez les dimensions finies, la construction, le calage, la décoration, le conditionnement et l’approbation de l’échantillon avant production.",
+    "Son requisitos del comprador solo para cotización. Confirma las dimensiones finales, construcción, inserto, decoración, embalaje y aprobación de muestras antes de producir.",
+    "São requisitos do comprador somente para orçamento. Confirme dimensões finais, construção, berço, decoração, acondicionamento e aprovação da amostra antes da produção.",
+    "Требования покупателя только для расчёта стоимости. До производства согласуйте конечные размеры, конструкцию, ложемент, отделку, упаковку для перевозки и утверждение образца.",
+    "仅为买家用于询价的需求。生产前须确认成品尺寸、结构、内托、装饰工艺、装箱方式及样品审批。"
+  ],
+  "Buyer requirements for quotation only. Product size is not finished mailer size. Confirm board, closure, loaded samples, final outside dimensions and agreed transit tests before production.": [
+    "Exigences de l’acheteur pour devis uniquement. Les dimensions du produit ne sont pas celles de la boîte finie. Confirmez le carton, la fermeture, les échantillons chargés, les dimensions extérieures finales et les essais de transport convenus avant production.",
+    "Son requisitos del comprador solo para cotización. El tamaño del producto no es el de la caja terminada. Confirma el cartón, cierre, muestras cargadas, dimensiones exteriores finales y pruebas de transporte acordadas antes de producir.",
+    "São requisitos do comprador somente para orçamento. O tamanho do produto não é o da caixa pronta. Confirme papelão, fechamento, amostras carregadas, dimensões externas finais e testes de transporte acordados antes da produção.",
+    "Требования покупателя только для расчёта стоимости. Размер изделия не является размером готовой коробки. До производства согласуйте картон, закрытие, образцы с изделием, конечные наружные размеры и транспортные испытания.",
+    "仅为买家用于询价的需求。产品尺寸不等于成品邮寄盒尺寸。生产前须确认纸板、闭合方式、实物装箱样品、最终外尺寸和约定的运输测试。"
+  ],
+  "Buyer requirements for material comparison only. Material preferences do not approve fit or protection. Confirm contact areas, retention, removal, outer box and physical samples before production.": [
+    "Exigences de l’acheteur pour comparaison des matériaux uniquement. Les préférences de matériau ne valident ni l’ajustement ni la protection. Confirmez les zones de contact, le maintien, le retrait, la boîte extérieure et les échantillons physiques avant production.",
+    "Son requisitos del comprador solo para comparar materiales. Las preferencias de material no aprueban el ajuste ni la protección. Confirma zonas de contacto, retención, extracción, caja exterior y muestras físicas antes de producir.",
+    "São requisitos do comprador somente para comparar materiais. As preferências de material não aprovam o encaixe ou a proteção. Confirme áreas de contato, retenção, retirada, caixa externa e amostras físicas antes da produção.",
+    "Требования покупателя только для сравнения материалов. Предпочтения по материалу не подтверждают посадку или защиту. До производства согласуйте зоны контакта, удержание, извлечение, внешнюю коробку и физические образцы.",
+    "仅为买家用于材料对比的需求。材料偏好不代表适配或保护性能已获认可。生产前须确认接触区域、固定方式、取出方式、外盒和实物样品。"
+  ],
+  "Magnetic rigid box": [
+    "Boîte rigide à fermeture magnétique",
+    "Caja rígida con cierre magnético",
+    "Caixa rígida com fechamento magnético",
+    "Жёсткая коробка с магнитным закрытием",
+    "磁吸硬盒"
+  ],
+  "Drawer box": [
+    "Boîte à tiroir",
+    "Caja tipo cajón",
+    "Caixa de gaveta",
+    "Коробка с выдвижным лотком",
+    "抽屉盒"
+  ],
+  "Collapsible rigid box": [
+    "Boîte rigide pliable",
+    "Caja rígida plegable",
+    "Caixa rígida dobrável",
+    "Складная жёсткая коробка",
+    "可折叠硬盒"
+  ],
+  "Die-cut paperboard": [
+    "Carton découpé à l’emporte-pièce",
+    "Cartón troquelado",
+    "Papel-cartão com corte e vinco",
+    "Высечной картон",
+    "模切纸板"
+  ],
+  "Molded pulp": [
+    "Pâte à papier moulée",
+    "Pulpa moldeada",
+    "Polpa moldada",
+    "Формованная бумажная масса",
+    "纸浆模塑"
+  ],
+  "EVA foam": [
+    "Mousse EVA",
+    "Espuma EVA",
+    "Espuma EVA",
+    "Пена EVA",
+    "EVA 泡棉"
+  ],
+  "EPE foam": [
+    "Mousse EPE",
+    "Espuma EPE",
+    "Espuma EPE",
+    "Пена EPE",
+    "EPE 泡棉"
   ]
 }

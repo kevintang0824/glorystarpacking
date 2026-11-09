@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-09",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "1111d628eaf2646c6ee3aaae9b8ecc6de929ae3b",
+  "routes": [
+    {
+      "guide": "rigid-box-cost-drivers.html#quote-brief",
+      "product": "custom-rigid-boxes.html#quote",
+      "handoff": "rigid_box_quote_brief",
+      "fields": [
+        "product",
+        "dimensions with units",
+        "structure",
+        "quantity per design",
+        "insert and finishing"
+      ]
+    },
+    {
+      "guide": "ecommerce-mailer-box-sizing-transit-test.html#quote-brief",
+      "product": "custom-mailer-boxes.html#quote",
+      "handoff": "mailer_box_quote_brief",
+      "fields": [
+        "product",
+        "dimensions with units",
+        "packed weight in kg",
+        "print coverage",
+        "quantity per design",
+        "closure/protection/shipping"
+      ]
+    },
+    {
+      "guide": "packaging-inserts-material-comparison.html#quote-brief",
+      "product": "custom-packaging-inserts.html#quote",
+      "handoff": "insert_material_quote_brief",
+      "fields": [
+        "product",
+        "product size with units",
+        "outer box inside size with units",
+        "first material",
+        "second material",
+        "quantity per design",
+        "weight/fragile areas/removal"
+      ]
+    }
+  ],
+  "behavior": [
+    "Only product description is mandatory on the guide; unspecified dimensions and quantities remain blank",
+    "Explicit buyer action creates a single-use, 30-minute draft for the matching product/language",
+    "Order quantity fills an empty quantity field when the brief can be imported; existing entries are retained",
+    "Measurements and material choices stay in editable project details and do not become approved specifications",
+    "No-JavaScript mode has a direct product quote link; draft fields stay disabled and hidden",
+    "Storage or clipboard denial keeps a copyable plain-text brief",
+    "Consent-aware handoff events contain only allowlisted calculator/action labels; no project text or measurements"
+  ],
+  "language_updates": "Added 31 strings across five languages and corrected seven shared structure/material terms; existing locale review gates remain unchanged",
+  "validation": {
+    "site": "86 indexable pages and 1 non-indexable page passed",
+    "languages": "522 pages passed",
+    "build": "4677 public files and 2 API handlers source-current",
+    "tests": [
+      "all five core guide handoff routes",
+      "prior paper tube handoff",
+      "quote API",
+      "service health",
+      "language runtime",
+      "JavaScript syntax",
+      "AI discovery audit",
+      "IndexNow dry run for six URLs"
+    ],
+    "browser_local": [
+      "Rigid: drawer box, finishing note and 1200 units imported",
+      "390px mailer: 0.85 kg, both-side printing and 2000 units imported",
+      "Chinese insert: molded pulp vs EVA and 1500 units imported"
+    ]
+  },
+  "limitations": [
+    "No real inquiry was submitted; email inbox delivery has not been tested",
+    "Publishing and search submission do not prove new traffic, ranking improvements or AI recommendations"
+  ],
+  "release": "Live deployment and submissions will be recorded in the local release receipt after verification"
+}

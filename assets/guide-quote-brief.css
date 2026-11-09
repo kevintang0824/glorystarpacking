@@ -27,6 +27,30 @@
   min-height: 220px;
 }
 
+[data-guide-brief] .calculator-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
 [data-guide-brief-status]:empty {
   display: none;
+}
+
+[data-guide-brief-fields] {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+[data-guide-brief-fields][hidden] {
+  display: none;
+}
+
+.guide-brief__legend {
+  margin-bottom: 20px;
+  padding: 0;
+  font-weight: 600;
 }

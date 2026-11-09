@@ -302,7 +302,7 @@
 
   document.addEventListener("glorystarpack:guide-brief", (event) => {
     const { calculator, action } = event.detail || {};
-    if (!["perfume_bottle_insert_fit", "clear_label_applied_trial_matrix"].includes(calculator)) return;
+    if (!["perfume_bottle_insert_fit", "clear_label_applied_trial_matrix", "rigid_box_quote_brief", "mailer_box_quote_brief", "insert_material_quote_brief"].includes(calculator)) return;
     if (!["prepared", "imported", "kept_existing", "storage_unavailable", "unavailable", "copied", "manual_copy"].includes(action)) return;
     track("quote_planner_handoff", { calculator_name: calculator, action });
   });

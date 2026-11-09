@@ -1,5 +1,53 @@
 (() => {
   const definitions = {
+    "rigid-box-brief-v1": {
+      source: "rigid-box-cost-drivers.html",
+      target: "custom-rigid-boxes.html",
+      form: "rigid-box-brief-form",
+      calculator: "rigid_box_quote_brief",
+      title: "Rigid box quotation brief",
+      boundary: "Buyer requirements for quotation only. Confirm finished dimensions, construction, insert, decoration, packing and sample approval before production.",
+      fields: [
+        ["productSummary", "Product or set to pack", { type: "text", max: 180 }],
+        ["productSize", "Product dimensions and units, if known", { type: "text", max: 160, optional: true }],
+        ["structure", "Preferred rigid box structure", { type: "choice", choices: ["Please advise", "Magnetic rigid box", "Drawer box", "Lid-and-base box", "Collapsible rigid box"] }],
+        ["requestedQuantity", "Requested quantity per design", { type: "number", min: 1, integer: true, optional: true }],
+        ["projectNotes", "Insert and finishing requirements", { type: "text", max: 400, optional: true }],
+      ],
+    },
+    "mailer-box-brief-v1": {
+      source: "ecommerce-mailer-box-sizing-transit-test.html",
+      target: "custom-mailer-boxes.html",
+      form: "mailer-box-brief-form",
+      calculator: "mailer_box_quote_brief",
+      title: "Mailer box quotation brief",
+      boundary: "Buyer requirements for quotation only. Product size is not finished mailer size. Confirm board, closure, loaded samples, final outside dimensions and agreed transit tests before production.",
+      fields: [
+        ["productSummary", "Product or set to pack", { type: "text", max: 180 }],
+        ["productSize", "Product dimensions and units, if known", { type: "text", max: 160, optional: true }],
+        ["packedWeight", "Packed shipment weight (kg), if known", { type: "number", min: 0.001, optional: true }],
+        ["printCoverage", "Mailer print coverage", { type: "choice", choices: ["Please advise", "Outside printing only", "Inside and outside printing", "Unprinted mailer"] }],
+        ["requestedQuantity", "Requested quantity per design", { type: "number", min: 1, integer: true, optional: true }],
+        ["projectNotes", "Closure, protection and shipping requirements", { type: "text", max: 400, optional: true }],
+      ],
+    },
+    "insert-material-brief-v1": {
+      source: "packaging-inserts-material-comparison.html",
+      target: "custom-packaging-inserts.html",
+      form: "insert-material-brief-form",
+      calculator: "insert_material_quote_brief",
+      title: "Packaging insert material comparison brief",
+      boundary: "Buyer requirements for material comparison only. Material preferences do not approve fit or protection. Confirm contact areas, retention, removal, outer box and physical samples before production.",
+      fields: [
+        ["productSummary", "Product or set to pack", { type: "text", max: 180 }],
+        ["productSize", "Product dimensions and units, if known", { type: "text", max: 160, optional: true }],
+        ["boxInsideSize", "Outer box inside dimensions and units, if known", { type: "text", max: 160, optional: true }],
+        ["materialFirst", "First material to evaluate", { type: "choice", choices: ["Please advise", "Die-cut paperboard", "Molded pulp", "EVA foam", "EPE foam"] }],
+        ["materialSecond", "Second material to compare", { type: "choice", choices: ["Please advise", "Die-cut paperboard", "Molded pulp", "EVA foam", "EPE foam"] }],
+        ["requestedQuantity", "Requested quantity per design", { type: "number", min: 1, integer: true, optional: true }],
+        ["projectNotes", "Product weight, fragile areas and removal needs", { type: "text", max: 400, optional: true }],
+      ],
+    },
     "perfume-insert-v1": {
       source: "perfume-box-insert-checklist.html",
       target: "custom-perfume-boxes.html",
@@ -40,14 +88,24 @@
   const lifetime = 30 * 60 * 1000;
   const prefix = location.pathname.match(/^\/(fr|es|pt|ru|zh-CN)\//)?.[0] || "/";
   const keyFor = (id) => `glorystarpack-guide-brief-${id}`;
-  const validValues = (definition, values) => values && definition.fields.every(([name, , minimum, integer]) => {
-    const value = values[name];
-    return typeof value === "number" && Number.isFinite(value) && value >= minimum && value <= 10000000
-      && (!integer || Number.isSafeInteger(value));
+  const rulesFor = ([, , rules, integer]) => typeof rules === "object" ? rules : { type: "number", min: rules, integer };
+  const validValues = (definition, values) => values && definition.fields.every((field) => {
+    const value = values[field[0]];
+    const rules = rulesFor(field);
+    if (value === null && rules.optional) return true;
+    if (rules.type === "choice") return rules.choices.includes(value);
+    if (rules.type === "text") return typeof value === "string" && value.trim().length > 0
+      && value.length <= rules.max && !/[\u0000-\u001f\u007f]/.test(value);
+    return typeof value === "number" && Number.isFinite(value) && value >= rules.min && value <= 10000000
+      && (!rules.integer || Number.isSafeInteger(value));
   });
   const buildBrief = (definition, values) => [
     translate(definition.title),
-    ...definition.fields.map(([name, label]) => `${translate(label)}: ${values[name]}`),
+    ...definition.fields.filter(([name]) => values[name] !== null).map((field) => {
+      const [name, label] = field;
+      const value = rulesFor(field).type === "choice" ? translate(values[name]) : values[name];
+      return `${translate(label)}: ${value}`;
+    }),
     translate(definition.boundary),
     `https://glorystarpacking.com${prefix}${definition.source}`,
   ].join("\n");
@@ -81,9 +139,11 @@
     if (!panel || location.pathname !== `${prefix}${definition.source}`) continue;
     const button = panel.querySelector("[data-guide-brief-send]");
     const preview = panel.querySelector("[data-guide-brief-text]");
-    const readValues = () => Object.fromEntries(definition.fields.map(([name]) => {
-      const raw = form.querySelector(`[name="${name}"]`)?.value.trim();
-      return [name, raw ? Number(raw) : NaN];
+    const readValues = () => Object.fromEntries(definition.fields.map((field) => {
+      const [name] = field;
+      const rules = rulesFor(field);
+      const raw = (form.querySelector(`[name="${name}"]`)?.value || "").trim().replace(/\s+/g, " ");
+      return [name, !raw && rules.optional ? null : rules.type === "number" ? (raw ? Number(raw) : NaN) : raw];
     }));
     const refresh = () => {
       const values = readValues();
@@ -94,11 +154,21 @@
     };
     button.hidden = false;
     panel.querySelector("details").hidden = false;
-    refresh();
+    // Empty brief builders wait for buyer input; numeric calculators can preview their examples.
+    if (validValues(definition, readValues())) refresh();
     form.addEventListener("input", () => {
       setStatus(panel, "");
       refresh();
     });
+    if (form.hasAttribute("data-quote-brief-builder")) form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      button.click();
+    });
+    const fields = form.querySelector("[data-guide-brief-fields]");
+    if (fields) {
+      fields.disabled = false;
+      fields.hidden = false;
+    }
     bindCopy(panel, definition, () => form.reportValidity() && refresh());
     button.addEventListener("click", () => {
       if (!form.reportValidity() || !refresh()) return;
@@ -144,10 +214,19 @@
   const maximum = Number(details.getAttribute("maxlength")) || 3000;
   const canImport = !details.value.trim() && brief.length <= maximum;
   if (canImport) details.value = brief;
+  // Only an explicitly named order quantity can populate the quote quantity field.
+  // Keep all measurements and material preferences in the reviewable project brief.
+  const quantity = form.querySelector('[name="quantity"]');
+  const hasOrderQuantity = definition.fields.some(([name]) => name === "requestedQuantity");
+  if (canImport && hasOrderQuantity && saved.values.requestedQuantity != null && quantity && !quantity.value.trim()) {
+    quantity.value = String(saved.values.requestedQuantity);
+  }
   const optional = details.closest("details");
   if (optional) optional.open = true;
   setStatus(panel, canImport
-    ? "Planning inputs added to your project details. Review them and add your order quantity before sending."
+    ? hasOrderQuantity
+      ? "Planning inputs added to your project details. Review your brief and order quantity before sending."
+      : "Planning inputs added to your project details. Review them and add your order quantity before sending."
     : "Your existing project details were kept. Review or copy the planning inputs below to add them yourself.");
   emit(definition, canImport ? "imported" : "kept_existing");
 })();
