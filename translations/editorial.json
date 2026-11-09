@@ -1139,5 +1139,250 @@
     "Dados do seu projeto",
     "Ваш проект",
     "您的项目需求"
+  ],
+  "Use these inputs in my quote": [
+    "Utiliser ces données dans ma demande de devis",
+    "Usar estos datos en mi solicitud",
+    "Usar estes dados no meu pedido de orçamento",
+    "Использовать эти данные в запросе",
+    "将这些参数带入询盘"
+  ],
+  "Your planning inputs": [
+    "Vos données de planification",
+    "Tus datos de planificación",
+    "Seus dados de planejamento",
+    "Ваши исходные данные",
+    "你的规划参数"
+  ],
+  "Copy planning inputs": [
+    "Copier les données",
+    "Copiar datos de planificación",
+    "Copiar dados de planejamento",
+    "Скопировать исходные данные",
+    "复制规划参数"
+  ],
+  "Review or copy planning inputs": [
+    "Vérifier ou copier les données",
+    "Revisar o copiar los datos",
+    "Revisar ou copiar os dados",
+    "Проверить или скопировать данные",
+    "查看或复制规划参数"
+  ],
+  "Return to the planning guide": [
+    "Revenir au guide de planification",
+    "Volver a la guía de planificación",
+    "Voltar ao guia de planejamento",
+    "Вернуться к руководству",
+    "返回规划指南"
+  ],
+  "Open the perfume box quote form": [
+    "Ouvrir la demande de devis pour les boîtes de parfum",
+    "Abrir la solicitud para cajas de perfume",
+    "Abrir o pedido de orçamento para caixas de perfume",
+    "Открыть запрос на коробки для парфюмерии",
+    "打开香水盒询盘表单"
+  ],
+  "Open the clear-label quote form": [
+    "Ouvrir la demande de devis pour les étiquettes transparentes",
+    "Abrir la solicitud para etiquetas transparentes",
+    "Abrir o pedido de orçamento para etiquetas transparentes",
+    "Открыть запрос на прозрачные этикетки",
+    "打开透明标签询盘表单"
+  ],
+  "Replace the example values with your own inputs, then carry them into your quote. You can review and edit the brief before sending.": [
+    "Remplacez les exemples par vos propres données, puis transférez-les dans votre demande de devis. Vous pourrez vérifier et modifier le descriptif avant de l’envoyer.",
+    "Sustituye los valores de ejemplo por tus datos y pásalos a la solicitud. Podrás revisar y editar el resumen antes de enviarlo.",
+    "Substitua os exemplos pelos seus dados e transfira-os para o pedido de orçamento. Você poderá revisar e editar o resumo antes de enviar.",
+    "Замените примеры своими данными и перенесите их в запрос. Перед отправкой описание можно проверить и изменить.",
+    "请将示例数值改成自己的参数，再带入询盘。发送前可以检查并修改需求说明。"
+  ],
+  "Perfume insert planning inputs": [
+    "Données de planification du calage de parfum",
+    "Datos de planificación del inserto para perfume",
+    "Dados de planejamento do berço para perfume",
+    "Исходные данные ложемента для парфюмерии",
+    "香水内托规划参数"
+  ],
+  "Clear-label trial planning inputs": [
+    "Données de planification de l’essai d’étiquettes transparentes",
+    "Datos de planificación de la prueba de etiquetas transparentes",
+    "Dados de planejamento do teste de etiquetas transparentes",
+    "Исходные данные испытания прозрачных этикеток",
+    "透明标签试验规划参数"
+  ],
+  "Buyer-entered planning inputs only. Cavity dimensions are not finished box dimensions. Confirm bottle fit, support, removal and pump clearance with physical samples before production.": [
+    "Données de planification fournies par l’acheteur uniquement. Les dimensions de la cavité ne sont pas celles de la boîte finie. Confirmez l’ajustement, le maintien, le retrait du flacon et le dégagement de la pompe sur des échantillons physiques avant production.",
+    "Son solo datos de planificación del comprador. Las dimensiones de la cavidad no son las de la caja terminada. Antes de producir, confirma el ajuste, soporte, extracción del frasco y espacio de la bomba con muestras físicas.",
+    "São apenas dados de planejamento informados pelo comprador. As dimensões da cavidade não são as da caixa pronta. Confirme encaixe, apoio, retirada do frasco e folga da válvula com amostras físicas antes da produção.",
+    "Только исходные данные покупателя. Размеры полости не являются размерами готовой коробки. До производства проверьте посадку, опору, извлечение флакона и зазор над распылителем на физических образцах.",
+    "仅为买家输入的规划参数。内托腔体尺寸不等于成品盒尺寸。生产前须用实物样品确认瓶体适配、支撑、取出方式和泵头间隙。"
+  ],
+  "Buyer-defined trial only. These counts are not the production order quantity or an approved sampling plan. Confirm label size, artwork, container, acceptance criteria and production quantity separately.": [
+    "Essai défini par l’acheteur uniquement. Ces nombres ne constituent ni la quantité commandée pour la production ni un plan d’échantillonnage approuvé. Confirmez séparément le format de l’étiquette, le fichier, le contenant, les critères d’acceptation et la quantité de production.",
+    "Es solo una prueba definida por el comprador. Estos recuentos no son la cantidad del pedido de producción ni un plan de muestreo aprobado. Confirma por separado el tamaño de etiqueta, arte, envase, criterios de aceptación y cantidad de producción.",
+    "É apenas um teste definido pelo comprador. Estas contagens não são a quantidade do pedido de produção nem um plano de amostragem aprovado. Confirme separadamente o tamanho da etiqueta, arte, recipiente, critérios de aceitação e quantidade de produção.",
+    "Только испытание по плану покупателя. Эти количества не являются объёмом производственного заказа или утверждённым планом выборки. Отдельно согласуйте размер этикетки, макет, тару, критерии приёмки и тираж.",
+    "仅为买家自定的试验方案。这些数量不是生产订单数量，也不是已批准的抽样方案。请另行确认标签尺寸、稿件、容器、验收标准和生产数量。"
+  ],
+  "Unapplied setup / spare labels (%)": [
+    "Étiquettes non posées pour réglage / réserve (%)",
+    "Etiquetas sin aplicar para ajuste / reserva (%)",
+    "Etiquetas não aplicadas para ajuste / reserva (%)",
+    "Неиспользованные этикетки для настройки / запаса (%)",
+    "未贴附的调机／备用标签（%）"
+  ],
+  "Check all planner inputs before continuing.": [
+    "Vérifiez toutes les données du calculateur avant de continuer.",
+    "Revisa todos los datos del planificador antes de continuar.",
+    "Confira todos os dados do planejador antes de continuar.",
+    "Проверьте все данные калькулятора перед продолжением.",
+    "请先检查所有计算参数，再继续。"
+  ],
+  "Automatic transfer is unavailable. Copy these inputs, then open the quote form.": [
+    "Le transfert automatique est indisponible. Copiez ces données, puis ouvrez la demande de devis.",
+    "La transferencia automática no está disponible. Copia estos datos y abre la solicitud.",
+    "A transferência automática não está disponível. Copie estes dados e abra o formulário de orçamento.",
+    "Автоматический перенос недоступен. Скопируйте данные и откройте форму запроса.",
+    "自动传递暂不可用。请先复制这些参数，再打开询盘表单。"
+  ],
+  "Planning inputs copied. Paste them into your project details if needed.": [
+    "Données copiées. Collez-les dans les détails du projet si nécessaire.",
+    "Datos copiados. Pégalos en los detalles del proyecto si lo necesitas.",
+    "Dados copiados. Cole-os nos detalhes do projeto, se necessário.",
+    "Данные скопированы. При необходимости вставьте их в описание проекта.",
+    "规划参数已复制。可按需粘贴到项目详情中。"
+  ],
+  "Select and copy the planning inputs, then paste them into your project details.": [
+    "Sélectionnez et copiez les données, puis collez-les dans les détails du projet.",
+    "Selecciona y copia los datos y pégalos en los detalles del proyecto.",
+    "Selecione e copie os dados e cole-os nos detalhes do projeto.",
+    "Выделите и скопируйте данные, затем вставьте их в описание проекта.",
+    "请选择并复制规划参数，再粘贴到项目详情中。"
+  ],
+  "Saved planning inputs are unavailable or expired. Return to the guide or enter your project details below.": [
+    "Les données enregistrées sont indisponibles ou ont expiré. Revenez au guide ou saisissez les détails du projet ci-dessous.",
+    "Los datos guardados no están disponibles o han caducado. Vuelve a la guía o introduce los detalles del proyecto abajo.",
+    "Os dados salvos não estão disponíveis ou expiraram. Volte ao guia ou preencha os detalhes do projeto abaixo.",
+    "Сохранённые данные недоступны или устарели. Вернитесь к руководству или заполните описание проекта ниже.",
+    "已保存的规划参数不可用或已过期。请返回指南，或在下方填写项目详情。"
+  ],
+  "Planning inputs added to your project details. Review them and add your order quantity before sending.": [
+    "Les données ont été ajoutées aux détails du projet. Vérifiez-les et indiquez la quantité commandée avant l’envoi.",
+    "Los datos se añadieron a los detalles del proyecto. Revísalos e indica la cantidad del pedido antes de enviar.",
+    "Os dados foram adicionados aos detalhes do projeto. Revise-os e informe a quantidade do pedido antes de enviar.",
+    "Данные добавлены в описание проекта. Проверьте их и укажите объём заказа перед отправкой.",
+    "规划参数已加入项目详情。发送前请检查，并填写订单数量。"
+  ],
+  "Your existing project details were kept. Review or copy the planning inputs below to add them yourself.": [
+    "Vos détails existants ont été conservés. Vérifiez ou copiez les données ci-dessous pour les ajouter vous-même.",
+    "Se conservaron los detalles existentes. Revisa o copia los datos de abajo para añadirlos tú mismo.",
+    "Os detalhes existentes foram mantidos. Revise ou copie os dados abaixo para adicioná-los manualmente.",
+    "Ваше описание проекта сохранено. Проверьте или скопируйте данные ниже, чтобы добавить их самостоятельно.",
+    "已保留你填写的项目详情。可查看或复制下方规划参数，自行补充。"
+  ],
+  "Updated November 9, 2026": [
+    "Mis à jour le 9 novembre 2026",
+    "Actualizado el 9 de noviembre de 2026",
+    "Atualizado em 9 de novembro de 2026",
+    "Обновлено 9 ноября 2026 г.",
+    "更新于2026年11月9日"
+  ],
+  "Maximum bottle length (mm)": [
+    "Longueur maximale du flacon (mm)",
+    "Longitud máxima del frasco (mm)",
+    "Comprimento máximo do frasco (mm)",
+    "Максимальная длина флакона (мм)",
+    "瓶体最大长度（毫米）"
+  ],
+  "Maximum bottle width (mm)": [
+    "Largeur maximale du flacon (mm)",
+    "Ancho máximo del frasco (mm)",
+    "Largura máxima do frasco (mm)",
+    "Максимальная ширина флакона (мм)",
+    "瓶体最大宽度（毫米）"
+  ],
+  "Maximum assembled height (mm)": [
+    "Hauteur maximale du flacon assemblé (mm)",
+    "Altura máxima del frasco montado (mm)",
+    "Altura máxima do frasco montado (mm)",
+    "Максимальная высота флакона в сборе (мм)",
+    "组装后最大高度（毫米）"
+  ],
+  "Planning allowance per side (mm)": [
+    "Jeu prévu de chaque côté (mm)",
+    "Holgura prevista por lado (mm)",
+    "Folga prevista de cada lado (mm)",
+    "Планируемый зазор с каждой стороны (мм)",
+    "每侧预留间隙（毫米）"
+  ],
+  "Planning space below bottle (mm)": [
+    "Espace prévu sous le flacon (mm)",
+    "Espacio previsto bajo el frasco (mm)",
+    "Espaço previsto sob o frasco (mm)",
+    "Планируемое пространство под флаконом (мм)",
+    "瓶底下方预留空间（毫米）"
+  ],
+  "Planning no-contact space above (mm)": [
+    "Dégagement prévu au-dessus du flacon (mm)",
+    "Espacio libre previsto sobre el frasco (mm)",
+    "Espaço livre previsto acima do frasco (mm)",
+    "Планируемый свободный зазор над флаконом (мм)",
+    "顶部预留避让空间（毫米）"
+  ],
+  "Proposed cavity length (mm)": [
+    "Longueur proposée de la cavité (mm)",
+    "Longitud propuesta de la cavidad (mm)",
+    "Comprimento proposto da cavidade (mm)",
+    "Предлагаемая длина полости (мм)",
+    "拟定腔体长度（毫米）"
+  ],
+  "Proposed cavity width (mm)": [
+    "Largeur proposée de la cavité (mm)",
+    "Ancho propuesto de la cavidad (mm)",
+    "Largura proposta da cavidade (mm)",
+    "Предлагаемая ширина полости (мм)",
+    "拟定腔体宽度（毫米）"
+  ],
+  "Proposed usable cavity height (mm)": [
+    "Hauteur utile proposée de la cavité (mm)",
+    "Altura útil propuesta de la cavidad (mm)",
+    "Altura útil proposta da cavidade (mm)",
+    "Предлагаемая полезная высота полости (мм)",
+    "拟定腔体可用高度（毫米）"
+  ],
+  "Container / contents variants": [
+    "Variantes de contenant / contenu",
+    "Variantes de envase / contenido",
+    "Variantes de recipiente / conteúdo",
+    "Варианты тары / содержимого",
+    "容器／内容物组合种类"
+  ],
+  "White-ink treatments": [
+    "Options d’impression à l’encre blanche",
+    "Opciones de impresión con tinta blanca",
+    "Opções de impressão com tinta branca",
+    "Варианты печати белой краской",
+    "白墨印刷方案种类"
+  ],
+  "Application routes / settings": [
+    "Méthodes / réglages de pose",
+    "Métodos / ajustes de aplicación de etiquetas",
+    "Métodos / ajustes de aplicação das etiquetas",
+    "Способы / настройки нанесения этикеток",
+    "贴标方式／参数方案数"
+  ],
+  "Replicates per combination": [
+    "Échantillons répétés par combinaison",
+    "Muestras repetidas por combinación",
+    "Amostras repetidas por combinação",
+    "Число повторных образцов на комбинацию",
+    "每种组合的重复样本数"
+  ],
+  "Observation timepoints": [
+    "Points de mesure dans le temps",
+    "Momentos de observación",
+    "Momentos de observação",
+    "Число моментов наблюдения",
+    "观察时间点数量"
   ]
 }

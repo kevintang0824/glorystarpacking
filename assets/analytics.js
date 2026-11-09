@@ -300,6 +300,13 @@
   const importedTubeBrief = document.querySelector("[data-tube-quote][data-quote-planner-handoff]");
   if (importedTubeBrief) trackTubeHandoff(importedTubeBrief.dataset.quotePlannerHandoff);
 
+  document.addEventListener("glorystarpack:guide-brief", (event) => {
+    const { calculator, action } = event.detail || {};
+    if (!["perfume_bottle_insert_fit", "clear_label_applied_trial_matrix"].includes(calculator)) return;
+    if (!["prepared", "imported", "kept_existing", "storage_unavailable", "unavailable", "copied", "manual_copy"].includes(action)) return;
+    track("quote_planner_handoff", { calculator_name: calculator, action });
+  });
+
   document.querySelector("#paper-tube-size-planner")?.addEventListener("submit", () => {
     track("calculator_use", { calculator_name: "paper_tube_size_and_fit" });
   });

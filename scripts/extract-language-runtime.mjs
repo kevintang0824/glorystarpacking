@@ -14,7 +14,7 @@ function visit(node) {
     else if (value && typeof value === "object") visit(value);
   }
 }
-for (const file of ["assets/site.js", "assets/catalog.js", "assets/analytics.js", "api/quote.js"]) {
+for (const file of ["assets/site.js", "assets/catalog.js", "assets/analytics.js", "assets/guide-quote-brief.js", "api/quote.js"]) {
   visit(parse(fs.readFileSync(file, "utf8"), { ecmaVersion: "latest", sourceType: "script" }));
 }
 fs.mkdirSync("tmp/i18n", { recursive: true });

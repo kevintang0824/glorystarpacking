@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-09",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "6baa5dbaf7edcc2687da1e93ee2b40f1d819d8ac",
+  "scope": [
+    {
+      "guide": "perfume-box-insert-checklist.html",
+      "product": "custom-perfume-boxes.html",
+      "calculator": "perfume_bottle_insert_fit"
+    },
+    {
+      "guide": "clear-label-white-ink-artwork-guide.html",
+      "product": "custom-clear-labels.html",
+      "calculator": "clear_label_applied_trial_matrix"
+    }
+  ],
+  "changes": [
+    "Explicit current-input handoff to product inquiry, with editable details and copy fallback",
+    "Thirty-minute, single-use session drafts restricted to matching product and language",
+    "Preserves existing buyer entries and first-touch attribution; cavity dimensions and trial counts do not populate finished size or order quantity",
+    "Consent-aware quote_planner_handoff event reports only calculator/action and page path; no planning values",
+    "Five-language support plus corrected technical field translations",
+    "Article visible dates, Open Graph dates and schema dates synchronized; sitemap and RSS updated"
+  ],
+  "checks": {
+    "static_site": "86 indexable pages + 1 noindex page passed",
+    "languages": "522 pages passed; review-gated noindex retained",
+    "production_build": "4677 public files and 2 API handlers, source-current",
+    "regressions": [
+      "guide quote brief scenarios",
+      "paper tube handoff",
+      "quote API",
+      "service health",
+      "language runtime",
+      "JavaScript syntax",
+      "AI discovery audit",
+      "IndexNow dry run"
+    ],
+    "browser": [
+      "Perfume planner edited value transfers to product details",
+      "390px mobile clear-label preview and import",
+      "1280px Chinese perfume planner and import"
+    ]
+  },
+  "measurement": {
+    "event": "quote_planner_handoff",
+    "actions": [
+      "prepared",
+      "imported",
+      "kept_existing",
+      "storage_unavailable",
+      "unavailable",
+      "copied",
+      "manual_copy"
+    ],
+    "lead_event": "generate_lead remains reserved for successful inquiry API response",
+    "evaluation": "Compare per-guide visits, handoffs, successful inquiry submissions and manually qualified inquiries over a consistent future date window; no new traffic or conversion uplift claimed today."
+  },
+  "limitations": [
+    "No real inquiry email was sent; inbox delivery not verified by these tests.",
+    "Google indexing and AI recommendation outcomes are not guaranteed by publishing or submission.",
+    "Other untranslated or unreviewed locale content remains behind the existing indexing review gate."
+  ],
+  "release": "Production deployment and search submissions recorded separately in local release receipt after verification."
+}

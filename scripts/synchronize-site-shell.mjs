@@ -19,6 +19,8 @@ const assetVersions = {
   "assets/analytics.js": contentVersion("assets/analytics.js"),
   "assets/languages.css": contentVersion("assets/languages.css"),
   "assets/languages.js": contentVersion("assets/languages.js"),
+  "assets/guide-quote-brief.js": contentVersion("assets/guide-quote-brief.js"),
+  "assets/guide-quote-brief.css": contentVersion("assets/guide-quote-brief.css"),
 };
 const languages = [
   ["en", "English", "🇺🇸"], ["fr", "Français", "🇫🇷"],

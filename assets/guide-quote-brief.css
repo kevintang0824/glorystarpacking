@@ -1,0 +1,32 @@
+[data-guide-brief][hidden],
+[data-guide-brief] [hidden] {
+  display: none;
+}
+
+[data-guide-brief] {
+  margin-block: 20px;
+}
+
+[data-guide-brief] details {
+  margin-block: 14px;
+  padding: 16px;
+  border: 1px solid var(--line-light);
+  border-radius: 8px;
+}
+
+[data-guide-brief] summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+[data-guide-brief] details .field {
+  margin-top: 16px;
+}
+
+[data-guide-brief] textarea {
+  min-height: 220px;
+}
+
+[data-guide-brief-status]:empty {
+  display: none;
+}
