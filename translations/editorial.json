@@ -1650,5 +1650,313 @@
     "Espuma EPE",
     "Пена EPE",
     "EPE 泡棉"
+  ],
+  "About 7 working days for sample making; courier separately": [
+    "Environ 7 jours ouvrés pour fabriquer l’échantillon ; transport séparé",
+    "Unos 7 días laborables para fabricar la muestra; mensajería aparte",
+    "Cerca de 7 dias úteis para produzir a amostra; transporte separado",
+    "Около 7 рабочих дней на изготовление образца; доставка отдельно",
+    "打样约 7 个工作日；快递时间另计"
+  ],
+  "After physical review and any revisions": [
+    "Après examen physique et éventuelles révisions",
+    "Tras revisar la muestra física y realizar las revisiones",
+    "Após análise física e eventuais revisões",
+    "После проверки физического образца и доработок",
+    "实物审核及必要修改完成后"
+  ],
+  "Before sampling begins": [
+    "Avant le début de l’échantillonnage",
+    "Antes de iniciar las muestras",
+    "Antes de iniciar as amostras",
+    "До начала изготовления образцов",
+    "开始打样之前"
+  ],
+  "Build the dates from the delivery requirement. These milestones are a planning sequence, not a confirmed production or freight booking.": [
+    "Calculez les dates à partir de la livraison requise. Ces jalons décrivent une séquence de planification, pas une réservation de production ou de transport confirmée.",
+    "Calcule las fechas desde la entrega requerida. Estos hitos son una secuencia de planificación, no una reserva confirmada de producción o transporte.",
+    "Calcule as datas a partir da entrega necessária. Estes marcos são uma sequência de planejamento, não uma reserva confirmada de produção ou frete.",
+    "Рассчитайте даты от требуемой доставки. Это последовательность планирования, а не подтверждённое бронирование производства или перевозки.",
+    "从交付需求倒排日期。这些节点只是规划顺序，不代表已确认的生产排期或货运预订。"
+  ],
+  "Calculate your project schedule": [
+    "Calculer le calendrier du projet",
+    "Calcular el calendario del proyecto",
+    "Calcular o cronograma do projeto",
+    "Рассчитать график проекта",
+    "计算项目排期"
+  ],
+  "Check the calendar and the commercial dates separately.": [
+    "Vérifiez séparément le calendrier et les dates commerciales.",
+    "Verifique por separado el calendario y las fechas comerciales.",
+    "Verifique separadamente o calendário e as datas comerciais.",
+    "Проверяйте календарь и коммерческие сроки отдельно.",
+    "分别核实节日日期与实际业务排期。"
+  ],
+  "Chinese New Year falls on February 6, 2027, close to the expected start of Ramadan. Confirm factory closure and freight cutoffs separately; the delivery route may require dispatch earlier than January.": [
+    "Le Nouvel An chinois tombe le 6 février 2027, près du début prévu du Ramadan. Confirmez séparément les fermetures d’usine et les limites de transport ; l’itinéraire peut imposer un départ avant janvier.",
+    "El Año Nuevo chino cae el 6 de febrero de 2027, cerca del inicio previsto del Ramadán. Confirme por separado el cierre de fábrica y los límites de transporte; la ruta puede exigir un envío anterior a enero.",
+    "O Ano Novo Chinês será em 6 de fevereiro de 2027, próximo do início previsto do Ramadã. Confirme separadamente o fechamento da fábrica e os limites de transporte; a rota pode exigir expedição antes de janeiro.",
+    "Китайский Новый год наступит 6 февраля 2027 года, рядом с ожидаемым началом Рамадана. Отдельно подтвердите закрытие фабрики и сроки приёма груза: маршрут может потребовать отправки до января.",
+    "2027 年春节为 2 月 6 日，接近预计的斋月开始日。请分别确认工厂停工和物流截单时间；运输路线可能要求早于一月发货。"
+  ],
+  "Chinese New Year pickup and closure checklist": [
+    "Liste de contrôle des enlèvements et fermetures du Nouvel An chinois",
+    "Lista de recogidas y cierres del Año Nuevo chino",
+    "Lista de coletas e fechamentos do Ano Novo Chinês",
+    "Проверка вывоза и закрытия на Китайский Новый год",
+    "春节提货与停工核对清单"
+  ],
+  "Company and ordering facts": [
+    "Informations sur l’entreprise et les commandes",
+    "Datos de empresa y condiciones de pedido",
+    "Informações da empresa e condições de pedido",
+    "Сведения о компании и условиях заказа",
+    "公司与订购信息"
+  ],
+  "Confirm": [
+    "Confirmer",
+    "Confirmar",
+    "Confirmar",
+    "Уточнить",
+    "需确认"
+  ],
+  "Confirm the delivery window before setting artwork and production deadlines.": [
+    "Confirmez la période de livraison avant de fixer les échéances des fichiers et de production.",
+    "Confirme el plazo de entrega antes de fijar los límites de archivos y producción.",
+    "Confirme o prazo de entrega antes de definir os limites de arte e produção.",
+    "Подтвердите окно доставки до назначения сроков макета и производства.",
+    "先确认交付窗口，再设定稿件与生产截止日期。"
+  ],
+  "Confirm the schedule for calendar boxes, multiple inserts and special components separately.": [
+    "Confirmez séparément le calendrier des coffrets calendrier, des inserts multiples et des composants spéciaux.",
+    "Confirme por separado el plazo de cajas calendario, múltiples insertos y componentes especiales.",
+    "Confirme separadamente o cronograma de caixas calendário, múltiplos berços e componentes especiais.",
+    "Отдельно подтвердите сроки коробок-календарей, нескольких ложементов и специальных компонентов.",
+    "日历盒、多内托及特殊组件的排期需单独确认。"
+  ],
+  "Custom paper boxes: MOQ 1,000 per design; samples about 7 working days; bulk 25–35 working days after sample approval. Freight is separate. Other components and complex formats need a project-specific quote.": [
+    "Boîtes en papier sur mesure : minimum de 1 000 par modèle ; échantillons en environ 7 jours ouvrés ; production en 25–35 jours ouvrés après approbation. Transport séparé. Autres composants et formats complexes : devis spécifique.",
+    "Cajas de papel personalizadas: mínimo de 1.000 por diseño; muestras en unos 7 días laborables; producción en 25–35 días laborables tras aprobar la muestra. Transporte aparte. Otros componentes y formatos complejos requieren presupuesto específico.",
+    "Caixas de papel personalizadas: mínimo de 1.000 por design; amostras em cerca de 7 dias úteis; produção em 25–35 dias úteis após aprovação da amostra. Frete separado. Outros componentes e formatos complexos exigem orçamento específico.",
+    "Бумажные коробки на заказ: минимум 1 000 штук на дизайн; образцы около 7 рабочих дней; партия 25–35 рабочих дней после утверждения образца. Перевозка отдельно. Другие компоненты и сложные конструкции рассчитываются индивидуально.",
+    "定制纸盒每款起订 1,000 件；打样约 7 个工作日；样品批准后量产约 25–35 个工作日。运输另计，其他组件及复杂结构需按项目报价。"
+  ],
+  "Download the blank English CSV, record dates and assumptions with your supplier and forwarder, then paste the key milestones into your quote details. A blank field means unconfirmed; this worksheet does not reserve capacity or freight.": [
+    "Téléchargez le CSV vierge en anglais, renseignez les dates et hypothèses avec votre fournisseur et transitaire, puis collez les jalons clés dans votre demande. Un champ vide reste non confirmé ; cette feuille ne réserve ni capacité ni transport.",
+    "Descargue el CSV vacío en inglés, registre fechas y supuestos con su proveedor y transitario y pegue los hitos clave en la solicitud. Un campo vacío significa sin confirmar; la hoja no reserva capacidad ni transporte.",
+    "Baixe o CSV em inglês, preencha datas e premissas com o fornecedor e agente de cargas e cole os marcos principais no pedido de orçamento. Campo vazio significa não confirmado; a planilha não reserva capacidade nem frete.",
+    "Скачайте пустой CSV на английском, согласуйте даты и допущения с поставщиком и экспедитором, затем вставьте основные этапы в запрос цены. Пустое поле означает отсутствие подтверждения; таблица не бронирует мощности или перевозку.",
+    "下载英文空白 CSV，与供应商和货代填写日期及假设，再将关键节点粘贴到询价详情。空白项表示尚未确认；此表不预订产能或货运。"
+  ],
+  "Download the schedule worksheet": [
+    "Télécharger la feuille de calendrier",
+    "Descargar la hoja de planificación",
+    "Baixar a planilha de cronograma",
+    "Скачать таблицу графика",
+    "下载排期工作表"
+  ],
+  "February 8, 2027 is the first day in Muhammadiyah’s published calendar. Confirm local Ramadan and Eid dates with the relevant authority before setting a retail launch or delivery deadline.": [
+    "Le calendrier publié par Muhammadiyah fixe le premier jour au 8 février 2027. Confirmez les dates locales du Ramadan et de l’Aïd auprès de l’autorité compétente avant de fixer le lancement commercial ou la livraison.",
+    "El calendario publicado por Muhammadiyah sitúa el primer día el 8 de febrero de 2027. Confirme las fechas locales de Ramadán y Eid con la autoridad correspondiente antes de fijar el lanzamiento o la entrega.",
+    "O calendário publicado pela Muhammadiyah indica 8 de fevereiro de 2027 como primeiro dia. Confirme as datas locais do Ramadã e do Eid com a autoridade competente antes de definir o lançamento ou a entrega.",
+    "В опубликованном календаре Muhammadiyah первый день — 8 февраля 2027 года. Перед назначением запуска продаж или доставки уточните местные даты Рамадана и Ид у компетентного органа.",
+    "Muhammadiyah 公布的历法将首日定为 2027 年 2 月 8 日。在确定零售上市或交付期限前，请向当地相关机构核实斋月和开斋节日期。"
+  ],
+  "From warehouse receipt": [
+    "À partir de la réception en entrepôt",
+    "Desde la recepción en almacén",
+    "A partir do recebimento no armazém",
+    "От получения на складе",
+    "从到仓日期倒排"
+  ],
+  "Hong Kong Observatory: 2027 lunar calendar": [
+    "Observatoire de Hong Kong : calendrier lunaire 2027",
+    "Observatorio de Hong Kong: calendario lunar de 2027",
+    "Observatório de Hong Kong: calendário lunar de 2027",
+    "Обсерватория Гонконга: лунный календарь 2027 года",
+    "香港天文台：2027 年农历对照表"
+  ],
+  "If the schedule misses your delivery date, ask about an alternative route or split shipment; confirm quantities, extra costs and capacity before relying on it. Use the": [
+    "Si le calendrier dépasse votre date de livraison, demandez un autre itinéraire ou un envoi fractionné ; confirmez quantités, surcoûts et capacité avant de vous y fier. Utilisez le",
+    "Si el calendario no cumple la entrega, consulte otra ruta o un envío dividido; confirme cantidades, costes adicionales y capacidad antes de depender de esa opción. Use el",
+    "Se o cronograma não atender à entrega, consulte uma rota alternativa ou remessa dividida; confirme quantidades, custos extras e capacidade antes de contar com essa opção. Use o",
+    "Если график не обеспечивает доставку вовремя, обсудите другой маршрут или разделение партии; подтвердите объёмы, дополнительные расходы и мощности. Используйте",
+    "若排期赶不上交付日期，可询问替代路线或分批出货；采用前需确认数量、额外费用和产能。使用"
+  ],
+  "January dispatch does not guarantee arrival before Ramadan. A longer freight route may require December dispatch; confirm transit, customs, final delivery and receiving time before approving a production schedule.": [
+    "Un départ en janvier ne garantit pas une arrivée avant le Ramadan. Un trajet plus long peut exiger un départ en décembre ; confirmez transit, douane, livraison finale et réception avant d’approuver la production.",
+    "Enviar en enero no garantiza llegar antes del Ramadán. Una ruta más larga puede exigir salida en diciembre; confirme tránsito, aduanas, entrega final y recepción antes de aprobar el calendario de producción.",
+    "Expedir em janeiro não garante chegada antes do Ramadã. Uma rota mais longa pode exigir saída em dezembro; confirme trânsito, alfândega, entrega final e recebimento antes de aprovar a produção.",
+    "Отправка в январе не гарантирует прибытия до Рамадана. Длинный маршрут может потребовать отправки в декабре; подтвердите перевозку, таможню, последнюю милю и приёмку до утверждения графика производства.",
+    "一月发货不保证斋月前到货。较长的运输路线可能要求十二月发货；批准生产排期前，应确认运输、清关、末端配送和收货时间。"
+  ],
+  "Keep a confirmed date and owner for each milestone.": [
+    "Attribuez une date confirmée et un responsable à chaque jalon.",
+    "Asigne una fecha confirmada y un responsable a cada hito.",
+    "Registre uma data confirmada e um responsável para cada marco.",
+    "Для каждого этапа укажите подтверждённую дату и ответственного.",
+    "为每个节点记录确认日期和负责人。"
+  ],
+  "Late text, barcode or colour changes can require another proof or sample and a revised schedule.": [
+    "Des modifications tardives du texte, du code-barres ou des couleurs peuvent exiger une nouvelle épreuve ou un nouvel échantillon et un calendrier révisé.",
+    "Los cambios tardíos de texto, código de barras o color pueden exigir otra prueba o muestra y un calendario revisado.",
+    "Alterações tardias de texto, código de barras ou cor podem exigir nova prova ou amostra e revisão do cronograma.",
+    "Поздние изменения текста, штрихкода или цвета могут потребовать новой пробы или образца и пересмотра графика.",
+    "后期修改文字、条码或颜色，可能需要重新校样或打样并调整排期。"
+  ],
+  "Local Eid date": [
+    "Date locale de l’Aïd",
+    "Fecha local de Eid",
+    "Data local do Eid",
+    "Местная дата Ид",
+    "当地开斋节日期"
+  ],
+  "Muhammadiyah: Ramadan 1448 calendar basis": [
+    "Muhammadiyah : base du calendrier du Ramadan 1448",
+    "Muhammadiyah: base del calendario de Ramadán 1448",
+    "Muhammadiyah: base do calendário do Ramadã 1448",
+    "Muhammadiyah: основа календаря Рамадана 1448",
+    "Muhammadiyah：伊历 1448 年斋月历法依据"
+  ],
+  "Muhammadiyah’s 2027 calendar places the first day of Ramadan on February 8. Treat it as a planning reference; confirm Ramadan and Eid observance locally. A religious calendar does not confirm factory or transport availability.": [
+    "Le calendrier 2027 de Muhammadiyah place le premier jour du Ramadan le 8 février. Utilisez-le comme repère et confirmez localement le Ramadan et l’Aïd. Un calendrier religieux ne confirme pas la disponibilité des usines ou du transport.",
+    "El calendario 2027 de Muhammadiyah sitúa el primer día de Ramadán el 8 de febrero. Úselo como referencia y confirme Ramadán y Eid localmente. Un calendario religioso no confirma disponibilidad de fábrica ni transporte.",
+    "O calendário de 2027 da Muhammadiyah indica 8 de fevereiro como primeiro dia do Ramadã. Use como referência e confirme Ramadã e Eid localmente. O calendário religioso não confirma disponibilidade de fábrica ou transporte.",
+    "Календарь Muhammadiyah на 2027 год указывает 8 февраля как первый день Рамадана. Это ориентир для планирования; уточните местное соблюдение Рамадана и Ид. Религиозный календарь не подтверждает работу фабрик и транспорта.",
+    "Muhammadiyah 的 2027 年历法将斋月首日定为 2 月 8 日。此日期仅作规划参考，请核实当地斋月和开斋节安排。宗教历法不代表工厂或运输服务已确认可用。"
+  ],
+  "Plan Ramadan 2027 gift boxes from your delivery date: compare factory pickup limits, freight, sample approval and production. Download a schedule worksheet.": [
+    "Planifiez les coffrets du Ramadan 2027 à partir de la livraison : comparez limites d’enlèvement, transport, approbation des échantillons et production. Téléchargez une feuille de calendrier.",
+    "Planifique las cajas de Ramadán 2027 desde la entrega: compare límites de recogida, transporte, aprobación de muestras y producción. Descargue una hoja de planificación.",
+    "Planeje as caixas do Ramadã 2027 a partir da entrega: compare limites de coleta, frete, aprovação de amostras e produção. Baixe uma planilha de cronograma.",
+    "Планируйте подарочные коробки к Рамадану 2027 от даты доставки: сравните сроки вывоза, перевозку, утверждение образцов и производство. Скачайте таблицу графика.",
+    "从交付日期倒排 2027 年斋月礼盒：比较工厂提货期限、运输、样品批准与生产安排，并下载排期工作表。"
+  ],
+  "Planning a 2027 seasonal launch?": [
+    "Vous préparez un lancement saisonnier en 2027 ?",
+    "¿Prepara un lanzamiento de temporada en 2027?",
+    "Planejando um lançamento sazonal em 2027?",
+    "Планируете сезонный запуск в 2027 году?",
+    "准备 2027 年节日上市计划？"
+  ],
+  "Quantity per design and component; custom paper boxes start at 1,000 per design. Confirm bags and other components separately.": [
+    "Quantité par modèle et composant ; les boîtes en papier sur mesure commencent à 1 000 par modèle. Confirmez les sacs et autres composants séparément.",
+    "Cantidad por diseño y componente; las cajas de papel personalizadas parten de 1.000 por diseño. Confirme bolsas y otros componentes por separado.",
+    "Quantidade por design e componente; caixas de papel personalizadas começam em 1.000 por design. Confirme sacolas e outros componentes separadamente.",
+    "Количество по дизайнам и компонентам; бумажные коробки на заказ — от 1 000 штук на дизайн. Пакеты и прочие компоненты согласуйте отдельно.",
+    "按款式和组件列出数量；定制纸盒每款起订 1,000 件。纸袋及其他组件需单独确认。"
+  ],
+  "Quote a coordinated packaging set": [
+    "Demander un devis pour un ensemble coordonné",
+    "Cotizar un conjunto de embalaje coordinado",
+    "Orçar um conjunto de embalagens coordenadas",
+    "Запросить цену на согласованный комплект упаковки",
+    "询价配套包装组合"
+  ],
+  "Quote printed tissue paper": [
+    "Demander un devis pour le papier de soie imprimé",
+    "Cotizar papel de seda impreso",
+    "Orçar papel de seda impresso",
+    "Запросить цену на бумагу тишью с печатью",
+    "询价印刷薄页纸"
+  ],
+  "Ramadan 2027 gift boxes: plan from": [
+    "Coffrets du Ramadan 2027 : planifiez à partir de",
+    "Cajas para Ramadán 2027: planifique desde",
+    "Caixas para o Ramadã 2027: planeje a partir de",
+    "Коробки к Рамадану 2027: планируйте от",
+    "2027 年斋月礼盒：请从"
+  ],
+  "Ramadan gift box delivery planning": [
+    "Planification de livraison des coffrets du Ramadan",
+    "Planificación de entrega de cajas de Ramadán",
+    "Planejamento de entrega de caixas do Ramadã",
+    "Планирование доставки коробок к Рамадану",
+    "斋月礼盒交付规划"
+  ],
+  "Request a gift box quote": [
+    "Demander un devis de coffret cadeau",
+    "Solicitar presupuesto de caja de regalo",
+    "Solicitar orçamento de caixa de presente",
+    "Запросить цену на подарочную коробку",
+    "申请礼盒报价"
+  ],
+  "Reviewed November 9, 2026.": [
+    "Révisé le 9 novembre 2026.",
+    "Revisado el 9 de noviembre de 2026.",
+    "Revisado em 9 de novembro de 2026.",
+    "Проверено 9 ноября 2026 года.",
+    "复核日期：2026 年 11 月 9 日。"
+  ],
+  "Schedule worksheet": [
+    "Feuille de calendrier",
+    "Hoja de planificación",
+    "Planilha de cronograma",
+    "Таблица графика",
+    "排期工作表"
+  ],
+  "The earlier pickup deadline": [
+    "La date d’enlèvement la plus précoce",
+    "La fecha límite de recogida más temprana",
+    "O prazo de coleta mais antecipado",
+    "Более ранний предельный срок вывоза",
+    "两个期限中较早的提货日期"
+  ],
+  "The published MOQ for custom paper boxes is 1,000 pieces per design. Confirm complex calendar formats, paper bags and other components individually. Combining items in one collection does not combine their minimum quantities.": [
+    "Le minimum publié pour les boîtes en papier sur mesure est de 1 000 pièces par modèle. Confirmez individuellement calendriers complexes, sacs en papier et autres composants. Un ensemble ne mutualise pas les minimums.",
+    "El mínimo publicado para cajas de papel personalizadas es de 1.000 unidades por diseño. Confirme individualmente formatos calendario complejos, bolsas y otros componentes. Una colección no combina sus cantidades mínimas.",
+    "O mínimo publicado para caixas de papel personalizadas é de 1.000 unidades por design. Confirme individualmente calendários complexos, sacolas e outros componentes. Uma coleção não soma os mínimos de cada item.",
+    "Опубликованный минимум для бумажных коробок — 1 000 штук на дизайн. Сложные календари, бумажные пакеты и прочие компоненты согласуются отдельно. Объединение в коллекцию не объединяет минимальные количества.",
+    "定制纸盒公布的起订量为每款 1,000 件。复杂日历结构、纸袋和其他组件需分别确认。同一系列中的不同组件不能合并计算各自起订量。"
+  ],
+  "Use the earlier of two dates: the supplier and forwarder’s confirmed last pickup date, or your required warehouse receipt date minus the complete delivery window and buffer. Then work backward through QC, production, materials, sample courier, review and artwork.": [
+    "Retenez la plus précoce de deux dates : le dernier enlèvement confirmé par le fournisseur et le transitaire, ou la réception requise en entrepôt moins tout le délai de livraison et la marge. Remontez ensuite le contrôle qualité, la production, les matières, le transport d’échantillon, la validation et les fichiers.",
+    "Use la anterior de dos fechas: la última recogida confirmada por proveedor y transitario, o la recepción requerida en almacén menos el plazo completo de entrega y margen. Luego retroceda por control de calidad, producción, materiales, envío de muestra, revisión y archivos.",
+    "Use a mais antecipada de duas datas: a última coleta confirmada pelo fornecedor e agente de cargas, ou o recebimento necessário no armazém menos todo o prazo de entrega e a margem. Depois retroceda por inspeção, produção, materiais, envio de amostra, revisão e arte.",
+    "Выберите более раннюю дату: последний вывоз, подтверждённый поставщиком и экспедитором, либо требуемое получение на складе минус полное время доставки и резерв. Затем отсчитайте назад контроль качества, производство, материалы, доставку образца, проверку и макет.",
+    "取两个日期中较早的一项：供应商与货代确认的最晚提货日，或要求到仓日减去完整交付周期及缓冲时间。再依次倒排质检、生产、材料、样品快递、审核和稿件。"
+  ],
+  "Use the earlier of two dates: the supplier and forwarder’s confirmed last pickup date, or your required warehouse receipt date minus the complete delivery window and buffer. Then work backward through QC, production, materials, sample courier, review and artwork. Use the": [
+    "Retenez la plus précoce de deux dates : le dernier enlèvement confirmé par le fournisseur et le transitaire, ou la réception requise en entrepôt moins tout le délai de livraison et la marge. Remontez ensuite le contrôle qualité, la production, les matières, le transport d’échantillon, la validation et les fichiers. Utilisez le",
+    "Use la anterior de dos fechas: la última recogida confirmada por proveedor y transitario, o la recepción requerida en almacén menos el plazo completo de entrega y margen. Luego retroceda por control de calidad, producción, materiales, envío de muestra, revisión y archivos. Use el",
+    "Use a mais antecipada de duas datas: a última coleta confirmada pelo fornecedor e agente de cargas, ou o recebimento necessário no armazém menos todo o prazo de entrega e a margem. Depois retroceda por inspeção, produção, materiais, envio de amostra, revisão e arte. Use o",
+    "Выберите более раннюю дату: последний вывоз, подтверждённый поставщиком и экспедитором, либо требуемое получение на складе минус полное время доставки и резерв. Затем отсчитайте назад контроль качества, производство, материалы, доставку образца, проверку и макет. Используйте",
+    "取两个日期中较早的一项：供应商与货代确认的最晚提货日，或要求到仓日减去完整交付周期及缓冲时间。再依次倒排质检、生产、材料、样品快递、审核和稿件。 使用"
+  ],
+  "Work backward": [
+    "Planifier à rebours",
+    "Planificar hacia atrás",
+    "Planejar de trás para frente",
+    "Считать от конечной даты",
+    "倒排计划"
+  ],
+  "Work backward from the supplier’s confirmed last pickup date: subtract bulk production, quality inspection and packing time, then sample approval, then artwork and dieline approval. There is no universal November cutoff. Include sample courier, buyer review, revisions, non-working days and the delivery route before agreeing an artwork deadline.": [
+    "Partez du dernier enlèvement confirmé et retranchez production, contrôle qualité, emballage, approbation des échantillons et des fichiers. Il n’existe pas de date limite universelle en novembre. Incluez transport des échantillons, revue, révisions, jours non ouvrés et livraison avant de fixer la date des fichiers.",
+    "Parta de la última recogida confirmada y reste producción, inspección, embalaje, aprobación de muestras y archivos. No existe un límite universal en noviembre. Incluya mensajería de muestras, revisión, cambios, días no laborables y ruta de entrega antes de acordar la fecha de archivos.",
+    "Parta da última coleta confirmada e desconte produção, inspeção, embalagem, aprovação de amostras e arte. Não existe um limite universal em novembro. Inclua envio de amostras, análise, revisões, dias não úteis e rota de entrega antes de definir o prazo da arte.",
+    "Отсчитайте от подтверждённой даты вывоза производство, контроль качества, упаковку, согласование образца и макета. Универсального ноябрьского срока нет. Учтите доставку образцов, проверку, доработки, нерабочие дни и маршрут до согласования срока макета.",
+    "从供应商确认的最晚提货日倒排：扣除量产、质检和包装时间，再安排样品批准及稿件和刀模批准。不存在统一的十一月截止日期；应纳入样品快递、买方审核、修改、非工作日和交付路线，再确定稿件期限。"
+  ],
+  "Working days are not calendar days. Convert each quoted stage using the responsible supplier’s working calendar and closure dates before entering it in the lead time planner.": [
+    "Les jours ouvrés ne sont pas des jours calendaires. Convertissez chaque étape selon le calendrier de travail et les fermetures du fournisseur responsable avant de la saisir dans le planificateur.",
+    "Los días laborables no son días naturales. Convierta cada etapa según el calendario laboral y los cierres del proveedor responsable antes de introducirla en el planificador.",
+    "Dias úteis não são dias corridos. Converta cada etapa segundo o calendário de trabalho e os fechamentos do fornecedor responsável antes de inseri-la no planejador.",
+    "Рабочие дни не равны календарным. Перед вводом в планировщик пересчитайте каждый этап по рабочему календарю и закрытиям ответственного поставщика.",
+    "工作日不等于自然日。输入交期规划工具前，应根据负责供应商的工作日历和停工日期换算每个报价阶段。"
+  ],
+  "Your confirmed warehouse receipt date": [
+    "Votre date confirmée de réception en entrepôt",
+    "Su fecha confirmada de recepción en almacén",
+    "Sua data confirmada de recebimento no armazém",
+    "Подтверждённая дата получения на складе",
+    "已确认的到仓日期"
+  ],
+  "your arrival date.": [
+    "votre date de réception.",
+    "su fecha de llegada.",
+    "sua data de chegada.",
+    "даты прибытия.",
+    "到货日期倒排。"
   ]
 }

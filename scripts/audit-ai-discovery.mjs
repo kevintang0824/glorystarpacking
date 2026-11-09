@@ -26,6 +26,21 @@ if (!csvHeader("assets/templates/ai-search-visibility-log.csv").includes("citati
 
 const liveChecks = [
   {
+    path: "/ramadan-2027-gift-box-order-timeline.html",
+    test: (body) => body.includes("January dispatch does not guarantee arrival before Ramadan")
+      && body.includes("holiday-packaging-schedule.csv")
+      && body.includes("en.muhammadiyah.or.id/")
+      && body.includes("products.html?product=packaging-set#quote"),
+    label: "sourced seasonal planning, schedule worksheet and quote routes",
+  },
+  {
+    path: "/assets/templates/holiday-packaging-schedule.csv",
+    test: (body) => body.startsWith("milestone,owner,planned_date,confirmed_date,")
+      && body.includes("day_basis_calendar_or_working")
+      && body.includes("Full-capacity day"),
+    label: "holiday schedule worksheet and date-basis fields",
+  },
+  {
     path: "/products.html",
     test: (body) => body.includes('id="packaging-set-brief"')
       && body.includes("assets/templates/packaging-set-component-brief.csv")
@@ -92,6 +107,8 @@ for (const check of liveChecks) {
 }
 
 const articlePaths = [
+  "/chinese-new-year-2027-packaging-order-deadlines.html",
+  "/ramadan-2027-gift-box-order-timeline.html",
   "/multi-sku-packaging-system-guide.html",
   "/custom-packaging-cost-moq-guide.html",
   "/packaging-supplier-qualification-checklist.html",

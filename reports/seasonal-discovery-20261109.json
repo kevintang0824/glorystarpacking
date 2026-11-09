@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-09",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "5815358202a00869c781be78be7a8edd47739054",
+  "search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_on": "2026-11-09",
+    "index_report_updated": "2026-11-06",
+    "indexed": 82,
+    "excluded_noindex": 382,
+    "redirected": 4,
+    "crawled_not_indexed": [
+      {
+        "path": "/feed.xml",
+        "last_crawled": "2026-11-01",
+        "type": "RSS discovery feed, not an HTML landing page"
+      },
+      {
+        "path": "/rigid-box-vs-folding-carton.html",
+        "last_crawled": "2026-10-05"
+      },
+      {
+        "path": "/custom-tissue-paper.html",
+        "last_crawled": "2026-09-21"
+      }
+    ],
+    "discovered_not_indexed": [
+      "/chinese-new-year-2027-packaging-order-deadlines.html",
+      "/ramadan-2027-gift-box-order-timeline.html"
+    ],
+    "interpretation": "Prioritize the two seasonal articles for this release. Index report is a dated aggregate, not proof of current individual URL status. Do not compare against the earlier October 23 snapshot as a same-period growth measurement.",
+    "individual_inspection_before_release": {
+      "path": "/ramadan-2027-gift-box-order-timeline.html",
+      "status": "Not indexed; Google does not recognize this URL",
+      "crawl_date": null,
+      "referring_sitemap": "Not detected"
+    }
+  },
+  "changes": [
+    "Replace universal November/January cutoffs with the earlier of the confirmed last pickup date and the delivery-derived pickup deadline",
+    "Separate working days, calendar days, sample courier, buyer approval, customs, final delivery and contingency",
+    "Scope published MOQ and lead times to custom paper boxes; confirm bags, other components and complex calendar formats separately",
+    "Add reviewed calendar sources, retain local Ramadan/Eid confirmation and distinguish dates from capacity commitments",
+    "Add a blank English schedule CSV with 14 milestones, owners and seven unconfirmed date/evidence fields",
+    "Route Ramadan box requests to the rigid-box form and coordinated sets to the preselected packaging-set form; CNY requests go to custom-boxes",
+    "Add contextual seasonal links from the homepage and lead-time planner; add a direct tissue-paper quote link on the homepage",
+    "Update blog excerpt, actual modification dates, sitemap/RSS and 44 new or revised strings across five languages; preserve noindex review gates"
+  ],
+  "primary_pages": [
+    "/",
+    "/blog.html",
+    "/custom-packaging-lead-time-planner.html",
+    "/chinese-new-year-2027-packaging-order-deadlines.html",
+    "/ramadan-2027-gift-box-order-timeline.html"
+  ],
+  "sources": [
+    "https://www.hko.gov.hk/en/gts/time/calendar/text/files/T2027e.txt",
+    "https://en.muhammadiyah.or.id/the-first-day-of-ramadan-1448-ah-falls-on-february-8-2027/",
+    "https://glorystarpacking.com/about.html#supplier-facts"
+  ],
+  "verification": {
+    "production_before_release": "86 canonical sitemap URLs indexable; 430 translated URLs retain noindex; redirect and private artifact checks passed",
+    "content": "Both FAQ schema answers match visible answers; original publication dates retained; actual modification dates updated",
+    "worksheet": "15 CSV rows including header, 9 columns; 14 milestones; all date, duration, trigger and evidence fields blank",
+    "browser": "390px English and Chinese pages have no horizontal overflow; download succeeded; rigid-box and packaging-set forms preselect the expected products",
+    "api": "Quote API and service-health regressions passed; no additional live inquiry sent",
+    "discovery": "Local AI discovery audit and five-URL IndexNow dry run passed"
+  },
+  "limits": [
+    "Search submission does not establish Google indexing or AI recommendations",
+    "No factory holiday closure dates, delivery guarantees or freight durations were invented",
+    "Existing unreviewed translation text remains behind noindex; this release does not claim whole-page native review",
+    "The rigid-versus-carton guide remains a separate content-review follow-up"
+  ],
+  "release_receipt": "tmp/seasonal-discovery-release-20261109.json"
+}
