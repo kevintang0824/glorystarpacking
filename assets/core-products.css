@@ -1,0 +1,16 @@
+.quote-form__title {
+  margin: 0 0 16px;
+  font-family: var(--body);
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+#quote-project-help {
+  margin: 0 0 20px;
+}
+
+@media (max-width: 780px) {
+  #quote .quote-form {
+    order: -1;
+  }
+}

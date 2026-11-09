@@ -1,0 +1,108 @@
+{
+  "checked_on": "2026-11-09",
+  "pages": [
+    {
+      "url": "https://glorystarpacking.com/custom-perfume-boxes.html",
+      "title": "Custom Perfume Boxes & Perfume Packaging | GloryStarPack",
+      "previous_description": "Custom perfume boxes built around your glass bottle, from a Xiamen factory: MOQ 1,000 pcs, samples in 7 working days, bulk in 25–35 working days.",
+      "new_description": "Custom perfume cartons and rigid gift boxes from Xiamen, China. MOQ 1,000 per design. Plan bottle fit, inserts and finishes; request a project quote.",
+      "url_inspection_on": "2026-11-09",
+      "url_inspection_status": "URL is on Google; page is indexed",
+      "baseline_clicks": 0,
+      "baseline_impressions": 33,
+      "baseline_average_position": 54.4
+    },
+    {
+      "url": "https://glorystarpacking.com/custom-rigid-boxes.html",
+      "title": "Custom Rigid Boxes Manufacturer in China | GloryStarPack",
+      "previous_description": "Custom rigid box manufacturer in Xiamen, China. MOQ 1,000 pcs, samples in 7 working days, bulk in 25–35 working days, with inserts and premium finishes.",
+      "new_description": "Custom rigid gift boxes from Xiamen, China. MOQ 1,000 per design. Samples about 7 working days; bulk 25–35 working days after sample approval. Freight extra.",
+      "url_inspection_on": "2026-11-09",
+      "url_inspection_status": "URL is on Google; page is indexed",
+      "baseline_clicks": 0,
+      "baseline_impressions": 18,
+      "baseline_average_position": 35.5
+    },
+    {
+      "url": "https://glorystarpacking.com/custom-mailer-boxes.html",
+      "title": "Custom Mailer Boxes Manufacturer in China | GloryStarPack",
+      "previous_description": "Custom printed mailer boxes from a Xiamen, China factory: MOQ 1,000 pcs, samples in 7 working days, bulk in 25–35 working days, inside and outside print.",
+      "new_description": "Custom printed corrugated mailer boxes from China. MOQ 1,000 per design; bulk 25–35 working days after sample approval. Quote size, print and delivery.",
+      "url_inspection_on": "2026-11-09",
+      "url_inspection_status": "URL is on Google; page is indexed",
+      "baseline_clicks": 0,
+      "baseline_impressions": 35,
+      "baseline_average_position": 67.6
+    },
+    {
+      "url": "https://glorystarpacking.com/custom-packaging-inserts.html",
+      "title": "Custom Packaging Inserts | Product-Fit Trays & Cavities",
+      "previous_description": "Develop custom paperboard, molded pulp, EVA, EPE, or fabric-wrapped packaging inserts around product data, cavity fit, removal, transit, and tolerance.",
+      "new_description": "Custom paperboard, molded pulp, EVA and EPE packaging inserts from Xiamen, China. Share your product and box sizes for a material and fit quotation.",
+      "url_inspection_on": "2026-11-09",
+      "url_inspection_status": "URL is on Google; page is indexed",
+      "baseline_clicks": 0,
+      "baseline_impressions": 104,
+      "baseline_average_position": 51.0
+    },
+    {
+      "url": "https://glorystarpacking.com/custom-clear-labels.html",
+      "title": "Custom Clear Labels for a No-Label Look | GloryStarPack",
+      "previous_description": "Develop custom clear labels around container color, white ink, adhesive clarity, curvature, application method, roll direction, filled-container trials, and QC.",
+      "new_description": "Custom clear labels for bottles and jars, with selective white ink and hand or machine application. Request a quote for your container, artwork and quantity.",
+      "url_inspection_on": "2026-11-09",
+      "url_inspection_status": "URL is on Google; page is indexed",
+      "baseline_clicks": 0,
+      "baseline_impressions": 1,
+      "baseline_average_position": 10.0
+    }
+  ],
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "access": "Google Search Console UI; Windsor reads blocked by account plan limit",
+    "read_on": "2026-11-09",
+    "performance_period": {
+      "start": "2026-10-11",
+      "end": "2026-11-07",
+      "search_type": "Web",
+      "ui_last_updated": "3.5 hours ago"
+    },
+    "site_totals": {
+      "clicks": 11,
+      "impressions": 2132,
+      "ctr_percent_displayed": 0.5,
+      "average_position": 17.4
+    },
+    "index_report": {
+      "last_updated": "2026-10-23",
+      "indexed": 83,
+      "excluded_noindex": 380,
+      "redirected": 4,
+      "crawled_not_indexed": 1,
+      "crawled_not_indexed_example": "https://glorystarpacking.com/jewelry-box-insert-design-guide.html",
+      "example_last_crawled": "2026-08-13"
+    }
+  },
+  "verification_limits": [
+    "Search Console aggregate indexing report is stale; five URL inspection results were checked individually on 2026-11-09.",
+    "Live quote validation rejected an empty payload with HTTP 400; no email was sent.",
+    "Successful delivery and provider failures were tested with mocked provider responses. Actual inbox receipt was not verified.",
+    "Browser fallback was tested only on localhost; email and WhatsApp links were not opened."
+  ],
+  "changes": [
+    "Added product-specific ordering summary, relevant product/reference guide links, and early quote CTA to five product pages.",
+    "Updated descriptions consistently across search, Open Graph, and Twitter; preserved existing title experiments.",
+    "Made dimensions optional with visible guidance; removed stale October 2026 target-date placeholders.",
+    "Placed the project brief before long supporting copy at mobile widths; maintained desktop layout.",
+    "Localized new copy across five language editions, preserving noindex review gates.",
+    "Updated true modification dates and generated sitemaps; excluded internal reports from production deployment."
+  ],
+  "checks": {
+    "production_before_release": "86 canonical/indexable sitemap URLs, 430 noindex translation URLs, contact routes and service health passed",
+    "local_static": "86 indexable pages plus 404; 522 language pages validated",
+    "build": "4675 public files and 2 API handlers validated against sources",
+    "api_regression": "Mocked success, provider failure, timeout, native/JSON forms, attachment validation, attribution and recovery passed",
+    "browser": "Five mobile pages at 390x844, required fields completed with blank dimensions, matching product defaults, no horizontal overflow; local provider failure retained entered data and recovery routes",
+    "live_api_validation": "Empty POST rejected with 400; no-store; no mail sent"
+  }
+}

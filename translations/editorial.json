@@ -838,5 +838,306 @@
     "Trabalhe com a nossa equipa de embalagens em Xiamen, China, para planear a onda do cartão, a impressão, o fecho, o ajuste do produto, a montagem a partir do plano e o transporte como um único sistema de produção.",
     "Работайте с нашей командой по упаковке в Сямэне, Китай, чтобы объединить профиль гофрокартона, печать, закрывание, посадку изделия, сборку из плоской заготовки и курьерскую перевозку в единую производственную систему.",
     "与我们位于中国厦门的包装团队合作，将瓦楞楞型、印刷、封合、产品适配、平铺组装和快递运输作为一个完整的生产系统来规划。"
+  ],
+  "Approve a loaded sample and the agreed transit checks. Confirm the packed outer dimensions before comparing freight quotations.": [
+    "Validez un échantillon chargé et les contrôles de transport convenus. Confirmez les dimensions extérieures du colis avant de comparer les devis de transport.",
+    "Aprueba una muestra con el producto y las comprobaciones de transporte acordadas. Confirma las dimensiones exteriores del paquete antes de comparar portes.",
+    "Aprove uma amostra carregada e os ensaios de transporte acordados. Confirme as dimensões exteriores da embalagem antes de comparar fretes.",
+    "Утвердите образец с изделием и согласованные транспортные проверки. Перед сравнением стоимости перевозки подтвердите наружные размеры упакованного груза.",
+    "确认装入产品的样品及约定的运输检查。比较运费报价前，确认包装后的外部尺寸。"
+  ],
+  "Approve bottle support, cap clearance, surface contact, and removal with a production-equivalent bottle before bulk production.": [
+    "Avant la production en série, validez le maintien du flacon, le dégagement du bouchon, les zones de contact et le retrait avec un flacon équivalent à celui de production.",
+    "Antes de fabricar, aprueba el soporte del frasco, la holgura del tapón, el contacto superficial y la extracción con un frasco equivalente al de producción.",
+    "Antes da produção em série, aprove o apoio do frasco, a folga da tampa, o contacto com as superfícies e a remoção com um frasco equivalente ao de produção.",
+    "До серийного производства утвердите опору флакона, зазор крышки, контактные поверхности и извлечение на флаконе, соответствующем серийному.",
+    "量产前，使用与量产一致的瓶子确认瓶身支撑、瓶盖间隙、表面接触和取出方式。"
+  ],
+  "Approve the assembled box, insert fit, wrapping, and finish on a physical sample. Compare assembled and flat delivery where available.": [
+    "Validez le montage, l’ajustement du calage, l’habillage et la finition sur un échantillon physique. Comparez les livraisons montées et à plat lorsqu’elles sont disponibles.",
+    "Aprueba el montaje, el ajuste del inserto, el forrado y el acabado en una muestra física. Compara la entrega montada y plana cuando estén disponibles.",
+    "Aprove a caixa montada, o ajuste do berço, o revestimento e o acabamento numa amostra física. Compare a entrega montada e plana quando disponíveis.",
+    "Утвердите сборку коробки, посадку ложемента, оклейку и отделку на физическом образце. При наличии вариантов сравните поставку в собранном и плоском виде.",
+    "通过实物样品确认盒体组装、内托配合、裱纸和工艺。可选时，比较整装与平铺交货方案。"
+  ],
+  "Before you request a quote": [
+    "Avant de demander un devis",
+    "Antes de solicitar presupuesto",
+    "Antes de pedir orçamento",
+    "Перед запросом цены",
+    "询价前的准备"
+  ],
+  "Bottle size, if known": [
+    "Dimensions du flacon, si connues",
+    "Medidas del frasco, si se conocen",
+    "Dimensões do frasco, se conhecidas",
+    "Размеры флакона, если известны",
+    "瓶子尺寸（如已确定）"
+  ],
+  "Choose a folding carton for retail, a rigid box for gift presentation, or a coordinated set with a fitted insert.": [
+    "Choisissez un étui pliant pour la vente au détail, un coffret rigide pour un cadeau ou un ensemble assorti avec calage adapté.",
+    "Elige un estuche plegable para venta minorista, una caja rígida para regalo o un conjunto coordinado con inserto ajustado.",
+    "Escolha uma caixa dobrável para retalho, uma caixa rígida para presente ou um conjunto coordenado com berço ajustado.",
+    "Выберите складную картонную коробку для розницы, жесткую подарочную коробку или согласованный комплект с ложементом.",
+    "零售可选折叠纸盒，礼赠可选硬盒，也可选择带定制内托的配套包装。"
+  ],
+  "Choose the format.": [
+    "Choisissez le format.",
+    "Elige el formato.",
+    "Escolha o formato.",
+    "Выберите конструкцию.",
+    "选择包装形式。"
+  ],
+  "Choose the internal size, corrugated board, inside or outside printing, closure, and insert around the packed product.": [
+    "Définissez les dimensions intérieures, le carton ondulé, l’impression intérieure ou extérieure, la fermeture et le calage selon le produit emballé.",
+    "Elige las medidas interiores, el cartón ondulado, la impresión interior o exterior, el cierre y el inserto según el producto embalado.",
+    "Escolha as dimensões interiores, o cartão canelado, a impressão interior ou exterior, o fecho e o berço segundo o produto embalado.",
+    "Подберите внутренние размеры, гофрокартон, внутреннюю или наружную печать, закрытие и ложемент под упакованное изделие.",
+    "根据装入的产品选择内部尺寸、瓦楞纸板、内外印刷、封口和内托。"
+  ],
+  "Choose transparent areas, selective white ink, and hand or machine application around the actual filled container.": [
+    "Définissez les zones transparentes, le blanc sélectif et la pose manuelle ou automatique selon le contenant rempli réel.",
+    "Define las zonas transparentes, la tinta blanca selectiva y la aplicación manual o automática según el envase lleno real.",
+    "Defina as áreas transparentes, a tinta branca seletiva e a aplicação manual ou automática segundo o recipiente cheio real.",
+    "Определите прозрачные зоны, выборочную печать белилами и ручное или машинное нанесение с учетом реальной заполненной тары.",
+    "根据实际灌装容器确定透明区域、局部白墨及手工或机器贴标方式。"
+  ],
+  "Compare insert materials": [
+    "Comparer les matériaux de calage",
+    "Comparar materiales de insertos",
+    "Comparar materiais dos berços",
+    "Сравнить материалы ложементов",
+    "比较内托材料"
+  ],
+  "Compare magnetic, drawer, lid-and-base, and collapsible boxes around the opening experience and available storage space.": [
+    "Comparez les coffrets aimantés, à tiroir, à couvercle séparé et pliables selon l’ouverture souhaitée et l’espace de stockage.",
+    "Compara cajas magnéticas, de cajón, de tapa y base y plegables según la apertura deseada y el espacio de almacenamiento.",
+    "Compare caixas magnéticas, de gaveta, de tampa e base e dobráveis segundo a abertura pretendida e o espaço de armazenamento.",
+    "Сравните магнитные, выдвижные, раздельные и складные жесткие коробки по способу открывания и месту для хранения.",
+    "根据开盒体验和存储空间，比较磁吸盒、抽屉盒、天地盖盒与折叠硬盒。"
+  ],
+  "Compare paperboard, molded pulp, EVA, and EPE for product support, presentation, removal, and the outer box.": [
+    "Comparez le carton, la pâte moulée, l’EVA et l’EPE selon le maintien, la présentation, le retrait du produit et la boîte extérieure.",
+    "Compara cartón, pulpa moldeada, EVA y EPE según el soporte, la presentación, la extracción del producto y la caja exterior.",
+    "Compare cartão, polpa moldada, EVA e EPE segundo o apoio, a apresentação, a remoção do produto e a caixa exterior.",
+    "Сравните картон, формованную целлюлозу, EVA и EPE по опоре изделия, презентации, извлечению и совместимости с внешней коробкой.",
+    "结合产品支撑、展示、取放和外盒，比较纸卡、纸浆模塑、EVA 与 EPE 内托。"
+  ],
+  "Compare rigid box cost drivers": [
+    "Comparer les facteurs de coût des coffrets rigides",
+    "Comparar factores de coste de cajas rígidas",
+    "Comparar fatores de custo das caixas rígidas",
+    "Сравнить факторы стоимости жестких коробок",
+    "了解硬盒成本构成"
+  ],
+  "Custom clear labels for bottles and jars, with selective white ink and hand or machine application. Request a quote for your container, artwork and quantity.": [
+    "Étiquettes transparentes personnalisées pour bouteilles et pots, blanc sélectif et pose manuelle ou automatique. Demandez un devis selon votre contenant, fichier et quantité.",
+    "Etiquetas transparentes personalizadas para botellas y tarros, con blanco selectivo y aplicación manual o automática. Pide presupuesto según envase, diseño y cantidad.",
+    "Etiquetas transparentes personalizadas para frascos e potes, com branco seletivo e aplicação manual ou automática. Peça orçamento segundo recipiente, arte e quantidade.",
+    "Прозрачные этикетки для бутылок и банок с выборочными белилами, для ручного или машинного нанесения. Запросите цену по таре, макету и тиражу.",
+    "定制瓶罐透明标签，支持局部白墨及手工或机器贴标。按容器、图稿和数量获取报价。"
+  ],
+  "Custom paperboard, molded pulp, EVA and EPE packaging inserts from Xiamen, China. Share your product and box sizes for a material and fit quotation.": [
+    "Calages personnalisés en carton, pâte moulée, EVA et EPE depuis Xiamen, Chine. Envoyez les dimensions du produit et de la boîte pour un devis matière et ajustement.",
+    "Insertos a medida de cartón, pulpa moldeada, EVA y EPE desde Xiamen, China. Comparte medidas del producto y la caja para cotizar material y ajuste.",
+    "Berços personalizados de cartão, polpa moldada, EVA e EPE de Xiamen, China. Envie as medidas do produto e da caixa para orçamentar material e ajuste.",
+    "Ложементы из картона, формованной целлюлозы, EVA и EPE из Сямэня, Китай. Укажите размеры изделия и коробки для расчета материала и посадки.",
+    "中国厦门定制纸卡、纸浆模塑、EVA 与 EPE 包装内托。提供产品和盒子尺寸，获取材料与适配方案报价。"
+  ],
+  "Custom perfume cartons and rigid gift boxes from Xiamen, China. MOQ 1,000 per design. Plan bottle fit, inserts and finishes; request a project quote.": [
+    "Étuis et coffrets rigides de parfum sur mesure depuis Xiamen, Chine. Minimum 1 000 par modèle. Préparez l’ajustement, le calage et les finitions pour votre devis.",
+    "Estuches y cajas rígidas de perfume a medida desde Xiamen, China. Mínimo 1.000 por diseño. Define ajuste, insertos y acabados para pedir presupuesto.",
+    "Caixas dobráveis e rígidas para perfume de Xiamen, China. Mínimo de 1.000 por design. Defina ajuste, berços e acabamentos para pedir orçamento.",
+    "Картонные и жесткие подарочные коробки для духов из Сямэня, Китай. Минимум 1 000 на дизайн. Подготовьте требования к посадке, ложементу и отделке для расчета.",
+    "中国厦门定制香水纸盒及硬质礼盒，每款设计起订 1,000 件。规划瓶子适配、内托与工艺，获取项目报价。"
+  ],
+  "Custom printed corrugated mailer boxes from China. MOQ 1,000 per design; bulk 25–35 working days after sample approval. Quote size, print and delivery.": [
+    "Boîtes d’expédition imprimées en carton ondulé depuis la Chine. Minimum 1 000 par modèle ; production 25–35 jours ouvrés après validation de l’échantillon. Devis dimensions, impression et livraison.",
+    "Cajas mailer de cartón ondulado impresas desde China. Mínimo 1.000 por diseño; producción en 25–35 días laborables tras aprobar la muestra. Cotiza medidas, impresión y entrega.",
+    "Caixas mailer de cartão canelado impressas da China. Mínimo de 1.000 por design; produção em 25–35 dias úteis após aprovação da amostra. Orçamento por tamanho, impressão e entrega.",
+    "Печатные почтовые гофрокоробки из Китая. Минимум 1 000 на дизайн; производство 25–35 рабочих дней после утверждения образца. Расчет по размерам, печати и доставке.",
+    "中国定制印刷瓦楞邮寄盒，每款设计起订 1,000 件；样品确认后量产需 25–35 个工作日。按尺寸、印刷与配送要求询价。"
+  ],
+  "Custom rigid gift boxes from Xiamen, China. MOQ 1,000 per design. Samples about 7 working days; bulk 25–35 working days after sample approval. Freight extra.": [
+    "Coffrets rigides personnalisés depuis Xiamen, Chine. Minimum 1 000 par modèle. Échantillons environ 7 jours ouvrés ; production 25–35 jours ouvrés après validation. Transport en supplément.",
+    "Cajas rígidas de regalo a medida desde Xiamen, China. Mínimo 1.000 por diseño. Muestras en unos 7 días laborables; producción en 25–35 tras aprobar la muestra. Transporte aparte.",
+    "Caixas rígidas de presente de Xiamen, China. Mínimo de 1.000 por design. Amostras em cerca de 7 dias úteis; produção em 25–35 após aprovação. Frete à parte.",
+    "Жесткие подарочные коробки из Сямэня, Китай. Минимум 1 000 на дизайн. Образцы около 7 рабочих дней; производство 25–35 рабочих дней после утверждения. Перевозка отдельно.",
+    "中国厦门定制硬质礼盒，每款设计起订 1,000 件。打样约 7 个工作日，样品确认后量产需 25–35 个工作日，运费另计。"
+  ],
+  "Finished label size, if known": [
+    "Dimensions finies de l’étiquette, si connues",
+    "Medida final de la etiqueta, si se conoce",
+    "Dimensões finais da etiqueta, se conhecidas",
+    "Размеры готовой этикетки, если известны",
+    "标签成品尺寸（如已确定）"
+  ],
+  "Insert MOQ, tooling, sample cost, and production timing depend on the material and structure. Confirm these in the project quotation.": [
+    "Le minimum de commande, l’outillage, le coût de l’échantillon et le délai des calages dépendent du matériau et de la structure. Confirmez-les dans le devis du projet.",
+    "El mínimo, el utillaje, el coste de muestra y el plazo de los insertos dependen del material y la estructura. Confírmalos en el presupuesto del proyecto.",
+    "O mínimo, as ferramentas, o custo da amostra e o prazo dos berços dependem do material e da estrutura. Confirme-os no orçamento do projeto.",
+    "Минимальный тираж ложементов, оснастка, стоимость образца и сроки зависят от материала и конструкции. Подтвердите их в предложении по проекту.",
+    "内托起订量、模具、样品费用和生产周期取决于材料与结构，请在项目报价中确认。"
+  ],
+  "Label MOQ, sample cost, and timing depend on the selected construction. Approve clarity, print contrast, and adhesion on the filled container.": [
+    "Le minimum de commande, le coût de l’échantillon et le délai des étiquettes dépendent de la construction choisie. Validez la transparence, le contraste et l’adhérence sur le contenant rempli.",
+    "El mínimo, el coste de muestra y el plazo de las etiquetas dependen de su construcción. Aprueba transparencia, contraste y adhesión sobre el envase lleno.",
+    "O mínimo, o custo da amostra e o prazo das etiquetas dependem da construção escolhida. Aprove transparência, contraste e aderência no recipiente cheio.",
+    "Минимальный тираж этикеток, стоимость образца и сроки зависят от выбранной конструкции. Утвердите прозрачность, контраст печати и адгезию на заполненной таре.",
+    "标签起订量、样品费用和周期取决于选定结构。请在灌装容器上确认透明效果、印刷对比度和粘附表现。"
+  ],
+  "No final dimensions yet? Leave the size blank and describe your product below. Dimensions and artwork can be confirmed during project review.": [
+    "Les dimensions ne sont pas encore définitives ? Laissez ce champ vide et décrivez votre produit ci-dessous. Dimensions et fichiers pourront être confirmés lors de l’étude du projet.",
+    "¿Aún no tienes medidas finales? Deja el tamaño en blanco y describe el producto abajo. Las medidas y el diseño se pueden confirmar al revisar el proyecto.",
+    "Ainda não tem dimensões finais? Deixe o tamanho em branco e descreva o produto abaixo. As dimensões e a arte podem ser confirmadas na análise do projeto.",
+    "Окончательные размеры еще не определены? Оставьте поле пустым и опишите изделие ниже. Размеры и макет можно уточнить при обсуждении проекта.",
+    "还没有最终尺寸？可暂时留空，并在下方描述产品。尺寸与图稿可在项目沟通时进一步确认。"
+  ],
+  "Plan your clear label order.": [
+    "Préparez votre commande d’étiquettes transparentes.",
+    "Prepara tu pedido de etiquetas transparentes.",
+    "Prepare a sua encomenda de etiquetas transparentes.",
+    "Подготовьте заказ прозрачных этикеток.",
+    "规划透明标签订单。"
+  ],
+  "Plan your fitted insert order.": [
+    "Préparez votre commande de calages sur mesure.",
+    "Prepara tu pedido de insertos a medida.",
+    "Prepare a sua encomenda de berços ajustados.",
+    "Подготовьте заказ ложементов.",
+    "规划定制内托订单。"
+  ],
+  "Plan your perfume packaging order.": [
+    "Préparez votre commande d’emballages de parfum.",
+    "Prepara tu pedido de envases para perfume.",
+    "Prepare a sua encomenda de embalagens para perfume.",
+    "Подготовьте заказ упаковки для духов.",
+    "规划香水包装订单。"
+  ],
+  "Plan your printed mailer order.": [
+    "Préparez votre commande de boîtes d’expédition imprimées.",
+    "Prepara tu pedido de cajas mailer impresas.",
+    "Prepare a sua encomenda de caixas mailer impressas.",
+    "Подготовьте заказ печатных почтовых коробок.",
+    "规划印刷邮寄盒订单。"
+  ],
+  "Plan your rigid box order.": [
+    "Préparez votre commande de coffrets rigides.",
+    "Prepara tu pedido de cajas rígidas.",
+    "Prepare a sua encomenda de caixas rígidas.",
+    "Подготовьте заказ жестких коробок.",
+    "规划硬盒订单。"
+  ],
+  "Prepare the white-ink artwork": [
+    "Préparer le fichier du blanc sélectif",
+    "Preparar el diseño de tinta blanca",
+    "Preparar a arte da tinta branca",
+    "Подготовить макет белил",
+    "准备白墨图稿"
+  ],
+  "Prepare your brief.": [
+    "Préparez votre cahier des charges.",
+    "Prepara los datos del proyecto.",
+    "Prepare os dados do projeto.",
+    "Подготовьте задание.",
+    "准备项目需求。"
+  ],
+  "Product or box size, if known": [
+    "Dimensions du produit ou de la boîte, si connues",
+    "Medidas del producto o la caja, si se conocen",
+    "Dimensões do produto ou da caixa, se conhecidas",
+    "Размеры изделия или коробки, если известны",
+    "产品或盒子尺寸（如已确定）"
+  ],
+  "Product or internal box size, if known": [
+    "Dimensions du produit ou intérieures de la boîte, si connues",
+    "Medidas del producto o interiores de la caja, si se conocen",
+    "Dimensões do produto ou interiores da caixa, se conhecidas",
+    "Размеры изделия или внутренние размеры коробки, если известны",
+    "产品或盒子内部尺寸（如已确定）"
+  ],
+  "Product size, if known": [
+    "Dimensions du produit, si connues",
+    "Medidas del producto, si se conocen",
+    "Dimensões do produto, se conhecidas",
+    "Размеры изделия, если известны",
+    "产品尺寸（如已确定）"
+  ],
+  "Required arrival date or flexible": [
+    "Date de réception souhaitée ou flexible",
+    "Fecha de llegada requerida o flexible",
+    "Data de chegada pretendida ou flexível",
+    "Нужная дата получения или гибкий срок",
+    "要求的到货日期，或可灵活安排"
+  ],
+  "Send label size if known, quantity per artwork, container material and color, artwork, and delivery country.": [
+    "Envoyez les dimensions de l’étiquette si connues, la quantité par fichier, le matériau et la couleur du contenant, le visuel et le pays de livraison.",
+    "Envía las medidas de etiqueta si se conocen, la cantidad por diseño, el material y color del envase, el arte y el país de entrega.",
+    "Envie as dimensões da etiqueta se conhecidas, a quantidade por arte, o material e a cor do recipiente, a arte e o país de entrega.",
+    "Укажите размеры этикетки, если известны, тираж каждого макета, материал и цвет тары, приложите макет и назовите страну доставки.",
+    "提供已知标签尺寸、每款图稿数量、容器材质与颜色、图稿及收货国家。"
+  ],
+  "Send product dimensions and weight, outer-box size, quantity, fragile surfaces, and whether you need inserts alone or a complete box.": [
+    "Envoyez les dimensions et le poids du produit, les dimensions de la boîte, la quantité, les surfaces fragiles et précisez si vous souhaitez des calages seuls ou une boîte complète.",
+    "Envía medidas y peso del producto, tamaño de caja, cantidad y superficies delicadas; indica si necesitas solo insertos o una caja completa.",
+    "Envie dimensões e peso do produto, tamanho da caixa, quantidade e superfícies frágeis; indique se precisa apenas de berços ou de uma caixa completa.",
+    "Укажите размеры и вес изделия, размеры внешней коробки, тираж, уязвимые поверхности и нужен ли только ложемент или коробка в комплекте.",
+    "提供产品尺寸与重量、外盒尺寸、数量、脆弱表面，并注明仅需内托还是需要整套盒子。"
+  ],
+  "Send product dimensions and weight, quantity per design, preferred opening, insert needs, and delivery country.": [
+    "Envoyez les dimensions et le poids du produit, la quantité par modèle, l’ouverture souhaitée, les besoins de calage et le pays de livraison.",
+    "Envía medidas y peso del producto, cantidad por diseño, apertura preferida, necesidades de inserto y país de entrega.",
+    "Envie dimensões e peso do produto, quantidade por design, abertura pretendida, necessidades de berço e país de entrega.",
+    "Укажите размеры и вес изделия, тираж каждого дизайна, способ открывания, требования к ложементу и страну доставки.",
+    "提供产品尺寸与重量、每款设计数量、开盒方式、内托要求及收货国家。"
+  ],
+  "Send product dimensions, packed weight, quantity per design, print reference, and destination with postal code if known.": [
+    "Envoyez les dimensions du produit, le poids emballé, la quantité par modèle, une référence d’impression et la destination avec code postal si connu.",
+    "Envía medidas del producto, peso embalado, cantidad por diseño, referencia de impresión y destino con código postal si se conoce.",
+    "Envie dimensões do produto, peso embalado, quantidade por design, referência de impressão e destino com código postal se conhecido.",
+    "Укажите размеры изделия, вес с упаковкой, тираж каждого дизайна, пример печати и место доставки с индексом, если он известен.",
+    "提供产品尺寸、包装后重量、每款设计数量、印刷参考及收货地，已知时附上邮编。"
+  ],
+  "Send the assembled bottle dimensions and filled weight, quantity per design, artwork reference, and delivery country.": [
+    "Envoyez les dimensions du flacon assemblé et son poids rempli, la quantité par modèle, une référence graphique et le pays de livraison.",
+    "Envía las medidas del frasco montado y su peso lleno, cantidad por diseño, referencia gráfica y país de entrega.",
+    "Envie as dimensões do frasco montado e o peso cheio, a quantidade por design, a referência gráfica e o país de entrega.",
+    "Укажите размеры собранного флакона и вес после наполнения, тираж каждого дизайна, пример оформления и страну доставки.",
+    "提供组装完整的瓶子尺寸与灌装重量、每款设计数量、图稿参考及收货国家。"
+  ],
+  "Start my project brief": [
+    "Présenter mon projet",
+    "Enviar datos de mi proyecto",
+    "Apresentar o meu projeto",
+    "Описать мой проект",
+    "填写项目需求"
+  ],
+  "View a perfume carton reference": [
+    "Voir une référence d’étui de parfum",
+    "Ver una referencia de estuche de perfume",
+    "Ver uma referência de caixa de perfume",
+    "Посмотреть пример коробки для духов",
+    "查看香水纸盒参考"
+  ],
+  "View a printed mailer reference": [
+    "Voir une référence de boîte d’expédition imprimée",
+    "Ver una referencia de caja mailer impresa",
+    "Ver uma referência de caixa mailer impressa",
+    "Посмотреть пример печатной почтовой коробки",
+    "查看印刷邮寄盒参考"
+  ],
+  "Supplier and ordering details": [
+    "Entreprise et conditions de commande",
+    "Empresa y condiciones de pedido",
+    "Empresa e condições de encomenda",
+    "Компания и условия заказа",
+    "公司及订购信息"
+  ],
+  "Your project brief": [
+    "Votre projet",
+    "Datos de tu proyecto",
+    "Dados do seu projeto",
+    "Ваш проект",
+    "您的项目需求"
   ]
 }

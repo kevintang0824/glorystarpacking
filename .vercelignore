@@ -9,6 +9,7 @@ node_modules/
 scripts/
 tmp/
 translations/
+reports/
 *.md
 CNAME
 
