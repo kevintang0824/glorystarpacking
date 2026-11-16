@@ -1,0 +1,261 @@
+{
+  "date": "2026-11-16",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "570dfab66485c431e8a6b72cfd3f7d26dd5af473",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_on": "2026-11-16",
+    "performance_period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "ui_updated": "3.5 hours ago at read",
+    "search_type": "Web (text)",
+    "clicks": 11,
+    "impressions": 2536,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "interpretation": "Same-day follow-up to the preceding release. The report window has not advanced; no post-release traffic or ranking lift can be inferred. GSC total exposure refreshed from the earlier 2540 to 2536.",
+    "selected_products": [
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-wine-boxes.html",
+          "clicks": 0,
+          "impressions": 72,
+          "position": 63.6
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/wine-bottle-gift-box-specification.html",
+          "clicks": 0,
+          "impressions": 17,
+          "position": 20.5
+        },
+        "reason": "Product exposure and observed custom wine packaging queries; connect bottle fit and load planning to a quote.",
+        "visible_queries": [
+          {
+            "query": "custom wine packaging",
+            "clicks": 0,
+            "impressions": 10,
+            "position": 98.8
+          },
+          {
+            "query": "custom wine box packaging",
+            "clicks": 0,
+            "impressions": 5,
+            "position": 69.8
+          },
+          {
+            "query": "custom wine packaging and boxes",
+            "clicks": 0,
+            "impressions": 4,
+            "position": 96.0
+          },
+          {
+            "query": "wine box packaging",
+            "clicks": 0,
+            "impressions": 3,
+            "position": 58.3
+          },
+          {
+            "query": "wine box size",
+            "clicks": 0,
+            "impressions": 3,
+            "position": 60.0
+          },
+          {
+            "query": "single wine bottle box packaging design online",
+            "clicks": 0,
+            "impressions": 3,
+            "position": 80.7
+          },
+          {
+            "query": "custom wine bottle packaging",
+            "clicks": 0,
+            "impressions": 2,
+            "position": 29.5
+          },
+          {
+            "query": "wine tube gift box",
+            "clicks": 0,
+            "impressions": 2,
+            "position": 56.0
+          },
+          {
+            "query": "customized wine box",
+            "clicks": 0,
+            "impressions": 2,
+            "position": 84.5
+          },
+          {
+            "query": "custom wine boxes cardboard",
+            "clicks": 0,
+            "impressions": 2,
+            "position": 98.0
+          }
+        ],
+        "query_coverage": "Visible UI rows only; query reporting may omit rows and is not a full query export"
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-jewelry-boxes.html",
+          "clicks": 0,
+          "impressions": 38,
+          "position": 23.3
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/jewelry-box-insert-design-guide.html",
+          "clicks": 0,
+          "impressions": 48,
+          "position": 15.3
+        },
+        "reason": "Relatively closer commercial ranking and an exposed insert guide; connect arranged product dimensions to quote details.",
+        "visible_queries": [
+          {
+            "query": "brand-specific jewelry packaging",
+            "clicks": 0,
+            "impressions": 8,
+            "position": 44.4
+          },
+          {
+            "query": "show me",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 1.0
+          }
+        ],
+        "query_coverage": "Visible UI rows only; query reporting may omit rows and is not a full query export"
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-corrugated-shipping-boxes.html",
+          "clicks": 0,
+          "impressions": 47,
+          "position": 31.7
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/corrugated-shipping-box-specification-guide.html",
+          "clicks": 2,
+          "impressions": 130,
+          "position": 7.7
+        },
+        "reason": "The specification guide has 130 impressions and 2 clicks; carry the existing case/pallet planning inputs into the product quote.",
+        "visible_queries": [
+          {
+            "query": "custom shipper manufacturing",
+            "clicks": 0,
+            "impressions": 4,
+            "position": 138.8
+          },
+          {
+            "query": "ship type box design cutting manufacturer",
+            "clicks": 0,
+            "impressions": 3,
+            "position": 41.0
+          },
+          {
+            "query": "carton box",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 1.0
+          },
+          {
+            "query": "scoring allowances for corrugated boxes",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 1.0
+          },
+          {
+            "query": "packaging",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 2.0
+          },
+          {
+            "query": "صور",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 2.0
+          },
+          {
+            "query": "what about verizon",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 6.0
+          },
+          {
+            "query": "pack configuration",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 8.0
+          }
+        ],
+        "query_coverage": "Visible UI rows only; query reporting may omit rows and is not a full query export"
+      }
+    ],
+    "single_url_inspections": [
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-16T15:38:44.891Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-16T15:39:05.295Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/custom-tissue-paper.html",
+        "checkedAt": "2026-11-16T15:40:59.897Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/rigid-box-vs-folding-carton.html",
+        "checkedAt": "2026-11-16T15:41:35.967Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/pantone-color-matching-packaging.html",
+        "checkedAt": "2026-11-16T15:42:25.031Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/rigid-box-cost-drivers.html",
+        "checkedAt": "2026-11-16T15:42:59.859Z",
+        "status": "网页已编入索引"
+      }
+    ],
+    "indexed_in_followup": 4,
+    "still_discovered_not_indexed": 2,
+    "request_handling": "The preceding six successful request receipts remain recorded separately; no duplicate single-URL request was sent in this follow-up."
+  },
+  "changes": [
+    "Improve three product metadata sets, add product-specific decision routes, planner links and downloadable project checklists",
+    "Make dimensions optional with review guidance; prioritize the three quote forms ahead of supporting copy on mobile; remove stale target-date examples",
+    "Add wine, jewelry and shipping-case planner transfer definitions using the established one-use 30-minute browser draft mechanism",
+    "Preserve product-language paths, existing entered details, order quantity and dimensions; reject invalid or expired stored drafts",
+    "Keep bottle count, shipment case count, allowances and proposed dimensions within the reviewable brief rather than populating confirmed order quantity or finished dimensions",
+    "Allow three explicit calculator identifiers in the existing consent-controlled analytics event; transmit only known calculator/action labels, never buyer inputs",
+    "Translate new planning titles and production boundaries into five languages; retain all native review gates",
+    "Update true modification dates for six content pages and refresh discovery files; shared script cache versions update the remaining pages"
+  ],
+  "checks": {
+    "static": "86 canonical indexable pages + 404 passed",
+    "languages": "522 rendered pages and language runtime passed",
+    "planner": "All 8 core guide-to-quote routes passed; stored wine bottle count above 12 rejected; non-overwrite, expiry, language paths, consent and storage/clipboard fallbacks passed",
+    "api": "Quote API, service-health and existing paper-tube handoff regressions passed with mocks; no live inquiry sent",
+    "mobile_browser": "390px on all 3 product pages without overflow, correct product selection, optional dimensions and forms before supporting copy",
+    "browser_handoff": "Wine diameter 91, jewelry arranged length 144 and shipment case count 321 carried accurately; order quantity and finished dimensions left blank. Chinese wine route retained language and translated boundary.",
+    "build": "4678 public files including 522 HTML pages and 2 API handlers passed",
+    "discovery": "Local AI discovery audit and 6-URL IndexNow dry run passed"
+  },
+  "limits": [
+    "Indexing status is a point-in-time Google result, not proof of ranking or traffic gain caused by the previous release",
+    "Two seasonal guides remain discovered but not indexed; successful prior requests do not guarantee crawl timing",
+    "Only new planner titles and boundaries received additional translations; no full-page native review claimed",
+    "No new real inquiry or email sent; qualified-lead performance not remeasured in this follow-up",
+    "Preserved the pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/next-three-release-20261116.json"
+}

@@ -13638,5 +13638,11 @@
   "Work backward from the supplier’s confirmed last pickup date: subtract bulk production, quality inspection and packing time, then sample approval, then artwork and dieline approval. There is no universal November cutoff. Include sample courier, buyer review, revisions, non-working days and the delivery route before agreeing an artwork deadline.": "从供应商确认的最晚提货日倒排：扣除量产、质检和包装时间，再安排样品批准及稿件和刀模批准。不存在统一的十一月截止日期；应纳入样品快递、买方审核、修改、非工作日和交付路线，再确定稿件期限。",
   "Working days are not calendar days. Convert each quoted stage using the responsible supplier’s working calendar and closure dates before entering it in the lead time planner.": "工作日不等于自然日。输入交期规划工具前，应根据负责供应商的工作日历和停工日期换算每个报价阶段。",
   "Your confirmed warehouse receipt date": "已确认的到仓日期",
-  "your arrival date.": "到货日期倒排。"
+  "your arrival date.": "到货日期倒排。",
+  "Wine gift-box planning inputs": "红酒礼盒规划输入",
+  "Jewelry insert planning inputs": "珠宝内托规划输入",
+  "Shipping-case planning inputs": "运输箱规划输入",
+  "Buyer-entered planning inputs only. Bottle count is not order quantity; planning allowances are not approved material or finished box dimensions. Confirm filled-bottle support, insert, removal, outer case and physical samples before production.": "仅为买家填写的规划输入。瓶数不是订单数量；规划余量不代表已批准的材料或成品盒尺寸。生产前须确认满瓶支撑、内托、取放、外箱及实物样品。",
+  "Buyer-entered planning inputs only. An arranged envelope is not a cutting file, finished box size or fit approval. Confirm contact materials, chain or clasp routing, retention, removal and a production-equivalent sample before production.": "仅为买家填写的规划输入。摆放后的产品包络不代表刀模文件、成品盒尺寸或适配批准。生产前须确认接触材料、链条或扣件走向、固定、取放及符合量产条件的样品。",
+  "Buyer-entered planning inputs only. Case count is a shipment assumption, not a confirmed box order quantity. Confirm whether dimensions are inside or outside; freight calculations need final packed outside dimensions. Board strength, stacking, pallet stability, carrier limits and transit approval require separate review.": "仅为买家填写的规划输入。箱数是出货假设，不是已确认的纸箱订单数量。须明确输入的是内尺寸还是外尺寸；运费计算需要装箱后的最终外尺寸。纸板强度、堆码、托盘稳定性、承运限制及运输批准须单独审核。"
 }

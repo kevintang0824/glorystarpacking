@@ -1958,5 +1958,47 @@
     "sua data de chegada.",
     "даты прибытия.",
     "到货日期倒排。"
+  ],
+  "Wine gift-box planning inputs": [
+    "Données de planification du coffret à vin",
+    "Datos de planificación de la caja de vino",
+    "Dados de planeamento da caixa para vinho",
+    "Исходные данные для винной подарочной коробки",
+    "红酒礼盒规划输入"
+  ],
+  "Jewelry insert planning inputs": [
+    "Données de planification du calage pour bijoux",
+    "Datos de planificación del inserto de joyería",
+    "Dados de planeamento do berço para joias",
+    "Исходные данные для ювелирного ложемента",
+    "珠宝内托规划输入"
+  ],
+  "Shipping-case planning inputs": [
+    "Données de planification de la caisse d’expédition",
+    "Datos de planificación de la caja de envío",
+    "Dados de planeamento da caixa de transporte",
+    "Исходные данные для транспортного короба",
+    "运输箱规划输入"
+  ],
+  "Buyer-entered planning inputs only. Bottle count is not order quantity; planning allowances are not approved material or finished box dimensions. Confirm filled-bottle support, insert, removal, outer case and physical samples before production.": [
+    "Données de planification saisies par l’acheteur uniquement. Le nombre de bouteilles n’est pas la quantité commandée ; les jeux de planification ne valident ni le matériau ni les dimensions finales. Confirmez le support des bouteilles pleines, le calage, le retrait, la caisse extérieure et les échantillons avant production.",
+    "Solo datos de planificación introducidos por el comprador. El número de botellas no es la cantidad del pedido; las holguras no aprueban el material ni las medidas finales. Confirme soporte de las botellas llenas, inserto, extracción, caja exterior y muestras antes de producir.",
+    "Apenas dados de planeamento introduzidos pelo comprador. O número de garrafas não é a quantidade encomendada; as folgas não aprovam materiais nem dimensões finais. Confirme o apoio das garrafas cheias, o berço, a remoção, a caixa exterior e as amostras antes da produção.",
+    "Только плановые данные покупателя. Число бутылок не является тиражом; плановые зазоры не утверждают материал или конечные размеры коробки. До производства согласуйте опору наполненных бутылок, ложемент, извлечение, внешний короб и физические образцы.",
+    "仅为买家填写的规划输入。瓶数不是订单数量；规划余量不代表已批准的材料或成品盒尺寸。生产前须确认满瓶支撑、内托、取放、外箱及实物样品。"
+  ],
+  "Buyer-entered planning inputs only. An arranged envelope is not a cutting file, finished box size or fit approval. Confirm contact materials, chain or clasp routing, retention, removal and a production-equivalent sample before production.": [
+    "Données de planification saisies par l’acheteur uniquement. L’encombrement en présentation n’est ni un fichier de découpe, ni une dimension finale, ni une validation d’ajustement. Confirmez les matériaux de contact, le passage des chaînes ou fermoirs, le maintien, le retrait et un échantillon représentatif avant production.",
+    "Solo datos de planificación introducidos por el comprador. La envolvente del artículo presentado no es un archivo de corte, una medida final ni una aprobación de ajuste. Confirme materiales de contacto, recorrido de cadena o cierre, retención, extracción y una muestra representativa antes de producir.",
+    "Apenas dados de planeamento introduzidos pelo comprador. O volume da apresentação não é um ficheiro de corte, uma dimensão final nem uma aprovação de ajuste. Confirme materiais de contacto, percurso da corrente ou fecho, retenção, remoção e uma amostra representativa antes da produção.",
+    "Только плановые данные покупателя. Габариты разложенного изделия не являются файлом резки, конечным размером коробки или утверждением посадки. До производства согласуйте контактные материалы, размещение цепочки или застежки, фиксацию, извлечение и образец, соответствующий серийному изделию.",
+    "仅为买家填写的规划输入。摆放后的产品包络不代表刀模文件、成品盒尺寸或适配批准。生产前须确认接触材料、链条或扣件走向、固定、取放及符合量产条件的样品。"
+  ],
+  "Buyer-entered planning inputs only. Case count is a shipment assumption, not a confirmed box order quantity. Confirm whether dimensions are inside or outside; freight calculations need final packed outside dimensions. Board strength, stacking, pallet stability, carrier limits and transit approval require separate review.": [
+    "Données de planification saisies par l’acheteur uniquement. Le nombre de caisses est une hypothèse d’expédition, pas une quantité commandée confirmée. Précisez si les dimensions sont intérieures ou extérieures ; le fret exige les dimensions extérieures finales du colis rempli. Résistance du carton, gerbage, stabilité de palette, limites du transporteur et validation du transport restent à examiner séparément.",
+    "Solo datos de planificación introducidos por el comprador. El número de cajas es una hipótesis de envío, no un pedido confirmado. Aclare si las medidas son interiores o exteriores; el cálculo del transporte necesita las medidas exteriores finales del bulto lleno. Resistencia, apilamiento, estabilidad del palé, límites del transportista y aprobación de transporte requieren revisión aparte.",
+    "Apenas dados de planeamento introduzidos pelo comprador. O número de caixas é uma hipótese de expedição, não uma quantidade encomendada confirmada. Confirme se as dimensões são interiores ou exteriores; o cálculo do frete exige as dimensões exteriores finais da caixa cheia. Resistência, empilhamento, estabilidade da palete, limites do transportador e aprovação do transporte exigem análise separada.",
+    "Только плановые данные покупателя. Число коробов — допущение для отгрузки, а не подтвержденный тираж. Уточните, являются размеры внутренними или внешними; для расчета перевозки нужны окончательные внешние размеры заполненного короба. Прочность картона, штабелирование, устойчивость палеты, ограничения перевозчика и транспортные испытания требуют отдельного согласования.",
+    "仅为买家填写的规划输入。箱数是出货假设，不是已确认的纸箱订单数量。须明确输入的是内尺寸还是外尺寸；运费计算需要装箱后的最终外尺寸。纸板强度、堆码、托盘稳定性、承运限制及运输批准须单独审核。"
   ]
 }

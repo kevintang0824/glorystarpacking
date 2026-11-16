@@ -4,6 +4,9 @@ import vm from "node:vm";
 import { parseHTML } from "../tmp/i18n-tools/node_modules/linkedom/esm/index.js";
 
 const routes = [
+  { id: "wine-box-fit-v1", source: "wine-bottle-gift-box-specification.html", target: "custom-wine-boxes.html", field: "bottleDiameter", label: "Maximum bottle body diameter (mm)", calculator: "wine_gift_box_fit_and_load" },
+  { id: "jewelry-fit-v1", source: "jewelry-box-insert-design-guide.html", target: "custom-jewelry-boxes.html", field: "productLength", label: "Arranged length (mm)", calculator: "jewelry_insert_fit_planner" },
+  { id: "shipping-case-plan-v1", source: "corrugated-shipping-box-specification-guide.html", target: "custom-corrugated-shipping-boxes.html", field: "caseLength", label: "Case length (mm)", calculator: "shipping_case_and_pallet_planner" },
   { id: "perfume-insert-v1", source: "perfume-box-insert-checklist.html", target: "custom-perfume-boxes.html", field: "bottleLength", label: "Maximum bottle length (mm)", calculator: "perfume_bottle_insert_fit" },
   { id: "clear-label-trial-v1", source: "clear-label-white-ink-artwork-guide.html", target: "custom-clear-labels.html", field: "containerVariants", label: "Container / contents variants", calculator: "clear_label_applied_trial_matrix" },
 ];
@@ -101,6 +104,12 @@ for (const route of routes) {
   injectedQuantity.values.requestedQuantity = 777;
   const ignoredQuantity = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(injectedQuantity)]]) });
   assert.equal(ignoredQuantity.document.querySelector('[name="quantity"]').value, "", "Only routes declaring an order quantity may populate it");
+  if (route.id === "wine-box-fit-v1") {
+    const tooManyBottles = JSON.parse(saved);
+    tooManyBottles.values.bottleCount = 13;
+    const rejected = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(tooManyBottles)]]) });
+    assert.equal(rejected.document.querySelector('[name="details"]').value, "", "Stored bottle count must respect the planner's 12-bottle limit");
+  }
 
   const valid = JSON.parse(saved);
   for (const invalid of [
@@ -264,4 +273,4 @@ for (const route of briefRoutes) {
   assert.ok(markup.querySelector('[data-guide-brief-fields]').hasAttribute('disabled'), 'Without JavaScript, a draft cannot submit inputs through a GET URL');
   assert.ok(markup.querySelector(`[data-guide-brief] a[href="${route.target}#quote"]`));
 }
-console.log("All five core guide-to-quote routes passed: current inputs, optional fields, choices, safe text, explicit quantities, non-overwrite, expiry, locale paths/copy, attribution, analytics consent and fallbacks. No inquiry was submitted.");
+console.log("All eight core guide-to-quote routes passed: current inputs, optional fields, choices, safe text, explicit quantities, non-overwrite, expiry, locale paths/copy, attribution, analytics consent and fallbacks. No inquiry was submitted.");

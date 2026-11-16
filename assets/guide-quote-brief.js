@@ -1,5 +1,63 @@
 (() => {
   const definitions = {
+    "wine-box-fit-v1": {
+      source: "wine-bottle-gift-box-specification.html",
+      target: "custom-wine-boxes.html",
+      form: "wine-gift-box-planner",
+      calculator: "wine_gift_box_fit_and_load",
+      title: "Wine gift-box planning inputs",
+      boundary: "Buyer-entered planning inputs only. Bottle count is not order quantity; planning allowances are not approved material or finished box dimensions. Confirm filled-bottle support, insert, removal, outer case and physical samples before production.",
+      fields: [
+        ["bottleCount", "Bottles per gift box", { type: "number", min: 1, max: 12, integer: true }],
+        ["bottleDiameter", "Maximum bottle body diameter (mm)", 1],
+        ["bottleHeight", "Maximum overall bottle height (mm)", 1],
+        ["radialAllowance", "Planning allowance per side (mm)", 0],
+        ["baseAllowance", "Planning allowance below bottle (mm)", 0],
+        ["topAllowance", "Planning allowance above bottle (mm)", 0],
+        ["dividerThickness", "Divider between cavities (mm)", 0],
+        ["filledWeight", "Filled weight per bottle (g)", 1],
+        ["accessoryWeight", "Accessories and documents (g)", 0],
+      ],
+    },
+    "jewelry-fit-v1": {
+      source: "jewelry-box-insert-design-guide.html",
+      target: "custom-jewelry-boxes.html",
+      form: "jewelry-insert-fit-planner",
+      calculator: "jewelry_insert_fit_planner",
+      title: "Jewelry insert planning inputs",
+      boundary: "Buyer-entered planning inputs only. An arranged envelope is not a cutting file, finished box size or fit approval. Confirm contact materials, chain or clasp routing, retention, removal and a production-equivalent sample before production.",
+      fields: [
+        ["jewelryType", "Jewelry layout", { type: "choice", choices: ["ring", "earrings", "necklace", "watch", "set"] }],
+        ["productLength", "Arranged length (mm)", 0.1],
+        ["productWidth", "Arranged width (mm)", 0.1],
+        ["heightAbove", "Height above presentation plane (mm)", 0],
+        ["spaceBelow", "Space below presentation plane (mm)", 0],
+        ["perimeterAllowance", "Perimeter allowance per side (mm)", 0],
+        ["lidClearance", "Lid clearance above item (mm)", 0],
+        ["boxLength", "Proposed box inside length (mm)", 0.1],
+        ["boxWidth", "Proposed box inside width (mm)", 0.1],
+        ["boxHeight", "Proposed box inside height (mm)", 0.1],
+      ],
+    },
+    "shipping-case-plan-v1": {
+      source: "corrugated-shipping-box-specification-guide.html",
+      target: "custom-corrugated-shipping-boxes.html",
+      form: "shipping-case-planner",
+      calculator: "shipping_case_and_pallet_planner",
+      title: "Shipping-case planning inputs",
+      boundary: "Buyer-entered planning inputs only. Case count is a shipment assumption, not a confirmed box order quantity. Confirm whether dimensions are inside or outside; freight calculations need final packed outside dimensions. Board strength, stacking, pallet stability, carrier limits and transit approval require separate review.",
+      fields: [
+        ["caseCount", "Number of cases", 1, true],
+        ["unitsPerCase", "Units per case", 1, true],
+        ["caseLength", "Case length (mm)", 1],
+        ["caseWidth", "Case width (mm)", 1],
+        ["caseHeight", "Case height (mm)", 1],
+        ["caseWeight", "Gross case weight (kg)", 0.01],
+        ["palletLength", "Pallet load length (mm)", 1],
+        ["palletWidth", "Pallet load width (mm)", 1],
+        ["loadHeight", "Available load height above pallet (mm)", 1],
+      ],
+    },
     "rigid-box-brief-v1": {
       source: "rigid-box-cost-drivers.html",
       target: "custom-rigid-boxes.html",
@@ -96,7 +154,7 @@
     if (rules.type === "choice") return rules.choices.includes(value);
     if (rules.type === "text") return typeof value === "string" && value.trim().length > 0
       && value.length <= rules.max && !/[\u0000-\u001f\u007f]/.test(value);
-    return typeof value === "number" && Number.isFinite(value) && value >= rules.min && value <= 10000000
+    return typeof value === "number" && Number.isFinite(value) && value >= rules.min && value <= (rules.max ?? 10000000)
       && (!rules.integer || Number.isSafeInteger(value));
   });
   const buildBrief = (definition, values) => [
