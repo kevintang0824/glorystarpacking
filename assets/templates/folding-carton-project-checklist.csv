@@ -1,0 +1,10 @@
+field,buyer_requirement,review_note
+Product and weight,,Maximum packed product dimensions with units; weight and orientation
+Dimension basis,,"State product size, finished inside carton size or outside size; supplier to confirm allowances"
+Carton construction,,Tuck end / auto-lock bottom / seal end / please advise
+Paperboard,,"Proposed grade, measured caliper, coating and material documentation; GSM is not caliper"
+Packing operation,,"Manual steps or machine model, line specification, speed and trial requirement"
+Order quantity,,"Units per design and SKU; MOQ 1,000 per design"
+Artwork and finish,,"Artwork revision, colors, finishes, barcode area and glue-free zones"
+Approval and quality,,"Structural sample, print proof, closure/load checks and agreed acceptance reference"
+Delivery,,"Country, postal code, requested arrival date and freight scope"

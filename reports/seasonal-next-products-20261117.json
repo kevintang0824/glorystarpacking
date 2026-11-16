@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-17",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "5036c50e21958b6006984a8f5bdfc58dbff11e40",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-16T15:57:34.679Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-16T15:57:47.265Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      }
+    ],
+    "request_handling": "Both requests were already accepted on November 16; no duplicate single-URL request sent. A request receipt is not indexing.",
+    "performance_period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "search_type": "Web (text)",
+    "latest_reliable_read": "2026-11-16 evening, approximately 23:38 Asia/Shanghai",
+    "ui_updated_at_that_read": "3.5 hours ago",
+    "clicks": 11,
+    "impressions": 2536,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "refresh_limitation": "Fresh URL inspections succeeded at 23:57 on November 16. The subsequent performance report failed with ERR_CONNECTION_CLOSED; a normal retry also failed. Selection uses the latest previously verified report window, not a new read or post-release growth claim. Windsor connector remains unavailable under its existing account-limit error.",
+    "selected_products": [
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/folding-carton-boxes.html",
+          "clicks": 0,
+          "impressions": 23,
+          "position": 17.3
+        },
+        "reason": "Nearer commercial ranking; improve filling-process choice and remove unknown-size friction."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-paper-bags.html",
+          "clicks": 0,
+          "impressions": 18,
+          "position": 15.7
+        },
+        "reason": "Nearer commercial ranking; make packed load, handles and reinforcement the early decision route."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-tube-packaging.html",
+          "clicks": 0,
+          "impressions": 32,
+          "position": 40.8
+        },
+        "reason": "Connect the 158-impression size guide more prominently to the existing fit-brief handoff; retain tube-specific ordering scope."
+      }
+    ],
+    "supporting_guides": [
+      {
+        "url": "https://glorystarpacking.com/paper-tube-packaging-size-guide.html",
+        "clicks": 0,
+        "impressions": 158,
+        "position": 6.3
+      },
+      {
+        "url": "https://glorystarpacking.com/paper-thickness-gsm-pt-mm-conversion-guide.html",
+        "clicks": 2,
+        "impressions": 431,
+        "position": 11.3
+      }
+    ],
+    "raw_performance_evidence": "tmp/gsc-next-three-pages-20261116.txt"
+  },
+  "changes": [
+    "Three distinct early decision routes with direct quote, supporting guide and blank downloadable project checklist links",
+    "Folding-carton title and all three description/social-description sets updated without changing product URLs",
+    "Optional dimensions with existing project-review guidance; stale October date examples removed; existing mobile form-priority stylesheet reused",
+    "WebPage modification dates and sitemap/image-sitemap lastmod reflect actual November 17 edits",
+    "35 Chinese translations for the new selection routes, size labels and quote guidance; shared labels also improve three previous Chinese product pages; retain all translation review gates",
+    "Existing paper-tube one-use planning transfer retained and regression tested; no new analytics events or mail pipeline changes"
+  ],
+  "checks": {
+    "static": "86 canonical indexable pages plus 404 passed",
+    "languages": "522 pages and runtime passed",
+    "quote": "Quote API and service-health mocks passed; no live mail submitted",
+    "handoffs": "Eight core routes plus existing paper-tube route passed",
+    "js_syntax": "Site, analytics, guide and API passed",
+    "discovery": "Local AI discovery audit and three-URL IndexNow dry run passed",
+    "browser": "Desktop 1280px: all three forms select correct product, size is optional and there is no horizontal overflow. Paper-tube current cross-section 73 mm carried to quote with -3 mm shortage warning; order quantity stays blank.",
+    "mobile_limit": "The supported viewport override was requested at 390x844 but browser still reported 1280x720; do not claim a completed 390px rendering check. Existing mobile CSS is unchanged."
+  },
+  "limits": [
+    "Search performance refresh failed after successful live seasonal inspections; no new query-level evidence invented",
+    "Seasonal guides remain discovered but not indexed; Google controls crawl timing",
+    "No new real inquiry, qualified-lead gain, organic ranking gain or AI recommendation established",
+    "Only new Chinese route copy was translated in this pass; full-page native review not claimed",
+    "Preserved pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/seasonal-next-products-release-20261117.json"
+}
