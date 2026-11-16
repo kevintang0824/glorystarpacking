@@ -7,30 +7,29 @@
     "single_url_inspections": [
       {
         "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
-        "checkedAt": "2026-11-16T15:57:34.679Z",
+        "checkedAt": "2026-11-16T23:53:04.798Z",
         "status": "网页未编入索引：已发现 - 尚未编入索引",
         "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
       },
       {
         "path": "/ramadan-2027-gift-box-order-timeline.html",
-        "checkedAt": "2026-11-16T15:57:47.265Z",
+        "checkedAt": "2026-11-16T23:53:21.364Z",
         "status": "网页未编入索引：已发现 - 尚未编入索引",
         "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
       }
     ],
-    "request_handling": "Both requests were already accepted on November 16; no duplicate single-URL request sent. A request receipt is not indexing.",
+    "request_handling": "Both seasonal URLs were rechecked on November 17 and remain discovered, not indexed. The accepted November 16 requests remain on record; no duplicate single-URL request sent.",
     "performance_period": [
       "2026-10-18",
       "2026-11-14"
     ],
     "search_type": "Web (text)",
-    "latest_reliable_read": "2026-11-16 evening, approximately 23:38 Asia/Shanghai",
-    "ui_updated_at_that_read": "3.5 hours ago",
+    "latest_reliable_read": "2026-11-17 morning, Asia/Shanghai",
+    "ui_updated_at_that_read": "4 hours ago",
     "clicks": 11,
     "impressions": 2536,
     "ctr_percent_displayed": 0.4,
     "position": 20,
-    "refresh_limitation": "Fresh URL inspections succeeded at 23:57 on November 16. The subsequent performance report failed with ERR_CONNECTION_CLOSED; a normal retry also failed. Selection uses the latest previously verified report window, not a new read or post-release growth claim. Windsor connector remains unavailable under its existing account-limit error.",
     "selected_products": [
       {
         "product": {
@@ -74,7 +73,23 @@
         "position": 11.3
       }
     ],
-    "raw_performance_evidence": "tmp/gsc-next-three-pages-20261116.txt"
+    "raw_performance_evidence": "tmp/gsc-products-refresh-20261117.txt",
+    "previous_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-16T15:57:34.679Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引, Secondary Actions: Collapse",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-16T15:57:47.265Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引, Secondary Actions: Collapse",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      }
+    ],
+    "refresh_result": "Connection recovered. A fresh 28-day report and all 68 page rows were read on November 17; totals and selected product rows are unchanged. The data window still ends November 14; no post-release growth inference.",
+    "performance_refreshed_at": "2026-11-16T23:52:22.415932+00:00"
   },
   "changes": [
     "Three distinct early decision routes with direct quote, supporting guide and blank downloadable project checklist links",
@@ -91,11 +106,12 @@
     "handoffs": "Eight core routes plus existing paper-tube route passed",
     "js_syntax": "Site, analytics, guide and API passed",
     "discovery": "Local AI discovery audit and three-URL IndexNow dry run passed",
-    "browser": "Desktop 1280px: all three forms select correct product, size is optional and there is no horizontal overflow. Paper-tube current cross-section 73 mm carried to quote with -3 mm shortage warning; order quantity stays blank.",
-    "mobile_limit": "The supported viewport override was requested at 390x844 but browser still reported 1280x720; do not claim a completed 390px rendering check. Existing mobile CSS is unchanged."
+    "browser": "Desktop 1280px: all three forms select correct product, size is optional and there is no horizontal overflow. Paper-tube current cross-section 73 mm carried to quote with -3 mm shortage warning; order quantity stays blank. New Chinese paper-bag selection route also verified.",
+    "mobile_limit": "The supported viewport override was requested at 390x844 but browser still reported 1280x720; do not claim a completed 390px rendering check. Existing mobile CSS is unchanged.",
+    "production": "Initial deployment Ready; all 12 checked public files match source, quote mail configuration and production AI-discovery audit passed; IndexNow accepted 3 changed product URLs (HTTP 200). Final deployment receipt records the latest main commit."
   },
   "limits": [
-    "Search performance refresh failed after successful live seasonal inspections; no new query-level evidence invented",
+    "The refreshed search report window still ends November 14; it cannot show an effect from the November 17 release.",
     "Seasonal guides remain discovered but not indexed; Google controls crawl timing",
     "No new real inquiry, qualified-lead gain, organic ranking gain or AI recommendation established",
     "Only new Chinese route copy was translated in this pass; full-page native review not claimed",
