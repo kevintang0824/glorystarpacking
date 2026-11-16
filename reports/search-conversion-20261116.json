@@ -1,0 +1,542 @@
+{
+  "date": "2026-11-16",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "24ac956cb682ad74354abe5691e11e8ce988be74",
+  "access": {
+    "Windsor": "Both GA4 and GSC reads blocked: 9 connected accounts versus Free plan allowance of 1. No account or plan changed.",
+    "fallback": "Authenticated Google Chrome UI; property checked before report reads"
+  },
+  "gsc": {
+    "property": "sc-domain:glorystarpacking.com",
+    "period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated": "3.5 hours ago at read",
+    "clicks": 11,
+    "impressions": 2540,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "page_rows": [
+      {
+        "url": "https://glorystarpacking.com/paper-thickness-gsm-pt-mm-conversion-guide.html",
+        "clicks": 2,
+        "impressions": 431,
+        "position": 11.3
+      },
+      {
+        "url": "https://glorystarpacking.com/corrugated-shipping-box-specification-guide.html",
+        "clicks": 2,
+        "impressions": 130,
+        "position": 7.7
+      },
+      {
+        "url": "https://glorystarpacking.com/clear-label-white-ink-artwork-guide.html",
+        "clicks": 1,
+        "impressions": 68,
+        "position": 13.3
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-mailer-boxes.html",
+        "clicks": 1,
+        "impressions": 66,
+        "position": 59.0
+      },
+      {
+        "url": "https://glorystarpacking.com/foil-vs-spot-uv.html",
+        "clicks": 1,
+        "impressions": 60,
+        "position": 10.4
+      },
+      {
+        "url": "https://glorystarpacking.com/products.html",
+        "clicks": 1,
+        "impressions": 42,
+        "position": 10.4
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-tissue-paper-printing-guide.html",
+        "clicks": 1,
+        "impressions": 27,
+        "position": 6.8
+      },
+      {
+        "url": "https://glorystarpacking.com/packaging-sample-approval-checklist.html",
+        "clicks": 1,
+        "impressions": 17,
+        "position": 8.4
+      },
+      {
+        "url": "https://glorystarpacking.com/multi-sku-packaging-system-guide.html",
+        "clicks": 1,
+        "impressions": 15,
+        "position": 5.5
+      },
+      {
+        "url": "https://glorystarpacking.com/retail-box-vs-shipping-box-guide.html",
+        "clicks": 0,
+        "impressions": 160,
+        "position": 9.0
+      },
+      {
+        "url": "https://glorystarpacking.com/paper-tube-packaging-size-guide.html",
+        "clicks": 0,
+        "impressions": 158,
+        "position": 6.3
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-development-case-study.html",
+        "clicks": 0,
+        "impressions": 154,
+        "position": 20.9
+      },
+      {
+        "url": "https://glorystarpacking.com/collapsible-rigid-boxes.html",
+        "clicks": 0,
+        "impressions": 96,
+        "position": 52.0
+      },
+      {
+        "url": "https://glorystarpacking.com/packaging-supplier-qualification-checklist.html",
+        "clicks": 0,
+        "impressions": 95,
+        "position": 21.1
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-rfq-template.html",
+        "clicks": 0,
+        "impressions": 77,
+        "position": 6.6
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-inserts.html",
+        "clicks": 0,
+        "impressions": 76,
+        "position": 57.2
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-wine-boxes.html",
+        "clicks": 0,
+        "impressions": 72,
+        "position": 63.6
+      },
+      {
+        "url": "https://glorystarpacking.com/",
+        "clicks": 0,
+        "impressions": 57,
+        "position": 13.1
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-magnetic-boxes.html",
+        "clicks": 0,
+        "impressions": 54,
+        "position": 28.4
+      },
+      {
+        "url": "https://glorystarpacking.com/jewelry-box-insert-design-guide.html",
+        "clicks": 0,
+        "impressions": 48,
+        "position": 15.3
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-rigid-boxes.html",
+        "clicks": 0,
+        "impressions": 48,
+        "position": 65.3
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-corrugated-shipping-boxes.html",
+        "clicks": 0,
+        "impressions": 47,
+        "position": 31.7
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-perfume-boxes.html",
+        "clicks": 0,
+        "impressions": 43,
+        "position": 53.8
+      },
+      {
+        "url": "https://glorystarpacking.com/blog.html",
+        "clicks": 0,
+        "impressions": 39,
+        "position": 9.7
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-cost-moq-guide.html",
+        "clicks": 0,
+        "impressions": 38,
+        "position": 18.3
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-jewelry-boxes.html",
+        "clicks": 0,
+        "impressions": 38,
+        "position": 23.3
+      },
+      {
+        "url": "https://glorystarpacking.com/perfume-box-insert-checklist.html",
+        "clicks": 0,
+        "impressions": 36,
+        "position": 4.5
+      },
+      {
+        "url": "https://glorystarpacking.com/about.html",
+        "clicks": 0,
+        "impressions": 35,
+        "position": 30.2
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-quality-inspection-checklist.html",
+        "clicks": 0,
+        "impressions": 35,
+        "position": 37.3
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-tube-packaging.html",
+        "clicks": 0,
+        "impressions": 32,
+        "position": 40.8
+      },
+      {
+        "url": "https://glorystarpacking.com/cosmetic-packaging-boxes.html",
+        "clicks": 0,
+        "impressions": 31,
+        "position": 41.0
+      },
+      {
+        "url": "https://glorystarpacking.com/hang-tag-production-checklist.html",
+        "clicks": 0,
+        "impressions": 30,
+        "position": 9.2
+      },
+      {
+        "url": "https://glorystarpacking.com/packaging-test-records-guide.html",
+        "clicks": 0,
+        "impressions": 24,
+        "position": 35.3
+      },
+      {
+        "url": "https://glorystarpacking.com/folding-carton-boxes.html",
+        "clicks": 0,
+        "impressions": 23,
+        "position": 17.3
+      },
+      {
+        "url": "https://glorystarpacking.com/waterproof-label-testing-guide.html",
+        "clicks": 0,
+        "impressions": 20,
+        "position": 6.5
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-boxes.html",
+        "clicks": 0,
+        "impressions": 20,
+        "position": 13.1
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-china-vs-local-supplier.html",
+        "clicks": 0,
+        "impressions": 19,
+        "position": 8.3
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-paper-bags.html",
+        "clicks": 0,
+        "impressions": 18,
+        "position": 15.7
+      },
+      {
+        "url": "https://glorystarpacking.com/branded-packaging-tape-vs-custom-boxes.html",
+        "clicks": 0,
+        "impressions": 18,
+        "position": 34.7
+      },
+      {
+        "url": "https://glorystarpacking.com/wine-bottle-gift-box-specification.html",
+        "clicks": 0,
+        "impressions": 17,
+        "position": 20.5
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-drawer-boxes.html",
+        "clicks": 0,
+        "impressions": 15,
+        "position": 116.7
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-dieline-artwork-requirements.html",
+        "clicks": 0,
+        "impressions": 14,
+        "position": 17.4
+      },
+      {
+        "url": "https://glorystarpacking.com/box-labels.html",
+        "clicks": 0,
+        "impressions": 14,
+        "position": 47.9
+      },
+      {
+        "url": "https://glorystarpacking.com/beauty-packaging-industry-guide.html",
+        "clicks": 0,
+        "impressions": 13,
+        "position": 34.6
+      },
+      {
+        "url": "https://glorystarpacking.com/industries.html",
+        "clicks": 0,
+        "impressions": 13,
+        "position": 55.0
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-waterproof-labels.html",
+        "clicks": 0,
+        "impressions": 10,
+        "position": 19.5
+      },
+      {
+        "url": "https://glorystarpacking.com/packaging-design-brief-guide.html",
+        "clicks": 0,
+        "impressions": 9,
+        "position": 5.7
+      },
+      {
+        "url": "https://glorystarpacking.com/privacy.html",
+        "clicks": 0,
+        "impressions": 9,
+        "position": 6.6
+      },
+      {
+        "url": "https://glorystarpacking.com/wine-label-condensation-adhesive-testing.html",
+        "clicks": 0,
+        "impressions": 5,
+        "position": 5.6
+      },
+      {
+        "url": "https://glorystarpacking.com/collapsible-rigid-box-vs-setup-box.html",
+        "clicks": 0,
+        "impressions": 4,
+        "position": 2.0
+      },
+      {
+        "url": "https://glorystarpacking.com/dimensional-weight-packaging-guide.html",
+        "clicks": 0,
+        "impressions": 4,
+        "position": 3.0
+      },
+      {
+        "url": "https://glorystarpacking.com/window-sushi-takeaway-box-gs-0659772.html",
+        "clicks": 0,
+        "impressions": 4,
+        "position": 3.5
+      },
+      {
+        "url": "https://glorystarpacking.com/verify-fsc-packaging-supplier.html",
+        "clicks": 0,
+        "impressions": 4,
+        "position": 4.8
+      },
+      {
+        "url": "https://glorystarpacking.com/ribbon-paper-gift-boxes-gs-2295707.html",
+        "clicks": 0,
+        "impressions": 4,
+        "position": 5.8
+      },
+      {
+        "url": "https://glorystarpacking.com/pantone-color-matching-packaging.html",
+        "clicks": 0,
+        "impressions": 4,
+        "position": 7.5
+      },
+      {
+        "url": "https://glorystarpacking.com/exw-fob-cif-ddp-packaging-sourcing-guide.html",
+        "clicks": 0,
+        "impressions": 3,
+        "position": 6.0
+      },
+      {
+        "url": "https://glorystarpacking.com/sustainable-luxury-packaging.html",
+        "clicks": 0,
+        "impressions": 3,
+        "position": 9.0
+      },
+      {
+        "url": "https://glorystarpacking.com/is-custom-packaging-worth-it.html",
+        "clicks": 0,
+        "impressions": 2,
+        "position": 6.0
+      },
+      {
+        "url": "https://glorystarpacking.com/low-moq-custom-packaging-small-business.html",
+        "clicks": 0,
+        "impressions": 2,
+        "position": 7.5
+      },
+      {
+        "url": "https://glorystarpacking.com/luxury-unboxing-guide.html",
+        "clicks": 0,
+        "impressions": 2,
+        "position": 9.0
+      },
+      {
+        "url": "https://glorystarpacking.com/essential-oil-folding-cartons-gs-6445340.html",
+        "clicks": 0,
+        "impressions": 2,
+        "position": 93.5
+      },
+      {
+        "url": "https://glorystarpacking.com/rigid-box-cost-drivers.html",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 3.0
+      },
+      {
+        "url": "https://glorystarpacking.com/packaging-logistics-guide.html",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 4.0
+      },
+      {
+        "url": "https://glorystarpacking.com/jewelry-display-card-gs-8039093.html",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 5.0
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-lead-time-planner.html",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 6.0
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-hang-tags.html",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 7.0
+      },
+      {
+        "url": "https://glorystarpacking.com/ecommerce-mailer-box-sizing-transit-test.html",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 9.0
+      },
+      {
+        "url": "https://glorystarpacking.com/perfume-carton-gs-1294765.html",
+        "clicks": 0,
+        "impressions": 1,
+        "position": 10.0
+      }
+    ],
+    "index_report_updated": "2026-11-13",
+    "indexed": 80,
+    "noindex": 382,
+    "redirects": 4,
+    "crawled_not_indexed": [
+      "/feed.xml",
+      "/rigid-box-vs-folding-carton.html",
+      "/custom-tissue-paper.html",
+      "/pantone-color-matching-packaging.html",
+      "/rigid-box-cost-drivers.html"
+    ],
+    "discovered_not_indexed": [
+      "/chinese-new-year-2027-packaging-order-deadlines.html",
+      "/ramadan-2027-gift-box-order-timeline.html"
+    ]
+  },
+  "ga4": {
+    "property": "Glorystarpacking",
+    "property_id": "548891831",
+    "measurement_id_in_site": "G-LYNMPWG9WK",
+    "event_report_period": [
+      "2026-10-19",
+      "2026-11-15"
+    ],
+    "event_count": 210,
+    "total_users": 10,
+    "events": {
+      "page_view": 83,
+      "session_start": 38,
+      "quote_planner_handoff": 13,
+      "form_start": 6,
+      "form_submit": 6,
+      "quote_form_start": 4,
+      "quote_cta_click": 2,
+      "generate_lead": 1,
+      "quote_submit_attempt": 1
+    },
+    "home_period": [
+      "2026-11-09",
+      "2026-11-15"
+    ],
+    "home": {
+      "active_users": 4,
+      "total_users": 5,
+      "page_views": 13,
+      "events": 37,
+      "session_sources": {
+        "(direct) / (none)": 4,
+        "gemini.google.com / ai-assistant": 3,
+        "system_test / qa": 1
+      }
+    },
+    "interpretation": "generate_lead total includes the separately verified 2026-11-09 system test; no additional qualified inquiry is established. Automatic form_submit does not mean delivered mail. Gemini source sessions do not establish organic AI recommendation or qualified leads. Consent and test activity affect coverage."
+  },
+  "selected_core_products": [
+    {
+      "path": "/collapsible-rigid-boxes.html",
+      "impressions": 96,
+      "clicks": 0,
+      "position": 52,
+      "reason": "Largest product-page impression count; observed queries flat fold rigid box (29 impressions) and collapsible rigid box (17). Added direct format definition, closure distinction, dieline boundary and volume/assembly comparison route."
+    },
+    {
+      "path": "/custom-magnetic-boxes.html",
+      "impressions": 54,
+      "clicks": 0,
+      "position": 28.4,
+      "reason": "Commercial page relatively close to top results. Added assembled/collapsible choice, product/closure approval and early scoped ordering facts."
+    },
+    {
+      "path": "/custom-mailer-boxes.html",
+      "impressions": 66,
+      "clicks": 1,
+      "position": 59,
+      "reason": "Already received a search click; added product/liner/returns decisions and direct quote/sizing routes."
+    }
+  ],
+  "changes": [
+    "Added early decision panels to four crawled-not-indexed HTML pages; preserved RSS as a discovery feed",
+    "Directed color-coordination inquiries to the packaging-set form with product preselected",
+    "Aligned two core-product metadata sets with actual commercial offer",
+    "Made collapsible dimensions optional, added form guidance and mobile form priority on collapsible/magnetic pages; removed their stale target-date placeholder",
+    "Updated actual modification dates and generated discovery files"
+  ],
+  "limits": [
+    "No guarantee of Google indexing, rankings, traffic or AI recommendation",
+    "UI reporting periods differ by one day between GSC and GA4 and are not directly comparable",
+    "New English copy is mirrored into unreviewed language editions behind existing noindex gates; no full-page native review is claimed",
+    "No new live inquiry or email was sent",
+    "Pre-existing SEO_ACTIVITY_LOG.md modification preserved"
+  ],
+  "evidence": [
+    "tmp/gsc-pages-20261116.txt",
+    "tmp/gsc-collapsible-queries-20261116.txt",
+    "tmp/gsc-index-20261116.txt",
+    "tmp/gsc-crawled-20261116.txt",
+    "tmp/gsc-discovered-20261116.txt",
+    "tmp/ga4-home-20261116.txt",
+    "tmp/ga4-events-20261116-page1.txt",
+    "tmp/ga4-events-20261116-page2.txt"
+  ],
+  "release_receipt": "tmp/search-conversion-release-20261116.json",
+  "checks": {
+    "static": "86 indexable + 1 noindex English pages passed; canonical, links, FAQ/schema and forms consistent",
+    "languages": "522 rendered pages passed; runtime tests passed; noindex gates preserved",
+    "api": "Mock quote API and service-health regressions passed; no live mail sent",
+    "build": "4678 public files including 522 HTML pages and 2 API handlers passed",
+    "production_before": "Full indexing audit passed; see tmp/indexing-before-20261116.log",
+    "browser": "390px layouts have no overflow; products preselected correctly on all 3 pages; magnetic/collapsible forms precede supporting copy; required fields valid with blank dimensions",
+    "discovery": "Local AI discovery audit and 7-URL IndexNow dry run passed"
+  }
+}
