@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-17",
+  "seller": "GloryStarPack / glorystarpacking.com",
+  "competitor": "LuxoPack / luxopack.com",
+  "screenshot": {
+    "date_displayed": "2026-11-16",
+    "scope": "Worldwide, desktop, domain overview",
+    "organic_traffic_estimate": 167,
+    "organic_keywords": 100,
+    "authority_score": 2,
+    "referring_domains_displayed": "2K",
+    "backlinks_displayed": "2.1K",
+    "ai_visibility": 14,
+    "mentions": 10,
+    "cited_pages": 60,
+    "source": "User-provided screenshot; no competitor analytics or inquiry counts supplied"
+  },
+  "gsc": {
+    "period": [
+      "2026-10-19",
+      "2026-11-15"
+    ],
+    "clicks": 12,
+    "impressions": 2610,
+    "ctr_displayed": "0.5%",
+    "guide_clicks": 9,
+    "commercial_page_clicks": 3,
+    "evidence": "reports/core-products-pass13-20261117.json",
+    "note": "Page classification by landing-page purpose. Very small sample; no causal attribution to Nov16/17 releases."
+  },
+  "ga4": {
+    "property": "548891831 Glorystarpacking",
+    "period": [
+      "2026-10-20",
+      "2026-11-16"
+    ],
+    "unfiltered_sessions": 44,
+    "unfiltered_key_events": 1,
+    "system_test_source_sessions": 9,
+    "system_test_source_key_events": 1,
+    "filtered_sessions": 36,
+    "filtered_engaged_sessions": 17,
+    "filtered_key_events": 0,
+    "filter": "Session source/medium does not contain system_test",
+    "filtered_source_rows": [
+      {
+        "source": "(direct) / (none)",
+        "sessions": 31,
+        "key_events": 0
+      },
+      {
+        "source": "gemini.google.com / ai-assistant",
+        "sessions": 4,
+        "key_events": 0
+      },
+      {
+        "source": "(not set)",
+        "sessions": 1,
+        "key_events": 0
+      }
+    ],
+    "evidence": [
+      "tmp/competitor-ga4-source-medium-20261117.txt",
+      "tmp/competitor-ga4-excluding-tests-20261117.txt"
+    ],
+    "limits": "Observed consented analytics, not a count of all visitors or all real inquiries. Sources and session totals are not subtracted arithmetically. Direct can include unmarked internal traffic. AI referral is not proof of an independent recommendation."
+  },
+  "implemented": [
+    "Home buyer routes for boxes, mailers, labels and complete sets",
+    "Clearer home product/quantity/destination brief and legal supplier identity",
+    "Future marked QA journeys excluded from Google and Vercel analytics, with ordinary consent unchanged",
+    "Existing MOQ, production terms and certificates/customer claims preserved without invented evidence"
+  ],
+  "gaps": [
+    "Competitor top pages, keywords, anchor texts, referring-domain quality and exact cited URLs were not available behind the Semrush login gate",
+    "Competitor website business/credential/case claims are self-reported, not independently validated",
+    "No competitor inquiry, revenue or conversion evidence",
+    "No new post-release reporting period",
+    "No actual neutral cross-model AI recommendation benchmark run"
+  ],
+  "release_receipt": "tmp/competitor-response-release-20261117.json"
+}

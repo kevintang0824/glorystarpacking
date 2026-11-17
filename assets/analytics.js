@@ -3,6 +3,22 @@
   const measurementId = loader?.dataset.measurementId || "";
   if (!/^G-[A-Z0-9]+$/.test(measurementId)) return;
 
+  // Keep marked QA visits, including later pages in the same tab, out of both
+  // production analytics providers. Consent and buyer-entered data are untouched.
+  const systemTestKey = "glorystarpack-system-test";
+  let systemTestVisit = new URLSearchParams(window.location.search || "")
+    .get("utm_source")?.toLowerCase() === "system_test";
+  try {
+    systemTestVisit = systemTestVisit || sessionStorage.getItem(systemTestKey) === "1";
+    if (systemTestVisit) sessionStorage.setItem(systemTestKey, "1");
+  } catch {
+    // An explicitly marked page remains excluded when session storage is blocked.
+  }
+  if (systemTestVisit) {
+    document.documentElement.dataset.analyticsMode = "system-test";
+    return;
+  }
+
   const consentKey = "glorystarpack-analytics-consent";
   const consentGranted = "granted";
   const consentDenied = "denied";

@@ -3092,5 +3092,173 @@
     "Pedir cotação de uma família de caixas de gaveta",
     "Запросить расчет семейства коробок-пеналов",
     "申请抽屉盒系列报价"
+  ],
+  "Custom boxes, inserts and labels for": [
+    "Boîtes, calages et étiquettes sur mesure pour",
+    "Cajas, insertos y etiquetas personalizados para",
+    "Caixas, berços e etiquetas personalizados para",
+    "Коробки, ложементы и этикетки на заказ для",
+    "定制包装盒、内托与标签，专为"
+  ],
+  "your brand.": [
+    "votre marque.",
+    "su marca.",
+    "a sua marca.",
+    "вашего бренда.",
+    "您的品牌。"
+  ],
+  "Source printed boxes, fitted inserts and matching labels for retail, gifting and ecommerce. Share a product photo or reference, quantity and destination to begin a project review.": [
+    "Commandez boîtes imprimées, calages ajustés et étiquettes assorties pour la vente, le cadeau et le commerce en ligne. Partagez photo ou référence produit, quantité et destination pour commencer l’étude.",
+    "Solicite cajas impresas, insertos ajustados y etiquetas a juego para venta, regalo y comercio electrónico. Comparta foto o referencia del producto, cantidad y destino para iniciar la revisión.",
+    "Encomende caixas impressas, berços ajustados e etiquetas coordenadas para venda, oferta e comércio eletrónico. Partilhe fotografia ou referência do produto, quantidade e destino para iniciar a análise.",
+    "Закажите печатные коробки, подходящие ложементы и согласованные этикетки для розницы, подарков и интернет-продаж. Передайте фото или образец изделия, количество и место доставки для начала рассмотрения проекта.",
+    "为零售、礼赠与电商采购印刷包装盒、适配内托和配套标签。提供产品照片或参考、数量及目的地，即可开始项目评估。"
+  ],
+  "Request a packaging quote": [
+    "Demander un devis d’emballage",
+    "Solicitar cotización de embalaje",
+    "Pedir cotação de embalagem",
+    "Запросить расчет упаковки",
+    "申请包装报价"
+  ],
+  "Choose packaging by use": [
+    "Choisir l’emballage par usage",
+    "Elegir embalaje por uso",
+    "Escolher embalagem por utilização",
+    "Выбрать упаковку по назначению",
+    "按用途选择包装"
+  ],
+  "Start your packaging project": [
+    "Démarrez votre projet d’emballage",
+    "Inicie su proyecto de embalaje",
+    "Inicie o seu projeto de embalagem",
+    "Начните проект упаковки",
+    "开始您的包装项目"
+  ],
+  "Start with the pack you need.": [
+    "Commencez par l’emballage qu’il vous faut.",
+    "Empiece por el embalaje que necesita.",
+    "Comece pela embalagem de que precisa.",
+    "Начните с нужной вам упаковки.",
+    "从您需要的包装开始。"
+  ],
+  "Choose the main pack for a focused quote. For a coordinated set, list each component so quantities, materials and delivery can be reviewed together.": [
+    "Choisissez l’emballage principal pour un devis ciblé. Pour un ensemble coordonné, listez chaque composant afin d’examiner ensemble quantités, matériaux et livraison.",
+    "Elija el embalaje principal para una cotización concreta. Para un conjunto coordinado, enumere cada componente para revisar cantidades, materiales y entrega en conjunto.",
+    "Escolha a embalagem principal para uma cotação específica. Para um conjunto coordenado, liste cada componente para analisar quantidades, materiais e entrega em conjunto.",
+    "Выберите основную упаковку для предметного расчета. Для согласованного набора перечислите каждый компонент, чтобы совместно рассмотреть количество, материалы и доставку.",
+    "先选择主要包装，以获得明确报价。配套套装请逐项列出组件，便于一起评估数量、材料与交付。"
+  ],
+  "01 · Retail and gifting": [
+    "01 · Vente et cadeau",
+    "01 · Venta y regalo",
+    "01 · Venda e oferta",
+    "01 · Розница и подарки",
+    "01 · 零售与礼赠"
+  ],
+  "Boxes and fitted inserts": [
+    "Boîtes et calages ajustés",
+    "Cajas e insertos ajustados",
+    "Caixas e berços ajustados",
+    "Коробки и подходящие ложементы",
+    "包装盒与适配内托"
+  ],
+  "For branded cartons, magnetic gift boxes and fitted inserts. Share the product, quantity per design and delivery country.": [
+    "Pour étuis de marque, coffrets magnétiques et calages ajustés. Partagez le produit, la quantité par motif et le pays de livraison.",
+    "Para cajas de marca, cajas magnéticas e insertos ajustados. Comparta producto, cantidad por diseño y país de entrega.",
+    "Para caixas de marca, caixas magnéticas e berços ajustados. Partilhe produto, quantidade por desenho e país de entrega.",
+    "Для фирменных картонных пачек, магнитных подарочных коробок и ложементов. Укажите изделие, количество по дизайнам и страну доставки.",
+    "适用于品牌卡纸盒、磁吸礼盒与适配内托。请提供产品、各设计数量及交付国家。"
+  ],
+  "Quote boxes": [
+    "Chiffrer les boîtes",
+    "Cotizar cajas",
+    "Cotar caixas",
+    "Рассчитать коробки",
+    "包装盒询价"
+  ],
+  "02 · Ecommerce": [
+    "02 · Commerce en ligne",
+    "02 · Comercio electrónico",
+    "02 · Comércio eletrónico",
+    "02 · Интернет-продажи",
+    "02 · 电商"
+  ],
+  "Printed mailers": [
+    "Emballages postaux imprimés",
+    "Cajas de envío impresas",
+    "Caixas de envio impressas",
+    "Печатные почтовые коробки",
+    "印刷邮寄盒"
+  ],
+  "For a branded mailer and its shipping protection. Define the packed product, handling needs and required arrival condition.": [
+    "Pour un emballage postal de marque et sa protection d’expédition. Définissez le produit emballé, les manipulations prévues et l’état requis à l’arrivée.",
+    "Para una caja de envío de marca y su protección de transporte. Defina producto embalado, manipulación prevista y condición requerida a la llegada.",
+    "Para uma caixa de envio de marca e a proteção de transporte. Defina produto embalado, manuseamento previsto e condição exigida à chegada.",
+    "Для фирменной почтовой коробки и защиты при перевозке. Определите упакованное изделие, условия обращения и требуемое состояние при прибытии.",
+    "适用于品牌邮寄盒及运输防护。明确装填后的产品、搬运需求与要求的到货状态。"
+  ],
+  "Quote mailers": [
+    "Chiffrer les emballages postaux",
+    "Cotizar cajas de envío",
+    "Cotar caixas de envio",
+    "Рассчитать почтовые коробки",
+    "邮寄盒询价"
+  ],
+  "03 · Surface and sets": [
+    "03 · Étiquettes et ensembles",
+    "03 · Etiquetas y conjuntos",
+    "03 · Etiquetas e conjuntos",
+    "03 · Этикетки и наборы",
+    "03 · 标签与套装"
+  ],
+  "Labels and coordinated packs": [
+    "Étiquettes et emballages coordonnés",
+    "Etiquetas y embalajes coordinados",
+    "Etiquetas e embalagens coordenadas",
+    "Этикетки и согласованная упаковка",
+    "标签与配套包装"
+  ],
+  "For applied labels or a matching box-and-label system. Specify the container surface and quantities separately for each component.": [
+    "Pour des étiquettes posées ou un ensemble boîte-étiquette assorti. Précisez la surface du contenant et les quantités séparées de chaque composant.",
+    "Para etiquetas aplicadas o un sistema coordinado de caja y etiqueta. Especifique superficie del envase y cantidades separadas de cada componente.",
+    "Para etiquetas aplicadas ou um sistema coordenado de caixa e etiqueta. Especifique superfície do recipiente e quantidades separadas de cada componente.",
+    "Для наклеиваемых этикеток или согласованного комплекта коробки и этикетки. Укажите поверхность емкости и отдельное количество каждого компонента.",
+    "适用于贴附标签或配套盒标系统。请说明容器表面，并分别列出各组件数量。"
+  ],
+  "Quote labels": [
+    "Chiffrer les étiquettes",
+    "Cotizar etiquetas",
+    "Cotar etiquetas",
+    "Рассчитать этикетки",
+    "标签询价"
+  ],
+  "Plan a complete packaging set": [
+    "Planifier un ensemble d’emballage complet",
+    "Planificar un conjunto de embalaje completo",
+    "Planear um conjunto de embalagem completo",
+    "Спланировать полный упаковочный комплект",
+    "规划完整包装套装"
+  ],
+  "GloryStarPack is the trading name of Xiamen GloryStar Packaging Co., Ltd. in Xiamen, Fujian, China.": [
+    "GloryStarPack est le nom commercial de Xiamen GloryStar Packaging Co., Ltd., à Xiamen, Fujian, Chine.",
+    "GloryStarPack es el nombre comercial de Xiamen GloryStar Packaging Co., Ltd., en Xiamen, Fujian, China.",
+    "GloryStarPack é o nome comercial da Xiamen GloryStar Packaging Co., Ltd., em Xiamen, Fujian, China.",
+    "GloryStarPack — торговое наименование Xiamen GloryStar Packaging Co., Ltd. в Сямэне, провинция Фуцзянь, Китай.",
+    "GloryStarPack为Xiamen GloryStar Packaging Co., Ltd.的商号，公司位于中国福建厦门。"
+  ],
+  "Review company and ordering facts": [
+    "Consulter les informations de société et de commande",
+    "Revisar datos de empresa y pedidos",
+    "Consultar dados da empresa e encomendas",
+    "Проверить сведения о компании и заказах",
+    "查看公司与订购信息"
+  ],
+  "Share your product, quantity per design and delivery country. A photo or reference is enough to begin the review; final dimensions and artwork can be confirmed with the sample.": [
+    "Partagez produit, quantité par motif et pays de livraison. Une photo ou référence suffit pour commencer l’étude ; dimensions finales et fichiers peuvent être confirmés avec l’échantillon.",
+    "Comparta producto, cantidad por diseño y país de entrega. Una foto o referencia basta para iniciar la revisión; medidas finales y archivos pueden confirmarse con la muestra.",
+    "Partilhe produto, quantidade por desenho e país de entrega. Uma fotografia ou referência basta para iniciar a análise; dimensões finais e ficheiros podem ser confirmados com a amostra.",
+    "Укажите изделие, количество по дизайнам и страну доставки. Фото или образца достаточно для начала рассмотрения; окончательные размеры и макет можно подтвердить по образцу упаковки.",
+    "请提供产品、各设计数量及交付国家。照片或参考即可开始评估，最终尺寸与印稿可结合样品确认。"
   ]
 }
