@@ -1,0 +1,110 @@
+{
+  "checked_on": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "properties": "sc-domain:glorystarpacking.com",
+  "inspections": [
+    {
+      "page": "home",
+      "url": "https://glorystarpacking.com/",
+      "indexed": true,
+      "last_crawl_displayed": "2026年11月15日 13:16:07",
+      "declared_canonical": "https://glorystarpacking.com/",
+      "google_canonical": "Inspected URL",
+      "crawl_allowed": true,
+      "fetch": "successful",
+      "indexing_allowed": true,
+      "last_crawl_predates_latest_release": true,
+      "request_once_accepted_on": "2026-11-18",
+      "inspection_evidence": "tmp/followup-home-inspection-20261118.txt",
+      "request_evidence": "tmp/followup-home-request-20261118.txt",
+      "metrics": {
+        "from": "2026-10-19",
+        "to": "2026-11-15",
+        "impressions": 53,
+        "clicks": 0,
+        "position": 13.5
+      }
+    },
+    {
+      "page": "magnetic",
+      "url": "https://glorystarpacking.com/custom-magnetic-boxes.html",
+      "indexed": true,
+      "last_crawl_displayed": "2026年11月12日 22:30:57",
+      "declared_canonical": "https://glorystarpacking.com/custom-magnetic-boxes.html",
+      "google_canonical": "Inspected URL",
+      "crawl_allowed": true,
+      "fetch": "successful",
+      "indexing_allowed": true,
+      "last_crawl_predates_latest_release": true,
+      "request_once_accepted_on": "2026-11-18",
+      "inspection_evidence": "tmp/followup-magnetic-inspection-20261118.txt",
+      "request_evidence": "tmp/followup-magnetic-request-20261118.txt",
+      "metrics": {
+        "from": "2026-10-19",
+        "to": "2026-11-15",
+        "impressions": 82,
+        "clicks": 1,
+        "position": 22.4
+      }
+    },
+    {
+      "page": "mailer",
+      "url": "https://glorystarpacking.com/custom-mailer-boxes.html",
+      "indexed": true,
+      "last_crawl_displayed": "2026年11月12日 17:36:45",
+      "declared_canonical": "https://glorystarpacking.com/custom-mailer-boxes.html",
+      "google_canonical": "Inspected URL",
+      "crawl_allowed": true,
+      "fetch": "successful",
+      "indexing_allowed": true,
+      "last_crawl_predates_latest_release": true,
+      "request_once_accepted_on": "2026-11-18",
+      "inspection_evidence": "tmp/followup-mailer-inspection-20261118.txt",
+      "request_evidence": "tmp/followup-mailer-request-20261118.txt",
+      "metrics": {
+        "from": "2026-10-19",
+        "to": "2026-11-15",
+        "impressions": 86,
+        "clicks": 1,
+        "position": 48.4
+      }
+    }
+  ],
+  "query_rows": {
+    "home": 5,
+    "magnetic": 32,
+    "mailer": 18
+  },
+  "data_window_unchanged_since_baseline": true,
+  "post_release_effect_measurable": false,
+  "connector": "Windsor read paused by Free-plan account limit; official Google UI used",
+  "sitemap": {
+    "status": "Success",
+    "submitted_displayed": "2026-11-17",
+    "last_read_displayed": "2026-11-17",
+    "discovered_pages": 86,
+    "resubmitted_this_turn": false,
+    "note": "Magnetic inspection contains a temporary sitemap-processing annotation; overall property sitemap report shows Success. Not treated as a new blocking defect."
+  },
+  "implemented": [
+    "Contextual material-guide links to magnetic gift-box and printed mailer quote forms",
+    "Shipping-case guide distinction between one-order mailer and multi-pack master case with product comparison and quote routes",
+    "Two true modification dates synchronized with visible article dates, metadata, structured data and discovery files",
+    "Five-language parity with review gates retained"
+  ],
+  "preserved": [
+    "Homepage and both core product titles/copy from Nov17 release",
+    "Case drafts and evidence pack; no case publication",
+    "Analytics and quote API behavior",
+    "Existing SEO_ACTIVITY_LOG.md edit"
+  ],
+  "limits": [
+    "Latest available report remains Oct19-Nov15 and predates Nov17 release",
+    "Visible query totals can differ from page totals; do not assign page clicks to named queries",
+    "Small impressions do not establish stable keyword ranks or search demand",
+    "Index request acceptance does not prove latest content indexed, ranking gain or inquiry growth",
+    "No actual inquiry or email submitted this turn"
+  ],
+  "query_evidence": "reports/core-procurement-query-followup-20261118.csv",
+  "release_receipt": "tmp/core-procurement-followup-release-20261118.json"
+}

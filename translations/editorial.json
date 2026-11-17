@@ -3386,5 +3386,61 @@
     "Solicite caixas de envio impressas por medida de Xiamen, China. Compare papel kraft ou branco, cobertura impressa e ajuste interior, e aprove a embalagem carregada para o percurso de entrega previsto.",
     "Закажите транспортные коробки с печатью из Сямыня, Китай. Сравните крафтовый и белый лайнеры, площадь печати и внутреннюю посадку, затем согласуйте заполненную упаковку для планируемого маршрута доставки.",
     "从中国厦门采购定制印刷邮寄盒。比较牛皮或白色面纸、印刷覆盖与内部适配，再确认装填后的完整包装是否适合计划的配送路线。"
+  ],
+  "For magnetic gift boxes, quote rigid board and wrap paper separately, then confirm the loaded hinge and closure on a sample.": [
+    "Pour les coffrets magnétiques, chiffrez séparément le carton rigide et le papier de couvrure, puis validez la charnière et la fermeture avec le produit sur un échantillon.",
+    "Para cajas magnéticas, cotice cartón rígido y papel de forro por separado; confirme bisagra y cierre con el producto en una muestra.",
+    "Para caixas magnéticas, cote separadamente cartão rígido e papel de revestimento; confirme dobradiça e fecho com o produto numa amostra.",
+    "Для магнитных коробок отдельно рассчитайте жесткий картон и обтяжную бумагу, затем проверьте шарнир и закрывание заполненного образца.",
+    "磁吸礼盒应分别确认硬纸板与裱纸的报价，再用装填产品的样品确认翻盖铰接和闭合效果。"
+  ],
+  "Request a magnetic gift-box material quote": [
+    "Demander un devis des matériaux du coffret magnétique",
+    "Solicitar cotización de materiales de caja magnética",
+    "Pedir cotação dos materiais da caixa magnética",
+    "Запросить расчет материалов магнитной коробки",
+    "询价磁吸礼盒材料方案"
+  ],
+  "For a printed ecommerce mailer, confirm liner, flute, internal fit and print coverage against the packed product.": [
+    "Pour une boîte d’expédition e-commerce imprimée, confirmez la couverture, la cannelure, l’ajustement intérieur et les zones imprimées selon le produit emballé.",
+    "Para una caja de envío impresa, confirme papel, canal, ajuste interior y cobertura de impresión según el producto embalado.",
+    "Para uma caixa de envio impressa, confirme papel, canelura, ajuste interior e cobertura de impressão conforme o produto embalado.",
+    "Для транспортной коробки с печатью согласуйте лайнер, профиль гофры, внутреннюю посадку и площадь печати с учетом упакованного изделия.",
+    "印刷电商邮寄盒应围绕装填后的产品，确认面纸、楞型、内部适配与印刷覆盖。"
+  ],
+  "Quote a printed ecommerce mailer": [
+    "Demander un devis de boîte e-commerce imprimée",
+    "Cotizar una caja de envío impresa",
+    "Pedir cotação de caixa de envio impressa",
+    "Запросить расчет почтовой коробки с печатью",
+    "询价印刷电商邮寄盒"
+  ],
+  "Choose the shipping pack": [
+    "Choisir l’emballage d’expédition",
+    "Elegir el embalaje de envío",
+    "Escolher a embalagem de envio",
+    "Выберите транспортную упаковку",
+    "选择合适的运输包装"
+  ],
+  "A printed mailer for one customer order needs its own product fit, liner, print and closure brief. Keep master-case counts and pallet requirements in the case worksheet.": [
+    "Une boîte imprimée pour une commande client nécessite son propre brief d’ajustement, de couverture, d’impression et de fermeture. Conservez les quantités par caisse et les exigences de palette dans la fiche de caisse.",
+    "Una caja impresa para un pedido requiere su propia especificación de ajuste, papel, impresión y cierre. Mantenga cantidades de caja maestra y requisitos de palé en la ficha de transporte.",
+    "Uma caixa impressa para uma encomenda exige especificações próprias de ajuste, papel, impressão e fecho. Mantenha quantidades da caixa-mestra e requisitos de palete na ficha de transporte.",
+    "Почтовой коробке с печатью для одного заказа нужен отдельный бриф по посадке изделия, лайнеру, печати и закрыванию. Количество внутренних упаковок и требования к паллете оставьте в таблице транспортного короба.",
+    "用于单个客户订单的印刷邮寄盒，需要单独明确产品适配、面纸、印刷与闭合要求。外运输箱的装箱数量和托盘要求仍在运输箱工作表中记录。"
+  ],
+  "Compare printed mailer boxes": [
+    "Comparer les boîtes d’expédition imprimées",
+    "Comparar cajas de envío impresas",
+    "Comparar caixas de envio impressas",
+    "Сравнить почтовые коробки с печатью",
+    "比较印刷邮寄盒方案"
+  ],
+  "Updated November 18, 2026": [
+    "Mis à jour le 18 novembre 2026",
+    "Actualizado el 18 de noviembre de 2026",
+    "Atualizado em 18 de novembro de 2026",
+    "Обновлено 18 ноября 2026 г.",
+    "更新于2026年11月18日"
   ]
 }
