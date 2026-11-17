@@ -1,9 +1,9 @@
 field,buyer_requirement,review_note
 Container and use,,"Container material, finish, curve, label position, application and handling conditions"
 Label construction,,"Proposed paper or film, adhesive and protective layer where applicable"
-Decoration,,"Foil reference, emboss areas, artwork revision, fine features and finish alignment"
+Decoration,,"Separate foil and relief artwork layers, file revision, foil reference, smallest text/lines/reversed gaps and required finish registration for printer review"
 Size and die cut,,Finished width and height with units if known; shape and orientation
 Application format,,"Hand or machine application, roll core, gap, winding direction and applicator limits"
 Quantity and schedule,,Labels per design and SKU; project-specific MOQ and lead time to be confirmed
-Approval,,Physical finished proof on the quoted stock and actual-container application trial
+Approval,,"Tooling and proof-stage scope; finished proof on quoted stock, physical foil/relief reference, alignment criteria and actual-container application trial"
 Delivery,,"Country, postal code, requested arrival date and packing needs"

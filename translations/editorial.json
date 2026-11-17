@@ -2973,5 +2973,124 @@
     "Uma etiqueta resistente à água destina-se a manter a fixação e a legibilidade necessária sob uma exposição húmida acordada. Defina líquido, temperatura, duração, manuseamento e critérios de aprovação. Confirme o desempenho com um ensaio representativo da etiqueta completa no recipiente real; uma aprovação não cobre todos os ambientes.",
     "Водостойкая этикетка предназначена для сохранения крепления и необходимой читаемости печати при согласованном влажном воздействии. Задайте жидкость, температуру, длительность, последовательность обращения и критерии приемки. Подтвердите результат репрезентативным испытанием полной этикетки на реальной емкости; одно утверждение не охватывает все среды использования.",
     "防水标签旨在于约定的湿态暴露条件下保持粘接与必要印刷信息可读。应定义液体、温度、持续时间、操作顺序和合格判定标准。通过实际容器上完整标签的代表性试验确认表现；一次签样不适用于所有使用环境。"
+  ],
+  "Provide product dimensions and weight, preferred board and manual or machine filling method. Confirm whether a supplied size is the product, finished inside or finished outside size, then approve an erected carton loaded with the actual contents.": [
+    "Fournissez les dimensions et le poids du produit, le carton souhaité et le remplissage manuel ou mécanique. Précisez si une cote décrit le produit, l’intérieur fini ou l’extérieur fini, puis validez un étui monté et chargé avec le contenu réel.",
+    "Proporcione medidas y peso del producto, cartón preferido y envasado manual o automático. Confirme si una medida corresponde al producto, interior terminado o exterior terminado y apruebe la caja armada con el contenido real.",
+    "Forneça dimensões e peso do produto, cartão preferido e embalamento manual ou automático. Confirme se uma medida corresponde ao produto, interior acabado ou exterior acabado e aprove a caixa montada com o conteúdo real.",
+    "Передайте размеры и массу изделия, предпочтительный картон и ручной либо машинный способ заполнения. Уточните, относится ли размер к изделию, готовой внутренней или наружной поверхности коробки, затем утвердите собранную коробку с реальным содержимым.",
+    "提供产品尺寸与重量、偏好纸板及手工或机器装盒方式。确认所给尺寸属于产品、成品内尺寸还是成品外尺寸，再使用实际内容物装入撑开的纸盒签样。"
+  ],
+  "Loaded fit and contact surfaces": [
+    "Ajustement chargé et surfaces de contact",
+    "Ajuste con producto y superficies de contacto",
+    "Encaixe com produto e superfícies de contacto",
+    "Посадка с изделием и контактные поверхности",
+    "装填适配与接触表面"
+  ],
+  "Provide the assembled product dimensions, weight and allowed contact zones. Include the finished wrap and insert in the fit sample, and identify top and bottom orientation, access for packing and removal, and surfaces that must not rub.": [
+    "Fournissez dimensions du produit assemblé, poids et contacts autorisés. Incluez papier de couverture fini et calage dans l’échantillon, puis précisez haut et bas, accès pour le conditionnement et le retrait, et surfaces à protéger du frottement.",
+    "Proporcione medidas del producto montado, peso y zonas de contacto permitidas. Incluya revestimiento acabado e inserto en la muestra y defina orientación superior e inferior, acceso de embalado y extracción y superficies que no deben rozarse.",
+    "Forneça dimensões do produto montado, peso e zonas de contacto permitidas. Inclua revestimento acabado e berço na amostra e defina orientação superior e inferior, acesso de embalamento e remoção e superfícies que não devem roçar.",
+    "Передайте размеры собранного изделия, массу и разрешенные зоны контакта. Включите готовую обтяжку и ложемент в образец посадки; укажите верх и низ, доступ для упаковки и извлечения, а также поверхности, защищаемые от трения.",
+    "提供组装后产品的尺寸、重量及允许接触区域。适配样品应包含成品裱纸与内托，并明确上下方向、装入和取出通道，以及不得摩擦的表面。"
+  ],
+  "Opening direction, stop and tray removal": [
+    "Sens d’ouverture, butée et retrait du tiroir",
+    "Sentido de apertura, tope y extracción de bandeja",
+    "Sentido de abertura, batente e remoção da gaveta",
+    "Направление открывания, ограничитель и извлечение лотка",
+    "开口方向、限位与抽屉取出"
+  ],
+  "State which sleeve end opens, the pull or notch position and the tray travel needed to remove the product. If a stop or full tray separation is required, specify it explicitly; approve the loaded sleeve, tray and insert together through repeated opening.": [
+    "Précisez l’extrémité ouverte du fourreau, la position du ruban ou de l’encoche et la course nécessaire pour retirer le produit. Si une butée ou une séparation complète du tiroir est requise, indiquez-le ; validez fourreau, tiroir et calage chargés par des ouvertures répétées.",
+    "Indique el extremo de apertura de la funda, posición del tirador o muesca y recorrido necesario para extraer el producto. Si requiere tope o separación total de bandeja, especifíquelo; apruebe funda, bandeja e inserto cargados mediante aperturas repetidas.",
+    "Indique a extremidade de abertura da capa, posição do puxador ou entalhe e percurso necessário para remover o produto. Se exigir batente ou separação total da gaveta, especifique-o; aprove capa, gaveta e berço com produto através de aberturas repetidas.",
+    "Укажите открываемый торец футляра, положение тяги или выемки и ход лотка для извлечения изделия. Если нужен ограничитель или полное отделение лотка, задайте это явно; утвердите футляр, лоток и ложемент с изделием при повторном открывании.",
+    "注明外套开口端、拉带或缺口位置，以及取出产品所需的抽屉行程。如需限位或抽屉完全分离，请明确提出；将装填后的外套、抽屉与内托一起进行重复开合签样。"
+  ],
+  "Foil artwork and physical reference": [
+    "Fichier de dorure et référence physique",
+    "Archivo de estampado y referencia física",
+    "Ficheiro de estampagem e referência física",
+    "Макет фольги и физический эталон",
+    "烫金文件与实物参考"
+  ],
+  "Mark the foil areas on a separate artwork layer and name the required foil reference. Show the smallest text, lines and reversed gaps for printer review; approve coverage, edge definition and alignment on the quoted label stock.": [
+    "Marquez la dorure sur un calque distinct et nommez la référence de film souhaitée. Montrez les plus petits textes, traits et réserves pour examen par l’imprimeur ; validez couverture, netteté des bords et alignement sur le support d’étiquette chiffré.",
+    "Marque el estampado en una capa separada e indique la referencia de película requerida. Muestre textos, líneas y huecos invertidos más pequeños para revisión del impresor; apruebe cobertura, definición de bordes y alineación sobre el soporte cotizado.",
+    "Marque a estampagem numa camada separada e indique a referência de película pretendida. Mostre textos, linhas e espaços invertidos mais pequenos para revisão do impressor; aprove cobertura, definição das bordas e alinhamento no suporte cotado.",
+    "Отметьте фольгу на отдельном слое макета и укажите требуемый эталон фольги. Покажите самые мелкие тексты, линии и выворотные промежутки для проверки типографией; утвердите покрытие, четкость краев и совмещение на материале этикетки, указанном в расчете.",
+    "将烫金区域标在独立印稿图层，并注明所需烫金材料参考。提供最小文字、线条与反白间隙供印刷方评估；在报价所列标签面材上确认覆盖、边缘清晰度与对位。"
+  ],
+  "Relief artwork and registration": [
+    "Fichier de relief et repérage",
+    "Archivo de relieve y registro",
+    "Ficheiro de relevo e registo",
+    "Макет рельефа и совмещение",
+    "浮雕文件与套准"
+  ],
+  "Mark the relief areas separately from printed color and foil. State the reading direction, intended raised effect and registration relationship, then review the finished label on the actual container. Confirm tooling, proof stage and acceptance reference in the quote.": [
+    "Séparez les zones en relief de la couleur imprimée et de la dorure. Précisez le sens de lecture, l’effet surélevé et le repérage, puis examinez l’étiquette finie sur le contenant réel. Confirmez outillage, étape d’épreuve et référence d’acceptation dans le devis.",
+    "Separe las áreas de relieve del color impreso y del estampado. Indique sentido de lectura, efecto elevado y registro y revise la etiqueta terminada en el envase real. Confirme herramientas, etapa de prueba y referencia de aceptación en la cotización.",
+    "Separe as áreas de relevo da cor impressa e da estampagem. Indique sentido de leitura, efeito elevado e registo e reveja a etiqueta acabada no recipiente real. Confirme ferramentas, etapa de prova e referência de aceitação na cotação.",
+    "Отметьте рельефные участки отдельно от печатного цвета и фольги. Задайте направление чтения, требуемый выпуклый эффект и совмещение, затем оцените готовую этикетку на реальной емкости. Подтвердите оснастку, этап пробы и эталон приемки в расчете.",
+    "将浮雕区域与印刷颜色、烫金区域分别标明。说明阅读方向、预期凸起效果与套准关系，再将成品标签贴在实际容器上评估。报价中应确认模具、打样阶段及验收参考。"
+  ],
+  "Start with the product, sales channel and protection needs. List the unit box, insert, labels, protective outer case and assembly required in the quote, with quantity by size and artwork.": [
+    "Commencez par le produit, le canal de vente et les besoins de protection. Listez boîte unitaire, calage, étiquettes, caisse extérieure de protection et assemblage à chiffrer, avec les quantités par format et fichier.",
+    "Empiece por producto, canal de venta y protección. Enumere caja unitaria, inserto, etiquetas, caja exterior protectora y montaje requeridos en la cotización, con cantidades por tamaño y diseño.",
+    "Comece pelo produto, canal de venda e proteção. Liste caixa unitária, berço, etiquetas, caixa exterior de proteção e montagem exigidos na cotação, com quantidades por tamanho e ficheiro.",
+    "Начните с изделия, канала продаж и требований защиты. Перечислите индивидуальную коробку, ложемент, этикетки, защитный транспортный короб и сборку, включаемые в расчет, с количеством по размерам и макетам.",
+    "从产品、销售渠道与防护需求出发。列明报价需包含的单品盒、内托、标签、防护外箱与组装，并按尺寸和印稿注明数量。"
+  ],
+  "Box format, quoted components, artwork and delivery requirements": [
+    "Format de boîte, composants chiffrés, fichier et livraison",
+    "Formato de caja, componentes cotizados, diseño y entrega",
+    "Formato de caixa, componentes cotados, ficheiro e entrega",
+    "Тип коробки, компоненты расчета, макет и доставка",
+    "盒型、报价组件、印稿与交付要求"
+  ],
+  "Loaded layout, sleeve opening, tray travel and sample requirements": [
+    "Disposition chargée, ouverture du fourreau, course du tiroir et échantillon",
+    "Disposición con producto, apertura de funda, recorrido de bandeja y muestra",
+    "Disposição com produto, abertura da capa, percurso da gaveta e amostra",
+    "Размещение изделия, открывание футляра, ход лотка и образец",
+    "装填布局、外套开口、抽屉行程与样品要求"
+  ],
+  "Foil and relief artwork, proof reference, container and application": [
+    "Fichiers de dorure et relief, référence d’épreuve, contenant et pose",
+    "Archivos de estampado y relieve, prueba, envase y aplicación",
+    "Ficheiros de estampagem e relevo, prova, recipiente e aplicação",
+    "Макеты фольги и рельефа, эталон пробы, емкость и нанесение",
+    "烫金与浮雕印稿、签样参考、容器与贴标方式"
+  ],
+  "For a box project with several layers, list the presentation box, insert and protective outer case as separate quoted components. State who fills or assembles the pack and the required arrival condition.": [
+    "Pour un projet de boîte à plusieurs couches, listez séparément la boîte de présentation, le calage et la caisse extérieure de protection dans le devis. Précisez qui remplit ou assemble l’ensemble et l’état d’arrivée requis.",
+    "Para un proyecto con varias capas, enumere por separado caja de presentación, inserto y caja exterior protectora en la cotización. Indique quién llena o monta el conjunto y la condición requerida a la llegada.",
+    "Para um projeto com várias camadas, liste separadamente caixa de apresentação, berço e caixa exterior de proteção na cotação. Indique quem enche ou monta o conjunto e a condição exigida à chegada.",
+    "Для многослойной упаковки перечислите презентационную коробку, ложемент и защитный транспортный короб как отдельные позиции расчета. Укажите, кто заполняет или собирает комплект, и требуемое состояние при прибытии.",
+    "多层包装项目应将展示盒、内托与防护外箱作为独立报价组件列出。注明由谁装填或组装，以及要求的到货状态。"
+  ],
+  "Request a box quote with the complete component scope": [
+    "Demander un devis de boîte avec le périmètre complet des composants",
+    "Solicitar cotización de caja con el alcance completo de componentes",
+    "Pedir cotação de caixa com o âmbito completo de componentes",
+    "Запросить расчет коробки с полным составом компонентов",
+    "按完整组件范围申请包装盒报价"
+  ],
+  "When a drawer-box family shares a sleeve or tray, identify the common component and each insert or artwork variant. Confirm every loaded configuration before releasing a shared part.": [
+    "Lorsqu’une famille de boîtes tiroirs partage un fourreau ou un tiroir, identifiez le composant commun et chaque variante de calage ou de fichier. Confirmez chaque configuration chargée avant de valider une pièce commune.",
+    "Cuando una familia de cajas cajón comparte funda o bandeja, identifique el componente común y cada variante de inserto o diseño. Confirme cada configuración cargada antes de aprobar una pieza compartida.",
+    "Quando uma família de caixas de gaveta partilha capa ou gaveta, identifique o componente comum e cada variante de berço ou ficheiro. Confirme cada configuração com produto antes de aprovar uma peça partilhada.",
+    "Если семейство коробок-пеналов использует общий футляр или лоток, определите общий компонент и каждый вариант ложемента или макета. Проверьте все конфигурации с изделиями до утверждения общей детали.",
+    "抽屉盒系列共用外套或抽屉时，应明确共用组件及每种内托或印稿变体。共用部件放行前，应逐一确认装填配置。"
+  ],
+  "Request a drawer-box family quote": [
+    "Demander un devis pour une famille de boîtes tiroirs",
+    "Solicitar cotización de una familia de cajas cajón",
+    "Pedir cotação de uma família de caixas de gaveta",
+    "Запросить расчет семейства коробок-пеналов",
+    "申请抽屉盒系列报价"
   ]
 }

@@ -13929,5 +13929,22 @@
   "Record the applied label and artwork approval": "记录贴标样品与印稿认可结果",
   "Approve the tag and attachment as one sample": "将吊牌与附件作为完整样品签样",
   "A waterproof label is intended to stay attached and keep required information readable during a defined wet exposure. Specify the liquid, temperature, duration and handling sequence, then test the quoted construction on the actual container.": "防水标签旨在于明确的湿态暴露条件下保持粘接及必要信息可读。请规定液体、温度、持续时间和操作顺序，再将报价所列标签结构贴到实际容器上测试。",
-  "A waterproof label is intended to retain attachment and required print readability under an agreed wet-use exposure. Define the liquid, temperature, duration, handling sequence and pass/fail criteria. Confirm performance through representative testing of the complete label on the actual container; one approval does not cover every use environment.": "防水标签旨在于约定的湿态暴露条件下保持粘接与必要印刷信息可读。应定义液体、温度、持续时间、操作顺序和合格判定标准。通过实际容器上完整标签的代表性试验确认表现；一次签样不适用于所有使用环境。"
+  "A waterproof label is intended to retain attachment and required print readability under an agreed wet-use exposure. Define the liquid, temperature, duration, handling sequence and pass/fail criteria. Confirm performance through representative testing of the complete label on the actual container; one approval does not cover every use environment.": "防水标签旨在于约定的湿态暴露条件下保持粘接与必要印刷信息可读。应定义液体、温度、持续时间、操作顺序和合格判定标准。通过实际容器上完整标签的代表性试验确认表现；一次签样不适用于所有使用环境。",
+  "Provide product dimensions and weight, preferred board and manual or machine filling method. Confirm whether a supplied size is the product, finished inside or finished outside size, then approve an erected carton loaded with the actual contents.": "提供产品尺寸与重量、偏好纸板及手工或机器装盒方式。确认所给尺寸属于产品、成品内尺寸还是成品外尺寸，再使用实际内容物装入撑开的纸盒签样。",
+  "Loaded fit and contact surfaces": "装填适配与接触表面",
+  "Provide the assembled product dimensions, weight and allowed contact zones. Include the finished wrap and insert in the fit sample, and identify top and bottom orientation, access for packing and removal, and surfaces that must not rub.": "提供组装后产品的尺寸、重量及允许接触区域。适配样品应包含成品裱纸与内托，并明确上下方向、装入和取出通道，以及不得摩擦的表面。",
+  "Opening direction, stop and tray removal": "开口方向、限位与抽屉取出",
+  "State which sleeve end opens, the pull or notch position and the tray travel needed to remove the product. If a stop or full tray separation is required, specify it explicitly; approve the loaded sleeve, tray and insert together through repeated opening.": "注明外套开口端、拉带或缺口位置，以及取出产品所需的抽屉行程。如需限位或抽屉完全分离，请明确提出；将装填后的外套、抽屉与内托一起进行重复开合签样。",
+  "Foil artwork and physical reference": "烫金文件与实物参考",
+  "Mark the foil areas on a separate artwork layer and name the required foil reference. Show the smallest text, lines and reversed gaps for printer review; approve coverage, edge definition and alignment on the quoted label stock.": "将烫金区域标在独立印稿图层，并注明所需烫金材料参考。提供最小文字、线条与反白间隙供印刷方评估；在报价所列标签面材上确认覆盖、边缘清晰度与对位。",
+  "Relief artwork and registration": "浮雕文件与套准",
+  "Mark the relief areas separately from printed color and foil. State the reading direction, intended raised effect and registration relationship, then review the finished label on the actual container. Confirm tooling, proof stage and acceptance reference in the quote.": "将浮雕区域与印刷颜色、烫金区域分别标明。说明阅读方向、预期凸起效果与套准关系，再将成品标签贴在实际容器上评估。报价中应确认模具、打样阶段及验收参考。",
+  "Start with the product, sales channel and protection needs. List the unit box, insert, labels, protective outer case and assembly required in the quote, with quantity by size and artwork.": "从产品、销售渠道与防护需求出发。列明报价需包含的单品盒、内托、标签、防护外箱与组装，并按尺寸和印稿注明数量。",
+  "Box format, quoted components, artwork and delivery requirements": "盒型、报价组件、印稿与交付要求",
+  "Loaded layout, sleeve opening, tray travel and sample requirements": "装填布局、外套开口、抽屉行程与样品要求",
+  "Foil and relief artwork, proof reference, container and application": "烫金与浮雕印稿、签样参考、容器与贴标方式",
+  "For a box project with several layers, list the presentation box, insert and protective outer case as separate quoted components. State who fills or assembles the pack and the required arrival condition.": "多层包装项目应将展示盒、内托与防护外箱作为独立报价组件列出。注明由谁装填或组装，以及要求的到货状态。",
+  "Request a box quote with the complete component scope": "按完整组件范围申请包装盒报价",
+  "When a drawer-box family shares a sleeve or tray, identify the common component and each insert or artwork variant. Confirm every loaded configuration before releasing a shared part.": "抽屉盒系列共用外套或抽屉时，应明确共用组件及每种内托或印稿变体。共用部件放行前，应逐一确认装填配置。",
+  "Request a drawer-box family quote": "申请抽屉盒系列报价"
 }

@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-13",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "11dec95b2ae6502b6127e15390b787b377f418ab",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "performance_period": [
+      "2026-10-19",
+      "2026-11-15"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated_at_overview": "3 hours ago",
+    "clicks": 12,
+    "impressions": 2610,
+    "ctr_percent_displayed": 0.5,
+    "position": 19.8,
+    "page_rows": 68,
+    "interpretation": "Fresh authenticated read retains the same Oct19-Nov15 period as pass12. Displayed impressions revise from 2608 to 2610 and clicks remain 12. This is a same-window reporting update, not a measured release effect. The reporting period predates the Nov16/17 releases. Page and property aggregates are not summed.",
+    "connector_fallback": "Windsor get_data remains paused because nine connected accounts exceed the Free plan allowance of one. No connection or plan changes. Used authenticated Search Console on the correct property for actual metrics and inspections.",
+    "performance_evidence": "tmp/pass13-search-pages-20261117.txt",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T08:53:17.864Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T08:53:29.968Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/box-labels.html",
+        "checkedAt": "2026-11-17T08:53:56.337Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月30日 20:18:22"
+      },
+      {
+        "path": "/custom-waterproof-labels.html",
+        "checkedAt": "2026-11-17T08:54:12.769Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月26日 10:10:46"
+      },
+      {
+        "path": "/custom-hang-tags.html",
+        "checkedAt": "2026-11-17T08:54:30.846Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年9月23日 19:20:30"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "Both seasonal guides remain discovered-not-indexed. Prior accepted Nov16 individual requests remain separately recorded; no duplicate individual requests or new live tests. The label hub, waterproof labels and tags last crawled before pass12.",
+    "selected_products": [
+      {
+        "url": "https://glorystarpacking.com/custom-boxes.html",
+        "impressions": 20,
+        "clicks": 0,
+        "position": 10.1,
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/retail-box-vs-shipping-box-guide.html",
+          "impressions": 163,
+          "clicks": 0,
+          "position": 8.6
+        },
+        "reason": "20 product-hub impressions, no clicks, position 10.1. The retail/shipping guide has 163 impressions at 8.6. Refine component scope and dimension basis and add a direct scoped quote link from the guide. The only visible product query yes is irrelevant and excluded."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-drawer-boxes.html",
+        "impressions": 15,
+        "clicks": 0,
+        "position": 116.7,
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/multi-sku-packaging-system-guide.html",
+          "impressions": 16,
+          "clicks": 1,
+          "position": 5.4
+        },
+        "reason": "15 product impressions, no clicks, position 116.7. No visible query rows. The multi-SKU guide has 16 impressions and 1 click at 5.4. Refine the loaded sample, opening end, stop or full removal and shared-family requirements; add a direct family-quote route without inventing keyword demand."
+      },
+      {
+        "url": "https://glorystarpacking.com/embossed-foil-labels.html",
+        "impressions": null,
+        "clicks": null,
+        "position": null,
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/foil-vs-spot-uv.html",
+          "impressions": 63,
+          "clicks": 1,
+          "position": 10.3
+        },
+        "reason": "Product row absent from the latest 68 page rows; product metrics unreported rather than assumed zero. The finish guide has 63 impressions and 1 click at 10.3 but no visible query rows in this read. Keep its existing distinct label-quote route; refine separated foil/relief files, physical reference, printer review and proof scope."
+      }
+    ],
+    "visible_query_rows": {
+      "boxes": [
+        {
+          "query": "yes",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "45.0"
+        }
+      ],
+      "drawer": [],
+      "foil-product": [],
+      "foil-guide": []
+    },
+    "query_scope": "Four filtered query reports: only the irrelevant query yes is visible; the other three report no visible query rows. Query absence does not imply zero impressions/clicks. This batch uses product and guide page evidence to refine procurement routes, not to claim three new proven keywords or the three largest overall traffic opportunities."
+  },
+  "changes": [
+    "Clarify custom-box quote component scope, quantities by size/artwork and product versus finished inside/outside dimension basis; retain all three specialist format routes",
+    "Refine drawer loaded fit/contact guidance and opening-end, stop/full-separation and repeated-opening sample requirements; keep the existing SKU-family link",
+    "Refine foil-label artwork layers, smallest-feature review, physical foil reference, relief registration, actual-container review and proof/tooling scope",
+    "Make three project-detail labels specific; refine two review-note rows in each of three existing blank RFQ sheets without adding redundant fields or altering buyer defaults",
+    "Add scoped direct quote links to the retail/shipping guide and multi-SKU guide; preserve the finish guide existing box-versus-label quote routes",
+    "Synchronize two changed guide modification dates across visible time, structured data and Open Graph; translate 17 new strings into five languages and regenerate 30 HTML files with review gates retained"
+  ],
+  "checks": {
+    "static": "86 indexable English pages plus 404 passed",
+    "languages": "522 generated pages and runtime passed; 17 new editorial keys per language, zero old-key changes/loss; 2812 dynamic runtime strings unchanged",
+    "regression": "Twelve guide-to-quote routes and paper-tube planner regression passed; no inquiry submitted",
+    "browser": "Two new guide links selected custom-boxes and custom-drawer-boxes; existing finish-guide link selected embossed-foil-labels. All direct forms retained blank quantity, dimensions and details. Both new Chinese routes retained locale, correct product and translated detail label. No calculator transfer was added.",
+    "mobile": "390px screenshots inspected for all three RFQ sections; early brief jumps, downloads, product defaults, blank quantities and optional dimensions verified. No horizontal overflow. Viewport reset.",
+    "discovery": "Local AI discovery audit and five-changed-URL IndexNow dry run passed; technical readiness is not AI recommendation evidence",
+    "scope": "30 substantive HTML files across five families and six languages, six editorial dictionaries, three existing RFQ sheets, sitemap, weekly CSV and this report. Titles and metadata descriptions retained; no JavaScript/API/runtime changes"
+  },
+  "limits": [
+    "Both seasonal guides remain unindexed; sitemap acceptance and earlier eligibility are separate from indexing",
+    "Previous three product pages are indexed but recent pass12 content is not confirmed recrawled",
+    "No new reporting day or measured traffic/ranking/inquiry lift",
+    "Sparse visible queries do not establish keyword demand; supporting-guide metrics are not product metrics",
+    "These products received earlier work; this is incremental procurement and route refinement",
+    "No real inquiry/email delivery, full native review or AI recommendation claimed",
+    "Pre-existing SEO_ACTIVITY_LOG.md edit preserved and excluded from release"
+  ],
+  "release_receipt": "tmp/core-products-pass13-release-20261117.json"
+}
