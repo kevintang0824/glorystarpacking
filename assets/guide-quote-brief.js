@@ -1,5 +1,88 @@
 (() => {
   const definitions = {
+    "collapsible-logistics-v1": {
+      "source": "collapsible-rigid-box-vs-setup-box.html",
+      "target": "collapsible-rigid-boxes.html",
+      "form": "rigid-box-logistics-calculator",
+      "calculator": "rigid_box_cube_and_labor",
+      "title": "Collapsible-versus-setup box planning inputs",
+      "boundary": "Buyer-entered comparison assumptions only. Carton dimensions describe empty-box master cartons, not finished product-box dimensions. Comparison quantity is not a confirmed order; cube and labor scenarios are not freight quotations or guaranteed savings. Confirm the structure, insert, actual packing, assembly trial, order quantity and delivery scope separately.",
+      "fields": [
+            [
+                  "quantity",
+                  "Comparison quantity",
+                  1,
+                  true
+            ],
+            [
+                  "setupLength",
+                  "Setup carton length (mm)",
+                  1,
+                  true
+            ],
+            [
+                  "setupWidth",
+                  "Setup carton width (mm)",
+                  1,
+                  true
+            ],
+            [
+                  "setupHeight",
+                  "Setup carton height (mm)",
+                  1,
+                  true
+            ],
+            [
+                  "setupUnits",
+                  "Setup units / carton",
+                  1,
+                  true
+            ],
+            [
+                  "flatLength",
+                  "Collapsible carton length (mm)",
+                  1,
+                  true
+            ],
+            [
+                  "flatWidth",
+                  "Collapsible carton width (mm)",
+                  1,
+                  true
+            ],
+            [
+                  "flatHeight",
+                  "Collapsible carton height (mm)",
+                  1,
+                  true
+            ],
+            [
+                  "flatUnits",
+                  "Collapsible units / carton",
+                  1,
+                  true
+            ],
+            [
+                  "assemblySeconds",
+                  "Assembly seconds / box",
+                  0
+            ],
+            [
+                  "laborRate",
+                  "Loaded labor rate / hour",
+                  0
+            ],
+            [
+                  "cubeRate",
+                  "Optional inbound value / m³",
+                  {
+                        "type": "number",
+                        "min": 0,
+                        "optional": true
+                  }
+            ]
+      ]
+},
     "tissue-sheet-plan-v1": {
       source: "custom-tissue-paper-printing-guide.html",
       target: "custom-tissue-paper.html",

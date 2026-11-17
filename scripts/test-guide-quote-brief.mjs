@@ -4,6 +4,7 @@ import vm from "node:vm";
 import { parseHTML } from "../tmp/i18n-tools/node_modules/linkedom/esm/index.js";
 
 const routes = [
+  {"id": "collapsible-logistics-v1", "source": "collapsible-rigid-box-vs-setup-box.html", "target": "collapsible-rigid-boxes.html", "field": "setupLength", "label": "Setup carton length (mm)", "calculator": "rigid_box_cube_and_labor"},
   {"id": "tissue-sheet-plan-v1", "source": "custom-tissue-paper-printing-guide.html", "target": "custom-tissue-paper.html", "field": "packedUnits", "label": "Packed orders or products", "calculator": "tissue_sheet_quantity_and_bundle"},
   {"id": "waterproof-trial-v1", "source": "waterproof-label-testing-guide.html", "target": "custom-waterproof-labels.html", "field": "constructions", "label": "Label constructions", "calculator": "waterproof_label_test_matrix"},
   {"id": "hang-tag-plan-v1", "source": "hang-tag-production-checklist.html", "target": "custom-hang-tags.html", "field": "sellableUnits", "label": "Sellable product units", "calculator": "hang_tag_quantity_and_bundle"},
@@ -126,6 +127,18 @@ for (const route of routes) {
     invalidAllowance.values.planningAllowance = 100.1;
     const rejected = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(invalidAllowance)]]) });
     assert.equal(rejected.document.querySelector('[name="details"]').value, "", "Stored tissue allowance must respect the planner's 100% limit");
+  }
+
+  if (route.id === "collapsible-logistics-v1") {
+    const fractional = JSON.parse(saved);
+    fractional.values.flatUnits = 1.5;
+    const rejected = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(fractional)]]) });
+    assert.equal(rejected.document.querySelector('[name="details"]').value, "", "Master-carton capacities must be whole boxes");
+    const optionalRate = JSON.parse(saved);
+    optionalRate.values.cubeRate = null;
+    const accepted = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(optionalRate)]]) });
+    assert.ok(accepted.document.querySelector('[name="details"]').value.includes("Setup carton length (mm): 87"));
+    assert.equal(accepted.document.querySelector('[name="quantity"]').value, "", "Comparison quantity is not a confirmed order");
   }
 
   const valid = JSON.parse(saved);
@@ -290,4 +303,4 @@ for (const route of briefRoutes) {
   assert.ok(markup.querySelector('[data-guide-brief-fields]').hasAttribute('disabled'), 'Without JavaScript, a draft cannot submit inputs through a GET URL');
   assert.ok(markup.querySelector(`[data-guide-brief] a[href="${route.target}#quote"]`));
 }
-console.log("All eleven core guide-to-quote routes passed: current inputs, optional fields, choices, safe text, explicit quantities, non-overwrite, expiry, locale paths/copy, attribution, analytics consent and fallbacks. No inquiry was submitted.");
+console.log("All twelve core guide-to-quote routes passed: current inputs, optional fields, choices, safe text, explicit quantities, non-overwrite, expiry, locale paths/copy, attribution, analytics consent and fallbacks. No inquiry was submitted.");

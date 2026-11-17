@@ -302,7 +302,7 @@
 
   document.addEventListener("glorystarpack:guide-brief", (event) => {
     const { calculator, action } = event.detail || {};
-    if (!["perfume_bottle_insert_fit", "clear_label_applied_trial_matrix", "rigid_box_quote_brief", "mailer_box_quote_brief", "insert_material_quote_brief", "wine_gift_box_fit_and_load", "jewelry_insert_fit_planner", "shipping_case_and_pallet_planner", "waterproof_label_test_matrix", "hang_tag_quantity_and_bundle", "tissue_sheet_quantity_and_bundle"].includes(calculator)) return;
+    if (!["perfume_bottle_insert_fit", "clear_label_applied_trial_matrix", "rigid_box_quote_brief", "mailer_box_quote_brief", "insert_material_quote_brief", "wine_gift_box_fit_and_load", "jewelry_insert_fit_planner", "shipping_case_and_pallet_planner", "waterproof_label_test_matrix", "hang_tag_quantity_and_bundle", "tissue_sheet_quantity_and_bundle", "rigid_box_cube_and_labor"].includes(calculator)) return;
     if (!["prepared", "imported", "kept_existing", "storage_unavailable", "unavailable", "copied", "manual_copy"].includes(action)) return;
     track("quote_planner_handoff", { calculator_name: calculator, action });
   });

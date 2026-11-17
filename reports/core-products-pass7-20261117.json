@@ -1,0 +1,305 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-7",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "35cf2a62c4831a0dd3eed7b3b95814584fd64023",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_at": "2026-11-17T03:49:24.266667+00:00",
+    "performance_period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated": "3.5 hours ago",
+    "clicks": 11,
+    "impressions": 2536,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "page_rows": 68,
+    "performance_evidence": "tmp/pass7-search-pages-20261117.txt",
+    "interpretation": "Reporting window has not advanced. Fresh UI shows 2536 impressions versus 2540 in the prior pass; this refresh is not a meaningful measured trend or release attribution. Prior product changes cannot be evaluated from this window.",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T03:35:04.158Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "text 发现 站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T03:36:13.391Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "text 发现 站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/embossed-foil-labels.html",
+        "checkedAt": "2026-11-17T03:36:48.674Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年9月20日 21:41:12",
+        "canonical": "Inspected URL selected by Google"
+      },
+      {
+        "path": "/custom-tissue-paper.html",
+        "checkedAt": "2026-11-17T03:37:33.026Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年11月16日 22:54:17",
+        "canonical": "Inspected URL selected by Google"
+      },
+      {
+        "path": "/custom-wine-labels.html",
+        "checkedAt": "2026-11-17T03:38:24.548Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年11月3日 14:58:47",
+        "canonical": "Inspected URL selected by Google"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "Both seasonal guides returned discovered-not-indexed and reference the sitemap. No new live test or duplicate individual indexing request: accepted Nov16 requests and the Nov17 Ramadan eligible live test remain in prior evidence. The three indexed product last-crawl timestamps predate pass6, so processing of its newest content is not established.",
+    "selected_products": [
+      {
+        "url": "https://glorystarpacking.com/collapsible-rigid-boxes.html",
+        "reported_in_window": true,
+        "impressions": 96,
+        "clicks": 0,
+        "position": 52.0,
+        "reason": "96 impressions, no clicks; flat fold rigid box 29 impressions and collapsible rigid box 17. Extend the Nov16 format/dieline work by carrying actual calculator inputs into a quote."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-magnetic-boxes.html",
+        "reported_in_window": true,
+        "impressions": 54,
+        "clicks": 0,
+        "position": 28.4,
+        "reason": "54 impressions, no clicks, position 28.4; visible manufacturer and magnetic-closure purchase queries. Extend the Nov16 shortlist with a closure/hinge brief, checklist and dedicated comparison-guide CTA."
+      },
+      {
+        "url": "https://glorystarpacking.com/lid-and-base-boxes.html",
+        "reported_in_window": false,
+        "impressions": null,
+        "clicks": null,
+        "position": null,
+        "reason": "No row in the latest page report. Complete the remaining two-piece structure buying path and remove mandatory unknown-size friction. Selected for portfolio coverage and an observed conversion gap, not invented query demand."
+      }
+    ],
+    "visible_query_rows": {
+      "collapsible": [
+        {
+          "query": "flat fold rigid box",
+          "clicks": "0",
+          "impressions": "29",
+          "ctr": "0%",
+          "position": "80.9"
+        },
+        {
+          "query": "collapsible rigid box",
+          "clicks": "0",
+          "impressions": "17",
+          "ctr": "0%",
+          "position": "89.5"
+        },
+        {
+          "query": "collapsible rigid box template",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "27.5"
+        },
+        {
+          "query": "rigid collapsible box",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "98.0"
+        }
+      ],
+      "magnetic": [
+        {
+          "query": "custom boxes with magnetic closure factory china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "10.0"
+        },
+        {
+          "query": "custom gift boxes with magnetic closure factory china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "10.0"
+        },
+        {
+          "query": "collapsible magnetic gift boxes factory china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "11.0"
+        },
+        {
+          "query": "magnet paper box factory china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "15.0"
+        },
+        {
+          "query": "custom magnetic boxes",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "27.0"
+        },
+        {
+          "query": "box customized magnetic",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "75.5"
+        },
+        {
+          "query": "magnetic box factory",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "92.0"
+        },
+        {
+          "query": "magnetic gift box bulk factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "4.0"
+        },
+        {
+          "query": "custom magnetic closure box factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "5.0"
+        },
+        {
+          "query": "magnetic closure box custom factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "9.0"
+        },
+        {
+          "query": "magnetic box manufacturer",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "12.0"
+        },
+        {
+          "query": "small magnetic box factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "14.0"
+        },
+        {
+          "query": "white magnetic box factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "14.0"
+        },
+        {
+          "query": "black magnetic closure box factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "15.0"
+        },
+        {
+          "query": "black magnetic boxes wholesale factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "17.0"
+        },
+        {
+          "query": "decorative gift boxes with magnetic closure factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "17.0"
+        },
+        {
+          "query": "magnet paper box manufacturer china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "17.0"
+        },
+        {
+          "query": "magnetic packaging boxes factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "17.0"
+        },
+        {
+          "query": "magnetic closure rigid boxes factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "18.0"
+        },
+        {
+          "query": "black magnetic gift box factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "20.0"
+        },
+        {
+          "query": "magnetic folding box factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "22.0"
+        },
+        {
+          "query": "custom magnetic box packaging",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "40.0"
+        }
+      ]
+    }
+  },
+  "changes": [
+    "Connect the existing collapsible-versus-setup calculator to the collapsible product form using one-use 30-minute local drafts; transfer current comparison quantity, master-carton dimensions/capacities, assembly time and cost assumptions into reviewable notes",
+    "Keep comparison quantity and master-carton dimensions separate from confirmed purchase quantity and finished product-box size; enforce whole-carton capacities and permit an omitted optional logistics rate",
+    "Extend the existing collapsible and magnetic shortlists rather than claim they were untouched: add three blank product-specific procurement checklists and magnetic closure/hinge/sample guidance",
+    "Add an early two-piece lid-depth/shoulder/fit decision panel to the lid-and-base product; add optional-size guidance and prioritize its mobile form",
+    "Replace the magnetic-versus-drawer guide generic hub CTA with distinct correct-product quote buttons",
+    "Update three descriptions/social descriptions and true modification dates on five changed page families",
+    "Translate new brief title/boundary and master-carton/assembly field labels in five languages; polish focused Chinese planner interpretation and new sections; preserve native-review gates",
+    "Retain all existing dynamic translation keys, increasing runtime coverage from 2798 to 2812; unrelated HTML changes are asset/dictionary versions, apart from a shared Chinese drawer CTA translation"
+  ],
+  "checks": {
+    "static": "86 indexable English pages plus 404 validated",
+    "languages": "522 generated pages, review gates, script versions and runtime checks passed; no existing dictionary keys removed",
+    "handoffs": "Twelve core guide-to-quote routes plus paper tube regression passed; whole-carton capacity and optional rate cases covered along with expiry, non-overwrite, privacy, locale, consent and fallback behavior",
+    "api": "Quote API and service health mock tests passed; no real inquiry or email sent",
+    "browser": "1579 comparison units, 650 mm setup length, 710 mm collapsible length and 31.5 assembly seconds correctly copied into notes; confirmed quantity and dimensions blank. Chinese 888-unit route stayed on the Chinese product and used translated boundary/labels.",
+    "mobile": "390px screenshots checked all three quote forms with correct product defaults and optional dimensions; magnetic and drawer guide buttons reach the correct product form",
+    "discovery": "Local AI discovery audit and five-URL IndexNow dry run passed",
+    "scope": "Five substantive page families plus one shared Chinese drawer CTA translation; unrelated HTML contains only current script/dictionary versions"
+  },
+  "limits": [
+    "Both seasonal guides remain unindexed; neither sitemap acceptance nor live eligibility is proof of indexing",
+    "Three previous product URLs are indexed, but their latest content has not been confirmed recrawled",
+    "Lid-and-base has no reported page row in this period; no zero counts or unobserved queries invented",
+    "Collapsible and magnetic already received Nov16 shortlist work; this pass addresses remaining handoff and specification gaps",
+    "Full-page native language review not claimed; inherited translated body text remains subject to existing review gates",
+    "No new qualified inquiry, ranking lift, traffic growth or AI recommendation established",
+    "Preserved pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/core-products-pass7-release-20261117.json"
+}
