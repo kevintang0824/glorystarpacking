@@ -3260,5 +3260,131 @@
     "Partilhe produto, quantidade por desenho e país de entrega. Uma fotografia ou referência basta para iniciar a análise; dimensões finais e ficheiros podem ser confirmados com a amostra.",
     "Укажите изделие, количество по дизайнам и страну доставки. Фото или образца достаточно для начала рассмотрения; окончательные размеры и макет можно подтвердить по образцу упаковки.",
     "请提供产品、各设计数量及交付国家。照片或参考即可开始评估，最终尺寸与印稿可结合样品确认。"
+  ],
+  "Magnetic gift boxes": [
+    "Boîtes-cadeaux magnétiques",
+    "Cajas de regalo magnéticas",
+    "Caixas magnéticas de presentes",
+    "Магнитные подарочные коробки",
+    "磁性礼品盒"
+  ],
+  "For retail and gift sets with a hinged lid and fitted insert. Compare assembled and collapsible formats around your product and packing operation.": [
+    "Pour les coffrets de vente et cadeaux avec couvercle articulé et calage adapté. Comparez les formats montés et pliables selon le produit et votre opération de conditionnement.",
+    "Para venta y conjuntos de regalo con tapa abatible e inserto ajustado. Compare formatos montados y plegables según su producto y operación de embalaje.",
+    "Para venda e conjuntos de presente com tampa articulada e berço ajustado. Compare formatos montados e dobráveis conforme o produto e a operação de embalagem.",
+    "Для розничных и подарочных наборов с откидной крышкой и ложементом. Сравните собранную и складную конструкцию с учетом изделия и процесса упаковки.",
+    "适用于配有翻盖和适配内托的零售及礼赠套装。结合产品与装填操作，比较成型交付和可折叠结构。"
+  ],
+  "Compare magnetic gift-box options": [
+    "Comparer les coffrets magnétiques",
+    "Comparar cajas magnéticas",
+    "Comparar caixas magnéticas",
+    "Сравнить магнитные коробки",
+    "比较磁吸礼盒方案"
+  ],
+  "Quote magnetic boxes": [
+    "Demander un devis de coffrets magnétiques",
+    "Cotizar cajas magnéticas",
+    "Pedir cotação de caixas magnéticas",
+    "Запросить расчет магнитных коробок",
+    "磁吸礼盒询价"
+  ],
+  "Compare printed mailer specifications": [
+    "Comparer les spécifications des boîtes d’expédition imprimées",
+    "Comparar especificaciones de cajas de envío impresas",
+    "Comparar especificações de caixas de envio impressas",
+    "Сравнить параметры транспортных коробок с печатью",
+    "比较印刷邮寄盒规格"
+  ],
+  "Custom magnetic gift boxes for": [
+    "Coffrets cadeaux magnétiques sur mesure pour",
+    "Cajas de regalo magnéticas personalizadas para",
+    "Caixas de presente magnéticas por medida para",
+    "Подарочные коробки с магнитным клапаном на заказ для",
+    "定制磁吸礼盒，专为"
+  ],
+  "Custom printed mailer boxes for": [
+    "Boîtes d’expédition imprimées sur mesure pour",
+    "Cajas de envío impresas personalizadas para",
+    "Caixas de envio impressas por medida para",
+    "Транспортные коробки с печатью на заказ для",
+    "定制印刷邮寄盒，专为"
+  ],
+  "Provide the paper reference and printed panels. Approve grain, folds and corner wrapping on the actual stock.": [
+    "Indiquez la référence du papier et les panneaux imprimés. Validez le sens des fibres, les plis et les angles sur le papier choisi.",
+    "Indique la referencia del papel y los paneles impresos. Apruebe fibra, pliegues y esquinas con el papel seleccionado.",
+    "Indique a referência do papel e os painéis impressos. Aprove o sentido da fibra, as dobras e os cantos no papel escolhido.",
+    "Укажите образец бумаги и панели с печатью. Согласуйте направление волокон, сгибы и обтяжку углов на выбранном материале.",
+    "提供纸张参考与印刷面。用实际选用的纸张确认纹向、折线及包角效果。"
+  ],
+  "Compare dyed stock with printed or laminated paper as separate options. Review the logo and rub appearance on a sample.": [
+    "Comparez séparément le papier teinté et le papier imprimé ou pelliculé. Vérifiez le logo et l’aspect après frottement sur un échantillon.",
+    "Compare por separado papel teñido y papel impreso o laminado. Revise el logotipo y el aspecto tras frotamiento en una muestra.",
+    "Compare separadamente papel tingido e papel impresso ou laminado. Verifique o logótipo e o aspeto após fricção numa amostra.",
+    "Сравните окрашенную бумагу с печатной или ламинированной как отдельные варианты. Проверьте логотип и внешний вид после трения на образце.",
+    "将染色纸与印刷或覆膜纸作为独立方案比较。在样品上确认标志呈现及摩擦后的外观。"
+  ],
+  "Send vector artwork, relief direction and placement. Confirm detail on the selected wrap and board together.": [
+    "Envoyez le fichier vectoriel, le sens du relief et son emplacement. Validez le détail avec le papier de couvrure et le carton sélectionnés.",
+    "Envíe diseño vectorial, dirección del relieve y ubicación. Confirme el detalle con el papel de forro y cartón seleccionados juntos.",
+    "Envie arte vetorial, direção do relevo e posição. Confirme o detalhe com o papel de revestimento e o cartão selecionados em conjunto.",
+    "Пришлите векторный макет, направление рельефа и расположение. Согласуйте деталь на сочетании выбранных бумаги и картона.",
+    "提供矢量稿、凹凸方向和位置。使用选定的裱纸与纸板组合确认细节效果。"
+  ],
+  "State foil color, coverage and artwork revision. Identify tooling and proof costs separately in the quote.": [
+    "Précisez la couleur de dorure, la couverture et la version du fichier. Séparez les frais d’outillage et d’épreuve dans le devis.",
+    "Indique color de estampado, cobertura y revisión del diseño. Separe costes de herramientas y pruebas en la cotización.",
+    "Indique cor da estampagem, cobertura e revisão da arte. Separe os custos de ferramentas e provas na cotação.",
+    "Укажите цвет фольги, площадь нанесения и версию макета. Отдельно выделите стоимость оснастки и проб в расчете.",
+    "说明烫金颜色、覆盖范围及稿件版本。报价中单列模具与打样费用。"
+  ],
+  "A comparable quote identifies the board grade and thickness, wrap paper, insert material, print coverage and finish. List tooling, sample, assembly, packing and freight charges separately; quantity is per design.": [
+    "Un devis comparable précise la qualité et l’épaisseur du carton, le papier de couvrure, le calage, la couverture imprimée et la finition. Séparez outillage, échantillon, montage, conditionnement et transport ; la quantité est par modèle.",
+    "Una cotización comparable identifica calidad y espesor del cartón, papel de forro, inserto, cobertura impresa y acabado. Separe herramientas, muestra, montaje, embalaje y transporte; la cantidad es por diseño.",
+    "Uma cotação comparável identifica qualidade e espessura do cartão, papel de revestimento, berço, cobertura impressa e acabamento. Separe ferramentas, amostra, montagem, acondicionamento e frete; a quantidade é por design.",
+    "Сопоставимый расчет указывает марку и толщину картона, обтяжную бумагу, материал ложемента, площадь печати и отделку. Отдельно укажите оснастку, образец, сборку, упаковку и перевозку; тираж считается по каждому дизайну.",
+    "可比报价应注明纸板等级与厚度、裱纸、内托材料、印刷覆盖和表面工艺。模具、样品、组装、包装与运费分别列出；数量按各设计计算。"
+  ],
+  "Request magnetic boxes with a logo and inserts": [
+    "Demander un devis avec logo et calages",
+    "Solicitar cajas magnéticas con logotipo e insertos",
+    "Pedir caixas magnéticas com logótipo e berços",
+    "Запросить магнитные коробки с логотипом и ложементами",
+    "询价带标志及内托的磁吸盒"
+  ],
+  "Kraft or white liner": [
+    "Couverture kraft ou blanche",
+    "Papel kraft o blanco",
+    "Papel kraft ou branco",
+    "Крафтовый или белый лайнер",
+    "牛皮或白色面纸"
+  ],
+  "Choose the surface appearance and print contrast for your brand, including the inside of the mailer.": [
+    "Choisissez l’aspect et le contraste d’impression pour votre marque, y compris à l’intérieur de la boîte.",
+    "Elija apariencia y contraste de impresión para su marca, incluido el interior de la caja.",
+    "Escolha o aspeto e o contraste de impressão da sua marca, incluindo o interior da caixa.",
+    "Выберите внешний вид поверхности и контраст печати для бренда, включая внутреннюю сторону коробки.",
+    "根据品牌选择表面外观与印刷对比度，同时确认邮寄盒内侧。"
+  ],
+  "Compare the same size, flute, strength target and print coverage. Approve color and rub appearance on the actual printed liner.": [
+    "Comparez à dimensions, cannelure, résistance visée et couverture imprimée identiques. Validez la couleur et l’aspect après frottement sur la couverture réellement imprimée.",
+    "Compare el mismo tamaño, canal, objetivo de resistencia y cobertura impresa. Apruebe color y aspecto tras frotamiento en el papel impreso real.",
+    "Compare o mesmo tamanho, canelura, objetivo de resistência e cobertura impressa. Aprove a cor e o aspeto após fricção no papel efetivamente impresso.",
+    "Сравнивайте одинаковые размеры, профиль гофры, требуемую прочность и площадь печати. Согласуйте цвет и внешний вид после трения на фактически напечатанном лайнере.",
+    "按相同尺寸、楞型、强度目标及印刷覆盖比较。在实际印刷面纸上确认颜色与摩擦后的外观。"
+  ],
+  "Source custom magnetic gift boxes from Xiamen, China. Compare assembled or collapsible formats, logo finishes and fitted inserts, then approve fit and closure on a physical sample.": [
+    "Commandez des coffrets cadeaux magnétiques sur mesure à Xiamen, en Chine. Comparez les formats montés ou pliables, les finitions du logo et les calages, puis validez l’ajustement et la fermeture sur un échantillon physique.",
+    "Solicite cajas de regalo magnéticas personalizadas de Xiamen, China. Compare formatos montados o plegables, acabados del logotipo e insertos, y apruebe ajuste y cierre con una muestra física.",
+    "Solicite caixas de presente magnéticas por medida de Xiamen, China. Compare formatos montados ou dobráveis, acabamentos do logótipo e berços, e aprove o ajuste e fecho numa amostra física.",
+    "Закажите подарочные коробки с магнитным клапаном из Сямыня, Китай. Сравните собранную и складную конструкции, отделку логотипа и ложементы, затем согласуйте посадку и закрывание на физическом образце.",
+    "从中国厦门采购定制磁吸礼盒。比较成型或可折叠结构、标志工艺与适配内托，再通过实物样品确认装配和闭合效果。"
+  ],
+  "Source custom printed mailer boxes from Xiamen, China. Compare kraft or white liners, print coverage and internal fit, then approve the loaded pack for your intended delivery route.": [
+    "Commandez des boîtes d’expédition imprimées sur mesure à Xiamen, en Chine. Comparez couvertures kraft ou blanches, zones imprimées et dimensions intérieures, puis validez le colis chargé pour le circuit de livraison prévu.",
+    "Solicite cajas de envío impresas personalizadas de Xiamen, China. Compare papel kraft o blanco, cobertura impresa y ajuste interior, y apruebe el paquete cargado para la ruta de entrega prevista.",
+    "Solicite caixas de envio impressas por medida de Xiamen, China. Compare papel kraft ou branco, cobertura impressa e ajuste interior, e aprove a embalagem carregada para o percurso de entrega previsto.",
+    "Закажите транспортные коробки с печатью из Сямыня, Китай. Сравните крафтовый и белый лайнеры, площадь печати и внутреннюю посадку, затем согласуйте заполненную упаковку для планируемого маршрута доставки.",
+    "从中国厦门采购定制印刷邮寄盒。比较牛皮或白色面纸、印刷覆盖与内部适配，再确认装填后的完整包装是否适合计划的配送路线。"
   ]
 }

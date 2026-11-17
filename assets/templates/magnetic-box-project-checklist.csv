@@ -1,8 +1,9 @@
 field,buyer_requirement,review_note
 Product and use,,"Product size, filled weight, pack-out orientation and any magnet-sensitive item"
 Supply format,,"Ready-assembled or collapsible, assembly location and storage constraints"
+Material build,,"Board grade and thickness, wrap paper reference, insert material and any coating; confirm the quoted construction on a sample"
 Closure and hinge,,"Opening direction, lid alignment, closing feel and required opening cycles"
 Insert and access,,"Contact areas, clearance from the flap and removal sequence"
 Artwork and finish,,"Artwork revision, surface references, foil or embossing and hinge areas"
 Sample review,,"Production-equivalent sample; agree closure, hinge and loaded-box checks"
-Commercial scope,,"Quantity by design, destination, requested arrival date and packing format"
+Commercial scope,,"Quantity per design and artwork, destination, requested arrival date, packing format; list tooling, sample, assembly and freight charges separately"

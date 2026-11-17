@@ -1,0 +1,25 @@
+﻿draft_reference_not_actual_project,field,verified_value,source_file_or_url,requirement,public_scope,verification_status,publication_status
+MAGNETIC_DRAFT,Project identifier,,,Actual project or order reference; anonymized public alias if required,,missing,not_publishable
+MAGNETIC_DRAFT,Role and credit,,,"Manufacturer, structural development, design and photographer roles; record each accurately",,missing,not_publishable
+MAGNETIC_DRAFT,Buyer brief,,,"Product, use, market and actual starting constraint",,missing,not_publishable
+MAGNETIC_DRAFT,Actual quantity,,,"Quantity per size, artwork and component from the order record",,missing,not_publishable
+MAGNETIC_DRAFT,Material build,,,"Confirmed board, paper, insert, liner/flute, print and finishing from specifications",,missing,not_publishable
+MAGNETIC_DRAFT,Approved dimensions,,,"Units, inside/outside definition and final approved revision",,missing,not_publishable
+MAGNETIC_DRAFT,Physical photos,,,"Actual finished pack, open/closed, loaded fit and production details; record image source and rights",,missing,not_publishable
+MAGNETIC_DRAFT,Sample change,,,"Before/after revision, reason and written approval",,missing,not_publishable
+MAGNETIC_DRAFT,Production evidence,,,"Matching lot, inspection records and acceptance/disposition",,missing,not_publishable
+MAGNETIC_DRAFT,Delivery evidence,,,"Packing list, dispatch and receiving record; redact addresses and private buyer data",,missing,not_publishable
+MAGNETIC_DRAFT,Outcome,,,Only a measured result tied to an identifiable record; omit unsupported savings/damage/lead claims,,missing,not_publishable
+MAGNETIC_DRAFT,Public permission,,,"Approved client/name/logo/images/quotation scope, named authorizer and date",,missing,not_publishable
+MAILER_DRAFT,Project identifier,,,Actual project or order reference; anonymized public alias if required,,missing,not_publishable
+MAILER_DRAFT,Role and credit,,,"Manufacturer, structural development, design and photographer roles; record each accurately",,missing,not_publishable
+MAILER_DRAFT,Buyer brief,,,"Product, use, market and actual starting constraint",,missing,not_publishable
+MAILER_DRAFT,Actual quantity,,,"Quantity per size, artwork and component from the order record",,missing,not_publishable
+MAILER_DRAFT,Material build,,,"Confirmed board, paper, insert, liner/flute, print and finishing from specifications",,missing,not_publishable
+MAILER_DRAFT,Approved dimensions,,,"Units, inside/outside definition and final approved revision",,missing,not_publishable
+MAILER_DRAFT,Physical photos,,,"Actual finished pack, open/closed, loaded fit and production details; record image source and rights",,missing,not_publishable
+MAILER_DRAFT,Sample change,,,"Before/after revision, reason and written approval",,missing,not_publishable
+MAILER_DRAFT,Production evidence,,,"Matching lot, inspection records and acceptance/disposition",,missing,not_publishable
+MAILER_DRAFT,Delivery evidence,,,"Packing list, dispatch and receiving record; redact addresses and private buyer data",,missing,not_publishable
+MAILER_DRAFT,Outcome,,,Only a measured result tied to an identifiable record; omit unsupported savings/damage/lead claims,,missing,not_publishable
+MAILER_DRAFT,Public permission,,,"Approved client/name/logo/images/quotation scope, named authorizer and date",,missing,not_publishable
