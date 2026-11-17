@@ -7,3 +7,5 @@ Acceptance,,"Edge lift, print, adhesive hold and barcode checks with agreed meth
 Artwork and roll,,"Artwork revision, white ink if applicable, core, gap, roll direction and applicator limits"
 Production order,,Labels per SKU and design; project-specific MOQ and schedule confirmed in quote
 Delivery,,"Country, postal code and requested arrival date"
+Reference and checkpoints,,"Identified unexposed control; application/dwell record, label and container revision, agreed exposure checkpoints"
+Information after exposure,,"Required text or barcode; scanner/viewing method, edge lift, adhesive hold, print appearance and pass/fail rule"

@@ -1,0 +1,174 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-12",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "7934e217e2797976f9ab9c24976bb475d4f3fffe",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "performance_period": [
+      "2026-10-19",
+      "2026-11-15"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated_at_overview": "3 hours ago",
+    "clicks": 12,
+    "impressions": 2608,
+    "ctr_percent_displayed": 0.5,
+    "position": 19.8,
+    "page_rows": 68,
+    "interpretation": "Fresh authenticated read has the same Oct19-Nov15 period and aggregates as pass11. No new reporting day or measured release effect. The window predates the Nov16/17 updates. Property totals and page totals use different aggregation and are not summed; query samples are partial.",
+    "connector_fallback": "Windsor get_data remains paused because nine connected accounts exceed the Free plan allowance of one. No plan or account changes. Read actual metrics and inspections from authenticated Search Console on the correct property.",
+    "performance_evidence": "tmp/pass12-search-pages-20261117.txt",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T07:53:32.506Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T07:53:43.919Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/custom-tube-packaging.html",
+        "checkedAt": "2026-11-17T07:54:15.429Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年9月20日 21:34:37"
+      },
+      {
+        "path": "/folding-carton-boxes.html",
+        "checkedAt": "2026-11-17T07:54:25.387Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年9月20日 21:42:21"
+      },
+      {
+        "path": "/custom-paper-bags.html",
+        "checkedAt": "2026-11-17T07:54:39.417Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年9月23日 05:29:24"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "Both seasonal guides remain discovered-not-indexed. Prior accepted Nov16 individual requests remain separate evidence; no duplicate individual requests or repeated live tests this pass. Tube, carton and bag last crawled in September, before pass11.",
+    "selected_products": [
+      {
+        "url": "https://glorystarpacking.com/box-labels.html",
+        "impressions": 14,
+        "clicks": 0,
+        "position": 47.9,
+        "reason": "14 product-hub impressions, no clicks, position 47.9. This is the existing general product-label hub. The sole visible query for commercial use is too broad to target. Refine actual-surface and adhesive intent, approved applied references and inquiry information while preserving the three general/clear/wet-use quote routes."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-waterproof-labels.html",
+        "impressions": 11,
+        "clicks": 0,
+        "position": 20.1,
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/waterproof-label-testing-guide.html",
+          "impressions": 22,
+          "clicks": 0,
+          "position": 6.0
+        },
+        "reason": "11 product impressions, no clicks, position 20.1; test guide has 22 impressions and no clicks. Product queries meaning of waterproof labels (4 impressions) and definition of waterproof labels (2) justify a direct definition tied to agreed exposure and acceptance, not an absolute claim. Guide query asks how to test label durability. Refine control samples, checkpoints and required readability."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-hang-tags.html",
+        "impressions": 1,
+        "clicks": 0,
+        "position": 7.0,
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/hang-tag-production-checklist.html",
+          "impressions": 31,
+          "clicks": 0,
+          "position": 9.0
+        },
+        "reason": "Only 1 product impression, no clicks, position 7.0; production guide has 31 impressions, no clicks, position 9.0. No visible product query rows; this is not a claim of zero impressions. Guide queries okay and production status tags do not justify new garment-tag keywords. Refine the existing guide-to-product procurement route for attachment assembly, data revision and correction authority."
+      }
+    ],
+    "visible_query_rows": {
+      "labels": [
+        {
+          "query": "for commercial use",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "3.0"
+        }
+      ],
+      "waterproof": [
+        {
+          "query": "meaning of waterproof labels",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "7.3"
+        },
+        {
+          "query": "definition of waterproof labels",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "20.0"
+        }
+      ],
+      "tags": [],
+      "tag-guide": [
+        {
+          "query": "okay",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "3.0"
+        },
+        {
+          "query": "production status tags",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "72.0"
+        }
+      ],
+      "waterproof-guide": [
+        {
+          "query": "how to test label durability?",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "1.0"
+        }
+      ]
+    },
+    "query_scope": "Six visible query rows across five reports; hang-tag product report has no visible query rows. Broad for commercial use, okay and production-status-tag intent were excluded. Product metrics and supporting-guide metrics remain separate. This batch is a targeted label/tag refinement among pages not revisited in recent passes, not a claim that these are the three largest traffic opportunities."
+  },
+  "changes": [
+    "Refine the product-label hub first RFQ card for actual surface, artwork revision, quantity by SKU, permanent/removable adhesive intent and a complete applied sample; preserve all three quote destinations and add a sample-approval link",
+    "Make the waterproof definition directly answer the observed meaning/definition queries; synchronize visible FAQ and JSON-LD answer with agreed exposure, readability and representative-test boundaries",
+    "Refine two waterproof RFQ cards for application/dwell, identified unexposed references, shared revisions, before/after checkpoints, required information and pass/fail methods",
+    "Refine two hang-tag RFQ cards for fixed artwork and attachment revisions, assembled/separate supply, field list, file revision, record count, matching and approval of corrections; add a complete-sample approval link",
+    "Add two blank buyer-requirement rows to each of three existing RFQ checklists; update three product-specific details labels",
+    "Translate 16 new strings into five languages and regenerate 18 product HTML files; retain titles, metadata descriptions, existing route links, review gates and all runtime code"
+  ],
+  "checks": {
+    "static": "86 indexable English pages plus 404 passed, including FAQ/schema parity",
+    "languages": "522 generated pages and language runtime passed; 16 new editorial strings per language, no prior key changes/loss; 2812 runtime strings unchanged",
+    "regression": "Twelve core guide-to-quote routes plus paper-tube regression passed; no inquiry submitted",
+    "browser": "Waterproof construction count 7 and tag sellable units 121 transferred to correct notes. Confirmed quantity and final dimensions remained blank. General, clear and waterproof label hub routes selected the correct product. Chinese waterproof count 8 retained the localized route, input and new field label.",
+    "mobile": "390px RFQ-section screenshots inspected for all three products. Early project-brief links, correct defaults, download paths and optional dimensions checked; no horizontal overflow. Viewport reset.",
+    "discovery": "Local AI discovery audit and three-URL IndexNow dry run passed; readiness is not evidence of AI recommendations",
+    "scope": "18 substantive product HTML files across six languages, six editorial dictionaries, three checklists, weekly CSV and this report. Sitemap lastmod dates already Nov17 and remain unchanged. No JavaScript/API/runtime dictionary change"
+  },
+  "limits": [
+    "Both seasonal guides remain unindexed; accepted sitemap and prior eligibility do not establish indexing",
+    "Previous three products are indexed but their latest content is not confirmed recrawled",
+    "Same search period and small query samples do not establish post-release traffic, ranking or inquiry gains",
+    "Supporting guide impressions are not product-page impressions",
+    "These pages received earlier work; this is incremental definition and procurement refinement",
+    "No real inquiry/email, full-page native review or AI recommendation claimed",
+    "Pre-existing SEO_ACTIVITY_LOG.md edit preserved and excluded from the release"
+  ],
+  "release_receipt": "tmp/core-products-pass12-release-20261117.json"
+}

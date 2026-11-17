@@ -2861,5 +2861,117 @@
     "Pedir cotação de saco de papel com requisitos de carga e inspeção",
     "Запросить расчет бумажного пакета с требованиями к нагрузке и проверке",
     "按负载与检验要求申请纸袋报价"
+  ],
+  "Send the actual surface material, finish and curvature, label size, artwork revision and quantity per SKU. State whether the label should remain permanent or be removed, and review the proposed stock, adhesive and finish together on an applied sample.": [
+    "Envoyez la matière, la finition et la courbure réelles de la surface, le format de l’étiquette, la révision du fichier et la quantité par référence. Précisez si l’étiquette doit rester permanente ou être retirée, puis examinez ensemble support, adhésif et finition proposés sur un échantillon posé.",
+    "Envíe material, acabado y curvatura reales de la superficie, tamaño de etiqueta, revisión del archivo y cantidad por SKU. Indique si la etiqueta debe permanecer o retirarse y revise juntos soporte, adhesivo y acabado propuestos en una muestra aplicada.",
+    "Envie material, acabamento e curvatura reais da superfície, tamanho da etiqueta, revisão do ficheiro e quantidade por SKU. Indique se a etiqueta deve permanecer ou ser removida e reveja em conjunto suporte, adesivo e acabamento propostos numa amostra aplicada.",
+    "Передайте реальные материал, отделку и кривизну поверхности, размер этикетки, версию макета и количество по SKU. Укажите постоянное крепление или предполагаемое удаление; оцените предлагаемые материал, клей и отделку совместно на наклеенном образце.",
+    "提供实际贴附表面的材质、表面工艺与曲率、标签尺寸、印稿版本及各SKU数量。说明标签需永久保留还是后续移除，并在贴附样品上一起评估建议面材、胶黏剂与表面工艺。"
+  ],
+  "Application, dwell and control sample": [
+    "Pose, temps d’attente et témoin",
+    "Aplicación, espera y muestra de control",
+    "Aplicação, espera e amostra de controlo",
+    "Нанесение, выдержка и контрольный образец",
+    "贴标、静置与对照样品"
+  ],
+  "Record container surface, application temperature, pressure and dwell before wet exposure. Keep an identified unexposed reference alongside the exposed samples, and connect each result to the same label construction, artwork and container revision.": [
+    "Consignez la surface du contenant, la température de pose, la pression et le temps d’attente avant exposition humide. Conservez un témoin non exposé identifié à côté des échantillons exposés, et reliez chaque résultat aux mêmes révisions de construction, fichier et contenant.",
+    "Registre superficie del envase, temperatura de aplicación, presión y espera antes de la exposición húmeda. Conserve una referencia no expuesta identificada junto a las muestras expuestas y vincule cada resultado a las mismas versiones de construcción, archivo y envase.",
+    "Registe superfície do recipiente, temperatura de aplicação, pressão e espera antes da exposição húmida. Guarde uma referência não exposta identificada junto das amostras expostas e associe cada resultado às mesmas revisões de construção, ficheiro e recipiente.",
+    "Зафиксируйте поверхность емкости, температуру и давление нанесения, выдержку до влажного воздействия. Сохраните маркированный необработанный контрольный образец рядом с испытанными и свяжите каждый результат с конкретными версиями конструкции этикетки, макета и емкости.",
+    "记录容器表面、贴标温度、压力及湿态暴露前的静置时间。将已标识的未暴露对照样与暴露样一起保留，每个结果均关联至相同的标签结构、印稿和容器版本。"
+  ],
+  "Required information after exposure": [
+    "Informations requises après exposition",
+    "Información requerida tras la exposición",
+    "Informação necessária após exposição",
+    "Обязательная информация после воздействия",
+    "暴露后仍需保留的信息"
+  ],
+  "Record edge lift, adhesive hold, text appearance and any required barcode scan before exposure and at agreed checkpoints. State the scanner or viewing method and the pass/fail rule; the exposure sequence alone is not an acceptance criterion.": [
+    "Consignez le soulèvement des bords, la tenue de l’adhésif, l’aspect du texte et toute lecture de code requise avant exposition et aux points convenus. Précisez le scanner ou la méthode d’observation et la règle de réussite ; la séquence d’exposition seule n’est pas un critère d’acceptation.",
+    "Registre levantamiento de bordes, adherencia, aspecto del texto y cualquier lectura de código requerida antes de la exposición y en los puntos acordados. Indique escáner o método visual y regla de aprobación; la secuencia de exposición por sí sola no es un criterio de aceptación.",
+    "Registe levantamento das bordas, adesão, aspeto do texto e qualquer leitura de código necessária antes da exposição e nos pontos acordados. Indique leitor ou método visual e regra de aprovação; a sequência de exposição por si só não é um critério de aceitação.",
+    "Запишите подъем краев, удержание клея, вид текста и результаты необходимого сканирования штрихкода до воздействия и в согласованных контрольных точках. Укажите сканер или метод осмотра и правило приемки; одна последовательность воздействий не является критерием приемки.",
+    "在暴露前及约定节点记录翘边、粘接保持、文字外观和需要的条码扫描结果。注明扫描设备或观察方法及合格判定规则；仅列出暴露顺序不等于确定验收标准。"
+  ],
+  "Fixed artwork and attachment sample": [
+    "Fichier fixe et échantillon de fixation",
+    "Diseño fijo y muestra de fijación",
+    "Ficheiro fixo e amostra de fixação",
+    "Постоянный макет и образец крепления",
+    "固定印稿与附件样品"
+  ],
+  "Identify the front and back artwork, stock, finish, hole and attachment revisions. Confirm whether the cord, eyelet or fastener is supplied separately or assembled, then approve the complete tag on the intended product or fixture.": [
+    "Identifiez les révisions des fichiers recto et verso, du support, de la finition, du trou et de la fixation. Confirmez si cordon, œillet ou attache sont fournis séparément ou montés, puis validez l’étiquette complète sur le produit ou support prévu.",
+    "Identifique versiones del diseño frontal y posterior, soporte, acabado, orificio y fijación. Confirme si cordón, ojal o cierre se suministran separados o montados y apruebe la etiqueta completa en el producto o soporte previsto.",
+    "Identifique revisões do ficheiro da frente e verso, suporte, acabamento, furo e fixação. Confirme se cordão, ilhó ou fecho são fornecidos separados ou montados e aprove a etiqueta completa no produto ou suporte previsto.",
+    "Укажите версии макетов лицевой и оборотной стороны, материала, отделки, отверстия и крепления. Подтвердите отдельную или собранную поставку шнура, люверса либо застежки, затем утвердите полную бирку на предполагаемом изделии или держателе.",
+    "注明正背面印稿、材料、表面工艺、孔位及附件版本。确认绳、鸡眼扣或紧固件是分开供应还是组装交付，再将完整吊牌安装到目标产品或夹具上签样。"
+  ],
+  "Variable data release and matching": [
+    "Validation et correspondance des données variables",
+    "Aprobación y correspondencia de datos variables",
+    "Aprovação e correspondência dos dados variáveis",
+    "Утверждение и сопоставление переменных данных",
+    "可变数据放行与匹配"
+  ],
+  "Provide a controlled field list, file revision, record count and approved example record. Agree the barcode checks and tag-to-product matching rule before releasing the production file, and identify who approves corrections or a replacement data file.": [
+    "Fournissez une liste de champs contrôlée, la révision du fichier, le nombre d’enregistrements et un exemple approuvé. Convenez des contrôles de codes-barres et de la correspondance étiquette-produit avant de libérer le fichier de production, et nommez l’approbateur des corrections ou fichiers de remplacement.",
+    "Proporcione lista controlada de campos, revisión del archivo, número de registros y ejemplo aprobado. Acuerde verificaciones de códigos y correspondencia etiqueta-producto antes de liberar el archivo de producción e identifique quién aprueba correcciones o archivos de sustitución.",
+    "Forneça lista controlada de campos, revisão do ficheiro, número de registos e exemplo aprovado. Acorde verificações de códigos e correspondência etiqueta-produto antes de libertar o ficheiro de produção e identifique quem aprova correções ou ficheiros de substituição.",
+    "Предоставьте контролируемый перечень полей, версию файла, число записей и утвержденный пример. До выпуска производственного файла согласуйте проверки штрихкодов и сопоставление бирки с изделием; определите, кто утверждает исправления или заменяющий файл данных.",
+    "提供受控字段清单、文件版本、记录条数及已认可的示例记录。在放行生产文件前约定条码检查与吊牌匹配产品的规则，并明确修订或替换数据文件的批准人。"
+  ],
+  "Container, adhesive intent, artwork revision and application requirements": [
+    "Contenant, fonction de l’adhésif, révision du fichier et pose",
+    "Envase, función del adhesivo, revisión del archivo y aplicación",
+    "Recipiente, função do adesivo, revisão do ficheiro e aplicação",
+    "Емкость, назначение клея, версия макета и нанесение",
+    "容器、粘接意图、印稿版本与贴标要求"
+  ],
+  "Application conditions, exposure sequence and acceptance criteria": [
+    "Conditions de pose, séquence d’exposition et critères d’acceptation",
+    "Condiciones de aplicación, secuencia de exposición y criterios de aceptación",
+    "Condições de aplicação, sequência de exposição e critérios de aceitação",
+    "Условия нанесения, последовательность воздействий и критерии приемки",
+    "贴标条件、暴露顺序与验收标准"
+  ],
+  "Tag artwork, attachment revision, SKU data and kitting requirements": [
+    "Fichier de l’étiquette, révision de fixation, données SKU et mise en kits",
+    "Diseño de etiqueta, revisión de fijación, datos SKU y preparación de kits",
+    "Ficheiro da etiqueta, revisão da fixação, dados SKU e preparação de kits",
+    "Макет бирки, версия крепления, данные SKU и комплектование",
+    "吊牌印稿、附件版本、SKU数据与配套装配要求"
+  ],
+  "Record the applied label and artwork approval": [
+    "Consigner la validation de l’étiquette posée et du fichier",
+    "Registrar la aprobación de la etiqueta aplicada y del archivo",
+    "Registar a aprovação da etiqueta aplicada e do ficheiro",
+    "Зафиксировать утверждение наклеенной этикетки и макета",
+    "记录贴标样品与印稿认可结果"
+  ],
+  "Approve the tag and attachment as one sample": [
+    "Valider l’étiquette et sa fixation comme un seul échantillon",
+    "Aprobar la etiqueta y su fijación como una sola muestra",
+    "Aprovar a etiqueta e a fixação como uma única amostra",
+    "Утвердить бирку и крепление как единый образец",
+    "将吊牌与附件作为完整样品签样"
+  ],
+  "A waterproof label is intended to stay attached and keep required information readable during a defined wet exposure. Specify the liquid, temperature, duration and handling sequence, then test the quoted construction on the actual container.": [
+    "Une étiquette résistante à l’eau vise à rester fixée et à conserver les informations requises lisibles pendant une exposition humide définie. Précisez liquide, température, durée et manipulation, puis testez la construction chiffrée sur le contenant réel.",
+    "Una etiqueta resistente al agua debe conservar la fijación y la legibilidad requerida durante una exposición húmeda definida. Especifique líquido, temperatura, duración y manipulación y pruebe la construcción cotizada en el envase real.",
+    "Uma etiqueta resistente à água destina-se a manter a fixação e a informação necessária legível durante uma exposição húmida definida. Especifique líquido, temperatura, duração e manuseamento e teste a construção cotada no recipiente real.",
+    "Водостойкая этикетка предназначена для сохранения крепления и читаемости необходимой информации при заданном влажном воздействии. Укажите жидкость, температуру, длительность и последовательность обращения, затем испытайте указанную в расчете конструкцию на реальной емкости.",
+    "防水标签旨在于明确的湿态暴露条件下保持粘接及必要信息可读。请规定液体、温度、持续时间和操作顺序，再将报价所列标签结构贴到实际容器上测试。"
+  ],
+  "A waterproof label is intended to retain attachment and required print readability under an agreed wet-use exposure. Define the liquid, temperature, duration, handling sequence and pass/fail criteria. Confirm performance through representative testing of the complete label on the actual container; one approval does not cover every use environment.": [
+    "Une étiquette résistante à l’eau vise à conserver sa fixation et la lisibilité requise de l’impression pendant une exposition humide convenue. Définissez liquide, température, durée, manipulation et critères de réussite. Confirmez la performance par un essai représentatif de l’étiquette complète sur le contenant réel ; une validation ne couvre pas tous les environnements.",
+    "Una etiqueta resistente al agua busca mantener la fijación y la legibilidad requerida bajo una exposición húmeda acordada. Defina líquido, temperatura, duración, manipulación y criterios de aprobación. Confirme el rendimiento con una prueba representativa de la etiqueta completa en el envase real; una aprobación no cubre todos los entornos.",
+    "Uma etiqueta resistente à água destina-se a manter a fixação e a legibilidade necessária sob uma exposição húmida acordada. Defina líquido, temperatura, duração, manuseamento e critérios de aprovação. Confirme o desempenho com um ensaio representativo da etiqueta completa no recipiente real; uma aprovação não cobre todos os ambientes.",
+    "Водостойкая этикетка предназначена для сохранения крепления и необходимой читаемости печати при согласованном влажном воздействии. Задайте жидкость, температуру, длительность, последовательность обращения и критерии приемки. Подтвердите результат репрезентативным испытанием полной этикетки на реальной емкости; одно утверждение не охватывает все среды использования.",
+    "防水标签旨在于约定的湿态暴露条件下保持粘接与必要印刷信息可读。应定义液体、温度、持续时间、操作顺序和合格判定标准。通过实际容器上完整标签的代表性试验确认表现；一次签样不适用于所有使用环境。"
   ]
 }

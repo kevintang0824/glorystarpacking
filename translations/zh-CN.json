@@ -13913,5 +13913,21 @@
   "For a folding-carton project, send the board reference with the product load, closure and packing method. A thickness conversion alone does not approve the carton.": "折叠卡纸盒项目请一并提供纸板参考、产品负载、封口与装盒方式。单独换算厚度并不代表纸盒已获认可。",
   "Request a folding carton quote with the complete packing brief": "按完整装盒需求申请折叠卡纸盒报价",
   "For a paper shopping bag, define the actual contents, handle construction and agreed loaded carry checks before quotation and sample approval.": "纸质购物袋应在报价与签样前明确实际内容物、提手结构及约定的装载提携检查。",
-  "Request a paper bag quote with the load and inspection requirements": "按负载与检验要求申请纸袋报价"
+  "Request a paper bag quote with the load and inspection requirements": "按负载与检验要求申请纸袋报价",
+  "Send the actual surface material, finish and curvature, label size, artwork revision and quantity per SKU. State whether the label should remain permanent or be removed, and review the proposed stock, adhesive and finish together on an applied sample.": "提供实际贴附表面的材质、表面工艺与曲率、标签尺寸、印稿版本及各SKU数量。说明标签需永久保留还是后续移除，并在贴附样品上一起评估建议面材、胶黏剂与表面工艺。",
+  "Application, dwell and control sample": "贴标、静置与对照样品",
+  "Record container surface, application temperature, pressure and dwell before wet exposure. Keep an identified unexposed reference alongside the exposed samples, and connect each result to the same label construction, artwork and container revision.": "记录容器表面、贴标温度、压力及湿态暴露前的静置时间。将已标识的未暴露对照样与暴露样一起保留，每个结果均关联至相同的标签结构、印稿和容器版本。",
+  "Required information after exposure": "暴露后仍需保留的信息",
+  "Record edge lift, adhesive hold, text appearance and any required barcode scan before exposure and at agreed checkpoints. State the scanner or viewing method and the pass/fail rule; the exposure sequence alone is not an acceptance criterion.": "在暴露前及约定节点记录翘边、粘接保持、文字外观和需要的条码扫描结果。注明扫描设备或观察方法及合格判定规则；仅列出暴露顺序不等于确定验收标准。",
+  "Fixed artwork and attachment sample": "固定印稿与附件样品",
+  "Identify the front and back artwork, stock, finish, hole and attachment revisions. Confirm whether the cord, eyelet or fastener is supplied separately or assembled, then approve the complete tag on the intended product or fixture.": "注明正背面印稿、材料、表面工艺、孔位及附件版本。确认绳、鸡眼扣或紧固件是分开供应还是组装交付，再将完整吊牌安装到目标产品或夹具上签样。",
+  "Variable data release and matching": "可变数据放行与匹配",
+  "Provide a controlled field list, file revision, record count and approved example record. Agree the barcode checks and tag-to-product matching rule before releasing the production file, and identify who approves corrections or a replacement data file.": "提供受控字段清单、文件版本、记录条数及已认可的示例记录。在放行生产文件前约定条码检查与吊牌匹配产品的规则，并明确修订或替换数据文件的批准人。",
+  "Container, adhesive intent, artwork revision and application requirements": "容器、粘接意图、印稿版本与贴标要求",
+  "Application conditions, exposure sequence and acceptance criteria": "贴标条件、暴露顺序与验收标准",
+  "Tag artwork, attachment revision, SKU data and kitting requirements": "吊牌印稿、附件版本、SKU数据与配套装配要求",
+  "Record the applied label and artwork approval": "记录贴标样品与印稿认可结果",
+  "Approve the tag and attachment as one sample": "将吊牌与附件作为完整样品签样",
+  "A waterproof label is intended to stay attached and keep required information readable during a defined wet exposure. Specify the liquid, temperature, duration and handling sequence, then test the quoted construction on the actual container.": "防水标签旨在于明确的湿态暴露条件下保持粘接及必要信息可读。请规定液体、温度、持续时间和操作顺序，再将报价所列标签结构贴到实际容器上测试。",
+  "A waterproof label is intended to retain attachment and required print readability under an agreed wet-use exposure. Define the liquid, temperature, duration, handling sequence and pass/fail criteria. Confirm performance through representative testing of the complete label on the actual container; one approval does not cover every use environment.": "防水标签旨在于约定的湿态暴露条件下保持粘接与必要印刷信息可读。应定义液体、温度、持续时间、操作顺序和合格判定标准。通过实际容器上完整标签的代表性试验确认表现；一次签样不适用于所有使用环境。"
 }

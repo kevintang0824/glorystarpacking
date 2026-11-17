@@ -7,3 +7,5 @@ Quantity plan,,"Sellable units, tags per unit, reserve, setup samples and bundle
 Kitting and reconciliation,,"Tag-to-product matching, bundle identification, packing list, rejects and unused stock"
 Approval,,"Physical tag, attachment trial, variable-record proof and inspection reference"
 Delivery,,"Country, postal code, requested arrival date and project-specific MOQ / schedule"
+Attachment revision and supply,,Hole/eyelet/cord/fastener revision; supplied separately or assembled; approved complete tag on product or fixture
+Data release authority,,"Field list, file revision, record count, approved example, matching rule and approver for corrections or replacement file"
