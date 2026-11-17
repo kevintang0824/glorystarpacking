@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-11",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "e1f30344c525e8ba604b1eb30031b58ece3584db",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "performance_period": [
+      "2026-10-19",
+      "2026-11-15"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated_at_overview": "3.5 hours ago",
+    "clicks": 12,
+    "impressions": 2608,
+    "ctr_percent_displayed": 0.5,
+    "position": 19.8,
+    "page_rows": 68,
+    "interpretation": "Fresh authenticated browser read retains the same Oct19-Nov15 window as pass10. Impressions revised from 2610 to 2608; clicks remain 12. This is a same-window reporting update, not a measured release effect. The window predates Nov16/17 releases. Page/query rows are partial; do not infer omitted clicks or absence of demand.",
+    "connector_fallback": "Windsor account and field discovery succeeded; get_data is paused because nine connected accounts exceed the Free plan allowance of one. No account connections or plan changed. Used the authenticated correct-property Search Console UI for real metrics and inspection evidence.",
+    "performance_evidence": "tmp/pass11-search-pages-20261117.txt",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T07:14:18.447Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T07:14:30.719Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/custom-jewelry-boxes.html",
+        "checkedAt": "2026-11-17T07:14:42.389Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月24日 07:26:53"
+      },
+      {
+        "path": "/cosmetic-packaging-boxes.html",
+        "checkedAt": "2026-11-17T07:15:09.450Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月10日 08:46:12"
+      },
+      {
+        "path": "/custom-clear-labels.html",
+        "checkedAt": "2026-11-17T07:15:21.331Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年9月28日 10:57:30"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "Both seasonal guides currently report discovered-not-indexed. Prior accepted Nov16 individual requests remain separately recorded; no duplicate individual requests or new live tests this pass. All three indexed products last crawled before pass10.",
+    "selected_products": [
+      {
+        "url": "https://glorystarpacking.com/custom-tube-packaging.html",
+        "impressions": 33,
+        "clicks": 0,
+        "position": 40.1,
+        "reason": "33 product impressions, no clicks, position 40.1; size guide has 152 impressions and no clicks. Visible queries include one-side positioning and several industrial/core/building-material intents. Clarify retail/gift presentation scope and positioning without claiming an industrial capability. Retain fit planner and distinguish product, usable inside and closed outside dimensions."
+      },
+      {
+        "url": "https://glorystarpacking.com/folding-carton-boxes.html",
+        "impressions": 22,
+        "clicks": 0,
+        "position": 17.6,
+        "reason": "22 product impressions, no clicks, position 17.6. Relevant visible queries mention folding boxboard, styles and production. Add style-reference versus production-dieline guidance, board/packing trial and version release. Link the 449-impression, 2-click caliper guide directly to the carton quote; conversion output is not automatically imported as a specification."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-paper-bags.html",
+        "impressions": 18,
+        "clicks": 0,
+        "position": 15.7,
+        "reason": "18 product impressions, no clicks, position 15.7. The sole visible query names another supplier and is excluded from keyword decisions. Refine the existing retail bag scope for filled dimensions, agreed carry checks and material-specific brand proof; add a contextual direct quote link from the quality-inspection guide (37 impressions, no clicks)."
+      }
+    ],
+    "visible_query_rows": {
+      "tube": [
+        {
+          "query": "custom paper core and tube carts",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "10.5"
+        },
+        {
+          "query": "cylinder packaging for building materials",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "19.0"
+        },
+        {
+          "query": "cylinder packaging for roofing materials",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "17.0"
+        },
+        {
+          "query": "one-side positioning tube packaging",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "28.0"
+        },
+        {
+          "query": "cylinder packaging for tape",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "71.0"
+        },
+        {
+          "query": "whatsapp \"paper tube\"",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "122.0"
+        }
+      ],
+      "carton": [
+        {
+          "query": "commandcore folding carton",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "18.5"
+        },
+        {
+          "query": "folding boxboard packaging",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "21.0"
+        },
+        {
+          "query": "fold carton",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "34.0"
+        },
+        {
+          "query": "folding carton styles pdf",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "68.0"
+        },
+        {
+          "query": "folding carton production",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "97.0"
+        }
+      ],
+      "bags": [
+        {
+          "query": "jili packaging paper packaging bags with your logo",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "56.0"
+        }
+      ]
+    },
+    "query_scope": "12 visible query rows: six tube, five carton, one bag. Industrial/core intents informed scope clarification only; no invented industrial service pages or claims. Commandcore, Jili and WhatsApp contact intent are excluded from commercial keyword targeting. Small query samples do not establish a growth opportunity by themselves."
+  },
+  "changes": [
+    "Refine tube RFQ guidance for presentation use, technical-scope review, end support/contact, positioning/removal and separate inside/outside records; refine only the English tube description/social-description sets; titles retained",
+    "Refine folding-carton RFQ guidance for style reference, opening/front/glue face, converter-confirmed dieline, board and packing trial, and released component versions",
+    "Refine paper-bag RFQ guidance for actual loaded combination, width/gusset/height, handle construction, agreed carry method and material-specific brand proofs",
+    "Add two requirements rows to each of three existing blank buyer RFQ checklists; keep existing fields and defaults",
+    "Add direct, product-specific quote links to the caliper and quality-inspection guides; synchronize actual guide modification dates in visible text, Article schema and Open Graph",
+    "Update three product-specific detail labels and translate 25 new strings into five languages; regenerate five page families across six languages with existing review gates retained"
+  ],
+  "checks": {
+    "static": "86 indexable English pages plus 404 passed after synchronizing guide modification dates",
+    "languages": "522 generated pages and language runtime passed; 25 new strings per editorial dictionary, no prior key loss/change; 2812 dynamic runtime strings per language unchanged",
+    "regression": "Twelve core guide-to-quote routes and paper-tube planner regression passed; no inquiry submitted",
+    "browser": "Tube product cross-section 71 mm transferred with its explicit proposed size and review-required warning. Quantity stayed blank. New caliper-to-carton and inspection-to-bag direct links selected the correct product with blank quantity, dimensions and details; direct links do not import calculator inputs. Both Chinese direct routes retained locale and translated new field labels.",
+    "mobile": "390px screenshots inspected for all three product RFQ sections. Early project-brief links, product defaults, download paths and optional size fields verified; no horizontal overflow. Viewport reset.",
+    "discovery": "Local AI discovery audit and five-changed-URL IndexNow dry run passed; no AI recommendation established",
+    "scope": "30 substantive HTML files across five families and six languages, six editorial dictionaries, three existing checklists, sitemap, weekly CSV and this report. No JavaScript/API/runtime dictionary changes"
+  },
+  "limits": [
+    "Both seasonal guides remain unindexed; accepted sitemap and earlier live eligibility are separate from actual indexing",
+    "Previous three products are indexed but their recent pass10 content is not confirmed recrawled",
+    "No new reporting day; same-window revision is not traffic growth or a release effect",
+    "Products already received earlier work; this is incremental content and inquiry-route refinement",
+    "No additional qualified inquiry, real email delivery, native full-page review or AI recommendation claimed",
+    "Pre-existing SEO_ACTIVITY_LOG.md edit preserved and excluded from the release"
+  ],
+  "release_receipt": "tmp/core-products-pass11-release-20261117.json"
+}

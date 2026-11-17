@@ -2686,5 +2686,180 @@
     "Descarregar a ficha de cotação de ensaio de etiqueta transparente",
     "Скачать форму запроса испытания прозрачной этикетки",
     "下载透明标签试验询价表"
+  ],
+  "Presentation pack and intended use": [
+    "Emballage de présentation et usage prévu",
+    "Envase de presentación y uso previsto",
+    "Embalagem de apresentação e utilização prevista",
+    "Презентационная упаковка и назначение",
+    "展示包装与预期用途"
+  ],
+  "Specify a retail or gift presentation tube and describe the product, weight and use conditions. If the project involves an industrial core or a technical load, state that separately so the construction and quotation scope can be reviewed.": [
+    "Précisez un tube de présentation pour la vente ou le cadeau et décrivez le produit, son poids et les conditions d’usage. Si le projet concerne un mandrin industriel ou une charge technique, indiquez-le séparément pour examiner la construction et le périmètre du devis.",
+    "Especifique un tubo de presentación para venta o regalo y describa producto, peso y condiciones de uso. Si el proyecto incluye un núcleo industrial o una carga técnica, indíquelo por separado para revisar la construcción y el alcance de la cotización.",
+    "Especifique um tubo de apresentação para venda ou oferta e descreva produto, peso e condições de utilização. Se o projeto envolver um núcleo industrial ou uma carga técnica, indique-o separadamente para rever a construção e o âmbito da cotação.",
+    "Укажите презентационный тубус для розницы или подарка, опишите изделие, массу и условия использования. Если проект касается промышленной втулки или технической нагрузки, обозначьте это отдельно для проверки конструкции и состава расчета.",
+    "明确零售或礼品展示纸筒用途，并描述产品、重量和使用条件。如涉及工业纸芯或技术性负载，请单独注明，以便评估结构与报价范围。"
+  ],
+  "Positioning at the base and opening end": [
+    "Positionnement à la base et à l’ouverture",
+    "Posicionamiento en la base y la apertura",
+    "Posicionamento na base e na abertura",
+    "Позиционирование у основания и открываемого торца",
+    "底部与开口端的产品定位"
+  ],
+  "Show which end supports the product, the permitted contact areas and its presentation position. Describe the stop, insert or lift method needed for loading and removal; approve that arrangement with the actual item in a closed sample.": [
+    "Montrez quelle extrémité supporte le produit, les contacts autorisés et sa position de présentation. Décrivez la butée, le calage ou le moyen de levage nécessaire au chargement et au retrait ; validez cet agencement avec l’article réel dans un échantillon fermé.",
+    "Indique qué extremo soporta el producto, las zonas de contacto permitidas y su posición de presentación. Describa el tope, inserto o sistema de elevación para cargar y extraer; apruebe la disposición con la pieza real en una muestra cerrada.",
+    "Indique qual a extremidade que suporta o produto, as zonas de contacto permitidas e a posição de apresentação. Descreva o batente, berço ou sistema de elevação para carregar e remover; aprove a disposição com a peça real numa amostra fechada.",
+    "Покажите опорный торец, разрешенные зоны контакта и положение изделия при демонстрации. Опишите упор, ложемент или способ подъема для загрузки и извлечения; утвердите расположение с реальным изделием в закрытом образце.",
+    "说明支撑产品的端部、允许接触区域和展示位置。描述装入与取出所需的限位、内托或提取方式，并在封闭样品内装入实物确认。"
+  ],
+  "Fit record and finished outside limits": [
+    "Dossier d’ajustement et limites extérieures finies",
+    "Registro de ajuste y límites exteriores finales",
+    "Registo de encaixe e limites exteriores finais",
+    "Запись посадки и предельные наружные размеры",
+    "适配记录与成品外尺寸限制"
+  ],
+  "Keep product dimensions, proposed inside diameter, usable height and maximum closed outside size as separate entries. List quantity by size and artwork, then confirm the cap, wrap seam and loaded master-carton dimensions on the approved sample.": [
+    "Séparez les dimensions du produit, le diamètre intérieur proposé, la hauteur utile et les limites extérieures maximales fermées. Listez les quantités par taille et fichier, puis confirmez le capot, le raccord du papier et les dimensions du carton maître chargé sur l’échantillon approuvé.",
+    "Separe medidas del producto, diámetro interior propuesto, altura útil y medidas exteriores máximas cerradas. Indique cantidades por tamaño y archivo y confirme tapa, unión del revestimiento y dimensiones de la caja de transporte cargada en la muestra aprobada.",
+    "Separe dimensões do produto, diâmetro interior proposto, altura útil e dimensões exteriores máximas fechadas. Indique quantidades por tamanho e ficheiro e confirme tampa, união do revestimento e dimensões da caixa de transporte carregada na amostra aprovada.",
+    "Раздельно укажите габариты изделия, предлагаемый внутренний диаметр, полезную высоту и предельные наружные размеры закрытого тубуса. Перечислите количество по размерам и макетам, затем подтвердите крышку, шов обтяжки и размеры загруженного транспортного короба по утвержденному образцу.",
+    "分别记录产品尺寸、建议内径、可用高度及闭合状态下的最大外尺寸。按尺寸与印稿列明数量，再通过认可样品确认筒盖、裱纸接缝和装填后的外箱尺寸。"
+  ],
+  "Style reference and opening direction": [
+    "Référence de style et sens d’ouverture",
+    "Referencia de estilo y sentido de apertura",
+    "Referência do modelo e sentido de abertura",
+    "Образец конструкции и направление открывания",
+    "箱型参考与开口方向"
+  ],
+  "Name the preferred tuck, auto-lock or seal-end style, or share a reference. Mark the opening end, front panel and glue-joint face. A style illustration is a starting reference; request a converter-confirmed production dieline for the selected board and size.": [
+    "Nommez le style souhaité à rabat, fond automatique ou extrémité collée, ou fournissez une référence. Marquez l’ouverture, la face avant et le joint collé. Une illustration de style est un point de départ ; demandez un fichier de découpe de production confirmé par le transformateur pour le carton et le format choisis.",
+    "Indique el estilo preferido de solapa, fondo automático o extremo sellado, o aporte una referencia. Marque apertura, panel frontal y cara de unión encolada. Una ilustración es una referencia inicial; solicite un archivo de troquel de producción confirmado por el fabricante para el cartón y tamaño elegidos.",
+    "Indique o modelo preferido de aba, fundo automático ou extremidade selada, ou envie uma referência. Marque abertura, painel frontal e face da união colada. Uma ilustração é uma referência inicial; peça um ficheiro de corte de produção confirmado pelo fabricante para o cartão e tamanho escolhidos.",
+    "Укажите предпочтительный тип с клапаном, автоматическим дном или заклеиваемым торцом либо передайте образец. Отметьте открываемый торец, лицевую панель и клеевой шов. Иллюстрация служит исходным ориентиром; запросите подтвержденный изготовителем производственный файл раскроя для выбранного картона и размера.",
+    "注明偏好的插口、自锁底或封口结构，或提供参考。标记开口端、正面和糊口面。箱型示意仅作为起点；应针对选定纸板与尺寸索取经制盒方确认的生产刀线。"
+  ],
+  "Board specification and packing trial": [
+    "Spécification du carton et essai de conditionnement",
+    "Especificación del cartón y prueba de envasado",
+    "Especificação do cartão e ensaio de embalamento",
+    "Спецификация картона и пробная упаковка",
+    "纸板规格与装盒试验"
+  ],
+  "For FBB, SBS or kraft, record the proposed grade, measured caliper, grain and coating. Describe the manual packing steps or machine requirements. Confirm erection, closure and product retention using the quoted board and a filled trial carton.": [
+    "Pour FBB, SBS ou kraft, consignez la qualité proposée, l’épaisseur mesurée, le sens des fibres et le couchage. Décrivez les étapes manuelles ou les exigences machine. Confirmez montage, fermeture et maintien avec le carton chiffré et un étui d’essai rempli.",
+    "Para FBB, SBS o kraft, registre grado propuesto, calibre medido, dirección de fibra y recubrimiento. Describa pasos manuales o requisitos de máquina. Confirme armado, cierre y retención con el cartón cotizado y una caja de prueba llena.",
+    "Para FBB, SBS ou kraft, registe grau proposto, espessura medida, sentido da fibra e revestimento. Descreva etapas manuais ou requisitos da máquina. Confirme montagem, fecho e retenção com o cartão cotado e uma caixa de ensaio cheia.",
+    "Для FBB, SBS или крафт-картона зафиксируйте предлагаемую марку, измеренную толщину, направление волокон и покрытие. Опишите ручные операции либо требования линии. Проверьте сборку, закрытие и удержание изделия на заполненной пробной коробке из картона, указанного в расчете.",
+    "对FBB、SBS或牛皮卡纸，记录建议牌号、实测厚度、纤维方向与涂层。描述手工装盒步骤或机器要求。使用报价纸板和装填试样确认撑盒、闭合与产品固定。"
+  ],
+  "One released record per version": [
+    "Un dossier validé par version",
+    "Un registro aprobado por versión",
+    "Um registo aprovado por versão",
+    "Единая утвержденная запись для каждой версии",
+    "每个版本对应一套放行记录"
+  ],
+  "Connect each carton size and artwork to the product revision and quantity. Record windows, inserts, finishes and barcode areas when applicable. Approve the erected, filled carton and printed proof against the same released component list.": [
+    "Reliez chaque format et fichier à la révision du produit et à la quantité. Consignez fenêtres, calages, finitions et zones de codes-barres si nécessaire. Validez l’étui monté et rempli ainsi que l’épreuve imprimée avec la même liste de composants approuvée.",
+    "Vincule cada tamaño y archivo con la revisión del producto y la cantidad. Registre ventanas, insertos, acabados y áreas de código de barras cuando corresponda. Apruebe la caja armada y llena y la prueba impresa con la misma lista de componentes aprobada.",
+    "Associe cada tamanho e ficheiro à revisão do produto e à quantidade. Registe janelas, berços, acabamentos e áreas de código de barras quando aplicável. Aprove a caixa montada e cheia e a prova impressa com a mesma lista de componentes aprovada.",
+    "Свяжите каждый размер и макет с версией изделия и количеством. При необходимости укажите окна, ложементы, отделку и зоны штрихкода. Утвердите собранную заполненную коробку и печатную пробу по одной утвержденной ведомости компонентов.",
+    "将每个盒型尺寸与印稿关联至产品版本和数量。适用时记录开窗、内托、工艺与条码区域。装填后的撑开纸盒与印刷样应依据同一份已放行组件清单签样。"
+  ],
+  "Filled dimensions and loading access": [
+    "Dimensions chargées et accès au remplissage",
+    "Medidas con contenido y acceso de carga",
+    "Dimensões com conteúdo e acesso de carga",
+    "Размеры с содержимым и доступ для загрузки",
+    "装填尺寸与装入通道"
+  ],
+  "List the products or gift boxes in the heaviest intended combination, with orientation and total weight. Define width, gusset and height separately, then check the opening, base and clearance for loading and removing the actual contents.": [
+    "Listez les produits ou coffrets de la combinaison prévue la plus lourde, avec orientation et poids total. Définissez séparément largeur, soufflet et hauteur, puis vérifiez ouverture, fond et dégagement pour charger et retirer le contenu réel.",
+    "Enumere los productos o cajas de regalo de la combinación prevista más pesada, con orientación y peso total. Defina ancho, fuelle y altura por separado y revise apertura, base y holgura para cargar y retirar el contenido real.",
+    "Liste os produtos ou caixas de oferta da combinação prevista mais pesada, com orientação e peso total. Defina largura, fole e altura separadamente e verifique abertura, base e folga para carregar e retirar o conteúdo real.",
+    "Перечислите изделия или подарочные коробки в самой тяжелой предусмотренной комбинации, указав ориентацию и общий вес. Раздельно задайте ширину, глубину складки и высоту, затем проверьте горловину, дно и зазор для загрузки и извлечения реального содержимого.",
+    "列出预期最重组合中的产品或礼盒、摆放方向及总重量。分别定义宽度、侧宽和高度，再用实际内容物检查袋口、底部及装入取出间隙。"
+  ],
+  "Handles and an agreed carry check": [
+    "Poignées et contrôle de portage convenu",
+    "Asas y prueba de transporte acordada",
+    "Asas e ensaio de transporte acordado",
+    "Ручки и согласованная проверка переноски",
+    "提手与约定的提携检查"
+  ],
+  "Specify handle material, attachment and drop, plus top and base reinforcement. Agree the loaded carry method, duration and acceptance criteria for the intended use; a paper weight or handle appearance alone does not establish a carrying capacity.": [
+    "Spécifiez matière, fixation et retombée des poignées, ainsi que les renforts supérieurs et de fond. Convenez de la méthode de portage chargé, de la durée et des critères d’acceptation pour l’usage prévu ; un grammage ou l’aspect des poignées ne suffit pas à établir une capacité de charge.",
+    "Especifique material, fijación y caída de las asas, además de refuerzos superior y de base. Acuerde método de transporte cargado, duración y criterios de aceptación para el uso previsto; el gramaje o aspecto del asa no establece por sí solo una capacidad de carga.",
+    "Especifique material, fixação e altura livre das asas, além dos reforços superior e da base. Acorde método de transporte com carga, duração e critérios de aceitação para a utilização prevista; a gramagem ou aspeto da asa não define por si só a capacidade de carga.",
+    "Задайте материал, крепление и высоту ручек, усиление верха и дна. Согласуйте метод, длительность и критерии приемки проверки переноски с грузом для предполагаемого использования; одна плотность бумаги или вид ручек не определяет грузоподъемность.",
+    "明确提手材料、连接方式、提手净高及袋口与袋底加强结构。针对预期用途约定装载后的提携方法、持续时间和验收标准；单凭纸张克重或提手外观不能确定承重能力。"
+  ],
+  "Logo master and material-specific proof": [
+    "Référence de logo et épreuve sur le matériau",
+    "Referencia del logotipo y prueba sobre el material",
+    "Referência do logótipo e prova no material",
+    "Эталон логотипа и проба на конкретном материале",
+    "标志原稿与对应材料打样"
+  ],
+  "Send the logo artwork revision, color master and quantities by bag size and design. Review print and finish on the quoted paper. For a matching box and bag, approve separate material proofs and retain both as reorder references.": [
+    "Envoyez la révision du logo, la référence couleur et les quantités par format et motif de sac. Examinez impression et finition sur le papier chiffré. Pour un coffret et un sac assortis, approuvez des épreuves séparées sur chaque matériau et conservez les deux pour les réassorts.",
+    "Envíe revisión del logotipo, referencia de color y cantidades por tamaño y diseño de bolsa. Revise impresión y acabado sobre el papel cotizado. Para caja y bolsa a juego, apruebe pruebas separadas por material y conserve ambas como referencias de reposición.",
+    "Envie revisão do logótipo, referência de cor e quantidades por tamanho e desenho do saco. Reveja impressão e acabamento no papel cotado. Para caixa e saco coordenados, aprove provas separadas por material e guarde ambas como referências de reposição.",
+    "Передайте версию макета логотипа, эталон цвета и количество по размерам и дизайнам пакета. Оцените печать и отделку на указанной в расчете бумаге. Для согласованных коробки и пакета утвердите отдельные пробы на каждом материале и сохраните обе для повторных заказов.",
+    "提供标志印稿版本、颜色标准及每个袋型尺寸与设计的数量。在报价纸张上评估印刷与表面工艺。盒袋配套时应分别认可各材料打样，并将两者留作补单参考。"
+  ],
+  "Product positioning, opening, artwork and packed delivery requirements": [
+    "Position du produit, ouverture, fichier et livraison emballée",
+    "Posición del producto, apertura, archivo y entrega embalada",
+    "Posição do produto, abertura, ficheiro e entrega embalada",
+    "Положение изделия, открывание, макет и доставка в упаковке",
+    "产品定位、开口、印稿与装箱交付要求"
+  ],
+  "Carton style reference, board, packing process and artwork versions": [
+    "Référence de style, carton, conditionnement et versions du fichier",
+    "Referencia de estilo, cartón, proceso de envasado y versiones",
+    "Referência do modelo, cartão, embalamento e versões do ficheiro",
+    "Образец конструкции, картон, процесс упаковки и версии макета",
+    "箱型参考、纸板、装盒工序与印稿版本"
+  ],
+  "Packed contents, carry load, handle and approved brand references": [
+    "Contenu chargé, poids porté, poignées et références de marque approuvées",
+    "Contenido, carga, asas y referencias de marca aprobadas",
+    "Conteúdo, carga, asas e referências da marca aprovadas",
+    "Содержимое, нагрузка, ручки и утвержденные эталоны бренда",
+    "装载内容、提携负载、提手与已认可品牌参考"
+  ],
+  "For a folding-carton project, send the board reference with the product load, closure and packing method. A thickness conversion alone does not approve the carton.": [
+    "Pour un projet d’étui pliant, envoyez la référence du carton avec la charge produit, la fermeture et le mode de conditionnement. Une conversion d’épaisseur seule ne valide pas l’étui.",
+    "Para un proyecto de caja plegable, envíe la referencia del cartón con la carga, cierre y método de envasado. Una conversión de espesor por sí sola no aprueba la caja.",
+    "Para um projeto de caixa dobrável, envie a referência do cartão com a carga, fecho e método de embalamento. Uma conversão de espessura por si só não aprova a caixa.",
+    "Для проекта складной картонной коробки передайте эталон картона, нагрузку изделия, тип закрытия и способ упаковки. Один пересчет толщины не означает утверждения коробки.",
+    "折叠卡纸盒项目请一并提供纸板参考、产品负载、封口与装盒方式。单独换算厚度并不代表纸盒已获认可。"
+  ],
+  "Request a folding carton quote with the complete packing brief": [
+    "Demander un devis d’étui pliant avec le dossier complet de conditionnement",
+    "Solicitar cotización de caja plegable con los requisitos completos de envasado",
+    "Pedir cotação de caixa dobrável com os requisitos completos de embalamento",
+    "Запросить расчет складной коробки с полными требованиями упаковки",
+    "按完整装盒需求申请折叠卡纸盒报价"
+  ],
+  "For a paper shopping bag, define the actual contents, handle construction and agreed loaded carry checks before quotation and sample approval.": [
+    "Pour un sac shopping en papier, définissez le contenu réel, la construction des poignées et les contrôles convenus de portage chargé avant le devis et la validation de l’échantillon.",
+    "Para una bolsa de papel, defina contenido real, construcción de asas y pruebas acordadas de transporte con carga antes de cotizar y aprobar la muestra.",
+    "Para um saco de compras em papel, defina conteúdo real, construção das asas e ensaios acordados de transporte com carga antes da cotação e aprovação da amostra.",
+    "Для бумажного пакета определите реальное содержимое, конструкцию ручек и согласованные проверки переноски с грузом до расчета и утверждения образца.",
+    "纸质购物袋应在报价与签样前明确实际内容物、提手结构及约定的装载提携检查。"
+  ],
+  "Request a paper bag quote with the load and inspection requirements": [
+    "Demander un devis de sac papier avec les exigences de charge et de contrôle",
+    "Solicitar cotización de bolsa de papel con requisitos de carga e inspección",
+    "Pedir cotação de saco de papel com requisitos de carga e inspeção",
+    "Запросить расчет бумажного пакета с требованиями к нагрузке и проверке",
+    "按负载与检验要求申请纸袋报价"
   ]
 }
