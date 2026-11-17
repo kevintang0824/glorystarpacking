@@ -2035,5 +2035,40 @@
     "Reserva de planeamento do comprador (%)",
     "Планируемый покупателем резерв (%)",
     "买方规划备用比例（%）"
+  ],
+  "Tissue-paper sheet planning inputs": [
+    "Données de planification des feuilles de papier de soie",
+    "Datos de planificación de hojas de papel de seda",
+    "Dados de planeamento das folhas de papel de seda",
+    "Исходные данные для планирования листов упаковочной бумаги",
+    "拷贝纸平张与用量规划输入"
+  ],
+  "Buyer-entered wrapping and quantity assumptions only. Packed units, usage and bundle calculations are not a confirmed production order or cutting instruction. Confirm flat sheet size, paper, print, wrapping sample, bundle specification, MOQ and production quantity separately.": [
+    "Hypothèses d’emballage et de quantité saisies par l’acheteur uniquement. Le nombre d’unités emballées, la consommation et les calculs de lots ne constituent ni une commande confirmée ni une instruction de coupe. Confirmez séparément le format à plat, le papier, l’impression, l’échantillon d’emballage, le conditionnement par lot, le minimum de commande et la quantité de production.",
+    "Solo supuestos de envoltura y cantidad introducidos por el comprador. Las unidades embaladas, el consumo y los cálculos de paquetes no son un pedido confirmado ni una instrucción de corte. Confirme por separado el tamaño de la hoja plana, el papel, la impresión, la muestra de envoltura, el paquete, el pedido mínimo y la cantidad de producción.",
+    "Apenas pressupostos de embalagem e quantidade introduzidos pelo comprador. As unidades embaladas, o consumo e os cálculos de lotes não são uma encomenda confirmada nem uma instrução de corte. Confirme separadamente o formato plano, o papel, a impressão, a amostra de embalagem, a especificação do lote, a quantidade mínima e a quantidade de produção.",
+    "Только введенные покупателем предположения об упаковке и количестве. Число упакованных изделий, расход и расчет пачек не являются подтвержденным заказом или указанием на раскрой. Отдельно подтвердите формат листа, бумагу, печать, образец обертки, состав пачки, минимальный заказ и тираж производства.",
+    "仅为买方填写的包裹方式与数量假设。待包装件数、用量与捆包计算不代表已确认的生产订单或裁切指令。请分别确认平张尺寸、纸张、印刷、包裹样品、捆包规格、起订量和生产数量。"
+  ],
+  "Buyer planning allowance (%)": [
+    "Marge de planification de l’acheteur (%)",
+    "Margen de planificación del comprador (%)",
+    "Margem de planeamento do comprador (%)",
+    "Планируемый покупателем запас (%)",
+    "买方规划余量（%）"
+  ],
+  "Flat sheet width (mm)": [
+    "Largeur de la feuille à plat (mm)",
+    "Ancho de la hoja plana (mm)",
+    "Largura da folha plana (mm)",
+    "Ширина листа (мм)",
+    "平张纸宽度（mm）"
+  ],
+  "Flat sheet length (mm)": [
+    "Longueur de la feuille à plat (mm)",
+    "Largo de la hoja plana (mm)",
+    "Comprimento da folha plana (mm)",
+    "Длина листа (мм)",
+    "平张纸长度（mm）"
   ]
 }

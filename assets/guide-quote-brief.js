@@ -1,5 +1,21 @@
 (() => {
   const definitions = {
+    "tissue-sheet-plan-v1": {
+      source: "custom-tissue-paper-printing-guide.html",
+      target: "custom-tissue-paper.html",
+      form: "tissue-paper-sheet-planner",
+      calculator: "tissue_sheet_quantity_and_bundle",
+      title: "Tissue-paper sheet planning inputs",
+      boundary: "Buyer-entered wrapping and quantity assumptions only. Packed units, usage and bundle calculations are not a confirmed production order or cutting instruction. Confirm flat sheet size, paper, print, wrapping sample, bundle specification, MOQ and production quantity separately.",
+      fields: [
+        ["packedUnits", "Packed orders or products", 1, true],
+        ["sheetsPerUnit", "Sheets used per packed unit", 0.1],
+        ["planningAllowance", "Buyer planning allowance (%)", {"type": "number", "min": 0, "max": 100}],
+        ["sheetsPerBundle", "Supplier sheets per bundle", 1, true],
+        ["sheetWidth", "Flat sheet width (mm)", 1, true],
+        ["sheetLength", "Flat sheet length (mm)", 1, true],
+      ],
+    },
     "waterproof-trial-v1": {
       source: "waterproof-label-testing-guide.html",
       target: "custom-waterproof-labels.html",

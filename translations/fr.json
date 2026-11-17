@@ -13649,5 +13649,10 @@
   "Buyer-defined trial inputs only. Sample counts are not production order quantity or an approved test plan. Confirm the container, application, exposure sequence, acceptance criteria, material construction and production quantity separately.": "Données d’essai définies par l’acheteur uniquement. Le nombre d’échantillons ne constitue ni une quantité de commande ni un plan d’essai approuvé. Confirmez séparément le contenant, la pose, la séquence d’exposition, les critères d’acceptation, la construction et la quantité de production.",
   "Hang-tag quantity planning inputs": "Données de planification des quantités d’étiquettes suspendues",
   "Buyer-entered quantity assumptions only. The reserve and bundle plan is not a confirmed production order. Confirm quantities by SKU, variable-data records, attachment, kitting, allowed overrun or underrun and approved samples before production.": "Hypothèses de quantité saisies par l’acheteur uniquement. Le plan de réserve et de lots ne constitue pas une commande de production confirmée. Confirmez les quantités par référence, les données variables, la fixation, l’assemblage des kits, les écarts de quantité autorisés et les échantillons approuvés avant la production.",
-  "Buyer planning reserve (%)": "Réserve prévue par l’acheteur (%)"
+  "Buyer planning reserve (%)": "Réserve prévue par l’acheteur (%)",
+  "Tissue-paper sheet planning inputs": "Données de planification des feuilles de papier de soie",
+  "Buyer-entered wrapping and quantity assumptions only. Packed units, usage and bundle calculations are not a confirmed production order or cutting instruction. Confirm flat sheet size, paper, print, wrapping sample, bundle specification, MOQ and production quantity separately.": "Hypothèses d’emballage et de quantité saisies par l’acheteur uniquement. Le nombre d’unités emballées, la consommation et les calculs de lots ne constituent ni une commande confirmée ni une instruction de coupe. Confirmez séparément le format à plat, le papier, l’impression, l’échantillon d’emballage, le conditionnement par lot, le minimum de commande et la quantité de production.",
+  "Buyer planning allowance (%)": "Marge de planification de l’acheteur (%)",
+  "Flat sheet width (mm)": "Largeur de la feuille à plat (mm)",
+  "Flat sheet length (mm)": "Longueur de la feuille à plat (mm)"
 }

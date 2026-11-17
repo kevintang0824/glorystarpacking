@@ -1,0 +1,9 @@
+field,buyer_requirement,review_note
+Bottle,,"Bottle material, finish, profile, filled contents, label panel and dimensions"
+Label,,"Front / back / neck position, shape and size with units if known"
+Material and decoration,,"Paper or film, adhesive, print, foil, embossing and protective layer as proposed"
+Application,,"Hand or machine line, surface condition, temperature, pressure and dwell before exposure"
+Serving exposure,,"Condensation, ice-bucket or other sequence; liquid, temperature, duration and handling"
+Roll and order,,"Core, gap, roll direction, labels per SKU and artwork revision; confirm MOQ and schedule"
+Trial approval,,"Applied bottle sample, appearance, edge lift, adhesive hold and barcode acceptance criteria"
+Delivery,,"Country, postal code, requested arrival date and packing requirements"

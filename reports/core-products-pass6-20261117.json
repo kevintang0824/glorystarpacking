@@ -1,0 +1,148 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-6",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "75f8709e53a92decf513cc679b51e425f67848e6",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_on": "2026-11-17, Asia/Shanghai",
+    "performance_period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated": "3.5 hours ago",
+    "clicks": 11,
+    "impressions": 2540,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "interpretation": "The reporting window has not advanced. Total impressions refreshed from 2536 to 2540; this is not an effect attributed to recent releases. These three product URLs did not appear in the 68-row page report, so guide performance is the selection basis; absent rows are not invented as zero metrics.",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T03:00:01.273Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T03:00:43.172Z",
+        "status": "网页未编入索引：Google 无法识别此网址",
+        "details": "站点地图 未检测到任何引荐站点地图 引荐来源网页 未检测到引荐来源网页 目前未报告的其他来源或许能识别此网址 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/custom-boxes.html",
+        "checkedAt": "2026-11-17T03:01:36.129Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/custom-drawer-boxes.html",
+        "checkedAt": "2026-11-17T03:02:38.703Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/box-labels.html",
+        "checkedAt": "2026-11-17T03:03:26.248Z",
+        "status": "网页已编入索引"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "ramadan_live_test": {
+      "checkedAt": "2026-11-17T03:06:48.351Z",
+      "url": "https://glorystarpacking.com/ramadan-2027-gift-box-order-timeline.html",
+      "mode": "Live URL test",
+      "canBeIndexed": true,
+      "indexingStatusUnchanged": true
+    },
+    "request_handling": "No duplicate single-URL indexing requests sent. Ramadan again returned URL unknown after the previous discovered-not-indexed result. A new live test at about 11:03 showed the URL can be indexed; live eligibility is separate from indexing status. The accepted November 16 requests remain recorded.",
+    "selected_products": [
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/embossed-foil-labels.html",
+          "reported_in_window": false,
+          "clicks": null,
+          "impressions": null,
+          "position": null
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/foil-vs-spot-uv.html",
+          "clicks": 1,
+          "impressions": 60,
+          "position": 10.4
+        },
+        "reason": "The finish guide has 60 impressions and 1 click at position 10.4. Give its readers distinct box versus applied-label quote routes and improve the label-specific proof brief."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-tissue-paper.html",
+          "reported_in_window": false,
+          "clicks": null,
+          "impressions": null,
+          "position": null
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/custom-tissue-paper-printing-guide.html",
+          "clicks": 1,
+          "impressions": 27,
+          "position": 6.8
+        },
+        "reason": "The tissue guide has 27 impressions and 1 click at position 6.8. Its existing usage planner was not connected to the product form. Add a protected handoff; this extends the earlier indexing/content repair rather than claim the page was untouched."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-wine-labels.html",
+          "reported_in_window": false,
+          "clicks": null,
+          "impressions": null,
+          "position": null
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/wine-label-condensation-adhesive-testing.html",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 5.6
+        },
+        "reason": "The bottle trial guide has 5 impressions at position 5.6. Keep its existing direct quote route and clarify bottle, decoration and serving-condition choices on the product page."
+      }
+    ],
+    "query_evidence": {
+      "source": "tmp/pass6-foil-guide-queries-20261117.txt",
+      "visible_rows": [],
+      "coverage": "The finish guide query report returned no visible query rows. No missing query data or product metrics were invented."
+    },
+    "performance_evidence": "tmp/pass6-search-pages-20261117.txt",
+    "read_at": "2026-11-17T03:04:16.138093+00:00"
+  },
+  "changes": [
+    "Update three product description/social-description sets and distinct decoration, wrap/usage and bottle/serving-condition decision panels",
+    "Add three blank product checklists, optional-size review guidance and mobile form priority while retaining project-specific MOQ and schedules",
+    "Connect the tissue sheet planner to its product quote using the established one-use 30-minute local draft mechanism; carry units, usage, allowance, bundle and proposed flat-sheet inputs into reviewable notes",
+    "Keep confirmed order quantity and final dimensions blank; preserve existing entries and reject invalid or expired drafts, including allowances above 100 percent",
+    "Add one known tissue calculator identifier to the consent-controlled handoff event; do not send buyer input values in URLs or analytics",
+    "Split the finish guide CTA into a box-finish request and an applied foil/embossed-label request; retain the wine guide existing direct product quote route",
+    "Translate new tissue brief title, boundary and units in five languages; polish Chinese route/form and calculator terminology; two other Chinese pages receive shared heading/label improvements; retain all review gates",
+    "Refresh actual modification dates on five substantive pages and discovery files; other HTML differences are shared script/dictionary cache versions"
+  ],
+  "checks": {
+    "static": "86 canonical indexable pages plus 404 passed",
+    "languages": "522 rendered pages, runtime and review gates passed; dynamic dictionaries 2790 to 2798 with no old keys removed",
+    "handoffs": "Eleven core guide routes plus separate paper-tube regression passed; tissue stored allowance above 100 percent rejected; expiry, non-overwrite, paths, privacy, consent and fallbacks covered",
+    "api": "Quote API and service-health mock suites passed; no real inquiry or email sent",
+    "syntax": "Site, analytics, guide module and Quote API passed",
+    "browser": "Current values 1337 packed units and 610 by 820 mm transferred correctly to tissue notes; confirmed quantity and dimensions stayed blank. Chinese 888-unit route retained Chinese path and correctly translated labels/boundary.",
+    "mobile": "390px screenshots verify all three forms before long supporting copy and the finish guide two quote buttons; each button reaches the correct product form",
+    "discovery": "Local AI discovery audit and five-URL IndexNow dry run passed",
+    "scope": "Five substantive page sets plus shared Chinese labels on custom-magnetic-boxes and hang-tag-production-checklist; all other HTML changes are script/dictionary cache versions"
+  },
+  "limits": [
+    "The three previous commercial pages are indexed at the time checked; last-crawl details were not expanded, so newest content processing is not established",
+    "Both seasonal guides remain unindexed; Ramadan live eligibility does not mean indexed and its index-report results have varied across checks",
+    "The report window still ends November 14 and cannot show effects of November 16/17 edits",
+    "The selected product pages have no reported rows in this window; guide exposure and existing conversion gaps drive the selection",
+    "No additional qualified inquiry, ranking growth or AI recommendation established",
+    "Only focused Chinese route/form/planner labels were polished; full-page native review not claimed and some inherited dynamic explanations still use English",
+    "Preserved pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/core-products-pass6-release-20261117.json"
+}

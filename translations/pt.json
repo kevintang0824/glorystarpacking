@@ -13649,5 +13649,10 @@
   "Buyer-defined trial inputs only. Sample counts are not production order quantity or an approved test plan. Confirm the container, application, exposure sequence, acceptance criteria, material construction and production quantity separately.": "Apenas dados de ensaio definidos pelo comprador. A contagem de amostras não é a quantidade da encomenda nem um plano de ensaio aprovado. Confirme separadamente o recipiente, a aplicação, a sequência de exposição, os critérios de aceitação, a estrutura do material e a quantidade de produção.",
   "Hang-tag quantity planning inputs": "Dados de planeamento das quantidades de etiquetas pendentes",
   "Buyer-entered quantity assumptions only. The reserve and bundle plan is not a confirmed production order. Confirm quantities by SKU, variable-data records, attachment, kitting, allowed overrun or underrun and approved samples before production.": "Apenas pressupostos de quantidade introduzidos pelo comprador. O plano de reserva e lotes não é uma encomenda de produção confirmada. Confirme quantidades por SKU, registos de dados variáveis, fixação, preparação de kits, tolerâncias de quantidade e amostras aprovadas antes da produção.",
-  "Buyer planning reserve (%)": "Reserva de planeamento do comprador (%)"
+  "Buyer planning reserve (%)": "Reserva de planeamento do comprador (%)",
+  "Tissue-paper sheet planning inputs": "Dados de planeamento das folhas de papel de seda",
+  "Buyer-entered wrapping and quantity assumptions only. Packed units, usage and bundle calculations are not a confirmed production order or cutting instruction. Confirm flat sheet size, paper, print, wrapping sample, bundle specification, MOQ and production quantity separately.": "Apenas pressupostos de embalagem e quantidade introduzidos pelo comprador. As unidades embaladas, o consumo e os cálculos de lotes não são uma encomenda confirmada nem uma instrução de corte. Confirme separadamente o formato plano, o papel, a impressão, a amostra de embalagem, a especificação do lote, a quantidade mínima e a quantidade de produção.",
+  "Buyer planning allowance (%)": "Margem de planeamento do comprador (%)",
+  "Flat sheet width (mm)": "Largura da folha plana (mm)",
+  "Flat sheet length (mm)": "Comprimento da folha plana (mm)"
 }

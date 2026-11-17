@@ -13649,5 +13649,10 @@
   "Buyer-defined trial inputs only. Sample counts are not production order quantity or an approved test plan. Confirm the container, application, exposure sequence, acceptance criteria, material construction and production quantity separately.": "Только заданные покупателем данные испытания. Количество образцов не является тиражом заказа или утвержденным планом испытаний. Отдельно подтвердите тару, нанесение, последовательность воздействий, критерии приемки, конструкцию материала и тираж производства.",
   "Hang-tag quantity planning inputs": "Исходные данные для планирования количества навесных бирок",
   "Buyer-entered quantity assumptions only. The reserve and bundle plan is not a confirmed production order. Confirm quantities by SKU, variable-data records, attachment, kitting, allowed overrun or underrun and approved samples before production.": "Только введенные покупателем предположения о количестве. План резерва и пачек не является подтвержденным производственным заказом. До производства подтвердите тиражи по SKU, записи переменных данных, крепление, комплектацию, допустимое превышение или недопоставку и утвержденные образцы.",
-  "Buyer planning reserve (%)": "Планируемый покупателем резерв (%)"
+  "Buyer planning reserve (%)": "Планируемый покупателем резерв (%)",
+  "Tissue-paper sheet planning inputs": "Исходные данные для планирования листов упаковочной бумаги",
+  "Buyer-entered wrapping and quantity assumptions only. Packed units, usage and bundle calculations are not a confirmed production order or cutting instruction. Confirm flat sheet size, paper, print, wrapping sample, bundle specification, MOQ and production quantity separately.": "Только введенные покупателем предположения об упаковке и количестве. Число упакованных изделий, расход и расчет пачек не являются подтвержденным заказом или указанием на раскрой. Отдельно подтвердите формат листа, бумагу, печать, образец обертки, состав пачки, минимальный заказ и тираж производства.",
+  "Buyer planning allowance (%)": "Планируемый покупателем запас (%)",
+  "Flat sheet width (mm)": "Ширина листа (мм)",
+  "Flat sheet length (mm)": "Длина листа (мм)"
 }
