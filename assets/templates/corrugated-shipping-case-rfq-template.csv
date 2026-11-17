@@ -1,0 +1,9 @@
+field,buyer_requirement,review_note
+Load,,"Product list, units per case, packed gross weight, inner protection and fragile areas"
+Case style,,"Style/reference, loading direction, filling operation and closing method"
+Dimension basis,,Inside or outside L x W x H with explicit units and product tolerances
+Manufacturing drawing,,"Board grade/caliper, score allowances, slots, joint, cutting file and drawing revision confirmed by converter"
+Printing,,"Print faces, artwork revision, shipping marks, barcode and label areas"
+Closure,,"Tape/adhesive/staple or other method, application operation and inspection criteria"
+Loaded logistics,,"Final outside dimensions and gross weight, carton quantity, pallet/load constraints and route"
+Approval and commercial scope,,"Loaded sample, agreed tests, quantity per design, destination, delivery basis and target date"

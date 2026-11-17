@@ -1,0 +1,391 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-9",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "076863b47644cddabf2fac178c7a35f08affe17a",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_at": "2026-11-17T06:23:33.756175+00:00",
+    "performance_period": [
+      "2026-10-19",
+      "2026-11-15"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated_at_overview": "2.5 hours ago",
+    "clicks": 12,
+    "impressions": 2610,
+    "ctr_percent_displayed": 0.5,
+    "position": 19.8,
+    "page_rows": 68,
+    "interpretation": "The rolling 28-day report advanced one day from Oct18-Nov14 to Oct19-Nov15. Previous aggregate was 11 clicks and 2540 impressions. The windows differ and the new end date still predates Nov16/17 releases, so the change is not attributed to those releases. Query rows are partial; unrelated generic/assistant-like queries were excluded from optimization decisions.",
+    "performance_evidence": "tmp/pass9-search-pages-20261117.txt",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T06:14:22.243Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T06:15:07.580Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/custom-packaging-inserts.html",
+        "checkedAt": "2026-11-17T06:16:05.776Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月31日 11:36:44"
+      },
+      {
+        "path": "/custom-mailer-boxes.html",
+        "checkedAt": "2026-11-17T06:16:38.555Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年11月12日 17:36:45"
+      },
+      {
+        "path": "/custom-rigid-boxes.html",
+        "checkedAt": "2026-11-17T06:17:07.139Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月25日 13:30:33"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "Both seasonal guides returned discovered-not-indexed this pass. Prior accepted Nov16 requests and the Nov17 Ramadan live eligibility test remain separately recorded; no duplicate individual requests or repeated live tests sent. All three indexed products last crawled before pass8.",
+    "selected_products": [
+      {
+        "url": "https://glorystarpacking.com/custom-wine-boxes.html",
+        "impressions": 74,
+        "clicks": 0,
+        "position": 64.5,
+        "reason": "74 impressions, no clicks, position 64.5. Wine packaging and box-size queries expose the need to distinguish assembled bottle measurements, gift format and protective outer shipping case."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-corrugated-shipping-boxes.html",
+        "impressions": 49,
+        "clicks": 0,
+        "position": 27.4,
+        "reason": "49 impressions, no clicks, position 27.4; the specification guide has 131 impressions and 2 clicks. Relevant product queries mention shipper manufacturing, cutting design and scoring allowances. Clarify the converter-confirmed drawing and dimension basis without inventing universal allowances."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-perfume-boxes.html",
+        "impressions": 41,
+        "clicks": 0,
+        "position": 50.8,
+        "reason": "41 impressions, no clicks, position 50.8. Relevant queries mention fragrance bottle packaging, manufacturers, height and double-hinged boxes. Clarify complete bottle assembly, opening reference and sample scope."
+      }
+    ],
+    "visible_query_rows": {
+      "wine": [
+        {
+          "query": "custom wine packaging",
+          "clicks": "0",
+          "impressions": "11",
+          "ctr": "0%",
+          "position": "99.8"
+        },
+        {
+          "query": "custom wine box packaging",
+          "clicks": "0",
+          "impressions": "5",
+          "ctr": "0%",
+          "position": "69.8"
+        },
+        {
+          "query": "custom wine packaging and boxes",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "96.0"
+        },
+        {
+          "query": "wine box packaging",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "58.3"
+        },
+        {
+          "query": "wine box size",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "60.0"
+        },
+        {
+          "query": "single wine bottle box packaging design online",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "80.7"
+        },
+        {
+          "query": "custom wine bottle packaging",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "29.5"
+        },
+        {
+          "query": "wine tube gift box",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "56.0"
+        },
+        {
+          "query": "customized wine box",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "84.5"
+        },
+        {
+          "query": "custom wine boxes cardboard",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "98.0"
+        },
+        {
+          "query": "custom wine shipping boxes",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "114.5"
+        },
+        {
+          "query": "flocking packaging for wine box",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "44.0"
+        },
+        {
+          "query": "branded packaging for wineries",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "56.0"
+        },
+        {
+          "query": "custom wine box",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "72.0"
+        },
+        {
+          "query": "box wine packaging",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "78.0"
+        },
+        {
+          "query": "wine bottle packaging",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "82.0"
+        },
+        {
+          "query": "custom bottle gift boxes",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "90.0"
+        },
+        {
+          "query": "custom wine bottle boxes",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "96.0"
+        },
+        {
+          "query": "wine gift boxes packaging",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "98.0"
+        },
+        {
+          "query": "wine packaging box manufacturer",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "98.0"
+        },
+        {
+          "query": "wine paper box",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "129.0"
+        }
+      ],
+      "shipping": [
+        {
+          "query": "custom shipper manufacturing",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "138.8"
+        },
+        {
+          "query": "ship type box design cutting manufacturer",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "41.0"
+        },
+        {
+          "query": "carton box",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "1.0"
+        },
+        {
+          "query": "scoring allowances for corrugated boxes",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "1.0"
+        },
+        {
+          "query": "packaging",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "2.0"
+        },
+        {
+          "query": "صور",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "2.0"
+        },
+        {
+          "query": "more",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "4.0"
+        },
+        {
+          "query": "what about verizon",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "6.0"
+        },
+        {
+          "query": "pack configuration",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "8.0"
+        }
+      ],
+      "perfume": [
+        {
+          "query": "fragrance bottle packaging",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "50.5"
+        },
+        {
+          "query": "perfume packaging manufacturers",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "52.0"
+        },
+        {
+          "query": "box for perfume bottle packaging",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "95.0"
+        },
+        {
+          "query": "give me a photo",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "2.0"
+        },
+        {
+          "query": "perfume box manufacturers",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "39.0"
+        },
+        {
+          "query": "box for perfumes",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "55.0"
+        },
+        {
+          "query": "double hinged perfume box",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "73.0"
+        },
+        {
+          "query": "packaging heights custom perfume boxes",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "88.0"
+        },
+        {
+          "query": "perfume packaging supplier",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "97.0"
+        }
+      ]
+    }
+  },
+  "changes": [
+    "Refine the wine-box early RFQ guidance for assembled bottle dimensions including closure, each filled bottle/accessory configuration, and gift box versus protective outer case; add a direct shipping-case specification link",
+    "Refine the shipping-case RFQ guidance for load and style, inside/outside dimensions, units, converter-confirmed board/score/slot/joint/cutting-file details, print and loaded logistics",
+    "Replace the early region-specific delivery download with a global blank corrugated shipping-case RFQ sheet; the existing delivery resource itself is unchanged",
+    "Refine the perfume order-planning section for complete bottle height and component revision, opening/hinge reference, support/contact and finished-sample scope",
+    "Reuse the existing perfume bottle-specific RFQ template and link it from the early product section; retain the existing wine RFQ asset and guide handoffs",
+    "Make three quote-detail labels product-specific and update three English description/social-description sets and true WebPage modification dates",
+    "Translate all new RFQ guidance and labels into five languages while preserving review-gated indexing; leave JavaScript/API/runtime dictionaries unchanged"
+  ],
+  "checks": {
+    "static": "86 indexable English pages plus 404 passed",
+    "languages": "522 generated pages and language runtime passed; five-language RFQ guidance and labels added; existing review gates retained",
+    "handoffs": "Twelve core guide-to-quote regression routes plus paper tube passed",
+    "browser": "Wine bottle height 321 mm, shipping planning case count 127 and perfume bottle height 143 mm transferred to correct product notes; confirmed purchase quantity and finished dimensions stayed blank. Chinese perfume 146 mm route retained Chinese URL, current input and new field label. No inquiry submitted.",
+    "mobile": "390px screenshots checked all three RFQ sections, downloads and project-brief jumps; correct product defaults and optional dimensions verified",
+    "discovery": "Local AI discovery audit and three-URL IndexNow dry run passed",
+    "scope": "18 substantive HTML files across three product families and six languages; one new CSV; no JavaScript, API or runtime dictionary change"
+  },
+  "limits": [
+    "Both seasonal guides remain unindexed; sitemap acceptance and earlier live eligibility do not establish indexing",
+    "Previous three products are indexed but their latest content has not been confirmed recrawled",
+    "The new performance window ends Nov15, before recent releases; no release effect inferred",
+    "Query samples are small and partial; irrelevant queries are retained only as raw evidence and did not drive content",
+    "These products already had Nov9/16 guide or baseline work; current changes are incremental refinements",
+    "No additional qualified inquiry, traffic lift, ranking gain or AI recommendation established",
+    "Full-page native review not claimed; existing review gates retained",
+    "Preserved pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/core-products-pass9-release-20261117.json"
+}
