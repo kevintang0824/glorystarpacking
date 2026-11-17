@@ -1,0 +1,430 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-8",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "e166275cd85bb67c0bca1f73205b49c5dccbc385",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_at": "2026-11-17T04:39:39.461157+00:00",
+    "performance_period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated": "3.5 hours ago",
+    "clicks": 11,
+    "impressions": 2540,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "page_rows": 68,
+    "interpretation": "The reporting window has not advanced. Fresh total 2540 versus the preceding 2536 is a same-window refresh, not evidence of growth from the releases. Query rows are partial and cannot account for all aggregate page metrics.",
+    "performance_evidence": "tmp/pass8-search-pages-20261117.txt",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T04:28:42.087Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "text 发现 站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T04:29:18.321Z",
+        "status": "网页未编入索引：Google 无法识别此网址",
+        "details": "text 发现 站点地图 未检测到任何引荐站点地图 引荐来源网页 未检测到引荐来源网页 目前未报告的其他来源或许能识别此网址 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/collapsible-rigid-boxes.html",
+        "checkedAt": "2026-11-17T04:29:53.639Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月25日 17:05:14",
+        "canonical": "Inspected URL selected by Google"
+      },
+      {
+        "path": "/custom-magnetic-boxes.html",
+        "checkedAt": "2026-11-17T04:30:25.032Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年11月12日 22:30:57",
+        "canonical": "Inspected URL selected by Google"
+      },
+      {
+        "path": "/lid-and-base-boxes.html",
+        "checkedAt": "2026-11-17T04:30:56.994Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年8月2日 07:05:22",
+        "canonical": "Inspected URL selected by Google"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "CNY remains discovered-not-indexed; Ramadan again returned URL unknown. Prior Nov16 accepted URL requests and the Nov17 live eligibility test remain separately recorded; no duplicate request or repeated live test this pass. The three previously optimized product URLs are indexed, but all crawl dates precede pass7.",
+    "selected_products": [
+      {
+        "url": "https://glorystarpacking.com/custom-packaging-inserts.html",
+        "impressions": 76,
+        "clicks": 0,
+        "position": 57.2,
+        "reason": "76 impressions, no clicks, position 57.2; reported queries include custom dunnage inserts and molded fiber/pulp shipping or presentation inserts. Clarify the job and material quotation boundary on the existing page."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-mailer-boxes.html",
+        "impressions": 66,
+        "clicks": 1,
+        "position": 59.0,
+        "reason": "66 impressions, one click, position 59.0; logo/manufacturer/supplier queries. Refine artwork, print panels and the loaded-parcel brief while keeping the established sizing-to-quote route."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-rigid-boxes.html",
+        "impressions": 48,
+        "clicks": 0,
+        "position": 65.3,
+        "reason": "48 impressions, no clicks, position 65.3. Only three query rows are visible, each with one impression, including starter-kit and foldable rigid terms. Add bounded kit/supply-state guidance and keep claims proportional to the small sample."
+      }
+    ],
+    "visible_query_rows": {
+      "inserts": [
+        {
+          "query": "custom inserts",
+          "clicks": "0",
+          "impressions": "5",
+          "ctr": "0%",
+          "position": "56.0"
+        },
+        {
+          "query": "custom dunnage inserts",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "68.8"
+        },
+        {
+          "query": "molded fiber shipping inserts",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "74.0"
+        },
+        {
+          "query": "custom molded fiber presentation inserts",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "86.0"
+        },
+        {
+          "query": "custom molded fiber inserts",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "89.0"
+        },
+        {
+          "query": "custom molded fiber shipping inserts",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "92.3"
+        },
+        {
+          "query": "custom lid inserts",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "31.5"
+        },
+        {
+          "query": "packaging inserts cushion market",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "70.0"
+        },
+        {
+          "query": "custom molded fiber electronics inserts",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "79.0"
+        },
+        {
+          "query": "molded fiber presentation inserts",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "88.0"
+        },
+        {
+          "query": "custom folded product inserts",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "91.5"
+        },
+        {
+          "query": "custom molded pulp shipping inserts",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "93.0"
+        },
+        {
+          "query": "molded fiber retail packaging inserts",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "95.5"
+        },
+        {
+          "query": "paper insert manufacturer",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "97.0"
+        },
+        {
+          "query": "custom component inserts",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "24.0"
+        },
+        {
+          "query": "shipping insert",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "25.0"
+        },
+        {
+          "query": "insert pack",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "45.0"
+        },
+        {
+          "query": "packing slip insert system",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "47.0"
+        },
+        {
+          "query": "custom segmented inserts",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "59.0"
+        },
+        {
+          "query": "custom molded fiber cosmetic inserts",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "84.0"
+        },
+        {
+          "query": "custom molded fiber subscription box inserts",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "84.0"
+        },
+        {
+          "query": "custom molded fiber retail packaging inserts",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "93.0"
+        },
+        {
+          "query": "custom paper inserts manufacturer",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "94.0"
+        },
+        {
+          "query": "custom pulp packaging inserts",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "98.0"
+        }
+      ],
+      "mailer": [
+        {
+          "query": "customizable mailer boxes supplier china",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "83.5"
+        },
+        {
+          "query": "customizable mailer boxes manufacturer china",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "84.0"
+        },
+        {
+          "query": "custom mailer boxes with logo factory china",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "32.7"
+        },
+        {
+          "query": "mailer box china",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "67.7"
+        },
+        {
+          "query": "custom mailer boxes supplier china",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "89.0"
+        },
+        {
+          "query": "mailer box manufacturer china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "79.0"
+        },
+        {
+          "query": "customizable mailer boxes china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "86.5"
+        },
+        {
+          "query": "personalized mailer boxes supplier china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "87.0"
+        },
+        {
+          "query": "custom mailer boxes with logo supplier china",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "96.5"
+        },
+        {
+          "query": "custom mailer boxes factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "15.0"
+        },
+        {
+          "query": "mailer box custom factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "20.0"
+        },
+        {
+          "query": "custom mailer boxes with logo manufacturer china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "63.0"
+        },
+        {
+          "query": "custom mailer boxes with logo china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "78.0"
+        },
+        {
+          "query": "customizable mailer boxes factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "85.0"
+        },
+        {
+          "query": "personalized mailer boxes china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "89.0"
+        },
+        {
+          "query": "personalized mailer boxes factory china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "91.0"
+        },
+        {
+          "query": "custom mailer boxes manufacturer china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "92.0"
+        }
+      ],
+      "rigid": [
+        {
+          "query": "custom rigid starter kit boxes",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "30.0"
+        },
+        {
+          "query": "custom rigid boxes china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "83.0"
+        },
+        {
+          "query": "rigid foldable boxes manufacturer china",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "84.0"
+        }
+      ]
+    }
+  },
+  "changes": [
+    "Refine the existing insert RFQ section for shipping dunnage versus presentation, molded fiber/pulp versus cut/folded materials, and inserts-alone versus complete-set sourcing",
+    "Refine the mailer RFQ section for vector/logo references, printed panels, liner, barcode/shipping-label space, loaded parcel and return-use scope",
+    "Refine the rigid-box RFQ section for controlled starter-kit contents, collapsible supply versus folding cartons, and unprinted structural trial versus finished-set approval",
+    "Add three blank product-specific procurement CSV checklists linked beside the early project-brief action",
+    "Make existing quote details labels product-specific; keep the existing validated guide handoffs, required fields and optional dimensions",
+    "Add contextually relevant links from the rigid-box purchasing section to both unindexed seasonal guides",
+    "Update three English description/social-description sets and actual WebPage modification dates; refresh discovery files",
+    "Translate the new RFQ prose and labels into five languages; preserve all native-review/indexing gates; leave runtime modules and dictionaries unchanged"
+  ],
+  "checks": {
+    "static": "86 indexable English pages plus 404 passed",
+    "languages": "522 generated pages and language runtime passed; new RFQ copy translated in five languages, existing review gates retained",
+    "handoffs": "Twelve core guide-to-quote regression routes plus paper-tube regression passed",
+    "browser": "All three existing guide routes transferred System QA sample kit and explicit 1500-unit requests correctly; final dimensions remained blank. Chinese insert route retained Chinese path, transferred 1700 units and displayed the new Chinese field label. No form was submitted.",
+    "mobile": "390px screenshots checked the new RFQ sections; each Start my project brief action reached the correct product form with optional dimensions",
+    "discovery": "Local AI discovery audit and three-URL IndexNow dry run passed",
+    "scope": "18 substantive HTML files: three product families across six languages; no JavaScript/API/runtime dictionary change"
+  },
+  "limits": [
+    "Both seasonal guides remain unindexed; sitemap submission is not indexing",
+    "Indexed products last crawled before the latest update: collapsible Oct25, magnetic Nov12, lid/base Aug2",
+    "Search window still ends Nov14, so Nov16/17 optimization effects cannot be measured yet",
+    "These three selected products already had baseline and guide work; this is an incremental RFQ/content refinement, not first-time setup",
+    "Only one impression per reported rigid-box query; no new landing pages or strong demand conclusions inferred",
+    "Full-page native review not claimed; existing language gates preserved",
+    "No additional qualified lead, traffic lift, ranking improvement or AI recommendation established",
+    "Preserved pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/core-products-pass8-release-20261117.json"
+}

@@ -2168,5 +2168,180 @@
     "Valor logístico de entrada opcional por m³",
     "Необязательная оценка входящей логистики за м³",
     "可选入库物流规划单价／m³"
+  ],
+  "Shipping dunnage or presentation insert": [
+    "Calage de transport ou insert de présentation",
+    "Protección de transporte o inserto de presentación",
+    "Proteção de transporte ou berço de apresentação",
+    "Транспортный фиксатор или презентационный ложемент",
+    "运输缓冲内托或展示内托"
+  ],
+  "For shipping dunnage, define product movement, fragile areas and the complete outer pack. For a presentation insert, also define the reveal, surface contact and removal sequence. Material choice alone does not establish transit protection.": [
+    "Pour le calage de transport, définissez les mouvements du produit, ses zones fragiles et l’emballage extérieur complet. Pour un insert de présentation, précisez aussi la mise en valeur, les contacts de surface et le retrait. Le matériau seul ne prouve pas la protection pendant le transport.",
+    "Para protección de transporte, defina el movimiento del producto, las zonas frágiles y el embalaje exterior completo. En un inserto de presentación, defina también la exposición, el contacto superficial y la extracción. El material por sí solo no demuestra la protección durante el transporte.",
+    "Para proteção de transporte, defina o movimento do produto, as zonas frágeis e a embalagem exterior completa. Num berço de apresentação, defina também a exposição, o contacto superficial e a remoção. O material por si só não comprova a proteção durante o transporte.",
+    "Для транспортного фиксатора задайте допустимые перемещения товара, хрупкие участки и полную внешнюю упаковку. Для презентационного ложемента также задайте видимую часть товара, контакт с поверхностью и порядок извлечения. Один только материал не подтверждает защиту при перевозке.",
+    "运输缓冲内托需明确产品位移、易损部位及完整外包装；展示内托还需明确露出效果、表面接触和取放顺序。仅凭材料选择不能确定运输保护效果。"
+  ],
+  "Molded fiber or cut-and-fold construction": [
+    "Fibre moulée ou construction découpée et pliée",
+    "Fibra moldeada o estructura troquelada y plegada",
+    "Fibra moldada ou estrutura cortada e dobrada",
+    "Формованное волокно или вырубная складная конструкция",
+    "纸浆模塑或模切折叠结构"
+  ],
+  "Molded fiber is also described as molded pulp. Compare its tooling, sample route and cavity design with folded paperboard or cut foam for the same product. Confirm material-specific MOQ and timing in the quotation.": [
+    "La fibre moulée est aussi appelée pâte moulée. Comparez son outillage, son parcours d’échantillonnage et ses cavités avec le carton plié ou la mousse découpée pour le même produit. Confirmez dans le devis le minimum de commande et le délai propres au matériau.",
+    "La fibra moldeada también se denomina pulpa moldeada. Compare el utillaje, el proceso de muestras y las cavidades con cartón plegado o espuma cortada para el mismo producto. Confirme en la cotización el pedido mínimo y el plazo específicos del material.",
+    "A fibra moldada também é designada pasta moldada. Compare as ferramentas, o processo de amostragem e as cavidades com cartão dobrado ou espuma cortada para o mesmo produto. Confirme na cotação a quantidade mínima e o prazo específicos do material.",
+    "Формованное волокно также называют формованной целлюлозой. Для одного и того же товара сравните оснастку, изготовление образцов и полости с гнутым картоном или вырезанной пеной. Уточните в предложении минимальный тираж и сроки для выбранного материала.",
+    "模塑纤维通常也称纸浆模塑。针对同一产品，将其模具、打样流程和型腔设计与折叠纸板或模切泡棉进行比较，并在报价中确认对应材料的起订量与周期。"
+  ],
+  "Insert alone or a complete packaging set": [
+    "Insert seul ou ensemble d’emballage complet",
+    "Solo insertos o conjunto completo de embalaje",
+    "Só berços ou conjunto completo de embalagem",
+    "Только ложемент или полный комплект упаковки",
+    "单独内托或完整包装套装"
+  ],
+  "State whether you need inserts alone or a box-and-insert set. Share product tolerances, actual box inside dimensions, quantity per version and the packing location so both parts can be checked together.": [
+    "Précisez si vous achetez uniquement les inserts ou l’ensemble boîte et insert. Communiquez les tolérances du produit, les dimensions intérieures réelles de la boîte, les quantités par version et le lieu de conditionnement pour vérifier les deux composants ensemble.",
+    "Indique si necesita solo insertos o un conjunto de caja e inserto. Comparta las tolerancias del producto, las medidas interiores reales de la caja, la cantidad por versión y el lugar de embalaje para comprobar ambos componentes juntos.",
+    "Indique se pretende apenas berços ou um conjunto de caixa e berço. Partilhe as tolerâncias do produto, as dimensões interiores reais da caixa, a quantidade por versão e o local de embalagem para verificar ambos os componentes em conjunto.",
+    "Укажите, нужны только ложементы или комплект коробки с ложементом. Передайте допуски товара, фактические внутренние размеры коробки, тираж по версиям и место комплектации, чтобы проверить обе части совместно.",
+    "说明需要单独内托，还是盒子与内托配套供货；提供产品公差、实际盒内尺寸、各版本数量及包装地点，以便同时核对两部分。"
+  ],
+  "Logo artwork and print area": [
+    "Logo et zone d’impression",
+    "Logotipo y área de impresión",
+    "Logótipo e área de impressão",
+    "Логотип и область печати",
+    "Logo 图稿与印刷区域"
+  ],
+  "Provide a vector logo or the available artwork, color references and each printed panel. The structural dieline should be confirmed before final artwork is released.": [
+    "Fournissez un logo vectoriel ou les fichiers disponibles, les références couleur et chaque panneau imprimé. Confirmez le tracé structurel avant de libérer les fichiers définitifs.",
+    "Envíe el logotipo vectorial o los archivos disponibles, las referencias de color y cada panel impreso. Confirme el plano estructural antes de liberar el arte final.",
+    "Forneça o logótipo vetorial ou os ficheiros disponíveis, as referências de cor e cada painel impresso. Confirme o desenho estrutural antes de aprovar a arte final.",
+    "Передайте векторный логотип или имеющиеся файлы, цветовые эталоны и все печатные панели. Согласуйте конструктивную развертку до выпуска окончательного макета.",
+    "提供矢量 Logo 或现有图稿、颜色参考及各印刷面；最终图稿放行前，应先确认结构刀模图。"
+  ],
+  "Inside, outside or both": [
+    "Intérieur, extérieur ou les deux",
+    "Interior, exterior o ambos",
+    "Interior, exterior ou ambos",
+    "Внутри, снаружи или с обеих сторон",
+    "内侧、外侧或双面印刷"
+  ],
+  "Specify the liner color and where printing is required. Review the logo, solid areas, folds and barcode or shipping-label space on the actual board and agreed printed sample.": [
+    "Précisez la couleur de la couverture et les faces à imprimer. Vérifiez le logo, les aplats, les plis et les zones réservées au code-barres ou à l’étiquette d’expédition sur le carton réel et l’échantillon imprimé convenu.",
+    "Especifique el color del papel exterior y las caras impresas. Revise el logotipo, las masas de color, los pliegues y el espacio para código de barras o etiqueta de envío en el cartón real y la muestra impresa acordada.",
+    "Especifique a cor do papel de revestimento e as faces a imprimir. Verifique o logótipo, as áreas de cor, as dobras e o espaço para código de barras ou etiqueta de envio no cartão real e na amostra impressa acordada.",
+    "Задайте цвет лайнера и стороны печати. Проверьте логотип, плашки, сгибы и место для штрихкода или транспортной этикетки на реальном картоне и согласованном печатном образце.",
+    "明确面纸颜色与印刷位置，并在实际纸板和约定的印刷样品上核对 Logo、实地色块、折线及条码或运单区域。"
+  ],
+  "The loaded parcel": [
+    "Colis chargé",
+    "Paquete con el producto",
+    "Volume com o produto",
+    "Посылка с товаром",
+    "装入产品后的包裹"
+  ],
+  "Send the product arrangement, packed weight, closure and return-use needs. Confirm finished outside parcel dimensions separately from the inside fit and trial the complete pack on its intended distribution route.": [
+    "Communiquez la disposition des produits, le poids emballé, la fermeture et les besoins de réutilisation pour retour. Confirmez les dimensions extérieures finales séparément du volume intérieur utile et testez le colis complet sur son circuit de distribution prévu.",
+    "Envíe la disposición del producto, el peso embalado, el cierre y los requisitos de reutilización para devoluciones. Confirme las medidas exteriores finales por separado del ajuste interior y pruebe el paquete completo en su ruta de distribución prevista.",
+    "Indique a disposição dos produtos, o peso embalado, o fecho e os requisitos de reutilização para devolução. Confirme as dimensões exteriores finais separadamente do encaixe interior e ensaie o conjunto na distribuição prevista.",
+    "Передайте схему размещения товара, вес упакованной посылки, способ закрытия и требования к возвратной отправке. Подтвердите окончательные наружные размеры отдельно от внутренней посадки и испытайте полный комплект для выбранного маршрута доставки.",
+    "提供产品摆放、装填后重量、封口和退货复用要求。成品包裹外尺寸须与内部适配尺寸分别确认，并按预定流通路线试验完整包装。"
+  ],
+  "Starter kits and coordinated sets": [
+    "Kits de démarrage et ensembles coordonnés",
+    "Kits de inicio y conjuntos coordinados",
+    "Kits iniciais e conjuntos coordenados",
+    "Стартовые наборы и согласованные комплекты",
+    "入门套装与组合产品"
+  ],
+  "List every product, accessory, card and document in the kit. Identify the largest approved product envelope and weight, the display arrangement and quantity per set version before quoting the box and insert.": [
+    "Listez chaque produit, accessoire, carte et document du kit. Identifiez l’enveloppe maximale approuvée, le poids, la disposition de présentation et les quantités par version avant de chiffrer la boîte et son calage.",
+    "Enumere cada producto, accesorio, tarjeta y documento del kit. Identifique las dimensiones máximas aprobadas, el peso, la disposición de presentación y la cantidad por versión antes de cotizar la caja y el inserto.",
+    "Liste todos os produtos, acessórios, cartões e documentos do kit. Identifique as dimensões máximas aprovadas, o peso, a disposição de apresentação e a quantidade por versão antes de cotar a caixa e o berço.",
+    "Перечислите все товары, аксессуары, карточки и документы набора. До расчета коробки и ложемента определите максимальные согласованные габариты и вес, схему выкладки и тираж каждой версии.",
+    "列出套装中的每件产品、配件、卡片与文件；盒子和内托报价前，明确已确认的最大产品外廓、重量、展示布局及各套装版本数量。"
+  ],
+  "A rigid box supplied flat": [
+    "Boîte rigide livrée à plat",
+    "Caja rígida suministrada plana",
+    "Caixa rígida fornecida plana",
+    "Жесткая коробка с плоской поставкой",
+    "平铺供货的硬盒"
+  ],
+  "A collapsible rigid box can arrive flat or partly collapsed and be assembled at the packing site. It is a different construction from a folding carton. Compare the actual supply state, corner fixing, insert installation and packed volume.": [
+    "Une boîte rigide pliante peut être livrée à plat ou partiellement repliée et montée sur le lieu de conditionnement. Sa construction diffère de celle d’un étui pliant. Comparez l’état réel de livraison, la fixation des angles, la pose du calage et le volume emballé.",
+    "Una caja rígida plegable puede llegar plana o parcialmente plegada y montarse en el lugar de embalaje. Su estructura difiere de un estuche plegable. Compare el estado real de suministro, la fijación de esquinas, la instalación del inserto y el volumen embalado.",
+    "Uma caixa rígida rebatível pode chegar plana ou parcialmente rebatida e ser montada no local de embalagem. É uma construção diferente de uma caixa de cartão dobrável. Compare o estado real de fornecimento, a fixação dos cantos, a instalação do berço e o volume embalado.",
+    "Складная жесткая коробка может поставляться плоской или частично сложенной и собираться на участке упаковки. Ее конструкция отличается от складной картонной пачки. Сравните фактическое состояние поставки, фиксацию углов, установку ложемента и транспортный объем.",
+    "折叠硬盒可平铺或部分折叠供货，并在包装现场组装；其结构不同于折叠卡纸盒。比较时应确认实际供货状态、角部固定、内托安装和装箱体积。"
+  ],
+  "One controlled sample scope": [
+    "Un périmètre d’échantillon maîtrisé",
+    "Un alcance de muestra definido",
+    "Um âmbito de amostra definido",
+    "Согласованный состав образца",
+    "一套受控的样品范围"
+  ],
+  "Ask the quotation to identify the box structure, insert, artwork revision, finish, sample type and packing state. Keep an unprinted structural trial separate from approval of the finished printed set.": [
+    "Demandez que le devis identifie la structure, le calage, la version des fichiers, la finition, le type d’échantillon et l’état de conditionnement. Distinguez l’essai structurel non imprimé de l’approbation du coffret imprimé fini.",
+    "Pida que la cotización identifique estructura, inserto, revisión del arte, acabado, tipo de muestra y estado de embalaje. Distinga la prueba estructural sin impresión de la aprobación del conjunto impreso terminado.",
+    "Peça que a cotação identifique estrutura, berço, revisão da arte, acabamento, tipo de amostra e estado de acondicionamento. Separe o ensaio estrutural sem impressão da aprovação do conjunto impresso final.",
+    "Укажите в предложении конструкцию, ложемент, версию макета, отделку, тип образца и состояние упаковки. Отделяйте испытание непечатной конструкции от утверждения готового печатного набора.",
+    "要求报价列明盒型、内托、图稿版本、工艺、样品类型与装箱状态，并将未印刷结构试样与成品印刷套装签样分别管理。"
+  ],
+  "Review collapsible rigid supply": [
+    "Examiner la livraison des boîtes rigides pliantes",
+    "Revisar el suministro de cajas rígidas plegables",
+    "Rever o fornecimento de caixas rígidas rebatíveis",
+    "Проверить плоскую поставку жестких коробок",
+    "查看折叠硬盒供货方式"
+  ],
+  "Product support, contact, removal and delivery details": [
+    "Support, contact, retrait et livraison du produit",
+    "Soporte, contacto, extracción y entrega del producto",
+    "Suporte, contacto, remoção e entrega do produto",
+    "Опора, контакт, извлечение и доставка товара",
+    "产品支撑、接触、取放与交付要求"
+  ],
+  "Product, logo, print and parcel requirements": [
+    "Exigences produit, logo, impression et colis",
+    "Requisitos de producto, logotipo, impresión y paquete",
+    "Requisitos de produto, logótipo, impressão e volume",
+    "Требования к товару, логотипу, печати и посылке",
+    "产品、Logo、印刷与包裹要求"
+  ],
+  "Kit contents, opening, insert and delivery requirements": [
+    "Contenu du kit, ouverture, calage et livraison",
+    "Contenido del kit, apertura, inserto y entrega",
+    "Conteúdo do kit, abertura, berço e entrega",
+    "Состав набора, открывание, ложемент и доставка",
+    "套装内容、开盒方式、内托与交付要求"
+  ],
+  "Chinese New Year production-planning guide": [
+    "guide de planification de production du Nouvel An chinois",
+    "guía de planificación de producción para el Año Nuevo chino",
+    "guia de planeamento de produção do Ano Novo Chinês",
+    "руководство по производственному планированию к китайскому Новому году",
+    "春节生产计划指南"
+  ],
+  "Ramadan gift-box timeline": [
+    "calendrier des coffrets du Ramadan",
+    "calendario de cajas de regalo para Ramadán",
+    "calendário de caixas de oferta para o Ramadão",
+    "график подготовки подарочных коробок к Рамадану",
+    "斋月礼盒时间表"
+  ],
+  "For seasonal gift sets, work backward from the required arrival date and confirm sample and delivery milestones.": [
+    "Pour les coffrets saisonniers, partez de la date de réception requise et confirmez les étapes d’échantillonnage et de livraison.",
+    "Para conjuntos de temporada, planifique hacia atrás desde la llegada requerida y confirme las fechas de muestras y entrega.",
+    "Para conjuntos sazonais, planeie a partir da data de chegada pretendida e confirme os marcos de amostragem e entrega.",
+    "Для сезонных подарочных наборов планируйте от требуемой даты получения и подтвердите этапы образцов и доставки.",
+    "节日礼盒应从所需到货日期倒排计划，并确认打样与交付节点。"
   ]
 }
