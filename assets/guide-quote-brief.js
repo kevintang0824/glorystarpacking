@@ -1,5 +1,37 @@
 (() => {
   const definitions = {
+    "waterproof-trial-v1": {
+      source: "waterproof-label-testing-guide.html",
+      target: "custom-waterproof-labels.html",
+      form: "waterproof-label-test-form",
+      calculator: "waterproof_label_test_matrix",
+      title: "Waterproof-label trial planning inputs",
+      boundary: "Buyer-defined trial inputs only. Sample counts are not production order quantity or an approved test plan. Confirm the container, application, exposure sequence, acceptance criteria, material construction and production quantity separately.",
+      fields: [
+        ["constructions", "Label constructions", 1, true],
+        ["substrates", "Substrate / surface variants", 1, true],
+        ["sequences", "Exposure sequences", 1, true],
+        ["replicates", "Replicates per exposed combination", 1, true],
+        ["controls", "Unexposed controls per construction / surface", 0, true],
+        ["checkpoints", "Inspection checkpoints per sample", 1, true],
+      ],
+    },
+    "hang-tag-plan-v1": {
+      source: "hang-tag-production-checklist.html",
+      target: "custom-hang-tags.html",
+      form: "hang-tag-quantity-form",
+      calculator: "hang_tag_quantity_and_bundle",
+      title: "Hang-tag quantity planning inputs",
+      boundary: "Buyer-entered quantity assumptions only. The reserve and bundle plan is not a confirmed production order. Confirm quantities by SKU, variable-data records, attachment, kitting, allowed overrun or underrun and approved samples before production.",
+      fields: [
+        ["sellableUnits", "Sellable product units", 1, true],
+        ["tagsPerUnit", "Tags per product unit", 0.1],
+        ["reservePercent", "Buyer planning reserve (%)", {"type": "number", "min": 0, "max": 100}],
+        ["skuCount", "SKUs or variable records", 1, true],
+        ["samplesPerSku", "Setup / approval samples per SKU", 0, true],
+        ["bundleSize", "Supplier tags per bundle", 1, true],
+      ],
+    },
     "wine-box-fit-v1": {
       source: "wine-bottle-gift-box-specification.html",
       target: "custom-wine-boxes.html",

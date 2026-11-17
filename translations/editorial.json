@@ -2000,5 +2000,40 @@
     "Apenas dados de planeamento introduzidos pelo comprador. O número de caixas é uma hipótese de expedição, não uma quantidade encomendada confirmada. Confirme se as dimensões são interiores ou exteriores; o cálculo do frete exige as dimensões exteriores finais da caixa cheia. Resistência, empilhamento, estabilidade da palete, limites do transportador e aprovação do transporte exigem análise separada.",
     "Только плановые данные покупателя. Число коробов — допущение для отгрузки, а не подтвержденный тираж. Уточните, являются размеры внутренними или внешними; для расчета перевозки нужны окончательные внешние размеры заполненного короба. Прочность картона, штабелирование, устойчивость палеты, ограничения перевозчика и транспортные испытания требуют отдельного согласования.",
     "仅为买家填写的规划输入。箱数是出货假设，不是已确认的纸箱订单数量。须明确输入的是内尺寸还是外尺寸；运费计算需要装箱后的最终外尺寸。纸板强度、堆码、托盘稳定性、承运限制及运输批准须单独审核。"
+  ],
+  "Waterproof-label trial planning inputs": [
+    "Données de planification des essais d’étiquettes résistantes à l’eau",
+    "Datos para planificar pruebas de etiquetas resistentes al agua",
+    "Dados de planeamento dos ensaios de etiquetas resistentes à água",
+    "Исходные данные для испытания водостойких этикеток",
+    "防水标签试验规划输入"
+  ],
+  "Buyer-defined trial inputs only. Sample counts are not production order quantity or an approved test plan. Confirm the container, application, exposure sequence, acceptance criteria, material construction and production quantity separately.": [
+    "Données d’essai définies par l’acheteur uniquement. Le nombre d’échantillons ne constitue ni une quantité de commande ni un plan d’essai approuvé. Confirmez séparément le contenant, la pose, la séquence d’exposition, les critères d’acceptation, la construction et la quantité de production.",
+    "Solo datos de prueba definidos por el comprador. El número de muestras no es la cantidad del pedido ni un plan de ensayo aprobado. Confirme por separado el envase, la aplicación, la secuencia de exposición, los criterios de aceptación, la estructura del material y la cantidad de producción.",
+    "Apenas dados de ensaio definidos pelo comprador. A contagem de amostras não é a quantidade da encomenda nem um plano de ensaio aprovado. Confirme separadamente o recipiente, a aplicação, a sequência de exposição, os critérios de aceitação, a estrutura do material e a quantidade de produção.",
+    "Только заданные покупателем данные испытания. Количество образцов не является тиражом заказа или утвержденным планом испытаний. Отдельно подтвердите тару, нанесение, последовательность воздействий, критерии приемки, конструкцию материала и тираж производства.",
+    "仅为买方定义的试验输入。样品数量不等于生产订单数量，也不代表已批准的试验方案。请分别确认容器、贴标方式、暴露顺序、验收标准、材料结构和生产数量。"
+  ],
+  "Hang-tag quantity planning inputs": [
+    "Données de planification des quantités d’étiquettes suspendues",
+    "Datos de planificación de cantidades de etiquetas colgantes",
+    "Dados de planeamento das quantidades de etiquetas pendentes",
+    "Исходные данные для планирования количества навесных бирок",
+    "吊牌数量规划输入"
+  ],
+  "Buyer-entered quantity assumptions only. The reserve and bundle plan is not a confirmed production order. Confirm quantities by SKU, variable-data records, attachment, kitting, allowed overrun or underrun and approved samples before production.": [
+    "Hypothèses de quantité saisies par l’acheteur uniquement. Le plan de réserve et de lots ne constitue pas une commande de production confirmée. Confirmez les quantités par référence, les données variables, la fixation, l’assemblage des kits, les écarts de quantité autorisés et les échantillons approuvés avant la production.",
+    "Solo supuestos de cantidad introducidos por el comprador. El plan de reserva y paquetes no es un pedido de producción confirmado. Confirme cantidades por SKU, registros de datos variables, fijación, preparación de kits, excedentes o faltantes permitidos y muestras aprobadas antes de producir.",
+    "Apenas pressupostos de quantidade introduzidos pelo comprador. O plano de reserva e lotes não é uma encomenda de produção confirmada. Confirme quantidades por SKU, registos de dados variáveis, fixação, preparação de kits, tolerâncias de quantidade e amostras aprovadas antes da produção.",
+    "Только введенные покупателем предположения о количестве. План резерва и пачек не является подтвержденным производственным заказом. До производства подтвердите тиражи по SKU, записи переменных данных, крепление, комплектацию, допустимое превышение или недопоставку и утвержденные образцы.",
+    "仅为买方填写的数量假设。备用量与捆包规划不代表已确认的生产订单。生产前请确认各 SKU 数量、可变数据记录、吊挂方式、配套分装、允许的溢短装及签样。"
+  ],
+  "Buyer planning reserve (%)": [
+    "Réserve prévue par l’acheteur (%)",
+    "Reserva prevista por el comprador (%)",
+    "Reserva de planeamento do comprador (%)",
+    "Планируемый покупателем резерв (%)",
+    "买方规划备用比例（%）"
   ]
 }

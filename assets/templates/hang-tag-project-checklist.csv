@@ -1,0 +1,9 @@
+field,buyer_requirement,review_note
+Product and attachment,,"Garment or retail product, attachment method, hole or slot location and string requirements"
+Stock and dimensions,,"Finished width and height with units if known, stock, caliper and finish"
+Artwork,,"Front/back orientation, fixed artwork revision, colors, foil or emboss areas"
+Variable data,,"Field list, controlled example record, SKU count, barcode symbology and approved scan checks"
+Quantity plan,,"Sellable units, tags per unit, reserve, setup samples and bundles; confirm production quantity separately"
+Kitting and reconciliation,,"Tag-to-product matching, bundle identification, packing list, rejects and unused stock"
+Approval,,"Physical tag, attachment trial, variable-record proof and inspection reference"
+Delivery,,"Country, postal code, requested arrival date and project-specific MOQ / schedule"

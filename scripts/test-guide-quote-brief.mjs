@@ -4,6 +4,8 @@ import vm from "node:vm";
 import { parseHTML } from "../tmp/i18n-tools/node_modules/linkedom/esm/index.js";
 
 const routes = [
+  {"id": "waterproof-trial-v1", "source": "waterproof-label-testing-guide.html", "target": "custom-waterproof-labels.html", "field": "constructions", "label": "Label constructions", "calculator": "waterproof_label_test_matrix"},
+  {"id": "hang-tag-plan-v1", "source": "hang-tag-production-checklist.html", "target": "custom-hang-tags.html", "field": "sellableUnits", "label": "Sellable product units", "calculator": "hang_tag_quantity_and_bundle"},
   { id: "wine-box-fit-v1", source: "wine-bottle-gift-box-specification.html", target: "custom-wine-boxes.html", field: "bottleDiameter", label: "Maximum bottle body diameter (mm)", calculator: "wine_gift_box_fit_and_load" },
   { id: "jewelry-fit-v1", source: "jewelry-box-insert-design-guide.html", target: "custom-jewelry-boxes.html", field: "productLength", label: "Arranged length (mm)", calculator: "jewelry_insert_fit_planner" },
   { id: "shipping-case-plan-v1", source: "corrugated-shipping-box-specification-guide.html", target: "custom-corrugated-shipping-boxes.html", field: "caseLength", label: "Case length (mm)", calculator: "shipping_case_and_pallet_planner" },
@@ -109,6 +111,13 @@ for (const route of routes) {
     tooManyBottles.values.bottleCount = 13;
     const rejected = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(tooManyBottles)]]) });
     assert.equal(rejected.document.querySelector('[name="details"]').value, "", "Stored bottle count must respect the planner's 12-bottle limit");
+  }
+
+  if (route.id === "hang-tag-plan-v1") {
+    const invalidReserve = JSON.parse(saved);
+    invalidReserve.values.reservePercent = 100.1;
+    const rejected = page(route.target, targetUrl, { storage: new Map([[key, JSON.stringify(invalidReserve)]]) });
+    assert.equal(rejected.document.querySelector('[name="details"]').value, "", "Stored reserve must respect the planner's 100% limit");
   }
 
   const valid = JSON.parse(saved);
@@ -273,4 +282,4 @@ for (const route of briefRoutes) {
   assert.ok(markup.querySelector('[data-guide-brief-fields]').hasAttribute('disabled'), 'Without JavaScript, a draft cannot submit inputs through a GET URL');
   assert.ok(markup.querySelector(`[data-guide-brief] a[href="${route.target}#quote"]`));
 }
-console.log("All eight core guide-to-quote routes passed: current inputs, optional fields, choices, safe text, explicit quantities, non-overwrite, expiry, locale paths/copy, attribution, analytics consent and fallbacks. No inquiry was submitted.");
+console.log("All ten core guide-to-quote routes passed: current inputs, optional fields, choices, safe text, explicit quantities, non-overwrite, expiry, locale paths/copy, attribution, analytics consent and fallbacks. No inquiry was submitted.");

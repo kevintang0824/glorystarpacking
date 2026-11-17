@@ -1,0 +1,9 @@
+field,buyer_requirement,review_note
+Container and surface,,"Actual container material, finish, curvature, contents and surface condition"
+Label and application,,"Finished size if known, hand or machine application, temperature, pressure and dwell"
+Exposure sequence,,"Liquid, temperature, duration, condensation, immersion, rubbing, wash or outdoor sequence"
+Trial matrix,,"Constructions, surfaces, sequences, replicates, unexposed controls and checkpoints; not order quantity"
+Acceptance,,"Edge lift, print, adhesive hold and barcode checks with agreed methods and limits"
+Artwork and roll,,"Artwork revision, white ink if applicable, core, gap, roll direction and applicator limits"
+Production order,,Labels per SKU and design; project-specific MOQ and schedule confirmed in quote
+Delivery,,"Country, postal code and requested arrival date"

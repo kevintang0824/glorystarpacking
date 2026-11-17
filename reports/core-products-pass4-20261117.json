@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-4",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "442d63493ddb99168e3e8344fdcee40273001026",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_on": "2026-11-17 morning, Asia/Shanghai",
+    "performance_period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated": "4 hours ago",
+    "clicks": 11,
+    "impressions": 2540,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "interpretation": "The report window has not advanced. Total impressions refreshed from the earlier 2536 to 2540; this is not evidence of an effect from the recent releases.",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T01:41:02.766Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T01:41:35.746Z",
+        "status": "网页未编入索引：Google 无法识别此网址",
+        "details": "站点地图 未检测到任何引荐站点地图 引荐来源网页 未检测到引荐来源网页 目前未报告的其他来源或许能识别此网址 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/folding-carton-boxes.html",
+        "checkedAt": "2026-11-17T01:42:08.407Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/custom-paper-bags.html",
+        "checkedAt": "2026-11-17T01:42:40.911Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/custom-tube-packaging.html",
+        "checkedAt": "2026-11-17T01:43:03.562Z",
+        "status": "网页已编入索引"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "seasonal_live_http": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "status": 200,
+        "final_url": "https://glorystarpacking.com/chinese-new-year-2027-packaging-order-deadlines.html",
+        "canonical": "https://glorystarpacking.com/chinese-new-year-2027-packaging-order-deadlines.html",
+        "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+        "in_sitemap": true
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "status": 200,
+        "final_url": "https://glorystarpacking.com/ramadan-2027-gift-box-order-timeline.html",
+        "canonical": "https://glorystarpacking.com/ramadan-2027-gift-box-order-timeline.html",
+        "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+        "in_sitemap": true
+      }
+    ],
+    "ramadan_live_test": {
+      "checkedAt": "2026-11-17T01:45:17.173Z",
+      "url": "https://glorystarpacking.com/ramadan-2027-gift-box-order-timeline.html",
+      "mode": "Live URL test",
+      "canBeIndexed": true,
+      "testTime": "2026-11-17 09:43 Asia/Shanghai",
+      "indexingStatusUnchanged": true
+    },
+    "request_handling": "No duplicate single-URL request was sent. Both seasonal request receipts from November 16 remain recorded. The Ramadan index report changed from discovered-not-indexed to URL unknown, while its live URL test passed. Live eligibility does not mean indexed.",
+    "selected_products": [
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/cosmetic-packaging-boxes.html",
+          "clicks": 0,
+          "impressions": 31,
+          "position": 41.0
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/beauty-packaging-industry-guide.html",
+          "clicks": 0,
+          "impressions": 13,
+          "position": 34.6
+        },
+        "reason": "Largest remaining relevant product exposure among this selection; observed custom cosmetic bottle packaging boxes query. Clarify filled-container cartons, jars and gift sets."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-waterproof-labels.html",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 19.5
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/waterproof-label-testing-guide.html",
+          "clicks": 0,
+          "impressions": 20,
+          "position": 6.5
+        },
+        "reason": "Commercial page position 19.5 and test guide position 6.5; observed meaning/definition queries. Provide a direct definition and transfer the buyer trial inputs into a product request."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-hang-tags.html",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 7.0
+        },
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/hang-tag-production-checklist.html",
+          "clicks": 0,
+          "impressions": 30,
+          "position": 9.2
+        },
+        "reason": "The product sample is small (1 impression) but its guide has 30 impressions at 9.2. Prioritize the existing quantity planner-to-quote path rather than infer demand from a one-impression product ranking."
+      }
+    ],
+    "queries": {
+      "cosmetic": {
+        "visible_rows": [
+          {
+            "query": "cosmetic container customization",
+            "clicks": 0,
+            "impressions": 4,
+            "position": 70.0
+          },
+          {
+            "query": "cosmetic boxes production",
+            "clicks": 0,
+            "impressions": 2,
+            "position": 79.5
+          },
+          {
+            "query": "custom cosmetic bottle packaging boxes",
+            "clicks": 0,
+            "impressions": 2,
+            "position": 95.5
+          }
+        ],
+        "coverage": "Visible GSC UI rows only; search query reports can omit rows."
+      },
+      "waterproof": {
+        "visible_rows": [
+          {
+            "query": "meaning of waterproof labels",
+            "clicks": 0,
+            "impressions": 2,
+            "position": 6.0
+          },
+          {
+            "query": "definition of waterproof labels",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 11.0
+          }
+        ],
+        "coverage": "Visible GSC UI rows only; search query reports can omit rows."
+      },
+      "hang_tag": {
+        "visible_rows": [],
+        "coverage": "Visible GSC UI rows only; not a full query export. No visible query rows for hang tags despite one reported page impression."
+      }
+    },
+    "evidence": "tmp/gsc-core-pass4-pages-20261117.txt"
+  },
+  "changes": [
+    "Update three product description/social-description sets and add distinct container/format, wet-use definition and SKU/attachment decision routes",
+    "Add three blank project checklists; optional size guidance and mobile form priority on all three products; remove stale date placeholders",
+    "Connect waterproof trial and hang-tag quantity planners to their own product quote forms using the established one-use 30-minute local draft mechanism",
+    "Keep sample counts, product units, reserves and bundle assumptions in reviewable details; do not populate confirmed production quantity or finished size; preserve existing entries",
+    "Allow only two known calculator identifiers in consent-controlled handoff analytics; no buyer input values in URLs or analytics events",
+    "Translate new copied brief titles/boundaries in five languages; polish Chinese selection copy and planner field labels, including shared labels on two existing Chinese pages; retain review gates",
+    "Refresh actual modification dates for five substantive pages and corresponding discovery files; remaining HTML changes are shared script/dictionary cache versions"
+  ],
+  "checks": {
+    "static": "86 indexable canonical pages plus 404 passed",
+    "languages": "522 rendered pages, language runtime and review gates passed",
+    "handoffs": "All ten core routes plus paper-tube regression passed; injected reserve above 100% rejected; expiry, non-overwrite, safe text, locale paths, attribution, consent and fallbacks verified",
+    "quote": "Quote API and service-health mock suites passed; no live inquiry or email sent",
+    "syntax": "Site, analytics, guide module and Quote API syntax passed",
+    "browser": "Current waterproof construction count 4 and hang-tag sellable units 2670 transferred accurately; production quantity and dimensions remain blank. Chinese construction count 5, corrected labels and boundary verified in the Chinese quote form.",
+    "mobile": "390px screenshots visually confirm all three forms appear ahead of the long supporting copy, with correct product choices and readable fields; size is optional.",
+    "discovery": "Local AI discovery audit and five-URL IndexNow dry run passed"
+  },
+  "limits": [
+    "Indexed status is a point-in-time Google result; last-crawl details were not expanded, so it does not establish that Google has processed the most recent product edits",
+    "Seasonal guides remain unindexed; Ramadan live eligibility is separate from its URL-unknown index report",
+    "Search reporting still ends November 14 and cannot show results from the November 16/17 changes",
+    "No additional qualified inquiry, ranking growth or AI recommendation established in this pass",
+    "New Chinese routes and planning labels were polished; full-page native review not claimed; some pre-existing dynamic calculator explanations still use English",
+    "Preserved the pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/core-products-pass4-release-20261117.json"
+}
