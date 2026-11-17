@@ -1,0 +1,148 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-5",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "a32d765af6d7fc9c55ac815afc0c56f2ef3e42cb",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "read_on": "2026-11-17 morning, Asia/Shanghai",
+    "performance_period": [
+      "2026-10-18",
+      "2026-11-14"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated": "4 hours ago",
+    "clicks": 11,
+    "impressions": 2536,
+    "ctr_percent_displayed": 0.4,
+    "position": 20,
+    "interpretation": "The report window has not advanced. Total exposure refreshed from 2540 to 2536 within the same window; this is not evidence of growth or decline caused by the recent releases.",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T02:31:08.216Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T02:31:19.842Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "details": "站点地图 https://glorystarpacking.com/sitemap.xml 引荐来源网页 未检测到引荐来源网页 抓取 上次抓取时间 不适用 当时所用的用户代理 不适用 是否允许抓取？ 不适用 网页抓取 不适用 是否允许编入索引？ 不适用 编制索引 用户声明的规范网址 不适用 Google 选择的规范网址"
+      },
+      {
+        "path": "/cosmetic-packaging-boxes.html",
+        "checkedAt": "2026-11-17T02:31:54.643Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/custom-waterproof-labels.html",
+        "checkedAt": "2026-11-17T02:32:18.092Z",
+        "status": "网页已编入索引"
+      },
+      {
+        "path": "/custom-hang-tags.html",
+        "checkedAt": "2026-11-17T02:33:06.623Z",
+        "status": "网页已编入索引"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "No duplicate single-URL indexing request sent. The November 16 seasonal request receipts remain recorded. Ramadan now reports discovered-not-indexed with the sitemap recognized, after the previous URL-unknown result; do not infer causation. Its prior 09:43 live test passed and was not repeated in this pass.",
+    "selected_products": [
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-boxes.html",
+          "clicks": 0,
+          "impressions": 20,
+          "position": 13.1
+        },
+        "reason": "Commercial hub at average position 13.1; clarify retail, presentation and shipping routes and direct buyers to the appropriate specialist quote."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/custom-drawer-boxes.html",
+          "clicks": 0,
+          "impressions": 15,
+          "position": 116.7
+        },
+        "reason": "Remaining core product with 15 impressions and weak average position 116.7; improve sleeve/tray definition, product layout, pull and sample brief without claiming immediate ranking uplift."
+      },
+      {
+        "product": {
+          "url": "https://glorystarpacking.com/box-labels.html",
+          "clicks": 0,
+          "impressions": 14,
+          "position": 47.9
+        },
+        "reason": "Commercial label hub with 14 impressions; route buyers by substrate, appearance and exposure to the relevant label quote."
+      }
+    ],
+    "supporting_rfq_guide": {
+      "url": "https://glorystarpacking.com/custom-packaging-rfq-template.html",
+      "clicks": 0,
+      "impressions": 77,
+      "position": 6.6
+    },
+    "queries": {
+      "custom-boxes.html": {
+        "visible_rows": [
+          {
+            "query": "yes",
+            "clicks": 0,
+            "impressions": 1,
+            "position": 45.0
+          }
+        ],
+        "coverage": "Visible GSC UI rows only, not a complete query export. Drawer page returned no visible query rows. Non-specific queries such as yes and for commercial use were not used as target keywords; no query position inferred where the UI omitted it."
+      },
+      "custom-drawer-boxes.html": {
+        "visible_rows": [],
+        "coverage": "Visible GSC UI rows only, not a complete query export. Drawer page returned no visible query rows. Non-specific queries such as yes and for commercial use were not used as target keywords; no query position inferred where the UI omitted it."
+      },
+      "box-labels.html": {
+        "visible_rows": [
+          {
+            "query": "for commercial use",
+            "clicks": 0,
+            "impressions": 1,
+            "position": null
+          }
+        ],
+        "coverage": "Visible GSC UI rows only, not a complete query export. Drawer page returned no visible query rows. Non-specific queries such as yes and for commercial use were not used as target keywords; no query position inferred where the UI omitted it."
+      }
+    },
+    "performance_evidence": "tmp/pass5-search-pages-20261117.txt",
+    "read_at": "2026-11-17T02:35:50.278497+00:00"
+  },
+  "changes": [
+    "Improve three product description/social-description sets; add distinct box-format, label-route and drawer-construction decision panels",
+    "Add direct hub-to-specialist quote links, three blank project checklists and early RFQ/sample-guide links",
+    "Improve custom-box supplier and ordering facts with scope limited to custom paper boxes; retain project-specific label minimums",
+    "Keep size optional on custom boxes and make it optional on drawer and label forms; add project-review guidance, product-appropriate details prompts and mobile form priority; remove stale target-date examples",
+    "Preserve CollectionPage schema on the two hubs; give the drawer WebPage the modification date while retaining its Service entity",
+    "Add 42 Chinese route/form translations without changing existing reviewed entries; regenerate five language versions and preserve all indexing review gates",
+    "Refresh only actual three-page modification dates and corresponding sitemaps; no shared JavaScript, analytics, mail or planner behavior changed"
+  ],
+  "checks": {
+    "static": "86 indexable canonical pages plus 404 passed",
+    "languages": "522 rendered pages and runtime passed; all review gates retained",
+    "quote": "Quote API and service-health mock suites passed; no live inquiry or email sent",
+    "existing_handoffs": "Ten core guide routes and paper-tube regression passed",
+    "syntax": "Site, analytics, guide module and Quote API syntax passed",
+    "discovery": "Local AI discovery audit and three-URL IndexNow dry run passed",
+    "browser": "Box hub to folding-carton quote and label hub to clear-label quote reached the correct product; Chinese label route retained /zh-CN/ and correct product selection",
+    "mobile": "390px screenshots confirm all three forms appear before long supporting copy, with correct default product choices and optional size fields",
+    "scope": "Only the three page families, Chinese source dictionary, discovery dates and public checklist/review assets changed; runtime scripts remain byte-identical"
+  },
+  "limits": [
+    "The three previous products are indexed at the time checked; last-crawl details were not expanded, so this does not prove Google has processed the newest content",
+    "Both seasonal guides remain discovered-not-indexed with no last crawl reported; Google controls crawl timing",
+    "The unchanged report window cannot show the effect of the November 16/17 releases",
+    "Query evidence is sparse or non-specific, so selection relies on page metrics and established product scope rather than fabricated keyword opportunities",
+    "No new qualified inquiry, ranking growth or AI recommendation established",
+    "Only new Chinese route/form copy was polished; full-page native review not claimed",
+    "Preserved the pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/core-products-pass5-release-20261117.json"
+}

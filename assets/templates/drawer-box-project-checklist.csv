@@ -1,0 +1,9 @@
+field,buyer_requirement,review_note
+Product envelope,,"Maximum item or arranged set dimensions with units, variation, weight and surface sensitivity"
+Dimension basis,,"State product size, proposed finished inside size or outside limits"
+Sleeve and tray,,"Opening direction, tray travel, sleeve coverage and intended access"
+Pull and retention,,"Ribbon or notch, grip access, retention and repeated opening requirements"
+Insert and SKU plan,,"Product cavities, removal, accessories and shared versus unique parts by SKU"
+Quantity and artwork,,"Quantity by layout and design; MOQ 1,000 per design; artwork revision, material and finish"
+Sample approval,,"Loaded fit, sliding action, closure, removal, finish and agreed inspection reference"
+Delivery and packing,,"Protective packing, carton orientation, destination and required arrival date"

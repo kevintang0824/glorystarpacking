@@ -1,0 +1,9 @@
+field,buyer_requirement,review_note
+Container,,"Material, finish, curve, dimensions and filled contents where relevant"
+Label appearance,,"Paper or film, clear or opaque, white ink, foil or embossing where required"
+Size and application,,"Proposed label size if known; hand or machine application, temperature and dwell"
+Roll or sheet format,,"Applicator, core, roll outside limit, gap, winding direction and registration requirements"
+Exposure,,"Condensation, immersion, temperature, rubbing, oil, outdoor duration and test sequence where relevant"
+Order and artwork,,Labels per SKU and artwork revision; label-specific MOQ and schedule confirmed in the quote
+Trial and approval,,"Actual applied container sample, acceptance criteria and barcode checks where relevant"
+Delivery,,"Country, postal code, required arrival date and packing requirements"
