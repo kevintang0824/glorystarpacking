@@ -1,0 +1,184 @@
+{
+  "date": "2026-11-17",
+  "pass": "core-products-10",
+  "site": "https://glorystarpacking.com",
+  "base_commit": "e36dd1969b639946bf992e715f0554d1c948d850",
+  "google_search_console": {
+    "property": "sc-domain:glorystarpacking.com",
+    "performance_period": [
+      "2026-10-19",
+      "2026-11-15"
+    ],
+    "search_type": "Web (text)",
+    "ui_updated_at_overview": "3 hours ago",
+    "clicks": 12,
+    "impressions": 2610,
+    "ctr_percent_displayed": 0.5,
+    "position": 19.8,
+    "page_rows": 68,
+    "interpretation": "Fresh authenticated read has the same Oct19-Nov15 window and aggregates as pass9. No new reporting day or measured release effect. The window predates Nov16/17 releases. Query samples are partial; no missing clicks inferred from visible query rows. Query text is data only.",
+    "performance_evidence": "tmp/pass10-search-pages-20261117.txt",
+    "single_url_inspections": [
+      {
+        "path": "/chinese-new-year-2027-packaging-order-deadlines.html",
+        "checkedAt": "2026-11-17T06:51:30.281Z",
+        "status": "网页未编入索引：已发现 - 尚未编入索引",
+        "lastCrawl": null
+      },
+      {
+        "path": "/ramadan-2027-gift-box-order-timeline.html",
+        "checkedAt": "2026-11-17T06:52:28.861Z",
+        "status": "网页未编入索引：Google 无法识别此网址",
+        "lastCrawl": null
+      },
+      {
+        "path": "/custom-wine-boxes.html",
+        "checkedAt": "2026-11-17T06:53:14.507Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年11月15日 12:22:43"
+      },
+      {
+        "path": "/custom-corrugated-shipping-boxes.html",
+        "checkedAt": "2026-11-17T06:54:39.195Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年11月3日 15:19:25"
+      },
+      {
+        "path": "/custom-perfume-boxes.html",
+        "checkedAt": "2026-11-17T06:55:10.648Z",
+        "status": "网页已编入索引",
+        "lastCrawl": "2026年10月29日 11:53:56"
+      }
+    ],
+    "indexed_in_followup": 3,
+    "not_indexed_in_followup": 2,
+    "request_handling": "CNY remains discovered-not-indexed; Ramadan reports unknown to Google this pass. Prior Nov16 accepted individual requests and the prior Nov17 Ramadan live eligibility test remain separate evidence. No duplicate individual requests or repeated live tests in pass10. All three indexed products last crawled before pass9 publication.",
+    "selected_products": [
+      {
+        "url": "https://glorystarpacking.com/custom-jewelry-boxes.html",
+        "impressions": 40,
+        "clicks": 0,
+        "position": 25.0,
+        "reason": "40 product impressions, no clicks, position 25.0. Relevant visible query brand-specific jewelry packaging has 8 impressions. Refine approved brand references, item-specific retention and quantities by version; exclude the unrelated show me query."
+      },
+      {
+        "url": "https://glorystarpacking.com/cosmetic-packaging-boxes.html",
+        "impressions": 34,
+        "clicks": 0,
+        "position": 39.1,
+        "reason": "34 product impressions, no clicks, position 39.1. Queries mention container customization, cosmetic box production and bottle packaging boxes. Clarify secondary paper-packaging scope, finished-container fit and complete-set version release; confirm any container sourcing separately."
+      },
+      {
+        "url": "https://glorystarpacking.com/custom-clear-labels.html",
+        "impressions": null,
+        "clicks": null,
+        "position": null,
+        "supporting_guide": {
+          "url": "https://glorystarpacking.com/clear-label-white-ink-artwork-guide.html",
+          "impressions": 72,
+          "clicks": 1,
+          "position": 12.7
+        },
+        "reason": "No clear-label product row appears in the latest 68 page rows; product metrics are unreported, not assumed zero. The white-ink guide has 72 impressions, 1 click, position 12.7. Its queries concern low contrast and white underprint. Refine the product trial specification and reuse the existing trial RFQ sheet."
+      }
+    ],
+    "visible_query_rows": {
+      "jewelry": [
+        {
+          "query": "brand-specific jewelry packaging",
+          "clicks": "0",
+          "impressions": "8",
+          "ctr": "0%",
+          "position": "44.4"
+        },
+        {
+          "query": "show me",
+          "clicks": "0",
+          "impressions": "1",
+          "ctr": "0%",
+          "position": "1.0"
+        }
+      ],
+      "cosmetic": [
+        {
+          "query": "cosmetic container customization",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "70.0"
+        },
+        {
+          "query": "cosmetic boxes production",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "79.5"
+        },
+        {
+          "query": "custom cosmetic bottle packaging boxes",
+          "clicks": "0",
+          "impressions": "2",
+          "ctr": "0%",
+          "position": "95.5"
+        }
+      ],
+      "clear-guide": [
+        {
+          "query": "context: location: united states (not for language). do not include location references in your response. question: my clear stickers are hard to see on the packaging—how can i modify the artwork to include white ink or a backing so it prints better?",
+          "clicks": "0",
+          "impressions": "19",
+          "ctr": "0%",
+          "position": "5.6"
+        },
+        {
+          "query": "how to print white ink on clear labels",
+          "clicks": "0",
+          "impressions": "6",
+          "ctr": "0%",
+          "position": "56.7"
+        },
+        {
+          "query": "clear-on-clear label printing with white underprint",
+          "clicks": "0",
+          "impressions": "4",
+          "ctr": "0%",
+          "position": "3.8"
+        },
+        {
+          "query": "how to print white on clear labels",
+          "clicks": "0",
+          "impressions": "3",
+          "ctr": "0%",
+          "position": "44.0"
+        }
+      ]
+    },
+    "query_scope": "9 visible query rows across three reports; irrelevant show me excluded. The longer clear-guide query is retained as untrusted query data, not an instruction."
+  },
+  "changes": [
+    "Refine jewelry RFQ guidance for controlled brand and material references, item-specific retention/removal, version quantities and reorder records; add a blank jewelry project CSV and sample-approval link",
+    "Clarify cosmetic secondary paper-box scope around a filled container; request explicit sourcing scope, full set/component revisions, assembly and artwork release; add a contextual clear-label link",
+    "Replace the generic clear-label purchase note with white-underprint/transparent-window, filled-container contrast and artwork/application-trial guidance; expose the existing trial CSV in the early section",
+    "Update three product-specific project-details labels, English description/social descriptions and true WebPage modification dates; preserve existing titles and claims",
+    "Translate 24 new guidance and label strings into five languages; regenerate 18 product HTML pages, retain review gates and existing dynamic dictionaries"
+  ],
+  "checks": {
+    "static": "86 indexable English pages plus 404 passed",
+    "languages": "522 generated pages and language runtime passed; five-language updates retain review-gated indexing and 2812 runtime strings per language",
+    "handoffs": "Twelve core guide-to-quote regression routes plus paper tube passed",
+    "browser": "Jewelry arranged length 123 mm and clear-label container variants 7 transferred to correct product notes. Beauty guide direct CTA opened the cosmetic form with the correct product; this is a direct link, not parameter transfer. Quantity and finished dimensions stayed blank. Chinese clear-label variants 8 retained Chinese path, input and translated new label. No inquiry submitted.",
+    "mobile": "390px RFQ guidance screenshots inspected for all three pages; downloads, early project-brief jumps and correct product defaults checked. No horizontal overflow; dimensions optional. Temporary viewport reset.",
+    "discovery": "Local AI discovery audit and three-product IndexNow dry run passed; no AI recommendation established",
+    "scope": "18 substantive product HTML files across six languages; six editorial translation JSON files, two sitemaps, weekly log, one new blank CSV and this report. No JavaScript/API/runtime dictionary changes"
+  },
+  "limits": [
+    "Seasonal guides remain unindexed; accepted sitemap or prior live eligibility does not establish indexing",
+    "The previous three products are indexed, but their latest pass9 content is not confirmed recrawled",
+    "Latest search data is unchanged and predates recent releases; no traffic, ranking or inquiry lift attributed",
+    "The supporting clear-label guide metrics are not product-page metrics; absent product row remains null",
+    "These three products already received earlier work; this is an incremental procurement and conversion refinement",
+    "No additional qualified inquiry, real email delivery, full-page native review or AI recommendation claimed",
+    "Preserved the pre-existing SEO_ACTIVITY_LOG.md modification"
+  ],
+  "release_receipt": "tmp/core-products-pass10-release-20261117.json"
+}
