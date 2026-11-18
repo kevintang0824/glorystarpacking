@@ -408,7 +408,11 @@
 <div class="field"><label for="mailer-dimensions">产品或盒子内部尺寸（如已确定）</label><input aria-describedby="quote-project-help" id="mailer-dimensions" maxlength="160" name="dimensions" placeholder="长 × 宽 × 高，请注明单位" type="text"/></div>
 <div class="field"><label for="mailer-country">交付国家或地区</label><input autocomplete="country-name" id="mailer-country" maxlength="120" name="country" placeholder="例如：中国、美国、法国" required="" type="text"/></div>
 <div class="field"><label for="mailer-target-date">期望收货日期</label><input id="mailer-target-date" maxlength="120" name="targetDate" placeholder="要求的到货日期，或可灵活安排" type="text"/></div>
-<div class="field field--full" id="quote-mailer-details" style="scroll-margin-top: 110px"><label for="mailer-details">产品、Logo、印刷与包裹要求</label><textarea id="mailer-details" maxlength="3000" name="details" placeholder="Example: logo on the outside lid, white liner, packed weight 500 g"></textarea></div>
+<div class="field field--full" id="quote-mailer-details" style="scroll-margin-top: 110px">
+<label for="mailer-details">产品、Logo、印刷与包裹要求</label>
+<textarea aria-describedby="mailer-details-example" id="mailer-details" maxlength="3000" name="details"></textarea>
+<small id="mailer-details-example">例如：外盖印 Logo、白色面纸、装箱后重 500 克</small>
+</div>
 <div class="field field--full"><label for="mailer-file">设计稿或参考图像</label><input accept=".pdf,.jpg,.jpeg,.png,.webp" aria-describedby="mailer-file-help" id="mailer-file" name="attachment" type="file"/><small id="mailer-file-help">可选 ^ PDF、JPG、PNG 或 WebP 最大 3 MB。通过电子邮件或源文件添加更大或源文件 WhatsApp 送完需求说明后</small></div>
 <div aria-hidden="true" class="form-trap"><label for="mailer-website">Website</label><input autocomplete="off" id="mailer-website" maxlength="100" name="website" tabindex="-1" type="text"/></div>
 </div>
