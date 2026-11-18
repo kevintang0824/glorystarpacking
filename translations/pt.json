@@ -13845,5 +13845,10 @@
   "For logo printing, use the same panel map, color reference and artwork revision in each supplier request.": "Para imprimir o logótipo, use o mesmo mapa de painéis, referência de cor e revisão da arte em cada pedido ao fornecedor.",
   "Request a logo mailer quote": "Pedir cotação de caixa com logótipo",
   "Email the completed brief": "Enviar a ficha preenchida por e-mail",
-  "You can also paste its key rows into the project details when requesting a quote.": "Também pode copiar as linhas principais para os detalhes do projeto ao pedir cotação."
+  "You can also paste its key rows into the project details when requesting a quote.": "Também pode copiar as linhas principais para os detalhes do projeto ao pedir cotação.",
+  "Custom mailer boxes with your logo, made in China. Print inside, outside or both. MOQ 1,000 per design. Request a bulk quote.": "Caixas de envio personalizadas com o seu logótipo, fabricadas na China. Impressão interior, exterior ou em ambos os lados. Mínimo de 1.000 por design. Peça uma cotação por volume.",
+  "Request a bulk mailer quote": "Pedir cotação de caixas de envio por volume",
+  "Open project details to paste the brief": "Abrir os detalhes do projeto para colar a ficha",
+  "Request a custom mailer quote.": "Peça uma cotação de caixas de envio personalizadas.",
+  "Example: logo on the outside lid, white liner, packed weight 500 g": "Exemplo: logótipo na tampa exterior, papel branco, peso embalado de 500 g"
 }
