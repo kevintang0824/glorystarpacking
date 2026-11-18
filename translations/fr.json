@@ -13837,5 +13837,13 @@
   "Choose the shipping pack": "Choisir l’emballage d’expédition",
   "A printed mailer for one customer order needs its own product fit, liner, print and closure brief. Keep master-case counts and pallet requirements in the case worksheet.": "Une boîte imprimée pour une commande client nécessite son propre brief d’ajustement, de couverture, d’impression et de fermeture. Conservez les quantités par caisse et les exigences de palette dans la fiche de caisse.",
   "Compare printed mailer boxes": "Comparer les boîtes d’expédition imprimées",
-  "Updated November 18, 2026": "Mis à jour le 18 novembre 2026"
+  "Updated November 18, 2026": "Mis à jour le 18 novembre 2026",
+  "Custom mailer boxes with your logo.": "Boîtes d’expédition sur mesure avec votre logo.",
+  "Quote the same liner, printed panels and artwork revision at each quantity. Ask the supplier to identify the print method, proof, setup charges and sample scope before comparing unit prices.": "À chaque quantité, faites chiffrer la même couverture, les mêmes panneaux imprimés et la même version du fichier. Avant de comparer les prix unitaires, demandez au fournisseur de préciser le procédé, l’épreuve, les frais de préparation et le périmètre de l’échantillon.",
+  "Provide the available logo file and its revision. Mark the outside lid, side panels and inside lid separately; state color references, solid coverage, small text and areas reserved for labels. Confirm the dieline before releasing final artwork.": "Fournissez le fichier du logo et sa version. Repérez séparément le dessus du couvercle, les côtés et l’intérieur du couvercle ; précisez couleurs, aplats, petits caractères et zones d’étiquettes. Validez le tracé de découpe avant de libérer le fichier final.",
+  "Download the logo and print brief": "Télécharger le brief logo et impression",
+  "For logo printing, use the same panel map, color reference and artwork revision in each supplier request.": "Pour l’impression du logo, utilisez le même plan des panneaux, la même référence couleur et la même version du fichier dans chaque demande fournisseur.",
+  "Request a logo mailer quote": "Demander un devis de boîte avec logo",
+  "Email the completed brief": "Envoyer le brief complété par e-mail",
+  "You can also paste its key rows into the project details when requesting a quote.": "Vous pouvez aussi copier les lignes essentielles dans les détails du projet lors de la demande de devis."
 }

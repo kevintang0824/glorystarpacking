@@ -1,0 +1,73 @@
+{
+  "checked_on": "2026-11-18",
+  "timezone": "Asia/Shanghai",
+  "inspections": [
+    {
+      "page": "home",
+      "url": "https://glorystarpacking.com/",
+      "previous_last_crawl_displayed": "2026年11月15日 13:16:07",
+      "last_crawl_displayed": "2026年11月18日 07:29:19",
+      "recrawl_confirmed": true,
+      "indexed": true,
+      "canonical": "Inspected URL",
+      "fetch": "successful",
+      "crawler": "Googlebot Smartphone",
+      "evidence": "tmp/mailer-priority-home-inspection-20261118.txt"
+    },
+    {
+      "page": "magnetic",
+      "url": "https://glorystarpacking.com/custom-magnetic-boxes.html",
+      "previous_last_crawl_displayed": "2026年11月12日 22:30:57",
+      "last_crawl_displayed": "2026年11月18日 07:29:42",
+      "recrawl_confirmed": true,
+      "indexed": true,
+      "canonical": "Inspected URL",
+      "fetch": "successful",
+      "crawler": "Googlebot Smartphone",
+      "evidence": "tmp/mailer-priority-magnetic-inspection-20261118.txt"
+    },
+    {
+      "page": "mailer",
+      "url": "https://glorystarpacking.com/custom-mailer-boxes.html",
+      "previous_last_crawl_displayed": "2026年11月12日 17:36:45",
+      "last_crawl_displayed": "2026年11月18日 07:29:42",
+      "recrawl_confirmed": true,
+      "indexed": true,
+      "canonical": "Inspected URL",
+      "fetch": "successful",
+      "crawler": "Googlebot Smartphone",
+      "evidence": "tmp/mailer-priority-mailer-inspection-20261118.txt"
+    }
+  ],
+  "mailer_performance": {
+    "from": "2026-10-19",
+    "to": "2026-11-15",
+    "clicks": 1,
+    "impressions": 86,
+    "ctr_displayed": "1.2%",
+    "position": 48.4,
+    "visible_query_rows": 18,
+    "reporting_window_unchanged": true,
+    "query_evidence": "reports/mailer-procurement-priority-queries-20261118.csv",
+    "raw_evidence": "tmp/mailer-priority-queries-20261118.txt"
+  },
+  "implemented": [
+    "Focused existing mailer logo section on matching liner, printed panels and artwork revision across supplier quotes",
+    "Added panel map, per-panel artwork, proof/color and reserved-label-area rows to the existing blank mailer brief; commercial comparison scope made explicit",
+    "Linked the same brief from the mailer sizing guide and added a scoped direct logo-mailer quote route",
+    "Synchronized actual modification dates and five-language content without changing the core SEO title or H1",
+    "Connected the completed worksheet to email and project-details submission instructions without changing accepted upload types"
+  ],
+  "sheet_rows": 11,
+  "google_request_repeated": false,
+  "sitemap_resubmitted": false,
+  "case_status": "Deferred by user; drafts/evidence preserved and not published",
+  "limits": [
+    "The confirmed Nov18 crawl follows the Nov17 core updates but predates this turn logo-print refinement",
+    "Search data still ends Nov15; no post-recrawl ranking or inquiry improvement is measured",
+    "Named-query totals can differ from page totals; do not assign the page click to a named query",
+    "No search-volume, competitor rank, fixed price, certification or client outcome invented",
+    "No actual inquiry or email submitted this turn"
+  ],
+  "release_receipt": "tmp/mailer-priority-release-20261118.json"
+}

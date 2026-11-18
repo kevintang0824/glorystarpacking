@@ -13837,5 +13837,13 @@
   "Choose the shipping pack": "Elegir el embalaje de envío",
   "A printed mailer for one customer order needs its own product fit, liner, print and closure brief. Keep master-case counts and pallet requirements in the case worksheet.": "Una caja impresa para un pedido requiere su propia especificación de ajuste, papel, impresión y cierre. Mantenga cantidades de caja maestra y requisitos de palé en la ficha de transporte.",
   "Compare printed mailer boxes": "Comparar cajas de envío impresas",
-  "Updated November 18, 2026": "Actualizado el 18 de noviembre de 2026"
+  "Updated November 18, 2026": "Actualizado el 18 de noviembre de 2026",
+  "Custom mailer boxes with your logo.": "Cajas de envío personalizadas con su logotipo.",
+  "Quote the same liner, printed panels and artwork revision at each quantity. Ask the supplier to identify the print method, proof, setup charges and sample scope before comparing unit prices.": "Cotice el mismo papel, paneles impresos y revisión del diseño para cada cantidad. Antes de comparar precios unitarios, pida al proveedor que indique método de impresión, prueba, costes de preparación y alcance de la muestra.",
+  "Provide the available logo file and its revision. Mark the outside lid, side panels and inside lid separately; state color references, solid coverage, small text and areas reserved for labels. Confirm the dieline before releasing final artwork.": "Facilite el archivo del logotipo y su revisión. Marque por separado tapa exterior, laterales e interior; indique colores, zonas sólidas, texto pequeño y espacios para etiquetas. Confirme el troquel antes de aprobar el diseño final.",
+  "Download the logo and print brief": "Descargar ficha de logotipo e impresión",
+  "For logo printing, use the same panel map, color reference and artwork revision in each supplier request.": "Para imprimir el logotipo, utilice el mismo mapa de paneles, referencia de color y revisión del diseño en cada solicitud al proveedor.",
+  "Request a logo mailer quote": "Solicitar cotización de caja con logotipo",
+  "Email the completed brief": "Enviar la ficha completada por correo",
+  "You can also paste its key rows into the project details when requesting a quote.": "También puede copiar las filas clave en los detalles del proyecto al solicitar la cotización."
 }

@@ -3442,5 +3442,61 @@
     "Atualizado em 18 de novembro de 2026",
     "Обновлено 18 ноября 2026 г.",
     "更新于2026年11月18日"
+  ],
+  "Custom mailer boxes with your logo.": [
+    "Boîtes d’expédition sur mesure avec votre logo.",
+    "Cajas de envío personalizadas con su logotipo.",
+    "Caixas de envio por medida com o seu logótipo.",
+    "Почтовые коробки на заказ с вашим логотипом.",
+    "带品牌标志的定制邮寄盒。"
+  ],
+  "Quote the same liner, printed panels and artwork revision at each quantity. Ask the supplier to identify the print method, proof, setup charges and sample scope before comparing unit prices.": [
+    "À chaque quantité, faites chiffrer la même couverture, les mêmes panneaux imprimés et la même version du fichier. Avant de comparer les prix unitaires, demandez au fournisseur de préciser le procédé, l’épreuve, les frais de préparation et le périmètre de l’échantillon.",
+    "Cotice el mismo papel, paneles impresos y revisión del diseño para cada cantidad. Antes de comparar precios unitarios, pida al proveedor que indique método de impresión, prueba, costes de preparación y alcance de la muestra.",
+    "Cote o mesmo papel, painéis impressos e revisão da arte em cada quantidade. Antes de comparar preços unitários, peça ao fornecedor o método de impressão, a prova, os custos de preparação e o âmbito da amostra.",
+    "Для каждого тиража запрашивайте одинаковые лайнер, печатные панели и версию макета. Перед сравнением цены за единицу уточните у поставщика способ печати, вид пробы, расходы на подготовку и состав образца.",
+    "各数量阶梯应按相同面纸、印刷面和稿件版本报价。比较单价前，请供应商注明印刷方式、印刷确认样、开机费用与样品范围。"
+  ],
+  "Provide the available logo file and its revision. Mark the outside lid, side panels and inside lid separately; state color references, solid coverage, small text and areas reserved for labels. Confirm the dieline before releasing final artwork.": [
+    "Fournissez le fichier du logo et sa version. Repérez séparément le dessus du couvercle, les côtés et l’intérieur du couvercle ; précisez couleurs, aplats, petits caractères et zones d’étiquettes. Validez le tracé de découpe avant de libérer le fichier final.",
+    "Facilite el archivo del logotipo y su revisión. Marque por separado tapa exterior, laterales e interior; indique colores, zonas sólidas, texto pequeño y espacios para etiquetas. Confirme el troquel antes de aprobar el diseño final.",
+    "Forneça o ficheiro do logótipo e a revisão. Identifique separadamente tampa exterior, laterais e interior; indique cores, áreas sólidas, texto pequeno e zonas para etiquetas. Confirme o desenho de corte antes de aprovar a arte final.",
+    "Предоставьте файл логотипа и его версию. Отдельно отметьте наружную крышку, боковые панели и внутреннюю крышку; укажите цвета, сплошные заливки, мелкий текст и зоны этикеток. Согласуйте развертку до выпуска финального макета.",
+    "提供现有标志文件及版本。分别标注外盖、侧面和内盖，说明颜色参考、实色覆盖、小字及标签预留区。最终印稿发布前先确认刀线。"
+  ],
+  "Download the logo and print brief": [
+    "Télécharger le brief logo et impression",
+    "Descargar ficha de logotipo e impresión",
+    "Descarregar ficha de logótipo e impressão",
+    "Скачать бриф по логотипу и печати",
+    "下载标志与印刷需求表"
+  ],
+  "For logo printing, use the same panel map, color reference and artwork revision in each supplier request.": [
+    "Pour l’impression du logo, utilisez le même plan des panneaux, la même référence couleur et la même version du fichier dans chaque demande fournisseur.",
+    "Para imprimir el logotipo, utilice el mismo mapa de paneles, referencia de color y revisión del diseño en cada solicitud al proveedor.",
+    "Para imprimir o logótipo, use o mesmo mapa de painéis, referência de cor e revisão da arte em cada pedido ao fornecedor.",
+    "Для печати логотипа используйте одинаковые карту панелей, эталон цвета и версию макета во всех запросах поставщикам.",
+    "标志印刷应在各供应商询价中使用相同的印刷面分布、颜色参考和稿件版本。"
+  ],
+  "Request a logo mailer quote": [
+    "Demander un devis de boîte avec logo",
+    "Solicitar cotización de caja con logotipo",
+    "Pedir cotação de caixa com logótipo",
+    "Запросить расчет коробки с логотипом",
+    "询价带标志的邮寄盒"
+  ],
+  "Email the completed brief": [
+    "Envoyer le brief complété par e-mail",
+    "Enviar la ficha completada por correo",
+    "Enviar a ficha preenchida por e-mail",
+    "Отправить заполненный бриф по почте",
+    "通过邮件发送填写后的需求表"
+  ],
+  "You can also paste its key rows into the project details when requesting a quote.": [
+    "Vous pouvez aussi copier les lignes essentielles dans les détails du projet lors de la demande de devis.",
+    "También puede copiar las filas clave en los detalles del proyecto al solicitar la cotización.",
+    "Também pode copiar as linhas principais para os detalhes do projeto ao pedir cotação.",
+    "Основные строки также можно скопировать в описание проекта при запросе расчета.",
+    "询价时也可将关键条目粘贴到项目说明中。"
   ]
 }

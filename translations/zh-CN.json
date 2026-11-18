@@ -13994,5 +13994,13 @@
   "Choose the shipping pack": "选择合适的运输包装",
   "A printed mailer for one customer order needs its own product fit, liner, print and closure brief. Keep master-case counts and pallet requirements in the case worksheet.": "用于单个客户订单的印刷邮寄盒，需要单独明确产品适配、面纸、印刷与封合要求。外运输箱的装箱数量和托盘要求仍在运输箱工作表中记录。",
   "Compare printed mailer boxes": "比较印刷邮寄盒方案",
-  "Updated November 18, 2026": "更新于2026年11月18日"
+  "Updated November 18, 2026": "更新于2026年11月18日",
+  "Custom mailer boxes with your logo.": "带品牌标志的定制邮寄盒。",
+  "Quote the same liner, printed panels and artwork revision at each quantity. Ask the supplier to identify the print method, proof, setup charges and sample scope before comparing unit prices.": "各数量阶梯应按相同面纸、印刷面和稿件版本报价。比较单价前，请供应商注明印刷方式、印刷确认样、开机费用与样品范围。",
+  "Provide the available logo file and its revision. Mark the outside lid, side panels and inside lid separately; state color references, solid coverage, small text and areas reserved for labels. Confirm the dieline before releasing final artwork.": "提供现有标志文件及版本。分别标注外盖、侧面和内盖，说明颜色参考、实色覆盖、小字及标签预留区。最终印稿发布前先确认刀线。",
+  "Download the logo and print brief": "下载标志与印刷需求表",
+  "For logo printing, use the same panel map, color reference and artwork revision in each supplier request.": "标志印刷应在各供应商询价中使用相同的印刷面分布、颜色参考和稿件版本。",
+  "Request a logo mailer quote": "询价带标志的邮寄盒",
+  "Email the completed brief": "通过邮件发送填写后的需求表",
+  "You can also paste its key rows into the project details when requesting a quote.": "询价时也可将关键条目粘贴到项目说明中。"
 }

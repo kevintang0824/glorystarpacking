@@ -13837,5 +13837,13 @@
   "Choose the shipping pack": "Escolher a embalagem de envio",
   "A printed mailer for one customer order needs its own product fit, liner, print and closure brief. Keep master-case counts and pallet requirements in the case worksheet.": "Uma caixa impressa para uma encomenda exige especificações próprias de ajuste, papel, impressão e fecho. Mantenha quantidades da caixa-mestra e requisitos de palete na ficha de transporte.",
   "Compare printed mailer boxes": "Comparar caixas de envio impressas",
-  "Updated November 18, 2026": "Atualizado em 18 de novembro de 2026"
+  "Updated November 18, 2026": "Atualizado em 18 de novembro de 2026",
+  "Custom mailer boxes with your logo.": "Caixas de envio por medida com o seu logótipo.",
+  "Quote the same liner, printed panels and artwork revision at each quantity. Ask the supplier to identify the print method, proof, setup charges and sample scope before comparing unit prices.": "Cote o mesmo papel, painéis impressos e revisão da arte em cada quantidade. Antes de comparar preços unitários, peça ao fornecedor o método de impressão, a prova, os custos de preparação e o âmbito da amostra.",
+  "Provide the available logo file and its revision. Mark the outside lid, side panels and inside lid separately; state color references, solid coverage, small text and areas reserved for labels. Confirm the dieline before releasing final artwork.": "Forneça o ficheiro do logótipo e a revisão. Identifique separadamente tampa exterior, laterais e interior; indique cores, áreas sólidas, texto pequeno e zonas para etiquetas. Confirme o desenho de corte antes de aprovar a arte final.",
+  "Download the logo and print brief": "Descarregar ficha de logótipo e impressão",
+  "For logo printing, use the same panel map, color reference and artwork revision in each supplier request.": "Para imprimir o logótipo, use o mesmo mapa de painéis, referência de cor e revisão da arte em cada pedido ao fornecedor.",
+  "Request a logo mailer quote": "Pedir cotação de caixa com logótipo",
+  "Email the completed brief": "Enviar a ficha preenchida por e-mail",
+  "You can also paste its key rows into the project details when requesting a quote.": "Também pode copiar as linhas principais para os detalhes do projeto ao pedir cotação."
 }

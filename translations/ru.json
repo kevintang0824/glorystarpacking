@@ -13837,5 +13837,13 @@
   "Choose the shipping pack": "Выберите транспортную упаковку",
   "A printed mailer for one customer order needs its own product fit, liner, print and closure brief. Keep master-case counts and pallet requirements in the case worksheet.": "Почтовой коробке с печатью для одного заказа нужен отдельный бриф по посадке изделия, лайнеру, печати и закрыванию. Количество внутренних упаковок и требования к паллете оставьте в таблице транспортного короба.",
   "Compare printed mailer boxes": "Сравнить почтовые коробки с печатью",
-  "Updated November 18, 2026": "Обновлено 18 ноября 2026 г."
+  "Updated November 18, 2026": "Обновлено 18 ноября 2026 г.",
+  "Custom mailer boxes with your logo.": "Почтовые коробки на заказ с вашим логотипом.",
+  "Quote the same liner, printed panels and artwork revision at each quantity. Ask the supplier to identify the print method, proof, setup charges and sample scope before comparing unit prices.": "Для каждого тиража запрашивайте одинаковые лайнер, печатные панели и версию макета. Перед сравнением цены за единицу уточните у поставщика способ печати, вид пробы, расходы на подготовку и состав образца.",
+  "Provide the available logo file and its revision. Mark the outside lid, side panels and inside lid separately; state color references, solid coverage, small text and areas reserved for labels. Confirm the dieline before releasing final artwork.": "Предоставьте файл логотипа и его версию. Отдельно отметьте наружную крышку, боковые панели и внутреннюю крышку; укажите цвета, сплошные заливки, мелкий текст и зоны этикеток. Согласуйте развертку до выпуска финального макета.",
+  "Download the logo and print brief": "Скачать бриф по логотипу и печати",
+  "For logo printing, use the same panel map, color reference and artwork revision in each supplier request.": "Для печати логотипа используйте одинаковые карту панелей, эталон цвета и версию макета во всех запросах поставщикам.",
+  "Request a logo mailer quote": "Запросить расчет коробки с логотипом",
+  "Email the completed brief": "Отправить заполненный бриф по почте",
+  "You can also paste its key rows into the project details when requesting a quote.": "Основные строки также можно скопировать в описание проекта при запросе расчета."
 }
