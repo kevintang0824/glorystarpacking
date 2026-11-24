@@ -2,7 +2,7 @@
 
 迁移状态（2026-11-24）：Pages 已上线并通过页面、健康接口、询盘校验和 AI 发现性检查。已登录 Namecheap 核对完整 DNS 记录；域名没有设置邮件转发别名，DNSSEC 关闭。已保存 Cloudflare nameserver，Cloudflare 区域已激活，裸域及 www 均已显示 Active / SSL enabled。通过 Cloudflare 新入口验证原主机名的 TLS：裸域健康接口 HTTP 200 且邮件配置齐全，www 保留原路径与查询参数 308 跳转到裸域，证书验证路径不被跳转。部分递归 DNS 缓存仍可能返回原 Vercel 地址，需等待缓存更新。当前发布提交以 `/api/health` 的 `release.commit` 为准。
 
-自动同步状态：GitHub Actions 首次构建已通过。专用 Cloudflare API token 的创建和保存尚待用户确认，`CLOUDFLARE_PAGES_ENABLED` 仍未开启；当前 CI 只构建校验，不自动部署。原 Vercel GitHub 连接保留，但账号暂停导致部署检查失败。
+自动同步状态：经用户确认，已创建仅有当前账号 Pages Write 权限的专用 Cloudflare API token，并加密保存到当前 GitHub 仓库的 `CLOUDFLARE_API_TOKEN` Secret；有效期至 2027-11-24。`CLOUDFLARE_PAGES_ENABLED=true` 后，每次 GitHub `main` 推送会自动构建、部署并核对线上提交。原 Vercel GitHub 连接保留，但账号暂停导致部署检查失败；解除暂停后需确认最新 `main` 的部署成功。
 
 生产项目：`glorystarpacking`，账号：`788c4780c84ff8837372a4dd08a5ec9f`。
 Pages 地址：`https://glorystarpacking.pages.dev/`。
