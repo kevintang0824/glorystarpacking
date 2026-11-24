@@ -81,7 +81,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     let response;
-    if (url.hostname === `www.${canonicalHost}`) {
+    if (url.pathname.startsWith("/.well-known/acme-challenge/")) {
+      // Preserve HTTP domain validation and certificate renewal before redirects.
+      response = await env.ASSETS.fetch(request);
+    } else if (url.hostname === `www.${canonicalHost}`) {
       response = redirect(url, `https://${canonicalHost}${url.pathname}`);
     } else {
       const rule = settings.redirects.find(({ source, has }) => !has && source === url.pathname);

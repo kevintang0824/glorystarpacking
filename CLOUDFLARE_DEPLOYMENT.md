@@ -46,6 +46,7 @@ node scripts/audit-production-services.mjs https://glorystarpacking.com
 - `cloudflare/worker.mjs` 复用现有询盘与健康接口，读取 `vercel.json` 中的重定向和安全响应头。
 - HTML 页面保留原 `.html` 路径；语言首页保留 `/fr`、`/es`、`/pt`、`/ru` 和 `/zh-CN`。
 - `/assets/*` 绕过 Functions，直接从 Pages 静态资源服务读取。其余请求由 Worker 处理，计入账号的 Workers/Pages Functions 额度；并非所有请求都属于免费不限量的静态资源请求。
+- `/.well-known/acme-challenge/*` 也绕过 Functions 和 www 跳转，供 Cloudflare 签发及续期 HTTPS 证书；不要给此路径添加跳转、访问验证或拦截规则。
 - 静态资源使用一天浏览器缓存；每次更新资源仍须按本站原规则更新内容版本参数。字体保留跨域响应头。
 - `.pages.dev` 页面返回 `noindex, nofollow`，正式域名保留原页面收录规则。
 

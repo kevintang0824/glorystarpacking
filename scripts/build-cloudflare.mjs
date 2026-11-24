@@ -35,7 +35,7 @@ for (const relative of files) {
 const htmlPaths = files.filter((file) => file.endsWith(".html")).map((file) => `/${file}`).sort();
 fs.writeFileSync(path.join(root, "cloudflare/generated-routes.json"), `${JSON.stringify({ htmlPaths }, null, 2)}\n`);
 // Compile the worker separately before deployment; it must never be a public asset.
-fs.writeFileSync(path.join(output, "_routes.json"), `${JSON.stringify({ version: 1, include: ["/*"], exclude: ["/assets/*"] }, null, 2)}\n`);
+fs.writeFileSync(path.join(output, "_routes.json"), `${JSON.stringify({ version: 1, include: ["/*"], exclude: ["/assets/*", "/.well-known/acme-challenge/*"] }, null, 2)}\n`);
 const settings = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
 // Static assets bypass Functions. Collapse overlapping rules to avoid duplicate CSP/cache headers.
 const globalHeaders = settings.headers.find(({ source }) => source === "/(.*)").headers;

@@ -48,6 +48,12 @@ try {
   const www = await worker.fetch(new Request("https://www.glorystarpacking.com/about.html?ref=keep"), env);
   assert.equal(www.status, 308);
   assert.equal(www.headers.get("Location"), "https://glorystarpacking.com/about.html?ref=keep");
+  const validationPath = "/.well-known/acme-challenge/test-validation-token";
+  const validation = await worker.fetch(new Request(`http://www.glorystarpacking.com${validationPath}`), env);
+  assert.equal(validation.status, 200);
+  assert.equal(validation.headers.get("Location"), null);
+  assert.equal(await validation.text(), validationPath);
+  assert.ok(JSON.parse(fs.readFileSync("dist/cloudflare/_routes.json", "utf8")).exclude.includes("/.well-known/acme-challenge/*"));
   const canonical = await worker.fetch(new Request("https://glorystarpacking.com/about?ref=keep"), env);
   assert.equal(canonical.headers.get("Location"), "https://glorystarpacking.com/about.html?ref=keep");
   const preview = await worker.fetch(new Request("https://test.glorystarpacking.pages.dev/about.html"), env);
@@ -57,7 +63,7 @@ try {
   }), env);
   assert.equal(oversized.status, 413);
   assert.equal((await worker.fetch(new Request("https://glorystarpacking.com/api/quote.js"), env)).status, 404);
-  console.log("Cloudflare worker tests passed: mail adapter, native French result, origin guards, Pages origin, injected secrets, health, exact HTML/language paths, canonical/query redirects, preview noindex, request limit and API source protection.");
+  console.log("Cloudflare worker tests passed: mail adapter, native French result, origin guards, Pages origin, injected secrets, health, exact HTML/language paths, canonical/query redirects, ACME validation passthrough, preview noindex, request limit and API source protection.");
 } finally {
   globalThis.fetch = originalFetch;
 }
