@@ -2,12 +2,13 @@
 
 后续网站更新固定执行以下顺序：
 
-1. 从最新的 `origin/main` 开始工作（GitHub `main` 与 Vercel 部署历史即为备份，日常发布**不再**生成本地 Git bundle）；
+1. 从最新的 `origin/main` 开始工作（GitHub `main`、Cloudflare Pages 与保留的 Vercel 部署历史即为备份，日常发布**不再**生成本地 Git bundle）；
 2. 完成页面、SEO、GEO 与 AI 可发现性更新；
 3. 运行站点静态校验、Quote API 与服务健康回归、JavaScript 语法检查、IndexNow dry run 和 `node scripts/audit-ai-discovery.mjs`；
 4. 直接提交并推送 GitHub `main`；
-5. 等待 Vercel 自动部署，检查正式域名、站点地图和改动页面；
+5. 运行 `node scripts/deploy-cloudflare.mjs` 发布 Cloudflare Pages；GitHub 推送仍保留原 Vercel 自动部署。检查正式域名、站点地图和改动页面；
    - 运行 `node scripts/audit-production-services.mjs`，确认询盘邮件环境变量没有遗漏；
+   - Pages 是直接上传项目，仅推送 GitHub 不会更新 Pages，必须运行部署脚本。详见 `CLOUDFLARE_DEPLOYMENT.md`；
 6. 向 IndexNow 提交新增或更新 URL；
 7. 在 Google Search Console 重新提交站点地图，并为新增重点 URL 请求编入索引。
 

@@ -3,6 +3,10 @@
 .env.*
 !.env.example
 node_modules/
+.wrangler/
+dist/
+.dev.vars*
+cloudflare/generated-routes.json
 .vercel/
 *.log
 tmp/

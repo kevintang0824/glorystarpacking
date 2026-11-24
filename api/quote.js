@@ -229,7 +229,7 @@ const respond = (response, nativeFormRequest, statusCode, payload, quote) => {
 <html lang="${quoteLanguage(quote)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${title} | GloryStarPack</title><style>body{margin:0;background:#10100f;color:#f8f2e5;font:16px/1.65 system-ui,sans-serif}.card{max-width:660px;margin:12vh auto;padding:clamp(28px,6vw,64px);background:#1a1a18;border-top:4px solid #bdff3c}h1{margin:0 0 16px;font:600 clamp(2rem,6vw,4rem)/1.02 Georgia,serif}p,label{color:#d8d2c7}a{display:inline-block;margin:12px 14px 0 0;color:#10100f;background:#bdff3c;padding:12px 18px;font-weight:700;text-decoration:none}.secondary{color:#f8f2e5;background:transparent;border:1px solid #777}textarea{display:block;box-sizing:border-box;width:100%;margin-top:8px;padding:12px;background:#10100f;color:#f8f2e5;border:1px solid #777;font:14px/1.45 ui-monospace,monospace}</style></head><body><main class="card"><p>${t("GloryStarPack packaging project support")}</p><h1>${title}</h1><p>${t(message)}</p>${successful ? `<a href="${htmlEscape(nativeReturnPath(quote))}">${t("Return to the quote form")}</a>` : nativeFallbackMarkup(quote)}</main></body></html>`);
 };
 
-module.exports = async function handler(request, response) {
+module.exports = async function handler(request, response, environment = process.env) {
   response.setHeader("Cache-Control", "no-store");
   const contentType = requestHeader(request, "content-type").toLowerCase();
   const mediaType = contentType.split(";", 1)[0].trim();
@@ -248,10 +248,10 @@ module.exports = async function handler(request, response) {
   const origin = requestHeader(request, "origin");
   const fetchSite = requestHeader(request, "sec-fetch-site").toLowerCase();
   const host = requestHeader(request, "host");
-  const vercelEnvironment = process.env.VERCEL_ENV;
+  const vercelEnvironment = environment.VERCEL_ENV;
   const isPreview = vercelEnvironment === "preview";
   const isLocalDevelopment = vercelEnvironment === "development" ||
-    (!vercelEnvironment && process.env.NODE_ENV === "development");
+    (!vercelEnvironment && environment.NODE_ENV === "development");
   const allowedOrigin = !origin ||
     origin === CANONICAL_ORIGIN ||
     (isPreview && originMatchesHost(origin, host)) ||
@@ -361,9 +361,9 @@ module.exports = async function handler(request, response) {
     };
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.QUOTE_TO_EMAIL;
-  const fromEmail = process.env.QUOTE_FROM_EMAIL;
+  const apiKey = environment.RESEND_API_KEY;
+  const toEmail = environment.QUOTE_TO_EMAIL;
+  const fromEmail = environment.QUOTE_FROM_EMAIL;
 
   if (!apiKey || !fromEmail || !toEmail) {
     return respond(response, nativeFormRequest, 503, {

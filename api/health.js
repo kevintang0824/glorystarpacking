@@ -1,4 +1,4 @@
-module.exports = function handler(request, response) {
+module.exports = function handler(request, response, environment = process.env) {
   response.setHeader("Cache-Control", "no-store");
 
   if (request.method !== "GET") {
@@ -7,7 +7,7 @@ module.exports = function handler(request, response) {
   }
 
   const quoteEmailConfigured = Boolean(
-    process.env.RESEND_API_KEY && process.env.QUOTE_FROM_EMAIL && process.env.QUOTE_TO_EMAIL
+    environment.RESEND_API_KEY && environment.QUOTE_FROM_EMAIL && environment.QUOTE_TO_EMAIL
   );
 
   return response.status(quoteEmailConfigured ? 200 : 503).json({

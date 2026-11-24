@@ -2183,9 +2183,9 @@ if (!fs.existsSync(healthApiPath)) {
 } else {
   const healthApi = fs.readFileSync(healthApiPath, "utf8");
   const requiredHealthSignals = [
-    ['process.env.RESEND_API_KEY', "Resend configuration check"],
-    ['process.env.QUOTE_FROM_EMAIL', "sender configuration check"],
-    ['process.env.QUOTE_TO_EMAIL', "recipient configuration check"],
+    ['environment.RESEND_API_KEY', "Resend configuration check"],
+    ['environment.QUOTE_FROM_EMAIL', "sender configuration check"],
+    ['environment.QUOTE_TO_EMAIL', "recipient configuration check"],
     ['"Cache-Control", "no-store"', "no-store response header"],
     ['quoteEmail', "quote-email service status"],
   ];

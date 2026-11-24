@@ -12,6 +12,11 @@ translations/
 reports/
 *.md
 CNAME
+cloudflare/
+wrangler.jsonc
+dist/
+.wrangler/
+.dev.vars*
 
 # Ignore macOS/iCloud conflict copies such as "page 2.html". Keep the local
 # files untouched, but never publish them as accidental duplicate URLs.

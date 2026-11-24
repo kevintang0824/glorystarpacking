@@ -1,0 +1,9 @@
+{
+  "name": "glorystarpacking",
+  "pages_build_output_dir": "dist/cloudflare",
+  "compatibility_date": "2026-11-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "SITE_ORIGIN": "https://glorystarpacking.com"
+  }
+}
