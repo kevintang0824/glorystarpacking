@@ -1,5 +1,7 @@
 # Cloudflare Pages 部署
 
+迁移状态（2026-11-24）：Pages 已上线并通过页面、健康接口、询盘校验和 AI 发现性检查；最新部署为 `https://75fd0c19.glorystarpacking.pages.dev/`。原域名权威 DNS 尚未切换，Cloudflare 区域仍为 pending；需登录 Namecheap 核对全部记录及实际使用的邮件转发别名后，才能完成最后切换。不得把 Pages 部署成功视为原域名已经恢复。
+
 生产项目：`glorystarpacking`，账号：`788c4780c84ff8837372a4dd08a5ec9f`。
 Pages 地址：`https://glorystarpacking.pages.dev/`。
 正式域名：`https://glorystarpacking.com/`。
