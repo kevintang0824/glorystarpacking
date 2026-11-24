@@ -9,4 +9,5 @@ const run = (command, args) => {
 const wrangler = "tmp/cloudflare-tools/node_modules/wrangler/bin/wrangler.js";
 if (!fs.existsSync(wrangler)) run("npm", ["install", "--prefix", "tmp/cloudflare-tools", "--no-audit", "--no-fund", "wrangler@4.168.0"]);
 for (const script of ["validate-site.mjs", "test-quote-api.mjs", "test-service-health.mjs", "build-cloudflare.mjs", "compile-cloudflare-worker.mjs", "test-cloudflare-worker.mjs"]) run(process.execPath, [`scripts/${script}`]);
+if (process.argv.includes("--build-only")) process.exit(0);
 run(process.execPath, [wrangler, "pages", "deploy", "dist/cloudflare", "--project-name", "glorystarpacking", "--branch", "main", ...process.argv.slice(2)]);

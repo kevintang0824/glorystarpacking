@@ -10,7 +10,7 @@ const originalEnvironment = {
   QUOTE_TO_EMAIL: process.env.QUOTE_TO_EMAIL,
 };
 
-const invoke = async (method = "GET") => {
+const invoke = async (method = "GET", environment = process.env) => {
   const result = { headers: new Map(), statusCode: 200, payload: null };
   const response = {
     setHeader(name, value) {
@@ -26,7 +26,7 @@ const invoke = async (method = "GET") => {
     },
   };
 
-  await handler({ method }, response);
+  await handler({ method }, response, environment);
   return result;
 };
 
@@ -54,7 +54,15 @@ try {
   assert.equal(wrongMethod.statusCode, 405);
   assert.equal(wrongMethod.headers.get("allow"), "GET");
 
-  console.log("Service health tests passed: configured, unconfigured, no-store, and method guard states are correct.");
+  const commit = "1234567890abcdef1234567890abcdef12345678";
+  const cloudflare = await invoke("GET", { ...process.env, CF_PAGES: "1", CF_PAGES_COMMIT_SHA: commit });
+  assert.deepEqual(cloudflare.payload.release, { commit, provider: "cloudflare" });
+  const vercel = await invoke("GET", { ...process.env, VERCEL: "1", VERCEL_GIT_COMMIT_SHA: commit });
+  assert.deepEqual(vercel.payload.release, { commit, provider: "vercel" });
+  const invalid = await invoke("GET", { ...process.env, CF_PAGES_COMMIT_SHA: "invalid" });
+  assert.equal(invalid.payload.release.commit, null);
+
+  console.log("Service health tests passed: mail configuration, no-store, method guard and injected Cloudflare/Vercel revision metadata.");
 } finally {
   Object.entries(originalEnvironment).forEach(([name, value]) => {
     if (value === undefined) delete process.env[name];

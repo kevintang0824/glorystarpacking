@@ -5,10 +5,11 @@
 1. 从最新的 `origin/main` 开始工作（GitHub `main`、Cloudflare Pages 与保留的 Vercel 部署历史即为备份，日常发布**不再**生成本地 Git bundle）；
 2. 完成页面、SEO、GEO 与 AI 可发现性更新；
 3. 运行站点静态校验、Quote API 与服务健康回归、JavaScript 语法检查、IndexNow dry run 和 `node scripts/audit-ai-discovery.mjs`；
-4. 直接提交并推送 GitHub `main`；
-5. 运行 `node scripts/deploy-cloudflare.mjs` 发布 Cloudflare Pages；GitHub 推送仍保留原 Vercel 自动部署。检查正式域名、站点地图和改动页面；
+4. 直接提交并推送 GitHub `main`，作为本地、GitHub、Vercel 与 Cloudflare 的统一发布版本；
+5. 等待 `.github/workflows/cloudflare-pages.yml` 和原 Vercel GitHub 集成分别部署同一提交。检查正式域名、站点地图和改动页面；
    - 运行 `node scripts/audit-production-services.mjs`，确认询盘邮件环境变量没有遗漏；
-   - Pages 是直接上传项目，仅推送 GitHub 不会更新 Pages，必须运行部署脚本。详见 `CLOUDFLARE_DEPLOYMENT.md`；
+   - Cloudflare 自动部署需要先配置专用 API Secret 并启用 `CLOUDFLARE_PAGES_ENABLED`；凭据未配置时，工作流只构建校验，不会假装已部署。紧急手动发布仍可运行 `node scripts/deploy-cloudflare.mjs`；
+   - 运行 `node scripts/check-sync.mjs` 对照本地提交、GitHub 主线、Cloudflare 线上提交和 Vercel 部署检查；存在未提交改动或任一平台失败时，不报告四端已同步；
 6. 向 IndexNow 提交新增或更新 URL；
 7. 在 Google Search Console 重新提交站点地图，并为新增重点 URL 请求编入索引。
 

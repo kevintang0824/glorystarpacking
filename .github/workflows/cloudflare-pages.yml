@@ -1,0 +1,51 @@
+name: Deploy Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Validate and deploy the GitHub revision
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Validate and build
+        run: node scripts/deploy-cloudflare.mjs --build-only
+      - name: Deploy to Cloudflare Pages
+        if: vars.CLOUDFLARE_PAGES_ENABLED == 'true'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "Missing CLOUDFLARE_ACCOUNT_ID repository variable"; exit 1; }
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo "Missing CLOUDFLARE_API_TOKEN repository secret"; exit 1; }
+          node tmp/cloudflare-tools/node_modules/wrangler/bin/wrangler.js pages deploy dist/cloudflare --project-name glorystarpacking --branch main --commit-hash "$GITHUB_SHA" --commit-dirty=false
+      - name: Verify the deployed version and email configuration
+        if: vars.CLOUDFLARE_PAGES_ENABLED == 'true'
+        run: node scripts/audit-production-services.mjs https://glorystarpacking.pages.dev --commit="$GITHUB_SHA"
+      - name: Record release status
+        env:
+          PAGES_ENABLED: ${{ vars.CLOUDFLARE_PAGES_ENABLED }}
+        run: |
+          echo "Revision: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$PAGES_ENABLED" = "true" ]; then
+            echo "Cloudflare Pages deployed and verified: https://glorystarpacking.pages.dev/" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Build validated. Automatic deployment is pending Cloudflare API-token configuration; no deployment was attempted." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "Vercel uses its existing GitHub integration. Its deployment status appears separately on this commit." >> "$GITHUB_STEP_SUMMARY"

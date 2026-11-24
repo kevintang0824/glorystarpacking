@@ -10,14 +10,30 @@ Vercel 项目、域名绑定、环境变量及 GitHub 连接保留。`api/quote.
 
 ## 发布
 
-按 `PUBLISH_WORKFLOW.md` 完成源码提交与推送后，在此仓库运行：
+以后统一从本地修改、提交并推送 GitHub `main`。GitHub `main` 是发布版本，Vercel 由原 GitHub 集成部署，Cloudflare 由 `.github/workflows/cloudflare-pages.yml` 部署同一提交。直接在 GitHub 修改文件后，应先在本地拉取，再继续修改。
+
+Cloudflare 自动部署配置：
+
+- GitHub 仓库变量 `CLOUDFLARE_ACCOUNT_ID`：`788c4780c84ff8837372a4dd08a5ec9f`。
+- GitHub 仓库加密 Secret `CLOUDFLARE_API_TOKEN`：专用 API token，只授予该账号的 Cloudflare Pages 编辑权限，不使用本地 OAuth 凭据。
+- 仓库变量 `CLOUDFLARE_PAGES_ENABLED=true`：只在 API Secret 配置完成后开启。未开启时，工作流只构建校验，明确注明未部署。
+
+工作流串行部署生产版本，并核对线上 `/api/health` 返回的 commit 与 GitHub commit 完全一致。Vercel 的部署结果独立显示，账号暂停时会失败，不影响 Cloudflare 部署。
+
+发布后在本地核对：
+
+```sh
+node scripts/check-sync.mjs
+```
+
+紧急手动发布：
 
 ```sh
 node scripts/deploy-cloudflare.mjs
 node scripts/audit-production-services.mjs https://glorystarpacking.com
 ```
 
-发布脚本在忽略的 `tmp/cloudflare-tools` 下安装固定版本 Wrangler，验证源站与邮件逻辑，生成只含公开文件的 `dist/cloudflare`，编译 Worker 并测试兼容层，最后上传至 Pages。直接上传项目不自动跟随 GitHub 推送；每次发布都必须运行该脚本。GitHub `main` 仍可触发原 Vercel 部署。
+发布脚本在忽略的 `tmp/cloudflare-tools` 下安装固定版本 Wrangler，验证源站与邮件逻辑，生成只含公开文件的 `dist/cloudflare`，编译 Worker 并测试兼容层，最后上传至 Pages。`--build-only` 只做校验和构建，不上传。直接上传项目通过 GitHub Actions 实现自动发布，不依赖 Pages 原生 Git 集成。
 
 首次在其他电脑发布时，使用 Wrangler 的正常登录流程登录同一账号。不要把 OAuth 凭据放入仓库、命令参数或 GitHub Actions。
 
