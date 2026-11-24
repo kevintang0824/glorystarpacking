@@ -1,6 +1,8 @@
 # Cloudflare Pages 部署
 
-迁移状态（2026-11-24）：Pages 已上线并通过页面、健康接口、询盘校验和 AI 发现性检查；最新部署为 `https://75fd0c19.glorystarpacking.pages.dev/`。原域名权威 DNS 尚未切换，Cloudflare 区域仍为 pending；需登录 Namecheap 核对全部记录及实际使用的邮件转发别名后，才能完成最后切换。不得把 Pages 部署成功视为原域名已经恢复。
+迁移状态（2026-11-24）：Pages 已上线并通过页面、健康接口、询盘校验和 AI 发现性检查；部署 `https://7c612ca3.glorystarpacking.pages.dev/` 的线上健康接口确认提交 `29982fb75bfb99ad62c5dec0d6887c8ce45ed077`。已登录 Namecheap 核对完整 DNS 记录；域名没有设置邮件转发别名，DNSSEC 关闭。已保存 Cloudflare nameserver，Cloudflare 区域已激活，裸域与 www 的指向验证已通过，Pages 的 HTTPS 证书仍在验证/签发；部分递归 DNS 缓存仍返回原 Vercel 地址。不得把 Pages 部署成功视为原域名已全面恢复。
+
+自动同步状态：GitHub Actions 首次构建已通过。专用 Cloudflare API token 的创建和保存尚待用户确认，`CLOUDFLARE_PAGES_ENABLED` 仍未开启；当前 CI 只构建校验，不自动部署。原 Vercel GitHub 连接保留，但账号暂停导致部署检查失败。
 
 生产项目：`glorystarpacking`，账号：`788c4780c84ff8837372a4dd08a5ec9f`。
 Pages 地址：`https://glorystarpacking.pages.dev/`。
