@@ -1,0 +1,21 @@
+input,stock_box_plus_branding,printed_mailer,currency_or_unit,notes
+planning_period,,,,Use the same period for both scenarios
+destination,,,,Include postal code and receiving type
+currency,,,,Use one currency for every cost
+box_artwork_revision,,,,Identify the usable design window
+purchased_boxes,,,pieces,Confirm quantity per design
+expected_usable_shipments,,,shipments,Exclude stock that cannot be used before changes
+expected_monthly_usage,,,shipments/month,Use a realistic forecast
+box_unit_price,,,currency/box,State included print and finish
+boxes_purchase_total,,,currency,Purchased boxes multiplied by box unit price
+setup_and_tooling_total,,,currency,Do not count charges already included elsewhere
+labels_tissue_cards_inserts_total,,,currency,List quantities and versions in notes
+inbound_freight_and_handling_total,,,currency,Same trade term and destination
+duties_taxes_brokerage_total,,,currency,Applicable amounts and exclusions
+storage_and_receiving_total,,,currency,Same period
+assembly_and_packing_labor_total,,,currency,Time a representative batch
+other_incremental_costs_total,,,currency,Do not double-count unused stock purchase cost
+total_packaging_system_cost,,,currency,Sum purchase and incremental costs once
+cost_per_usable_shipment,,,currency/shipment,Total system cost divided by usable shipments; denominator must exceed zero
+outbound_postage_per_shipment,,,currency/shipment,Compare actual packed dimensions weight carrier service and date separately
+supplier_quantity_and_schedule_confirmed,,,,Record quotation date and approval; no promised MOQ or staged release

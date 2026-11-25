@@ -1,0 +1,109 @@
+{
+  "checked_on": "2026-11-25",
+  "timezone": "Asia/Shanghai",
+  "site": "https://glorystarpacking.com",
+  "gsc": {
+    "property": "sc-domain:glorystarpacking.com",
+    "range": [
+      "2026-10-27",
+      "2026-11-23"
+    ],
+    "updated_displayed": "3.5 hours ago",
+    "clicks": 13,
+    "impressions": 3549,
+    "ctr_displayed": "0.4%",
+    "average_position": 17.7,
+    "ai_impressions": 635,
+    "source": "Authenticated GSC UI; report body and selected property independently verified",
+    "pages": [
+      {
+        "path": "paper-thickness-gsm-pt-mm-conversion-guide.html",
+        "clicks": 3,
+        "impressions": 1069
+      },
+      {
+        "path": "custom-mailer-boxes.html",
+        "clicks": 2,
+        "impressions": 72
+      },
+      {
+        "path": "/",
+        "clicks": 2,
+        "impressions": 61
+      },
+      {
+        "path": "custom-magnetic-boxes.html",
+        "clicks": 1,
+        "impressions": 194
+      }
+    ],
+    "sitemap_before": {
+      "last_read": "2026-11-17",
+      "status": "Could not fetch",
+      "discovered": 86
+    }
+  },
+  "bing": {
+    "property": "https://glorystarpacking.com/",
+    "range": [
+      "2026-08-25",
+      "2026-11-24"
+    ],
+    "clicks": 1,
+    "impressions": 167,
+    "ai_citations": 108,
+    "citation_scope": "Microsoft Copilots and Partners; platform sample, not users or inquiries",
+    "ai_cited_pages": {
+      "multi-sku-packaging-system-guide.html": 39,
+      "packaging-inserts-material-comparison.html": 32,
+      "paper-thickness-gsm-pt-mm-conversion-guide.html": 10,
+      "packaging-sample-approval-checklist.html": 10,
+      "custom-packaging-dieline-artwork-requirements.html": 6,
+      "/": 6,
+      "is-custom-packaging-worth-it.html": 3,
+      "pantone-color-matching-packaging.html": 1,
+      "waterproof-label-testing-guide.html": 1
+    },
+    "grounding_queries": "No data available",
+    "sitemap_before": {
+      "last_read": "2026-10-27",
+      "status": "Success",
+      "discovered_in_row": 84,
+      "summary_total_discovered": 170,
+      "summary_known_sitemaps": 2,
+      "visible_rows": 1,
+      "note": "Summary and visible sitemap row have different totals; do not equate discoveries with indexed pages"
+    }
+  },
+  "semrush": {
+    "competitor": "luxopack.com",
+    "date_displayed": "2026-11-24",
+    "device": "desktop",
+    "organic_rankings_database": "US",
+    "organic_rankings_keywords": 82,
+    "estimated_traffic": 167,
+    "domain_overview_keywords_displayed": 113,
+    "domain_overview_country_selector": "Worldwide",
+    "domain_overview_ai_visibility": 14,
+    "domain_overview_ai_mentions": 11,
+    "domain_overview_cited_pages": 76,
+    "top_page": "https://luxopack.com/blog/subscription-box-packaging-cost-guide",
+    "top_page_estimated_traffic_share": "100.00%",
+    "top_page_keyword_entries": 2,
+    "limit": "Free visible first ten position rows; same phrase appears in organic and AI Overview rows; estimates are not visits, sales or inquiries. Domain overview and US Organic Rankings show different keyword counts; preserve both scopes."
+  },
+  "connector_limit": "Windsor reads paused: 9 connected accounts versus free allowance 1. No account disconnected and no paid plan started. Used authenticated GSC browser report instead. Semrush browser login succeeded.",
+  "implemented_paths": [
+    "low-moq-custom-packaging-small-business.html",
+    "multi-sku-packaging-system-guide.html",
+    "custom-mailer-boxes.html",
+    "assets/templates/subscription-packaging-cost-worksheet.csv"
+  ],
+  "publication": "See the exact source commit and actual platform results in the task completion receipt; this research file does not assert deployment success.",
+  "limits": [
+    "Periods differ between GSC and Bing; no growth comparison from these totals.",
+    "No neutral ChatGPT recommendation benchmark or verified new backlink placement.",
+    "Google indexing and AI recommendation are not guaranteed by submission or llms.txt.",
+    "No real inquiry submitted during verification."
+  ]
+}

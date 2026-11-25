@@ -1,0 +1,11 @@
+keyword,result_type,position,search_volume_estimate,traffic_estimate,traffic_share_pct,competitor_path,updated_displayed,coverage_decision
+thick walled box monthly solution,organic,4,2400,84,50.29,/blog/subscription-box-packaging-cost-guide,2026-11-12,"subscription costs; use natural buyer language, not this awkward phrase"
+thick walled box monthly solution,AI Overview,,2400,83,49.7,/blog/subscription-box-packaging-cost-guide,2026-11-12,same phrase and URL as organic; do not count as another unique keyword
+cosmetic packaging box factory,organic,26,40,0,<0.01,/industries/custom-cosmetic-packaging-boxes,2026-10-14,already mapped to cosmetic-packaging-boxes.html
+ups ground dimensional weight calculator,organic,53,70,0,<0.01,/dimensional-weight-calculator,2026-11-03,existing dimensional-weight-packaging-guide.html; verify carrier rules
+jewelry box sizes,image/organic,38,50,0,<0.01,/blog/jewelry-box-sizes-guide,2026-11-13,existing jewelry-box-insert-design-guide.html
+how much wine is in a box,organic,65,210,0,<0.01,/blog/wine-box-sizes-guide,2026-11-01,reject: liquid box-wine quantity differs from gift-box procurement
+ups dimensional weight divisor 139 official 2026,organic,79,40,0,<0.01,/dimensional-weight-calculator,2026-11-07,do not universalize a service-specific divisor
+what is the length of a box,organic,71,90,0,<0.01,/how-to-measure-a-box,relative display: 1,existing mailer sizing guide
+heart shaped box bulk,organic,53,40,0,<0.01,/products/custom-heart-shaped-gift-box,2026-10-09,defer until confirmed product evidence
+types of gift boxes,image/organic,39,30,0,<0.01,/gift-box-types,relative display: 2,existing custom-boxes.html
