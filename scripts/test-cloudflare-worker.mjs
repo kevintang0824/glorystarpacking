@@ -48,6 +48,9 @@ try {
   const www = await worker.fetch(new Request("https://www.glorystarpacking.com/about.html?ref=keep"), env);
   assert.equal(www.status, 308);
   assert.equal(www.headers.get("Location"), "https://glorystarpacking.com/about.html?ref=keep");
+  const wwwIndex = await worker.fetch(new Request("https://www.glorystarpacking.com/index.html?ref=keep"), env);
+  assert.equal(wwwIndex.status, 308);
+  assert.equal(wwwIndex.headers.get("Location"), "https://glorystarpacking.com/?ref=keep");
   const validationPath = "/.well-known/acme-challenge/test-validation-token";
   const validation = await worker.fetch(new Request(`http://www.glorystarpacking.com${validationPath}`), env);
   assert.equal(validation.status, 200);

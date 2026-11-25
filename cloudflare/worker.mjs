@@ -85,7 +85,8 @@ export default {
       // Preserve HTTP domain validation and certificate renewal before redirects.
       response = await env.ASSETS.fetch(request);
     } else if (url.hostname === `www.${canonicalHost}`) {
-      response = redirect(url, `https://${canonicalHost}${url.pathname}`);
+      const canonicalPath = url.pathname === "/index.html" ? "/" : url.pathname;
+      response = redirect(url, `https://${canonicalHost}${canonicalPath}`);
     } else {
       const rule = settings.redirects.find(({ source, has }) => !has && source === url.pathname);
       if (rule) response = redirect(url, rule.destination);
