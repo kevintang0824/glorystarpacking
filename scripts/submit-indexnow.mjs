@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { normalizeCloudflareEmailObfuscation } from "./normalize-cloudflare-html.mjs";
 
 const siteOrigin = "https://glorystarpacking.com";
 const siteHost = new URL(siteOrigin).hostname;
@@ -108,7 +109,7 @@ const preflightWorker = async () => {
           preflightFailures.push(`${url} has no matching local HTML release file`);
         } else {
           const localHtml = fs.readFileSync(localPath, "utf8");
-          if (digest(html) !== digest(localHtml)) {
+          if (digest(normalizeCloudflareEmailObfuscation(html)) !== digest(localHtml)) {
             preflightFailures.push(`${url} production HTML does not match the local release`);
           }
         }
