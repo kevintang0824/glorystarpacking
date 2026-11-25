@@ -1,0 +1,151 @@
+{
+  "checked_on": "2026-11-25",
+  "pass": "rigid-box-pass-2",
+  "property": "sc-domain:glorystarpacking.com",
+  "period_start": "2026-10-27",
+  "period_end": "2026-11-23",
+  "report_updated_displayed": "3.5 hours ago",
+  "source": "Authenticated GSC UI; correct property, page filter and loaded report body verified",
+  "site_totals": {
+    "clicks": 13,
+    "impressions": 3550,
+    "ctr_displayed": "0.4%",
+    "average_position": 17.7
+  },
+  "pages": [
+    {
+      "url": "https://glorystarpacking.com/custom-magnetic-boxes.html",
+      "clicks": 1,
+      "impressions": 194,
+      "ctr_displayed": "0.5%",
+      "average_position": 22.5,
+      "visible_queries": [
+        {
+          "query": "custom boxes with magnetic closure factory china",
+          "clicks": 0,
+          "impressions": 7
+        },
+        {
+          "query": "magnetic boxes custom factory china",
+          "clicks": 0,
+          "impressions": 5
+        },
+        {
+          "query": "custom gift boxes with magnetic closure factory china",
+          "clicks": 0,
+          "impressions": 4
+        },
+        {
+          "query": "collapsible magnetic gift boxes factory china",
+          "clicks": 0,
+          "impressions": 4
+        },
+        {
+          "query": "magnetic gift boxes bulk factory china",
+          "clicks": 0,
+          "impressions": 4
+        },
+        {
+          "query": "box with magnetic lid factory china",
+          "clicks": 0,
+          "impressions": 4
+        },
+        {
+          "query": "custom magnetic closure box factory china",
+          "clicks": 0,
+          "impressions": 4
+        },
+        {
+          "query": "magnetic boxes factory china",
+          "clicks": 0,
+          "impressions": 3
+        },
+        {
+          "query": "magnetic closure box custom factory china",
+          "clicks": 0,
+          "impressions": 3
+        },
+        {
+          "query": "custom boxes magnetic manufacturer china",
+          "clicks": 0,
+          "impressions": 3
+        }
+      ],
+      "query_table_rows": 62
+    },
+    {
+      "url": "https://glorystarpacking.com/collapsible-rigid-boxes.html",
+      "clicks": 0,
+      "impressions": 134,
+      "ctr_displayed": "0%",
+      "average_position": 48.7,
+      "visible_queries": [
+        {
+          "query": "collapsible rigid box",
+          "clicks": 0,
+          "impressions": 41
+        },
+        {
+          "query": "flat fold rigid box",
+          "clicks": 0,
+          "impressions": 40
+        },
+        {
+          "query": "collapsible rigid box template",
+          "clicks": 0,
+          "impressions": 2
+        },
+        {
+          "query": "show me samples",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "rigid folding boxes",
+          "clicks": 0,
+          "impressions": 1
+        },
+        {
+          "query": "rigid collapsible box",
+          "clicks": 0,
+          "impressions": 1
+        }
+      ],
+      "query_table_rows": 6
+    }
+  ],
+  "bing_sitemap_followup": {
+    "site": "https://glorystarpacking.com/",
+    "submitted": "2026-11-25",
+    "last_crawled": "2026-11-25",
+    "status": "Success",
+    "visible_row_discovered_urls": 86,
+    "summary_discovered_urls": 172,
+    "summary_known_sitemaps": 2,
+    "note": "Discovered URLs are not indexed-page counts; summary and row scopes retained separately."
+  },
+  "changes": [
+    "Product FAQ visible text and JSON-LD parity: folding carton versus flat-fold rigid box; generic template limits",
+    "Project-specific dieline and sample sequence with product-appropriate quote links",
+    "Magnetic reopening versus repeated corner flattening; quantity per design rather than mixed totals",
+    "Assembly trial record and elapsed time divided by accepted units; zero accepted-unit case; additional labor boundary",
+    "Buyer question from October 2026 Reddit magnetic-box sourcing discussion with no promises of stock or rush delivery"
+  ],
+  "sources": [
+    {
+      "url": "https://www.reddit.com/r/Packaging/comments/1wx8cp9/short_on_time_fast_packaging_suppliers_for_the/",
+      "use": "Buyer request combines custom size, insert and finishing under a deadline. Individual replies are not delivery evidence."
+    },
+    {
+      "url": "https://packmojo.com/blog/trading-card-deck-packaging-tuck-box-lift-off-and-magnetic-rigid-boxes/",
+      "use": "Official competitor page distinguishes carton, formed rigid and collapsible magnetic supply formats; no competitor MOQ adopted."
+    }
+  ],
+  "limits": [
+    "Same-day baseline; no growth attributed to either release.",
+    "Page totals can exceed visible query sums because query data is incomplete/anonymized; no extrapolation.",
+    "No new third-party backlink placement or AI recommendation benchmark.",
+    "No live quote submitted; production health only confirms email configuration.",
+    "Pre-existing uncommitted SEO_ACTIVITY_LOG.md modification retained outside task commits."
+  ]
+}
