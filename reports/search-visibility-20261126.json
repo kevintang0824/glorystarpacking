@@ -1,0 +1,34 @@
+{
+  "checked_on": "2026-11-26",
+  "timezone": "Asia/Shanghai",
+  "sources": "Authenticated platform reports with the site or competitor verified in each report",
+  "google": {
+    "property": "sc-domain:glorystarpacking.com",
+    "web_and_ai_period": ["2026-10-27", "2026-11-23"],
+    "last_updated_display": "3 hours ago",
+    "web": {"clicks": 13, "impressions": 3549, "ctr": "0.4%", "average_position": 17.7},
+    "generative_ai_impressions": 635,
+    "index_report_updated": "2026-11-16",
+    "index_status": {"indexed": 84, "not_indexed": 389, "noindex": 382, "redirect": 4, "discovered_not_indexed": 2, "crawled_not_indexed": 1},
+    "sample_discovered_urls": ["chinese-new-year-2027-packaging-order-deadlines.html", "ramadan-2027-gift-box-order-timeline.html"],
+    "sitemap_before_release": {"last_submitted": "2026-11-25", "last_read": "2026-11-25", "status": "Success", "discovered_urls": 86}
+  },
+  "bing": {
+    "property": "https://glorystarpacking.com/",
+    "display_period": ["2026-08-26", "2026-11-25"],
+    "search": {"clicks": 1, "impressions": 167},
+    "ai_citations": 108,
+    "backlinks": {"referring_domains": 1, "referring_pages": 16, "anchor_texts": 10, "visible_referring_domain": "https://glorystarpack.com"},
+    "sitemap_before_release": {"last_submitted": "2026-11-25", "last_crawled": "2026-11-25", "status": "Success", "discovered_urls": 86}
+  },
+  "semrush": {
+    "snapshot": "2026-11-24",
+    "device": "desktop",
+    "database": "US",
+    "competitors": [
+      {"domain": "packmojo.com", "keywords": 3705, "estimated_traffic": 1818},
+      {"domain": "pakfactory.com", "keywords": 9345, "estimated_traffic": 14708}
+    ],
+    "coverage_file": "semrush-coverage-20261126.csv"
+  }
+}
