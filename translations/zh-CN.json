@@ -14018,5 +14018,12 @@
   "Displays mix red, green and blue light (RGB). Four-color process printing uses cyan, magenta, yellow and black inks (CMYK) on a physical surface. When converting artwork for print, ask the printer which output profile to use and flag bright brand colors for proofing. The same ink can look different on white and kraft liners or after a coating is applied. For color approval, compare a physical proof and the agreed reference under the same lighting.": "显示屏混合红、绿、蓝三种光（RGB）。四色印刷在实体材料上使用青、品红、黄、黑四色油墨（CMYK）。转换印刷图稿时，向印厂确认应使用的输出色彩配置文件，并标出需要打样核对的鲜艳品牌色。同一种油墨在白色面纸和牛皮面纸上的观感可能不同，施加涂层后也可能变化。审批颜色时，在相同照明下比较实物校样和双方约定的色彩参考。",
   "If the print crosses a fold or lock tab, ask for the proof to be folded into the box. Check crease cracking, rub marks where panels touch, and whether the artwork stays legible after packing. Specify inside and outside print separately when requesting a sample.": "如果图案跨越折线或锁舌，请供应商把校样折叠成盒。检查折痕是否爆线、面板接触处是否有擦痕，以及装入产品后图文是否仍清晰。申请打样时分别说明内印和外印要求。",
   "Compare digital proofs and physical samples": "对比数字校样与实物样品",
-  "Updated November 26, 2026": "更新于 2026 年 11 月 26 日"
+  "Updated November 26, 2026": "更新于 2026 年 11 月 26 日",
+  "How tight should a mailer insert fit?": "邮寄盒内托应该卡多紧？",
+  "Pack the smallest and largest production-equivalent units in the intended mailer. The small unit should stay in its pocket during normal handling. The large unit should go in and come out without forcing it or rubbing the finish. Close the lid and reopen it to check for pressure marks, displaced accessories, and movement between pockets.": "用拟量产邮寄盒试装尺寸最小和最大的量产等效产品。正常搬动时，小件应留在槽内；大件应能顺畅放入和取出，不擦伤饰面。合盖后再打开，检查是否有压痕、配件移位或产品串槽。",
+  "In a mixed-weight kit, check the strip of material between adjacent pockets and the path from the heaviest item to the box base. If the strip bends, tears, or lets the heavier item touch its neighbor, ask the supplier to trial a wider strip, a folded support, or a separate compartment. Record the cavity revision and the observed failure before changing the clearance. Confirm shipping performance separately with a test that represents the intended route.": "混装不同重量的产品时，检查相邻槽之间的窄边，以及最重件的重量如何传到盒底。如果窄边变形、撕裂，或重件碰到旁边的产品，请供应商试做更宽的隔条、折叠支撑或独立分格。调整间隙前，记录槽位版本和看到的失效情况。运输表现另用符合预定路线的测试确认。",
+  "Buyer discussion": "买家讨论",
+  "Mailer insert fit on Reddit": "Reddit 内托松紧讨论",
+  "For kits with mixed weights, include a layout and the weight of each item. Mark the narrowest gap between product outlines and any surface that must stay untouched. State whether the products are packed by hand and how the customer should lift each one out.": "混装不同重量的产品时，请附布局图和每件重量。标出产品轮廓之间最窄的距离，以及不能接触的表面。说明是否手工装盒，以及客户应如何取出每件产品。",
+  "Review the loaded mailer fit check": "查看邮寄盒装件试装方法"
 }
