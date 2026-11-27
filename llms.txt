@@ -100,6 +100,7 @@ These pages describe visible evidence from one catalog image, identify decisions
 
 ## High-intent buyer guides
 
+- [Custom PR box packaging guide](https://glorystarpacking.com/custom-pr-box-packaging-guide.html): Compare stock boxes, corrugated mailers and rigid presentation boxes for influencer kits. The pack-out checklist covers the opening sequence, product fit, shipping protection, quantities and sample approval.
 - [Packaging supplier qualification checklist](https://glorystarpacking.com/packaging-supplier-qualification-checklist.html): Buyer-ready request covering public or legal identity, production route, exact build, sample control, material evidence, inspection records, packing, delivery responsibility, commercial assumptions, and open evidence status. It structures due diligence and does not approve a supplier or replace legal, quality, regulatory, or import review.
 - [Custom packaging development case study](https://glorystarpacking.com/custom-packaging-development-case-study.html): An evidence-led process case connecting brief, structure, sample, production, quality, packing, and shipment gates. It is not a named-customer result and does not publish fixed volume, price, saving, lead time, test outcome, certification, or performance claims.
 - [Packaging design brief guide](https://glorystarpacking.com/packaging-design-brief-guide.html): Gather product dimensions, SKU variants, sales channel, pack-out, visual references, constraints, and approval owners before requesting a structure or quote.
