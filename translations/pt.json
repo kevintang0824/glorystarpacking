@@ -13877,5 +13877,19 @@
   "Custom mailer boxes for PR and influencer kits": "Caixas de envio personalizadas para kits de imprensa e criadores",
   "Specify which product or launch message should be visible on opening, which accessories need their own cavity, and where the shipping label will sit. For quotes, share the quantity per design, packed kit weight and date the recipients need the box.": "Indique que produto ou mensagem deve ficar visível ao abrir, que acessórios precisam de encaixe próprio e onde ficará a etiqueta. Para o orçamento, indique a quantidade por design, o peso do kit embalado e a data de entrega.",
   "If the presentation surface must arrive ready for filming, compare a printed mailer that ships on its own with a presentation box protected by an outer carton. Approve the fully packed sample before production.": "Se o estojo tiver de chegar pronto para filmagem, compare uma caixa de envio impressa que viaje sozinha com um estojo protegido por uma caixa exterior. Aprove a amostra totalmente embalada antes da produção.",
-  "Use the PR box pack-out and quote checklist": "Usar a lista de preparação e orçamento de caixas de PR"
+  "Use the PR box pack-out and quote checklist": "Usar a lista de preparação e orçamento de caixas de PR",
+  "Carrier label using longest-side-first entry": "Etiqueta de transporte com o lado maior em primeiro lugar",
+  "Enter the outside measurements as L 310 × W 239 × H 160 mm before applying the carrier's service-specific rounding.": "Introduza as dimensões exteriores L 310 × W 239 × H 160 mm antes de aplicar o arredondamento do serviço de transporte.",
+  "FEFCO case code": "Código FEFCO para caixas de cartão canelado",
+  "Finished inside L 230 × W 150 × H 300 mm. Mark the case opening and name the panels that set L and W on the drawing.": "Dimensões interiores finais L 230 × W 150 × H 300 mm. Marque a abertura e identifique no desenho os painéis que definem o comprimento e a largura.",
+  "For a corrugated box quote, write the finished inside dimensions as": "Para pedir um orçamento de uma caixa de cartão canelado, indique as dimensões interiores finais na ordem",
+  "Measured packed outside footprint 239 × 160 mm, with a standing height of 310 mm. Keep the handling orientation alongside those values.": "Base exterior da caixa carregada de 239 × 160 mm e altura de 310 mm. Registe a orientação de manuseamento.",
+  "Send the labelled dimensions with your corrugated box quote request": "Juntar as dimensões identificadas ao pedido de orçamento",
+  "Supplier quote and approved drawing": "Orçamento do fornecedor e desenho aprovado",
+  "These three records describe one illustrative case. Take the outside measurements from a loaded sample rather than deriving them from the inside size or the flute alone. Keep the units, case orientation and drawing revision with the quote.": "Os três registos correspondem à mesma caixa ilustrativa. Meça o exterior de uma amostra carregada. Guarde as unidades, a orientação e a revisão do desenho com o orçamento.",
+  "UPS parcel measurement instructions": "Instruções da UPS para medir uma encomenda",
+  "Updated November 27, 2026": "Atualizado em 27 de novembro de 2026",
+  "Warehouse and pallet plan": "Plano de armazém e paletização",
+  "What order do box dimensions go in?": "Em que ordem se indicam as dimensões de uma caixa?",
+  "and include the units. Under the FEFCO convention, length is the longer side of the opening, width is the shorter side, and height runs from the opening to the base. For a carrier label, measure the filled, sealed parcel across its outermost points. Some carriers, including UPS, call the longest outside side the length, so a tall case can have a different length on the carrier label than on its production drawing.": "e inclua as unidades. Pela convenção FEFCO, o comprimento e a largura são os lados maior e menor da abertura, e a altura vai da abertura até à base. Para a etiqueta, meça os pontos extremos do volume carregado e fechado. A UPS considera comprimento o maior lado exterior, pelo que o valor na etiqueta pode ser diferente do apresentado no desenho."
 }

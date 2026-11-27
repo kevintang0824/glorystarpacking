@@ -13877,5 +13877,19 @@
   "Custom mailer boxes for PR and influencer kits": "Почтовые коробки на заказ для пресс-наборов и авторов контента",
   "Specify which product or launch message should be visible on opening, which accessories need their own cavity, and where the shipping label will sit. For quotes, share the quantity per design, packed kit weight and date the recipients need the box.": "Укажите, какой товар или текст должен быть виден при открытии, каким аксессуарам нужны отдельные ячейки и где будет этикетка. Для расчёта сообщите тираж на каждый дизайн, вес упакованного набора и дату получения.",
   "If the presentation surface must arrive ready for filming, compare a printed mailer that ships on its own with a presentation box protected by an outer carton. Approve the fully packed sample before production.": "Если коробка должна быть готова к съёмке после доставки, сравните почтовую коробку с печатью и презентационный футляр в защитном коробе. Перед тиражом утвердите полностью укомплектованный образец.",
-  "Use the PR box pack-out and quote checklist": "Использовать список для комплектации и расчёта цены PR-бокса"
+  "Use the PR box pack-out and quote checklist": "Использовать список для комплектации и расчёта цены PR-бокса",
+  "Carrier label using longest-side-first entry": "Этикетка перевозчика с самой длинной стороной на первом месте",
+  "Enter the outside measurements as L 310 × W 239 × H 160 mm before applying the carrier's service-specific rounding.": "Укажите внешние размеры 310 × 239 × 160 мм по длине, ширине и высоте, затем примените правило округления выбранной службы.",
+  "FEFCO case code": "Код FEFCO для гофрокоробов",
+  "Finished inside L 230 × W 150 × H 300 mm. Mark the case opening and name the panels that set L and W on the drawing.": "Внутренние размеры 230 × 150 × 300 мм по длине, ширине и высоте. Отметьте проём и обозначьте на чертеже панели длины и ширины.",
+  "For a corrugated box quote, write the finished inside dimensions as": "Для запроса цены на гофрокороб запишите внутренние размеры собранного короба в порядке",
+  "Measured packed outside footprint 239 × 160 mm, with a standing height of 310 mm. Keep the handling orientation alongside those values.": "Наружное основание заполненного короба 239 × 160 мм, высота 310 мм. Укажите ориентацию при обработке.",
+  "Send the labelled dimensions with your corrugated box quote request": "Приложить размеры с обозначениями к запросу цены на гофрокороба",
+  "Supplier quote and approved drawing": "Расчёт поставщика и согласованный чертёж",
+  "These three records describe one illustrative case. Take the outside measurements from a loaded sample rather than deriving them from the inside size or the flute alone. Keep the units, case orientation and drawing revision with the quote.": "Три записи описывают один условный короб. Снимайте внешние размеры с заполненного образца. Сохраните единицы, ориентацию и редакцию чертежа вместе с расчётом.",
+  "UPS parcel measurement instructions": "Инструкция UPS по измерению посылок",
+  "Updated November 27, 2026": "Обновлено 27 ноября 2026 г.",
+  "Warehouse and pallet plan": "План размещения на складе и поддоне",
+  "What order do box dimensions go in?": "В каком порядке указывают размеры короба?",
+  "and include the units. Under the FEFCO convention, length is the longer side of the opening, width is the shorter side, and height runs from the opening to the base. For a carrier label, measure the filled, sealed parcel across its outermost points. Some carriers, including UPS, call the longest outside side the length, so a tall case can have a different length on the carrier label than on its production drawing.": "и добавьте единицы измерения. По FEFCO длина и ширина соответствуют длинной и короткой сторонам проёма, а высота измеряется от проёма до основания. Для этикетки измерьте закрытый заполненный короб по крайним наружным точкам. UPS считает длиной самую длинную наружную сторону, поэтому для высокого короба длина на этикетке и чертеже может отличаться."
 }

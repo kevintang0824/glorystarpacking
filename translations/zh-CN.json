@@ -14034,5 +14034,19 @@
   "Custom mailer boxes for PR and influencer kits": "适合媒体和创作者寄样的定制邮寄盒",
   "Specify which product or launch message should be visible on opening, which accessories need their own cavity, and where the shipping label will sit. For quotes, share the quantity per design, packed kit weight and date the recipients need the box.": "明确开盒第一眼要看到的产品或新品信息、需要独立槽位的配件，以及运单的粘贴位置。询价时请提供每款数量、整盒装好后的重量和收件日期。",
   "If the presentation surface must arrive ready for filming, compare a printed mailer that ships on its own with a presentation box protected by an outer carton. Approve the fully packed sample before production.": "如果展示面到货后需要直接拍摄，请比较可直接寄送的印刷邮寄盒与加外箱防护的展示盒。量产前确认装有真实产品的完整样盒。",
-  "Use the PR box pack-out and quote checklist": "查看 PR 礼盒装箱与询价清单"
+  "Use the PR box pack-out and quote checklist": "查看 PR 礼盒装箱与询价清单",
+  "Carrier label using longest-side-first entry": "按最长边优先录入的运单",
+  "Enter the outside measurements as L 310 × W 239 × H 160 mm before applying the carrier's service-specific rounding.": "按长 310 × 宽 239 × 高 160 毫米录入外尺寸，再依所用运输服务的规则取整。",
+  "FEFCO case code": "FEFCO 箱型规范",
+  "Finished inside L 230 × W 150 × H 300 mm. Mark the case opening and name the panels that set L and W on the drawing.": "成型内尺寸为长 230 × 宽 150 × 高 300 毫米。在图纸上标出箱口，以及确定长和宽的面板。",
+  "For a corrugated box quote, write the finished inside dimensions as": "询价时把成型瓦楞箱的内尺寸按",
+  "Measured packed outside footprint 239 × 160 mm, with a standing height of 310 mm. Keep the handling orientation alongside those values.": "装箱后的外部底面为 239 × 160 毫米，直立高度为 310 毫米。记录仓储搬运方向。",
+  "Send the labelled dimensions with your corrugated box quote request": "附上标注好的尺寸询价瓦楞运输箱",
+  "Supplier quote and approved drawing": "供应商报价与批准图纸",
+  "These three records describe one illustrative case. Take the outside measurements from a loaded sample rather than deriving them from the inside size or the flute alone. Keep the units, case orientation and drawing revision with the quote.": "三条记录用的是同一个示例箱。请以装有产品的样箱实测外尺寸，并把单位、箱体方向和图纸版本与报价一起保留。",
+  "UPS parcel measurement instructions": "UPS 包裹测量说明",
+  "Updated November 27, 2026": "更新于 2026 年 11 月 27 日",
+  "Warehouse and pallet plan": "仓储与托盘计划",
+  "What order do box dimensions go in?": "箱子尺寸的长、宽、高按什么顺序写？",
+  "and include the units. Under the FEFCO convention, length is the longer side of the opening, width is the shorter side, and height runs from the opening to the base. For a carrier label, measure the filled, sealed parcel across its outermost points. Some carriers, including UPS, call the longest outside side the length, so a tall case can have a different length on the carrier label than on its production drawing.": "的顺序写明，并标注单位。按 FEFCO 的定义，箱口较长的一边是长，较短的一边是宽，从箱口到箱底是高。填运单时，测量装好并封口后的包裹最外点。UPS 等承运商以最长外边为长边，因此高箱在运单上的长和生产图纸上的长可能不同。"
 }

@@ -13877,5 +13877,19 @@
   "Custom mailer boxes for PR and influencer kits": "Boîtes d’expédition sur mesure pour kits presse et influenceurs",
   "Specify which product or launch message should be visible on opening, which accessories need their own cavity, and where the shipping label will sit. For quotes, share the quantity per design, packed kit weight and date the recipients need the box.": "Précisez le produit ou le message visible à l’ouverture, les accessoires qui nécessitent un logement et l’emplacement de l’étiquette. Pour le devis, indiquez la quantité par design, le poids emballé et la date de réception souhaitée.",
   "If the presentation surface must arrive ready for filming, compare a printed mailer that ships on its own with a presentation box protected by an outer carton. Approve the fully packed sample before production.": "Si le coffret doit arriver prêt à être filmé, comparez une boîte d’expédition imprimée expédiée seule et un coffret avec caisse extérieure. Validez l’échantillon complet avant production.",
-  "Use the PR box pack-out and quote checklist": "Utiliser la liste de conditionnement et de devis du coffret presse"
+  "Use the PR box pack-out and quote checklist": "Utiliser la liste de conditionnement et de devis du coffret presse",
+  "Carrier label using longest-side-first entry": "Étiquette transporteur avec le côté le plus long en premier",
+  "Enter the outside measurements as L 310 × W 239 × H 160 mm before applying the carrier's service-specific rounding.": "Saisissez les dimensions extérieures L 310 × W 239 × H 160 mm, puis appliquez l’arrondi du service choisi.",
+  "FEFCO case code": "Code FEFCO des caisses",
+  "Finished inside L 230 × W 150 × H 300 mm. Mark the case opening and name the panels that set L and W on the drawing.": "Caisse finie à l’intérieur L 230 × W 150 × H 300 mm. Repérez l’ouverture et les panneaux qui définissent L et W sur le dessin.",
+  "For a corrugated box quote, write the finished inside dimensions as": "Pour demander un devis de caisse en carton ondulé, indiquez les dimensions intérieures finies sous la forme",
+  "Measured packed outside footprint 239 × 160 mm, with a standing height of 310 mm. Keep the handling orientation alongside those values.": "Empreinte extérieure de la caisse chargée de 239 × 160 mm, sur une hauteur de 310 mm. Indiquez son orientation de manutention.",
+  "Send the labelled dimensions with your corrugated box quote request": "Joindre les dimensions repérées à la demande de devis de caisses",
+  "Supplier quote and approved drawing": "Devis fournisseur et plan validé",
+  "These three records describe one illustrative case. Take the outside measurements from a loaded sample rather than deriving them from the inside size or the flute alone. Keep the units, case orientation and drawing revision with the quote.": "Ces trois relevés décrivent une seule caisse donnée en exemple. Mesurez l’extérieur sur un échantillon chargé. Conservez les unités, l’orientation et l’indice du plan avec le devis.",
+  "UPS parcel measurement instructions": "Instructions UPS pour mesurer un colis",
+  "Updated November 27, 2026": "Mis à jour le 27 novembre 2026",
+  "Warehouse and pallet plan": "Plan d’entrepôt et de palettisation",
+  "What order do box dimensions go in?": "Dans quel ordre indiquer les dimensions d’une caisse ?",
+  "and include the units. Under the FEFCO convention, length is the longer side of the opening, width is the shorter side, and height runs from the opening to the base. For a carrier label, measure the filled, sealed parcel across its outermost points. Some carriers, including UPS, call the longest outside side the length, so a tall case can have a different length on the carrier label than on its production drawing.": "avec les unités. Selon la convention FEFCO, la longueur et la largeur correspondent aux côtés long et court de l’ouverture, et la hauteur va de l’ouverture au fond. Pour l’étiquette transporteur, mesurez le colis chargé et fermé à ses points extérieurs. Chez UPS, le côté extérieur le plus long est la longueur. Pour une caisse haute, cette valeur peut différer de la longueur du plan de production."
 }

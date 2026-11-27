@@ -13877,5 +13877,19 @@
   "Custom mailer boxes for PR and influencer kits": "Cajas postales personalizadas para kits de prensa y creadores",
   "Specify which product or launch message should be visible on opening, which accessories need their own cavity, and where the shipping label will sit. For quotes, share the quantity per design, packed kit weight and date the recipients need the box.": "Indica qué producto o mensaje debe verse al abrir, qué accesorios necesitan su propio hueco y dónde irá la etiqueta. Para el presupuesto, comparte la cantidad por diseño, el peso del kit embalado y la fecha de llegada.",
   "If the presentation surface must arrive ready for filming, compare a printed mailer that ships on its own with a presentation box protected by an outer carton. Approve the fully packed sample before production.": "Si el estuche debe llegar listo para grabar, compara una caja postal impresa que viaje sola con un estuche protegido por una caja exterior. Aprueba la muestra completa antes de producir.",
-  "Use the PR box pack-out and quote checklist": "Usar la lista de preparación y presupuesto para cajas de PR"
+  "Use the PR box pack-out and quote checklist": "Usar la lista de preparación y presupuesto para cajas de PR",
+  "Carrier label using longest-side-first entry": "Etiqueta del transportista con el lado más largo primero",
+  "Enter the outside measurements as L 310 × W 239 × H 160 mm before applying the carrier's service-specific rounding.": "Introduce las medidas exteriores L 310 × W 239 × H 160 mm antes de aplicar el redondeo del servicio.",
+  "FEFCO case code": "Código FEFCO para cajas de cartón ondulado",
+  "Finished inside L 230 × W 150 × H 300 mm. Mark the case opening and name the panels that set L and W on the drawing.": "Medidas interiores finales L 230 × W 150 × H 300 mm. Marca la abertura e identifica en el plano los paneles que determinan el largo y el ancho.",
+  "For a corrugated box quote, write the finished inside dimensions as": "Para pedir presupuesto de una caja de cartón ondulado, anota las dimensiones interiores finales en el orden",
+  "Measured packed outside footprint 239 × 160 mm, with a standing height of 310 mm. Keep the handling orientation alongside those values.": "Base exterior de la caja cargada de 239 × 160 mm y altura de 310 mm. Registra la orientación de manipulación.",
+  "Send the labelled dimensions with your corrugated box quote request": "Adjuntar las dimensiones identificadas a la solicitud de presupuesto",
+  "Supplier quote and approved drawing": "Presupuesto del proveedor y plano aprobado",
+  "These three records describe one illustrative case. Take the outside measurements from a loaded sample rather than deriving them from the inside size or the flute alone. Keep the units, case orientation and drawing revision with the quote.": "Los tres registros corresponden a una misma caja de ejemplo. Mide el exterior de una muestra cargada. Conserva las unidades, la orientación y la revisión del plano con el presupuesto.",
+  "UPS parcel measurement instructions": "Instrucciones de UPS para medir un paquete",
+  "Updated November 27, 2026": "Actualizado el 27 de noviembre de 2026",
+  "Warehouse and pallet plan": "Plan de almacén y paletización",
+  "What order do box dimensions go in?": "¿En qué orden van las dimensiones de una caja?",
+  "and include the units. Under the FEFCO convention, length is the longer side of the opening, width is the shorter side, and height runs from the opening to the base. For a carrier label, measure the filled, sealed parcel across its outermost points. Some carriers, including UPS, call the longest outside side the length, so a tall case can have a different length on the carrier label than on its production drawing.": "e incluye las unidades. Según la convención FEFCO, el largo y el ancho son los lados mayor y menor de la abertura, y la altura se mide desde la abertura hasta la base. Para la etiqueta, mide los puntos exteriores del paquete cargado y cerrado. UPS considera largo el mayor lado exterior, por lo que el largo de la etiqueta puede diferir del largo del plano."
 }
